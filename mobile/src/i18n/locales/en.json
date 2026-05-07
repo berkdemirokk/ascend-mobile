@@ -452,5 +452,32 @@
     "5": "Elite",
     "6": "Master",
     "7": "Legendary"
+  },
+  "ranks": {
+    "novice": { "title": "Novice", "subtitle": "The journey begins" },
+    "disciple": { "title": "Disciple", "subtitle": "First path completed" },
+    "warrior": { "title": "Warrior", "subtitle": "Warrior mindset" },
+    "monk": { "title": "Monk", "subtitle": "Discipline at the peak" },
+    "master": { "title": "Master", "subtitle": "Master" },
+    "legend": { "title": "Legend", "subtitle": "Legend" }
+  },
+  "ach": {
+    "first_flame": { "title": "First Flame", "description": "3-day streak" },
+    "hot_streak": { "title": "Hot Streak", "description": "7-day streak" },
+    "two_weeks": { "title": "Two-Week Warrior", "description": "14-day streak" },
+    "on_fire": { "title": "On Fire", "description": "30-day streak" },
+    "unstoppable": { "title": "Unstoppable", "description": "100-day streak" },
+    "legend": { "title": "Legend", "description": "365-day streak" },
+    "getting_started": { "title": "Getting Started", "description": "Complete 10 lessons" },
+    "committed": { "title": "Committed", "description": "Complete 30 lessons" },
+    "centurion": { "title": "Centurion", "description": "Complete 100 lessons" },
+    "marathoner": { "title": "Marathoner", "description": "Complete 250 lessons" },
+    "level_2": { "title": "Climbing", "description": "Reach level 2" },
+    "level_5": { "title": "Elite", "description": "Reach level 5" },
+    "level_8": { "title": "Master", "description": "Reach level 8" },
+    "night_owl": { "title": "Night Owl", "description": "Finish a lesson after 23:00" },
+    "early_bird": { "title": "Early Bird", "description": "Finish a lesson before 06:00" },
+    "weekend_warrior": { "title": "Weekend Warrior", "description": "Keep your streak through a weekend" },
+    "inner_circle": { "title": "???", "description": "???" }
   }
 }

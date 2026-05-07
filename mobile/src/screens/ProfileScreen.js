@@ -181,7 +181,7 @@ export default function ProfileScreen({ navigation }) {
           </View>
           <View style={styles.rankBadge}>
             <Text style={styles.rankBadgeText}>
-              {rank.title.toUpperCase()}
+              {t(`ranks.${rank.id}.title`, rank.title).toUpperCase()}
             </Text>
           </View>
           <Text style={styles.username}>{username}</Text>
@@ -253,7 +253,9 @@ export default function ProfileScreen({ navigation }) {
               />
               <Text style={styles.nextRankText}>
                 {t('profile.nextRank', 'SONRAKİ RÜTBE')}:{' '}
-                <Text style={styles.nextRankValue}>{nextRank.title}</Text>
+                <Text style={styles.nextRankValue}>
+                  {t(`ranks.${nextRank.id}.title`, nextRank.title)}
+                </Text>
               </Text>
             </View>
           ) : null}
@@ -468,6 +470,7 @@ const ACHIEVEMENT_ICONS = {
 };
 
 function AchievementCard({ id, locked, onPress }) {
+  const { t } = useTranslation();
   const ach = ACHIEVEMENTS.find((a) => a.id === id);
   if (!ach) return null;
   const iconName = ACHIEVEMENT_ICONS[id] || 'emoji-events';
@@ -493,7 +496,7 @@ function AchievementCard({ id, locked, onPress }) {
         style={[styles.achTitle, locked && styles.achTitleLocked]}
         numberOfLines={2}
       >
-        {ach.title || id}
+        {t(`ach.${id}.title`, ach.title || id)}
       </Text>
     </TouchableOpacity>
   );

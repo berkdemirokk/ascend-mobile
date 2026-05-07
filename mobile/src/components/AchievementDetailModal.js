@@ -110,10 +110,10 @@ export default function AchievementDetailModal({
           </View>
 
           <Text style={[styles.title, !unlocked && { opacity: 0.5 }]}>
-            {ach.title}
+            {t(`ach.${ach.id}.title`, ach.title)}
           </Text>
           <Text style={styles.description}>
-            {ach.description}
+            {t(`ach.${ach.id}.description`, ach.description)}
           </Text>
 
           {unlocked ? (

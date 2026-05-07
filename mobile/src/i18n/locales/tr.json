@@ -445,12 +445,39 @@
     "emptyBody": "Ders tamamladıkça yazdığın yansımalar burada birikecek."
   },
   "level": {
-    "1": "Beginner",
-    "2": "Committed",
-    "3": "Dedicated",
-    "4": "Advanced",
-    "5": "Elite",
-    "6": "Master",
-    "7": "Legendary"
+    "1": "Acemi",
+    "2": "Kararlı",
+    "3": "Adanmış",
+    "4": "İleri",
+    "5": "Seçkin",
+    "6": "Usta",
+    "7": "Efsane"
+  },
+  "ranks": {
+    "novice": { "title": "Acemi", "subtitle": "Yolculuk başlıyor" },
+    "disciple": { "title": "Çırak", "subtitle": "İlk yol tamamlandı" },
+    "warrior": { "title": "Savaşçı", "subtitle": "Savaşçı zihniyeti" },
+    "monk": { "title": "Keşiş", "subtitle": "Disiplin zirvede" },
+    "master": { "title": "Üstad", "subtitle": "Usta" },
+    "legend": { "title": "Efsane", "subtitle": "Efsane" }
+  },
+  "ach": {
+    "first_flame": { "title": "İlk Alev", "description": "3 günlük seri" },
+    "hot_streak": { "title": "Sıcak Seri", "description": "7 günlük seri" },
+    "two_weeks": { "title": "İki Hafta Savaşçısı", "description": "14 günlük seri" },
+    "on_fire": { "title": "Yanıyorsun", "description": "30 günlük seri" },
+    "unstoppable": { "title": "Durdurulamaz", "description": "100 günlük seri" },
+    "legend": { "title": "Efsane", "description": "365 günlük seri" },
+    "getting_started": { "title": "Başlangıç", "description": "10 ders tamamla" },
+    "committed": { "title": "Kararlı", "description": "30 ders tamamla" },
+    "centurion": { "title": "Yüzbaşı", "description": "100 ders tamamla" },
+    "marathoner": { "title": "Maratoncu", "description": "250 ders tamamla" },
+    "level_2": { "title": "Tırmanışta", "description": "Seviye 2" },
+    "level_5": { "title": "Elit", "description": "Seviye 5" },
+    "level_8": { "title": "Usta", "description": "Seviye 8" },
+    "night_owl": { "title": "Gece Kuşu", "description": "Gece 23:00 sonrası ders bitir" },
+    "early_bird": { "title": "Erken Kuş", "description": "Sabah 06:00 öncesi ders bitir" },
+    "weekend_warrior": { "title": "Hafta Sonu Savaşçısı", "description": "Hafta sonu boyunca seri tut" },
+    "inner_circle": { "title": "???", "description": "???" }
   }
 }
