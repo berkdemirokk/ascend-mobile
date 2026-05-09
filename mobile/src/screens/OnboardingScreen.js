@@ -28,6 +28,7 @@ import {
   scheduleDailyReminder,
   scheduleWeeklyRecap,
 } from '../services/notifications';
+import { requestTrackingPermissionIfNeeded } from '../services/ads';
 
 const STEPS = ['welcome', 'personalize', 'pickPath', 'upsell'];
 
@@ -60,15 +61,26 @@ export default function OnboardingScreen({ navigation }) {
     });
     setActivePath(selectedPath);
     completeOnboarding();
-    // Request notification permission AFTER onboarding so the user understands
-    // why we want it (Apple guideline 5.1.1). Fire-and-forget — don't block.
+    // ATT prompt fires here, right when onboarding completes. Apple Review
+    // (iPad reviewer) flagged that the prompt was unreachable when ATT was
+    // gated to first-lesson-completion only — guest-mode reviewers never
+    // tapped a lesson. Firing it after onboarding guarantees the prompt
+    // appears within ~30 seconds of fresh install, before any tracking
+    // data is collected. Sequenced after notification request so iOS shows
+    // the prompts one at a time.
     requestNotificationPermissions()
       .then((granted) => {
-        if (!granted) return;
-        scheduleDailyReminder().catch(() => {});
-        scheduleWeeklyRecap().catch(() => {});
+        if (granted) {
+          scheduleDailyReminder().catch(() => {});
+          scheduleWeeklyRecap().catch(() => {});
+        }
+        // Fire ATT prompt after notif prompt resolves (or is skipped),
+        // regardless of grant outcome — both are independent.
+        requestTrackingPermissionIfNeeded().catch(() => {});
       })
-      .catch(() => {});
+      .catch(() => {
+        requestTrackingPermissionIfNeeded().catch(() => {});
+      });
   };
 
   const handleAnswer = (key, value) => {
@@ -112,6 +124,9 @@ export default function OnboardingScreen({ navigation }) {
     });
     setActivePath(selectedPath);
     completeOnboarding();
+    // Same ATT-on-onboarding-complete logic as finishOnboarding — fires
+    // before the user reaches any ad-related surface.
+    requestTrackingPermissionIfNeeded().catch(() => {});
     // Navigate to paywall after onboarding completes
     setTimeout(() => navigation?.navigate?.('Paywall'), 300);
   };
