@@ -99,16 +99,17 @@ export const REVENUECAT_CONFIG = {
 };
 
 export const ADMOB_IDS = {
-  // Real production IDs from the AdMob console for the "Ascend: Monk Mode"
-  // app (publisher pub-9898903071826160, app ~9553442066).
+  // Real production IDs from the AdMob console for the App Store-linked
+  // "Ascend: Monk Mode" app (publisher pub-9898903071826160, app
+  // ~2513505932). This app is linked to App Store ID 6761607644.
   //
-  // ⚠️ Build 53 shipped with WRONG ad unit IDs — they were from an older
-  // duplicate AdMob app called "acsend" (typo) which doesn't match the
-  // App ID below. AdMob rejected every ad request because the app+unit
-  // combination was invalid. Build 54 fixes this by switching to the
-  // correct IDs from the "ascend" AdMob app (the one that's actually
-  // linked to App Store).
-  APP_ID_IOS: 'ca-app-pub-9898903071826160~9553442066',
+  // ⚠️ Build 53 + 54 shipped with the WRONG APP ID (~9553442066) which
+  // pointed at a duplicate, unlinked AdMob app. The ad UNIT IDs were
+  // already correct (they belong to ~2513505932), but the app+unit
+  // mismatch caused every ad request to return no-fill. Build 55 fixes
+  // the APP_ID_IOS so the SDK identifies itself as the correct
+  // (App-Store-linked) app on every request. Ad unit IDs are unchanged.
+  APP_ID_IOS: 'ca-app-pub-9898903071826160~2513505932',
   INTERSTITIAL_IOS: 'ca-app-pub-9898903071826160/5083828952',
   REWARDED_IOS: 'ca-app-pub-9898903071826160/1096482484',
   BANNER_IOS: 'ca-app-pub-9898903071826160/3722645822',
