@@ -209,6 +209,7 @@
     "shareStreakLabel": "GÜN",
     "shareLongestLabel": "EN UZUN",
     "shareLessonsLabel": "DERS",
+    "pathMasteryTitle": "YOL USTALIĞI",
     "identityTitle": "KİMLİĞİN",
     "identitySub": "Bitirdiğin yollar seni şekillendiriyor. Sen artık şusun:",
     "publicShareCta": "PROFİLİ PAYLAŞ",
@@ -432,6 +433,15 @@
     "locked": "Henüz açılmadı",
     "premiumGated": "Hedefe ulaştın — Premium ile aç",
     "upgradeCta": "PREMIUM'A GEÇ"
+  },
+  "mysteryBox": {
+    "label": "GÜNLÜK MİSTERİ KUTUSU",
+    "openCta": "Açmak için dokun",
+    "hint": "XP, streak donduru veya nadir bonus içinde.",
+    "todayReward": "BUGÜNÜN GİZLİ ÖDÜLÜ",
+    "comeBackTomorrow": "Yarın yeni ödül için tekrar bekliyoruz.",
+    "gotFreeze": "+1 Streak Donduru",
+    "gotProtect": "+1 Seri Koruması"
   },
   "search": {
     "title": "Ders ara",

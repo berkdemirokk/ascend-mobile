@@ -296,6 +296,44 @@ export default function ProfileScreen({ navigation }) {
           </View>
         ) : null}
 
+        {/* Path Mastery — per-path progress percentage cards. Creates
+            sunk-cost feeling: "I've invested X% on this path, can't quit
+            now". Big retention lever for habit apps. */}
+        <View style={styles.pathMasterySection}>
+          <Text style={styles.sectionTitle}>
+            {t('profile.pathMasteryTitle', 'YOL USTALIĞI')}
+          </Text>
+          {PATHS.map((p) => {
+            const completed = pathProgress?.[p.id]?.completed?.length || 0;
+            const total = p.duration || 50;
+            const pct = Math.min(100, Math.round((completed / total) * 100));
+            return (
+              <View key={p.id} style={styles.masteryRow}>
+                <View style={styles.masteryHeader}>
+                  <MaterialIcons
+                    name={p.materialIcon}
+                    size={16}
+                    color={LT.onSurfaceVariant}
+                  />
+                  <Text style={styles.masteryName} numberOfLines={1}>
+                    {t(`paths.${p.id}.shortTitle`, p.title)}
+                  </Text>
+                  <Text style={styles.masteryPct}>{pct}%</Text>
+                </View>
+                <View style={styles.masteryTrack}>
+                  <View
+                    style={[
+                      styles.masteryFill,
+                      { width: `${pct}%` },
+                      pct >= 100 ? styles.masteryFillDone : null,
+                    ]}
+                  />
+                </View>
+              </View>
+            );
+          })}
+        </View>
+
         {/* Achievements */}
         <View style={styles.achievementsSection}>
           <View style={styles.sectionHeader}>
@@ -778,6 +816,54 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
   },
 
+  // Path Mastery — per-path progress cards. The sunk-cost visualization
+  // ("I've completed 38% of Mind Discipline, I can't quit now") that
+  // makes habit-loop apps stick.
+  pathMasterySection: {
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 18,
+    padding: 16,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+  },
+  masteryRow: {
+    marginTop: 12,
+  },
+  masteryHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 6,
+  },
+  masteryName: {
+    flex: 1,
+    color: LT.onSurface,
+    fontSize: 13,
+    fontWeight: '700',
+  },
+  masteryPct: {
+    color: LT.onSurfaceVariant,
+    fontSize: 12,
+    fontWeight: '800',
+    minWidth: 36,
+    textAlign: 'right',
+  },
+  masteryTrack: {
+    height: 6,
+    backgroundColor: LT.outlineVariant,
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+  masteryFill: {
+    height: '100%',
+    backgroundColor: LT.primary,
+    borderRadius: 3,
+  },
+  masteryFillDone: {
+    backgroundColor: LT.success || '#10B981',
+  },
   achievementsSection: {
     marginBottom: 14,
   },

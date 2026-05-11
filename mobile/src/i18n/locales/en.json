@@ -209,6 +209,7 @@
     "shareStreakLabel": "DAYS",
     "shareLongestLabel": "LONGEST",
     "shareLessonsLabel": "LESSONS",
+    "pathMasteryTitle": "PATH MASTERY",
     "identityTitle": "YOUR IDENTITY",
     "identitySub": "The paths you finish shape who you are. You are now:",
     "publicShareCta": "SHARE PROFILE",
@@ -434,6 +435,15 @@
     "locked": "Not unlocked yet",
     "premiumGated": "Goal reached — unlock with Premium",
     "upgradeCta": "GO PREMIUM"
+  },
+  "mysteryBox": {
+    "label": "DAILY MYSTERY BOX",
+    "openCta": "Tap to open",
+    "hint": "XP, streak freeze, or rare bonus inside.",
+    "todayReward": "TODAY'S MYSTERY BONUS",
+    "comeBackTomorrow": "Come back tomorrow for another reward.",
+    "gotFreeze": "+1 Streak Freeze",
+    "gotProtect": "+1 Streak Protect"
   },
   "search": {
     "title": "Search lessons",

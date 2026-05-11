@@ -54,6 +54,7 @@ export default function LessonScreen({ navigation, route }) {
     heartsRefillAt,
     loseHeart,
     refillHearts,
+    isInGracePeriod,
   } = useApp();
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
@@ -151,19 +152,18 @@ export default function LessonScreen({ navigation, route }) {
   // `now` state + every-30s setInterval was redundant.
 
   // Mount-time hearts guard: if a free user lands on a Lesson with 0
-  // hearts (e.g. they tapped Home → "next lesson" card, which doesn't
-  // gate on hearts, or deep-linked from a notification), bounce them
-  // out IMMEDIATELY with the OutOfHearts modal. Otherwise the lesson
-  // would play through to completion with zero consequences for wrong
-  // answers, defeating the entire purpose of the hearts mechanic.
+  // hearts (e.g. tapped Home "next lesson" card, deep-linked from
+  // notification), bounce them out IMMEDIATELY with the OutOfHearts
+  // modal. Skipped during the new-user grace period because hearts
+  // aren't being consumed there anyway.
   useEffect(() => {
     if (alreadyCompleted) return; // re-visiting a finished lesson is OK
+    if (isInGracePeriod) return; // grace period — hearts not enforced
     if (!isPremium && (hearts || 0) <= 0) {
       setOutOfHeartsVisible(true);
     }
-    // We only check on first mount + when hearts cross zero. Hooking
-    // hearts/isPremium into the dep array so refilling mid-screen
-    // doesn't pop the modal back up.
+    // Only check on first mount. Hooks aren't in the dep array so a
+    // mid-lesson hearts change doesn't pop the modal unexpectedly.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -227,18 +227,19 @@ export default function LessonScreen({ navigation, route }) {
     } else {
       playSound('wrong').catch(() => {});
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
-      if (!isPremium) {
+      // New-user grace: in the first 24h after install, free users do
+      // not lose hearts on wrong answers. This dramatically improves
+      // day-1 retention — a new user who makes a mistake in their
+      // first quiz won't get instantly blocked by a 0-hearts modal.
+      if (!isPremium && !isInGracePeriod) {
         if (hearts > 0) {
           loseHeart();
         }
         // Show the modal in two cases:
-        //  1) This wrong answer just consumed the user's last heart
-        //     (was 1, now 0).
+        //  1) This wrong answer just consumed the user's last heart.
         //  2) The user was already at 0 hearts when the wrong answer
-        //     fired — previously this was silently ignored, letting
-        //     the user blast through a lesson with no consequences.
-        //     That defeats the entire purpose of the hearts system,
-        //     so we now gate them out the same as case 1.
+        //     fired — previously silently ignored, defeating the
+        //     entire purpose of the hearts mechanic.
         if (hearts <= 1) {
           setTimeout(() => setOutOfHeartsVisible(true), 800);
         }
@@ -268,6 +269,9 @@ export default function LessonScreen({ navigation, route }) {
       reflection: reflection.trim(),
       reflectionAudioUri: recordingUri || null,
       quizCorrect: correctCount,
+      // Total quiz length is forwarded so the reducer can detect a
+      // "perfect lesson" (all quiz correct) and grant the bonus XP.
+      quizTotal: quiz.length,
       xp: 15 + correctCount * 5,
     });
 

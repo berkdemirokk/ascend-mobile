@@ -29,6 +29,7 @@ import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 import DailyQuoteCard from '../components/DailyQuoteCard';
 import LessonQueueCard from '../components/LessonQueueCard';
+import DailyMysteryBox from '../components/DailyMysteryBox';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import {
   requestTrackingPermissionIfNeeded,
@@ -61,10 +62,22 @@ export default function HomeScreen({ navigation }) {
     clearStreakFreezeToast,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
+    dailyMysteryBoxOpenedAt,
+    dailyMysteryBoxLastReward,
+    openMysteryBox,
     hearts,
     heartsRefillAt,
     refillHearts,
   } = useApp();
+
+  // Day-bucket boolean for the mystery box card. Stable across re-renders
+  // within the same day.
+  const mysteryBoxOpenedToday = (() => {
+    if (!dailyMysteryBoxOpenedAt) return false;
+    const today = new Date();
+    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    return dailyMysteryBoxOpenedAt === todayStr;
+  })();
 
   // OutOfHearts gating — Home has three entry points into a lesson
   // (today CTA button, lesson queue card, 3+ streak auto-route). Without
@@ -93,7 +106,17 @@ export default function HomeScreen({ navigation }) {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   })();
-  const dailyChallenge = useMemo(() => getDailyChallenge(todayStr), [todayStr]);
+  // Personalised daily challenge — uses the user's onboarding mood + goal
+  // signals to bias toward challenges that match their state. Falls back
+  // gracefully to the unfiltered date-hash pick if no signals exist.
+  const dailyChallenge = useMemo(
+    () =>
+      getDailyChallenge(todayStr, {
+        mood: userProfile?.answers?.mood || null,
+        goal: userProfile?.answers?.goal || null,
+      }),
+    [todayStr, userProfile],
+  );
   const dailyChallengeDone = dailyChallengeCompletedAt === todayStr;
 
   // Habit chain: last 7 days as a row of dots — filled = lesson done that
@@ -365,6 +388,17 @@ export default function HomeScreen({ navigation }) {
           onPressLesson={(pathId, lessonId) =>
             attemptStartLesson(pathId, lessonId)
           }
+        />
+
+        {/* Daily Mystery Box — variable-reward retention mechanic. One
+            open per calendar day, random reward (XP, streak freeze, or
+            rare bonus). Variable rewards are the most-addictive
+            reinforcement pattern in behavioral psychology — the
+            casino/social-media loop. Big retention lever. */}
+        <DailyMysteryBox
+          alreadyOpenedToday={mysteryBoxOpenedToday}
+          lastReward={dailyMysteryBoxLastReward}
+          onOpen={openMysteryBox}
         />
 
         {/* Daily Stoic / discipline quote — fresh per calendar day, same

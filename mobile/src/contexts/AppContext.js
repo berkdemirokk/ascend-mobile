@@ -28,6 +28,12 @@ import {
 const initialState = {
   onboarded: false,
 
+  // When the user first opened the app. Used to compute the new-user
+  // grace period for hearts (free users don't lose hearts in the first
+  // 24h, see NEW_USER_GRACE_HOURS). Set on the first state load if
+  // missing — so existing users won't get a retroactive grace period.
+  installedAt: null,
+
   // Personalization
   userProfile: null, // { goals: string[], answers: object }
 
@@ -83,6 +89,12 @@ const initialState = {
   // every day so this is a single sticky flag, not a list.
   dailyChallengeCompletedAt: null,
 
+  // Daily Mystery Box (v1.0.12) — variable-reward mechanic. User can
+  // open it once per calendar day; the result is stored so the card
+  // remembers what they got (positive reinforcement to return tomorrow).
+  dailyMysteryBoxOpenedAt: null,   // 'YYYY-MM-DD' of last open
+  dailyMysteryBoxLastReward: null, // reward ID from DailyMysteryBox.REWARDS
+
   // Daily login bonus — date the user last received +5 XP for opening the
   // app. Sticky-by-date, so the bonus fires once per calendar day.
   dailyLoginGrantedAt: null,
@@ -114,7 +126,23 @@ const getYesterdayDateString = () => {
   return `${year}-${month}-${day}`;
 };
 
-const HEART_REFILL_MINUTES = 30;
+// Heart refill cadence — halved from 30 → 15 min in v1.0.12 because user
+// feedback was "canlar hemen bitiyo" (hearts deplete too fast). At the
+// previous 30-min rate, fully refilling 5 hearts from empty took 2.5
+// hours, which created a punitive feel that hurt retention. 15-min cuts
+// that to ~75 min, keeping the friction meaningful for free users but
+// preventing the "abandon the app" reflex.
+const HEART_REFILL_MINUTES = 15;
+
+// Grace period after first install — for the first 24 hours, free users
+// don't lose hearts on wrong answers. This dramatically improves day-1
+// retention by removing the "I made one mistake and got blocked"
+// frustration that kills onboarding conversion in habit apps.
+const NEW_USER_GRACE_HOURS = 24;
+
+// Bonus XP awarded when a lesson is finished without losing any hearts.
+// Makes the heart system feel rewarding rather than purely punitive.
+const PERFECT_LESSON_BONUS_XP = 10;
 
 // ─── Reducer ─────────────────────────────────────────────────────────────────
 
@@ -138,14 +166,25 @@ const ACTION_TYPES = {
   START_VACATION: 'START_VACATION',
   END_VACATION: 'END_VACATION',
   COMPLETE_DAILY_CHALLENGE: 'COMPLETE_DAILY_CHALLENGE',
+  OPEN_MYSTERY_BOX: 'OPEN_MYSTERY_BOX',
   GRANT_DAILY_LOGIN: 'GRANT_DAILY_LOGIN',
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
 };
 
 function appReducer(state, action) {
   switch (action.type) {
-    case ACTION_TYPES.LOAD_STATE:
-      return { ...state, ...action.payload, _loaded: true };
+    case ACTION_TYPES.LOAD_STATE: {
+      const next = { ...state, ...action.payload, _loaded: true };
+      // First-launch sentinel — stamp installedAt the very first time we
+      // ever load state. Existing users who upgrade to this build will
+      // also pick up the stamp now (their grace period is therefore
+      // measured from upgrade time, not original install — accept that
+      // as a one-time UX bonus rather than a perfect signal).
+      if (!next.installedAt) {
+        next.installedAt = new Date().toISOString();
+      }
+      return next;
+    }
 
     case ACTION_TYPES.COMPLETE_ONBOARDING:
       return { ...state, onboarded: true };
@@ -243,6 +282,33 @@ function appReducer(state, action) {
       };
     }
 
+    case ACTION_TYPES.OPEN_MYSTERY_BOX: {
+      const today = getTodayDateString();
+      // Already opened today — no-op. The card stays visible showing
+      // the previous reward, but no new reward is granted.
+      if (state.dailyMysteryBoxOpenedAt === today) return state;
+      const { rewardId, kind, value } = action.payload || {};
+      let newTotalXP = state.totalXP || 0;
+      let newLevel = state.level || 1;
+      let newFreezes = state.streakFreezes || 0;
+      if (kind === 'xp') {
+        newTotalXP += value;
+        newLevel = checkLevelUp(newTotalXP, newLevel);
+      } else if (kind === 'freeze' || kind === 'streak_bonus') {
+        // streak_bonus = an "extra" freeze valid for streak protect.
+        // For now both kinds just bump the streakFreezes counter.
+        newFreezes += value;
+      }
+      return {
+        ...state,
+        dailyMysteryBoxOpenedAt: today,
+        dailyMysteryBoxLastReward: rewardId || null,
+        totalXP: newTotalXP,
+        level: newLevel,
+        streakFreezes: newFreezes,
+      };
+    }
+
     case ACTION_TYPES.GRANT_DAILY_LOGIN: {
       const today = getTodayDateString();
       if (state.dailyLoginGrantedAt === today) return state;
@@ -319,6 +385,7 @@ function appReducer(state, action) {
         reflection,
         reflectionAudioUri,
         quizCorrect = 0,
+        quizTotal = 0,
         xp = 15,
       } = action.payload;
       const today = getTodayDateString();
@@ -348,7 +415,23 @@ function appReducer(state, action) {
       const isBonusDay = dow === 1 || dow === 5; // Mon or Fri
       if (isBonusDay) xpMultiplier *= 2;
 
-      const finalXp = Math.round(xp * xpMultiplier);
+      // ── Variable rewards (v1.0.12) ────────────────────────────────────
+      // Surprise reward — ~20% chance of an extra 2x. Variable schedules
+      // are the most addictive reinforcement pattern (casino mechanic).
+      // Stacks with the deterministic multipliers above.
+      const isSurpriseDay = Math.random() < 0.2;
+      if (isSurpriseDay) xpMultiplier *= 2;
+
+      // Perfect Lesson Bonus — completing every quiz question correctly
+      // (i.e., not losing any hearts) earns a flat bonus. Makes the
+      // heart system feel rewarding, not just punitive. Falls back to
+      // false when quizTotal is unknown (legacy callers) or the lesson
+      // had no quiz at all.
+      const isPerfectLesson =
+        quizTotal > 0 && quizCorrect >= quizTotal;
+      const perfectBonus = isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0;
+
+      const finalXp = Math.round(xp * xpMultiplier) + perfectBonus;
       const newTotalXP = state.totalXP + finalXp;
       const newLevel = checkLevelUp(newTotalXP, state.level);
 
@@ -666,6 +749,24 @@ export function AppProvider({ children }) {
     });
   }, []);
 
+  /**
+   * Open the daily mystery box. Reward payload comes from the
+   * DailyMysteryBox component (it does the weighted pick locally so
+   * the animation is in sync). One-per-day; subsequent calls are no-ops
+   * until midnight.
+   */
+  const openMysteryBox = useCallback((reward) => {
+    if (!reward) return;
+    dispatch({
+      type: ACTION_TYPES.OPEN_MYSTERY_BOX,
+      payload: {
+        rewardId: reward.id,
+        kind: reward.kind,
+        value: reward.value,
+      },
+    });
+  }, []);
+
   const clearMilestoneToast = useCallback(() => {
     dispatch({ type: ACTION_TYPES.CLEAR_MILESTONE_TOAST });
   }, []);
@@ -761,11 +862,23 @@ export function AppProvider({ children }) {
     0,
   );
 
+  // First-24h grace period — free users in this window don't lose hearts
+  // on wrong quiz answers. Derived from installedAt; if a user has been
+  // around for years, isInGracePeriod is always false.
+  const isInGracePeriod = (() => {
+    if (!state.installedAt) return false;
+    const installedMs = new Date(state.installedAt).getTime();
+    if (Number.isNaN(installedMs)) return false;
+    const ageMs = Date.now() - installedMs;
+    return ageMs < NEW_USER_GRACE_HOURS * 60 * 60 * 1000;
+  })();
+
   const value = {
     ...state,
     rank,
     completedPathsCount,
     totalLessonsCompleted,
+    isInGracePeriod,
     completeOnboarding,
     setUserProfile,
     setPremium,
@@ -774,6 +887,7 @@ export function AppProvider({ children }) {
     startVacation,
     endVacation,
     completeDailyChallenge,
+    openMysteryBox,
     clearMilestoneToast,
     deleteAccount,
     setActivePath,
