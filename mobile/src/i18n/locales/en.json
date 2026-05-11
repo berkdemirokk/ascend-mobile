@@ -37,11 +37,19 @@
     "title": "Monk Mode",
     "subtitle": "Pick your discipline. Walk the path. Transform yourself.",
     "bullet1": "One lesson per day",
+    "bullet1Sub": "Micro-learning for focused growth.",
     "bullet2": "Lock it in with quizzes",
-    "bullet3": "Don't lose your hearts, level up",
+    "bullet2Sub": "Test your knowledge and make it stick.",
+    "bullet3": "Don't lose your hearts",
+    "bullet3Sub": "Protect your streak and level up to mastery.",
     "cta": "Start",
+    "startPath": "Start this path",
+    "skipUpsell": "Skip for now",
     "continuePersonalize": "Continue",
+    "captionWelcome": "ACTIVATING STRATEGIC FOCUS",
     "captionPersonalize": "BUILDING YOUR PLAN",
+    "captionPickPath": "PICK YOUR PATH",
+    "captionUpsell": "GO PREMIUM",
     "personalizeIntro": "3 quick questions for your personal plan",
     "qGoal": "What brings you here?",
     "qTime": "How much time per day?",
@@ -57,10 +65,17 @@
     "moodMotivated": "Highly motivated",
     "moodLost": "Feeling lost",
     "moodFresh": "Fresh start",
+    "pickPathTitle": "Which discipline will you focus on?",
+    "pickPathSubtitle": "Pick a foundational path to start your growth journey.",
+    "upsellTitle": "Accelerate discipline",
     "upsellSubtitle": "First 7 days free, then ₺149,99/month (auto-renews). Cancel anytime.",
+    "upsellF1": "Unlimited hearts",
+    "upsellF2": "All 5 paths unlocked",
+    "upsellF3": "Ad-free experience",
+    "upsellF4": "Premium achievements",
     "priceMonthly": "₺149.99 / month",
     "priceTrial": "First 7 days free, then auto-renews. Cancel anytime.",
-    "upsellCta": "Start Subscription",
+    "upsellCta": "Start 7-day free trial",
     "upsellDisclaimer": "₺149.99/month — subscription auto-renews. Cancel anytime in the App Store."
   },
   "auth": {
@@ -144,12 +159,19 @@
     "voiceStop": "STOP RECORDING",
     "voiceReRecord": "RE-RECORD",
     "voicePlay": "PLAY",
-    "teaching": "Teaching",
+    "teaching": "TEACHING",
+    "proTip": "PRO TIP",
     "quiz": "Quiz",
-    "action": "Do today",
+    "quizHint": "Pick the answer you think is correct.",
+    "action": "DO TODAY",
+    "tapToCheck": "TAP WHEN DONE",
+    "optional": "OPTIONAL",
+    "gotIt": "Got it",
     "reflection": "Reflection",
-    "reflectionPlaceholder": "What did this lesson teach you?",
-    "completeLesson": "Complete lesson",
+    "reflectionPlaceholder": "Write your thoughts here...",
+    "completeLesson": "✓ Complete lesson",
+    "completed": "✓ Completed",
+    "checkActionFirst": "MARK THE TASK TO CONTINUE",
     "skipLesson": "Skip today",
     "correctAnswer": "Correct!",
     "wrongAnswer": "Wrong",
@@ -157,7 +179,12 @@
     "checkAnswer": "Check answer",
     "nextQuestion": "Next question",
     "questionOf": "{{current}} / {{total}}",
-    "earned": "+{{xp}} XP"
+    "earned": "+{{xp}} XP",
+    "completeTitle": "Lesson Complete",
+    "greatWork": "Great work!",
+    "correct": "correct",
+    "nextLesson": "Start Next Lesson",
+    "backToPath": "Back to Path"
   },
   "profile": {
     "title": "You",
@@ -181,17 +208,15 @@
     "shareSubtitle": "Discipline. Focus. Repeat.",
     "shareStreakLabel": "DAYS",
     "shareLongestLabel": "LONGEST",
-    "shareLessonsLabel": "LESSONS"
-  },
-  "streakFreeze": {
-    "savedTitle": "Streak saved 🛡️",
-    "savedBody": "You missed yesterday but a streak repair token kept your streak alive. You have {{count}} tokens left."
-  },
-  "profile": {
+    "shareLessonsLabel": "LESSONS",
     "identityTitle": "YOUR IDENTITY",
     "identitySub": "The paths you finish shape who you are. You are now:",
     "publicShareCta": "SHARE PROFILE",
     "publicShareMessage": "My Ascend profile 🔥\n{{streak}}-day streak · {{xp}} XP · level {{level}}\n{{link}}"
+  },
+  "streakFreeze": {
+    "savedTitle": "Streak saved 🛡️",
+    "savedBody": "You missed yesterday but a streak repair token kept your streak alive. You have {{count}} tokens left."
   },
   "settings": {
     "title": "Settings",
@@ -206,7 +231,8 @@
     "sound": "Sound",
     "sounds": "Sound Effects",
     "soundsSub": "Quiz, lesson, achievement sounds",
-    "haptics": "Haptics",
+    "haptics": "Haptic Feedback",
+    "hapticsSub": "Vibration on quiz answers, milestones, and actions",
     "streakRepair": "Streak Repair Tokens",
     "streakRepairSub": "If you miss a day, a token automatically saves your streak",
     "vacation": "Vacation Mode",
@@ -304,8 +330,10 @@
   },
   "achievements": {
     "title": "Ranks",
-    "locked": "Locked",
-    "unlocked": "Unlocked",
+    "locked": "Not unlocked yet",
+    "unlocked": "UNLOCKED",
+    "premiumGated": "Goal reached — unlock with Premium",
+    "upgradeCta": "GO PREMIUM",
     "rarity": {
       "common": "Common",
       "rare": "Rare",
@@ -400,7 +428,8 @@
     "adNotReadyTitle": "Ad not ready",
     "adNotReadyBody": "No ad is available right now. Try again in a moment, or go Premium for ad-free + unlimited hearts."
   },
-  "achievements": {
+  "_achievements_dup": {
+    "_comment": "Duplicate block — merged into the canonical achievements block above. Renamed so the merged version wins. Kept for diff history.",
     "unlocked": "UNLOCKED",
     "locked": "Not unlocked yet",
     "premiumGated": "Goal reached — unlock with Premium",

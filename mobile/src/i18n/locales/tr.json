@@ -37,11 +37,19 @@
     "title": "Monk Mode",
     "subtitle": "Disiplini seç. Yolu yürü. Kendini dönüştür.",
     "bullet1": "Her gün tek ders",
+    "bullet1Sub": "Odaklanmış gelişim için mikro öğrenme.",
     "bullet2": "Quiz ile pekiştir",
-    "bullet3": "Kalpleri kaybetme, seviyeni yükselt",
+    "bullet2Sub": "Bilgini anında test et ve kalıcı kıl.",
+    "bullet3": "Kalpleri kaybetme",
+    "bullet3Sub": "Serini koru ve ustalık seviyeni yükselt.",
     "cta": "Başla",
+    "startPath": "Bu yolu başlat",
+    "skipUpsell": "Şimdilik atla",
     "continuePersonalize": "Devam et",
+    "captionWelcome": "STRATEJİK ODAKLANMA BAŞLATILIYOR",
     "captionPersonalize": "KİŞİSEL PLAN OLUŞTURULUYOR",
+    "captionPickPath": "YOLUNU SEÇ",
+    "captionUpsell": "PREMIUM İLE TAMAM",
     "personalizeIntro": "Sana özel plan için 3 hızlı soru",
     "qGoal": "Ne için buradasın?",
     "qTime": "Günde ne kadar zaman ayırabilirsin?",
@@ -57,10 +65,17 @@
     "moodMotivated": "Yüksek motivasyon",
     "moodLost": "Karışık hissediyorum",
     "moodFresh": "Yeni başlangıç",
+    "pickPathTitle": "Hangi disipline odaklanacaksın?",
+    "pickPathSubtitle": "Gelişim yolculuğuna başlamak için temel bir yol seç.",
+    "upsellTitle": "Disiplini hızlandır",
     "upsellSubtitle": "İlk 7 gün ücretsiz, sonra ayda ₺149,99 (otomatik yenilenir). İstediğin an iptal et.",
+    "upsellF1": "Sınırsız kalpler",
+    "upsellF2": "Tüm 5 yolun kilidi açık",
+    "upsellF3": "Reklamsız deneyim",
+    "upsellF4": "Premium başarılar",
     "priceMonthly": "₺149,99 / ay",
     "priceTrial": "İlk 7 gün ücretsiz, sonra otomatik yenilenir. İstediğin an iptal et.",
-    "upsellCta": "Aboneliği başlat",
+    "upsellCta": "7 gün ücretsiz dene",
     "upsellDisclaimer": "₺149,99/ay — abonelik otomatik yenilenir. App Store'dan dilediğin an iptal edebilirsin."
   },
   "auth": {
@@ -144,12 +159,19 @@
     "voiceStop": "KAYDI DURDUR",
     "voiceReRecord": "YENİDEN KAYDET",
     "voicePlay": "DİNLE",
-    "teaching": "Öğretim",
+    "teaching": "ÖĞRETİM",
+    "proTip": "PRO İPUCU",
     "quiz": "Quiz",
-    "action": "Bugün yap",
+    "quizHint": "Doğru olduğunu düşündüğün cevabı seç.",
+    "action": "BUGÜN YAP",
+    "tapToCheck": "YAPTIĞINDA İŞARETLE",
+    "optional": "OPSİYONEL",
+    "gotIt": "Anladım",
     "reflection": "Yansıma",
-    "reflectionPlaceholder": "Bu ders sana ne öğretti?",
-    "completeLesson": "Dersi tamamla",
+    "reflectionPlaceholder": "Düşüncelerini buraya yaz...",
+    "completeLesson": "✓ Dersi tamamla",
+    "completed": "✓ Tamamlandı",
+    "checkActionFirst": "DEVAM ETMEK İÇİN GÖREVİ İŞARETLE",
     "skipLesson": "Bugün atla",
     "correctAnswer": "Doğru!",
     "wrongAnswer": "Yanlış",
@@ -157,7 +179,12 @@
     "checkAnswer": "Cevabı kontrol et",
     "nextQuestion": "Sıradaki soru",
     "questionOf": "{{current}} / {{total}}",
-    "earned": "+{{xp}} XP"
+    "earned": "+{{xp}} XP",
+    "completeTitle": "Ders Tamamlandı",
+    "greatWork": "Harika iş!",
+    "correct": "doğru",
+    "nextLesson": "Sonraki Dersi Başla",
+    "backToPath": "Yola Dön"
   },
   "profile": {
     "title": "Sen",
@@ -181,17 +208,15 @@
     "shareSubtitle": "Disiplin. Odak. Tekrar.",
     "shareStreakLabel": "GÜN",
     "shareLongestLabel": "EN UZUN",
-    "shareLessonsLabel": "DERS"
-  },
-  "streakFreeze": {
-    "savedTitle": "Streak kurtarıldı 🛡️",
-    "savedBody": "Dün ders yapmamıştın ama bir streak onarım jetonu kullanıldı. {{count}} jetonun kaldı."
-  },
-  "profile": {
+    "shareLessonsLabel": "DERS",
     "identityTitle": "KİMLİĞİN",
     "identitySub": "Bitirdiğin yollar seni şekillendiriyor. Sen artık şusun:",
     "publicShareCta": "PROFİLİ PAYLAŞ",
     "publicShareMessage": "Ascend'de profilim 🔥\n{{streak}} gün streak · {{xp}} XP · seviye {{level}}\n{{link}}"
+  },
+  "streakFreeze": {
+    "savedTitle": "Streak kurtarıldı 🛡️",
+    "savedBody": "Dün ders yapmamıştın ama bir streak onarım jetonu kullanıldı. {{count}} jetonun kaldı."
   },
   "settings": {
     "title": "Ayarlar",
@@ -209,7 +234,8 @@
     "sound": "Ses",
     "sounds": "Ses Efektleri",
     "soundsSub": "Quiz, ders, başarı sesleri",
-    "haptics": "Titreşim",
+    "haptics": "Dokunsal Geri Bildirim",
+    "hapticsSub": "Quiz cevapları, başarılar ve eylemlerde titreşim",
     "resetProgress": "İlerlemeyi Sıfırla",
     "resetProgressBody": "XP, streak ve ders ilerlemen sıfırlanır. Premium ve hesap bilgilerin korunur.",
     "signOutTitle": "Çıkış yap",
@@ -302,8 +328,10 @@
   },
   "achievements": {
     "title": "Rütbeler",
-    "locked": "Kilitli",
-    "unlocked": "Açık",
+    "locked": "Henüz açılmadı",
+    "unlocked": "AÇILDI",
+    "premiumGated": "Hedefe ulaştın — Premium ile aç",
+    "upgradeCta": "PREMIUM'A GEÇ",
     "rarity": {
       "common": "Yaygın",
       "rare": "Nadir",
@@ -398,7 +426,8 @@
     "adNotReadyTitle": "Reklam hazır değil",
     "adNotReadyBody": "Şu an gösterilebilecek bir reklam yok. Birazdan tekrar dene ya da Premium'a geçerek reklamsız + sınırsız kalp al."
   },
-  "achievements": {
+  "_achievements_dup": {
+    "_comment": "Duplicate block — merged into canonical achievements block above. Renamed to break key collision.",
     "unlocked": "AÇILDI",
     "locked": "Henüz açılmadı",
     "premiumGated": "Hedefe ulaştın — Premium ile aç",

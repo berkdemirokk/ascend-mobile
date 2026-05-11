@@ -30,6 +30,12 @@ import {
 } from '../services/notifications';
 import { restorePurchases } from '../services/purchases';
 import { setMuted, isMuted } from '../services/sounds';
+import {
+  getHapticsEnabled,
+  setHapticsEnabled as persistHapticsEnabled,
+  initHaptics,
+  hapticImpactLight,
+} from '../services/haptics';
 
 const NOTIF_KEY = '@ascend/notifications_enabled_v1';
 const SOUNDS_MUTED_KEY = '@ascend/sounds_muted_v1';
@@ -128,16 +134,30 @@ export default function SettingsScreen({ navigation }) {
   const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
   const [restoring, setRestoring] = useState(false);
   const [soundsEnabled, setSoundsEnabled] = useState(true);
+  const [hapticsEnabled, setHapticsEnabledState] = useState(true);
 
   useEffect(() => {
     AsyncStorage.getItem(SOUNDS_MUTED_KEY).then((v) => {
       setSoundsEnabled(v !== 'true');
     });
+    // Sync the haptics toggle with the persisted preference. The service
+    // already auto-loads on app boot (see App.js initHaptics), but we
+    // call it again here in case the user lands on Settings on first
+    // launch before that effect has resolved.
+    initHaptics().then(() => setHapticsEnabledState(getHapticsEnabled()));
   }, []);
 
   const toggleSounds = (value) => {
     setSoundsEnabled(value);
     setMuted(!value); // sounds.js auto-persists
+  };
+
+  const toggleHaptics = (value) => {
+    setHapticsEnabledState(value);
+    persistHapticsEnabled(value); // haptics.js auto-persists
+    // Fire a single light tap if turning ON so the user immediately
+    // feels the feedback they just enabled (instant confirmation).
+    if (value) hapticImpactLight();
   };
 
   const handleRestore = async () => {
@@ -385,19 +405,35 @@ export default function SettingsScreen({ navigation }) {
               <View style={styles.rowLeft}>
                 <View>
                   <Text style={styles.rowLabel}>
-                    {t('settings.sounds', 'Ses Efektleri')}
+                    {t('settings.sounds')}
                   </Text>
                   <Text style={styles.rowSub}>
-                    {t(
-                      'settings.soundsSub',
-                      'Quiz, ders, başarı sesleri',
-                    )}
+                    {t('settings.soundsSub')}
                   </Text>
                 </View>
               </View>
               <Switch
                 value={soundsEnabled}
                 onValueChange={toggleSounds}
+                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
+                thumbColor={LT.surfaceContainerLowest}
+              />
+            </View>
+
+            {/* Haptics toggle — service was created earlier but the
+                UI to toggle it was missing. Mirrors sounds toggle. */}
+            <View style={styles.row}>
+              <View style={styles.rowLeft}>
+                <View>
+                  <Text style={styles.rowLabel}>{t('settings.haptics')}</Text>
+                  <Text style={styles.rowSub}>
+                    {t('settings.hapticsSub')}
+                  </Text>
+                </View>
+              </View>
+              <Switch
+                value={hapticsEnabled}
+                onValueChange={toggleHaptics}
                 trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
                 thumbColor={LT.surfaceContainerLowest}
               />
