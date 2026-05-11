@@ -738,6 +738,11 @@ export function AppProvider({ children }) {
 
   const resetProgress = useCallback(() => {
     dispatch({ type: ACTION_TYPES.RESET_PROGRESS });
+    // Re-arm the post-lesson paywall trigger so it can fire again after
+    // the user crosses 3 lessons in their new run. Fire-and-forget.
+    import('../services/paywallTrigger')
+      .then((m) => m.resetPostLessonPaywallTrigger())
+      .catch(() => {});
   }, []);
 
   // ── Derived ────────────────────────────────────────────────────────────

@@ -9,8 +9,9 @@ import {
   Easing,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import * as Haptics from 'expo-haptics';
 import { useTranslation } from 'react-i18next';
+import ConfettiBurst from './ConfettiBurst';
+import { hapticMilestone } from '../services/haptics';
 
 const MILESTONES = {
   3: { emoji: '🔥', title: '3 Gün!', subtitle: 'Alev tutuştu' },
@@ -34,7 +35,9 @@ export default function MilestoneModal({ visible, streak, onClose }) {
 
   useEffect(() => {
     if (visible && milestone) {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+      // hapticMilestone is a composed 3-thump pattern (boom-boom-success)
+      // that makes the milestone feel like a real event, not just a toast.
+      hapticMilestone();
       Animated.spring(scale, {
         toValue: 1,
         damping: 8,
@@ -51,6 +54,9 @@ export default function MilestoneModal({ visible, streak, onClose }) {
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
       <View style={styles.backdrop}>
+        {/* Confetti fires once per `visible` toggle; trigger key changes
+            with the streak number so each milestone gets a fresh burst. */}
+        {visible ? <ConfettiBurst trigger={streak} /> : null}
         <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
           <LinearGradient
             colors={['#F59E0B', '#EF4444', '#7C3AED']}
@@ -65,9 +71,13 @@ export default function MilestoneModal({ visible, streak, onClose }) {
             <Text style={styles.subtitle}>
               {t(`milestone.${streak}.subtitle`, milestone.subtitle)}
             </Text>
-            <Text style={styles.streakNumber}>{streak} gün</Text>
+            <Text style={styles.streakNumber}>
+              {streak} {t('common.days').toLowerCase()}
+            </Text>
             <TouchableOpacity onPress={onClose} style={styles.closeBtn} activeOpacity={0.8}>
-              <Text style={styles.closeBtnText}>Devam et 🔥</Text>
+              <Text style={styles.closeBtnText}>
+                {t('common.continue')} 🔥
+              </Text>
             </TouchableOpacity>
           </LinearGradient>
         </Animated.View>

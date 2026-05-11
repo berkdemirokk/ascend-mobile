@@ -9,6 +9,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 import ErrorBoundary from './src/components/ErrorBoundary';
 import { initPurchases } from './src/services/purchases';
 import { initI18n } from './src/i18n';
+import { initHaptics } from './src/services/haptics';
 import { LT } from './src/config/lightTheme';
 
 export default function App() {
@@ -18,6 +19,13 @@ export default function App() {
     initI18n()
       .catch((e) => console.warn('i18n init failed:', e?.message))
       .finally(() => setI18nReady(true));
+  }, []);
+
+  useEffect(() => {
+    // Load the user's haptics-enabled preference (persisted in
+    // AsyncStorage). Sync internally and no-ops if storage is empty —
+    // default is "on". Fire-and-forget; non-critical.
+    initHaptics().catch(() => {});
   }, []);
 
   useEffect(() => {

@@ -31,6 +31,7 @@ import {
 } from '../services/voiceRecording';
 import { getCurrentLanguage } from '../i18n';
 import { requestReviewIfAppropriate } from '../services/review';
+import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
 const STEP = {
@@ -302,6 +303,21 @@ export default function LessonScreen({ navigation, route }) {
       lessonsCompleted: totalCompleted,
       streak: currentStreak + 1,
     }).catch(() => {});
+
+    // Peak-emotional-moment paywall: after the 3rd lesson, the user has
+    // felt the streak forming and is most likely to convert. One-shot
+    // (tracked in AsyncStorage so we don't keep nagging). Free users only;
+    // premium users skip directly to the next step.
+    const shouldShowPostLessonPaywall = await maybeTriggerPostLessonPaywall({
+      lessonsCompleted: totalCompleted,
+      isPremium,
+    });
+    if (shouldShowPostLessonPaywall) {
+      // Replace the lesson screen with Paywall so back-button goes Home,
+      // not back into the just-completed lesson.
+      navigation.replace('Paywall');
+      return;
+    }
 
     // Show interstitial ad before exiting (frequency-capped)
     if (!isPremium && shouldShowAd(false)) {
