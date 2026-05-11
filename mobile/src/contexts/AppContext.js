@@ -183,13 +183,30 @@ function appReducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.LOAD_STATE: {
       const next = { ...state, ...action.payload, _loaded: true };
-      // First-launch sentinel — stamp installedAt the very first time we
-      // ever load state. Existing users who upgrade to this build will
-      // also pick up the stamp now (their grace period is therefore
-      // measured from upgrade time, not original install — accept that
-      // as a one-time UX bonus rather than a perfect signal).
+      // First-launch sentinel — stamp installedAt the very first time
+      // we ever load state. We need to distinguish two cases:
+      //
+      //   (a) Genuinely new user: no XP, no lessons completed. Stamp
+      //       installedAt to now — they get the legitimate 24h grace.
+      //   (b) Existing user upgrading from a build that didn't have
+      //       this field: they already have progress. Don't give them
+      //       a retroactive grace period that hides the hearts mechanic
+      //       they're used to. Stamp installedAt as a date well in the
+      //       past so isInGracePeriod immediately reads false.
       if (!next.installedAt) {
-        next.installedAt = new Date().toISOString();
+        const hasPriorProgress =
+          (next.totalXP || 0) > 0 ||
+          Object.values(next.pathProgress || {}).some(
+            (p) => (p?.completed?.length || 0) > 0,
+          );
+        if (hasPriorProgress) {
+          // 25 hours ago — past the 24h grace window.
+          next.installedAt = new Date(
+            Date.now() - 25 * 60 * 60 * 1000,
+          ).toISOString();
+        } else {
+          next.installedAt = new Date().toISOString();
+        }
       }
       return next;
     }
