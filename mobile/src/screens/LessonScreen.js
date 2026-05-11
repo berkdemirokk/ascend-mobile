@@ -150,6 +150,23 @@ export default function LessonScreen({ navigation, route }) {
   // modal tick down to zero on its own each second. The old local
   // `now` state + every-30s setInterval was redundant.
 
+  // Mount-time hearts guard: if a free user lands on a Lesson with 0
+  // hearts (e.g. they tapped Home → "next lesson" card, which doesn't
+  // gate on hearts, or deep-linked from a notification), bounce them
+  // out IMMEDIATELY with the OutOfHearts modal. Otherwise the lesson
+  // would play through to completion with zero consequences for wrong
+  // answers, defeating the entire purpose of the hearts mechanic.
+  useEffect(() => {
+    if (alreadyCompleted) return; // re-visiting a finished lesson is OK
+    if (!isPremium && (hearts || 0) <= 0) {
+      setOutOfHeartsVisible(true);
+    }
+    // We only check on first mount + when hearts cross zero. Hooking
+    // hearts/isPremium into the dep array so refilling mid-screen
+    // doesn't pop the modal back up.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const celebrationScale = useRef(new Animated.Value(0)).current;
   const xpY = useRef(new Animated.Value(0)).current;
   const stepProgress = useRef(new Animated.Value(0.33)).current;
@@ -210,10 +227,19 @@ export default function LessonScreen({ navigation, route }) {
     } else {
       playSound('wrong').catch(() => {});
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
-      if (!isPremium && hearts > 0) {
-        loseHeart();
-        // If this was the last heart, show modal after a brief moment
-        if (hearts === 1) {
+      if (!isPremium) {
+        if (hearts > 0) {
+          loseHeart();
+        }
+        // Show the modal in two cases:
+        //  1) This wrong answer just consumed the user's last heart
+        //     (was 1, now 0).
+        //  2) The user was already at 0 hearts when the wrong answer
+        //     fired — previously this was silently ignored, letting
+        //     the user blast through a lesson with no consequences.
+        //     That defeats the entire purpose of the hearts system,
+        //     so we now gate them out the same as case 1.
+        if (hearts <= 1) {
           setTimeout(() => setOutOfHeartsVisible(true), 800);
         }
       }

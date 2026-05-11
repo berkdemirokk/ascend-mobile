@@ -29,6 +29,7 @@ import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 import DailyQuoteCard from '../components/DailyQuoteCard';
 import LessonQueueCard from '../components/LessonQueueCard';
+import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import {
   requestTrackingPermissionIfNeeded,
   initAds,
@@ -60,7 +61,32 @@ export default function HomeScreen({ navigation }) {
     clearStreakFreezeToast,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
+    hearts,
+    heartsRefillAt,
+    refillHearts,
   } = useApp();
+
+  // OutOfHearts gating — Home has three entry points into a lesson
+  // (today CTA button, lesson queue card, 3+ streak auto-route). Without
+  // the gate, a free user with 0 hearts could blast through lessons
+  // with zero consequence. We intercept the tap, show the OutOfHearts
+  // modal, and only navigate after the user either watches an ad,
+  // upgrades, or hearts auto-refill.
+  const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+
+  /**
+   * Centralised navigate-to-lesson handler used by every Home entry
+   * point. Returns true if navigation actually fired, false if we
+   * blocked it (showed the OutOfHearts modal instead).
+   */
+  const attemptStartLesson = (pathId, lessonId) => {
+    if (!isPremium && (hearts || 0) <= 0) {
+      setOutOfHeartsVisible(true);
+      return false;
+    }
+    navigation.navigate('Lesson', { pathId, lessonId });
+    return true;
+  };
 
   // Today's pseudo-random challenge — same for everyone on the same date.
   const todayStr = (() => {
@@ -137,10 +163,7 @@ export default function HomeScreen({ navigation }) {
 
   const handleStartLesson = () => {
     if (!currentLesson) return;
-    navigation.navigate('Lesson', {
-      pathId: currentLesson.pathId,
-      lessonId: currentLesson.id,
-    });
+    attemptStartLesson(currentLesson.pathId, currentLesson.id);
   };
 
   // Existing users (App Store update from a build < 53) finished onboarding
@@ -167,13 +190,16 @@ export default function HomeScreen({ navigation }) {
   // One-tap cold open: returning users (3+ day streak who haven't done today's
   // lesson yet) skip the home tab and land directly in their next lesson.
   // We only fire once per cold start via a ref so that swiping back from the
-  // lesson screen doesn't re-trigger the route.
+  // lesson screen doesn't re-trigger the route. Hearts gate also applies —
+  // a returning user with 0 hearts shouldn't be auto-bounced into a lesson
+  // they can't make progress on; they should see Home first and decide.
   const autoRoutedRef = useRef(false);
   useEffect(() => {
     if (autoRoutedRef.current) return;
     if (todayCompleted) return;
     if (!currentLesson) return;
     if ((currentStreak || 0) < 3) return;
+    if (!isPremium && (hearts || 0) <= 0) return;
     autoRoutedRef.current = true;
     // Tiny delay so the home screen's first frame paints — avoids a jarring
     // jump that looks like a glitch.
@@ -184,7 +210,7 @@ export default function HomeScreen({ navigation }) {
       });
     }, 250);
     return () => clearTimeout(id);
-  }, [todayCompleted, currentLesson, currentStreak, navigation]);
+  }, [todayCompleted, currentLesson, currentStreak, navigation, isPremium, hearts]);
 
   // Prefer the user's actual name when we have one. Sources, in order:
   //   1. Onboarding profile (user typed it)
@@ -337,7 +363,7 @@ export default function HomeScreen({ navigation }) {
           activePathId={activePathId}
           pathProgress={pathProgress}
           onPressLesson={(pathId, lessonId) =>
-            navigation.navigate('Lesson', { pathId, lessonId })
+            attemptStartLesson(pathId, lessonId)
           }
         />
 
@@ -495,6 +521,24 @@ export default function HomeScreen({ navigation }) {
         visible={streakInfoVisible}
         onClose={() => setStreakInfoVisible(false)}
         currentStreak={currentStreak}
+      />
+
+      {/* OutOfHearts gate — fires when a free user with 0 hearts tries
+          to start a lesson from any Home entry point (today CTA, lesson
+          queue card, 3+ streak auto-route). Routes them to watch a
+          rewarded ad, go premium, or wait for the timer. */}
+      <OutOfHeartsModal
+        visible={outOfHeartsVisible}
+        refillAt={heartsRefillAt}
+        onClose={() => setOutOfHeartsVisible(false)}
+        onRefill={() => {
+          refillHearts();
+          setOutOfHeartsVisible(false);
+        }}
+        onPaywall={() => {
+          setOutOfHeartsVisible(false);
+          navigation.navigate('Paywall');
+        }}
       />
     </SafeAreaView>
   );
