@@ -175,6 +175,7 @@ const ACTION_TYPES = {
   COMPLETE_DAILY_CHALLENGE: 'COMPLETE_DAILY_CHALLENGE',
   OPEN_MYSTERY_BOX: 'OPEN_MYSTERY_BOX',
   SET_DAILY_MOOD: 'SET_DAILY_MOOD',
+  GRANT_BONUS_XP: 'GRANT_BONUS_XP',
   GRANT_DAILY_LOGIN: 'GRANT_DAILY_LOGIN',
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
 };
@@ -323,6 +324,18 @@ function appReducer(state, action) {
       };
     }
 
+    case ACTION_TYPES.GRANT_BONUS_XP: {
+      // Generic XP grant for features that award bonuses outside the
+      // lesson-completion path (Sage Mode completions, Mystery Box,
+      // future referral rewards, etc.). Optional `source` tag is
+      // ignored here but useful for future analytics.
+      const bonus = Math.max(0, Math.floor(action.payload?.xp || 0));
+      if (!bonus) return state;
+      const newTotalXP = (state.totalXP || 0) + bonus;
+      const newLevel = checkLevelUp(newTotalXP, state.level || 1);
+      return { ...state, totalXP: newTotalXP, level: newLevel };
+    }
+
     case ACTION_TYPES.SET_DAILY_MOOD: {
       const today = getTodayDateString();
       return {
@@ -464,6 +477,15 @@ function appReducer(state, action) {
       const dow = new Date().getDay();
       const isBonusDay = dow === 1 || dow === 5; // Mon or Fri
       if (isBonusDay) xpMultiplier *= 2;
+
+      // PREMIUM WEEKEND BOOST — Saturdays + Sundays grant a 3x
+      // multiplier for premium users only. Visible on Home with a
+      // banner so free users see the perk and feel the upgrade pull.
+      // Stacks with the Mon/Fri 2x (impossible weekday overlap) and
+      // the surprise 20% chance below — premium weekend can easily
+      // hit 6x on a lucky lesson, which is the "wow" moment.
+      const isWeekend = dow === 0 || dow === 6; // Sun or Sat
+      if (isWeekend && state.isPremium) xpMultiplier *= 3;
 
       // ── Variable rewards (v1.0.12) ────────────────────────────────────
       // Surprise reward — ~20% chance of an extra 2x. Variable schedules
@@ -800,6 +822,20 @@ export function AppProvider({ children }) {
   }, []);
 
   /**
+   * Generic bonus XP grant. Used by Sage Mode, Mystery Box, and any
+   * other feature that awards XP outside the lesson-completion path.
+   *
+   * @param {number} xp     positive integer; negative/zero ignored
+   * @param {string} [source] optional analytics tag (e.g. 'sageMode')
+   */
+  const grantBonusXP = useCallback((xp, source = null) => {
+    dispatch({
+      type: ACTION_TYPES.GRANT_BONUS_XP,
+      payload: { xp, source },
+    });
+  }, []);
+
+  /**
    * Set today's mood. Used by DailyMoodCheckIn to refresh the
    * personalization signal each day. Idempotent within a day.
    */
@@ -948,6 +984,7 @@ export function AppProvider({ children }) {
     completeDailyChallenge,
     openMysteryBox,
     setDailyMood,
+    grantBonusXP,
     clearMilestoneToast,
     deleteAccount,
     setActivePath,

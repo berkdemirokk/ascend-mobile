@@ -24,6 +24,7 @@ import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import PathMilestoneScene, {
   detectPathSceneStage,
 } from '../components/PathMilestoneScene';
+import SageMode from '../components/SageMode';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import { playSound } from '../services/sounds';
 import { speak as ttsSpeak, stop as ttsStop } from '../services/tts';
@@ -59,6 +60,7 @@ export default function LessonScreen({ navigation, route }) {
     loseHeart,
     refillHearts,
     isInGracePeriod,
+    grantBonusXP,
   } = useApp();
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
@@ -84,6 +86,9 @@ export default function LessonScreen({ navigation, route }) {
   // Renders the PathMilestoneScene modal — chapter-style story beat.
   const [pathSceneVisible, setPathSceneVisible] = useState(false);
   const [pathSceneStage, setPathSceneStage] = useState(0);
+  // Premium-only Sage Mode deep session. Triggered from celebration
+  // screen — full-screen TTS-guided 15-min experience.
+  const [sageModeVisible, setSageModeVisible] = useState(false);
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
   // Cumulative crit-hit bonus XP accumulated during this lesson's quiz.
   // Forwarded to completePathLesson on completion so the user actually
@@ -870,6 +875,24 @@ export default function LessonScreen({ navigation, route }) {
           onClose={() => setPathSceneVisible(false)}
         />
 
+        {/* Sage Mode — Premium audio-guided deep session. Triggered
+            from the celebration screen via the gold SAGE MODE button.
+            Awards +30 XP on completion. */}
+        <SageMode
+          visible={sageModeVisible}
+          lesson={lesson}
+          teaching={teaching}
+          action={action}
+          onClose={() => setSageModeVisible(false)}
+          onComplete={({ bonusXp }) => {
+            // Credit the bonus XP via the generic GRANT_BONUS_XP
+            // action. The lesson XP was already awarded when the user
+            // hit "Complete" — this is on top, for completing the
+            // sage session itself.
+            if (bonusXp > 0) grantBonusXP(bonusXp, 'sageMode');
+          }}
+        />
+
         <OutOfHeartsModal
           visible={outOfHeartsVisible}
           refillAt={heartsRefillAt}
@@ -982,6 +1005,29 @@ export default function LessonScreen({ navigation, route }) {
 
             {/* CTA buttons */}
             <View style={styles.celebrationCTAs}>
+              {/* Sage Mode — premium-only deep session entry. Visible
+                  to all so free users see the perk; tapping opens
+                  paywall for free, opens SageMode modal for premium. */}
+              <TouchableOpacity
+                onPress={() => {
+                  if (!isPremium) {
+                    navigation.navigate('Paywall');
+                  } else {
+                    setSageModeVisible(true);
+                  }
+                }}
+                activeOpacity={0.85}
+                style={styles.sageBtn}
+              >
+                <MaterialIcons name="self-improvement" size={18} color="#FDE047" />
+                <Text style={styles.sageBtnText}>
+                  {t('sage.openCta', 'SAGE MODE · DEEP SESSION')}
+                </Text>
+                {!isPremium ? (
+                  <MaterialIcons name="lock" size={14} color="#FDE047" />
+                ) : null}
+              </TouchableOpacity>
+
               <TouchableOpacity
                 onPress={handleNextLesson}
                 activeOpacity={0.9}
@@ -1164,6 +1210,29 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     lineHeight: 20,
     letterSpacing: -0.2,
+  },
+  // Sage Mode button — premium-exclusive entry on celebration screen.
+  // Gold-tinted, sits above the "Next Lesson" CTA so it's visible but
+  // not the primary action.
+  sageBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    borderRadius: 12,
+    backgroundColor: 'rgba(253, 224, 71, 0.12)',
+    borderWidth: 1.5,
+    borderColor: '#FDE047',
+    marginBottom: 10,
+    alignSelf: 'stretch',
+  },
+  sageBtnText: {
+    color: '#7C2D12',
+    fontSize: 12,
+    fontWeight: '900',
+    letterSpacing: 1.2,
   },
   stepChipTertiary: {
     alignSelf: 'flex-start',

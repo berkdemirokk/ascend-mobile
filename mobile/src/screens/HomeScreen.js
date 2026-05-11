@@ -32,7 +32,10 @@ import LessonQueueCard from '../components/LessonQueueCard';
 import DailyMysteryBox from '../components/DailyMysteryBox';
 import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
 import StreakRiskBanner from '../components/StreakRiskBanner';
+import WeekendBoostBanner from '../components/WeekendBoostBanner';
+import DailyPlanCard from '../components/DailyPlanCard';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
+import { generateDailyPlan } from '../services/dailyPlanGenerator';
 import {
   requestTrackingPermissionIfNeeded,
   initAds,
@@ -131,6 +134,20 @@ export default function HomeScreen({ navigation }) {
     const weights = analyzeReflections(texts);
     return dominantReflectionCategory(weights);
   }, [pathProgress]);
+
+  // Daily Plan — 3 lessons curated for the user today based on their
+  // active path + reflection-derived focus + onboarding goal. Premium-
+  // only feature; free users see a teaser/upsell version.
+  const dailyPlan = useMemo(() => {
+    if (!isPremium) return null;
+    return generateDailyPlan({
+      pathProgress,
+      activePathId,
+      goal: userProfile?.answers?.goal || null,
+      reflectionDominant,
+      mood: moodPickedToday || userProfile?.answers?.mood || null,
+    });
+  }, [isPremium, pathProgress, activePathId, userProfile, reflectionDominant, moodPickedToday]);
 
   // Personalised daily challenge — uses the user's mood + goal signals
   // AND reflection-derived dominant category to bias toward challenges
@@ -420,6 +437,14 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         ) : null}
 
+        {/* Weekend Boost Banner — only renders Sat/Sun. Premium: gold
+            "active" celebration banner. Free: pink upsell CTA → paywall.
+            Premium becomes a QUALITATIVE difference, not just no-ads. */}
+        <WeekendBoostBanner
+          isPremium={isPremium}
+          onUpgradeTap={() => navigation.navigate('Paywall')}
+        />
+
         {/* Streak Risk Banner — loss-aversion prompt shown ONLY when
             (a) user has a streak >= 2, (b) today is not yet done,
             (c) it's 18:00+, (d) not on vacation. Drives 30-40% of
@@ -433,6 +458,17 @@ export default function HomeScreen({ navigation }) {
               attemptStartLesson(currentLesson.pathId, currentLesson.id);
             }
           }}
+        />
+
+        {/* Daily Plan — Premium "smart coach" picks 3 lessons for the
+            user based on their signals. Free users see an upsell teaser. */}
+        <DailyPlanCard
+          plan={dailyPlan}
+          isPremium={isPremium}
+          onStartLesson={(pathId, lessonId) =>
+            attemptStartLesson(pathId, lessonId)
+          }
+          onUpgradeTap={() => navigation.navigate('Paywall')}
         />
 
         {/* Lesson Queue — surfaces the next uncompleted lesson so users
