@@ -46,7 +46,18 @@ export const requestNotificationPermissions = async () => {
   return true;
 };
 
-export const scheduleDailyReminder = async () => {
+/**
+ * Schedule a 9 AM daily reminder. Branches title/body on whether the user
+ * has an active streak: "Begin monk mode" for first-day users vs.
+ * "{n} days — discipline" for users carrying a streak. The previous
+ * version passed `{ streak: '' }` which produced "🔥  days — discipline"
+ * (double space + dangling word) — visually broken on the lock screen.
+ *
+ * @param {Object} [opts]
+ * @param {number} [opts.currentStreak=0]  caller's current streak (from
+ *   useApp().currentStreak), used to pick the right copy.
+ */
+export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
   // Replace any previously scheduled copy of the same reminder so we don't
   // pile up duplicates every app launch.
   try {
@@ -55,11 +66,19 @@ export const scheduleDailyReminder = async () => {
     // no-op — notification may not exist yet
   }
 
+  const hasStreak = (currentStreak || 0) > 0;
+  const title = hasStreak
+    ? i18n.t('notifications.reminderTitleProgress', { streak: currentStreak })
+    : i18n.t('notifications.reminderTitleStart');
+  const body = hasStreak
+    ? i18n.t('notifications.reminderBodyProgress')
+    : i18n.t('notifications.reminderBodyStart');
+
   await Notifications.scheduleNotificationAsync({
     identifier: DAILY_REMINDER_ID,
     content: {
-      title: i18n.t('notifications.reminderTitleProgress', { streak: '' }).trim(),
-      body: i18n.t('notifications.reminderBodyProgress'),
+      title,
+      body,
       sound: true,
     },
     trigger: {
@@ -70,7 +89,13 @@ export const scheduleDailyReminder = async () => {
   });
 };
 
-export const scheduleStreakReminder = async () => {
+/**
+ * Evening (8 PM today) reminder for users at risk of breaking their streak.
+ *
+ * @param {Object} [opts]
+ * @param {number} [opts.currentStreak=0]
+ */
+export const scheduleStreakReminder = async ({ currentStreak = 0 } = {}) => {
   // Evening reminder at 8 PM today if we're still before 8 PM.
   const now = new Date();
   const evening = new Date();
@@ -83,10 +108,15 @@ export const scheduleStreakReminder = async () => {
     // no-op
   }
 
+  const hasStreak = (currentStreak || 0) > 0;
+  const title = hasStreak
+    ? i18n.t('notifications.reminderTitleDanger', { streak: currentStreak })
+    : i18n.t('notifications.reminderTitleStart');
+
   await Notifications.scheduleNotificationAsync({
     identifier: EVENING_REMINDER_ID,
     content: {
-      title: i18n.t('notifications.reminderTitleDanger', { streak: '' }).replace('  ', ' ').trim(),
+      title,
       body: i18n.t('notifications.reminderBodyDanger'),
       sound: true,
     },
@@ -132,15 +162,8 @@ export const scheduleStreakAtRiskReminder = async ({
   await Notifications.scheduleNotificationAsync({
     identifier: STREAK_AT_RISK_ID,
     content: {
-      title: i18n.t(
-        'notifications.streakAtRiskTitle',
-        '🔥 {{streak}} gün tehlikede',
-        { streak: currentStreak },
-      ),
-      body: i18n.t(
-        'notifications.streakAtRiskBody',
-        'Bugün ders yapmadın. 3 saat içinde gün biter — streak\'ini koru, sadece 5 dakika.',
-      ),
+      title: i18n.t('notifications.streakAtRiskTitle', { streak: currentStreak }),
+      body: i18n.t('notifications.streakAtRiskBody'),
       sound: true,
     },
     trigger: {
@@ -175,12 +198,8 @@ export const scheduleComebackReminder = async ({ lastCompletedDate }) => {
   await Notifications.scheduleNotificationAsync({
     identifier: COMEBACK_ID,
     content: {
-      title: i18n.t('notifications.comebackTitle', 'Geri dön. Tek bir ders.'),
-      body: i18n.t(
-        'notifications.comebackBody',
-        '{{days}} gündür yoksun. Streak\'ini sıfırlama — sadece 5 dakika, yeniden başla.',
-        { days: daysSince },
-      ),
+      title: i18n.t('notifications.comebackTitle'),
+      body: i18n.t('notifications.comebackBody', { days: daysSince }),
       sound: true,
     },
     trigger: {
@@ -210,14 +229,8 @@ export const scheduleWeeklyRecap = async () => {
   await Notifications.scheduleNotificationAsync({
     identifier: WEEKLY_RECAP_ID,
     content: {
-      title: i18n.t(
-        'notifications.weeklyRecapTitle',
-        'Haftan nasıl geçti? 📊',
-      ),
-      body: i18n.t(
-        'notifications.weeklyRecapBody',
-        'Stats sekmesinden 7 günlük özetine bak — yeni hafta yarın başlıyor.',
-      ),
+      title: i18n.t('notifications.weeklyRecapTitle'),
+      body: i18n.t('notifications.weeklyRecapBody'),
       sound: true,
     },
     trigger: {

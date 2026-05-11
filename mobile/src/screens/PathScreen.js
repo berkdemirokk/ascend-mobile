@@ -61,7 +61,13 @@ export default function PathScreen({ navigation }) {
     () => getPathById(activePathId) || PATHS[0],
     [activePathId],
   );
-  const lessons = useMemo(() => getPathLessons(activePath), [activePath]);
+  // Guard: getPathLessons may return undefined if activePath.id is somehow
+  // unknown (corrupted state, future-renamed path id, etc.). Default to []
+  // so downstream `.map()` and `.length` don't blow up.
+  const lessons = useMemo(
+    () => getPathLessons(activePath) || [],
+    [activePath],
+  );
   const progress = useMemo(
     () => getPathProgress(activePath, pathProgress),
     [activePath, pathProgress],

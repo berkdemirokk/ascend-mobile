@@ -10,6 +10,7 @@ import {
 import { LT } from '../config/lightTheme';
 import { LEGAL } from '../config/constants';
 import { logError } from '../services/analytics';
+import i18n from '../i18n';
 
 const RAPID_CRASH_WINDOW_MS = 60_000;
 const RAPID_CRASH_THRESHOLD = 3;
@@ -65,21 +66,16 @@ export default class ErrorBoundary extends React.Component {
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scroll}>
           <Text style={styles.icon}>⚠️</Text>
-          <Text style={styles.title}>Bir şeyler ters gitti</Text>
-          <Text style={styles.subtitle}>
-            Beklenmedik bir hata oluştu. Devam etmeyi dene.
-          </Text>
+          <Text style={styles.title}>{i18n.t('error.title')}</Text>
+          <Text style={styles.subtitle}>{i18n.t('error.subtitle')}</Text>
 
           {inLoop ? (
-            <Text style={styles.loopWarn}>
-              Hata tekrar ediyor — uygulamayı kapatıp açman gerekebilir, ya da
-              destek ekibine yaz.
-            </Text>
+            <Text style={styles.loopWarn}>{i18n.t('error.loopWarn')}</Text>
           ) : null}
 
           {__DEV__ && this.state.error?.message ? (
             <View style={styles.devBox}>
-              <Text style={styles.devLabel}>HATA (dev only)</Text>
+              <Text style={styles.devLabel}>{i18n.t('error.devLabel')}</Text>
               <Text style={styles.devText}>
                 {String(this.state.error?.message)}
               </Text>
@@ -91,7 +87,7 @@ export default class ErrorBoundary extends React.Component {
             onPress={this.handleReset}
             activeOpacity={0.85}
           >
-            <Text style={styles.primaryBtnText}>Tekrar Dene</Text>
+            <Text style={styles.primaryBtnText}>{i18n.t('error.tryAgain')}</Text>
           </TouchableOpacity>
 
           {inLoop ? (
@@ -100,7 +96,9 @@ export default class ErrorBoundary extends React.Component {
               onPress={this.handleContact}
               activeOpacity={0.7}
             >
-              <Text style={styles.secondaryBtnText}>Destek ile İletişim</Text>
+              <Text style={styles.secondaryBtnText}>
+                {i18n.t('error.contactSupport')}
+              </Text>
             </TouchableOpacity>
           ) : null}
         </ScrollView>

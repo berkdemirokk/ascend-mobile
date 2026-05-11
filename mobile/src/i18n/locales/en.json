@@ -24,7 +24,8 @@
     "gotIt": "GOT IT",
     "later": "Later",
     "days": "Days",
-    "lessons": "Lessons"
+    "lessons": "Lessons",
+    "reset": "Reset"
   },
   "nav": {
     "home": "Home",
@@ -76,7 +77,22 @@
     "hasAccount": "Already have an account?",
     "signInWithApple": "Continue with Apple",
     "passwordResetSent": "Password reset link sent",
-    "invalidCredentials": "Invalid email or password"
+    "invalidCredentials": "Invalid email or password",
+    "invalidEmail": "Enter a valid email address",
+    "checkEmail": "Check your email",
+    "forgotPasswordTitle": "Forgot password?",
+    "forgotPasswordSub": "We'll send a reset link to your email.",
+    "resetSentBody": "Reset link sent. Don't forget to check your spam folder.",
+    "sendResetLink": "Send reset link",
+    "backToLogin": "Back to login"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "subtitle": "An unexpected error occurred. Try to continue.",
+    "tryAgain": "Try Again",
+    "contactSupport": "Contact Support",
+    "loopWarn": "The error keeps repeating — try closing and reopening the app, or contact support.",
+    "devLabel": "ERROR (dev only)"
   },
   "home": {
     "streak": "{{count}} day streak",

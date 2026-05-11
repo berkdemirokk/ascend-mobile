@@ -24,7 +24,8 @@
     "gotIt": "ANLADIM",
     "later": "Sonra",
     "days": "Gün",
-    "lessons": "Ders"
+    "lessons": "Ders",
+    "reset": "Sıfırla"
   },
   "nav": {
     "home": "Ana",
@@ -76,7 +77,22 @@
     "hasAccount": "Zaten hesabın var mı?",
     "signInWithApple": "Apple ile devam et",
     "passwordResetSent": "Şifre sıfırlama linki gönderildi",
-    "invalidCredentials": "E-posta veya şifre hatalı"
+    "invalidCredentials": "E-posta veya şifre hatalı",
+    "invalidEmail": "Geçerli bir e-posta gir",
+    "checkEmail": "E-postanı kontrol et",
+    "forgotPasswordTitle": "Şifreni mi unuttun?",
+    "forgotPasswordSub": "E-posta adresine sıfırlama linki gönderelim.",
+    "resetSentBody": "Sıfırlama linki gönderildi. Spam klasörüne de bakmayı unutma.",
+    "sendResetLink": "Sıfırlama linki gönder",
+    "backToLogin": "Girişe dön"
+  },
+  "error": {
+    "title": "Bir şeyler ters gitti",
+    "subtitle": "Beklenmedik bir hata oluştu. Devam etmeyi dene.",
+    "tryAgain": "Tekrar Dene",
+    "contactSupport": "Destek ile İletişim",
+    "loopWarn": "Hata tekrar ediyor — uygulamayı kapatıp açman gerekebilir, ya da destek ekibine yaz.",
+    "devLabel": "HATA (dev only)"
   },
   "home": {
     "streak": "{{count}} gün streak",

@@ -46,6 +46,7 @@ export default function SettingsScreen({ navigation }) {
     startVacation,
     endVacation,
     anonUsername,
+    currentStreak,
   } = useApp();
 
   const vacationActive = (() => {
@@ -189,7 +190,7 @@ export default function SettingsScreen({ navigation }) {
         return;
       }
       try {
-        await scheduleDailyReminder();
+        await scheduleDailyReminder({ currentStreak });
       } catch (e) {
         console.warn('schedule daily reminder failed:', e?.message);
       }
