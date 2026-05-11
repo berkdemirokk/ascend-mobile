@@ -83,7 +83,11 @@ export default function OnboardingScreen({ navigation }) {
       try {
         const granted = await requestNotificationPermissions();
         if (granted) {
-          scheduleDailyReminder().catch(() => {});
+          // New user → currentStreak is 0, so scheduleDailyReminder
+          // will pick the "begin monk mode" variant (not the streak-
+          // formatted one). Pass explicitly to keep the API contract
+          // clean and obvious.
+          scheduleDailyReminder({ currentStreak: 0 }).catch(() => {});
           scheduleWeeklyRecap().catch(() => {});
         }
       } catch {}

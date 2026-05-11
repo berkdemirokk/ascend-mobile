@@ -134,13 +134,19 @@ const FALLBACK_TR = [
  * Reflect a quote back at the user based on their reflection text.
  *
  * @param {string} reflectionText  the raw journal entry
- * @param {string} lang            'tr' or 'en'
+ * @param {string} lang            'tr', 'en', 'tr-TR', 'en-US', etc.
  * @returns {{ topicId: string|null, quote: string }}
  */
 export const mirrorReflection = (reflectionText, lang = 'tr') => {
+  // Normalize 'en-US', 'tr-TR' etc. to the 2-letter prefix. Caller
+  // typically passes i18n.language directly, which may be a region
+  // code. Without this normalization 'en-US' fell into the TR branch.
+  const langPrefix = String(lang || 'tr').toLowerCase().slice(0, 2);
+  const isEn = langPrefix === 'en';
+
   const text = String(reflectionText || '').toLowerCase().trim();
   if (!text) {
-    const fallback = lang === 'en' ? FALLBACK_EN : FALLBACK_TR;
+    const fallback = isEn ? FALLBACK_EN : FALLBACK_TR;
     return { topicId: null, quote: pickRandom(fallback) };
   }
 
@@ -149,14 +155,14 @@ export const mirrorReflection = (reflectionText, lang = 'tr') => {
   for (const topic of TOPICS) {
     for (const kw of topic.keywords) {
       if (text.includes(kw)) {
-        const pool = lang === 'en' ? topic.quotesEn : topic.quotesTr;
+        const pool = isEn ? topic.quotesEn : topic.quotesTr;
         return { topicId: topic.id, quote: pickRandom(pool) };
       }
     }
   }
 
   // No topic match → fallback.
-  const fallback = lang === 'en' ? FALLBACK_EN : FALLBACK_TR;
+  const fallback = isEn ? FALLBACK_EN : FALLBACK_TR;
   return { topicId: null, quote: pickRandom(fallback) };
 };
 

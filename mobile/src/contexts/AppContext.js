@@ -188,24 +188,40 @@ function appReducer(state, action) {
       //
       //   (a) Genuinely new user: no XP, no lessons completed. Stamp
       //       installedAt to now — they get the legitimate 24h grace.
-      //   (b) Existing user upgrading from a build that didn't have
-      //       this field: they already have progress. Don't give them
-      //       a retroactive grace period that hides the hearts mechanic
-      //       they're used to. Stamp installedAt as a date well in the
-      //       past so isInGracePeriod immediately reads false.
+      //   (b) Existing user upgrading: they already have progress.
+      //       Don't give them a retroactive grace period that hides
+      //       the hearts mechanic they're used to. Stamp installedAt
+      //       as a date well in the past so isInGracePeriod immediately
+      //       reads false.
+      //
+      // Case (c) — fixup for Build 57 users: the prior fix only ran
+      // when installedAt was missing. Users who had already loaded
+      // Build 57 had it stamped to that load time, and Build 58 would
+      // not retry the check. So we ALSO look at users who have an
+      // installedAt that's < 24h old AND substantial progress —
+      // that's the buggy combination — and reset.
+      const hasSubstantialProgress =
+        (next.totalXP || 0) >= 50 ||
+        Object.values(next.pathProgress || {}).reduce(
+          (s, p) => s + (p?.completed?.length || 0),
+          0,
+        ) >= 3;
+      const fakePastStamp = () =>
+        new Date(Date.now() - 25 * 60 * 60 * 1000).toISOString();
+
       if (!next.installedAt) {
-        const hasPriorProgress =
-          (next.totalXP || 0) > 0 ||
-          Object.values(next.pathProgress || {}).some(
-            (p) => (p?.completed?.length || 0) > 0,
-          );
-        if (hasPriorProgress) {
-          // 25 hours ago — past the 24h grace window.
-          next.installedAt = new Date(
-            Date.now() - 25 * 60 * 60 * 1000,
-          ).toISOString();
-        } else {
-          next.installedAt = new Date().toISOString();
+        next.installedAt = hasSubstantialProgress
+          ? fakePastStamp()
+          : new Date().toISOString();
+      } else if (hasSubstantialProgress) {
+        // Already stamped, but check if it was the Build 57 mistake:
+        // recent stamp + meaningful progress = bogus, reset it.
+        const stampMs = new Date(next.installedAt).getTime();
+        const stampRecent =
+          !Number.isNaN(stampMs) &&
+          Date.now() - stampMs < 24 * 60 * 60 * 1000;
+        if (stampRecent) {
+          next.installedAt = fakePastStamp();
         }
       }
       return next;

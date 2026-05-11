@@ -18,7 +18,11 @@ export default function DailyQuoteCard() {
   // stable across re-renders within a single day.
   const quote = useMemo(() => getDailyQuote(), []);
   const lang = getCurrentLanguage();
-  const text = lang === 'tr' ? quote.tr : quote.en;
+  // Normalize 'tr-TR' / 'en-US' to 2-letter prefix — i18n.language can
+  // return either form depending on device locale. Without this the
+  // tr-TR user incorrectly got the English quote.
+  const langPrefix = String(lang || 'tr').toLowerCase().slice(0, 2);
+  const text = langPrefix === 'en' ? quote.en : quote.tr;
 
   // Long-press → native share sheet. No third-party clipboard dep
   // needed; iOS Share is always available and works offline.

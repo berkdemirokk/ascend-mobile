@@ -41,23 +41,31 @@ export default function DailyMoodCheckIn({
     setExpanded(false);
   };
 
-  // Collapsed (pill) state — user already picked today.
+  // Collapsed (pill) state — user already picked today. Defensive
+  // guard: if state somehow contains an unknown mood id (corruption,
+  // schema migration), fall back to the picker rather than rendering
+  // a broken pill with the i18n key as text.
   if (todayMood && !expanded) {
     const picked = MOODS.find((m) => m.id === todayMood);
-    return (
-      <TouchableOpacity
-        onPress={() => setExpanded(true)}
-        activeOpacity={0.8}
-        style={styles.pill}
-      >
-        <Text style={styles.pillEmoji}>{picked?.emoji || '🙂'}</Text>
-        <Text style={styles.pillText}>
-          {t('moodCheckIn.todayPill', "TODAY'S MOOD")} ·{' '}
-          {t(`onboarding.mood${picked?.id?.charAt(0).toUpperCase()}${picked?.id?.slice(1)}`)}
-        </Text>
-        <MaterialIcons name="edit" size={14} color={LT.onSurfaceVariant} />
-      </TouchableOpacity>
-    );
+    if (!picked) {
+      // Unknown mood id — render the picker so the user can re-pick.
+      // (Falls through to the expanded JSX below.)
+    } else {
+      const labelKey = `onboarding.mood${picked.id.charAt(0).toUpperCase()}${picked.id.slice(1)}`;
+      return (
+        <TouchableOpacity
+          onPress={() => setExpanded(true)}
+          activeOpacity={0.8}
+          style={styles.pill}
+        >
+          <Text style={styles.pillEmoji}>{picked.emoji}</Text>
+          <Text style={styles.pillText}>
+            {t('moodCheckIn.todayPill', "TODAY'S MOOD")} · {t(labelKey)}
+          </Text>
+          <MaterialIcons name="edit" size={14} color={LT.onSurfaceVariant} />
+        </TouchableOpacity>
+      );
+    }
   }
 
   // Expanded (picker) state.

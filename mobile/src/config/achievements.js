@@ -47,6 +47,10 @@ export const IDENTITY_BADGES = {
 export function getEarnedIdentityBadges(pathProgress, paths, lang = 'tr') {
   const earned = [];
   if (!pathProgress || !paths) return earned;
+  // Normalize 'tr-TR' / 'en-US' to 2-letter prefix. Without this a
+  // tr-TR user saw English badge titles.
+  const langPrefix = String(lang || 'tr').toLowerCase().slice(0, 2);
+  const isEn = langPrefix === 'en';
   for (const path of paths) {
     const prog = pathProgress[path.id];
     if (!prog?.completed?.length) continue;
@@ -59,7 +63,7 @@ export function getEarnedIdentityBadges(pathProgress, paths, lang = 'tr') {
     earned.push({
       id: badge.id,
       icon: badge.icon,
-      title: lang === 'en' ? badge.titleEn : badge.title,
+      title: isEn ? badge.titleEn : badge.title,
     });
   }
   return earned;
