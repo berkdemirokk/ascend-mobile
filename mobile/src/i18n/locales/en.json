@@ -380,7 +380,8 @@
     "streakAtRiskTitle": "🔥 {{streak}} days at risk",
     "streakAtRiskBody": "You haven't completed today. 3 hours until the day ends — protect your streak, just 5 minutes.",
     "comebackTitle": "Come back. Just one lesson.",
-    "comebackBody": "You've been gone {{days}} days. Don't let your streak reset — just 5 minutes to start again."
+    "comebackBody": "You've been gone {{days}} days. Don't let your streak reset — just 5 minutes to start again.",
+    "actionStartLesson": "Start Lesson"
   },
   "share": {
     "streakStart": "Starting monk mode 🔥 Discipline. Focus. Repeat.",
@@ -393,7 +394,7 @@
   "hearts": {
     "outTitle": "Out of Hearts",
     "outSubtitle": "You need a heart to continue. Watch an ad to earn 1 heart or go Premium for unlimited.",
-    "refillIn": "Auto refill in: {{mins}} min",
+    "refillIn": "Auto refill in {{mins}}",
     "watchAd": "WATCH AD, EARN +1 HEART",
     "goPremium": "GO PREMIUM — UNLIMITED HEARTS",
     "adNotReadyTitle": "Ad not ready",
@@ -456,10 +457,11 @@
     "freezeEmpty": "No freezes yet. Get 3 with Premium.",
     "getFreezes": "GET 3 FREEZES WITH PREMIUM"
   },
-  "hearts": {
+  "_hearts_dup": {
+    "_comment": "Duplicate hearts block — second-write-wins semantics meant earlier keys were silently shadowed. Renamed so the canonical hearts block above takes effect. Kept as _-prefix for historical reference.",
     "outTitle": "Out of Hearts",
     "outSubtitle": "Need a heart to continue. Watch an ad for +1 or go Premium.",
-    "refillIn": "Auto-refill: {{mins}} min",
+    "refillIn": "Auto-refill in {{mins}}",
     "watchAd": "WATCH AD, +1 HEART",
     "goPremium": "GO PREMIUM, UNLIMITED HEARTS"
   },

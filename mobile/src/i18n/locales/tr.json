@@ -378,7 +378,8 @@
     "streakAtRiskTitle": "🔥 {{streak}} gün tehlikede",
     "streakAtRiskBody": "Bugün ders yapmadın. 3 saat içinde gün biter — streak'ini koru, sadece 5 dakika.",
     "comebackTitle": "Geri dön. Tek bir ders.",
-    "comebackBody": "{{days}} gündür yoksun. Streak'ini sıfırlama — sadece 5 dakika, yeniden başla."
+    "comebackBody": "{{days}} gündür yoksun. Streak'ini sıfırlama — sadece 5 dakika, yeniden başla.",
+    "actionStartLesson": "Ders Başla"
   },
   "share": {
     "streakStart": "Monk mode başlatıyorum 🔥 Disiplin. Odak. Tekrar.",
@@ -391,7 +392,7 @@
   "hearts": {
     "outTitle": "Kalpler Bitti",
     "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyerek 1 kalp kazan veya Premium'a geç.",
-    "refillIn": "Otomatik dolum: {{mins}} dk",
+    "refillIn": "Yenilenme: {{mins}}",
     "watchAd": "REKLAM İZLE, +1 KALP KAZAN",
     "goPremium": "PREMIUM İLE SINIRSIZ KALPLER",
     "adNotReadyTitle": "Reklam hazır değil",
@@ -454,10 +455,11 @@
     "freezeEmpty": "Henüz dondurucu yok. Premium ile 3 dondurucu kazan.",
     "getFreezes": "PREMIUM İLE 3 DONDURUCU AL"
   },
-  "hearts": {
+  "_hearts_dup": {
+    "_comment": "Duplicate hearts block — see en.json _hearts_dup for context. Renamed to break key collision.",
     "outTitle": "Kalpler Bitti",
     "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyerek 1 kalp kazan veya Premium'a geç.",
-    "refillIn": "Otomatik dolum: {{mins}} dk",
+    "refillIn": "Yenilenme: {{mins}}",
     "watchAd": "REKLAM İZLE, +1 KALP KAZAN",
     "goPremium": "PREMIUM İLE SINIRSIZ KALPLER"
   },

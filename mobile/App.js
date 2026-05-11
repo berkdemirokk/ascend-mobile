@@ -10,6 +10,10 @@ import ErrorBoundary from './src/components/ErrorBoundary';
 import { initPurchases } from './src/services/purchases';
 import { initI18n } from './src/i18n';
 import { initHaptics } from './src/services/haptics';
+import {
+  setupNotifCategories,
+  setupNotifResponseListener,
+} from './src/services/notifications';
 import { LT } from './src/config/lightTheme';
 
 export default function App() {
@@ -26,6 +30,12 @@ export default function App() {
     // AsyncStorage). Sync internally and no-ops if storage is empty —
     // default is "on". Fire-and-forget; non-critical.
     initHaptics().catch(() => {});
+
+    // Register notification categories ("Start Lesson" action button)
+    // and wire the response listener so tapping the action navigates
+    // the user back into the lessons flow. Idempotent on each boot.
+    setupNotifCategories().catch(() => {});
+    setupNotifResponseListener();
   }, []);
 
   useEffect(() => {

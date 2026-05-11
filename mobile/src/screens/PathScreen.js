@@ -282,7 +282,7 @@ export default function PathScreen({ navigation }) {
           refillHearts();
           setOutOfHeartsVisible(false);
         }}
-        heartsRefillAt={heartsRefillAt}
+        refillAt={heartsRefillAt}
       />
 
       <StreakInfoModal

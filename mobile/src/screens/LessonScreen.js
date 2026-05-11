@@ -76,7 +76,6 @@ export default function LessonScreen({ navigation, route }) {
   const [milestoneVisible, setMilestoneVisible] = useState(false);
   const [milestoneStreak, setMilestoneStreak] = useState(0);
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
-  const [now, setNow] = useState(Date.now());
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
@@ -146,19 +145,10 @@ export default function LessonScreen({ navigation, route }) {
     if (!ok) safeSet(setIsSpeaking)(false);
   };
 
-  // Track countdown for hearts refill
-  useEffect(() => {
-    if (!heartsRefillAt || hearts >= 5 || isPremium) return;
-    const id = setInterval(() => setNow(Date.now()), 30 * 1000);
-    return () => clearInterval(id);
-  }, [heartsRefillAt, hearts, isPremium]);
-
-  const refillMins = (() => {
-    if (isPremium || hearts >= 5 || !heartsRefillAt) return null;
-    const ms = new Date(heartsRefillAt).getTime() - now;
-    if (ms <= 0) return 0;
-    return Math.ceil(ms / 60000);
-  })();
+  // Heart refill countdown is now handled by LiveCountdown inside
+  // OutOfHeartsModal — passing `refillAt={heartsRefillAt}` makes the
+  // modal tick down to zero on its own each second. The old local
+  // `now` state + every-30s setInterval was redundant.
 
   const celebrationScale = useRef(new Animated.Value(0)).current;
   const xpY = useRef(new Animated.Value(0)).current;
@@ -769,7 +759,7 @@ export default function LessonScreen({ navigation, route }) {
 
         <OutOfHeartsModal
           visible={outOfHeartsVisible}
-          refillMins={refillMins}
+          refillAt={heartsRefillAt}
           onClose={() => {
             setOutOfHeartsVisible(false);
             // Bail back to PathScreen — can't continue with no hearts

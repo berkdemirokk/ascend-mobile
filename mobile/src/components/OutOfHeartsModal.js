@@ -15,6 +15,7 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { showRewarded, isAdsReady, isRewardedReady } from '../services/ads';
+import LiveCountdown from './LiveCountdown';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
 export default function OutOfHeartsModal({
@@ -22,6 +23,9 @@ export default function OutOfHeartsModal({
   onClose,
   onRefill,
   onPaywall,
+  // Either pass refillAt (preferred — live ticking countdown) OR
+  // refillMins (legacy static value, kept for back-compat).
+  refillAt = null,
   refillMins = null,
 }) {
   const { t } = useTranslation();
@@ -82,13 +86,25 @@ export default function OutOfHeartsModal({
             )}
           </Text>
 
-          {refillMins !== null && refillMins > 0 ? (
+          {refillAt ? (
+            // Live ticking countdown — updates every second to keep the
+            // user watching the clock tick toward zero. Creates urgency
+            // without needing the modal parent to manage state.
+            <View style={styles.timerPill}>
+              <MaterialIcons name="timer" size={14} color={LT.onSurfaceVariant} />
+              <LiveCountdown
+                target={refillAt}
+                format="m:ss"
+                style={styles.timerText}
+              >
+                {t('hearts.refillIn', { mins: '{time}' })}
+              </LiveCountdown>
+            </View>
+          ) : refillMins !== null && refillMins > 0 ? (
             <View style={styles.timerPill}>
               <MaterialIcons name="timer" size={14} color={LT.onSurfaceVariant} />
               <Text style={styles.timerText}>
-                {t('hearts.refillIn', 'Otomatik dolum: {{mins}} dk', {
-                  mins: refillMins,
-                })}
+                {t('hearts.refillIn', { mins: refillMins })}
               </Text>
             </View>
           ) : null}

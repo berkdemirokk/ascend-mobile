@@ -27,6 +27,8 @@ import {
 import LightTopAppBar from '../components/LightTopAppBar';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
+import DailyQuoteCard from '../components/DailyQuoteCard';
+import LessonQueueCard from '../components/LessonQueueCard';
 import {
   requestTrackingPermissionIfNeeded,
   initAds,
@@ -327,6 +329,22 @@ export default function HomeScreen({ navigation }) {
             )}
           </TouchableOpacity>
         ) : null}
+
+        {/* Lesson Queue — surfaces the next uncompleted lesson so users
+            can one-tap into their next session. Removes decision fatigue
+            (which is the #1 churn cause for habit apps per Duolingo data). */}
+        <LessonQueueCard
+          activePathId={activePathId}
+          pathProgress={pathProgress}
+          onPressLesson={(pathId, lessonId) =>
+            navigation.navigate('Lesson', { pathId, lessonId })
+          }
+        />
+
+        {/* Daily Stoic / discipline quote — fresh per calendar day, same
+            for all devices. Anchor of the "morning routine" of opening
+            the app: novelty + value before asking for any action. */}
+        <DailyQuoteCard />
 
         {/* Today's CTA Card */}
         <View style={styles.ctaCard}>

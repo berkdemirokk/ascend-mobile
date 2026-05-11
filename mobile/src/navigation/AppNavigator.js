@@ -1,10 +1,32 @@
 import React from 'react';
 import { Text, View, ActivityIndicator } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  createNavigationContainerRef,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTranslation } from 'react-i18next';
+
+// Top-level navigation ref — used by services (e.g., notifications.js)
+// that need to navigate from outside the React tree (background push
+// taps, deep links). Exposed via `navigateFromAnywhere` below.
+export const navigationRef = createNavigationContainerRef();
+
+/**
+ * Navigate from non-React code (e.g., a notification action handler).
+ * No-ops if the navigator isn't ready yet (e.g., user tapped the
+ * notification before the app finished cold-booting); the caller is
+ * responsible for retrying or queueing if that case matters.
+ */
+export const navigateFromAnywhere = (name, params) => {
+  if (navigationRef.isReady()) {
+    navigationRef.navigate(name, params);
+    return true;
+  }
+  return false;
+};
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
@@ -136,7 +158,7 @@ export default function AppNavigator() {
   const needsAuth = !isAuthenticated && !guestMode;
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
