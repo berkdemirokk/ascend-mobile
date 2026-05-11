@@ -24,6 +24,8 @@ import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
 import { LEVEL_THRESHOLDS, getNextLevel } from '../config/constants';
 import { ACHIEVEMENTS, getEarnedIdentityBadges } from '../config/achievements';
+import StreakHeatmap from '../components/StreakHeatmap';
+import CharacterHero from '../components/CharacterHero';
 import { PATHS } from '../data/paths';
 import { getCurrentLanguage } from '../i18n';
 import { getRank, getNextRank } from '../config/ranks';
@@ -295,6 +297,18 @@ export default function ProfileScreen({ navigation }) {
             </View>
           </View>
         ) : null}
+
+        {/* Character Hero — large visual identity badge keyed off the
+            user's longest streak. This is the "look who I am now" piece
+            that turns the streak into a SELF, not just a number. Pinned
+            high in the profile so it's the first thing seen. */}
+        <CharacterHero longestStreak={longestStreak} />
+
+        {/* 30-Day Streak Heatmap — GitHub-style activity grid. Visual
+            proof of investment, drives sunk-cost retention. Reads
+            from lessonHistory which the reducer maintains on every
+            lesson completion. */}
+        <StreakHeatmap lessonHistory={lessonHistory} />
 
         {/* Path Mastery — per-path progress percentage cards. Creates
             sunk-cost feeling: "I've invested X% on this path, can't quit

@@ -95,6 +95,13 @@ const initialState = {
   dailyMysteryBoxOpenedAt: null,   // 'YYYY-MM-DD' of last open
   dailyMysteryBoxLastReward: null, // reward ID from DailyMysteryBox.REWARDS
 
+  // Daily Mood Check-in (v1.0.12) — fresh mood signal captured each day
+  // to refresh the personalization. The onboarding mood is a one-time
+  // snapshot; this overrides it daily so the daily challenge actually
+  // adapts to how the user feels today.
+  dailyMoodCheckInDate: null,  // 'YYYY-MM-DD' of last check-in
+  dailyMoodCheckInValue: null, // mood id: 'motivated' | 'fresh' | 'lost'
+
   // Daily login bonus — date the user last received +5 XP for opening the
   // app. Sticky-by-date, so the bonus fires once per calendar day.
   dailyLoginGrantedAt: null,
@@ -167,6 +174,7 @@ const ACTION_TYPES = {
   END_VACATION: 'END_VACATION',
   COMPLETE_DAILY_CHALLENGE: 'COMPLETE_DAILY_CHALLENGE',
   OPEN_MYSTERY_BOX: 'OPEN_MYSTERY_BOX',
+  SET_DAILY_MOOD: 'SET_DAILY_MOOD',
   GRANT_DAILY_LOGIN: 'GRANT_DAILY_LOGIN',
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
 };
@@ -279,6 +287,15 @@ function appReducer(state, action) {
         dailyChallengeCompletedAt: today,
         totalXP: newTotalXP,
         level: newLevel,
+      };
+    }
+
+    case ACTION_TYPES.SET_DAILY_MOOD: {
+      const today = getTodayDateString();
+      return {
+        ...state,
+        dailyMoodCheckInDate: today,
+        dailyMoodCheckInValue: action.payload?.mood || null,
       };
     }
 
@@ -750,6 +767,15 @@ export function AppProvider({ children }) {
   }, []);
 
   /**
+   * Set today's mood. Used by DailyMoodCheckIn to refresh the
+   * personalization signal each day. Idempotent within a day.
+   */
+  const setDailyMood = useCallback((mood) => {
+    if (!mood) return;
+    dispatch({ type: ACTION_TYPES.SET_DAILY_MOOD, payload: { mood } });
+  }, []);
+
+  /**
    * Open the daily mystery box. Reward payload comes from the
    * DailyMysteryBox component (it does the weighted pick locally so
    * the animation is in sync). One-per-day; subsequent calls are no-ops
@@ -888,6 +914,7 @@ export function AppProvider({ children }) {
     endVacation,
     completeDailyChallenge,
     openMysteryBox,
+    setDailyMood,
     clearMilestoneToast,
     deleteAccount,
     setActivePath,

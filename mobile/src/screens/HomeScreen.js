@@ -30,6 +30,8 @@ import BannerAdBox from '../components/BannerAdBox';
 import DailyQuoteCard from '../components/DailyQuoteCard';
 import LessonQueueCard from '../components/LessonQueueCard';
 import DailyMysteryBox from '../components/DailyMysteryBox';
+import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
+import StreakRiskBanner from '../components/StreakRiskBanner';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import {
   requestTrackingPermissionIfNeeded,
@@ -42,6 +44,11 @@ import {
   getDailyChallenge,
   DAILY_CHALLENGE_BONUS_XP,
 } from '../config/dailyChallenges';
+import {
+  analyzeReflections,
+  dominantReflectionCategory,
+  collectReflectionTexts,
+} from '../services/reflectionSignals';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function HomeScreen({ navigation }) {
@@ -65,19 +72,25 @@ export default function HomeScreen({ navigation }) {
     dailyMysteryBoxOpenedAt,
     dailyMysteryBoxLastReward,
     openMysteryBox,
+    dailyMoodCheckInDate,
+    dailyMoodCheckInValue,
+    setDailyMood,
+    vacationUntil,
     hearts,
     heartsRefillAt,
     refillHearts,
   } = useApp();
 
-  // Day-bucket boolean for the mystery box card. Stable across re-renders
+  // Day-bucket booleans for the per-day cards. Stable across re-renders
   // within the same day.
-  const mysteryBoxOpenedToday = (() => {
-    if (!dailyMysteryBoxOpenedAt) return false;
-    const today = new Date();
-    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-    return dailyMysteryBoxOpenedAt === todayStr;
+  const todayDateStr = (() => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   })();
+  const mysteryBoxOpenedToday = dailyMysteryBoxOpenedAt === todayDateStr;
+  const moodPickedToday = dailyMoodCheckInDate === todayDateStr
+    ? dailyMoodCheckInValue
+    : null;
 
   // OutOfHearts gating — Home has three entry points into a lesson
   // (today CTA button, lesson queue card, 3+ streak auto-route). Without
@@ -106,17 +119,45 @@ export default function HomeScreen({ navigation }) {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   })();
-  // Personalised daily challenge — uses the user's onboarding mood + goal
-  // signals to bias toward challenges that match their state. Falls back
-  // gracefully to the unfiltered date-hash pick if no signals exist.
-  const dailyChallenge = useMemo(
-    () =>
-      getDailyChallenge(todayStr, {
-        mood: userProfile?.answers?.mood || null,
-        goal: userProfile?.answers?.goal || null,
-      }),
-    [todayStr, userProfile],
-  );
+  // Reflection-based "what does the user actually care about" signal.
+  // Looks across all their lesson reflections, counts keyword hits per
+  // category (detox/body/mind/money/social), and returns the dominant
+  // one. Null until they've written enough to be confident (>=3 hits).
+  // Used to override the onboarding "goal" answer when the user's
+  // actual writings tell a different story.
+  const reflectionDominant = useMemo(() => {
+    const texts = collectReflectionTexts(pathProgress);
+    if (!texts.length) return null;
+    const weights = analyzeReflections(texts);
+    return dominantReflectionCategory(weights);
+  }, [pathProgress]);
+
+  // Personalised daily challenge — uses the user's mood + goal signals
+  // AND reflection-derived dominant category to bias toward challenges
+  // that match their actual state. Signal priority (most specific wins):
+  //   1. Today's mood check-in (lived state today)
+  //   2. Onboarding mood (stated baseline)
+  //   3. Reflection-derived goal (lived behavior over time)
+  //   4. Onboarding goal (stated baseline)
+  const dailyChallenge = useMemo(() => {
+    const moodSignal = moodPickedToday || userProfile?.answers?.mood || null;
+    const goalSignal = userProfile?.answers?.goal || null;
+    // Map reflection dominant category back into a goal-like signal so
+    // getDailyChallenge can keep using its existing GOAL_CATEGORY_PREFS
+    // table. detox/body/mind/money each correspond 1:1 to an onboarding
+    // goal. (social has no goal equivalent; we just leave the original
+    // goal in that case.)
+    const reflectionAsGoal = {
+      detox: 'discipline',
+      body: 'fitness',
+      mind: 'focus',
+      money: 'money',
+    }[reflectionDominant];
+    return getDailyChallenge(todayStr, {
+      mood: moodSignal,
+      goal: reflectionAsGoal || goalSignal,
+    });
+  }, [todayStr, userProfile, reflectionDominant, moodPickedToday]);
   const dailyChallengeDone = dailyChallengeCompletedAt === todayStr;
 
   // Habit chain: last 7 days as a row of dots — filled = lesson done that
@@ -379,6 +420,21 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         ) : null}
 
+        {/* Streak Risk Banner — loss-aversion prompt shown ONLY when
+            (a) user has a streak >= 2, (b) today is not yet done,
+            (c) it's 18:00+, (d) not on vacation. Drives 30-40% of
+            evening sessions in habit apps. */}
+        <StreakRiskBanner
+          currentStreak={currentStreak}
+          todayCompleted={todayCompleted}
+          onVacation={!!vacationUntil && vacationUntil >= todayDateStr}
+          onTapStart={() => {
+            if (currentLesson) {
+              attemptStartLesson(currentLesson.pathId, currentLesson.id);
+            }
+          }}
+        />
+
         {/* Lesson Queue — surfaces the next uncompleted lesson so users
             can one-tap into their next session. Removes decision fatigue
             (which is the #1 churn cause for habit apps per Duolingo data). */}
@@ -399,6 +455,15 @@ export default function HomeScreen({ navigation }) {
           alreadyOpenedToday={mysteryBoxOpenedToday}
           lastReward={dailyMysteryBoxLastReward}
           onOpen={openMysteryBox}
+        />
+
+        {/* Daily Mood Check-in — refreshes the mood personalization
+            signal each calendar day so the daily challenge adapts to
+            how the user actually feels today, not their one-time
+            onboarding answer. Collapses to a pill once picked. */}
+        <DailyMoodCheckIn
+          todayMood={moodPickedToday}
+          onPick={setDailyMood}
         />
 
         {/* Daily Stoic / discipline quote — fresh per calendar day, same

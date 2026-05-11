@@ -21,6 +21,9 @@ import { useApp } from '../contexts/AppContext';
 import { getPathById, getLessonById, getQuizForLesson } from '../data/paths';
 import { showInterstitial, shouldShowAd, requestTrackingPermissionIfNeeded } from '../services/ads';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
+import PathMilestoneScene, {
+  detectPathSceneStage,
+} from '../components/PathMilestoneScene';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import { playSound } from '../services/sounds';
 import { speak as ttsSpeak, stop as ttsStop } from '../services/tts';
@@ -32,6 +35,7 @@ import {
 import { getCurrentLanguage } from '../i18n';
 import { requestReviewIfAppropriate } from '../services/review';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
+import { mirrorReflection } from '../services/reflectionMirror';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
 const STEP = {
@@ -76,7 +80,22 @@ export default function LessonScreen({ navigation, route }) {
   const [showCelebration, setShowCelebration] = useState(false);
   const [milestoneVisible, setMilestoneVisible] = useState(false);
   const [milestoneStreak, setMilestoneStreak] = useState(0);
+  // Path-specific narrative scene (10/20/30/40/50 lessons within a path).
+  // Renders the PathMilestoneScene modal — chapter-style story beat.
+  const [pathSceneVisible, setPathSceneVisible] = useState(false);
+  const [pathSceneStage, setPathSceneStage] = useState(0);
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+  // Cumulative crit-hit bonus XP accumulated during this lesson's quiz.
+  // Forwarded to completePathLesson on completion so the user actually
+  // sees the bonus on top of their lesson XP. Reset on every mount.
+  const [critBonusXP, setCritBonusXP] = useState(0);
+  // Transient toast for a fresh crit — populated on a critical hit,
+  // cleared 1.4s later. The renderer overlays a "CRITICAL +25 XP" flash.
+  const [critFlash, setCritFlash] = useState(0);
+  // Reflection Mirror quote — populated when handleComplete fires, if
+  // the user wrote a reflection. Surfaces on celebration screen as
+  // "a sage responds to your words". Empathy/voice-of-the-app hook.
+  const [mirrorQuote, setMirrorQuote] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
@@ -224,6 +243,20 @@ export default function LessonScreen({ navigation, route }) {
       setCorrectCount((c) => c + 1);
       playSound('correct').catch(() => {});
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+      // CRITICAL HIT — 5% chance to grant +25 XP bonus on a correct
+      // answer. Variable reward mechanic; nondeterministic surprises
+      // are way more engaging than predictable XP. The bonus is
+      // accumulated and forwarded with the lesson completion.
+      if (Math.random() < 0.05) {
+        setCritBonusXP((b) => b + 25);
+        setCritFlash((c) => c + 1); // re-trigger flash animation
+        playSound('milestone').catch(() => {});
+        Haptics.notificationAsync(
+          Haptics.NotificationFeedbackType.Success,
+        ).catch(() => {});
+        // Auto-clear flash after 1.4s so the next question isn't blocked.
+        setTimeout(() => setCritFlash(0), 1400);
+      }
     } else {
       playSound('wrong').catch(() => {});
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
@@ -263,6 +296,21 @@ export default function LessonScreen({ navigation, route }) {
       playSound('complete').catch(() => {});
     } catch {}
 
+    // Reflection Mirror — if the user wrote anything, pick a matching
+    // quote from our curated library and surface it on the celebration
+    // screen. Empathy hook: the app "heard" them. Fire-and-forget;
+    // pure local logic, no async.
+    const trimmedReflection = reflection.trim();
+    if (trimmedReflection) {
+      try {
+        const lang = getCurrentLanguage();
+        const { quote } = mirrorReflection(trimmedReflection, lang);
+        if (quote) setMirrorQuote(quote);
+      } catch {
+        // Mirror is a feature add — never block lesson completion on it.
+      }
+    }
+
     completePathLesson({
       pathId,
       lessonId,
@@ -272,7 +320,10 @@ export default function LessonScreen({ navigation, route }) {
       // Total quiz length is forwarded so the reducer can detect a
       // "perfect lesson" (all quiz correct) and grant the bonus XP.
       quizTotal: quiz.length,
-      xp: 15 + correctCount * 5,
+      // Base XP + any crit-hit bonuses accumulated during the quiz.
+      // critBonusXP is granted as raw bonus, NOT subject to the
+      // multipliers (already a bonus mechanic on its own).
+      xp: 15 + correctCount * 5 + critBonusXP,
     });
 
     setShowCelebration(true);
@@ -301,6 +352,19 @@ export default function LessonScreen({ navigation, route }) {
         safeSet(setMilestoneStreak)(newStreak);
         safeSet(setMilestoneVisible)(true);
         playSound('milestone').catch(() => {});
+      }
+      // Path-specific narrative scene — fires when the user just
+      // crossed the 10/20/30/40/50th lesson WITHIN the current path.
+      // This is a separate hook from the streak-day milestone above;
+      // both can fire on the same completion in rare cases (e.g. day
+      // 30 streak + path lesson 30). UX-wise that's fine — they're
+      // sequenced modally.
+      const pathCompletedAfter =
+        (pathProgress?.[pathId]?.completed?.length || 0) + 1;
+      const scene = detectPathSceneStage(pathCompletedAfter);
+      if (scene) {
+        safeSet(setPathSceneStage)(scene);
+        safeSet(setPathSceneVisible)(true);
       }
     }, 1800);
     // No auto-dismiss — user picks "Yola Dön" or "Sonraki Ders" from celebration
@@ -478,6 +542,15 @@ export default function LessonScreen({ navigation, route }) {
             🧠 {t('lesson.quiz', 'QUIZ')} — {quizIndex + 1}/{quiz.length}
           </Text>
         </View>
+        {/* Critical hit flash — pops in when the user just rolled the
+            5% crit on a correct answer. Variable-reward dopamine spike. */}
+        {critFlash > 0 ? (
+          <View style={styles.critFlash}>
+            <Text style={styles.critFlashText}>
+              {t('lesson.critHit', '⚡ CRITICAL HIT! +25 XP')}
+            </Text>
+          </View>
+        ) : null}
         <Text style={[styles.title, { marginTop: 16 }]}>{currentQuestion.q}</Text>
         <Text style={styles.questionSubtitle}>
           {t('lesson.quizHint', 'Doğru olduğunu düşündüğün cevabı seç.')}
@@ -787,6 +860,16 @@ export default function LessonScreen({ navigation, route }) {
           onClose={handleMilestoneClose}
         />
 
+        {/* Path Milestone Scene — narrative chapter break every 10
+            lessons in a path. Independent of the streak-day milestone
+            modal; both can fire on the same lesson but they're sequenced. */}
+        <PathMilestoneScene
+          visible={pathSceneVisible}
+          pathId={pathId}
+          stage={pathSceneStage}
+          onClose={() => setPathSceneVisible(false)}
+        />
+
         <OutOfHeartsModal
           visible={outOfHeartsVisible}
           refillAt={heartsRefillAt}
@@ -855,6 +938,46 @@ export default function LessonScreen({ navigation, route }) {
                   </Text>
                 </View>
               )}
+
+              {/* Reflection Mirror — surfaces a curated quote that
+                  echoes the user's journal entry. The app shows it
+                  "heard" them. Empathy hook; the strongest single
+                  retention lever for any journaling app. */}
+              {mirrorQuote ? (
+                <View style={styles.mirrorCard}>
+                  <Text style={styles.mirrorLabel}>
+                    {t('lesson.mirrorLabel', 'A SAGE RESPONDS')}
+                  </Text>
+                  <Text style={styles.mirrorQuote}>{mirrorQuote}</Text>
+                </View>
+              ) : null}
+
+              {/* Lesson Cliffhanger — teases the title of the NEXT
+                  lesson so the user closes the loop tomorrow. Curiosity
+                  gap (Zeigarnik effect) is the cheapest, strongest
+                  return-tomorrow hook a habit app can deploy. */}
+              {(() => {
+                const nextOrder = (lesson?.order || 0) + 1;
+                if (!path || nextOrder > path.duration) return null;
+                const nextLessonId = `${path.id}-${nextOrder}`;
+                const nextTitle = t(
+                  `lessons.${nextLessonId}.title`,
+                  '',
+                );
+                if (!nextTitle || nextTitle === `lessons.${nextLessonId}.title`) {
+                  return null;
+                }
+                return (
+                  <View style={styles.cliffhanger}>
+                    <Text style={styles.cliffhangerLabel}>
+                      {t('lesson.tomorrowTeaser', 'TOMORROW')}
+                    </Text>
+                    <Text style={styles.cliffhangerTitle} numberOfLines={2}>
+                      {nextTitle}
+                    </Text>
+                  </View>
+                );
+              })()}
             </View>
 
             {/* CTA buttons */}
@@ -965,6 +1088,82 @@ const styles = StyleSheet.create({
     color: LT.primaryContainer,
     fontSize: 11, fontWeight: '900',
     letterSpacing: 2, textTransform: 'uppercase',
+  },
+  // Critical hit flash banner — popped when the user lucks into the
+  // 5% crit on a correct quiz answer. Gold/yellow accent so it reads
+  // as "rare". Auto-clears via setTimeout in handleQuizAnswer.
+  critFlash: {
+    marginTop: 12,
+    backgroundColor: '#FDE047',
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 10,
+    alignSelf: 'flex-start',
+    shadowColor: '#FBBF24',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  critFlashText: {
+    color: '#7C2D12',
+    fontSize: 13,
+    fontWeight: '900',
+    letterSpacing: 0.6,
+  },
+  // Cliffhanger — small teaser card on the celebration screen showing
+  // tomorrow's lesson title. Drives curiosity-gap return: "what does
+  // that mean?" → user opens the app tomorrow to find out.
+  cliffhanger: {
+    marginTop: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    backgroundColor: LT.surfaceContainerLow,
+    alignSelf: 'stretch',
+  },
+  cliffhangerLabel: {
+    color: LT.primary,
+    fontSize: 9,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+    marginBottom: 4,
+  },
+  cliffhangerTitle: {
+    color: LT.onSurface,
+    fontSize: 14,
+    fontWeight: '700',
+    fontStyle: 'italic',
+    letterSpacing: -0.2,
+  },
+  // Reflection Mirror — sage-quote card surfaced on celebration screen
+  // after a user submits a reflection. Empathy hook.
+  mirrorCard: {
+    marginTop: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    backgroundColor: 'rgba(139, 92, 246, 0.08)',
+    borderLeftWidth: 3,
+    borderLeftColor: '#8B5CF6',
+    alignSelf: 'stretch',
+  },
+  mirrorLabel: {
+    color: '#7C3AED',
+    fontSize: 9,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+    marginBottom: 6,
+  },
+  mirrorQuote: {
+    color: LT.onSurface,
+    fontSize: 14,
+    fontWeight: '500',
+    fontStyle: 'italic',
+    lineHeight: 20,
+    letterSpacing: -0.2,
   },
   stepChipTertiary: {
     alignSelf: 'flex-start',
