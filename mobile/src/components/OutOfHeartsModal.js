@@ -2,7 +2,7 @@
 // Two paths to refill: watch a rewarded ad OR upgrade to premium.
 // Vivid Impact light theme.
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -30,7 +30,20 @@ export default function OutOfHeartsModal({
 }) {
   const { t } = useTranslation();
   const [watching, setWatching] = useState(false);
-  const rewardedReady = isAdsReady() && isRewardedReady();
+  // Rewarded ad readiness is dynamic — an ad may load AFTER the modal
+  // opens. Poll every 500ms while visible so the "Watch ad" button
+  // can appear mid-session if an ad becomes available.
+  const [rewardedReady, setRewardedReady] = useState(
+    () => isAdsReady() && isRewardedReady(),
+  );
+  useEffect(() => {
+    if (!visible) return undefined;
+    setRewardedReady(isAdsReady() && isRewardedReady());
+    const id = setInterval(() => {
+      setRewardedReady(isAdsReady() && isRewardedReady());
+    }, 500);
+    return () => clearInterval(id);
+  }, [visible]);
 
   const handleWatchAd = async () => {
     if (watching) return;

@@ -88,8 +88,12 @@ export default function DailyPlanCard({
         {plan.map((item, idx) => {
           const path = PATHS.find((p) => p.id === item.pathId);
           const pathName = t(`paths.${item.pathId}.shortTitle`, path?.shortTitle || item.pathId);
+          // Lesson keys in lessons.{tr,en}.json are nested
+          // `lessons.<pathId>.<order>.title` — not the flat
+          // `lessons.<pathId>-<order>.title` that the lesson IDs
+          // themselves look like. Build the key path explicitly.
           const lessonTitle = t(
-            `lessons.${item.lessonId}.title`,
+            `lessons.${item.pathId}.${item.lessonOrder}.title`,
             `${pathName} · ${item.lessonOrder}`,
           );
           return (

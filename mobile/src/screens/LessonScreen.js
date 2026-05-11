@@ -279,7 +279,9 @@ export default function LessonScreen({ navigation, route }) {
         //     fired — previously silently ignored, defeating the
         //     entire purpose of the hearts mechanic.
         if (hearts <= 1) {
-          setTimeout(() => setOutOfHeartsVisible(true), 800);
+          // safeSet so we don't update state after the user has
+          // navigated away from the lesson (would warn + leak).
+          setTimeout(() => safeSet(setOutOfHeartsVisible)(true), 800);
         }
       }
     }
@@ -982,12 +984,13 @@ export default function LessonScreen({ navigation, route }) {
               {(() => {
                 const nextOrder = (lesson?.order || 0) + 1;
                 if (!path || nextOrder > path.duration) return null;
-                const nextLessonId = `${path.id}-${nextOrder}`;
-                const nextTitle = t(
-                  `lessons.${nextLessonId}.title`,
-                  '',
-                );
-                if (!nextTitle || nextTitle === `lessons.${nextLessonId}.title`) {
+                // Lesson titles live at lessons.<pathId>.<order>.title
+                // (nested object in locale JSON), not the flat
+                // lessons.<pathId-order>.title that the lesson id
+                // looks like.
+                const nextKey = `lessons.${path.id}.${nextOrder}.title`;
+                const nextTitle = t(nextKey, '');
+                if (!nextTitle || nextTitle === nextKey) {
                   return null;
                 }
                 return (

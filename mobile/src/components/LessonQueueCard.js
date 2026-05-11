@@ -103,7 +103,12 @@ export default function LessonQueueCard({
       </View>
 
       <Text style={styles.lessonTitle} numberOfLines={2}>
-        {t(`lessons.${lesson.id}.title`, lesson.title)}
+        {/* Lesson keys in lessons.{tr,en}.json are nested:
+            lessons.<pathId>.<order>.title — not flat
+            lessons.<pathId>-<order>.title. Previous code passed the
+            flat lesson.id which never resolved, so users saw the
+            generic fallback instead of the real lesson title. */}
+        {t(`lessons.${lesson.pathId}.${lesson.order}.title`, lesson.title)}
       </Text>
 
       <View style={styles.footer}>

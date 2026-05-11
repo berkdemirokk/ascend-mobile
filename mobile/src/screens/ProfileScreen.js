@@ -26,6 +26,11 @@ import { LEVEL_THRESHOLDS, getNextLevel } from '../config/constants';
 import { ACHIEVEMENTS, getEarnedIdentityBadges } from '../config/achievements';
 import StreakHeatmap from '../components/StreakHeatmap';
 import CharacterHero from '../components/CharacterHero';
+import TransformationReportModal from '../components/TransformationReportModal';
+import {
+  buildTransformationReport,
+  reportEligible,
+} from '../services/transformationReport';
 import { PATHS } from '../data/paths';
 import { getCurrentLanguage } from '../i18n';
 import { getRank, getNextRank } from '../config/ranks';
@@ -39,6 +44,7 @@ import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 export default function ProfileScreen({ navigation }) {
   const { t } = useTranslation();
   const { user } = useAuth();
+  const appState = useApp();
   const {
     totalXP,
     level,
@@ -48,10 +54,20 @@ export default function ProfileScreen({ navigation }) {
     unlockedAchievements,
     lessonHistory,
     anonUsername,
-  } = useApp();
+    isPremium,
+  } = appState;
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [sharing, setSharing] = useState(false);
+  const [reportVisible, setReportVisible] = useState(false);
   const shareCardRef = useRef(null);
+
+  // Compute transformation report on demand. reportEligible gates the
+  // entry-point card (≥10 lessons + ≥7 days since install); below that
+  // the data is too thin to be encouraging.
+  const transformationReport = useMemo(
+    () => (reportEligible(appState) ? buildTransformationReport(appState) : null),
+    [appState],
+  );
 
   const completedLessonsTotal = useMemo(() => {
     return Object.values(pathProgress || {}).reduce(
@@ -304,6 +320,31 @@ export default function ProfileScreen({ navigation }) {
             high in the profile so it's the first thing seen. */}
         <CharacterHero longestStreak={longestStreak} />
 
+        {/* Transformation Report entry-point — only renders once user
+            has enough data (≥10 lessons + ≥7 days). The big "look
+            how far you've come" surface. Knockout retention feature
+            for v1.0.12. */}
+        {transformationReport ? (
+          <TouchableOpacity
+            onPress={() => setReportVisible(true)}
+            activeOpacity={0.88}
+            style={styles.transformCta}
+          >
+            <View style={styles.transformIcon}>
+              <MaterialIcons name="auto-graph" size={22} color="#FDE047" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.transformLabel}>
+                {t('transform.entryLabel', 'YOUR TRANSFORMATION')}
+              </Text>
+              <Text style={styles.transformTitle}>
+                {t('transform.entryTitle', 'See how far you have come')}
+              </Text>
+            </View>
+            <MaterialIcons name="arrow-forward" size={20} color="#FFFFFF" />
+          </TouchableOpacity>
+        ) : null}
+
         {/* 30-Day Streak Heatmap — GitHub-style activity grid. Visual
             proof of investment, drives sunk-cost retention. Reads
             from lessonHistory which the reducer maintains on every
@@ -428,6 +469,21 @@ export default function ProfileScreen({ navigation }) {
         achievementId={selectedAchievement?.id}
         unlocked={selectedAchievement && !selectedAchievement.locked}
         onUpgrade={() => navigation.navigate('Paywall')}
+      />
+
+      {/* Transformation Report — full-screen modal with personal
+          insights from on-device data. Free users see 4 headline
+          stats + a premium teaser; premium users see full insights
+          and can share. */}
+      <TransformationReportModal
+        visible={reportVisible}
+        report={transformationReport}
+        isPremium={isPremium}
+        onClose={() => setReportVisible(false)}
+        onUpgradeTap={() => {
+          setReportVisible(false);
+          navigation.navigate('Paywall');
+        }}
       />
 
       {/* Off-screen card used for streak share image capture */}
@@ -827,6 +883,44 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '900',
     color: LT.onSurface,
+    letterSpacing: -0.2,
+  },
+
+  // Transformation Report entry CTA — dark gradient card on Profile
+  // that opens the full TransformationReportModal. Only renders once
+  // the user has enough data (gated by reportEligible).
+  transformCta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 18,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 16,
+    backgroundColor: '#1E1B4B',
+    borderWidth: 1,
+    borderColor: '#FDE047',
+  },
+  transformIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    backgroundColor: 'rgba(253, 224, 71, 0.18)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  transformLabel: {
+    color: '#FDE047',
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.2,
+    marginBottom: 2,
+  },
+  transformTitle: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '900',
     letterSpacing: -0.2,
   },
 

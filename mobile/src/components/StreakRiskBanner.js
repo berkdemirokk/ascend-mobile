@@ -56,9 +56,17 @@ export default function StreakRiskBanner({
 
   if (!visible) return null;
 
-  // Hours-remaining text — caps at "1 hour" so we don't show "0 hours"
-  // weirdly close to midnight.
-  const hoursLeft = Math.max(1, 24 - new Date().getHours());
+  // Hours-remaining text — computed properly from "now" until midnight,
+  // not `24 - getHours()` which over-counted (gave 25h right after
+  // midnight, etc.). Caps at "1 hour" so we don't show "0 hours" right
+  // before midnight either.
+  const _now = new Date();
+  const _endOfDay = new Date(_now);
+  _endOfDay.setHours(24, 0, 0, 0); // local midnight
+  const hoursLeft = Math.max(
+    1,
+    Math.ceil((_endOfDay.getTime() - _now.getTime()) / (60 * 60 * 1000)),
+  );
 
   const handleTap = () => {
     hapticImpactMedium();
