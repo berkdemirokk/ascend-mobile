@@ -185,6 +185,52 @@ export default function TransformationReportModal({
                   />
                 ) : null}
 
+                {/* Cadence — weekly avg + consistency %. The "are you
+                    actually doing this consistently" proof. */}
+                {(report.weeklyAvg > 0 || report.consistencyPct > 0) ? (
+                  <InsightCard
+                    icon="show-chart"
+                    title={t('transform.cadenceTitle', 'Your rhythm')}
+                    body={t('transform.cadenceBody', {
+                      weekly: report.weeklyAvg,
+                      consistency: report.consistencyPct,
+                    })}
+                  />
+                ) : null}
+
+                {/* Most challenging path — where the user struggled.
+                    Frames it positively: "you grew here". */}
+                {report.mostChallengingPath && report.mostChallengingAccuracy < 80 ? (
+                  <InsightCard
+                    icon="fitness-center"
+                    title={t('transform.challengeTitle', 'Where you grew the most')}
+                    body={(() => {
+                      const path = PATHS.find((x) => x.id === report.mostChallengingPath);
+                      const name = t(
+                        `paths.${report.mostChallengingPath}.shortTitle`,
+                        path?.shortTitle || report.mostChallengingPath,
+                      );
+                      return t('transform.challengeBody', {
+                        path: name,
+                        accuracy: report.mostChallengingAccuracy,
+                      });
+                    })()}
+                  />
+                ) : null}
+
+                {/* Reflection depth — how thoughtfully the user writes.
+                    Hidden if they haven't written enough. */}
+                {report.reflectionsCount >= 5 && report.avgReflectionWords > 0 ? (
+                  <InsightCard
+                    icon="format-quote"
+                    title={t('transform.depthTitle', 'How deep you go')}
+                    body={t('transform.depthBody', {
+                      count: report.reflectionsCount,
+                      avg: report.avgReflectionWords,
+                    })}
+                  />
+                ) : null}
+
                 {/* Spotify-Wrapped style PNG export — captures the
                     1080×1920 MonthlyWrappedCard off-screen and triggers
                     the share sheet. This is the viral mechanic: people
