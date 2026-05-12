@@ -31,6 +31,9 @@ import DailyQuoteCard from '../components/DailyQuoteCard';
 import LessonQueueCard from '../components/LessonQueueCard';
 import DailyMysteryBox from '../components/DailyMysteryBox';
 import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
+import CustomGoalCard from '../components/CustomGoalCard';
+import AdaptiveCoachCard from '../components/AdaptiveCoachCard';
+import { getAdaptiveSuggestion } from '../services/adaptiveCoach';
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
 import DailyPlanCard from '../components/DailyPlanCard';
@@ -52,6 +55,7 @@ import {
   dominantReflectionCategory,
   collectReflectionTexts,
 } from '../services/reflectionSignals';
+import { getFirstName } from '../services/displayName';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function HomeScreen({ navigation }) {
@@ -82,6 +86,12 @@ export default function HomeScreen({ navigation }) {
     hearts,
     heartsRefillAt,
     refillHearts,
+    anonUsername,
+    customGoal,
+    setCustomGoal,
+    clearCustomGoal,
+    checkInCustomGoal,
+    setActivePath,
   } = useApp();
 
   // Day-bucket booleans for the per-day cards. Stable across re-renders
@@ -94,6 +104,25 @@ export default function HomeScreen({ navigation }) {
   const moodPickedToday = dailyMoodCheckInDate === todayDateStr
     ? dailyMoodCheckInValue
     : null;
+
+  // Per-session adaptive coach dismiss. Once dismissed, the banner
+  // hides until the next app launch (not persisted) — so the user
+  // isn't pestered, but a fresh signal can re-surface tomorrow.
+  const [adaptiveDismissed, setAdaptiveDismissed] = useState(false);
+
+  // Compute the adaptive suggestion off pathProgress + activePathId.
+  // Memoized so we only recompute when one of those actually changes;
+  // the hot path is cheap (5-element rolling avg) but useMemo keeps
+  // child renders stable.
+  const adaptiveSuggestion = useMemo(
+    () =>
+      getAdaptiveSuggestion({
+        pathProgress,
+        activePathId,
+        isPremium,
+      }),
+    [pathProgress, activePathId, isPremium],
+  );
 
   // OutOfHearts gating — Home has three entry points into a lesson
   // (today CTA button, lesson queue card, 3+ streak auto-route). Without
@@ -298,13 +327,15 @@ export default function HomeScreen({ navigation }) {
   //   2. Supabase auth metadata (signup or Apple Sign-In full name)
   //   3. The local part of the email (e.g. "berk@x.com" -> "berk")
   //   4. Generic fallback string
-  const profileName = userProfile?.name?.trim();
-  const metaName = user?.user_metadata?.name?.trim();
-  const emailLocal = (user?.email || '').split('@')[0];
-  const username =
-    profileName ||
-    metaName ||
-    (emailLocal ? capitalize(emailLocal) : t('home.greetingName', 'Disiplinci'));
+  // Display name resolution centralized in services/displayName.js
+  // so every surface (Home, Lesson, Notifications, Mirror) addresses
+  // the user by the SAME name with the SAME priority order.
+  const username = getFirstName({
+    userProfile,
+    user,
+    anonUsername,
+    fallback: t('home.greetingName', 'Disiplinci'),
+  });
   const greeting = getGreeting(t);
 
   return (
@@ -500,6 +531,35 @@ export default function HomeScreen({ navigation }) {
         <DailyMoodCheckIn
           todayMood={moodPickedToday}
           onPick={setDailyMood}
+        />
+
+        {/* Adaptive Coach — reads rolling quiz accuracy and surfaces a
+            mastery nudge (try a harder path) or a "slow down" reminder
+            (re-read before pushing forward). Per-session dismissible so
+            we never annoy the user. */}
+        {!adaptiveDismissed && adaptiveSuggestion ? (
+          <AdaptiveCoachCard
+            suggestion={adaptiveSuggestion}
+            onSwitchPath={(pid) => {
+              if (pid) setActivePath(pid);
+              navigation.navigate('MainTabs', { screen: 'Paths' });
+            }}
+            onOpenPaths={() =>
+              navigation.navigate('MainTabs', { screen: 'Paths' })
+            }
+            onDismiss={() => setAdaptiveDismissed(true)}
+          />
+        ) : null}
+
+        {/* Custom Personal Goal — user-defined target tracked alongside
+            the curriculum. Empty state acts as a soft prompt; active
+            state shows progress + one-tap daily check-in. The single
+            biggest lever for "this app actually knows me". */}
+        <CustomGoalCard
+          customGoal={customGoal}
+          onSave={setCustomGoal}
+          onCheckIn={checkInCustomGoal}
+          onClear={clearCustomGoal}
         />
 
         {/* Daily Stoic / discipline quote — fresh per calendar day, same

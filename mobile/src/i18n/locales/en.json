@@ -187,7 +187,8 @@
     "backToPath": "Back to Path",
     "critHit": "⚡ CRITICAL HIT! +25 XP",
     "tomorrowTeaser": "TOMORROW",
-    "mirrorLabel": "A SAGE RESPONDS"
+    "mirrorLabel": "A SAGE RESPONDS",
+    "mirrorLabelPersonal": "{{name}}, A SAGE RESPONDS"
   },
   "transform": {
     "entryLabel": "YOUR TRANSFORMATION",
@@ -577,6 +578,36 @@
     "label": "MOOD CHECK",
     "title": "How are you feeling today?",
     "todayPill": "TODAY'S MOOD"
+  },
+  "adaptiveCoach": {
+    "masteryEyebrow": "ADAPTIVE COACH · YOU ARE MASTERING",
+    "masteryTitle": "{{accuracy}}% accuracy — ready for harder work",
+    "masterySub": "You are flying through the quizzes. Try a fresh path to keep the edge.",
+    "masteryCta": "EXPLORE NEW PATH",
+    "struggleEyebrow": "ADAPTIVE COACH · TAKE IT SLOW",
+    "struggleTitle": "No shame in re-reading",
+    "struggleSub": "Quiz scores are low — slow the pace. Re-read recent lessons before the next one.",
+    "struggleCta": "BROWSE LESSONS TO REVIEW"
+  },
+  "customGoal": {
+    "eyebrow": "YOUR OWN GOAL",
+    "promptTitle": "What discipline are you really building?",
+    "promptSub": "Name it. Track it daily. The app adapts to you.",
+    "activeEyebrow": "MY DAILY GOAL",
+    "progress": "{{done}} / {{target}} days",
+    "checkInCta": "I DID IT TODAY",
+    "doneToday": "Done today — keep walking.",
+    "editorTitle": "Your personal goal",
+    "editorSub": "Name the discipline you are building. Specific beats vague.",
+    "placeholder": "e.g. Wake at 6 AM every morning",
+    "targetLabel": "TARGET HORIZON",
+    "daysFmt": "{{count}} days",
+    "saveCreate": "Set my goal",
+    "saveEdit": "Save changes",
+    "clear": "Remove goal",
+    "settingsLabel": "Personal goal",
+    "settingsSubActive": "{{done}}/{{target}} days · {{text}}",
+    "settingsSubEmpty": "Define a personal target you'll track daily"
   },
   "mysteryBox": {
     "label": "DAILY MYSTERY BOX",

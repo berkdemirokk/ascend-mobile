@@ -104,7 +104,14 @@ function mergePathProgress(local = {}, cloud = {}) {
     Object.entries(c.quizCorrect || {}).forEach(([lessonId, n]) => {
       quizCorrect[lessonId] = Math.max(quizCorrect[lessonId] || 0, n || 0);
     });
-    out[pathId] = { completed, reflections, quizCorrect };
+    // Quiz length: keep the higher value. Both sides should agree since
+    // the lesson's quiz length is content-defined and stable, but if one
+    // side is missing the field (legacy data), take the present one.
+    const quizTotal = { ...(l.quizTotal || {}) };
+    Object.entries(c.quizTotal || {}).forEach(([lessonId, n]) => {
+      quizTotal[lessonId] = Math.max(quizTotal[lessonId] || 0, n || 0);
+    });
+    out[pathId] = { completed, reflections, quizCorrect, quizTotal };
   }
   return out;
 }
@@ -177,6 +184,32 @@ export function mergeStates(localState, cloudPayload) {
     // sides have a value, the local one wins so users don't get re-handled
     // when they install on a second device that hadn't generated yet.
     anonUsername: localState.anonUsername || cloudPayload.anonUsername || null,
+    // Custom goal: take whichever side actually has one; if both, prefer the
+    // side with more check-ins (more activity = truer source). Merge their
+    // check-in maps so progress isn't lost on multi-device edits.
+    customGoal: mergeCustomGoal(localState.customGoal, cloudPayload.customGoal),
+  };
+}
+
+function mergeCustomGoal(local, cloud) {
+  if (!local && !cloud) return null;
+  if (!local) return cloud;
+  if (!cloud) return local;
+  // Both sides have a goal — merge check-ins, keep the side with the most
+  // recent edit (createdAt-tiebreak), and union the per-day checkIn map.
+  const checkIns = { ...(cloud.checkIns || {}), ...(local.checkIns || {}) };
+  const localNewer = (local.createdAt || '') >= (cloud.createdAt || '');
+  const winner = localNewer ? local : cloud;
+  const lastCheckInDate =
+    (local.lastCheckInDate || '') > (cloud.lastCheckInDate || '')
+      ? local.lastCheckInDate
+      : cloud.lastCheckInDate || null;
+  return {
+    text: winner.text,
+    targetDays: winner.targetDays,
+    createdAt: winner.createdAt,
+    checkIns,
+    lastCheckInDate,
   };
 }
 

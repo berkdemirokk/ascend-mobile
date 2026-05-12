@@ -53,6 +53,7 @@ export default function SettingsScreen({ navigation }) {
     endVacation,
     anonUsername,
     currentStreak,
+    userProfile,
   } = useApp();
 
   const vacationActive = (() => {
@@ -210,7 +211,11 @@ export default function SettingsScreen({ navigation }) {
         return;
       }
       try {
-        await scheduleDailyReminder({ currentStreak });
+        // Pass the user's first name so the reminder body is
+        // personalized ("Berk, take today's step" vs the generic).
+        const firstName =
+          (userProfile?.name || '').trim().split(/\s+/)[0] || '';
+        await scheduleDailyReminder({ currentStreak, firstName });
       } catch (e) {
         console.warn('schedule daily reminder failed:', e?.message);
       }

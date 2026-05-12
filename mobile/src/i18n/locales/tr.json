@@ -187,7 +187,8 @@
     "backToPath": "Yola Dön",
     "critHit": "⚡ KRİTİK VURUŞ! +25 XP",
     "tomorrowTeaser": "YARIN",
-    "mirrorLabel": "BİR BİLGE CEVAP VERDİ"
+    "mirrorLabel": "BİR BİLGE CEVAP VERDİ",
+    "mirrorLabelPersonal": "{{name}}, BİR BİLGE CEVAP VERDİ"
   },
   "transform": {
     "entryLabel": "DÖNÜŞÜMÜN",
@@ -575,6 +576,36 @@
     "label": "RUH HALİ KONTROLÜ",
     "title": "Bugün nasıl hissediyorsun?",
     "todayPill": "BUGÜNKÜ RUH HALİ"
+  },
+  "adaptiveCoach": {
+    "masteryEyebrow": "ADAPTİF KOÇ · USTALAŞIYORSUN",
+    "masteryTitle": "%{{accuracy}} doğruluk — daha zor işe hazırsın",
+    "masterySub": "Quizleri uçar gibi geçiyorsun. Edge'ini korumak için yeni bir yol dene.",
+    "masteryCta": "YENİ YOLU KEŞFET",
+    "struggleEyebrow": "ADAPTİF KOÇ · YAVAŞLA",
+    "struggleTitle": "Tekrar okumak ayıp değil",
+    "struggleSub": "Quiz puanların düşük — temposunu yavaşlat. Sonraki derse geçmeden son dersleri tekrar oku.",
+    "struggleCta": "TEKRAR İÇİN DERSLERE GÖZ AT"
+  },
+  "customGoal": {
+    "eyebrow": "KENDİ HEDEFİN",
+    "promptTitle": "Gerçekten hangi disiplini inşa ediyorsun?",
+    "promptSub": "Onu adlandır. Her gün takip et. Uygulama sana uyum sağlasın.",
+    "activeEyebrow": "GÜNLÜK HEDEFİM",
+    "progress": "{{done}} / {{target}} gün",
+    "checkInCta": "BUGÜN YAPTIM",
+    "doneToday": "Bugün yapıldı — yola devam.",
+    "editorTitle": "Kişisel hedefin",
+    "editorSub": "İnşa ettiğin disiplini adlandır. Spesifik olan, belirsiz olanı yener.",
+    "placeholder": "ör. Her sabah 6'da kalk",
+    "targetLabel": "HEDEF SÜRESİ",
+    "daysFmt": "{{count}} gün",
+    "saveCreate": "Hedefimi belirle",
+    "saveEdit": "Değişiklikleri kaydet",
+    "clear": "Hedefi kaldır",
+    "settingsLabel": "Kişisel hedef",
+    "settingsSubActive": "{{done}}/{{target}} gün · {{text}}",
+    "settingsSubEmpty": "Her gün takip edeceğin kişisel bir hedef belirle"
   },
   "mysteryBox": {
     "label": "GÜNLÜK MİSTERİ KUTUSU",
