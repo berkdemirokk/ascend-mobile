@@ -59,8 +59,9 @@ export const getDisplayName = (ctx = {}) => {
     return capitalize(String(anonUsername).trim());
   }
 
-  // 5. localized fallback
-  if (fallback) return fallback;
+  // 5. caller-supplied fallback (respected even when empty string — that
+  // explicitly means "no fallback, return ''")
+  if (fallback !== undefined && fallback !== null) return fallback;
   const lang = String(getCurrentLanguage() || 'tr').toLowerCase().slice(0, 2);
   return LOCALE_FALLBACKS[lang] || LOCALE_FALLBACKS.tr;
 };

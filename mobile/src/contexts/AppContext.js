@@ -22,6 +22,7 @@ import {
   scheduleComebackReminder,
   cancelComebackReminder,
 } from '../services/notifications';
+import { getFirstName } from '../services/displayName';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
 
@@ -719,16 +720,29 @@ export function AppProvider({ children }) {
     const today = getTodayDateString();
     const onVacation =
       !!state.vacationUntil && state.vacationUntil >= today;
+    // Thread the user's first name into the push body for personality —
+    // "Berk, you haven't completed today..." converts far better than
+    // the generic copy. Falls through gracefully when name is unknown.
+    const firstName = getFirstName({
+      userProfile: state.userProfile,
+      user,
+      anonUsername: state.anonUsername,
+      fallback: '',
+    });
     scheduleStreakAtRiskReminder({
       todayCompleted: state.lastCompletedDate === today,
       currentStreak: state.currentStreak || 0,
       onVacation,
+      firstName,
     }).catch(() => {});
   }, [
     state._loaded,
     state.lastCompletedDate,
     state.currentStreak,
     state.vacationUntil,
+    state.userProfile,
+    state.anonUsername,
+    user,
   ]);
 
   useEffect(() => {
