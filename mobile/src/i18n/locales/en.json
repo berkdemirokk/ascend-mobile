@@ -214,7 +214,9 @@
     "topic_money": "Money",
     "topic_social": "Relationships",
     "shareIntro": "I'm growing on Ascend: Monk Mode.",
-    "shareCta": "Share my transformation",
+    "shareCta": "Share as text",
+    "wrappedShareCta": "Share monthly wrapped",
+    "wrappedShareLoading": "Creating card...",
     "premiumLockTitle": "Deeper insights",
     "premiumLockSub": "Reflection word count, mood shift analysis, path-by-path progress, and a shareable card — unlock with Premium.",
     "unlockCta": "UNLOCK FULL REPORT"

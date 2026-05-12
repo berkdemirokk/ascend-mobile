@@ -214,7 +214,9 @@
     "topic_money": "Para",
     "topic_social": "İlişkiler",
     "shareIntro": "Ascend: Monk Mode'da büyüyorum.",
-    "shareCta": "Dönüşümümü paylaş",
+    "shareCta": "Metin olarak paylaş",
+    "wrappedShareCta": "Aylık özetini paylaş",
+    "wrappedShareLoading": "Kart hazırlanıyor...",
     "premiumLockTitle": "Daha derin içgörüler",
     "premiumLockSub": "Yansıma kelime sayısı, ruh hali değişimi, yol bazlı ilerleme ve paylaşılabilir kart — Premium ile aç.",
     "unlockCta": "TAM RAPORU AÇ"
