@@ -28,7 +28,9 @@ import ConfettiBurst from './ConfettiBurst';
 // Reward pool. Probabilities are tuned so the average XP value per day
 // is ~25 — meaningful but not enough to break the lesson XP economy.
 // Higher-rarity entries have lower probability + bigger payouts.
-const REWARDS = [
+// Exported so DailyRitualsCarousel can render the "already claimed"
+// reward tile without duplicating the icon/value lookup table.
+export const REWARDS = [
   { id: 'xp_10', kind: 'xp', value: 10, weight: 35, icon: '⭐', rarity: 'common' },
   { id: 'xp_25', kind: 'xp', value: 25, weight: 25, icon: '✨', rarity: 'common' },
   { id: 'xp_50', kind: 'xp', value: 50, weight: 15, icon: '💫', rarity: 'rare' },

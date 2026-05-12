@@ -99,7 +99,23 @@
     "forgotPasswordSub": "E-posta adresine sıfırlama linki gönderelim.",
     "resetSentBody": "Sıfırlama linki gönderildi. Spam klasörüne de bakmayı unutma.",
     "sendResetLink": "Sıfırlama linki gönder",
-    "backToLogin": "Girişe dön"
+    "backToLogin": "Girişe dön",
+    "welcomeBack": "Tekrar hoşgeldin",
+    "welcomeBackSub": "Disiplin yolculuğuna devam et.",
+    "createAccount": "Hesap oluştur",
+    "createAccountSub": "İlk dersini ücretsiz aç.",
+    "namePlaceholder": "Adın",
+    "passwordTooShort": "Şifre en az 6 karakter olmalı.",
+    "signupSuccess": "Kayıt başarılı",
+    "signupSuccessBody": "E-postanı kontrol et ve doğrulama linkine tıkla. Sonra giriş yap.",
+    "signupWithEmail": "E-posta ile kayıt ol",
+    "haveAccount": "Zaten hesabım var",
+    "notConfigured": "Bulut bağlantısı yok — sadece misafir modu çalışır.",
+    "legalAgreePrefix": "Kayıt olarak ",
+    "legalTerms": "Kullanım Koşulları",
+    "legalAgreeAnd": " ve ",
+    "legalPrivacy": "Gizlilik Politikamızı",
+    "legalAgreeSuffix": " kabul etmiş olursun."
   },
   "error": {
     "title": "Bir şeyler ters gitti",
@@ -181,11 +197,15 @@
     "questionOf": "{{current}} / {{total}}",
     "earned": "+{{xp}} XP",
     "completeTitle": "Ders Tamamlandı",
+    "completeFooter": "Disiplin yolunda bir adım daha attın.",
     "greatWork": "Harika iş!",
     "correct": "doğru",
     "nextLesson": "Sonraki Dersi Başla",
     "backToPath": "Yola Dön",
     "critHit": "⚡ KRİTİK VURUŞ! +25 XP",
+    "dailyGoalHit": "GÜNLÜK HEDEF · +{{bonus}} XP",
+    "dailyGoalProgress": "Bugün {{current}}/{{target}} ders — {{remaining}} kaldı",
+    "reviewBadge": "ÖNCEKİ DERSTEN · HATIRLAMA",
     "tomorrowTeaser": "YARIN",
     "mirrorLabel": "BİR BİLGE CEVAP VERDİ"
   },
@@ -235,7 +255,8 @@
     "reasonReflection": "yansımalarından",
     "reasonGoal": "hedefin",
     "reasonVariety": "farklı perspektif",
-    "reasonGeneric": "seçilmiş"
+    "reasonGeneric": "seçilmiş",
+    "miniUpsell": "Premium ile 3 ders senin için seçilsin"
   },
   "sage": {
     "openCta": "BİLGE MOD · DERİN SEANS",
@@ -332,7 +353,12 @@
     "identityTitle": "KİMLİĞİN",
     "identitySub": "Bitirdiğin yollar seni şekillendiriyor. Sen artık şusun:",
     "publicShareCta": "PROFİLİ PAYLAŞ",
-    "publicShareMessage": "Ascend'de profilim 🔥\n{{streak}} gün streak · {{xp}} XP · seviye {{level}}\n{{link}}"
+    "publicShareMessage": "Ascend'de profilim 🔥\n{{streak}} gün streak · {{xp}} XP · seviye {{level}}\n{{link}}",
+    "subtitle": "YOLUN BAŞINDA",
+    "nextRank": "SONRAKİ RÜTBE",
+    "achievements": "BAŞARIMLAR",
+    "reflectionsLink": "Yansımalarım",
+    "reflectionsLinkSub": "Geçmiş ders yansımaların"
   },
   "streakFreeze": {
     "savedTitle": "Streak kurtarıldı 🛡️",
@@ -357,7 +383,10 @@
     "haptics": "Dokunsal Geri Bildirim",
     "hapticsSub": "Quiz cevapları, başarılar ve eylemlerde titreşim",
     "resetProgress": "İlerlemeyi Sıfırla",
+    "resetProgressTitle": "İlerlemeyi Sıfırla",
     "resetProgressBody": "XP, streak ve ders ilerlemen sıfırlanır. Premium ve hesap bilgilerin korunur.",
+    "resetDoneTitle": "Sıfırlandı",
+    "resetDoneBody": "İlerlemen sıfırlandı.",
     "signOutTitle": "Çıkış yap",
     "signOutConfirm": "Hesabından çıkış yapmak istediğine emin misin? İlerlemen bu cihazda kalacak.",
     "restoring": "Geri yükleniyor...",
@@ -563,10 +592,17 @@
     "title": "🔥 {{streak}} günlük serin tehlikede",
     "body": "Bugünün dersini {{hours}} saat içinde bitir — streak'i koru."
   },
+  "dailyGoal": {
+    "label": "BUGÜNÜN HEDEFİ",
+    "doneLabel": "GÜNLÜK HEDEF TAMAMLANDI",
+    "title": "{{current}}/{{target}} ders",
+    "doneTitle": "+50 XP bonus aldın 🎯"
+  },
   "moodCheckIn": {
     "label": "RUH HALİ KONTROLÜ",
     "title": "Bugün nasıl hissediyorsun?",
-    "todayPill": "BUGÜNKÜ RUH HALİ"
+    "todayPill": "BUGÜNKÜ RUH HALİ",
+    "tapToChange": "Değiştirmek için dokun"
   },
   "mysteryBox": {
     "label": "GÜNLÜK MİSTERİ KUTUSU",

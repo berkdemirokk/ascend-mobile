@@ -18,7 +18,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 
 import { useApp } from '../contexts/AppContext';
-import { getPathById, getLessonById, getQuizForLesson } from '../data/paths';
+import { getPathById, getLessonById } from '../data/paths';
+import { getAdaptiveQuiz } from '../services/adaptiveQuiz';
 import { showInterstitial, shouldShowAd, requestTrackingPermissionIfNeeded } from '../services/ads';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import PathMilestoneScene, {
@@ -61,14 +62,37 @@ export default function LessonScreen({ navigation, route }) {
     refillHearts,
     isInGracePeriod,
     grantBonusXP,
+    dailyLessonsCount,
+    dailyGoalTarget,
+    _dailyGoalToast,
+    clearDailyGoalToast,
+    quizAnswers,
+    recordQuizAnswer,
   } = useApp();
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
   const lesson = useMemo(() => getLessonById(lessonId), [lessonId]);
-  const quiz = useMemo(
-    () => (path && lesson ? getQuizForLesson(t, pathId, lesson.order) : []),
-    [path, lesson, pathId, t],
-  );
+  // Adaptive quiz (#2A) — append 1-2 review questions from prior lessons
+  // in the same path when the user has demonstrated accuracy. Snapshot
+  // at lesson mount so the question set is stable across re-renders
+  // (otherwise random picks would jitter on every state update).
+  const adaptiveQuizRef = useRef(null);
+  if (adaptiveQuizRef.current === null && path && lesson) {
+    adaptiveQuizRef.current = getAdaptiveQuiz({
+      t,
+      pathId,
+      lessonOrder: lesson.order,
+      pathProgress,
+      quizAnswers,
+    });
+  }
+  const adaptiveQuiz = adaptiveQuizRef.current || {
+    questions: [],
+    baseLength: 0,
+    bonusCount: 0,
+  };
+  const quiz = adaptiveQuiz.questions;
+  const baseQuizLength = adaptiveQuiz.baseLength;
 
   const [step, setStep] = useState(STEP.TEACHING);
   const [quizIndex, setQuizIndex] = useState(0);
@@ -244,6 +268,34 @@ export default function LessonScreen({ navigation, route }) {
     setSelectedAnswer(idx);
     setRevealed(true);
     const isCorrect = idx === currentQuestion.correct;
+    // Record per-question answer for the adaptive engine.
+    //
+    // Original quiz questions (quizIndex < baseQuizLength): record
+    // under the current lesson — this is the canonical answer log.
+    //
+    // Review/bonus questions (quizIndex >= baseQuizLength): record
+    // under the ORIGINAL lesson's id+qIndex via bonusMeta. We want the
+    // user's latest attempt at that concept to update the adaptive
+    // engine's view of mastery; logging under the current lesson would
+    // (a) lose the original record's existence and (b) double-count
+    // the same answer in path-level accuracy.
+    if (quizIndex < baseQuizLength) {
+      recordQuizAnswer({
+        lessonId,
+        questionIndex: quizIndex,
+        correct: isCorrect,
+      });
+    } else {
+      const bonusIdx = quizIndex - baseQuizLength;
+      const meta = adaptiveQuiz.bonusMeta?.[bonusIdx];
+      if (meta) {
+        recordQuizAnswer({
+          lessonId: meta.fromLessonId,
+          questionIndex: meta.fromQIndex,
+          correct: isCorrect,
+        });
+      }
+    }
     if (isCorrect) {
       setCorrectCount((c) => c + 1);
       playSound('correct').catch(() => {});
@@ -378,6 +430,12 @@ export default function LessonScreen({ navigation, route }) {
   };
 
   const handleCelebrationContinue = async () => {
+    // Drop the daily-goal toast now that the user has acknowledged the
+    // celebration. Otherwise a subsequent lesson within the same
+    // session would re-render the +50 XP pill even though the bonus
+    // already fired once.
+    if (_dailyGoalToast) clearDailyGoalToast();
+
     const totalCompleted = Object.values(pathProgress || {}).reduce(
       (s, p) => s + (p?.completed?.length || 0),
       0,
@@ -418,6 +476,11 @@ export default function LessonScreen({ navigation, route }) {
   };
 
   const handleNextLesson = async () => {
+    // Same cleanup as handleCelebrationContinue — the toast belongs to
+    // *this* completion's celebration, not to the next lesson the user
+    // is about to start.
+    if (_dailyGoalToast) clearDailyGoalToast();
+
     // Find the next lesson in the same path that isn't completed
     const completedSet = new Set(pathProgress?.[pathId]?.completed || []);
     completedSet.add(lessonId); // include the just-completed one
@@ -542,6 +605,10 @@ export default function LessonScreen({ navigation, route }) {
   const renderQuiz = () => {
     if (!currentQuestion) return null;
     const letters = ['A', 'B', 'C', 'D'];
+    // Adaptive review question — surfaced because the user has shown
+    // mastery in this path. Different visual treatment so the user
+    // understands "this is from an earlier lesson, not a curveball".
+    const isReviewQuestion = quizIndex >= baseQuizLength;
     return (
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.stepChip}>
@@ -555,6 +622,17 @@ export default function LessonScreen({ navigation, route }) {
           <View style={styles.critFlash}>
             <Text style={styles.critFlashText}>
               {t('lesson.critHit', '⚡ CRITICAL HIT! +25 XP')}
+            </Text>
+          </View>
+        ) : null}
+        {/* Review-question badge — adaptive engine pulled this question
+            from an earlier lesson in the same path (spaced repetition).
+            Helps the user understand the format change. */}
+        {isReviewQuestion ? (
+          <View style={styles.reviewBadge}>
+            <MaterialIcons name="history-edu" size={14} color="#7C3AED" />
+            <Text style={styles.reviewBadgeText}>
+              {t('lesson.reviewBadge', 'ÖNCEKİ DERSTEN · HATIRLAMA')}
             </Text>
           </View>
         ) : null}
@@ -964,6 +1042,38 @@ export default function LessonScreen({ navigation, route }) {
                 </View>
               )}
 
+              {/* Daily Goal pill — two states. Hit: celebrates the +50 XP
+                  bonus we just granted in the reducer. Progress: nudges
+                  the user with how many lessons are left to hit the goal.
+                  _dailyGoalToast is set by COMPLETE_PATH_LESSON when this
+                  completion crossed the threshold; non-null means we are
+                  currently in the celebration moment for it. */}
+              {_dailyGoalToast ? (
+                <View style={styles.dailyGoalHitPill}>
+                  <MaterialIcons name="emoji-events" size={14} color="#B45309" />
+                  <Text style={styles.dailyGoalHitText}>
+                    {t('lesson.dailyGoalHit', 'GÜNLÜK HEDEF · +{{bonus}} XP', {
+                      bonus: _dailyGoalToast.bonus,
+                    })}
+                  </Text>
+                </View>
+              ) : dailyLessonsCount > 0 && dailyLessonsCount < dailyGoalTarget ? (
+                <View style={styles.dailyGoalProgressPill}>
+                  <MaterialIcons name="flag" size={14} color={LT.primaryContainer} />
+                  <Text style={styles.dailyGoalProgressText}>
+                    {t(
+                      'lesson.dailyGoalProgress',
+                      'Bugün {{current}}/{{target}} ders — {{remaining}} kaldı',
+                      {
+                        current: dailyLessonsCount,
+                        target: dailyGoalTarget,
+                        remaining: dailyGoalTarget - dailyLessonsCount,
+                      },
+                    )}
+                  </Text>
+                </View>
+              ) : null}
+
               {/* Reflection Mirror — surfaces a curated quote that
                   echoes the user's journal entry. The app shows it
                   "heard" them. Empathy hook; the strongest single
@@ -1159,6 +1269,27 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '900',
     letterSpacing: 0.6,
+  },
+  // Adaptive review-question badge — purple to differentiate from the
+  // crit-hit flash (gold) and the normal quiz progress chip.
+  reviewBadge: {
+    marginTop: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: 'rgba(124, 58, 237, 0.10)',
+    borderColor: 'rgba(124, 58, 237, 0.35)',
+    borderWidth: 1,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 999,
+    alignSelf: 'flex-start',
+  },
+  reviewBadgeText: {
+    color: '#7C3AED',
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.0,
   },
   // Cliffhanger — small teaser card on the celebration screen showing
   // tomorrow's lesson title. Drives curiosity-gap return: "what does
@@ -1577,6 +1708,44 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '800',
     letterSpacing: 0.4,
+  },
+  // Daily goal pills — paired with celebrationStatPill above so all three
+  // chips line up visually on the celebration screen.
+  dailyGoalHitPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#FEF3C7', // amber-100
+    borderColor: '#FCD34D', // amber-300
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    marginTop: 6,
+  },
+  dailyGoalHitText: {
+    color: '#B45309', // amber-700
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 0.4,
+  },
+  dailyGoalProgressPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderColor: LT.surfaceContainerHigh,
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    marginTop: 6,
+  },
+  dailyGoalProgressText: {
+    color: LT.onSurface,
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.2,
   },
   celebrationCTAs: {
     paddingHorizontal: 20,

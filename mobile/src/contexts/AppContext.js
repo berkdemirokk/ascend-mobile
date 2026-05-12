@@ -75,6 +75,26 @@ const initialState = {
   pathProgress: {},
   activePathId: 'dopamine-detox',
 
+  // ── Adaptive quiz (#2A) ───────────────────────────────────────────────
+  // Per-question answer history. Keyed by lessonId; each value is an
+  // array indexed by the question's order in the lesson's quiz array.
+  //
+  //   quizAnswers: {
+  //     'dopamine-detox-1': [
+  //       { correct: true,  attempts: 1, lastAt: '2026-05-13T...' },
+  //       { correct: false, attempts: 2, lastAt: '...' },
+  //     ],
+  //     ...
+  //   }
+  //
+  // Read by services/adaptiveQuiz.js to compute path-level accuracy and
+  // pick "review" questions from prior lessons (preferring previously-
+  // wrong answers — spaced repetition of weak spots).
+  //
+  // Coexists with pathProgress[pathId].quizCorrect (aggregate count);
+  // quizAnswers is the per-question source of truth.
+  quizAnswers: {},
+
   // Anonymous handle for the public streak leaderboard. Generated on first
   // sign-in and re-used across devices via cloudSync.
   anonUsername: null,
@@ -106,9 +126,20 @@ const initialState = {
   // app. Sticky-by-date, so the bonus fires once per calendar day.
   dailyLoginGrantedAt: null,
 
+  // Daily Goal bonus — date the user last hit the 3-lesson daily target
+  // and received the +50 XP bonus. Sticky-by-date so the bonus fires
+  // exactly once per calendar day (and subsequent lessons on the same
+  // day don't keep stacking it).
+  dailyGoalBonusGrantedAt: null,
+
   // Last lesson completed milestone celebration shown — flag UI reads to
   // trigger confetti animation once per milestone.
   _milestoneToast: null,
+
+  // Toast triggered when the user just hit the daily goal on this very
+  // lesson completion. Cleared by the LessonScreen celebration once it
+  // has surfaced the +50 XP pill so it doesn't re-fire on the next mount.
+  _dailyGoalToast: null,
 
   // Internal
   _loaded: false,
@@ -151,6 +182,13 @@ const NEW_USER_GRACE_HOURS = 24;
 // Makes the heart system feel rewarding rather than purely punitive.
 const PERFECT_LESSON_BONUS_XP = 10;
 
+// Daily Goal — Duolingo-style "do N lessons today" target. The user sees
+// a progress bar on Home and a "X/N" pill on the celebration screen.
+// Hitting N grants a one-time bonus, tracked by date so it fires once
+// per calendar day even if the user finishes more lessons after.
+export const DAILY_GOAL_TARGET = 3;
+const DAILY_GOAL_BONUS_XP = 50;
+
 // ─── Reducer ─────────────────────────────────────────────────────────────────
 
 const ACTION_TYPES = {
@@ -178,6 +216,8 @@ const ACTION_TYPES = {
   GRANT_BONUS_XP: 'GRANT_BONUS_XP',
   GRANT_DAILY_LOGIN: 'GRANT_DAILY_LOGIN',
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
+  CLEAR_DAILY_GOAL_TOAST: 'CLEAR_DAILY_GOAL_TOAST',
+  RECORD_QUIZ_ANSWER: 'RECORD_QUIZ_ANSWER',
 };
 
 function appReducer(state, action) {
@@ -503,7 +543,21 @@ function appReducer(state, action) {
         quizTotal > 0 && quizCorrect >= quizTotal;
       const perfectBonus = isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0;
 
-      const finalXp = Math.round(xp * xpMultiplier) + perfectBonus;
+      // Daily Goal Bonus — when this completion is the 3rd lesson today,
+      // grant a one-time +50 XP. Compare against the *post-increment*
+      // count so the bonus fires when crossing the threshold (not after).
+      // dailyGoalBonusGrantedAt guards against re-firing on the 4th, 5th…
+      // lesson the same day. Also guards against a state shape where
+      // lessonHistory is missing entirely.
+      const newDailyLessonCount =
+        ((state.lessonHistory || {})[today] || 0) + 1;
+      const hitDailyGoal =
+        newDailyLessonCount === DAILY_GOAL_TARGET
+        && state.dailyGoalBonusGrantedAt !== today;
+      const dailyGoalBonus = hitDailyGoal ? DAILY_GOAL_BONUS_XP : 0;
+
+      const finalXp =
+        Math.round(xp * xpMultiplier) + perfectBonus + dailyGoalBonus;
       const newTotalXP = state.totalXP + finalXp;
       const newLevel = checkLevelUp(newTotalXP, state.level);
 
@@ -563,8 +617,11 @@ function appReducer(state, action) {
         lastCompletedDate: newLastDate,
         lessonHistory: {
           ...(state.lessonHistory || {}),
-          [today]: ((state.lessonHistory || {})[today] || 0) + 1,
+          [today]: newDailyLessonCount,
         },
+        dailyGoalBonusGrantedAt: hitDailyGoal
+          ? today
+          : state.dailyGoalBonusGrantedAt,
         actionsSinceLastAd: (state.actionsSinceLastAd || 0) + 1,
         unlockedAchievements: [
           ...state.unlockedAchievements,
@@ -572,6 +629,40 @@ function appReducer(state, action) {
           ...newSpecials.filter((a) => !state.unlockedAchievements.includes(a)),
         ],
         _milestoneToast: milestoneToast,
+        _dailyGoalToast: hitDailyGoal
+          ? {
+              target: DAILY_GOAL_TARGET,
+              bonus: DAILY_GOAL_BONUS_XP,
+              ts: Date.now(),
+            }
+          : state._dailyGoalToast,
+      };
+    }
+
+    case ACTION_TYPES.CLEAR_DAILY_GOAL_TOAST:
+      return { ...state, _dailyGoalToast: null };
+
+    case ACTION_TYPES.RECORD_QUIZ_ANSWER: {
+      // Per-question answer log for the adaptive quiz engine. Always
+      // overwrites the latest result for that (lesson, question) — the
+      // newest attempt is what matters for "did the user actually
+      // master this concept?". attempts is incremented to differentiate
+      // first-try success from retries.
+      const { lessonId, questionIndex, correct } = action.payload;
+      if (!lessonId || typeof questionIndex !== 'number') return state;
+      const all = state.quizAnswers || {};
+      const lessonRecord = Array.isArray(all[lessonId])
+        ? [...all[lessonId]]
+        : [];
+      const prior = lessonRecord[questionIndex] || { attempts: 0 };
+      lessonRecord[questionIndex] = {
+        correct: !!correct,
+        attempts: (prior.attempts || 0) + 1,
+        lastAt: new Date().toISOString(),
+      };
+      return {
+        ...state,
+        quizAnswers: { ...all, [lessonId]: lessonRecord },
       };
     }
 
@@ -703,6 +794,7 @@ export function AppProvider({ children }) {
     delete toSave._loaded;
     delete toSave._streakFreezeToast;
     delete toSave._milestoneToast;
+    delete toSave._dailyGoalToast;
     AsyncStorage.setItem(STORAGE_KEYS.USER_STATE, JSON.stringify(toSave)).catch(
       (e) => console.error('[AppContext] Failed to save state:', e),
     );
@@ -968,12 +1060,34 @@ export function AppProvider({ children }) {
     return ageMs < NEW_USER_GRACE_HOURS * 60 * 60 * 1000;
   })();
 
+  // Today's lesson count, used by Home daily-goal progress + the
+  // celebration screen's "X / N" pill. Reads from lessonHistory (which
+  // is keyed by 'YYYY-MM-DD') so it resets naturally at midnight.
+  const dailyLessonsCount =
+    (state.lessonHistory || {})[getTodayDateString()] || 0;
+
+  const clearDailyGoalToast = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.CLEAR_DAILY_GOAL_TOAST });
+  }, []);
+
+  // Record a single quiz answer. Called by LessonScreen after the user
+  // taps a quiz option (correct or wrong). Powers the adaptive engine
+  // — see services/adaptiveQuiz.js for how it's read.
+  const recordQuizAnswer = useCallback(({ lessonId, questionIndex, correct }) => {
+    dispatch({
+      type: ACTION_TYPES.RECORD_QUIZ_ANSWER,
+      payload: { lessonId, questionIndex, correct },
+    });
+  }, []);
+
   const value = {
     ...state,
     rank,
     completedPathsCount,
     totalLessonsCompleted,
     isInGracePeriod,
+    dailyLessonsCount,
+    dailyGoalTarget: DAILY_GOAL_TARGET,
     completeOnboarding,
     setUserProfile,
     setPremium,
@@ -986,6 +1100,8 @@ export function AppProvider({ children }) {
     setDailyMood,
     grantBonusXP,
     clearMilestoneToast,
+    clearDailyGoalToast,
+    recordQuizAnswer,
     deleteAccount,
     setActivePath,
     completePathLesson,

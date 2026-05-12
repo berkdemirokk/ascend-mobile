@@ -22,6 +22,8 @@ const SYNCED_KEYS = [
   'vacationUntil',
   'dailyChallengeCompletedAt',
   'dailyLoginGrantedAt',
+  'dailyGoalBonusGrantedAt',
+  'quizAnswers',
 ];
 
 export function pickSyncableState(state) {
@@ -117,6 +119,35 @@ function mergeLessonHistory(local = {}, cloud = {}) {
   return out;
 }
 
+// Merge per-question quiz answers. Each side has
+//   { [lessonId]: [{ correct, attempts, lastAt }, ...] }
+// Per-question, the entry with the more recent lastAt wins — that's
+// the user's latest attempt and the truthful state of mastery. If only
+// one side has an entry, keep it.
+function mergeQuizAnswers(local = {}, cloud = {}) {
+  const out = {};
+  const allLessonIds = new Set([
+    ...Object.keys(local),
+    ...Object.keys(cloud),
+  ]);
+  for (const lessonId of allLessonIds) {
+    const l = Array.isArray(local[lessonId]) ? local[lessonId] : [];
+    const c = Array.isArray(cloud[lessonId]) ? cloud[lessonId] : [];
+    const maxLen = Math.max(l.length, c.length);
+    const merged = [];
+    for (let i = 0; i < maxLen; i++) {
+      const lv = l[i];
+      const cv = c[i];
+      if (!lv && !cv) continue;
+      if (lv && !cv) { merged[i] = lv; continue; }
+      if (cv && !lv) { merged[i] = cv; continue; }
+      merged[i] = (cv.lastAt || '') > (lv.lastAt || '') ? cv : lv;
+    }
+    if (merged.length > 0) out[lessonId] = merged;
+  }
+  return out;
+}
+
 function pickNewer(localDate, cloudDate) {
   return (cloudDate || '') > (localDate || '') ? 'cloud' : 'local';
 }
@@ -177,6 +208,19 @@ export function mergeStates(localState, cloudPayload) {
     // sides have a value, the local one wins so users don't get re-handled
     // when they install on a second device that hadn't generated yet.
     anonUsername: localState.anonUsername || cloudPayload.anonUsername || null,
+    // Daily goal bonus stamp — take the later date so a device that hasn't
+    // hit the goal today doesn't grant the +50 XP bonus again after sync.
+    dailyGoalBonusGrantedAt:
+      (cloudPayload.dailyGoalBonusGrantedAt || '') >
+      (localState.dailyGoalBonusGrantedAt || '')
+        ? cloudPayload.dailyGoalBonusGrantedAt
+        : localState.dailyGoalBonusGrantedAt || null,
+    // Per-question quiz log (#2A). Per-question latest-wins merge so the
+    // adaptive engine reads consistent answer history across devices.
+    quizAnswers: mergeQuizAnswers(
+      localState.quizAnswers,
+      cloudPayload.quizAnswers,
+    ),
   };
 }
 

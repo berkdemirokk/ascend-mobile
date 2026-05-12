@@ -236,7 +236,7 @@ export default function SettingsScreen({ navigation }) {
     Alert.alert(
       t('settings.signOutTitle', 'Çıkış yap'),
       t(
-        'settings.signOutBody',
+        'settings.signOutConfirm',
         'Hesabından çıkış yapmak istediğine emin misin? İlerlemen bu cihazda kalacak.',
       ),
       [

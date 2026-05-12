@@ -96,10 +96,10 @@ Her iki subscription için:
    - Platform: iOS
    - App: **`com.ascend.growth`**
    - Apple ID: `6761607644`
-4. Ad Units:
-   - Interstitial — kod ID: `ca-app-pub-9898903071826160/9449500287` (mevcut)
-   - Banner (opsiyonel)
-   - Rewarded (opsiyonel — streak freeze için)
+4. Ad Units (kodla eşleşmesi gereken ID'ler):
+   - Interstitial (Geçiş) — `ca-app-pub-9898903071826160/5475177787`
+   - Rewarded (Ödüllü)   — `ca-app-pub-9898903071826160/5610075008`
+   - Banner              — `ca-app-pub-9898903071826160/8236238348`
 
 ATT prompt için NSUserTrackingUsageDescription **app.json'da hazır** ✅
 

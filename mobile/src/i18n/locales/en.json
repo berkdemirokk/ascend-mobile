@@ -99,7 +99,23 @@
     "forgotPasswordSub": "We'll send a reset link to your email.",
     "resetSentBody": "Reset link sent. Don't forget to check your spam folder.",
     "sendResetLink": "Send reset link",
-    "backToLogin": "Back to login"
+    "backToLogin": "Back to login",
+    "welcomeBack": "Welcome back",
+    "welcomeBackSub": "Continue your discipline journey.",
+    "createAccount": "Create account",
+    "createAccountSub": "Unlock your first lesson, free.",
+    "namePlaceholder": "Your name",
+    "passwordTooShort": "Password must be at least 6 characters.",
+    "signupSuccess": "Signup successful",
+    "signupSuccessBody": "Check your email and click the verification link, then sign in.",
+    "signupWithEmail": "Sign up with email",
+    "haveAccount": "I already have an account",
+    "notConfigured": "No cloud connection — guest mode only.",
+    "legalAgreePrefix": "By signing up, you agree to our ",
+    "legalTerms": "Terms of Use",
+    "legalAgreeAnd": " and ",
+    "legalPrivacy": "Privacy Policy",
+    "legalAgreeSuffix": "."
   },
   "error": {
     "title": "Something went wrong",
@@ -181,11 +197,15 @@
     "questionOf": "{{current}} / {{total}}",
     "earned": "+{{xp}} XP",
     "completeTitle": "Lesson Complete",
+    "completeFooter": "Another step on the path of discipline.",
     "greatWork": "Great work!",
     "correct": "correct",
     "nextLesson": "Start Next Lesson",
     "backToPath": "Back to Path",
     "critHit": "⚡ CRITICAL HIT! +25 XP",
+    "dailyGoalHit": "DAILY GOAL · +{{bonus}} XP",
+    "dailyGoalProgress": "Today {{current}}/{{target}} lessons — {{remaining}} to go",
+    "reviewBadge": "FROM AN EARLIER LESSON · RECALL",
     "tomorrowTeaser": "TOMORROW",
     "mirrorLabel": "A SAGE RESPONDS"
   },
@@ -235,7 +255,8 @@
     "reasonReflection": "what you reflect on",
     "reasonGoal": "your goal",
     "reasonVariety": "fresh perspective",
-    "reasonGeneric": "curated"
+    "reasonGeneric": "curated",
+    "miniUpsell": "Let Premium pick 3 lessons for you"
   },
   "sage": {
     "openCta": "SAGE MODE · DEEP SESSION",
@@ -332,7 +353,12 @@
     "identityTitle": "YOUR IDENTITY",
     "identitySub": "The paths you finish shape who you are. You are now:",
     "publicShareCta": "SHARE PROFILE",
-    "publicShareMessage": "My Ascend profile 🔥\n{{streak}}-day streak · {{xp}} XP · level {{level}}\n{{link}}"
+    "publicShareMessage": "My Ascend profile 🔥\n{{streak}}-day streak · {{xp}} XP · level {{level}}\n{{link}}",
+    "subtitle": "AT THE START",
+    "nextRank": "NEXT RANK",
+    "achievements": "ACHIEVEMENTS",
+    "reflectionsLink": "My reflections",
+    "reflectionsLinkSub": "Your past lesson reflections"
   },
   "streakFreeze": {
     "savedTitle": "Streak saved 🛡️",
@@ -565,10 +591,17 @@
     "title": "🔥 Your {{streak}}-day streak is at risk",
     "body": "Finish today's lesson in {{hours}}h — protect the streak."
   },
+  "dailyGoal": {
+    "label": "TODAY'S GOAL",
+    "doneLabel": "DAILY GOAL CRUSHED",
+    "title": "{{current}}/{{target}} lessons",
+    "doneTitle": "You bagged +50 XP 🎯"
+  },
   "moodCheckIn": {
     "label": "MOOD CHECK",
     "title": "How are you feeling today?",
-    "todayPill": "TODAY'S MOOD"
+    "todayPill": "TODAY'S MOOD",
+    "tapToChange": "Tap to change"
   },
   "mysteryBox": {
     "label": "DAILY MYSTERY BOX",

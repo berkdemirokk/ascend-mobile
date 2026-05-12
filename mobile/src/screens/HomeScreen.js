@@ -27,13 +27,12 @@ import {
 import LightTopAppBar from '../components/LightTopAppBar';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
-import DailyQuoteCard from '../components/DailyQuoteCard';
-import LessonQueueCard from '../components/LessonQueueCard';
-import DailyMysteryBox from '../components/DailyMysteryBox';
-import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
+import TodayHeroCard from '../components/TodayHeroCard';
+import WhatToDoCard from '../components/WhatToDoCard';
+import DailyRitualsCarousel from '../components/DailyRitualsCarousel';
+import { REWARDS as MYSTERY_REWARDS } from '../components/DailyMysteryBox';
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
-import DailyPlanCard from '../components/DailyPlanCard';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import { generateDailyPlan } from '../services/dailyPlanGenerator';
 import {
@@ -82,6 +81,8 @@ export default function HomeScreen({ navigation }) {
     hearts,
     heartsRefillAt,
     refillHearts,
+    dailyLessonsCount,
+    dailyGoalTarget,
   } = useApp();
 
   // Day-bucket booleans for the per-day cards. Stable across re-renders
@@ -242,11 +243,6 @@ export default function HomeScreen({ navigation }) {
 
   const totalLessons = PATHS.reduce((s, p) => s + p.duration, 0);
 
-  const handleStartLesson = () => {
-    if (!currentLesson) return;
-    attemptStartLesson(currentLesson.pathId, currentLesson.id);
-  };
-
   // Existing users (App Store update from a build < 53) finished onboarding
   // before the ATT-then-init-ads flow existed, so AdMob never booted for
   // them. Run a one-shot guard on Home mount: if SDK still isn't ready,
@@ -333,53 +329,17 @@ export default function HomeScreen({ navigation }) {
           </Text>
         </View>
 
-        {/* Streak Hero Card */}
-        <TouchableOpacity
-          style={styles.streakHero}
+        {/* TodayHeroCard — merges streak hero + 7-day chain + daily goal
+            into a single block. Replaces three previously stacked cards
+            so the Home feed leads with one focused "today" status pane. */}
+        <TodayHeroCard
+          currentStreak={currentStreak}
+          longestStreak={longestStreak || 0}
+          chainDays={chainDays}
+          dailyLessonsCount={dailyLessonsCount}
+          dailyGoalTarget={dailyGoalTarget}
           onPress={() => setStreakInfoVisible(true)}
-          activeOpacity={0.9}
-        >
-          <View style={styles.streakHeroLeft}>
-            <Text style={styles.streakHeroLabel}>
-              {t('home.currentStreak', 'MEVCUT SERİ')}
-            </Text>
-            <View style={styles.streakHeroNumberRow}>
-              <Text style={styles.streakHeroNumber}>{currentStreak}</Text>
-              <MaterialIcons
-                name="local-fire-department"
-                size={42}
-                color={LT.primaryContainer}
-              />
-            </View>
-            <Text style={styles.streakHeroSub}>
-              {t('home.daysStrong', 'GÜN')}
-            </Text>
-          </View>
-          <View style={styles.streakHeroRight}>
-            <Text style={styles.streakBestLabel}>
-              {t('home.longestStreak', 'EN UZUN')}
-            </Text>
-            <Text style={styles.streakBest}>{longestStreak || 0}</Text>
-            <Text style={styles.streakBestSub}>
-              {t('home.daysStrong', 'GÜN')}
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        {/* Habit chain — last 7 days */}
-        <View style={styles.chainRow}>
-          {chainDays.map((d) => (
-            <View
-              key={d.key}
-              style={[
-                styles.chainDot,
-                d.active && styles.chainDotActive,
-                d.isToday && styles.chainDotToday,
-                d.isToday && d.active && styles.chainDotTodayActive,
-              ]}
-            />
-          ))}
-        </View>
+        />
 
         {/* Weekend Premium offer — only Sat/Sun, nudges high-intent users */}
         {isWeekendOffer && !isPremium ? (
@@ -403,43 +363,27 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         ) : null}
 
-        {/* Daily Mystery Challenge */}
-        {dailyChallenge ? (
-          <TouchableOpacity
-            onPress={dailyChallengeDone ? undefined : () => completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)}
-            activeOpacity={dailyChallengeDone ? 1 : 0.85}
-            style={[
-              styles.challengeCard,
-              dailyChallengeDone && styles.challengeCardDone,
-            ]}
-          >
-            <View style={styles.challengeIconBox}>
-              <Text style={styles.challengeIcon}>{dailyChallenge.icon}</Text>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.challengeLabel}>
-                {dailyChallengeDone
-                  ? t('home.challengeDone', 'BUGÜNÜN BONUSU TAMAMLANDI')
-                  : t('home.challengeLabel', 'BUGÜNÜN BONUSU · +25 XP')}
-              </Text>
-              <Text style={styles.challengeTitle}>
-                {t(dailyChallenge.titleKey, dailyChallenge.titleFallback)}
-              </Text>
-              <Text style={styles.challengeBody} numberOfLines={2}>
-                {t(dailyChallenge.bodyKey, dailyChallenge.bodyFallback)}
-              </Text>
-            </View>
-            {dailyChallengeDone ? (
-              <MaterialIcons name="check-circle" size={26} color={LT.primaryContainer} />
-            ) : (
-              <MaterialIcons name="bolt" size={22} color={LT.primary} />
-            )}
-          </TouchableOpacity>
-        ) : null}
+        {/* WhatToDoCard — single "start a lesson" surface. Internally
+            switches between premium daily plan, free CTA, and all-done
+            celebration. Replaces DailyPlanCard + LessonQueueCard +
+            inline Today's CTA section. */}
+        <WhatToDoCard
+          isPremium={isPremium}
+          plan={dailyPlan}
+          currentLesson={currentLesson}
+          activePath={activePath}
+          pathProgress={pathProgress}
+          onStartLesson={(pathId, lessonId) =>
+            attemptStartLesson(pathId, lessonId)
+          }
+          onViewPaths={() =>
+            navigation.navigate('MainTabs', { screen: 'Paths' })
+          }
+          onUpgradeTap={() => navigation.navigate('Paywall')}
+        />
 
         {/* Weekend Boost Banner — only renders Sat/Sun. Premium: gold
-            "active" celebration banner. Free: pink upsell CTA → paywall.
-            Premium becomes a QUALITATIVE difference, not just no-ads. */}
+            "active" celebration banner. Free: pink upsell CTA → paywall. */}
         <WeekendBoostBanner
           isPremium={isPremium}
           onUpgradeTap={() => navigation.navigate('Paywall')}
@@ -447,8 +391,7 @@ export default function HomeScreen({ navigation }) {
 
         {/* Streak Risk Banner — loss-aversion prompt shown ONLY when
             (a) user has a streak >= 2, (b) today is not yet done,
-            (c) it's 18:00+, (d) not on vacation. Drives 30-40% of
-            evening sessions in habit apps. */}
+            (c) it's 18:00+, (d) not on vacation. */}
         <StreakRiskBanner
           currentStreak={currentStreak}
           todayCompleted={todayCompleted}
@@ -460,119 +403,29 @@ export default function HomeScreen({ navigation }) {
           }}
         />
 
-        {/* Daily Plan — Premium "smart coach" picks 3 lessons for the
-            user based on their signals. Free users see an upsell teaser. */}
-        <DailyPlanCard
-          plan={dailyPlan}
-          isPremium={isPremium}
-          onStartLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
+        {/* DailyRitualsCarousel — horizontally swipeable row that merges
+            four previously full-width cards (daily challenge, mystery
+            box, mood check-in, daily quote). Each tile preserves its
+            core action; the carousel just stacks them horizontally so
+            the Home feed reclaims ~600px of vertical space. */}
+        <DailyRitualsCarousel
+          challenge={dailyChallenge}
+          challengeDone={dailyChallengeDone}
+          onCompleteChallenge={() =>
+            completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)
           }
-          onUpgradeTap={() => navigation.navigate('Paywall')}
-        />
-
-        {/* Lesson Queue — surfaces the next uncompleted lesson so users
-            can one-tap into their next session. Removes decision fatigue
-            (which is the #1 churn cause for habit apps per Duolingo data). */}
-        <LessonQueueCard
-          activePathId={activePathId}
-          pathProgress={pathProgress}
-          onPressLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
-          }
-        />
-
-        {/* Daily Mystery Box — variable-reward retention mechanic. One
-            open per calendar day, random reward (XP, streak freeze, or
-            rare bonus). Variable rewards are the most-addictive
-            reinforcement pattern in behavioral psychology — the
-            casino/social-media loop. Big retention lever. */}
-        <DailyMysteryBox
-          alreadyOpenedToday={mysteryBoxOpenedToday}
+          alreadyOpenedBox={mysteryBoxOpenedToday}
           lastReward={dailyMysteryBoxLastReward}
-          onOpen={openMysteryBox}
-        />
-
-        {/* Daily Mood Check-in — refreshes the mood personalization
-            signal each calendar day so the daily challenge adapts to
-            how the user actually feels today, not their one-time
-            onboarding answer. Collapses to a pill once picked. */}
-        <DailyMoodCheckIn
+          rewards={MYSTERY_REWARDS}
+          onOpenBox={openMysteryBox}
           todayMood={moodPickedToday}
-          onPick={setDailyMood}
+          onPickMood={setDailyMood}
+          moodOptions={[
+            { id: 'motivated', emoji: '🔥' },
+            { id: 'fresh', emoji: '☀️' },
+            { id: 'lost', emoji: '😶‍🌫️' },
+          ]}
         />
-
-        {/* Daily Stoic / discipline quote — fresh per calendar day, same
-            for all devices. Anchor of the "morning routine" of opening
-            the app: novelty + value before asking for any action. */}
-        <DailyQuoteCard />
-
-        {/* Today's CTA Card */}
-        <View style={styles.ctaCard}>
-          <View style={styles.ctaCardHeader}>
-            <Text style={styles.ctaCardLabel}>
-              {t('home.todayCta', 'BUGÜNÜN GÖREVİ')}
-            </Text>
-            <View style={styles.ctaPathBadge}>
-              <MaterialIcons
-                name={activePath.materialIcon}
-                size={12}
-                color={LT.onSurfaceVariant}
-              />
-              <Text style={styles.ctaPathBadgeText}>
-                {t(`paths.${activePath.id}.shortTitle`, activePath.id)}
-              </Text>
-            </View>
-          </View>
-          <Text style={styles.ctaTitle}>
-            {currentLesson
-              ? t(
-                  `lessons.${currentLesson.pathId}.${currentLesson.order}.title`,
-                  `${t('path.lessonLabel', 'Ders')} ${currentLesson.order}`,
-                )
-              : t('home.allDone', 'Tüm dersleri tamamladın 🎉')}
-          </Text>
-          <Text style={styles.ctaDescription}>
-            {currentLesson
-              ? t(
-                  `lessons.${currentLesson.pathId}.${currentLesson.order}.summary`,
-                  t(
-                    'home.ctaGenericSub',
-                    'Bugünün adımı seni bekliyor. ~5 dakika.',
-                  ),
-                )
-              : t(
-                  'home.allDoneSub',
-                  'Yeni yola geçebilir veya tekrar pratiği yapabilirsin.',
-                )}
-          </Text>
-          {currentLesson ? (
-            <TouchableOpacity
-              style={styles.ctaButton}
-              onPress={handleStartLesson}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.ctaButtonText}>
-                {t('home.startNow', 'PRATİĞE BAŞLA')}
-              </Text>
-              <MaterialIcons
-                name="arrow-forward"
-                size={20}
-                color={LT.onPrimary}
-              />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              style={[styles.ctaButton, styles.ctaButtonSecondary]}
-              onPress={() => navigation.navigate('MainTabs', { screen: 'Paths' })}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.ctaButtonTextSecondary}>
-                {t('home.viewPaths', 'YOLLARA GÖZAT')}
-              </Text>
-            </TouchableOpacity>
-          )}
-        </View>
 
         {/* Quick Stats Strip */}
         <View style={styles.statsStrip}>

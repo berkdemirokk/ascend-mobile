@@ -103,16 +103,14 @@ export const ADMOB_IDS = {
   // "Ascend: Monk Mode" app (publisher pub-9898903071826160, app
   // ~2513505932). This app is linked to App Store ID 6761607644.
   //
-  // ⚠️ Build 53 + 54 shipped with the WRONG APP ID (~9553442066) which
-  // pointed at a duplicate, unlinked AdMob app. The ad UNIT IDs were
-  // already correct (they belong to ~2513505932), but the app+unit
-  // mismatch caused every ad request to return no-fill. Build 55 fixes
-  // the APP_ID_IOS so the SDK identifies itself as the correct
-  // (App-Store-linked) app on every request. Ad unit IDs are unchanged.
+  // Ad units in AdMob console under this app:
+  //   ascend           (Geçiş / Interstitial)  → 5475177787
+  //   ascend-rewarded  (Ödüllü / Rewarded)     → 5610075008
+  //   ascend-banner    (Banner)                → 8236238348
   APP_ID_IOS: 'ca-app-pub-9898903071826160~2513505932',
-  INTERSTITIAL_IOS: 'ca-app-pub-9898903071826160/5083828952',
-  REWARDED_IOS: 'ca-app-pub-9898903071826160/1096482484',
-  BANNER_IOS: 'ca-app-pub-9898903071826160/3722645822',
+  INTERSTITIAL_IOS: 'ca-app-pub-9898903071826160/5475177787',
+  REWARDED_IOS: 'ca-app-pub-9898903071826160/5610075008',
+  BANNER_IOS: 'ca-app-pub-9898903071826160/8236238348',
   // Google-provided test IDs — use these only when __DEV__ to avoid invalid
   // traffic flags on live ad units during development.
   TEST_INTERSTITIAL_IOS: 'ca-app-pub-3940256099942544/4411468910',
