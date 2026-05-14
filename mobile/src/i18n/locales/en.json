@@ -247,10 +247,6 @@
   },
   "dailyPlan": {
     "label": "TODAY'S PLAN · CURATED FOR YOU",
-    "premiumLabel": "PREMIUM · DAILY PLAN",
-    "upsellTitle": "Let the app build your day for you",
-    "upsellSub": "3 lessons picked for your mood + goals.",
-    "upsellCta": "UNLOCK WITH PREMIUM",
     "reasonActive": "your active path",
     "reasonReflection": "what you reflect on",
     "reasonGoal": "your goal",
@@ -300,6 +296,9 @@
   "pathScene": {
     "chapter": "CHAPTER · LESSON {{stage}}/50",
     "continueCta": "Continue the journey →",
+    "nextPathCta": "Next path: {{name}} →",
+    "nextPathCtaGeneric": "Start the next path →",
+    "laterCta": "Later",
     "dd10": { "title": "First Climb",        "body": "Ten days on. The phone is quieter. Your hands are starting to remember the feel of nothing." },
     "dd20": { "title": "The Fog Lifts",      "body": "Twenty days. The cravings still come — but now you see them coming. That's everything." },
     "dd30": { "title": "Forge the Mind",     "body": "Thirty days. The old loop has died. Something else lives in its place now. Don't look back." },
@@ -555,6 +554,10 @@
     "streakAtRiskBody": "You haven't completed today. 3 hours until the day ends — protect your streak, just 5 minutes.",
     "comebackTitle": "Come back. Just one lesson.",
     "comebackBody": "You've been gone {{days}} days. Don't let your streak reset — just 5 minutes to start again.",
+    "firstLessonNudgeTitle": "Your first chapter is waiting",
+    "firstLessonNudgeBody": "You started your discipline journey yesterday — give it 5 minutes, finish your first lesson.",
+    "d3HabitTitle": "Day 3. Where habits are made.",
+    "d3HabitBody": "2 days is coincidence. 3 days is the start of a habit. Drop it today and coming back gets harder.",
     "actionStartLesson": "Start Lesson"
   },
   "share": {
@@ -590,6 +593,24 @@
   "streakRisk": {
     "title": "🔥 Your {{streak}}-day streak is at risk",
     "body": "Finish today's lesson in {{hours}}h — protect the streak."
+  },
+  "yourWhy": {
+    "label": "WHY YOU'RE HERE",
+    "empty": "Write it in one line — you'll see it every time you open the app.",
+    "modalTitle": "Why are you here?",
+    "modalSub": "One line is enough. You'll remind yourself this in weak moments.",
+    "placeholder": "e.g. To break my phone addiction and take my life back."
+  },
+  "streakRepair": {
+    "brokenLabel": "STREAK BROKE",
+    "daysLabel": "DAYS",
+    "title": "Restore your {{n}}-day streak",
+    "body": "You missed yesterday. You have {{hours}} hours to restore.",
+    "useTokenCta": "Use 1 token ({{count}} left)",
+    "watchAdCta": "Watch an ad to restore",
+    "unavailableCta": "Loading ad...",
+    "unavailableCtaPremium": "No tokens — Premium gets 12/month",
+    "dismissCta": "Let it go"
   },
   "dailyGoal": {
     "label": "TODAY'S GOAL",

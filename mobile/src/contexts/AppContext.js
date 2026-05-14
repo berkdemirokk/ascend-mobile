@@ -21,6 +21,7 @@ import {
   scheduleStreakAtRiskReminder,
   scheduleComebackReminder,
   cancelComebackReminder,
+  scheduleNewUserNudges,
 } from '../services/notifications';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
@@ -132,6 +133,24 @@ const initialState = {
   // day don't keep stacking it).
   dailyGoalBonusGrantedAt: null,
 
+  // Streak Repair (#2A retention) — when a user with a streak ≥3 days
+  // breaks it (missed yesterday) and finishes a lesson today, instead
+  // of silently resetting to 1 we capture the broken streak and offer
+  // a 48-hour restore window. Restore costs an ad watch (free) or a
+  // streak-freeze token (premium with tokens). Highest-leverage habit-
+  // app retention feature (Duolingo data: +15-20% D30).
+  //
+  // Shape: { brokenStreak: number, expiresAt: ISO }  or  null
+  // Cleared when (a) user restores, (b) user dismisses, (c) expires.
+  pendingStreakRestore: null,
+
+  // "Your Why" — free-text statement the user typed for the reason
+  // they're doing monk-mode. Pinned on Home as an emotional anchor.
+  // Empty until the user opens the edit modal. Plain string; we trust
+  // the user to keep it private and personal — not synced through any
+  // analytics, only via cloudSync (their own devices).
+  userWhy: null,
+
   // Last lesson completed milestone celebration shown — flag UI reads to
   // trigger confetti animation once per milestone.
   _milestoneToast: null,
@@ -218,7 +237,17 @@ const ACTION_TYPES = {
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
   CLEAR_DAILY_GOAL_TOAST: 'CLEAR_DAILY_GOAL_TOAST',
   RECORD_QUIZ_ANSWER: 'RECORD_QUIZ_ANSWER',
+  RESTORE_BROKEN_STREAK: 'RESTORE_BROKEN_STREAK',
+  DISMISS_BROKEN_STREAK_RESTORE: 'DISMISS_BROKEN_STREAK_RESTORE',
+  SET_USER_WHY: 'SET_USER_WHY',
 };
+
+// Streak Repair threshold — only offer restore when the broken streak was
+// substantial enough to be worth saving. Saves us from "you broke your
+// 2-day streak" prompts that feel cheap. Tuned at 3 days (Duolingo: 3).
+const STREAK_REPAIR_MIN_DAYS = 3;
+// How long the user has to restore before the prompt expires.
+const STREAK_REPAIR_WINDOW_HOURS = 48;
 
 function appReducer(state, action) {
   switch (action.type) {
@@ -501,9 +530,19 @@ function appReducer(state, action) {
       if (current.completed.includes(lessonId)) return state;
 
       // ── Bonus XP multipliers ──────────────────────────────────────────
-      // Comeback bonus: returning after 3+ days gone gives 2x XP, once.
-      // Random bonus days: Monday + Friday are 2x days. Stacks with
-      // comeback (rare overlap = 4x — that's a feature, not a bug).
+      // Only TWO multipliers now (down from five). XP economy stays
+      // legible — the user can actually predict their reward.
+      //
+      // 1. Comeback bonus: returning after 3+ days gone gives 2x once.
+      //    Loud message-able trigger, ties to a real moment.
+      // 2. Premium Weekend Boost: 3x on Sat/Sun (premium only).
+      //    Loud banner on Home, drives upgrade signal.
+      //
+      // REMOVED (v1.0.14): Mon/Fri 2x and the 20% surprise random — both
+      // were INVISIBLE rewards. The user got XP they couldn't anticipate
+      // and couldn't repeat. Variable reward only works when paired with
+      // a perceived event (crit hit's gold flash, mystery box opening) —
+      // a silent number bump is noise, not dopamine.
       let xpMultiplier = 1;
       let comebackApplied = false;
       if (state.lastCompletedDate) {
@@ -515,24 +554,8 @@ function appReducer(state, action) {
         }
       }
       const dow = new Date().getDay();
-      const isBonusDay = dow === 1 || dow === 5; // Mon or Fri
-      if (isBonusDay) xpMultiplier *= 2;
-
-      // PREMIUM WEEKEND BOOST — Saturdays + Sundays grant a 3x
-      // multiplier for premium users only. Visible on Home with a
-      // banner so free users see the perk and feel the upgrade pull.
-      // Stacks with the Mon/Fri 2x (impossible weekday overlap) and
-      // the surprise 20% chance below — premium weekend can easily
-      // hit 6x on a lucky lesson, which is the "wow" moment.
       const isWeekend = dow === 0 || dow === 6; // Sun or Sat
       if (isWeekend && state.isPremium) xpMultiplier *= 3;
-
-      // ── Variable rewards (v1.0.12) ────────────────────────────────────
-      // Surprise reward — ~20% chance of an extra 2x. Variable schedules
-      // are the most addictive reinforcement pattern (casino mechanic).
-      // Stacks with the deterministic multipliers above.
-      const isSurpriseDay = Math.random() < 0.2;
-      if (isSurpriseDay) xpMultiplier *= 2;
 
       // Perfect Lesson Bonus — completing every quiz question correctly
       // (i.e., not losing any hearts) earns a flat bonus. Makes the
@@ -561,12 +584,37 @@ function appReducer(state, action) {
       const newTotalXP = state.totalXP + finalXp;
       const newLevel = checkLevelUp(newTotalXP, state.level);
 
-      // Streak update — completing a lesson counts as today's action
+      // Streak update — completing a lesson counts as today's action.
+      //
+      // Three branches:
+      //   1. Already completed today → streak unchanged
+      //   2. Last completion was yesterday → +1 (normal continuation)
+      //   3. Last completion older → BREAK. Reset to 1 BUT if the broken
+      //      streak was ≥3, capture it as pendingStreakRestore so the
+      //      user gets a 48h "watch an ad to restore" prompt. Highest-
+      //      leverage retention feature in habit apps (Duolingo: +15-20% D30).
       let newStreak = state.currentStreak;
       let newLastDate = state.lastCompletedDate;
+      let pendingStreakRestore = state.pendingStreakRestore || null;
       if (state.lastCompletedDate !== today) {
         const yesterday = getYesterdayDateString();
-        newStreak = state.lastCompletedDate === yesterday ? state.currentStreak + 1 : 1;
+        if (state.lastCompletedDate === yesterday) {
+          newStreak = state.currentStreak + 1;
+        } else {
+          // Streak BROKE. If it was worth saving, offer restore.
+          if (
+            (state.currentStreak || 0) >= STREAK_REPAIR_MIN_DAYS
+            && !pendingStreakRestore // don't overwrite an active restore window
+          ) {
+            pendingStreakRestore = {
+              brokenStreak: state.currentStreak,
+              expiresAt: new Date(
+                Date.now() + STREAK_REPAIR_WINDOW_HOURS * 60 * 60 * 1000,
+              ).toISOString(),
+            };
+          }
+          newStreak = 1;
+        }
         newLastDate = today;
       }
 
@@ -592,7 +640,7 @@ function appReducer(state, action) {
       const hitMilestone = MILESTONES.includes(newStreak)
         && state.currentStreak !== newStreak;
       const milestoneToast = hitMilestone
-        ? { streak: newStreak, comebackApplied, isBonusDay, ts: Date.now() }
+        ? { streak: newStreak, comebackApplied, ts: Date.now() }
         : state._milestoneToast;
 
       return {
@@ -622,6 +670,7 @@ function appReducer(state, action) {
         dailyGoalBonusGrantedAt: hitDailyGoal
           ? today
           : state.dailyGoalBonusGrantedAt,
+        pendingStreakRestore,
         actionsSinceLastAd: (state.actionsSinceLastAd || 0) + 1,
         unlockedAchievements: [
           ...state.unlockedAchievements,
@@ -641,6 +690,46 @@ function appReducer(state, action) {
 
     case ACTION_TYPES.CLEAR_DAILY_GOAL_TOAST:
       return { ...state, _dailyGoalToast: null };
+
+    case ACTION_TYPES.RESTORE_BROKEN_STREAK: {
+      // Restore the streak captured in pendingStreakRestore. Net result:
+      // currentStreak = brokenStreak + 1 (the +1 = today's lesson the user
+      // already completed when the restore prompt appeared).
+      //
+      // useToken: when true, decrement streakFreezes (premium path). When
+      // false, the caller has already gated this on an ad watch (free path).
+      // Defensive guard: refuse if pending is missing, expired, or — for
+      // the token path — the user has no tokens left.
+      const pending = state.pendingStreakRestore;
+      if (!pending) return state;
+      if (new Date(pending.expiresAt) < new Date()) {
+        return { ...state, pendingStreakRestore: null };
+      }
+      const useToken = !!action.payload?.useToken;
+      if (useToken && (state.streakFreezes || 0) <= 0) return state;
+      const restored = (pending.brokenStreak || 0) + 1;
+      return {
+        ...state,
+        currentStreak: restored,
+        longestStreak: Math.max(state.longestStreak || 0, restored),
+        streakFreezes: useToken
+          ? state.streakFreezes - 1
+          : state.streakFreezes,
+        pendingStreakRestore: null,
+      };
+    }
+
+    case ACTION_TYPES.DISMISS_BROKEN_STREAK_RESTORE:
+      return { ...state, pendingStreakRestore: null };
+
+    case ACTION_TYPES.SET_USER_WHY: {
+      // Trim and cap length defensively. UI input is already capped but
+      // a malformed cloudSync payload could exceed — guard at the
+      // reducer boundary.
+      const raw = action.payload?.text ?? null;
+      const trimmed = typeof raw === 'string' ? raw.trim().slice(0, 280) : null;
+      return { ...state, userWhy: trimmed || null };
+    }
 
     case ACTION_TYPES.RECORD_QUIZ_ANSWER: {
       // Per-question answer log for the adaptive quiz engine. Always
@@ -766,6 +855,28 @@ export function AppProvider({ children }) {
       lastCompletedDate: state.lastCompletedDate,
     }).catch(() => {});
   }, [state._loaded, state.lastCompletedDate]);
+
+  // ── New-user retention nudges (D2 first-lesson + D3 habit-forming) ─────
+  // Re-evaluated on every state change to total-lessons / streak / install
+  // age so the pushes self-cancel as soon as the user makes progress.
+  // See services/notifications.js → scheduleNewUserNudges for the rules.
+  useEffect(() => {
+    if (!state._loaded) return;
+    const totalCompleted = Object.values(state.pathProgress || {}).reduce(
+      (s, p) => s + (p?.completed?.length || 0),
+      0,
+    );
+    scheduleNewUserNudges({
+      installedAt: state.installedAt,
+      currentStreak: state.currentStreak || 0,
+      totalLessonsCompleted: totalCompleted,
+    }).catch(() => {});
+  }, [
+    state._loaded,
+    state.installedAt,
+    state.currentStreak,
+    state.pathProgress,
+  ]);
 
   // ── Push streak to public leaderboard whenever it changes ────────────────
   useEffect(() => {
@@ -1080,6 +1191,24 @@ export function AppProvider({ children }) {
     });
   }, []);
 
+  // Streak Repair — caller is responsible for gating on the ad watch
+  // (free) or token availability (premium). The reducer enforces the
+  // expiry + token-count guards as a backstop.
+  const restoreBrokenStreak = useCallback(({ useToken = false } = {}) => {
+    dispatch({
+      type: ACTION_TYPES.RESTORE_BROKEN_STREAK,
+      payload: { useToken },
+    });
+  }, []);
+
+  const dismissBrokenStreakRestore = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.DISMISS_BROKEN_STREAK_RESTORE });
+  }, []);
+
+  const setUserWhy = useCallback((text) => {
+    dispatch({ type: ACTION_TYPES.SET_USER_WHY, payload: { text } });
+  }, []);
+
   const value = {
     ...state,
     rank,
@@ -1102,6 +1231,9 @@ export function AppProvider({ children }) {
     clearMilestoneToast,
     clearDailyGoalToast,
     recordQuizAnswer,
+    restoreBrokenStreak,
+    dismissBrokenStreakRestore,
+    setUserWhy,
     deleteAccount,
     setActivePath,
     completePathLesson,

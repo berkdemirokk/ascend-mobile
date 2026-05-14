@@ -22,6 +22,8 @@ const EVENING_REMINDER_ID = 'ascend-evening-reminder';
 const WEEKLY_RECAP_ID = 'ascend-weekly-recap';
 const STREAK_AT_RISK_ID = 'ascend-streak-at-risk';
 const COMEBACK_ID = 'ascend-comeback';
+const FIRST_LESSON_NUDGE_ID = 'ascend-first-lesson-nudge';
+const D3_HABIT_FORMING_ID = 'ascend-d3-habit-forming';
 
 // Category IDs — pre-registered with the system so notifications can
 // declare which set of action buttons they want. Set in setupNotifCategories.
@@ -292,6 +294,92 @@ export const cancelComebackReminder = async () => {
   try {
     await Notifications.cancelScheduledNotificationAsync(COMEBACK_ID);
   } catch {}
+};
+
+/**
+ * D2/D3 retention nudges — addresses the deadliest churn window in habit apps.
+ * Industry data: 60-70% of habit-app installs churn between D1 and D3 before
+ * any streak exists to lose. The existing daily reminder + streak-at-risk
+ * pushes only kick in once streak ≥ 1 (or ≥ 2 for streak-at-risk), leaving
+ * brand-new users with NO targeted re-engagement.
+ *
+ * Two pushes scheduled here:
+ *
+ *   1. First-Lesson Nudge — fires tomorrow at 19:00 if user has 0 lessons
+ *      completed. Cancels itself the moment they finish a lesson. Catches
+ *      the "installed yesterday, never came back" cohort.
+ *
+ *   2. D3 Habit-Forming — fires 3 days after install if streak is still 0
+ *      or 1. Body specifically frames "3 days = habit forming" (behavioral
+ *      psych: the modal D3 break-point is the strongest churn predictor).
+ *
+ * Both are idempotent — re-callable on every app open and lesson completion.
+ *
+ * @param {Object} ctx
+ * @param {string|null} ctx.installedAt  ISO install timestamp
+ * @param {number}      ctx.currentStreak
+ * @param {number}      ctx.totalLessonsCompleted
+ */
+export const scheduleNewUserNudges = async ({
+  installedAt,
+  currentStreak,
+  totalLessonsCompleted,
+}) => {
+  // Wipe any previously-scheduled copies — we re-derive every call.
+  try { await Notifications.cancelScheduledNotificationAsync(FIRST_LESSON_NUDGE_ID); } catch {}
+  try { await Notifications.cancelScheduledNotificationAsync(D3_HABIT_FORMING_ID); } catch {}
+
+  // Guard: only fire for genuinely new users.
+  if (!installedAt) return;
+  const installedMs = new Date(installedAt).getTime();
+  if (Number.isNaN(installedMs)) return;
+  const hoursSinceInstall = (Date.now() - installedMs) / (60 * 60 * 1000);
+  if (hoursSinceInstall > 96) return; // older than 4 days — handled by other pushes
+
+  // ── 1. First-Lesson Nudge (tomorrow 19:00 if 0 lessons done) ─────────
+  if ((totalLessonsCompleted || 0) === 0) {
+    const tomorrow7pm = new Date();
+    tomorrow7pm.setDate(tomorrow7pm.getDate() + 1);
+    tomorrow7pm.setHours(19, 0, 0, 0);
+    // Avoid scheduling in the past if the call happens after 19:00.
+    if (tomorrow7pm.getTime() > Date.now() + 60_000) {
+      await Notifications.scheduleNotificationAsync({
+        identifier: FIRST_LESSON_NUDGE_ID,
+        content: {
+          title: i18n.t('notifications.firstLessonNudgeTitle'),
+          body: i18n.t('notifications.firstLessonNudgeBody'),
+          sound: true,
+          categoryIdentifier: CAT_LESSON_REMINDER,
+        },
+        trigger: {
+          type: SchedulableTriggerInputTypes.DATE ?? 'date',
+          date: tomorrow7pm,
+        },
+      });
+    }
+  }
+
+  // ── 2. D3 Habit-Forming push (D3 at 10:00 if streak still 0-1) ───────
+  if ((currentStreak || 0) <= 1) {
+    const d3 = new Date(installedMs + 3 * 24 * 60 * 60 * 1000);
+    d3.setHours(10, 0, 0, 0);
+    // Only schedule if D3 is still in the future.
+    if (d3.getTime() > Date.now() + 60_000) {
+      await Notifications.scheduleNotificationAsync({
+        identifier: D3_HABIT_FORMING_ID,
+        content: {
+          title: i18n.t('notifications.d3HabitTitle'),
+          body: i18n.t('notifications.d3HabitBody'),
+          sound: true,
+          categoryIdentifier: CAT_LESSON_REMINDER,
+        },
+        trigger: {
+          type: SchedulableTriggerInputTypes.DATE ?? 'date',
+          date: d3,
+        },
+      });
+    }
+  }
 };
 
 /**

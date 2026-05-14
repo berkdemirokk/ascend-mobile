@@ -247,10 +247,6 @@
   },
   "dailyPlan": {
     "label": "BUGÜNÜN PLANI · SANA ÖZEL",
-    "premiumLabel": "PREMIUM · GÜNLÜK PLAN",
-    "upsellTitle": "Uygulama gününü senin için kurar",
-    "upsellSub": "Ruh haline + hedefine göre 3 ders seçilir.",
-    "upsellCta": "PREMIUM İLE AÇ",
     "reasonActive": "aktif yolun",
     "reasonReflection": "yansımalarından",
     "reasonGoal": "hedefin",
@@ -300,6 +296,9 @@
   "pathScene": {
     "chapter": "BÖLÜM · DERS {{stage}}/50",
     "continueCta": "Yolculuğa devam →",
+    "nextPathCta": "Sıradaki yol: {{name}} →",
+    "nextPathCtaGeneric": "Sıradaki yola başla →",
+    "laterCta": "Sonra",
     "dd10": { "title": "İlk Tırmanış",       "body": "On gün geçti. Telefon daha sessiz. Ellerin hiçbir şeyi tutmamayı hatırlamaya başladı." },
     "dd20": { "title": "Sis Kalkıyor",       "body": "Yirmi gün. Dürtüler hâlâ geliyor — ama artık onları geldiğini görüyorsun. Her şey bu." },
     "dd30": { "title": "Zihni Döv",          "body": "Otuz gün. Eski döngü öldü. Yerine başka bir şey yaşıyor şimdi. Geriye bakma." },
@@ -556,6 +555,10 @@
     "streakAtRiskBody": "Bugün ders yapmadın. 3 saat içinde gün biter — streak'ini koru, sadece 5 dakika.",
     "comebackTitle": "Geri dön. Tek bir ders.",
     "comebackBody": "{{days}} gündür yoksun. Streak'ini sıfırlama — sadece 5 dakika, yeniden başla.",
+    "firstLessonNudgeTitle": "İlk bölümün seni bekliyor",
+    "firstLessonNudgeBody": "Disiplin yolculuğunu dün başlattın — 5 dakika ayır, ilk dersi bitir.",
+    "d3HabitTitle": "3. gün. Alışkanlık burada şekilleniyor.",
+    "d3HabitBody": "2 gün bir tesadüf, 3 gün bir alışkanlığın başlangıcı. Bugün bırakırsan dönmek zor olur.",
     "actionStartLesson": "Ders Başla"
   },
   "share": {
@@ -591,6 +594,24 @@
   "streakRisk": {
     "title": "🔥 {{streak}} günlük serin tehlikede",
     "body": "Bugünün dersini {{hours}} saat içinde bitir — streak'i koru."
+  },
+  "yourWhy": {
+    "label": "NEDEN BURDASIN",
+    "empty": "Bir cümleyle yaz — açıldığında her gün bunu göreceksin.",
+    "modalTitle": "Neden burdasın?",
+    "modalSub": "Bir cümle yeter. Zayıf anlarda kendine bunu hatırlatacaksın.",
+    "placeholder": "Örn: Telefon bağımlılığımı kırmak ve hayatımı geri almak için."
+  },
+  "streakRepair": {
+    "brokenLabel": "SERİ KIRILDI",
+    "daysLabel": "GÜN",
+    "title": "{{n}} günlük serini geri al",
+    "body": "Dün bir gün kaçırdın. {{hours}} saat içinde restore edebilirsin.",
+    "useTokenCta": "1 jeton kullan ({{count}} kaldı)",
+    "watchAdCta": "Reklamı izle, geri al",
+    "unavailableCta": "Reklam yükleniyor...",
+    "unavailableCtaPremium": "Jeton yok — premium'da ayda 12 jeton",
+    "dismissCta": "Serini bırak"
   },
   "dailyGoal": {
     "label": "BUGÜNÜN HEDEFİ",

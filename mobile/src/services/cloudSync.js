@@ -24,6 +24,8 @@ const SYNCED_KEYS = [
   'dailyLoginGrantedAt',
   'dailyGoalBonusGrantedAt',
   'quizAnswers',
+  'pendingStreakRestore',
+  'userWhy',
 ];
 
 export function pickSyncableState(state) {

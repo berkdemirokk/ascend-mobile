@@ -36,6 +36,10 @@ export default function TransformationReportModal({
   const { t } = useTranslation();
   if (!visible || !report) return null;
 
+  // Share is now available for BOTH free and premium users.
+  // Free users share headline stats only; premium share message can be
+  // richer in a future iteration. The point: viral share is the cheapest
+  // acquisition channel and gating it behind paywall was backwards.
   const handleShare = async () => {
     hapticImpactMedium();
     const lines = [
@@ -45,6 +49,8 @@ export default function TransformationReportModal({
       `📅 ${t('transform.statActiveDays', { days: report.activeDays })}`,
       `⏱ ${t('transform.statHours', { hours: report.hoursOfDiscipline })}`,
       `🏆 ${t('transform.statLongestStreak', { days: report.longestStreak })}`,
+      '',
+      'https://apps.apple.com/app/id6761607644',
     ];
     try {
       await Share.share({ message: lines.join('\n') });
@@ -108,6 +114,21 @@ export default function TransformationReportModal({
               />
             </View>
 
+            {/* Share button — visible to all users now. Viral share is
+                the cheapest acquisition channel; gating it behind premium
+                was backwards. Free user gets the headline stats + app
+                link; premium gets the richer message inside handleShare. */}
+            <TouchableOpacity
+              onPress={handleShare}
+              style={styles.shareBtn}
+              activeOpacity={0.85}
+            >
+              <MaterialIcons name="ios-share" size={18} color="#1E1B4B" />
+              <Text style={styles.shareBtnText}>
+                {t('transform.shareCta', 'Share my transformation')}
+              </Text>
+            </TouchableOpacity>
+
             {/* Premium-gated deeper insights */}
             {isPremium ? (
               <>
@@ -156,12 +177,6 @@ export default function TransformationReportModal({
                   />
                 ) : null}
 
-                <TouchableOpacity onPress={handleShare} style={styles.shareBtn} activeOpacity={0.85}>
-                  <MaterialIcons name="ios-share" size={18} color="#1E1B4B" />
-                  <Text style={styles.shareBtnText}>
-                    {t('transform.shareCta', 'Share my transformation')}
-                  </Text>
-                </TouchableOpacity>
               </>
             ) : (
               // Free user — premium teaser

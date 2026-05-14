@@ -30,6 +30,7 @@ import BannerAdBox from '../components/BannerAdBox';
 import TodayHeroCard from '../components/TodayHeroCard';
 import WhatToDoCard from '../components/WhatToDoCard';
 import DailyRitualsCarousel from '../components/DailyRitualsCarousel';
+import YourWhyCard from '../components/YourWhyCard';
 import { REWARDS as MYSTERY_REWARDS } from '../components/DailyMysteryBox';
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
@@ -83,6 +84,8 @@ export default function HomeScreen({ navigation }) {
     refillHearts,
     dailyLessonsCount,
     dailyGoalTarget,
+    userWhy,
+    setUserWhy,
   } = useApp();
 
   // Day-bucket booleans for the per-day cards. Stable across re-renders
@@ -340,6 +343,11 @@ export default function HomeScreen({ navigation }) {
           dailyGoalTarget={dailyGoalTarget}
           onPress={() => setStreakInfoVisible(true)}
         />
+
+        {/* "Your Why" pinned card — the user's own self-stated reason
+            for being here. Strongest emotional re-engagement surface
+            in the app; user sees their past commitment every open. */}
+        <YourWhyCard userWhy={userWhy} onSave={setUserWhy} />
 
         {/* Weekend Premium offer — only Sat/Sun, nudges high-intent users */}
         {isWeekendOffer && !isPremium ? (

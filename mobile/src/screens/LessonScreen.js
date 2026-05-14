@@ -18,9 +18,23 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 
 import { useApp } from '../contexts/AppContext';
-import { getPathById, getLessonById } from '../data/paths';
+import {
+  getPathById,
+  getLessonById,
+  isPathComplete,
+  getCurrentLesson,
+} from '../data/paths';
+import { PATHS } from '../data/paths';
 import { getAdaptiveQuiz } from '../services/adaptiveQuiz';
-import { showInterstitial, shouldShowAd, requestTrackingPermissionIfNeeded } from '../services/ads';
+import {
+  showInterstitial,
+  shouldShowAd,
+  requestTrackingPermissionIfNeeded,
+  showRewarded,
+  isRewardedReady,
+  loadRewarded,
+} from '../services/ads';
+import StreakRepairModal from '../components/StreakRepairModal';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import PathMilestoneScene, {
   detectPathSceneStage,
@@ -68,6 +82,10 @@ export default function LessonScreen({ navigation, route }) {
     clearDailyGoalToast,
     quizAnswers,
     recordQuizAnswer,
+    pendingStreakRestore,
+    streakFreezes,
+    restoreBrokenStreak,
+    dismissBrokenStreakRestore,
   } = useApp();
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
@@ -953,6 +971,35 @@ export default function LessonScreen({ navigation, route }) {
           pathId={pathId}
           stage={pathSceneStage}
           onClose={() => setPathSceneVisible(false)}
+          // Stage-50 "next path" affordance — find the first uncompleted
+          // path AFTER the current one and prep a navigate target. This
+          // is the auto-next-path retention move (highest-leverage at
+          // path completion since these are the most-engaged users at
+          // their highest risk of "done, uninstall" churn).
+          nextPathName={(() => {
+            if (pathSceneStage !== 50) return null;
+            const next = PATHS.find(
+              (p) => p.id !== pathId && !isPathComplete(p, pathProgress),
+            );
+            if (!next) return null;
+            return t(`paths.${next.id}.title`, next.id);
+          })()}
+          onStartNextPath={(() => {
+            if (pathSceneStage !== 50) return null;
+            const next = PATHS.find(
+              (p) => p.id !== pathId && !isPathComplete(p, pathProgress),
+            );
+            if (!next) return null;
+            const nextLesson = getCurrentLesson(next, pathProgress);
+            if (!nextLesson) return null;
+            return () => {
+              setPathSceneVisible(false);
+              navigation.replace('Lesson', {
+                pathId: next.id,
+                lessonId: nextLesson.id,
+              });
+            };
+          })()}
         />
 
         {/* Sage Mode — Premium audio-guided deep session. Triggered
@@ -989,6 +1036,32 @@ export default function LessonScreen({ navigation, route }) {
             setOutOfHeartsVisible(false);
             navigation.navigate('Paywall');
           }}
+        />
+
+        {/* Streak Repair (#2A retention) — only renders during celebration
+            since that's when pendingStreakRestore was just populated by
+            the reducer. After interaction, the field is cleared and the
+            modal disappears. */}
+        <StreakRepairModal
+          visible={!!pendingStreakRestore && showCelebration}
+          brokenStreak={pendingStreakRestore?.brokenStreak}
+          expiresAt={pendingStreakRestore?.expiresAt}
+          isPremium={isPremium}
+          streakFreezes={streakFreezes || 0}
+          rewardedReady={isRewardedReady()}
+          onWatchAd={async () => {
+            // Caller-side: show the rewarded ad, then restore if user
+            // watched it through. If they bailed before the reward
+            // event, do nothing — modal stays open so they can retry.
+            const earned = await showRewarded();
+            if (earned) restoreBrokenStreak({ useToken: false });
+            // Preload next rewarded ad regardless (so a future repair
+            // prompt is immediately actionable).
+            loadRewarded().catch(() => {});
+            return earned;
+          }}
+          onUseToken={() => restoreBrokenStreak({ useToken: true })}
+          onDismiss={dismissBrokenStreakRestore}
         />
 
         {showCelebration && (
