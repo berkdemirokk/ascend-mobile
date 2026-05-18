@@ -19,6 +19,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 
+// Feature flag — single switch that disables the entire AI layer. When
+// false: the public generate* functions short-circuit to null, the
+// Settings toggle is hidden, and aiPersonalizeActive resolves to false
+// regardless of stored user preference. Flip to `true` to re-enable
+// the feature once we're ready to ship it. Cost / API-key concerns are
+// the reason it ships disabled in 1.0.20.
+export const AI_PERSONALIZE_FEATURE_ENABLED = false;
+
 // Storage keys ----------------------------------------------------------------
 const CACHE_KEY = '@ascend/ai_personalize_cache_v1';
 // Day-cap counter — { 'YYYY-MM-DD': { [userId]: number } } persisted so
@@ -238,6 +246,11 @@ export async function generateLessonIntro({
 }) {
   if (!lessonId || !lessonTitle) return null;
 
+  // 0. Feature flag — disabled = no-op. Skips even the cache read so
+  //    a previously-cached response from a brief-enable window doesn't
+  //    leak through after we turn it off.
+  if (!AI_PERSONALIZE_FEATURE_ENABLED) return null;
+
   // 1. Cache hit — instant return, no spend.
   const cached = await readCached(userId, lessonId, 'intro');
   if (cached) return cached;
@@ -291,6 +304,8 @@ export async function generateReflectionResponse({
   locale,
 }) {
   if (!lessonId || !lessonTitle) return null;
+  // Feature flag — disabled = no-op (see generatePersonalizedIntro).
+  if (!AI_PERSONALIZE_FEATURE_ENABLED) return null;
   const trimmed =
     typeof userReflection === 'string' ? userReflection.trim() : '';
   // No reflection text → nothing meaningful to respond to.

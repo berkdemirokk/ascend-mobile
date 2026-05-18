@@ -34,6 +34,7 @@ import {
   redeemFriendCode as redeemFriendCodeService,
   unpair as unpairService,
 } from '../services/friendCodes';
+import { AI_PERSONALIZE_FEATURE_ENABLED } from '../services/aiPersonalize';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
 
@@ -1913,7 +1914,11 @@ export function AppProvider({ children }) {
   // (null = "default"); active is the actual boolean callers consume.
   // Default: ON for premium, OFF for free. The SettingsScreen toggle is
   // gated separately so free users physically cannot flip this to true.
+  // Feature flag (AI_PERSONALIZE_FEATURE_ENABLED in aiPersonalize.js)
+  // overrides everything — when off, this always resolves to false so
+  // the LessonScreen integration never even attempts a call.
   const aiPersonalizeActive = (() => {
+    if (!AI_PERSONALIZE_FEATURE_ENABLED) return false;
     if (state.aiPersonalizeEnabled === true) return true;
     if (state.aiPersonalizeEnabled === false) return false;
     return !!state.isPremium;

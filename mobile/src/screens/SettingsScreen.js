@@ -28,6 +28,7 @@ import {
   scheduleDailyReminder,
   cancelAllNotifications,
 } from '../services/notifications';
+import { AI_PERSONALIZE_FEATURE_ENABLED } from '../services/aiPersonalize';
 import { restorePurchases } from '../services/purchases';
 import { setMuted, isMuted } from '../services/sounds';
 import {
@@ -472,7 +473,11 @@ export default function SettingsScreen({ navigation }) {
 
             {/* AI Personalization toggle (Layer B) — premium-only.
                 Free users see the row but the switch can't go on; tapping
-                while free routes to the paywall. */}
+                while free routes to the paywall.
+                Hidden entirely when the feature flag is off — the row
+                stays in the codebase so flipping the flag back on in
+                aiPersonalize.js immediately restores the UI. */}
+            {AI_PERSONALIZE_FEATURE_ENABLED ? (
             <View style={styles.row}>
               <View style={styles.rowLeft}>
                 <View style={{ flex: 1 }}>
@@ -503,6 +508,7 @@ export default function SettingsScreen({ navigation }) {
                 thumbColor={LT.surfaceContainerLowest}
               />
             </View>
+            ) : null}
           </Section>
 
           {/* Account */}
