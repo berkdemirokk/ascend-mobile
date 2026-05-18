@@ -25,6 +25,7 @@ const COMEBACK_ID = 'ascend-comeback';
 const FIRST_LESSON_NUDGE_ID = 'ascend-first-lesson-nudge';
 const D3_HABIT_FORMING_ID = 'ascend-d3-habit-forming';
 const MIDDAY_PAUSE_ID = 'ascend-midday-pause';
+const EVENING_CLOSE_ID = 'ascend-evening-close';
 
 // Category IDs — pre-registered with the system so notifications can
 // declare which set of action buttons they want. Set in setupNotifCategories.
@@ -33,6 +34,9 @@ const CAT_LESSON_REMINDER = 'ascend.lesson-reminder';
 // navigation target (the MiddayPause modal), so it gets a separate
 // category id from the lesson-reminder family.
 const CAT_MIDDAY_PAUSE = 'ascend.midday-pause';
+// Evening Close mirrors Midday Pause: own action button + deep-link
+// target (the EveningClose modal). Closes the daily ritual cycle.
+const CAT_EVENING_CLOSE = 'ascend.evening-close';
 
 /**
  * Register notification categories with iOS so notifications referencing
@@ -60,6 +64,18 @@ export const setupNotifCategories = async () => {
       {
         identifier: 'open_midday_pause',
         buttonTitle: i18n.t('notifications.actionOpenMiddayPause'),
+        options: {
+          opensAppToForeground: true,
+        },
+      },
+    ]);
+    // Evening Close: same pattern as Midday Pause. Action button +
+    // body tap both deep-link into the EveningClose modal via the
+    // response listener below.
+    await Notifications.setNotificationCategoryAsync(CAT_EVENING_CLOSE, [
+      {
+        identifier: 'open_evening_close',
+        buttonTitle: i18n.t('notifications.actionOpenEveningClose'),
         options: {
           opensAppToForeground: true,
         },
@@ -97,6 +113,12 @@ export const setupNotifResponseListener = () => {
         // body tap and the "Aç" action button route here.
         if (category === CAT_MIDDAY_PAUSE) {
           navigateFromAnywhere('MiddayPause');
+          return;
+        }
+        // Evening Close: same shape as Midday Pause. Body tap +
+        // "Aç" action both open the EveningClose modal.
+        if (category === CAT_EVENING_CLOSE) {
+          navigateFromAnywhere('EveningClose');
           return;
         }
         // The category buttons report their identifier. The "default"
@@ -480,6 +502,40 @@ export const scheduleMiddayPause = async () => {
   });
 };
 
+/**
+ * Schedule the daily 20:30 Günü Kapat (Evening Close) push. Closes
+ * the daily ritual cycle: morning lesson → midday breath → evening
+ * close. 3-minute ritual that surfaces tomorrow's intent and the
+ * cliffhanger title for tomorrow's lesson (curiosity gap → return).
+ *
+ * Idempotent — cancels any prior copy first, then re-schedules. Safe
+ * to call on every app boot. Mirrors scheduleMiddayPause exactly.
+ */
+export const scheduleEveningClose = async () => {
+  try {
+    await Notifications.cancelScheduledNotificationAsync(EVENING_CLOSE_ID);
+  } catch {
+    // no-op
+  }
+
+  await Notifications.scheduleNotificationAsync({
+    identifier: EVENING_CLOSE_ID,
+    content: {
+      title: i18n.t('notifications.eveningCloseTitle'),
+      body: i18n.t('notifications.eveningCloseBody'),
+      sound: true,
+      // CAT_EVENING_CLOSE: body tap + "Aç" action both deep-link
+      // straight to the EveningClose modal.
+      categoryIdentifier: CAT_EVENING_CLOSE,
+    },
+    trigger: {
+      type: SchedulableTriggerInputTypes.DAILY ?? 'daily',
+      hour: 20,
+      minute: 30,
+    },
+  });
+};
+
 export const sendCelebrationNotification = async (title, body) => {
   await Notifications.scheduleNotificationAsync({
     content: {
@@ -489,6 +545,46 @@ export const sendCelebrationNotification = async (title, body) => {
     },
     trigger: null, // immediate
   });
+};
+
+/**
+ * Partner-streak-broken push. Fires immediately (trigger: null) when the
+ * AppContext polling effect detects that the user's accountability partner
+ * just dropped from a non-zero streak to 0. Frames the moment as a duty,
+ * not a guilt trip — the user's job is to keep going, not to comfort.
+ *
+ * No identifier reuse — every partner-break event is a distinct moment, so
+ * the OS notification center can show a history if multiple happen.
+ *
+ * @param {Object} args
+ * @param {string} args.partnerName  partner's anonUsername (e.g., "monk_4821")
+ * @param {number} args.daysWasted   how many days of streak the partner just lost
+ */
+export const schedulePartnerStreakBrokenPush = async ({
+  partnerName,
+  daysWasted,
+}) => {
+  if (!partnerName || !daysWasted || daysWasted < 1) return;
+  try {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: i18n.t('friendCode.partnerBrokeStreakTitle', {
+          name: partnerName,
+        }),
+        body: i18n.t('friendCode.partnerBrokeStreakBody', {
+          name: partnerName,
+          days: daysWasted,
+        }),
+        sound: true,
+        // No category — there's no useful action button. The user opens the
+        // app on their own terms; we don't want to nudge them to "respond"
+        // because the brand promise is no chat, no friend feed.
+      },
+      trigger: null, // immediate
+    });
+  } catch (e) {
+    console.warn('schedulePartnerStreakBrokenPush failed:', e?.message);
+  }
 };
 
 export const cancelAllNotifications = async () => {

@@ -28,6 +28,13 @@ const SYNCED_KEYS = [
   'userWhy',
   'customGoal',
   'middayPauseCompletedAt',
+  'eveningReflections',
+  'tomorrowIntent',
+  'eveningCloseCompletedAt',
+  // NPS feedback prompt — stamps so cross-device users don't get
+  // re-asked the same trigger after they already answered on phone A.
+  'npsAskedAt',
+  'npsScore14dAskedAt',
 ];
 
 export function pickSyncableState(state) {
@@ -233,6 +240,46 @@ export function mergeStates(localState, cloudPayload) {
       (localState.middayPauseCompletedAt || '')
         ? cloudPayload.middayPauseCompletedAt
         : localState.middayPauseCompletedAt || null,
+    // Evening Close completion stamp — mirrors Midday Pause merge.
+    eveningCloseCompletedAt:
+      (cloudPayload.eveningCloseCompletedAt || '') >
+      (localState.eveningCloseCompletedAt || '')
+        ? cloudPayload.eveningCloseCompletedAt
+        : localState.eveningCloseCompletedAt || null,
+    // NPS asked-at stamps. Take whichever side has a value — once a
+    // user has answered on any device, every device honors it. If both
+    // sides have a value, the earlier date wins (we asked first; any
+    // later date is just a re-sync of the same one-shot event).
+    npsAskedAt:
+      localState.npsAskedAt && cloudPayload.npsAskedAt
+        ? (localState.npsAskedAt < cloudPayload.npsAskedAt
+            ? localState.npsAskedAt
+            : cloudPayload.npsAskedAt)
+        : localState.npsAskedAt || cloudPayload.npsAskedAt || null,
+    npsScore14dAskedAt:
+      localState.npsScore14dAskedAt && cloudPayload.npsScore14dAskedAt
+        ? (localState.npsScore14dAskedAt < cloudPayload.npsScore14dAskedAt
+            ? localState.npsScore14dAskedAt
+            : cloudPayload.npsScore14dAskedAt)
+        : localState.npsScore14dAskedAt || cloudPayload.npsScore14dAskedAt || null,
+    // Evening reflections — multi-day map of "bugün ne öğrendin?"
+    // entries. Merge per date key; the user might write on phone A
+    // and edit on phone B before the first push lands. We pick the
+    // cloud entry when it differs from local (cloud is, by virtue of
+    // having round-tripped through the server, the more recent push
+    // in the common case). Local-only keys are preserved.
+    eveningReflections: mergeEveningReflections(
+      localState.eveningReflections,
+      cloudPayload.eveningReflections,
+    ),
+    // Tomorrow's intent — single object { date, intent }. The later
+    // date wins; if dates match, prefer the side with the higher
+    // sync recency (cloud, since it round-tripped). Equal entries
+    // collapse trivially.
+    tomorrowIntent: mergeTomorrowIntent(
+      localState.tomorrowIntent,
+      cloudPayload.tomorrowIntent,
+    ),
     // Per-question quiz log (#2A). Per-question latest-wins merge so the
     // adaptive engine reads consistent answer history across devices.
     quizAnswers: mergeQuizAnswers(
@@ -243,7 +290,69 @@ export function mergeStates(localState, cloudPayload) {
     // side with more check-ins (more activity = truer source). Merge their
     // check-in maps so progress isn't lost on multi-device edits.
     customGoal: mergeCustomGoal(localState.customGoal, cloudPayload.customGoal),
+    // Daily-challenge completion stamp — later date wins so a device that
+    // already completed today doesn't re-grant the bonus on the other side.
+    dailyChallengeCompletedAt:
+      (cloudPayload.dailyChallengeCompletedAt || '') >
+      (localState.dailyChallengeCompletedAt || '')
+        ? cloudPayload.dailyChallengeCompletedAt
+        : localState.dailyChallengeCompletedAt || null,
+    // Daily login bonus stamp — same later-date-wins rule.
+    dailyLoginGrantedAt:
+      (cloudPayload.dailyLoginGrantedAt || '') >
+      (localState.dailyLoginGrantedAt || '')
+        ? cloudPayload.dailyLoginGrantedAt
+        : localState.dailyLoginGrantedAt || null,
+    // Vacation end date — keep the later one so a vacation started on one
+    // device stays active on the other.
+    vacationUntil:
+      (cloudPayload.vacationUntil || '') > (localState.vacationUntil || '')
+        ? cloudPayload.vacationUntil
+        : localState.vacationUntil || null,
+    // "Your Why" — prefer the newer side's text; either side's value is
+    // user-authored so we never blindly drop one. Falls back to whichever
+    // is non-null when only one side has it.
+    userWhy: newerSide.userWhy || localState.userWhy || cloudPayload.userWhy || null,
+    // Pending streak-restore window — short-lived (48h). Keep the side
+    // whose expiresAt is later so a device that captured a restore offer
+    // doesn't lose it on sync. Both-null collapses trivially.
+    pendingStreakRestore: (() => {
+      const l = localState.pendingStreakRestore;
+      const c = cloudPayload.pendingStreakRestore;
+      if (!l && !c) return null;
+      if (!l) return c;
+      if (!c) return l;
+      return (c.expiresAt || '') > (l.expiresAt || '') ? c : l;
+    })(),
   };
+}
+
+// Evening reflections — { 'YYYY-MM-DD': text }. Per-key cloud-wins
+// (cloud is the round-tripped value, typically newer). Local-only
+// keys are preserved untouched.
+function mergeEveningReflections(local = {}, cloud = {}) {
+  const out = { ...local };
+  Object.entries(cloud || {}).forEach(([date, text]) => {
+    if (typeof text === 'string' && text) {
+      out[date] = text;
+    }
+  });
+  return out;
+}
+
+// Tomorrow's intent — { date, intent }. Later-date wins; equal-date
+// entries fall through to cloud (round-tripped). Empty sides collapse.
+function mergeTomorrowIntent(local, cloud) {
+  if (!local && !cloud) return null;
+  if (!local) return cloud || null;
+  if (!cloud) return local;
+  const lDate = local.date || '';
+  const cDate = cloud.date || '';
+  if (cDate > lDate) return cloud;
+  if (lDate > cDate) return local;
+  // Same date — prefer cloud (it's the round-tripped value, so the
+  // user's most-recent push wins ties).
+  return cloud;
 }
 
 function mergeCustomGoal(local, cloud) {

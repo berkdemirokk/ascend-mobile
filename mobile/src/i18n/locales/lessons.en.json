@@ -1985,9 +1985,25 @@
       },
       "2": {
         "title": "Phoneless Alarm",
-        "teaching": "Alarm = phone = scroll = the day already lost. Separating the alarm function from the phone is creating a mental boundary.\n\nGet a physical alarm clock. Leave the phone outside the room. The first thing your hand touches in the morning should be the alarm button, not a screen.",
-        "action": "Buy or order a physical alarm clock today. Leave the phone outside the room before bed.",
-        "reflectionPrompt": "How hard will it be to switch from screen-on to alarm-button?",
+        "hook": "Your phone is charging in your bedroom. 06:30, alarm rings. What is closest to your hand? The same thing: the screen. You wake in 4 seconds, you sink into Instagram in 4 minutes. The first move of your day is not yours — it is the algorithm's.",
+        "teaching": "Alarm = phone = scroll = the day already lost. Separating the alarm function from the phone means cutting the morning reflex from the screen.\n\nGet a physical alarm clock. Leave the phone outside the room — in the hallway, the kitchen, anywhere. The first thing your hand touches in the morning should be the alarm button, not a screen.\n\nThis one change alone returns your first 10 minutes.",
+        "teachingDeep": "USC behavioral scientist Wendy Wood reduces 30 years of habit research to a single line in \"Good Habits, Bad Habits\" (2019): \"43% of behavior is determined not by willpower, but by environment.\" Meaning: not you, but the things around you decide. If the phone is not in your bedroom, the chance of morning scrolling drops by half — not a conscious choice, physical distance.\n\nHere is the mechanism: the brain is at peak dopamine hunger the moment you wake. Receptors cleaned overnight, prefrontal cortex not yet online. In that exact window, the first stimulus you give it sets your expectation level for the entire day. If you opened Instagram, your brain at 06:30 decides \"high dopamine is normal.\" By 11:00 when you sit down to work, the Excel sheet feels flat — because you raised the baseline yourself.\n\nBut the real trap is not there. The real trap: the lie that says \"I do not open the phone in the morning, I just look at it to turn off the alarm.\" Asaf Mazar from Wood's lab, 2021 study: 88% of users who pick up their phone open at least one app besides the alarm within 60 seconds. Not a conscious choice — a reflex. The moment it is in your hand, you are done.\n\nIn monastic tradition this has a name: the discipline of \"first touch.\" In a monastery the first thing your hand touches at dawn is either a holy book or a basin of water — never a tool. The 12th-century Cistercian rule: only three objects in the bedroom — bed, prayer stand, water jug. The modern equivalent: bed, alarm clock, glass of water. That is all.\n\nBridge to today: taking the phone out of the room is not \"try it one night\" — it is one decision that becomes a 90-day habit. Wood's data is clear: redesign the environment once, and you do not have to spend willpower every day. The real force is not willpower, it is physical friction. If the phone is 4 meters away, you will resist getting up to scroll at midnight. If it is on your pillow, you will not. That is not personality. That is physics.",
+        "practice": {
+          "instruction": "Get up now. Walk into your bedroom. Count three things: (1) Where is the phone charging? (2) How far is the nearest screen — TV, tablet, laptop — in meters? (3) Is there a clock on the nightstand, yes or no? 60 seconds — count, see it with your eyes.",
+          "seconds": 60,
+          "prompt": "How many of the three came back as \"phone next to the pillow, no clock\"? What excuse rose inside you against that picture?"
+        },
+        "action": "Order a physical alarm clock today — by tonight at the latest. Tonight, plug the phone into an outlet outside the bedroom. Beside the bed, only the alarm clock and a glass of water.",
+        "reflectionPrompt": "What voice rose inside you against moving the phone out of the bedroom?",
+        "reflectionPrompts": [
+          "Is there a phone in your bedroom right now? If yes — who or what or which excuse blocks you from moving it tonight?",
+          "Did you think \"I do not need a clock, I will just use airplane mode\"? How many times have you told yourself that line in the last 30 days?"
+        ],
+        "commitments": [
+          "Tonight I will move the phone out of the bedroom — to a hallway or kitchen outlet",
+          "I will put a glass of water on the nightstand — let it be the first thing my hand touches",
+          "Within 24 hours I will buy or order a physical alarm clock"
+        ],
         "quiz": [
           {
             "q": "Why is phone-as-alarm bad?",
@@ -2012,13 +2028,75 @@
             "explain": "Distance from phone creates mental boundary."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You put the phone in the kitchen but kept its \"Sleep\" alarm by the bed instead of buying a clock. In the morning the alarm rang — while turning it off, you opened Instagram. Why is this not a surprise?",
+            "options": [
+              "Surprise — \"Sleep\" mode should not have let it happen",
+              "Reflex — once the phone is in hand, the brain seeks stimulus, contact matters more than distance",
+              "Battery was low, it opened by itself",
+              "Wrong app"
+            ],
+            "correct": 1,
+            "explain": "Wendy Wood data: 88% of people who pick up the phone open another app within 60 seconds. Moving the phone out of the bedroom is not \"try it for a night\" — it means cutting the line of contact. Sleep mode is not enough, physical distance is."
+          },
+          {
+            "q": "Your partner says: \"What if there is an emergency at night? If the phone is not in the bedroom we will miss the call.\" Does this hold?",
+            "options": [
+              "Yes, real risk, keep the phone in the room",
+              "No, true emergencies are rare, it is the most common excuse against changing a habit",
+              "Only solution is to move it to the next room",
+              "Even a short trial is risky"
+            ],
+            "correct": 1,
+            "explain": "Do the risk math. How many real emergency calls came in the last 5 years at night? Probably 0. In return, daily morning scrolls. If a real concern, leave the phone in the hallway with sound low and emergency bypass on, or use a landline. The emergency scenario is the most common excuse for never changing the habit."
+          },
+          {
+            "q": "You bought a clock and have left the phone in the living room for 3 days. Morning scroll time dropped, but at midday you still unlock the phone every 8 minutes. Why did morning discipline not transfer to midday?",
+            "options": [
+              "Morning fix is enough, afternoon habit fixes itself",
+              "Morning and midday are separate triggers, one is automatic, the other needs its own intervention",
+              "Use a louder alarm",
+              "You just need to never open the phone"
+            ],
+            "correct": 1,
+            "explain": "Wood's cue-context model: every environment carries its own trigger. You cut the bedroom trigger but the desk, kitchen, and bus triggers are still alive. Each context needs its own design. Morning is one beginning, midday and evening are different fights."
+          },
+          {
+            "q": "You bought the clock but in the morning you opened the phone \"just for the weather.\" 15 minutes passed. What do you do the next morning?",
+            "options": [
+              "Lock the phone harder, in a safe",
+              "Stick a one-line note on the alarm clock, let it be the first thing your eye lands on",
+              "Sell the phone",
+              "Try again, willpower will get stronger"
+            ],
+            "correct": 1,
+            "explain": "Behavior change rule: willpower carries no information, environment does. Wood's team calls this cue-substitution. Whatever your eye hits first in the morning, the brain chases. Replace the phone with a paper note (\"Window and water, no phone\") and the brain takes a new target. Not more willpower — smarter design."
+          }
+        ],
         "proTip": "Place the phone in the farthest corner of the room — physical distance builds psychological boundary."
       },
       "3": {
         "title": "Water, Face, Window",
-        "teaching": "When you wake, build a 3-step chain: drink a glass of water, wash your face, open a window or step outside for 1 minute.\n\nWater breaks overnight dehydration. Face wash pulls you out of parasympathetic. Natural light resets circadian rhythm.\n\nThis 3-minute chain makes mornings 10x clearer than before.",
-        "action": "Tomorrow apply this chain. Right after waking: water then face then window. Phoneless.",
+        "hook": "You woke up. Brain half-asleep, cortisol wave climbing, circadian clock still in the middle of last night. Whatever you decide in the first 5 minutes sets the speed of the next 16 hours. Most mornings, that decision is made by the screen, not by you.",
+        "teaching": "When you wake, build a 3-step chain: drink a glass of water, splash cold water on your face, look directly outside or step out.\n\nWater — repairs 6-8 hours of overnight fluid loss, brings brain perfusion back fast. Cold face wash — pulls you out of parasympathetic via the vagus nerve, sharpens attention. Natural light — resets the circadian clock, lands the cortisol peak in the right place.\n\nThis three-step chain takes 3 minutes. Makes the morning 10x clearer.",
+        "teachingDeep": "Stanford neuroscientist Andrew Huberman repeats one rule across the 2021 Huberman Lab podcast: in the first 10 minutes after waking, point your eyes at natural sunlight. The reason is Johns Hopkins' Samer Hattar's 30 years of research: the suprachiasmatic nucleus (SCN), a 20,000-neuron region of the hypothalamus, is the body's master clock. The SCN runs on melanopsin cells wired straight to the retina. When morning light does not hit those cells, the body still thinks \"it is night.\"\n\nThe mechanism: SCN reads the type and brightness of light at the eye. 10,000 lux of natural light striking the retina in the morning (not through glass — open sky) locks the cortisol awakening response curve to the right hour. If that curve does not peak on time, your brain says \"still night\" even after you got out of bed. The reason you feel groggy and scattered for hours is not laziness — it is biology missing its signal.\n\nBut the real trap is not there. The real trap: thinking \"I will look out the window\" and then opening the phone. Hattar data: a 30-second glance is not enough, the retina needs 2-3 continuous minutes of exposure to gather enough photons. If you use the phone during that time, your pupils constrict and the effective light intake drops by half. Not a glance — real exposure is required.\n\nWhy water and cold face in this chain? Huberman again: 300-500ml of fluid is lost overnight, blood viscosity rises, brain perfusion slows. One glass of water thins the blood within 90 seconds and cognitive speed returns. Cold face washing stimulates the vagus nerve — the same core mechanism behind Wim Hof research. Norepinephrine rises 200% within 60 seconds, attention sharpens. Each of the three steps works on its own. Together they are synergistic.\n\nMonastic mornings have kept the same chain for thousands of years: first ablution (cleansing with water), then gratitude (often facing outward), then the first prayer. You are now translating the same structure into modern language: drink water, wash your face, look at the sky. Science confirmed what tradition already knew.",
+        "practice": {
+          "instruction": "If it is morning right now: get up, drink a glass of water (at least 250ml), splash cold water on your face (at least 5 times), then go to a window or step out. For 2 minutes, no phone — just look at the sky. If it is not morning: out loud, say what you will do at the first ring of the alarm tomorrow, and decide right now where the phone will go.",
+          "seconds": 120,
+          "prompt": "On which step did you hesitate the first time you ran this chain? What did your brain question — \"is this really necessary?\""
+        },
+        "action": "Run this chain in the first minute after the alarm tomorrow morning: 250ml of water, cold face, 2 minutes of direct sky. Phoneless, screenless.",
         "reflectionPrompt": "How did you feel after the triple chain?",
+        "reflectionPrompts": [
+          "Tomorrow morning, in the first 10 minutes, how many seconds will you look directly at the sky? Say the number out loud. Does it sound realistic?",
+          "Of the three steps, which is hardest? If you say \"cold water,\" ask yourself: is it truly cold or just uncomfortable? What is the most common excuse you reach for against this chain?"
+        ],
+        "commitments": [
+          "Tomorrow within 30 seconds of the alarm I will reach for the glass of water on the nightstand",
+          "I will turn the bathroom faucet to the blue cold mark, 5 splashes on my face",
+          "I will not open the phone for the first 60 minutes after waking"
+        ],
         "quiz": [
           {
             "q": "Morning triple chain?",
@@ -2043,13 +2121,75 @@
             "explain": "Cold shock = wake mode activation."
           }
         ],
-        "proTip": "After cold face-wash, skip the towel; air-drying delivers extra wake-up shock."
+        "scenarioQuiz": [
+          {
+            "q": "You woke up. Curtains down, window shut. You opened the phone, turned on the bedside lamp, went straight to coffee. By 11:00 you are cognitively dull. The day is lost. What was the critical mistake?",
+            "options": [
+              "Coffee too late",
+              "No natural light in the first 10 minutes, the cortisol awakening response never triggered",
+              "Phone opened too late",
+              "Not enough sleep"
+            ],
+            "correct": 1,
+            "explain": "Andrew Huberman's protocol in one line: natural light in the first 10 minutes sends the SCN signal that locks the cortisol awakening response to the right hour. Artificial light (bedside lamp) does not carry enough lux. Go to the window, see the sky. Even on a cloudy day, outdoor lux is 100x indoor."
+          },
+          {
+            "q": "The day is grey, overcast. You say \"cloudy, no real light, why bother.\" Is the logic correct?",
+            "options": [
+              "Correct, no real light on cloudy days",
+              "Wrong, even a cloudy day delivers 100x the lux of an indoor room",
+              "Only sunny days work",
+              "A lamp is enough"
+            ],
+            "correct": 1,
+            "explain": "Lux numbers: indoor room 100-300 lux, sunny day 50,000-100,000 lux, cloudy day 5,000-20,000 lux. Cloudy still delivers 20-100x indoor. \"Rainy, cold, I will get sick\" is not a real reason. Even pressing your face to the window reaches 10,000 lux. The excuse is usually not in the weather — it is in your head."
+          },
+          {
+            "q": "You resist cold water on the face. \"Lukewarm is healthier\" you think. Which is true?",
+            "options": [
+              "Lukewarm is healthier, cold is stress",
+              "Cold shock triggers a 200% norepinephrine spike, controlled stress is useful here",
+              "Water temperature is irrelevant",
+              "Hot water on the face wakes the brain"
+            ],
+            "correct": 1,
+            "explain": "The vagus nerve is wired directly into the facial thermoreceptors. Cold shock activates the sympathetic nervous system fast and triggers a norepinephrine peak (Yale Pierre Lavoisier group, 2018). Result: in 60 seconds attention sharpens, mood normalizes. Lukewarm does not send the signal. You may not enjoy the cold, but the goal is not comfort — it is alertness."
+          },
+          {
+            "q": "You ran the chain out of order: window first, then water, then face. Less effective. Why?",
+            "options": [
+              "Order does not matter",
+              "Before the cortisol peak, a dehydrated brain is too tired and a thirsty brain does not process the signal well",
+              "Window must come last",
+              "Light is useless without washing first"
+            ],
+            "correct": 1,
+            "explain": "The logic is layered. Water opens the vessels, cold face shocks the brain, light gives the SCN its signal. In reverse order the chain still works but is about 30% weaker. The most important rule is that light arrives in the first 10 minutes. Water and face accelerate, light sets the clock itself."
+          }
+        ],
+        "proTip": "After cold face-wash, skip the towel — air-drying delivers extra wake-up shock."
       },
       "4": {
         "title": "Morning Silence",
-        "teaching": "Most people turn morning into a noise bath: notifications, news, podcasts, calls. The brain is exhausted before the day starts.\n\nSilence is not a luxury, it is a basic need. Spending the first 60 minutes silent makes you less reactive all day.\n\nSilence is not doing nothing. It is making space to think.",
-        "action": "Tomorrow spend the first 60 minutes silent: no music, no podcasts, no sound.",
-        "reflectionPrompt": "Did silent morning make you more tired or more calm?",
+        "hook": "06:30. Alarm rings. Within 30 seconds you opened a podcast, CNN is on in the background, the phone is pouring comment notifications. Your brain took in 12 different human voices before the day began. By 09:00 you cannot tell which thought is yours.",
+        "teaching": "Most people turn morning into a noise bath: notifications, news, podcasts, calls. The brain is exhausted before the day starts.\n\nSilence is not a luxury, it is a basic need. The first 60 minutes silent makes you less reactive all day.\n\nSilence is not doing nothing. It is making space for your own thought.",
+        "teachingDeep": "Georgetown computer scientist Cal Newport, in \"Deep Work\" (2016), names the most serious cost of modern life: attention residue. The term comes from Sophie Leroy's 2009 University of Minnesota study: when you switch from one topic to another, the residue of the old topic lingers in the mind for 23 minutes on the new task. If you opened a podcast the moment you woke, that subject (Trump, crypto, football) seeps into your real focus for the next 23 minutes.\n\nThe mechanism: the brain cannot process two topics at one instant. What looks like multitasking is really micro task-switching. Each switch costs 0.5-1 second of prefrontal reload. If the first 60 minutes of the morning are flooded with external stimuli, the prefrontal cortex locks into reactive mode. Later you sit at the desk and complain \"I cannot focus\" — the real cause is that the brain was already trained into reactive mode hours earlier.\n\nBut the real trap is not there. The real trap: the lie \"I am listening to instrumental music, that counts as silence.\" Newport data is clear: even instrumental music creates processing load in the prefrontal cortex (Sussex group, 2017 fMRI study). Rhythm, melody, timbre — each consumes attention in the background. Real silence = no sound, no screen, no other person. Just your own breath.\n\nNicholas Carr warns in \"The Shallows\" (2010): a brain exposed to constant audio and visual input physically loses its deep-thinking neural pathways. The brain is plastic, it prunes what it does not use. For someone who has woken to a podcast every morning for 6 years, true silence is no longer \"boring\" — it is physiologically uncomfortable, because the relevant neural connections have atrophied.\n\nIn the monastic tradition this is called magnum silentium, the Great Silence — no speech from the evening Compline service until the morning Lauds. For a thousand years. Because they observed: the deepest thought and the calmest soul are born from a single noise-free 60 minutes. The modern brain is asking you for the same rule. First 60 minutes: no sound, no screen, no other person's thought. Just you. This is not deprivation. It is reclamation.",
+        "practice": {
+          "instruction": "Right now, set the phone to silent and turn it face-down. Sit upright on the edge of a chair or bed, feet on the floor, spine straight. Eyes open, fix them on a distant point. For 2 minutes do not speak, do not play music, do not look at a screen. Just count breaths: one inhale and exhale = one. When the mind wanders, do not judge, return to the count.",
+          "seconds": 120,
+          "prompt": "How far did you get to count without breaking? Where did the mind go the first time it wandered?"
+        },
+        "action": "Tomorrow morning, no sound for the first 60 minutes after waking: no podcast, no music, no news, no phone call. Keep the phone in airplane mode. Only the morning routine and your own thought.",
+        "reflectionPrompt": "Did the silent morning make you more tired or more clear?",
+        "reflectionPrompts": [
+          "Of the last 30 days, how many mornings did you spend in full silence? Zero? What is the first defense that comes up when you hear that number?",
+          "If 60 minutes of pure silence feels like a threat, what thought are you afraid will surface? Name it."
+        ],
+        "commitments": [
+          "Tomorrow I will keep the phone in airplane mode for 60 minutes after waking",
+          "Tonight I will turn off morning notifications for podcast and YouTube apps",
+          "Tomorrow in the shower no music — only the sound of water"
+        ],
         "quiz": [
           {
             "q": "Why morning silence isn't luxury?",
@@ -2074,13 +2214,75 @@
             "explain": "Silent start = calm reactivity all day."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "\"I tried morning silence but played instrumental jazz in the shower — no lyrics.\" Does that count as silence?",
+            "options": [
+              "Yes, if there are no words it counts",
+              "No, even instrumental music puts processing load on the prefrontal cortex",
+              "Jazz is the only exception",
+              "Only lyrics break silence"
+            ],
+            "correct": 1,
+            "explain": "Sussex 2017 fMRI study: instrumental music creates 30% less prefrontal load than music with vocals, but still a real load. Silence here means neural rest. Rhythm, melody, and timbre keep attention engaged. True silence = no sound source. Music can start after 60 minutes."
+          },
+          {
+            "q": "Your partner wants to talk at breakfast: \"What are we doing today?\" You are in the silence protocol. Smartest move?",
+            "options": [
+              "Stay silent, ignore them",
+              "Agree in advance: this week I will be silent for 60 minutes in the morning, then we talk",
+              "Accept the conversation, drop the protocol",
+              "Force silence on your partner too"
+            ],
+            "correct": 1,
+            "explain": "The silence rule is your own boundary. Imposing it without warning harms the relationship. Explain in advance: \"I start the morning with 60 minutes of silence. I would be grateful if you let me handle communication later.\" Most adults respect it. Silence is not monastic vow — it is professional discipline."
+          },
+          {
+            "q": "\"I think better with podcasts on, silence overwhelms me.\" What is this?",
+            "options": [
+              "True, everyone has their own style",
+              "Carr's diagnosis from \"The Shallows\": deep-thought neural pathways have been weakened by constant input, silence has become intolerable",
+              "Silence works only for introverts",
+              "Podcasts deliver information, useful"
+            ],
+            "correct": 1,
+            "explain": "Nicholas Carr: \"The brain is plastic, it prunes what it does not use.\" For someone who has thought with podcasts for years, silence feels uncomfortable because those neural pathways have weakened. The fix is not endurance — it is rebuilding. Week 1 is hard, week 2 is tolerable, week 3 becomes preferred. Brain is like muscle, it strengthens under load."
+          },
+          {
+            "q": "You started 60 minutes silent, at minute 45 you opened the phone \"just for the headlines.\" What does the 23-minute rule say?",
+            "options": [
+              "A quick scan is harmless",
+              "After reading a headline, the topic occupies the prefrontal for 23 minutes, the gain from silence evaporates",
+              "Headlines are too short to harm",
+              "Only social media is harmful"
+            ],
+            "correct": 1,
+            "explain": "Sophie Leroy: the 23-minute attention residue applies to \"just a headline\" too. The brain opened the subject, and even after closing it processes the topic in the background. A 60-minute silence block broken at minute 45 effectively gives only 22 minutes of silence. Whole-block rule: 60 = 60, unbroken."
+          }
+        ],
         "proTip": "Even talking can break silence — true silence is internal + external."
       },
       "5": {
         "title": "5-Minute Morning Intent",
-        "teaching": "Most start the day reactive: email, WhatsApp, notifications. You react to what comes to you, not what you intended.\n\n5 minutes of intent changes this. Three questions: (1) Today is main priority? (2) Which habits will I sustain? (3) What will I be proud of tonight?\n\nThese 5 minutes shape the rest of the day.",
-        "action": "Practice morning intent for 5 minutes tomorrow. Pen and paper, answer the three questions.",
-        "reflectionPrompt": "Did written intent influence your decisions throughout the day?",
+        "hook": "If you do not know what you want to do today, if you do not know what you will be proud of by night, you will spend the day on what other people want from you. Phone messages, email, social media — outside voices will fill your intent all day. The morning 5 minutes are either yours, or the algorithm's.",
+        "teaching": "Most start the day reactive: email, WhatsApp, notifications. You react to what comes to you, not what you intended.\n\n5 minutes of intent changes this. Take a notebook. Three questions: (1) What is today's main priority? (2) Which habits will I sustain? (3) What will I be proud of tonight?\n\nThese 5 minutes shape the rest of the day.",
+        "teachingDeep": "NYU psychology professor Gabriele Oettingen distilled 25 years of motivation research into the WOOP method: Wish, Outcome, Obstacle, Plan. In \"Rethinking Positive Thinking\" (2014) the striking finding: people who only fantasize positively have lower real-life achievement. The brain treats the fantasy as already realized, motivation drops. By contrast, people who write down both the goal and the obstacle raise their achievement rate by 50%.\n\nThe mechanism: Roy Baumeister, Florida State psychology, in \"Willpower\" (2011) describes ego depletion. Willpower fatigues like a muscle. Fresh in the morning, drained by night. If the most important decisions cannot be made by tired willpower, intent disappears — drift remains. Writing intent in the MORNING means locking the day while willpower is fresh. A tired evening brain obeys an intent written hours earlier 4x more easily than it makes a fresh decision (Baumeister data).\n\nBut the real trap is not there. The real trap: the illusion that says \"I know my intent in my head, no need to write it down.\" Dominican University, Gail Matthews 2015 study: people who write their goals achieve 42% more than those who only think about them. Writing is not symbolic — the hand-brain-eye triangle deepens neural encoding up to 4x. Thought is volatile, writing is fixed. Thought does not bind your tomorrow self. Writing does.\n\nThe three questions are not random. \"Main priority\" = the spine of today, at least one hour of deep work. \"Which habits will I sustain\" = chained small wins, keeps the dopamine system healthy. \"What will I be proud of tonight\" = looking back at today from the finished day, the Stoic technique of premeditatio futurorum. Three questions written in the morning, audited at night — a loop kept fresh by morning willpower.\n\nMonastic tradition has practiced this for a thousand years under different names. The Stoic emperor Marcus Aurelius wrote \"Meditations\" in the morning and asked himself \"which part of my character will I show today?\" Benedictine monks begin with intentio diei, the intent of the day. Same structure. Pen and paper, not a phone note. Because writing by hand is the ritual that physically anchors the decision in the brain. Screen writing is fleeting. Paper writing binds. Today is your turn: 3 lines, pen, paper. 5 minutes.",
+        "practice": {
+          "instruction": "Take a pen and paper, or use the back page of any notebook. RIGHT NOW write 3 lines: (1) What will my main priority be the moment I wake tomorrow? (2) Which 3 habits will I sustain tomorrow? (3) What do I want to feel proud of tomorrow night? Phone notes do not count, a physical pen is required. 3 minutes.",
+          "seconds": 180,
+          "prompt": "Did your pen pause at any point? Which question was hardest to answer?"
+        },
+        "action": "Tomorrow in the first 10 minutes write these 3 lines. Pen and paper. Before bed look back, mark which line you reached and which you did not.",
+        "reflectionPrompt": "Did the written intent influence your decisions throughout the day?",
+        "reflectionPrompts": [
+          "Of the last 30 mornings, how many did you start with a written intent? If the answer is zero, what is the first defense you reach for as you read this?",
+          "When you tried to write today's main priority in one sentence, did you pause? If yes, why — vagueness, fear of the work, or competing wants?"
+        ],
+        "commitments": [
+          "Tonight I will place a pen and a small notebook beside the bed",
+          "Tomorrow within the first 10 minutes of waking I will write 3 lines",
+          "This week, every night before bed I will look back at that day's 3 lines and hold myself accountable"
+        ],
         "quiz": [
           {
             "q": "Reactive day start means?",
@@ -2103,6 +2305,52 @@
             ],
             "correct": 2,
             "explain": "Priority, habits, pride — three shape the day."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You say \"I know my intent in my head, no need to write it.\" After 30 days, where is your achievement rate compared to people who write it?",
+            "options": [
+              "Same, writing does not matter",
+              "About 42% lower (Dominican University, Matthews 2015)",
+              "Higher, because you are flexible",
+              "Depends only on motivation"
+            ],
+            "correct": 1,
+            "explain": "Gail Matthews data: writing the goal raises achievement by 42%. \"I have it in my head\" is not flexibility, it is a cognitive illusion. Thought is volatile, displaced through the day by other thoughts. Written intent is fixed, still standing at midnight."
+          },
+          {
+            "q": "You typed your intent into Apple Notes, no pen and paper. \"Same thing, right?\" Which is right?",
+            "options": [
+              "Same, only intent matters",
+              "No, handwriting deepens neural encoding 4x, screen writing is fleeting",
+              "Opposite, the phone is faster",
+              "Irrelevant"
+            ],
+            "correct": 1,
+            "explain": "Mueller and Oppenheimer (Princeton 2014), the classic laptop vs handwriting study: handwriting doubles retention. The reason: a screen is fast copying, the hand is forced synthesis. The same dynamic applies to intent. A typed intent does not bind. Paper, being a physical object, does."
+          },
+          {
+            "q": "For 5 days you have written morning intent but never reviewed it at night. \"Writing is enough,\" you say. Is the system working?",
+            "options": [
+              "Yes, writing alone is effective",
+              "Half-working: without morning intent + evening review, the accountability loop does not close",
+              "Write less",
+              "Only morning matters"
+            ],
+            "correct": 1,
+            "explain": "The system is a closed loop: morning intent written with fresh willpower + evening audit with tired but honest eyes. If you do not look at night, the intent is only a wish list. Behavior does not change without an eye holding you accountable (Locke and Latham, goal-setting theory 1990)."
+          },
+          {
+            "q": "Your morning intent: \"Today I will fix my life.\" By night you failed and felt sick of yourself. Where was the mistake?",
+            "options": [
+              "The goal was written but vague, unreachable in scope, unmeasurable",
+              "The goal was too small",
+              "Written intent always ends like this",
+              "The intent itself was wrong"
+            ],
+            "correct": 0,
+            "explain": "Locke and Latham: an effective goal is SMART — specific, measurable, achievable, relevant, time-bound. \"I will fix my life\" hits none of those. \"Today I will do 1 hour of focused work with the phone off\" is both written and measurable. Writing is not enough — writing well is."
           }
         ],
         "proTip": "Write your intent answers. The brain remembers written intent 4x more than mental intent."
@@ -3505,10 +3753,26 @@
     },
     "mind-discipline": {
       "1": {
-        "title": "Single-Focus Rule",
+        "title": "Single-Focus Rule (Multitasking Is a Lie)",
+        "hook": "How many tabs are open on your screen right now? How many apps running in the background of your phone? You say 'I'm focused' but in the last 30 seconds your brain tried to look elsewhere four times. You didn't even notice — that IS the problem.",
         "teaching": "The brain evolved to do one task at a time. Multitasking is an illusion: the brain just switches fast and performance drops at every switch.\n\nDeep work means single focus. One window, one sound, one intent. This requires training.\n\nMental muscle. Trainable. You start today.",
-        "action": "Do one 25-minute single-focus block (Pomodoro) today. Phone in another room. Only relevant tab open.",
+        "teachingDeep": "At the University of Utah, a scientist named David Strayer spent 10 years studying one question: can the human brain really do two things at once? In 2010 he published the 'Supertasker' study. The result is clear: no. Thousands of people were tested — only 2.5% (one in forty) can truly parallel-process. The remaining 97.5% — meaning, almost certainly you — think they're multitasking but are actually task-switching.\n\nWhat happens during a switch: the prefrontal cortex loads one context's rules while wiping the other's. Strayer's lab measurements: every switch increases the error rate by about 40% and extends task completion time by about 40%. Try doing two things 'at once' and both come out half-done — processed shallowly.\n\nThe real trap isn't here. The real trap is: while multitasking, you FEEL productive. This is also Strayer's finding. The brain sees itself being busy, small doses of dopamine release, you think 'I'm getting so much done.' In reality you're doing shallow-work-shallow-work-shallow-work and nothing finishes. You go to bed tired but with nothing completed. The fatigue is real, the output is fake.\n\nAdam Gazzaley calls this 'cognitive control bottleneck' in 'The Distracted Mind': the brain's working memory holds one active context at a time. Two tabs = two contexts = every glance reloads the context. Reload time: half a second to two seconds. If you switch 30 times an hour, you spend 15-60 seconds just on switching. But the real cost isn't time — it's depth. You never stay long enough in any one context to make real connections. Thinking stays flat.\n\nToday training starts. 25 minutes, one window. There's no secret — just enduring the urge. Your brain will want to switch, you won't. Minute seven will be the hardest. After minute fourteen it gets easier. A week in, 25 minutes feels laughably short and 60 minutes feels natural.",
+        "practice": {
+          "instruction": "Right now, if you're on a computer: close every browser tab except one. If on a phone: close everything except one app. Start a 120-second timer. Look at the one thing that's open. Don't do anything — just look. When the urge to switch arises, notice it. Don't switch.",
+          "seconds": 120,
+          "prompt": "In 120 seconds, how many times did the thought 'let me open something else' come? At what second did the first urge appear?"
+        },
+        "action": "Today do one 25-minute single-task block. Phone in another room. In the browser, only the single tab you need for that task. When you finish, write on paper how many times you wanted to switch.",
         "reflectionPrompt": "After 25 minutes was your mind tired or clearer?",
+        "reflectionPrompts": [
+          "In the 120-second single-look practice, when did the urge to switch first arrive? What was CONCRETELY in your mind at that moment?",
+          "Write about a recent evening when you felt 'I did so much but finished nothing.' Estimate: how many tabs were open that day, how many apps did you jump between?"
+        ],
+        "commitments": [
+          "Today I will do a 25-minute single-tab block with my phone in another room",
+          "I will not have more than two tabs open on my work computer today",
+          "I will not move to the next task before finishing one — I will notice the moment of switching"
+        ],
         "quiz": [
           {
             "q": "Multitasking myth is?",
@@ -3533,13 +3797,75 @@
             "explain": "40% drop + error rate increase."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You're writing a report. WhatsApp is open beside you, a group message arrives, you glance for three seconds. You think 'no big deal, just three seconds.' What does Strayer say is the real cost?",
+            "options": [
+              "Three seconds — just a glance",
+              "About 40% increase in errors in the following paragraphs + context reload",
+              "Zero — multitasking is real",
+              "Productivity gain — your brain rested"
+            ],
+            "correct": 1,
+            "explain": "David Strayer, University of Utah: every switch wipes context in the prefrontal cortex. You glanced for three seconds but the report context fell apart, error rate is 40% higher in the next paragraphs. 'Just three seconds' is a lie."
+          },
+          {
+            "q": "A friend says 'I can watch Netflix and do homework at the same time, no difference.' Your response?",
+            "options": [
+              "Could be true, everyone's brain is different",
+              "Based on Strayer's supertasker study, that's a 2.5% probability — 97.5% odds your friend is fooling themselves",
+              "Wrong, nobody can",
+              "Only smart people can"
+            ],
+            "correct": 1,
+            "explain": "Strayer 'Supertasker' (2010): thousands tested, only 2.5% can truly parallel-task. Statistically your friend is most likely self-deceiving — both the homework and the show come out half-quality, but they feel busy."
+          },
+          {
+            "q": "You sat down for an hour of deep work. At minute seven your brain shouts 'just check email.' Correct response?",
+            "options": [
+              "Open it quickly, close it, return — takes 30 seconds",
+              "Notice the thought, don't switch, keep sitting — minute seven IS the hardest by design",
+              "Give up, try another time",
+              "Look at email but don't reply"
+            ],
+            "correct": 1,
+            "explain": "The brain tests its switching habit in the first 10-15 minutes. Minute seven is the peak. If you don't switch, the urge drops and depth opens. If you switch, you restart. The test here isn't 30 seconds — it's staying put until minute 14."
+          },
+          {
+            "q": "You're tired in the evening but when you think 'what did I do today' nothing concrete finished. Strayer and Gazzaley's explanation?",
+            "options": [
+              "You worked too hard — rest",
+              "You stayed in shallow-work-shallow-work loop; fatigue is real, output is fake",
+              "Lacking focus — drink more coffee",
+              "Not enough sleep"
+            ],
+            "correct": 1,
+            "explain": "Adam Gazzaley 'The Distracted Mind': cognitive control bottleneck. Constant switching = constant context-loading = high brain energy use, but no concrete output because you never stayed deep in one context long enough. Fatigue is not a measure of productivity."
+          }
+        ],
         "proTip": "Keep your phone across the room. If reaching means standing, you'll often skip it."
       },
       "2": {
-        "title": "Distraction Kill List",
+        "title": "Distraction Kill List (A Named Enemy Loses Power)",
+        "hook": "How many app icons are on your phone screen right now? How many tabs and notification badges on your computer? If you're guessing but don't know — each one is stealing your attention for free. You can't win a war against an enemy with no name.",
         "teaching": "Distractions are invisible enemies. Every day list their names: which apps, which people, which thoughts split your attention?\n\nList means notice. What you notice loses its power.\n\nToday look at the list and build a defense for each.",
-        "action": "In 5 minutes list 5 things that split your attention today. For each write a defense.",
+        "teachingDeep": "Gloria Mark at UC Irvine has spent 20 years studying one question: after an interruption, how long does it take the mind to return to full focus? Her original 2004 study followed office workers and found an average of 23 minutes 15 seconds. Her 2023 book 'Attention Span' gives a worse number: today people switch between screen activities on average every 47 seconds. In 2004 that was 2.5 minutes. In 20 years attention span dropped to a quarter.\n\n47 seconds means: all day your brain slides off before it ever reaches real focus. Mark's finding: each interruption produces a small cortisol spike. A constantly interrupted brain = a brain in constant low-grade stress. That's the biology of feeling exhausted and tense 'for no reason.'\n\nThe real trap isn't here. The real trap: most distractions are invisible. You know about notifications, but you don't recognize the distractors INSIDE your head. The 'did they reply yet' thought while waiting on an email is a distraction. A silent open tab beside you is one. Even an open door behind you. Mark divides distractors in two: external (notifications, sounds, motion) and internal (thoughts, urges, habits). Internals interrupt twice as often as externals — but because they're invisible, they go uncontrolled.\n\nNaming is half the battle. In cognitive psychology this is 'affect labeling': Matthew Lieberman's fMRI studies at UCLA showed that naming an emotion or urge drops amygdala activity and engages the prefrontal cortex. Writing 'urge to check phone right now' weakens the urge — just by labeling.\n\nToday you take paper and pen. You make a list. Each line is the name of one enemy: WhatsApp, email, the conversation at the next desk, the open browser tab, the thought of X spinning in your head. Name it. Then write a defense for each. A named enemy can be armed against; an unnamed enemy hollows you out from the inside.",
+        "practice": {
+          "instruction": "Take paper and a pen. Right now start a 120-second timer. In that window, count and write EVERY notification source on your phone. App by app: WhatsApp, email, Instagram, games, banking app, all of them. Write the number. Don't think — just record.",
+          "seconds": 120,
+          "prompt": "How many notification sources came out in total? Less or more than you expected? Which one made you think 'I need to turn that off'?"
+        },
+        "action": "Today, every 5 minutes, write a Distraction Kill List on paper. Left column: name of the distractor. Right column: its defense. At least 5 items. Keep the paper on your desk and update it through the day.",
         "reflectionPrompt": "What was the most surprising item on the list?",
+        "reflectionPrompts": [
+          "What item on the list was the most embarrassing to name? Which one made you uncomfortable to write — why?",
+          "Is there an 'internal' distractor on your list (e.g., worry about the future, urge to check phone)? If not, add at least one now — and ask yourself why you didn't write it earlier."
+        ],
+        "commitments": [
+          "Today I will write a Distraction Kill List of at least 5 items on paper",
+          "Today I will turn off notifications for the hardest app on the list — entirely",
+          "Tomorrow morning I will rewrite the list — I will notice what's been added or removed"
+        ],
         "quiz": [
           {
             "q": "Distraction Kill List is?",
@@ -3564,13 +3890,75 @@
             "explain": "Awareness breaks habit power."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You wrote the list but only external enemies (WhatsApp, email, tabs). What's Gloria Mark say is missing?",
+            "options": [
+              "Add more apps",
+              "Internal enemies — thoughts, urges, expectations — interrupt twice as often as external ones",
+              "The list is enough, internals don't matter",
+              "Notification settings"
+            ],
+            "correct": 1,
+            "explain": "Gloria Mark 'Attention Span' (2023): internal interruptions (thought, habit, urge) happen twice as often as external ones. 'Urge to check WhatsApp' is also a line item. What you don't write stays invisible; what stays invisible can't be controlled."
+          },
+          {
+            "q": "You wrote 'Instagram' on the list. What defense actually works next to it?",
+            "options": [
+              "I will open it less",
+              "Turn off notifications + remove from home screen + add a friction step at entry",
+              "I will use it sensibly",
+              "Only in the evening"
+            ],
+            "correct": 1,
+            "explain": "A defense must be concrete + environmental. 'I will open it less' is an intention, requiring willpower. Turning off notifications + removing from home + adding a 6-digit lock = environmental friction. Walter Mischel's work shows: distance works, willpower doesn't."
+          },
+          {
+            "q": "On your list you wrote 'work thought spinning in my head.' What defense works?",
+            "options": [
+              "Try to stop thinking about it",
+              "Write the thought on paper and put it in a 'later' box — the brain releases what's been written",
+              "Open the phone to distract yourself",
+              "Take medication"
+            ],
+            "correct": 1,
+            "explain": "David Allen 'Getting Things Done': the brain exhausts itself carrying anything unwritten. Capture the thought to a 'later' box and the brain lets it go. 'Stop thinking about it' doesn't work — it's like saying 'don't think of a pink elephant.'"
+          },
+          {
+            "q": "Mark's 2023 data: people switch between screen activities every 47 seconds, down from 2.5 minutes in 2004. What does this tell you?",
+            "options": [
+              "Technology advanced, normal",
+              "Attention span dropped to a quarter in 20 years; that's not natural evolution but a war the environment won",
+              "People think faster now",
+              "Science is wrong"
+            ],
+            "correct": 1,
+            "explain": "Brains don't evolve in 20 years. The environment changed — notifications, infinite scroll, multiple screens. You're not a victim of the environment, you're its engineer. The Distraction Kill List is environment re-engineering."
+          }
+        ],
         "proTip": "Pin your distraction kill list on the phone home screen. Seeing = noticing."
       },
       "3": {
-        "title": "Deep Work Block",
+        "title": "Deep Work Block (The 90-Minute Ultradian Window)",
+        "hook": "When was the last time you worked on a single task for 90 minutes without interruption? No phone, no notifications, no other tabs, no looking at anyone. If you can't remember — probably not in the last several months. You say 'I'm working' but you're not actually doing deep work.",
         "teaching": "Cal Newport: deep work = deep value. Shallow work is easily replicated, produces little value. Deep work is hard, rare, very valuable.\n\n90 minutes of true deep work per day produces 10x more output than 8 hours of shallow.\n\nReaching this requires gradual training.",
-        "action": "Do one 90-minute single-task block today. 90 min uninterrupted.",
+        "teachingDeep": "Cal Newport is a computer science professor at Georgetown. In 2016 he published 'Deep Work.' His thesis in one sentence: the 21st century has two types of skill — shallow work that's easily automated, and deep work that produces value. Shallow work is what anyone can do: answer email, attend meetings, write reports. Deep work demands hard focus: writing, solving, coding, learning, creating. Newport's claim: the economy increasingly rewards deep workers and crushes shallow ones, because shallow work is being automated while deep work remains uniquely human.\n\nWhere does 90 minutes come from? Nathaniel Kleitman discovered in the 1950s that during sleep the brain cycles through ~90-minute periods — REM and non-REM, the ultradian rhythm. In the 1970s researchers noticed the rhythm continues while awake. Roughly every 90 minutes the brain shifts from high-focus to low-focus phase. So 90 minutes isn't magic — it's a biological ceiling. Pushing past it brings brain fatigue, errors, dropped decision quality.\n\nThe real trap isn't here. The real trap is: you think you can't sustain 90 minutes in one sitting. Newport's bigger finding is that deep work is a LEARNED skill. Nobody is born sitting for 90 minutes. It comes through training. Maya Angelou wrote in 7-hour blocks by her 60s, but started at 30 minutes. Newport himself writes that 'in the first week 25 minutes broke me.'\n\nNewport sets two rules. First: deep work is a habit, not inspiration. Fixed time, fixed place, fixed ritual. Second: deep work has a daily cap — 3-4 hours max. Beyond that is shallow work territory. The 8-hour-of-deep-work goal is a lie, unsustainable.\n\n90 minutes might be too much today. What matters is starting. First 25, then 45, then 60, then 90. Training is needed. The 2-minute eye-on-one-object practice you'll do now is actually a tiny deep-work proof — your brain seeing that it CAN tolerate one object for 120 seconds. Once your brain sees it, 90 minutes becomes a reachable target.",
+        "practice": {
+          "instruction": "Pick a concrete object in front of you: a glass, a pen, a doorknob. Move your phone away. For 120 seconds, look only at that object. Don't touch it, don't move it. Don't name it. Just look. When your mind drifts — and it will — notice and return to the object.",
+          "seconds": 120,
+          "prompt": "In 120 seconds, how many times did your mind drift from the object? At what second was the first drift? If even this short practice tires you, do you grasp how much training 90 minutes of deep work needs?"
+        },
+        "action": "Today do 1 deep work block. 90 minutes is the target; 45 still counts if that's your start. Single task. Phone in another room. One tab. Before you begin, write on paper: 'In these 90 minutes I will finish: __________'",
         "reflectionPrompt": "How long would the same task have taken in shallow mode?",
+        "reflectionPrompts": [
+          "What was the hardest moment in the deep work block? At what minute? What internal voice whispered to you at that moment?",
+          "Apply Newport's claim that 'deep work is the most valuable skill in the economy.' How many total hours of deep work have you done in the last 30 days? Estimate honestly. Does the number bother you?"
+        ],
+        "commitments": [
+          "Today I will schedule a 90-minute deep work block on my calendar — specific time, specific task",
+          "Before the block starts I will move my phone to another room and turn off notifications",
+          "During the block I will work on one task and sit until it's done before moving to anything else"
+        ],
         "quiz": [
           {
             "q": "Optimal deep work block?",
@@ -3595,13 +3983,75 @@
             "explain": "Deep work produces deep value."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You start a deep work block. At minute 35 your brain says 'let me get a glass of water.' Correct response?",
+            "options": [
+              "Get water, the body's need matters",
+              "Note it — write 'water' — finish the block, then drink. Most 'body needs' are actually switch excuses",
+              "Finish the block but forget the water",
+              "Open it quickly, take a sip, return"
+            ],
+            "correct": 1,
+            "explain": "Newport's rule: water, bathroom, food should be prepared BEFORE the block. Once the block starts, 'body need' is usually the brain's switch-seeking. Real thirst doesn't begin at minute 35 of sitting."
+          },
+          {
+            "q": "A friend says 'I work 10 hours a day, I'm so busy.' What does Newport say is the missing question?",
+            "options": [
+              "10 hours is too much, rest",
+              "How many of those 10 hours are DEEP, how many are shallow — probably 1-2 deep, 8-9 shallow",
+              "Congratulate them, successful",
+              "Nothing missing, work is work"
+            ],
+            "correct": 1,
+            "explain": "Newport's main finding: people use 'work' without separating shallow from deep. Most people claiming '10 hours' actually do 2 hours deep + 8 hours email/meetings. Output comes from depth — not hours."
+          },
+          {
+            "q": "By ultradian rhythm theory, what should you do after 90 minutes?",
+            "options": [
+              "Another block — 'I have momentum'",
+              "15-20 minutes real break: walk, drink water, look out a window, no phone. Then second block",
+              "Look at social media, you earned a reward",
+              "Push through, resting is weakness"
+            ],
+            "correct": 1,
+            "explain": "Nathaniel Kleitman's ultradian rhythm: 90 minutes high focus, 15-20 minutes low focus. In this window the brain replenishes glycogen and dopamine receptors. No break = second block's quality drops dramatically. Social media isn't rest — it's a different kind of fatigue."
+          },
+          {
+            "q": "How much daily deep work does Newport recommend as the maximum?",
+            "options": [
+              "1 hour",
+              "3-4 hours — beyond that is unsustainable and eats shallow work",
+              "8 hours",
+              "No limit"
+            ],
+            "correct": 1,
+            "explain": "Newport and Anders Ericsson's 'deliberate practice' research: humans can't sustain top-level focus beyond 3-4 hours a day. Pushing past brings performance loss and burnout. The 8-hour deep work goal is a fantasy — you need hours for shallow work too."
+          }
+        ],
         "proTip": "Write your goal on paper before deep work starts. \"In these 90 min I will finish ___.\""
       },
       "4": {
-        "title": "Morning Rule: Important First",
+        "title": "Morning Rule: Hardest Task First",
+        "hook": "What's the first thing you did when you woke up today? Opened the phone, checked email, looked at WhatsApp — before you finished reading this sentence you've probably done all three before. You're spending your freshest, highest-focus 90 minutes on someone else's priority. Then you say 'I can't focus.'",
         "teaching": "Willpower is highest in the morning. By night you are depleted. Move important work to morning.\n\nFirst 90 minutes is the day golden window. Doing shallow work in this window is a crime.\n\nPriority rule: hardest task first. Everything else can wait.",
-        "action": "Tomorrow do your hardest task between 9:00 and 10:30. No email or WhatsApp.",
+        "teachingDeep": "Roy Baumeister ran the famous radish experiment at Florida State in 1996: participants entered a room with fresh chocolate chip cookies and radishes on the table. Half were told 'eat only radishes,' half had free choice. Then both groups got an impossible puzzle. The radish group gave up on the puzzle in half the time. His conclusion: willpower depletes. He called this 'ego depletion.'\n\nBaumeister's thesis has become controversial in the last 15 years — some replication studies failed. But beneath the debate hides another truth: morning willpower is high NOT because 'the tank is full' — morning willpower is high because cortisol is high. This biology is uncontested.\n\nCleveland Clinic data is clear: cortisol peaks within 30-45 minutes of waking — this is called the 'cortisol awakening response' (CAR). During CAR the prefrontal cortex receives extra glucose, attention and decision-making sharpen. This window lasts ~2-3 hours, then declines. So for someone waking at 6:00 AM, the 'golden 3 hours' are 6:30-9:30. Deep work not done in this window is lost.\n\nThe real trap isn't here. The real trap: most people BURN their golden window on email, social media, news. The moment you check the phone, you put your prefrontal cortex into shallow-work mode. Your brain asks 'what's today's agenda' and the answer becomes someone ELSE'S priority instead of yours: your boss's email, your friend's message, the world's news. You're no longer the owner — you're the operator. Reacting, not creating.\n\nThere's a quote attributed to Mark Twain: 'Eat the ugliest frog first thing in the morning, and the rest of the day knows nothing worse will happen.' Brian Tracy popularized this in his 2001 book 'Eat That Frog.' The logic is simple: do your hardest, most-avoided task in the morning CAR window. Cortisol is with you, dopamine hasn't been spent, the environment is quiet. If you don't, the task circles in your head all day — every other thing you do carries an undercurrent of tension. Tracy's finding: 80% of people who push their hardest task to the afternoon never do it that day.\n\nToday you'll make a small move: write tomorrow's frog NOW. On paper. Beside your bed. Somewhere you'll see it the moment you wake up. Before the phone.",
+        "practice": {
+          "instruction": "Right now grab a sticky note, post-it, or paper. Write tomorrow's HARDEST, most-avoided task in one sentence. Not 'write email' — 'write the price-objection email to client X.' Concrete, named, startable. You have 120 seconds. Then put that paper where you'll see it the moment you wake up tomorrow.",
+          "seconds": 120,
+          "prompt": "While writing, what task came to mind that you AVOIDED writing? Why are you avoiding it — because it's not important, or because it's hard?"
+        },
+        "action": "Tomorrow morning, do NOT open your phone. Start with the frog you wrote on paper. Give the first 90 minutes only to that task. When you finish — or after 90 minutes — you may open the phone. Every minute you open it earlier, you redo a day.",
         "reflectionPrompt": "When you started with deep work first, how did the rest of the day go?",
+        "reflectionPrompts": [
+          "What did writing tomorrow's frog feel like — relief, tension, urge to escape? What's underneath that feeling?",
+          "In the last 30 days, on how many mornings did you actually keep your first 30 minutes phone-free? If the number is zero, calculate what that has cost you."
+        ],
+        "commitments": [
+          "I will write tomorrow's hardest task on paper now and leave it beside my bed",
+          "Tomorrow I will not open my phone on waking — first 90 minutes only on the frog",
+          "Tonight I will move my phone out of the bedroom to charge elsewhere — to break the morning reflex"
+        ],
         "quiz": [
           {
             "q": "Why morning 90 min is golden?",
@@ -3626,13 +4076,75 @@
             "explain": "Shallow work in golden hour is a crime."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You wake, cortisol is high, your mind is clear. Which is the WRONG thing to do in the first 90 minutes?",
+            "options": [
+              "Open your hardest project and start",
+              "Check email — 'I'll just see if anything important came in'",
+              "Think with paper-and-pen before opening the phone",
+              "Start writing"
+            ],
+            "correct": 1,
+            "explain": "Email doesn't have a 'just a quick check' mode. The moment you open it, per Cleveland Clinic data, you surrender the CAR window to someone else's agenda. 'I'll just check' is the voice of an addiction — same as a smoker saying 'I'll just breathe.'"
+          },
+          {
+            "q": "Brian Tracy's 'Eat That Frog' finding: what percent of people who delay the hardest task to the afternoon never do it that day?",
+            "options": [
+              "20%",
+              "50%",
+              "80%",
+              "95%"
+            ],
+            "correct": 2,
+            "explain": "Tracy's field research: 80%. Makes sense because afternoon brings lower cortisol and more interruptions. A hard task not done in the morning is rarely done that day — it pushes to tomorrow, then to next week."
+          },
+          {
+            "q": "Cortisol peaks how many minutes after waking (CAR)?",
+            "options": [
+              "10 minutes",
+              "30-45 minutes",
+              "2 hours",
+              "Cortisol is constant"
+            ],
+            "correct": 1,
+            "explain": "Cleveland Clinic and many endocrinology studies: the cortisol awakening response peaks at 30-45 minutes and stays elevated for 2-3 hours. In this window the prefrontal cortex receives extra glucose — you won't get this level of focus again later in the day. You can delay your shower, but you cannot delay this window."
+          },
+          {
+            "q": "You wake up wanting to start the frog, but your head says 'let me just check email, maybe something urgent.' How do you test that thought?",
+            "options": [
+              "Trust the thought, I'll come back",
+              "Flip the question: in the last 30 mornings, how often was there a truly urgent email? Probably zero. The thought is lying",
+              "Ignore it, it'll pass",
+              "Sit with it but don't act"
+            ],
+            "correct": 1,
+            "explain": "The brain's excuses need to be checked against data. Test the 'maybe something urgent' hypothesis against your last 30 mornings. The answer is likely zero. The hypothesis fails. Morning email isn't urgency — it's habit, dressed up in urgency."
+          }
+        ],
         "proTip": "Don't open email before 11am. Despite what feels urgent, email always waits."
       },
       "5": {
-        "title": "Phone Interval Rule",
+        "title": "Phone Interval Rule (The Attention Residue Trap)",
+        "hook": "If your phone isn't beside you right now, how many seconds before your hand reflexively reaches for it? Even with the phone closed and beside you, your brain keeps running the thought 'did something come in?' The phone is off but your brain is still on it. That residue lives with you — you don't live without it.",
         "teaching": "A phone always on means constant interruption. If you check 50 times in 8 work hours, you have 50 micro-interruptions.\n\nPhone interval rule: keep the phone off outside 2 to 3 designated times per day. Other times: airplane mode.\n\nFirst week is hard. Second week normalizes.",
-        "action": "Try the interval rule today: 12:00, 17:00, 20:00 — 15-minute checks. Airplane mode all other times.",
+        "teachingDeep": "Sophie Leroy ran a small experiment at the University of Minnesota in 2009 that shifted the deep work conversation. She had participants start one task, switched them mid-way to another, then measured their focus on the new task. The finding was sharp: pieces of the old task stayed in the mind as 'residue.' Leroy named this phenomenon 'attention residue.' Performance on the new task drops the longer the residue lingers — sometimes for 30 minutes.\n\nNicholas Carr deepens this in 'The Shallows' (2010): the internet and especially the smartphone keep the brain in a perpetual unfinished-task state. Every time you glance at the phone, fragments of the previous task remain as residue while simultaneously fresh information from the phone floods in. Result: the brain is constantly half-loaded, never fully present in any context. Carr calls this 'continuous partial attention.'\n\nIn 2001 Marcus Raichle at Washington University used fMRI to discover the 'Default Mode Network' (DMN) — a network that activates in the brain at rest. Most people assume DMN is 'the brain sleeping' — wrong. When DMN is active, the brain forms unconscious connections, produces creativity, consolidates memory. The creative 'aha' moments, ideas in the shower, solutions in dreams — all DMN. Every time you open the phone you close DMN. Phone always on = DMN always off = zero internal thinking, zero creativity.\n\nThe real trap isn't here. The real trap: you don't notice the residue. Leroy's finding — residue operates below the threshold of awareness. You say 'I closed it,' your brain says 'still open.' That's the biology of 'unexplained scattered feeling.' There IS an explanation: half-fragments of information have been spinning in your mind since the last time you looked at the phone.\n\nThe solution in Leroy, Newport, and Carr is the same: batch checking. Instead of opening the phone at random times, open it in 2-3 specific windows per day. 15 minutes at noon, 15 at 17:00, 15 at 20:00. Every other time: airplane mode. This may sound extreme; in reality the opposite is extreme — keeping a phone always open is the radical move. A generation ago lived without phones and survived.\n\nThe first week is hard. Fear of 'missing out' is high. Second week the brain settles to a new baseline. Third week this becomes normal. The 'on-edge' feeling you get when the phone is open goes away. In its place comes a quiet width — DMN opens, you can actually think.",
+        "practice": {
+          "instruction": "Right now put your phone in airplane mode and set it down — under a cushion, on the other end of the desk, in another room. For 120 seconds, sit where you are. Do nothing. The phone is invisible. When the urge arrives, notice it. Don't reach. Watch the thought 'what am I missing.'",
+          "seconds": 120,
+          "prompt": "In 120 seconds, how many times did the 'check the phone' thought come? At what second was the first urge? When the phone became invisible, did your body relax, or get more tense?"
+        },
+        "action": "Today try the interval rule: 15 minutes at 12:00, 15 at 17:00, 15 at 20:00. Airplane mode every other time. At the end of the day, write on paper how many times the urge to check arose while in airplane mode.",
         "reflectionPrompt": "How many times did the phone want you in airplane mode?",
+        "reflectionPrompts": [
+          "When was the hardest moment of staying in airplane mode today? What was underneath the urge — fear of missing out, boredom, something else?",
+          "When you opened the phone, was there ACTUALLY something important, or 8 half-pieces of information? Count: in the 3 check windows today, how many TRULY important and how many TRIVIAL notifications did you see?"
+        ],
+        "commitments": [
+          "Today I will keep my phone in airplane mode except at 3 specific times (12:00, 17:00, 20:00)",
+          "Every time I exit airplane mode I will count and record how many notifications appeared",
+          "Tonight I will not bring my phone into the bedroom — the first half-hour of tomorrow will also be airplane mode"
+        ],
         "quiz": [
           {
             "q": "Phone interval rule?",
@@ -3655,6 +4167,52 @@
             ],
             "correct": 2,
             "explain": "Every check = micro-interruption to focus."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You closed the phone but 5 minutes later you still have 'did something come in' in your head. What is that?",
+            "options": [
+              "Anxiety — you should meditate",
+              "Sophie Leroy 'attention residue' — residue runs below the threshold of awareness, the phone is closed but your brain isn't",
+              "Doesn't matter, will pass",
+              "Caffeine effect"
+            ],
+            "correct": 1,
+            "explain": "Sophie Leroy (2009): attention residue can last up to 30 minutes. Closing the phone isn't enough — the brain needs time to wrap up the unfinished context. That's the second benefit of batch checking: don't return to deep work for 30 minutes after a check, so the residue can settle."
+          },
+          {
+            "q": "You got a good idea in the shower. Why there, according to Marcus Raichle, and not at your desk?",
+            "options": [
+              "Water relaxes",
+              "DMN (Default Mode Network) opened — without phone or task, the brain forms unconscious connections",
+              "Coincidence",
+              "Temperature helped"
+            ],
+            "correct": 1,
+            "explain": "Marcus Raichle (2001): discovered the DMN. In the shower there's no phone, no screen, no task — the brain enters DMN mode and creative connections form. A constantly open phone = a constantly closed DMN = zero creative insight. 'Aha' moments aren't random — they come when DMN opens."
+          },
+          {
+            "q": "You tried the interval rule, on day 3 anxiety arrived: 'my friends can't reach me, I'll miss something.' Correct response?",
+            "options": [
+              "Drop the rule, return to normal life",
+              "Test with data: in the last 3 days, how many ACTUAL urgent contacts were missed? Probably zero. The anxiety is lying",
+              "Loosen the rule, check hourly",
+              "Keep WhatsApp open"
+            ],
+            "correct": 1,
+            "explain": "Carr and Newport's joint finding: addiction is clever and produces plausible-sounding excuses. Test the 'my friends' anxiety with numbers. Anyone actually urgent will CALL (voice). A message is not urgent — assuming urgency is one of addiction's excuses."
+          },
+          {
+            "q": "You opened the phone, checked for 5 minutes. Then sat for a 25-minute deep work block. Why does Newport criticize this order?",
+            "options": [
+              "He doesn't, that's the right order",
+              "After a phone check, attention residue lasts 30 minutes — the first 25 minutes of your deep work block are half-loaded",
+              "Too short a duration",
+              "Never open the phone, ever"
+            ],
+            "correct": 1,
+            "explain": "Leroy's residue duration is 30 minutes. Starting deep work right after a phone check = the first half of the block is consumed by residue. Correct order: deep work block FIRST, phone check SECOND. The sequence matters, not just the time."
           }
         ],
         "proTip": "Schedule phone-check windows on your calendar: 12:00 and 17:00. Airplane mode otherwise."
@@ -5058,9 +5616,25 @@
     "body-discipline": {
       "1": {
         "title": "Movement Threshold",
-        "teaching": "Modern life is sedentary. 8 hours of sitting is the main reason for the fog over your head. Blood flow slows, brain gets less oxygen, motivation drops.\n\nSolution is not complex: 30 minutes of movement daily. What matters is increasing blood flow.\n\nNo gym needed. Start with your body.",
-        "action": "Take a 30-minute brisk walk today.",
+        "hook": "You are sitting right now. Five minutes ago you were sitting. Maybe an hour, maybe three. That weight under your hips — your body is telling you 'don't.' You are not listening.",
+        "teaching": "The modern man sits 11-13 hours a day, not counting bed. The body was built to move, not to chair. Every hour of sitting slows metabolism, collapses spine alignment, shortens hip flexors.\n\nThe solution is not complex: 30 minutes of brisk walking daily, 10K step target, stand up every hour. Not sport — default baseline.\n\nThe goal of this lesson is sharp: your baseline is no longer 'sitting' — it is 'moving.'",
+        "teachingDeep": "Mayo Clinic specialist James Levine said the sentence in 2014: 'Sitting is the new smoking.' Slow killer. Important detail: whether you exercise or not, sitting time is an independent mortality risk on its own.\n\nLevine's 2005 Science paper (NEAT: Non-Exercise Activity Thermogenesis) showed something blunt: the main difference between lean and obese individuals was not exercise. It was daily 'fidgeting' volume. Obese subjects stood 2.5 hours less per day — that is 350 calories daily, 16 kg per year.\n\nPeter Attia put this even sharper in his 2023 book 'Outlive': for healthspan, the second factor as decisive as VO2max is 'daily movement volume.' The lowest VO2max individuals die early at 5x the rate of the highest — a stronger risk factor than smoking or diabetes.\n\nThe real trap is here: 1 hour of gym followed by 10 hours of sitting does not count as 'not sitting.' Stuart Biddle's 2017 research coined a term: 'active couch potato.' The man who works out but sits all day. Risk profile equal to the one who never exercises. This is the counterintuitive truth that catches most athletes.\n\nPractical link: while sitting, hip flexors shorten. Short hip flexors equal back pain, bad posture, weak glutes. Weak glutes mean the lower back takes over on standing — years later, herniated disc. If you break this chain 8 times a day with 30 seconds of wall squats, you own a different body in 5 years.\n\nGood news: the body adapts fast. A sedentary person increases mitochondrial count by 20% after 4 weeks of regular walking. The body is not 'unchangeable' — it is waiting to be reminded. Today you start.",
+        "practice": {
+          "instruction": "Stand up right now. Put your phone on the desk or floor. Start a 60-second timer. Stand still. Scan from your toes upward: ankles, calves, knees, hips, lower back, shoulders, jaw. Notice where each region is tight or loose. Do not move — just stand and feel.",
+          "seconds": 60,
+          "prompt": "Where was the tightest region in the scan? Can you guess what time today that tightness began?"
+        },
+        "action": "Today walk 30 minutes without a break — no phone, no podcast, no music. Hear only your steps and breath.",
         "reflectionPrompt": "Did you feel mental clarity after the walk?",
+        "reflectionPrompts": [
+          "Which body region was tightest during the scan? Since what hour today has that tension been there?",
+          "How many seconds did you hesitate before sitting on the couch today? When the body says 'I'm not tired' — do you sit automatically anyway?"
+        ],
+        "commitments": [
+          "Today I will stand up for 2 minutes every hour — setting an alarm",
+          "Tonight I will sit on the floor or stand for one meal instead of the couch",
+          "1 hour before bed I will do 5 minutes of wall squats"
+        ],
         "quiz": [
           {
             "q": "Modern life's biggest physical issue?",
@@ -5085,13 +5659,75 @@
             "explain": "30 min brisk movement is enough."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You worked out 7-9 AM. Then sat at the desk 9-7. In the evening you sank into the couch saying 'I earned it.' Your health profile?",
+            "options": [
+              "Exercise + rest = perfect",
+              "Active couch potato — Biddle 2017: sitting volume cancels exercise",
+              "No difference",
+              "Worse because muscles are spent"
+            ],
+            "correct": 1,
+            "explain": "Stuart Biddle's research is clear: 1 hour of exercise does not compensate 10 hours of sitting. Your risk profile is not different from someone who never exercises. Sitting time is an independent risk on its own."
+          },
+          {
+            "q": "8 hours of sitting at the office is unavoidable. The strongest micro-intervention?",
+            "options": [
+              "Push lunch later for fewer breaks",
+              "Stand and walk 2 minutes every 30 — Dunstan 2012",
+              "Buy a more comfortable chair",
+              "Hit the gym in the evening"
+            ],
+            "correct": 1,
+            "explain": "Dunstan's 2012 Diabetes Care study: 2 minutes of standing every 20-30 minutes lowers postprandial blood sugar 24-30%. Increasing chair comfort backfires — it extends sitting time."
+          },
+          {
+            "q": "1 hour walking + 10 hours sitting vs 4 hours standing + 5 hours sitting. Who wins?",
+            "options": [
+              "The intense walker",
+              "4 hours standing — volume beats intensity (Patel 2018)",
+              "Same",
+              "Depends on the person"
+            ],
+            "correct": 1,
+            "explain": "Patel's 2018 Annals of Internal Medicine study followed 100K+ Americans. Over 11.5 hours of sitting daily raises mortality +40%. The 4-hour stander sits much less; 1 hour of walking does not erase 11 hours of sitting."
+          },
+          {
+            "q": "You have back pain. Movement hurts. The correct approach?",
+            "options": [
+              "Lie down, rest, take pills",
+              "Start with a 5-minute walk — McGill: more than 2 days of bed rest is harmful",
+              "Push through, suppress pain with intense exercise",
+              "Stay still, then see a doctor"
+            ],
+            "correct": 1,
+            "explain": "Stuart McGill (Waterloo University spine science): in acute back pain, more than 2 days of bed rest slows recovery. Low-intensity movement (5-10 minute walks within pain-free range) speeds recovery. Most chronic back pain comes from inactivity."
+          }
+        ],
         "proTip": "Add extra steps fetching coffee/tea — small additions compound to your daily threshold."
       },
       "2": {
         "title": "Cold Shower Protocol",
-        "teaching": "Cold shock = sympathetic activation = adrenaline + dopamine = clear mind.\n\nWim Hof science: cold exposure strengthens immunity, reduces depression, increases motivation.\n\nDay 1 unbearable. Day 7 routine. Day 30 you miss it.",
-        "action": "End your shower with 30 seconds of cold water today.",
+        "hook": "Under a hot shower you have 100 thoughts swirling. In the first 3 seconds of cold water, you have one: hold. The clarity you are chasing is here — not in the heat.",
+        "teaching": "Cold shock equals sympathetic nervous system activation equals adrenaline + dopamine burst equals clear mind. Hot showers soften you. Cold showers sharpen you.\n\nThe Wim Hof method and modern cold exposure research are clear: 30-90 seconds of daily cold exposure improves mood, strengthens immunity, activates brown adipose tissue.\n\nDay 1 is unbearable. Day 7 becomes routine. Day 30 you crave it. Cold is a discipline language the body learns.",
+        "teachingDeep": "Susanna Søberg at the University of Copenhagen showed in her 2021 Cell Reports Medicine study that regular cold exposure increased brown fat activity by 358% (three and a half times) in male subjects. Brown fat — unlike white fat — is thermogenic tissue that burns calories to produce heat. Cold exposure keeps it chronically active and raises baseline metabolism.\n\nKox and Pickkers' 2014 PNAS study injected E. coli endotoxin into subjects who had followed the Wim Hof method. Result: inflammation markers dropped by more than half, symptoms (shivering, headaches) clearly diminished. The sympathetic nervous system can be brought under voluntary control — something previously considered impossible.\n\nAndrew Huberman's Stanford podcast content (2022) gives a sharp number for cold: after 1-3 minutes of exposure to 11°C water, norepinephrine levels rise by 5x (500%) and stay elevated for 2-4 hours. Norepinephrine equals focus, attention, mood. Four times what a cup of espresso can do, with no side effects.\n\nThe real trap is here: taking a 'cold shower' for 5 seconds does not deliver the immune-triggering dose. Søberg's threshold is this: 11 minutes of cold exposure per week, total (4 sessions × 2-3 minutes). Below this is placebo, above is excessive.\n\nSecond trap: holding your breath. When you enter cold, you reflexively hold your breath — the diaphragm clenches, panic triggers. Wim Hof's first rule: 'go in on the exhale.' Enter exhaling, stay with deep slow breaths. This raises vagal tone and restores parasympathetic balance.\n\nThird trap: cold + hot + cold contrast cycling. Finland sauna research (Laukkanen 2018, JAMA Internal Medicine) showed that cold plunging after sauna increased cardiovascular benefits by 40%. Hot soothes, cold sparks, the cycle creates adaptation.\n\nDay 1 will feel unbearable. The voice saying 'I can't' is your brain's thermoregulation fear. After 7-14 days that same brain says 'hot shower feels mushy.' The body learns. You teach it.",
+        "practice": {
+          "instruction": "Go to the bathroom now. Turn the faucet fully cold. Start a 60-second timer. Put both hands under the running water. Do not pull back. Do not hold your breath — breathe slow, deep, exhaling. 60 seconds. When done, pull hands away, feel the dryness.",
+          "seconds": 60,
+          "prompt": "What did the urge say in the first 10 seconds? Did an inner voice say 'pull out at 15'? At which second did the body adapt?"
+        },
+        "action": "Today end your shower with 30 seconds of cold water. On the transition from hot to cold, exhale — don't hold.",
         "reflectionPrompt": "What did you feel in the first minute after?",
+        "reflectionPrompts": [
+          "How many separate thoughts went through your mind in the 30 seconds of cold? In a hot shower, how many would there be?",
+          "The moment the body said 'no cold, tomorrow' — where else in the past week did you hear that same voice?"
+        ],
+        "commitments": [
+          "Today I will end my shower with 30 seconds of cold — exhaling",
+          "Right after waking I will hold my face under cold water for 10 seconds",
+          "This week I will hit the Søberg threshold: 11 total minutes of cold exposure"
+        ],
         "quiz": [
           {
             "q": "Cold shock activates which system?",
@@ -5116,75 +5752,261 @@
             "explain": "30 seconds is enough; benefits begin."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You stepped under cold, your breath caught in the first 3 seconds, panic came. The correct response?",
+            "options": [
+              "Pull out — the body isn't ready",
+              "Exhale slow and deep — Wim Hof's first rule: go in on the exhale",
+              "Clench harder, steel yourself",
+              "Scream to release the pressure"
+            ],
+            "correct": 1,
+            "explain": "Cold + breath-holding equals panic loop. Slow long exhales activate the vagus nerve and restore parasympathetic balance. The body settles within seconds."
+          },
+          {
+            "q": "Once a week, 2 minutes of cold shower. Enough for Søberg's threshold?",
+            "options": [
+              "Enough — it's consistent",
+              "Insufficient — Søberg threshold is 11 minutes weekly (4 sessions × 2-3 min)",
+              "Too much",
+              "Irrelevant, still works"
+            ],
+            "correct": 1,
+            "explain": "Susanna Søberg's 2021 Cell Reports Medicine finding: minimum weekly dose for brown fat activation is 11 minutes. 2 minutes weekly is below placebo threshold — the body does not enter adaptation."
+          },
+          {
+            "q": "Cold shower right before bed — good or bad?",
+            "options": [
+              "Excellent — improves sleep",
+              "Bad — cold keeps norepinephrine high for 4 hours, delays sleep (Huberman 2022)",
+              "Makes no difference",
+              "Only good in winter"
+            ],
+            "correct": 1,
+            "explain": "Huberman protocol: norepinephrine stays elevated 2-4 hours after cold exposure. This delays sleep. Ideal cold window: morning or pre-noon. If you want cold in the evening, end with hot to let the body relax."
+          },
+          {
+            "q": "No sauna, no ice bath. The strongest cold practice at home?",
+            "options": [
+              "Turn on the AC",
+              "Last 60 seconds of shower fully cold + 30 seconds icy water on face",
+              "Open the window",
+              "Hold an ice cube"
+            ],
+            "correct": 1,
+            "explain": "Ordinary tap water is 8-15°C — sufficient for Søberg's threshold. Icy water on the face (mammalian dive reflex) is a bonus parasympathetic activation — heart rate drops, calm follows."
+          }
+        ],
         "proTip": "Start cold shower on the exhale. Holding breath tenses you; release it to relax."
       },
       "3": {
-        "title": "Nutrition Foundation: Protein",
-        "teaching": "The body is built from protein. Insufficient protein = low energy, slow tissue repair, low satiety.\n\nRule: 1g of protein per kilogram of body weight.\n\nSources: meat, fish, eggs, legumes, dairy.",
-        "action": "Add a protein source to every meal today. Calculate total protein grams in the evening.",
-        "reflectionPrompt": "How was your energy when you got enough protein?",
+        "title": "Movement Debt",
+        "hook": "Every hour you don't move gets written to your debt ledger. The body charges interest — at 30 you don't notice, at 45 your knees hurt, at 60 stairs become a nightmare. Today the ledger closes.",
+        "teaching": "The World Health Organization's 2020 guideline is clear: adults need a minimum of 150 weekly minutes of moderate aerobic activity + 2 days of resistance training. Anything below that is 'debt accumulation.'\n\nMost people hear this number and say, 'oh, that little.' But the reality: 75% of the population is below this threshold. You probably are too.\n\n150 minutes equals 21 minutes per day. Less than a single TikTok session. The body does not forgive the debt — it only defers it.",
+        "teachingDeep": "Stuart Biddle (Loughborough University) added the term 'movement debt' to this field in 2017: sedentariness behaves like financial debt that compounds interest. Not moving today is not 'one day' — it is back pain added 5 years later, type 2 diabetes risk 10 years later, sarcopenia 20 years later.\n\nRemember 4 WHO 2020 numbers:\n\n150 — weekly minutes of moderate aerobic activity (walking, cycling, light jogging)\n75 — alternative: weekly minutes of high intensity (running, HIIT)\n2 — minimum days of resistance training per week (squats, push-ups, weights)\n10K — daily step target (Banach 2023 meta-analysis: 7K-10K range -40% mortality)\n\nIn the population below WHO threshold, every 1 additional hour of weekly movement lowers annual mortality risk by 4% (Ekelund 2019 BMJ). Reaching 150 minutes is not small — it is large.\n\nBut the real trap is not intensity. It is consistency. Stamatakis' 2022 Nature Medicine study followed 25K Britons: brief (1-2 minute) bouts of 'vigorous intermittent lifestyle physical activity' (VILPA) — stairs, brisk walking, carrying bags — done 2-3 times a day reduced mortality risk by 40% within 4 years. No gym. No structured training. Just weaving movement into the day.\n\nDavid Patel's 2018 work reinforces this: movement volume matters before frequency. 1 hour of exercise + 11 hours of sitting carries higher risk than 4 hours of standing without exercise. This is counterintuitive. The body does not say 'I worked out' — it says 'I moved all day.'\n\nPractical intervention: do 20 bodyweight squats right now. Stand up, feet shoulder-width, push hips back as if sitting on a chair behind you. Knees do not go past the toes. 20 reps — no breaks. Do them then come back to reading.\n\nAt the end of this lesson, you will have done 20 squats. 600 in 30 days. 7300 a year. One topic, one decision — 40,000 squats in 5 years. You are a different body.",
+        "practice": {
+          "instruction": "Stand up now. Put your phone on the desk. For 90 seconds, do 20 form-strict squats: feet shoulder-width, hips back, knees do not pass toes, chest up. Count each one. Don't rush — form beats speed. If you finish 20 before time, breathe in the remaining seconds.",
+          "seconds": 90,
+          "prompt": "What's your pulse like after 20 squats? Did you think 'is that it?' or did you think 'I want more'?"
+        },
+        "action": "Today total 21 minutes of movement (the WHO daily threshold = 21 min/day). Single session or split — doesn't matter.",
+        "reflectionPrompt": "How many minutes were you moving today? Does that number bother you?",
+        "reflectionPrompts": [
+          "Did you hit the weekly 150-minute WHO threshold last week? Guess the number, then count honestly — what's the gap?",
+          "You did 20 squats in 90 seconds. What would it take to do this 3 times a day for life? What's the obstacle?"
+        ],
+        "commitments": [
+          "Today I will do 21 minutes of uninterrupted movement — single session",
+          "Tomorrow morning before brushing teeth, 20 squats",
+          "Stairs instead of elevator — this week, no exception"
+        ],
         "quiz": [
           {
-            "q": "Daily protein rule?",
+            "q": "WHO weekly aerobic threshold?",
+            "options": [
+              "30 minutes",
+              "75 minutes",
+              "150 minutes",
+              "300 minutes"
+            ],
+            "correct": 2,
+            "explain": "150 minutes of moderate = 21 minutes/day."
+          },
+          {
+            "q": "Resistance training days per week?",
+            "options": [
+              "0 — cardio is enough",
+              "1 per week",
+              "2 per week",
+              "Every day"
+            ],
+            "correct": 2,
+            "explain": "WHO 2020: minimum 2 days of resistance (squats, push-ups, weights)."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You walk for 3 hours straight on Sunday. The rest of the week, sedentary. Does the WHO threshold count?",
+            "options": [
+              "Yes — total minutes hit",
+              "No — Stamatakis 2022: distribution matters, single-session volume can't beat frequency",
+              "Only counts for calories",
+              "Doesn't matter — movement is movement"
+            ],
+            "correct": 1,
+            "explain": "Stamatakis' 2022 Nature Medicine finding: 2-3 daily micro-bouts (1-2 minute VILPA) provide stronger mortality protection than a single long walk. The body wants regular signal, not weekly shock."
+          },
+          {
+            "q": "You're 45 and just starting exercise. The right week-1 target?",
+            "options": [
+              "150 minutes on day 1 — go big",
+              "10 minutes walking daily, 2x/week 5 squats — sub-threshold but consistent",
+              "3 days at the gym, 4 days off",
+              "Wait until you're ready"
+            ],
+            "correct": 1,
+            "explain": "For beginners the rule: low dose, high frequency. 7 days x 10 minutes = 70 minutes. Below WHO threshold but the body's adaptation curve begins. Bump to 21 minutes by week 3. Big start = quitting in week 1."
+          },
+          {
+            "q": "You walk 10K steps daily. No squats or push-ups. Enough?",
+            "options": [
+              "Yes — step count is enough",
+              "No — over 50 you need resistance training for sarcopenia (Galpin 2023)",
+              "Enough until 40",
+              "Only for men"
+            ],
+            "correct": 1,
+            "explain": "Andy Galpin (Cal State Fullerton, muscle physiology): 1% muscle loss per year after 30 (sarcopenia). Walking is a weak signal to muscle. Without 2 days of resistance (squats, push-ups, weights), at 50 climbing stairs becomes hard."
+          },
+          {
+            "q": "You say 'no time today.' The honest truth?",
+            "options": [
+              "Right — modern life is busy",
+              "Wrong — 21 minutes = less than one TikTok session, it's a priority problem",
+              "True for some",
+              "Depends on the job"
+            ],
+            "correct": 1,
+            "explain": "Pew Research 2022: the average adult spends 3 hours daily on social media. 21 minutes equals 12% of screen time. 'No time' equals 'no priority.' Seeing this gap is step one."
+          }
+        ],
+        "proTip": "After brushing teeth in the morning, 20 squats. Habit stacking: pairing a new habit to an existing one reduces required willpower by 80% (BJ Fogg)."
+      },
+      "4": {
+        "title": "Protein and Water",
+        "hook": "Do you remember exactly what you ate today? Total grams of protein? Liters of water? If you don't know, the body is running empty. Guessing is not knowing.",
+        "teaching": "The body runs on two basics: building material (protein) and carrier (water). If either is short, no amount of exercise gives a return.\n\nThe numbers: 1.6g of protein per kg of bodyweight (1g for sedentary, 1.6-2.2g for athletes). Water: bodyweight × 30-35ml (70 kg = 2.1-2.5L).\n\nMost men hit half of both. Then complain 'I have no energy, performance is low.' The body is speaking plainly — you are not listening.",
+        "teachingDeep": "Andy Galpin (Cal State Fullerton, muscle physiology professor) gave a sharp number in a 2023 podcast: the most commonly deficient macro in adults is protein. Sedentary men sit below 1g/kg. Athletes need 1.6-2.2g/kg for optimum — below this, muscle is only maintained, not built.\n\nLayne Norton's 2018 Journal of the International Society of Sports Nutrition meta-analysis clarified: 20-40g of protein per single sitting delivers an optimum muscle protein synthesis pulse. Below is insufficient stimulus, above is waste. So 1.6g/kg total daily is not the only requirement — 25-35g per meal distribution is required. 3 meals × 30g = 90g/day = enough for a 56 kg man; not enough for a 90 kg man.\n\nSource hierarchy (biological value): egg = 100, fish 80, chicken 79, beef 74, legumes 64. Whole grains and vegetables alone are insufficient — combinations are required.\n\nNow the water side. Tim Noakes (University of Cape Town, former head of sports medicine) broke a long-standing myth in his 2003 book 'Waterlogged': the advice 'drink before you're thirsty' is wrong. Forced water consumption is not automatic dehydration protection — on the contrary, exercise-associated hyponatremia (low sodium) has killed athletes. Correct rule: thirst is the body's signal, listen.\n\nBut this is not 'drink as much as you want.' Galpin gives the number: bodyweight × 30-35ml per day. 70 kg = 2.1-2.5L. This is the base rule. Add 500ml-1L for heat, hard training, caffeine use.\n\nUrine color is the most practical indicator: light yellow = correct. Straw yellow = sufficient. Dark yellow = inadequate. Transparent = excess (water intoxication near).\n\nThird trap: do coffee and tea count? The old myth 'no, they dehydrate' was overturned by Noakes 2003 and subsequent research. Coffee makes a net fluid contribution. 3-4 cups daily = 600-800ml of fluid + caffeine benefit. Tea the same.\n\nFourth trap: electrolytes. Drinking water alone while sweating loses sodium, potassium, magnesium. After hard training a salt/electrolyte drink prevents headaches. Plain water + good food is enough normally.\n\nThe goal of this lesson: know the numbers. Weigh in, multiply by 1.6 = your daily protein. Multiply by 30 = your daily water. These two numbers come before any other discipline.",
+        "practice": {
+          "instruction": "Go now, fill a glass of water (300ml), come back and drink it in one go. Start a 60-second timer. While the water goes down, watch it. Feel the weight in your stomach. When done, breathe, notice the spine-stomach connection.",
+          "seconds": 60,
+          "prompt": "What was the first thing you drank this morning — water or coffee? When did the body last actually signal 'I am thirsty'?"
+        },
+        "action": "Today consume bodyweight × 1.6g of protein + bodyweight × 30ml of water. In the evening weigh yourself, do the math.",
+        "reflectionPrompt": "How was your energy when you got enough protein?",
+        "reflectionPrompts": [
+          "How much protein did you actually consume today in real grams? What does the gap between estimate and reality tell you?",
+          "At what time of day is your urine darkest? What do you drink instead of water at that hour?"
+        ],
+        "commitments": [
+          "Today I will add 25-35g of protein to each meal (eggs, meat, fish, legumes)",
+          "500ml of water right after waking — 30 min before coffee",
+          "Tonight I will weigh in, record weight × 1.6 and × 30"
+        ],
+        "quiz": [
+          {
+            "q": "Daily protein threshold (for athletes)?",
             "options": [
               "0.5g/kg",
               "1g/kg",
-              "2g/kg",
+              "1.6-2.2g/kg",
               "5g/kg"
             ],
-            "correct": 1,
-            "explain": "1g protein per kg body weight."
+            "correct": 2,
+            "explain": "Galpin/Norton: 1.6-2.2g/kg optimum for athletes."
           },
           {
-            "q": "Worst protein source?",
+            "q": "Daily water (for a 70 kg adult)?",
             "options": [
-              "Meat",
-              "Eggs",
-              "Sugary snack",
-              "Legumes"
+              "500ml",
+              "1L",
+              "2.1-2.5L",
+              "5L"
             ],
             "correct": 2,
-            "explain": "Snacks aren't meals."
+            "explain": "Weight × 30-35ml = 2.1-2.5L for 70 kg."
           }
         ],
-        "proTip": "Protein every meal. 20-30g/meal × 3 meals = daily 60-90g optimum."
-      },
-      "4": {
-        "title": "Cut Sugar",
-        "teaching": "Processed sugar is the oldest form of dopamine exploitation. Spike, crash, fatigue, more sugar — the loop.\n\n7-day sugar cut: clear thinking, stable energy, better sleep, weight loss.\n\nThe addiction breaks in 7 days.",
-        "action": "Today eat zero processed sugar. Sweets, sodas, packaged snacks — none. Natural fruit OK.",
-        "reflectionPrompt": "Did you feel an afternoon sugar crash?",
-        "quiz": [
+        "scenarioQuiz": [
           {
-            "q": "Processed sugar effect?",
+            "q": "80 kg, sedentary. You eat 60g of protein daily. Enough?",
             "options": [
-              "Stable energy",
-              "Spike + crash",
-              "Weight loss",
-              "Immunity"
+              "Yes — depends on the individual",
+              "Insufficient — threshold is 80g (1g/kg sedentary); even maintenance is below",
+              "Too much",
+              "Enough if you are 30"
             ],
             "correct": 1,
-            "explain": "Sugar = spike + crash cycle."
+            "explain": "Sedentary threshold is 1g/kg, athletes 1.6-2.2g/kg. For an 80 kg man: minimum 80g, optimum 130-175g. 60g is deficient — protein synthesis sits below threshold, sarcopenia accelerates."
           },
           {
-            "q": "Sugar addiction breaks in days?",
+            "q": "You ate 80g of protein in one meal (big steak + eggs). Light on the rest. Optimum?",
             "options": [
-              "1",
-              "3",
-              "7",
-              "30"
+              "Yes — daily total hit",
+              "No — Norton 2018: per-meal optimum is 20-40g, excess is waste, deficit is insufficient",
+              "Only matters for muscle",
+              "Actually more efficient"
             ],
-            "correct": 2,
-            "explain": "7 days, sugar tastes flat."
+            "correct": 1,
+            "explain": "Layne Norton meta-analysis: a single serving of 20-40g delivers optimum muscle protein synthesis. 80g at once = first 40g used, rest oxidized. 3 meals × 30g distribution is far more effective than 1 meal × 90g."
+          },
+          {
+            "q": "You drank 3 cups of coffee, no water. Hydration status?",
+            "options": [
+              "Negative — coffee dehydrates (old myth)",
+              "Positive — coffee makes net fluid contribution (post-Noakes 2003 research)",
+              "Zero — they cancel",
+              "Unknown"
+            ],
+            "correct": 1,
+            "explain": "Post-2003 research overturned the coffee-dehydrates myth. 3 cups = ~600ml fluid contribution. But not the only source — extra water needed to hit weight × 30ml target. Caffeine is bonus, not substitute."
+          },
+          {
+            "q": "Do you need to drink water constantly even when not thirsty?",
+            "options": [
+              "Yes — 3L daily is mandatory",
+              "No — Noakes: thirst is signal, hyponatremia risk is real; weight × 30ml is target",
+              "Only for athletes",
+              "Yes, until urine is clear"
+            ],
+            "correct": 1,
+            "explain": "Tim Noakes Waterlogged (2012): excess water = low sodium (hyponatremia), has killed marathoners. Right guideline: weight × 30-35ml target, urine light yellow, trust the thirst signal. Transparent urine = excess."
           }
         ],
-        "proTip": "Replace sugar craving with water + 1 sweet fruit (apple). After 7 days the craving breaks."
+        "proTip": "First drink of the day is water — 30 minutes before coffee. This ordering starts the day hydration-positive."
       },
       "5": {
-        "title": "Sleep Hardness",
-        "teaching": "Sleep quality is the foundation of all discipline. Decision-making weakens, willpower battery low.\n\nSleep hardness: 7–8 hours, sleep before 22:00, dark room, cool 18–20°C.\n\nNon-negotiable. Every other part of your life depends on it.",
-        "action": "Today harden your sleep environment. Lights out by 22:30.",
+        "title": "Sleep Hardness: Growth Hormone Window",
+        "hook": "If you sleep poorly at night, your hours in the gym are wasted. Muscle is not built during the workout — it is built in deep sleep. If you are not in bed between 22-01, another man is doing your work.",
+        "teaching": "Sleep quality is the foundation of all discipline. A man who sleeps little and late is optimized for indiscipline — decision-making weakens, glucose control breaks, muscle repair drops, willpower drains.\n\nSleep hardness has 4 conditions: 7-8 hours duration, sleep before 22:00, dark and 18-19°C room, phone out. This is non-negotiable. Exercise, nutrition, cold — all depend on sleep.\n\nKey point in this lesson: 'I slept 8 hours' is not enough on its own. Which window you slept in is vital. Because the body does critical repair between 22-01.",
+        "teachingDeep": "Eve Van Cauter (University of Chicago, circadian medicine) published a definitive finding in the Journal of Clinical Endocrinology and Metabolism in 2000: 70-80% of growth hormone (GH) secretion occurs in deep slow-wave sleep (N3 — slow wave sleep). And N3 is concentrated in the first two-thirds of total sleep.\n\nWhat does this mean? If you sleep from 22 to 6, the first 4-5 hours are N3-rich. In this window growth hormone pulses repair muscle, manage fat utilization, preserve bone density. If you sleep from 1 to 9, same 8 hours but the N3 window falls between 3-5 — it overlaps the cortisol rise, GH is suppressed. You slept 8 hours but growth hormone was released at half dose.\n\nMatthew Walker (Berkeley, 'Why We Sleep' 2017) puts it from a different angle: deep slow-wave sleep is concentrated in the first 4 hours, REM (dreams, cognitive repair) in the last 4. Both peak in the 22-06 window. Wrong-window sleep = 'I slept 8 hours but I'm not rested' feeling.\n\nPeter Attia in 'Outlive' 2023 gives a sharp number for athletic repair: athlete muscle hypertrophy is directly linked to total N3 hours over the 2 nights following training. A 6-hour-sleeper gains 60% less muscle than an 8-hour-sleeper (same training, same protein). Training = signal. Sleep = build.\n\nThe real trap: 'I am a night owl' claim. Roenneberg and Allebrandt's chronotype studies show only 5% of the population are true late chronotypes ('owls'). The remaining 95% saying 'I am a night person' = 'I sleep with my phone at night, melatonin shifted, the habit feels genetic.' It is not genetic. It is behavior.\n\nSecond trap: weekend catch-up. Friday 3 AM, Saturday 2 AM, Sunday wake at noon = metabolic 'social jet lag' (Roenneberg 2012). A 2+ hour gap between weekday and weekend bedtimes raises cardiovascular risk by 23% (Wong 2015). Consistency beats quantity.\n\nThird trap: room temperature. Core body temperature needs to drop 1°C for sleep. Above 22°C blocks this. 18-19°C is optimal. Below 16°C triggers shivering. Lowering the thermostat alone increases deep sleep by 15-20%.\n\nFourth trap: alcohol. '1 glass as a sleep aid' — Walker's finding is clear: alcohol suppresses REM by 30%. Sedation is not sleep. You will have 'slept' 8 hours but N3 and REM are short — groggy morning + late-night snacking + next-day performance dip.\n\nThe goal of this lesson: return the body's hours to the body. 22:00 sleep, 19°C, phone out — three conditions. Without these three, everything else is half-built.",
+        "practice": {
+          "instruction": "Go to your bedroom now. Sit on the bed. Start a 90-second timer. Check the 3 conditions: (1) Is the phone in the bedroom — if yes, take it to another room now. (2) Is the thermostat at 19°C — set it. (3) Can the window light be fully blacked out — draw the curtains. In the remaining seconds, lie down, close eyes.",
+          "seconds": 90,
+          "prompt": "Which of the 3 conditions were you violating today? Which one did you resist as 'impossible'?"
+        },
+        "action": "Today be in bed by 22:30. Phone in another room. Thermostat 19°C. Curtains closed.",
         "reflectionPrompt": "Did your time-to-sleep change?",
+        "reflectionPrompts": [
+          "How many nights last week did you go to bed BEFORE 22:00? If the number is 0, what does seeing that number make you feel?",
+          "If no phone is in the bedroom, what thought arrives next: 'what will I read first thing in the morning?' Is your body addicted, or your mind?"
+        ],
+        "commitments": [
+          "Tonight I will move the phone out of the bedroom — charging in another room",
+          "I set/will set the thermostat to 19°C, curtains closed",
+          "Bedtime is 22:30 — I added it to my calendar as an appointment"
+        ],
         "quiz": [
           {
             "q": "Foundation of discipline?",
@@ -5207,6 +6029,52 @@
             ],
             "correct": 1,
             "explain": "18-20°C optimum for deep sleep."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You went to bed at 2 AM Friday, woke at 11 AM Saturday. 9 hours of sleep — good weekend catch-up?",
+            "options": [
+              "Yes — total hours hit",
+              "No — Roenneberg 2012: 'social jet lag' raises cardiovascular risk 23% (Wong 2015)",
+              "Ideal",
+              "Only a summer problem"
+            ],
+            "correct": 1,
+            "explain": "Irregular bedtimes shatter circadian rhythm. A 2+ hour gap between weekday and weekend bedtimes = 'social jet lag.' The body is in constant adaptation, never at baseline. Consistency beats quantity."
+          },
+          {
+            "q": "You are an athlete sleeping 6 hours, protein and training optimal. Your muscle gains?",
+            "options": [
+              "Optimum — protein is enough",
+              "60% lower — N3 sleep deficiency suppresses GH release by more than half (Van Cauter 2000)",
+              "Same",
+              "Better — body works harder"
+            ],
+            "correct": 1,
+            "explain": "Eve Van Cauter's 2000 JCEM finding: 70-80% of GH secretion in N3 (deep) sleep. 6 hours of sleep deletes much of the N3 window. With the same training + protein, an 8-hour-sleeper gains 60% more muscle. Sleep = build, training = signal."
+          },
+          {
+            "q": "You think 1 glass of wine in the evening helps you sleep. Reality?",
+            "options": [
+              "Helps — it relaxes you",
+              "Alcohol suppresses REM by 30% (Walker), sedation is not sleep",
+              "Only bad in excess",
+              "Individual — tolerance exists"
+            ],
+            "correct": 1,
+            "explain": "Matthew Walker finding: alcohol speeds sleep onset but suppresses REM by 30%. No REM = no cognitive repair — groggy morning, focus down all day, more snacking. Even 1 glass = 3 days of recovery."
+          },
+          {
+            "q": "Phone in the bedroom — how many separate evils?",
+            "options": [
+              "Just blue light — 1",
+              "At least 3: blue light delays melatonin 90 min, late-night urge to check, first screen of the morning",
+              "None — modern life is already inside",
+              "2: sound and vibration"
+            ],
+            "correct": 1,
+            "explain": "Three hits: (1) Blue light delays melatonin onset by 90 min (Harvard). (2) Scroll in bed keeps brain awake. (3) If you wake at night, 'just checking the time' opens a half-hour scroll. Bedroom rule: no phone. No debate."
           }
         ],
         "proTip": "Bedroom 18-20°C, dark, silent. 3 conditions = deep sleep guarantee."
@@ -6610,9 +7478,25 @@
     "money-discipline": {
       "1": {
         "title": "Invisible Spending Danger",
+        "hook": "How much money is in your bank account right now? Not a guess — to the dollar. You do not know? That is the problem. The one who does not know what is in their pocket also does not know what they spend.",
         "teaching": "Most dangerous spending is invisible: subscriptions, auto-debits, small but accumulating.\n\nEveryone has 5–15 forgotten subscriptions. Thousands lost annually.\n\nToday we make the invisible visible.",
-        "action": "Go through last 3 months of bank statements. List every subscription. Cancel ones you do not use.",
+        "teachingDeep": "In 2011, Daniel Kahneman popularized a concept in 'Thinking, Fast and Slow': mental accounting. The idea originated with Richard Thaler in the 1980s. The brain does not see money as a single pool. Cash in your pocket, salary in your account, credit card limit, subscriptions — each is a separate bucket. The same 100 dollars feels different depending on which bucket.\n\nHere is the trick: a 9 dollar monthly subscription feels 'small' to your brain. You do not see it as 108 dollars per year. Ten subscriptions = 90 per month, 1,080 per year. If this had to be paid in one cash payment, you would hesitate. But because it is 10 separate buckets, the brain approves each one in isolation, then forgets.\n\nKahneman's 'loss aversion' finding applies here too: humans feel the pain of loss about twice as strongly as the pleasure of equivalent gain. Canceling a subscription feels like 'losing something'. The real loss is the money you pay every month for something you never use. Your brain's scale is broken.\n\nMorgan Housel in 'The Psychology of Money' writes: 'Wealth is what you don't see. It's the money you didn't spend.' Reverse the sentence: poverty is also invisible. It is invisible spending.\n\nHigh-inflation environments do not make this less important — they make it more. If your money is losing real value already, then bleeding extra to unused subscriptions is a double loss. Discipline matters MORE in high-inflation contexts, not less. Inflation protects the disciplined and destroys the careless.\n\nWithout making the invisible visible, no budget works. First step today: open your statement, see the real number. You cannot negotiate what you cannot measure.",
+        "practice": {
+          "instruction": "Open your banking app right now. Go to the last 30 days of transactions. For 120 seconds, count ONLY recurring payments (subscriptions, memberships, auto-debits). Do not open any shopping app — banking only. When done, write in your notes: how many subscriptions and total monthly amount.",
+          "seconds": 120,
+          "prompt": "What was your guess number? What was the real number? Multiply the difference by 12 — that is your annual invisible loss."
+        },
+        "action": "Review the last 3 months of bank statements. List every subscription and recurring payment. Cancel at least 1 you are not using right now.",
         "reflectionPrompt": "How many subscriptions? Annual cost?",
+        "reflectionPrompts": [
+          "How many subscriptions did you find today? Multiply the monthly total by 12 — what is the annual amount? What could you have done with that money in 1 year?",
+          "If you say 'inflation eats everything anyway, what difference does a subscription make' — pause and answer: in a high-inflation environment, is the way to avoid losing money less control, or more?"
+        ],
+        "commitments": [
+          "Today I will review my statements and cancel at least 1 unused subscription",
+          "I will list all my subscriptions in my notes app with monthly total",
+          "This week I will sign up for zero new subscriptions — a 7-day moratorium"
+        ],
         "quiz": [
           {
             "q": "Most dangerous spending type?",
@@ -6637,13 +7521,75 @@
             "explain": "Make invisible visible first."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You opened your statement: Spotify 10, Netflix 18, Disney+ 12, YouTube Premium 14, iCloud 3, ChatGPT 20, gaming sub 15, magazine 8. Which is Kahneman's 'mental accounting' trap?",
+            "options": [
+              "The biggest one — ChatGPT 20 clearly stands out",
+              "All of them together — 100/month, 1,200/year, but each in a separate bucket so each feels 'cheap'",
+              "Just the magazine — nobody reads magazines",
+              "None are traps, all are necessary"
+            ],
+            "correct": 1,
+            "explain": "Kahneman and Thaler's mental accounting finding: if 100 came as one bill you would react differently than 8 small charges. With 8 separate buckets, the brain evaluates each in isolation — never sees the total. The trap is in the fragmentation."
+          },
+          {
+            "q": "You have a gym membership you have not used in 6 months, 30 dollars a month. You go to cancel but say 'I will start again in the fall'. What cognitive bias is this?",
+            "options": [
+              "Rational decision — trusting your future intentions",
+              "Loss aversion — canceling feels like 'losing something' while the real loss is the ongoing payment",
+              "Just laziness, nothing more",
+              "Correct choice — re-subscribing is annoying"
+            ],
+            "correct": 1,
+            "explain": "Kahneman's loss aversion: the pain of loss feels roughly twice the pleasure of gain. Because cancellation feels like 'loss', you keep burning money for 6 months. Real loss: 180 dollars paid for a gym you never used. Just re-sign when the season starts — still cheaper."
+          },
+          {
+            "q": "You say 'inflation eats everything, tracking a 20 dollar subscription is meaningless'. Which is true?",
+            "options": [
+              "Correct — small amounts are irrelevant in high inflation",
+              "In high inflation, tracking every dollar matters MORE because real value erosion is already happening to your money",
+              "Inflation makes saving meaningless",
+              "True, but only for low income"
+            ],
+            "correct": 1,
+            "explain": "High inflation does not make discipline unnecessary — it makes it required. If your money is losing real value, also paying for unused subscriptions is a double loss. Inflation protects the disciplined and destroys the careless."
+          },
+          {
+            "q": "You decided to cancel a subscription. When is the most effective moment?",
+            "options": [
+              "On the weekend when you have time",
+              "On payday — you are in a positive mood when money arrives",
+              "RIGHT NOW, within 60 seconds of this practice ending — the gap between intention and action kills the action",
+              "On the subscription's next renewal date"
+            ],
+            "correct": 2,
+            "explain": "B.J. Fogg's behavior research: the gap between intention and action halves the probability the action happens. 'I will do it later' = 'I will not'. Your phone is already in hand, the banking app is already open — cancel, then move to the next screen."
+          }
+        ],
         "proTip": "Lay 3 months of bank statements side by side. Recurring charges become visible."
       },
       "2": {
         "title": "Budget = Freedom",
+        "hook": "How much exactly did you spend last month? If you do not know, you do not have a budget — you have a spending habit. Salary comes in, salary goes out, the month ends, you ask 'where did it go'. Money does not go anywhere. You let it leave.",
         "teaching": "Most hear budget as restriction. Really, budget = freedom.\n\nYou cannot control what you do not know.\n\n50/30/20 rule: 50% essentials, 30% wants, 20% savings.",
-        "action": "Open a sheet. Write monthly income. Split into 50/30/20. Compare against actual.",
+        "teachingDeep": "Morgan Housel in 'The Psychology of Money' (2020) repeats one thesis: 'The path to wealth is not a high income, it is a high savings rate.' Housel contrasts two people. The first earns 6,000 a month and spends 5,600 — savings rate about 7 percent. The second earns 3,000 and spends 1,800 — savings rate 40 percent. After 10 years, the second has roughly 3x the assets of the first. Does income matter? Yes, but it is not decisive. Savings rate is decisive.\n\nThis is why a budget is not a restriction — it is the name of control. Without a budget, you do not know your spending. Without knowing spending, you do not know your savings rate. Without knowing savings rate, you do not know where your financial life is going.\n\n50/30/20 rule (Elizabeth Warren and her daughter Amelia Tyagi, 'All Your Worth' 2005): 50 percent essentials (rent, utilities, groceries, transport), 30 percent wants (food out, entertainment, shopping), 20 percent savings and debt repayment. In high-inflation contexts, 50 percent for essentials may be insufficient — rent alone can eat your income. The principle then: adapt the ratio to your reality, but do not compromise on the 20 percent savings target. Saving is not a leftover — it is a priority. Pay yourself first, then spend.\n\nRichard Thaler and Cass Sunstein in 'Nudge' (2008) explain 'the power of the default'. When you transfer savings manually each payday, you fight your willpower. When you set savings as an automatic transfer, the default becomes saving — no fight. Ramit Sethi in 'I Will Teach You To Be Rich' calls this the 'conscious spending plan': money is automatically routed into categories the moment it arrives, and you only spend from the 'wants' bucket. No guilt, because every other bucket is already handled.\n\nBudgetlessness is not freedom — it is blindness. What you cannot see, you cannot manage. Today you face the number.",
+        "practice": {
+          "instruction": "Open your notes app. You have 90 seconds. Write three headings: ESSENTIALS (rent, utilities, groceries, transport), WANTS (food out, entertainment, shopping), SAVINGS. Write your estimated numbers for last month next to each. Estimates are fine, not perfect.",
+          "seconds": 90,
+          "prompt": "Which heading surprised you? Did the savings row show zero?"
+        },
+        "action": "Open a spreadsheet today. Write your net monthly income. Split last month's actuals into 50/30/20. If savings is below 20 percent, which 'wants' category will you cut by one slice this month?",
         "reflectionPrompt": "Which category went over its limit?",
+        "reflectionPrompts": [
+          "What was your actual savings rate last month? Place that number next to Housel's two-person comparison — where are you in 10 years?",
+          "If you say 'how can I budget in this economy, life is already hard' — life without a budget has no edges. Life with one is visible. Which is more stressful: knowing or not knowing?"
+        ],
+        "commitments": [
+          "This week I will log every expense in my notes app for 7 days — takes 30 seconds a day",
+          "By end of month I will calculate my real 50/30/20 ratio",
+          "On my next payday I will set up automatic transfer for savings — savings as default"
+        ],
         "quiz": [
           {
             "q": "50/30/20 rule?",
@@ -6668,13 +7614,75 @@
             "explain": "Awareness = control = freedom."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Alex earns 8,000 per month and spends 7,700. Sam earns 4,400 and spends 2,900. Who is wealthier after 10 years?",
+            "options": [
+              "Alex — higher income always wins",
+              "Sam — savings rate is 34 percent vs Alex's 4 percent. Housel's thesis: rate not income decides",
+              "About equal — income gap cancels out",
+              "Cannot tell — depends on returns"
+            ],
+            "correct": 1,
+            "explain": "Morgan Housel's thesis in 'The Psychology of Money': savings rate is everything. Sam saves 1,500/month, Alex saves 300/month. In 10 years Sam's pile is 5x Alex's. Add investment returns on top, the gap widens."
+          },
+          {
+            "q": "Your income is 5,000. Rent 2,400, utilities 500, groceries 700. Essentials hit 72 percent, 50/30/20 does not fit. What do you do?",
+            "options": [
+              "Forget the rule, life is hard",
+              "Hold the 20 percent savings target — squeeze the 30 percent 'wants' (food out, subscriptions, entertainment)",
+              "Move to a more expensive place, change environment",
+              "Cut all savings, enjoy life"
+            ],
+            "correct": 1,
+            "explain": "50/30/20 is a principle, not a hard rule. High rent does not justify abandoning the rule — it forces compression of 'wants'. Essentials at 72 percent, savings still 20 percent — wants becomes 8 percent. Pay yourself first."
+          },
+          {
+            "q": "Payday arrives. When do you set aside savings?",
+            "options": [
+              "At month's end — if something is left I save it",
+              "On payday, as the first action via automatic transfer to savings — 'pay yourself first'",
+              "Never — investing fluctuates, savings drop",
+              "When my balance crosses 50,000"
+            ],
+            "correct": 1,
+            "explain": "Thaler and Sunstein's 'Nudge' rule: defaults decide outcomes. The person who saves what is left at month's end almost never saves. Pay yourself first — live on the rest. Your brain adapts to that amount."
+          },
+          {
+            "q": "You start budgeting, week one has overshoot: 'wants' hit 42 percent instead of 30 percent. What do you do?",
+            "options": [
+              "Quit the budget — not workable",
+              "Accept the data, adjust next week — a budget is data, not judgment",
+              "Spend zero for the rest of the week to compensate — starvation budgeting",
+              "Change categories to fit 42 percent"
+            ],
+            "correct": 1,
+            "explain": "First month always has overshoot. A budget is not your report card — it is your mirror. Read the overshoot as data: which day, which category, which trigger? Next time that trigger comes, you are prepared."
+          }
+        ],
         "proTip": "Apply 50/30/20 strictly 1 month, then flex. Without baseline, flex is meaningless."
       },
       "3": {
         "title": "24-Hour Wait Rule",
+        "hook": "What did you buy on impulse in the last 7 days? Did your heart speed up when you added it to cart? Forty-eight hours later, was the excitement still the same? If the answer is no, you fell into a dopamine trap — not a product trap.",
         "teaching": "Impulse buying = dopamine, not real need. After 24 hours, you realize 80% was not necessary.\n\nRule: any purchase over $10 — wait 24 hours.\n\nThis simple rule saves thousands annually.",
-        "action": "Postpone every $10+ purchase by 24 hours. Keep a waiting list.",
+        "teachingDeep": "Dan Ariely in 'Predictably Irrational' (2008) describes an experiment. MIT students received blank pages. Half were asked to write the last two digits of their social security number, then bid on wine, chocolate, and books displayed on screen. Students whose SSN ended in high numbers (like 95) bid on average 200 percent more than those with low numbers. A random number, totally unrelated, anchored their later price perceptions. This is the 'anchoring effect.'\n\nE-commerce uses it deliberately: 'Was 149.99, NOW 59.99.' That 149.99 became your anchor. 59.99 feels cheap. The item's real value may be 30. You did not choose the anchor — it was given to you.\n\nDopamine plays its role too. At the moment of impulse purchase, your brain releases dopamine — the chemistry of anticipation, not actual satisfaction. The instant the product arrives, dopamine drops. Ariely calls this 'hedonic adaptation': the happiness from a new acquisition returns to baseline within 3-7 days. Buying constantly to recapture that first dopamine hit — that is the loop of addiction.\n\nRamit Sethi in 'I Will Teach You To Be Rich' (2009) presents 'conscious spending': spend lavishly on what matters to you, cut ruthlessly on what does not. So the 24-hour rule is not for everything — it is for 'wants'. If you genuinely value coffee, buy the coffee. But hold the 60 dollar headphones for 24 hours. Above a threshold, all purchases wait.\n\nWhy the rule works: 24 hours quiets the dopamine fire. If your brain forgets the item, you did not really want it. If it stays in mind, the desire is real. Sethi says this produces 'regret-free spending.' Many people who adopt this rule see savings climb 15-30 percent in the first week — quality of life does not drop, only the brain's traps do.\n\nReality check: push notifications, 'flash sale' banners, 'only 3 left' warnings — all synthetic urgency. Real urgency is death, illness, fire. Not a cart item. The 24-hour rule is your shield — apps will fight you on this. Be ready.",
+        "practice": {
+          "instruction": "Open your most-used shopping app right now. For 90 seconds, look ONLY at your cart or order history. Do not place an order, do not browse — just look. Are there items sitting in cart? Of last month's orders, how many are you still actively using?",
+          "seconds": 90,
+          "prompt": "How many days has each cart item waited? Of last month's purchases, how many are you actively using? The gap is your impulse-spend ratio."
+        },
+        "action": "Starting today, postpone every purchase over $10 by 24 hours. Create a 'waiting list' note on your phone with the date you added each item.",
         "reflectionPrompt": "What did you postpone today?",
+        "reflectionPrompts": [
+          "Of last month's purchases, how many are you still using? 'Unused' count × average price = a month's impulse cost. Annualize that number.",
+          "What sentence ran in your head as you added to cart — 'I deserve this', 'just this once', 'the sale will end'? That sentence is the voice of dopamine, not your voice."
+        ],
+        "commitments": [
+          "From today, every purchase over $10 waits 24 hours",
+          "I will write the added date next to every item I drop in cart",
+          "I will turn off notifications for one shopping app this week — synthetic urgency alarm"
+        ],
         "quiz": [
           {
             "q": "24-hour rule applies above?",
@@ -6699,13 +7707,75 @@
             "explain": "80% was impulse, not need."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "An e-commerce site shows 'Was 249.99, NOW 89.99'. You feel it is cheap. Which effect is at work?",
+            "options": [
+              "A rational decision — it really is cheap",
+              "Anchoring effect — 249.99 became your reference, 89.99 feels cheap. The item's real value may be 50",
+              "A good discount, smart to buy",
+              "No effect at all, just math"
+            ],
+            "correct": 1,
+            "explain": "Dan Ariely's 'Predictably Irrational' experiment: even a random number anchors later price perception. The 'was' price is often inflated to create the discount illusion. You did not choose the anchor — it was handed to you. The real question: would you buy it at the new price if there was no 'was'? If not, pass."
+          },
+          {
+            "q": "You added 120 dollar headphones to cart. App push notification: 'Last 2 hours, 30 percent off ending!' What do you do?",
+            "options": [
+              "Buy now — the deal will pass",
+              "Wait 24 hours. 'Last 2 hours' is synthetic urgency, not real. If the discount ends, another will come",
+              "Buy half, reduce risk",
+              "Ask a friend, decide fast"
+            ],
+            "correct": 1,
+            "explain": "Urgency is the strongest weapon to manipulate purchase emotion. The brain combines FOMO with anchoring — real decision-making goes offline. Real urgency damages your life; a 24-hour discount on headphones is a trigger by design. If you still want it after 24 hours, even at the normal price you come out ahead."
+          },
+          {
+            "q": "24 hours passed, you still want the item in cart. What is the next question?",
+            "options": [
+              "Buy it, the rule was met",
+              "Ask 'if this were free, would I use it?' If yes, buy",
+              "Buy at half price",
+              "Wait another 24 hours"
+            ],
+            "correct": 1,
+            "explain": "Sethi's 'conscious spending' test: the 'if it were free' question separates true use from dopamine. 'Free, I would use it' = real value. 'I want to buy but might not use it' = dopamine still active. The order: wait 24 hours, then 'if it were free' test, then buy."
+          },
+          {
+            "q": "A friend shows you their new 200 dollar smartwatch — 'it is amazing'. You go home and start browsing. Which effect is at work?",
+            "options": [
+              "A rational need — everyone needs a watch",
+              "Social anchoring — someone else's choice anchored yours. Not your real need, exposure to theirs",
+              "A healthy discovery",
+              "Just advertising"
+            ],
+            "correct": 1,
+            "explain": "Ariely and social psychology research: the consumption choices of those around you are the strongest anchors. The moment you heard 'it is amazing', a product you did not need 24 hours ago became 'normal'. Unrecognized, your friend group's lifestyle sets your budget. The 24-hour rule applies to social anchors too."
+          }
+        ],
         "proTip": "After 24 hours, if you still want it, you really want it. Most often the answer is \"no.\""
       },
       "4": {
         "title": "Food Cost Visibility",
+        "hook": "How many meals did you eat out this week? What was the total? If you do not know, you are in the 'small spending' trap. Each meal looks like 15 dollars, the annual 5,500 dollars stays invisible. Same money, different bucket — Kahneman returns.",
         "teaching": "Eating out vs cooking is a 5–10x cost difference. Most do not see it.\n\nEating out should be a vacation experience, not daily routine.",
-        "action": "Cook one meal at home today. Calculate cost.",
+        "teachingDeep": "David Bach in 'The Automatic Millionaire' (2004) popularized the 'Latte Factor': 5 dollars a day on coffee = 150 a month = 1,800 a year = invested 30 years at 7 percent annual return ≈ 187,000. Bach's claim: cut small daily spending, become a millionaire.\n\nHelaine Olen in 'Pound Foolish' (2012) sharply criticized the idea: the math is overstated (7 percent is not guaranteed, inflation is ignored, rent/healthcare are bigger drivers). Olen is correct about the math. But she misses the real power. The Latte Factor's value is not arithmetic — it is discipline. A person who sees 5 dollars a day as 'small' will also see 500 dollars as 'small'. The behavior pattern is not in the line item — it is in the shape of your mind.\n\nThe compound interest arithmetic is simple but unforgiving. A realistic long-term scenario: 6 percent real return, monthly contribution 300 dollars. After 10 years: roughly 49,000. After 20 years: roughly 138,000. After 30 years: roughly 300,000. The amount you save in your 20s does more work than the amount you save in your 40s — because time compounds, not your effort.\n\nA quote attributed to Benjamin Franklin: 'A penny saved is a penny earned.' The famous 'compound interest is the eighth wonder of the world' line, attributed to Albert Einstein, is apocryphal (no source) — but the math is real. Who said it does not matter. What the numbers say does.\n\nEating out at 12 dollars extra per meal (3 meals × 4 dollar markup over home cooking) means 36 dollars a day, 13,140 a year. With investment growth: roughly 200,000 difference over 10 years. This is not just the Latte Factor — call it the Burrito Factor, the Delivery Factor, the Coffee Factor. The name does not matter. The principle does: every expense your mind classifies as 'small' is buying your future from you.\n\nCooking at home is not just saving — it is freedom. The kitchen is four moves: chop, sauté, season, eat.",
+        "practice": {
+          "instruction": "Open your food delivery app (Uber Eats, DoorDash, Grubhub or local). For 90 seconds, look ONLY at your order history for the last 30 days. Do not place an order — just look. Note the number of orders and the total.",
+          "seconds": 90,
+          "prompt": "How many orders last month, how much in total? Multiply that number by 12 — what is the annual amount? If you had cooked the same meals at home, 20 percent would have stayed."
+        },
+        "action": "Cook at least 1 meal at home today. Calculate the actual cost (look at each grocery price), compare to ordering the same dish. Transfer the difference to your savings account — this week's accumulated Latte Factor.",
         "reflectionPrompt": "How much did cooking save?",
+        "reflectionPrompts": [
+          "What did today's home meal cost you? What would ordering the same dish cost? Multiply the gap by 365 — that is your annual potential saving. In 10 years what could that have become?",
+          "If 'no time' is the excuse: check your screen time. Less than 4 hours a day? Then 'no time' does not hold. Can you see the excuse?"
+        ],
+        "commitments": [
+          "This week I will cook at least 4 meals at home — breakfast counts",
+          "I will turn off notifications for the food delivery app this week",
+          "I will mark eating out as a 'planned pleasure' — not a daily routine, a weekly choice"
+        ],
         "quiz": [
           {
             "q": "Home cooking vs eating out cost?",
@@ -6730,13 +7800,75 @@
             "explain": "Vacation experience, not routine."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You spend 8 dollars a day on coffee + snacks. 'Small, what is the big deal'. Same money invested 30 years at 6 percent real return. What happens?",
+            "options": [
+              "Roughly 10,000 — small number",
+              "Roughly 240,000 in today's value — the Latte Factor's real math is this",
+              "Nothing — inflation eats it all",
+              "1 million — a comedy number"
+            ],
+            "correct": 1,
+            "explain": "240 dollars per month × 12 × 30 years + 6 percent real compounding ≈ 240,000. Helaine Olen criticizes the Latte Factor for overstated math but does not deny the principle: small amounts are tiny in your mind, massive over time. This is the cost of no discipline."
+          },
+          {
+            "q": "It is 7:30 PM. You are hungry, tired, you do not want to enter the kitchen. The delivery app opens. What is disciplined?",
+            "options": [
+              "Order — you earned it this time",
+              "Wait 5 minutes. Pick a simple 15-minute dish (omelet, pasta, sandwich). Tiredness passes once kitchen motion starts, dopamine arrives",
+              "Stay hungry — easier",
+              "Eat from a can — unhealthy but cheap"
+            ],
+            "correct": 1,
+            "explain": "B.J. Fogg's behavior research: starting a 'minimum action' makes the rest dramatically easier. Even putting on water for cooking disrupts the ordering decision. 15-minute recipes are the answer to 'no time'. The tired evening order is your most expensive evening."
+          },
+          {
+            "q": "You cut 200 dollars a month from food out and moved it to savings. Where is the most disciplined place to park it?",
+            "options": [
+              "Same bank, sub-account — easy access",
+              "Different bank, high-yield savings or index fund, with automatic monthly transfer — 'invisible' savings stays. Visible savings gets spent",
+              "Cash under the mattress — safe",
+              "Stocks, grow fast"
+            ],
+            "correct": 1,
+            "explain": "Housel and Sethi agree: make savings invisible. Same bank = easy withdrawal. Separate bank = even one second of physical friction is enough to talk yourself out of taking it. Index funds give long-term growth. Stocks have high return but high risk — discipline foundation comes first."
+          },
+          {
+            "q": "Someone says 'Latte Factor is nonsense, the real game is to grow income'. Your reply?",
+            "options": [
+              "They are right — income matters, coffee does not",
+              "Half right: Helaine Olen showed the math is overstated. But the Latte Factor's real value is mental — a mind that sees daily 5 dollars as 'small' applies the same lens to 500 and 5,000",
+              "Totally wrong",
+              "Drop the topic"
+            ],
+            "correct": 1,
+            "explain": "Olen's critique of Bach is mathematically valid: return assumptions are inflated, inflation ignored. But the principle stands: a mind that calls 5 dollars 'small' will call 5,000 small too. Behavior comes from the lens, not the line item. Grow income AND build discipline — both legs."
+          }
+        ],
         "proTip": "Cooking at home need not be complex. 4 moves: chop, sauté, season, eat."
       },
       "5": {
         "title": "Emergency Fund",
+        "hook": "If you lost your job today, how many months of rent could you cover? Is 3 months of essentials sitting in your account? If not, your financial life is on a wire — one illness, one layoff, one car breakdown pushes you into debt. Discipline does not start with a crisis — it starts with being ready for one.",
         "teaching": "Financial stress leads to bad decisions.\n\nEmergency fund = 3 months of essential expenses.\n\nWithout this fund, financial discipline is artificial.",
-        "action": "Open a separate account. Transfer 10% of your salary.",
+        "teachingDeep": "Morgan Housel in 'The Psychology of Money' (2020) devotes a chapter to 'room for error.' His thesis: 'Wealth is the money you do not lose. And to not lose, you must leave room to be wrong.' Housel cites a 2018 US Federal Reserve study: 40 percent of American households cannot cover a 400 dollar emergency expense. These people are not poor — they are average-income. They simply have no buffer. One car repair, one tooth, one rent hike = credit card debt = a year-long exit, then start again.\n\nJL Collins in 'The Simple Path to Wealth' (2016) uses another name: 'F-You Money.' Its meaning: enough money in your account that when a bad job, bad boss, or bad condition appears, you can say 'no thanks' and walk. Three months of essentials is the first step of F-You Money. Then six. Then twelve.\n\nNassim Taleb in 'Antifragile' (2012) gives a parallel framing: 'Invisible black swans always happen. The fragile forget because they cannot see them. The antifragile is prepared.' The 2008 financial crisis, the 2020 pandemic, layoffs in 2022 tech — each round, those with emergency funds endured. Those without were forced to liquidate at the worst time.\n\nThe math is simple but critical: if your essentials are 2,500 a month, a 3-month fund = 7,500. Saving 750 a month gets you there in 10 months. Saving 250 a month, 30 months. During this period, do not ask 'should I invest?' The answer is no. Buffer first, investment second. Housel: 'The chaser of high return has never seen zero.'\n\nWhere the fund lives: a high-yield savings account or short-term CD at a separate bank. Not in stocks. Not in crypto. The emergency fund is not for return — it is for existence. Think of it as ABOVE all other savings — this fund is not an investment.\n\nWithout a fund, discipline is artificial. The first shock collapses the system. The day discipline is truly tested, the fund must be beside you.",
+        "practice": {
+          "instruction": "Open the calculator on your phone. You have 90 seconds. Add up last month's essentials: rent + utilities + groceries + transport + health + insurance + minimum debt payments. Do not open the banking app — estimate. Multiply the total by 3 — that is your emergency fund target.",
+          "seconds": 90,
+          "prompt": "What is your 3-month target number? What percent of it sits in your account right now? The gap is the concrete name of your financial insecurity."
+        },
+        "action": "Open a separate bank account today (high-yield savings preferred). Set automatic transfer of 10 percent of your salary into it. Do not touch this fund until it hits your 3-month essentials number.",
         "reflectionPrompt": "Where will the 10% come from?",
+        "reflectionPrompts": [
+          "What was your 3-month essentials number today? What percent of it do you already have? Saying 'I will' is not enough — when did you make the first transfer to this fund today?",
+          "By JL Collins's 'F-You Money' definition, how much in the account would let you tell a bad boss 'no thanks'? That number is your real freedom figure."
+        ],
+        "commitments": [
+          "Today I will open a separate bank account (high-yield savings at an online bank)",
+          "I will set a 10 percent automatic transfer from each paycheck — willpower is not a system",
+          "Until the emergency fund target is reached: no investing, no crypto, no stocks. Foundation first"
+        ],
         "quiz": [
           {
             "q": "Emergency fund months?",
@@ -6759,6 +7891,52 @@
             ],
             "correct": 1,
             "explain": "Without fund, discipline is artificial."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You have no emergency fund. Stock investments worth 12,000. Your company is downsizing, you may be laid off. What do you do?",
+            "options": [
+              "Stay in stocks — long-term wins",
+              "Withdraw 6,000 (3 months of essentials) from stocks and move to a separate account. Investing discipline may take a hit, but staying alive is priority one",
+              "Add 50 percent of your salary to stocks immediately — opportunity",
+              "Do nothing, wait"
+            ],
+            "correct": 1,
+            "explain": "Housel's 'room for error': if the base is missing, do not build upper floors. Holding stocks during layoff risk = being forced to sell at the worst time. Pull 3 months of essentials and park separately. After the crisis passes, redeploy. JL Collins also keeps F-You Money SEPARATE from investments."
+          },
+          {
+            "q": "You have an emergency fund, 7,500. A thought crosses your mind: 'markets are climbing, if I put this in I would earn 30 percent'. What do you do?",
+            "options": [
+              "Move it to stocks — the opportunity will pass",
+              "An emergency fund is not an investment. Its job is to protect you in a crisis. Putting half in halves the protection. Do not mix the fund with investing — Housel's clear rule",
+              "Put half in — balance risk",
+              "Put it all in crypto — high return"
+            ],
+            "correct": 1,
+            "explain": "Housel: 'The chaser of high return has never seen zero.' Your emergency fund manages the zero probability. Looking at it as 'how can I make more' is like cashing in your insurance to gamble. The emergency fund is not for return — it is for existence."
+          },
+          {
+            "q": "Your emergency fund target is 7,500. You have 2,000. Your birthday arrives, friends plan a 100 dollar restaurant dinner. What do you do?",
+            "options": [
+              "Your fund is so slow — go, birthdays matter",
+              "Propose a lower-cost alternative (home gathering, cheaper venue). The 'wants' category compresses while building the fund — social life is not canceled, it is optimized",
+              "Skip it, isolate yourself",
+              "Go and spend double — celebrate"
+            ],
+            "correct": 1,
+            "explain": "Emergency fund phase is not deprivation — it is recalibration. Social life stays, the format changes. Sethi's 'conscious spending': spend lavishly on what matters, cut ruthlessly elsewhere. Birthday matters, the 100 dollar restaurant format is flexible. Same joy at home for 25. The 75 dollar gap goes to the fund — accelerating by 10 days."
+          },
+          {
+            "q": "3-month target reached, 7,500 in the fund. What is next?",
+            "options": [
+              "Done, invest everything from now on",
+              "Extend the target to 6 months, then 12 — JL Collins's 'F-You Money' grows in stages. At the same time, redirect a portion of your 20 percent savings into long-term investing (index funds, retirement)",
+              "Spend the fund — you earned a reward",
+              "Do nothing, watch it erode"
+            ],
+            "correct": 1,
+            "explain": "3 months minimum, 6 months comfort, 12 months freedom. JL Collins's thesis: as F-You Money grows, your decision power grows. 3 months = emergency fund, 12 months = 'power to say no' (bad boss, bad job, bad offer). During this phase, new money flows to investing — the foundation is solid."
           }
         ],
         "proTip": "Park emergency fund out of reach: separate bank, separate card. \"Visible\" money gets spent."

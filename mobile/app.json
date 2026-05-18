@@ -2,7 +2,7 @@
   "expo": {
     "name": "Ascend: Monk Mode",
     "slug": "ascend-level-up",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ascend.growth",
-      "buildNumber": "36",
+      "buildNumber": "37",
       "usesAppleSignIn": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
@@ -209,6 +209,7 @@
         "url": "https://wihkcmgtzmdupxuyavyr.supabase.co",
         "anonKey": "sb_publishable_2VZz9irXZ95Anw3kKA4d7w_AXgRzAp3"
       },
+      "anthropicApiKey": "",
       "eas": {
         "projectId": "2a44eced-27a4-4ae2-b831-25957422f01b"
       }

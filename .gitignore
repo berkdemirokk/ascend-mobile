@@ -14,3 +14,9 @@ mobile/credentials/
 # Local env (never commit)
 **/.env.local
 .env.local
+
+# Claude Code per-user permissions + scratch (shared agents/commands stay)
+.claude/settings.local.json
+.claude/worktrees/
+tmp_edit/
+t.js

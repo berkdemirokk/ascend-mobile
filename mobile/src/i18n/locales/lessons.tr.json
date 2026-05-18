@@ -1985,9 +1985,25 @@
       },
       "2": {
         "title": "Alarmı Telefonsuz Yap",
-        "teaching": "Alarm = telefon = scroll = günün başı zaten kaybedilmiş. Alarm fonksiyonunu telefondan ayırmak zihinsel sınır kurmaktır.\n\nFiziksel bir alarm saati al. Telefonu odanın dışında bırak. Sabah ilk dokunduğun şey alarm butonu olsun, ekran değil.",
-        "action": "Bugün fiziksel bir alarm saati al ya da sipariş et. Yatmadan önce telefonu odanın dışına bırak.",
-        "reflectionPrompt": "Alarm butonu yerine ekran açma alışkanlığını ne kadar zor değiştireceğini düşünüyorsun?",
+        "hook": "Telefonun yatak odanda şarjda. Sabah 06:30, alarm çaldı. Eline en yakın şey ne? Aynı şey: o ekran. 4 saniyede uyandın, 4 dakikada Instagram'a battın. Günün ilk hareketi senin değil — algoritmanın.",
+        "teaching": "Alarm = telefon = scroll = günün başı kayıp. Alarm fonksiyonunu telefondan ayırmak, sabah refleksini ekrandan koparmak demektir.\n\nFiziksel bir çalar saat al. Telefonu odanın dışında bırak — koridorda, mutfakta, herhangi bir yerde. Sabah ilk dokunduğun şey alarm butonu olsun, ekran değil.\n\nBu küçük değişiklik tek başına ilk 10 dakikanı geri verir.",
+        "teachingDeep": "USC davranış bilimcisi Wendy Wood, 30 yıllık alışkanlık araştırmasını \"Good Habits, Bad Habits\" (2019) kitabında tek cümleye indirgiyor: \"Davranışın %43'ü iradeyle değil, ortamla belirleniyor.\" Yani sen değil, etrafındaki şeyler karar veriyor. Telefon yatak odanda değilse, sabah scroll yapma ihtimalin yarıya düşüyor — bilinçli karar değil, fiziksel uzaklık.\n\nMekanizma şu: beyin uyanma anında en yüksek dopamin açlığında. Gece boyu reseptörler temizlendi, prefrontal korteks henüz devrede değil. Tam bu pencerede önüne koyduğun ilk uyaran, gün boyu beklenti seviyeni belirliyor. Instagram açtıysan: beynin sabah 06:30'da \"yüksek dopamin normal\" diyor. Saat 11:00'de çalışmaya oturduğunda Excel tablosu sönük geliyor — çünkü baseline'ı sen yükselttin.\n\nAma asıl tuzak burada değil. Asıl tuzak: \"Sabah telefonu açmıyorum, sadece alarmı kapatmak için bakıyorum\" yalanı. Wood'un ekibinden Asaf Mazar 2021 çalışması net: telefonu eline alan kullanıcıların %88'i ilk 60 saniye içinde alarm dışında en az bir uygulama açıyor. Bilinçaltı seçim değil — refleks. Eline aldığında bittin.\n\nMonastik gelenekte bunun adı var: \"first touch\" disiplini. Manastırda sabah eline ilk dokundurduğun şey ya bir kutsal kitap ya bir su tasıdır — asla bir araç değil. Cistercian rahiplerinin 12. yüzyıldan kalma kuralı: yatak odasında sadece üç nesne — yatak, dua tezgahı, su sürahisi. Modern muadili: yatak, çalar saat, su bardağı. O kadar.\n\nBugün için pratik köprü: telefonu odanın dışına çıkarmak \"bir gün denemek\" değil — bir kerelik kararla 90 günlük alışkanlık. Wood'un veri seti net: ortamı bir kere yeniden tasarlarsan, irade enerjini her gün harcamak zorunda kalmazsın. Asıl güç irade değil, fiziksel sürtünme. Telefon 4 metre öteyse, gece yarısı kalkıp scroll yapmaya direnirsin. Yastığının yanındaysa, direnemezsin. Bu kişilik değil, fizik.",
+        "practice": {
+          "instruction": "Şu an kalk. Yatak odana gir. Üç şeyi say: (1) telefon nerede şarjda? (2) en yakın ekran — TV, tablet, laptop — kaç metre uzakta? (3) yatak başucunda bir çalar saat var mı, yok mu? 60 saniyen var, sayım yap, gözle gör.",
+          "seconds": 60,
+          "prompt": "Üç sayımdan kaçı \"telefon yatak başında, çalar saat yok\" çıktı? Bu görüntüye karşı içinde hangi mazaret ortaya çıktı?"
+        },
+        "action": "Bugün bir çalar saat sipariş et — en geç bu akşam. Bu gece telefonu yatak odasının dışında bir prize tak. Yatak başucunda sadece çalar saat ve bir bardak su.",
+        "reflectionPrompt": "Telefonu yatak odasından çıkarmaya karşı içinde hangi ses yükseldi?",
+        "reflectionPrompts": [
+          "Yatak odanda şu an telefon var mı? Eğer evet — bu gece taşımaya engel olan kim, ne, hangi gerekçe?",
+          "\"Çalar saat almaya gerek yok, telefonu uçak moduna alırım\" diye düşündün mü? Bu cümleyi son 30 günde kaç kez kendine söyledin?"
+        ],
+        "commitments": [
+          "Bu akşam telefonu yatak odasından çıkaracağım — koridor veya mutfak prizine",
+          "Yatak başucuna bardak su koyacağım — sabah ilk dokunduğum şey o olsun",
+          "24 saat içinde fiziksel çalar saat alacağım veya sipariş edeceğim"
+        ],
         "quiz": [
           {
             "q": "Telefonu alarm olarak kullanmak neden kötü?",
@@ -2012,13 +2028,75 @@
             "explain": "Telefonu uzaklaştırmak zihinsel sınır kurar."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Telefonu mutfağa koydun, çalar saat yerine telefonun Sleep özelliğini başucunda bıraktın. Sabah alarm çaldı — kapatırken Instagram açtın. Bu neden sürpriz değil?",
+            "options": [
+              "Sürpriz: Sleep modunda olmaması gerekirdi",
+              "Refleks: telefon eline geldiyse beyin uyaran arar, mesafe değil temas önemli",
+              "Pil az kalmış, açıldı",
+              "Yanlış uygulama"
+            ],
+            "correct": 1,
+            "explain": "Wendy Wood verisi: telefonu eline alanların %88'i 60 saniye içinde başka uygulamaya geçiyor. Yatak odasının dışına çıkarmak bir gece denemek değil, temas hattını kesmek demek. Sleep modu yetmez, fiziksel uzaklık yeter."
+          },
+          {
+            "q": "Eşin diyor ki: \"Acil olursa gece kim arayacak? Telefon yatak odasında olmazsa kaçırırız.\" Bu mantıklı mı?",
+            "options": [
+              "Evet, gerçek bir risk, telefonu odada tut",
+              "Hayır, acil aramalar nadir, alışkanlık değiştirme bahanesi",
+              "Tek çözüm yan odaya çek",
+              "Kısa süre denemek bile riskli"
+            ],
+            "correct": 1,
+            "explain": "Risk hesabı yap. Gece kaç gerçek acil arama geldi son 5 yılda? Muhtemelen 0. Karşılığında her sabah scroll. Acil gerekirse: telefonu koridora bırak, sesi kıs ama emergency bypass açık, ev hattı varsa onu kullan. Acil senaryosu, alışkanlık değiştirmemenin en sık bahanesidir."
+          },
+          {
+            "q": "Çalar saat aldın, 3 gündür telefonu salonda bırakıyorsun. Sabah 5 dakika scroll süren düştü ama gün ortasında telefonu hala her 8 dakikada bir açıyorsun. Sabah disiplini gün ortasına neden taşınmadı?",
+            "options": [
+              "Sabah çözüm yeter, akşam alışkanlığı kendi düzelir",
+              "Sabah ile gün ortası ayrı tetikleyiciler, biri otomatik diğeri başka müdahale ister",
+              "Daha uzun çalar saat alarmı kullan",
+              "Telefonu hiç açmama gerek"
+            ],
+            "correct": 1,
+            "explain": "Wood'un cue-context modeli: her ortam kendi tetikleyicisini taşır. Yatak odası tetikleyicisini kestin ama masa, mutfak, otobüs tetikleyicileri hâlâ aktif. Her bağlamı ayrı tasarlamalısın. Sabah bir başlangıç, akşam ve gün ortası başka mücadele."
+          },
+          {
+            "q": "Çalar saat aldın ama sabah \"sadece hava durumu\" diye telefonu açtın. 15 dakika geçti. Bir sonraki sabah ne yapmalısın?",
+            "options": [
+              "Telefonu daha güçlü yere kilitle, kasaya koy",
+              "Çalar saatin yanına 1 cümlelik bir not yapıştır, sabah ilk gördüğün şey o not olsun",
+              "Telefonu komple sat",
+              "Tekrar dene, irade güçlensin"
+            ],
+            "correct": 1,
+            "explain": "Davranış değişimi notu: irade hiç bilgi vermez, ortam verir. Wood ekibi bunu cue-substitution diye adlandırıyor. Sabah ilk gözüne ne çarpıyorsa beyin onu kovalıyor. Telefon yerine bir kağıt not (\"Pencere ve su, telefon yok\") koy, beyin yeni hedef alır. Daha fazla irade değil, daha akıllı tasarım."
+          }
+        ],
         "proTip": "Telefonu odanın en uzak köşesine ya da başka bir odaya bırak — fiziksel mesafe psikolojik sınır kurar."
       },
       "3": {
         "title": "Su, Yüz, Pencere",
-        "teaching": "Uyandığında üç eylem zinciri kur: bir bardak su iç, yüzünü yıka, pencereyi aç (veya dışarı çık 1 dakika).\n\nSu — gece dehidrasyonunu kırar, beyin uyandırır. Yüzünü yıkamak — soğuk şok parasempatik moddan çıkarır. Doğal ışık — sirkadiyen ritim sıfırlanır.\n\nBu 3 dakikalık zincir, sabahı eskisinden 10x daha berrak yapar.",
-        "action": "Yarın bu zinciri uygula. Uyanır uyanmaz: su iç → yüzünü yıka → pencereye yaklaş. Telefonsuz.",
+        "hook": "Sabah uyandın. Beynin yarı uykuda, kortizol dalgası tepeye doğru tırmanıyor, sirkadiyen saatin hâlâ dün gecenin yarısında. İlk 5 dakikan ne karar verirsen, sonraki 16 saatin hızı o oluyor. Çoğu sabah bu kararı sen değil ekran veriyor.",
+        "teaching": "Uyandığında üç eylem zinciri kur: bir bardak su iç, yüzünü soğuk suyla yıka, doğrudan dışarı bak veya çık.\n\nSu — gece boyu 6-8 saat sıvı kaybını telafi eder, beyin perfüzyonunu hızla normalleştirir. Soğuk yüz yıkama — vagus siniri üzerinden parasempatik moddan çıkar, dikkati toparlar. Doğal ışık — sirkadiyen saati sıfırlar, kortizol pikini doğru yere oturtur.\n\nBu üç eylem 3 dakika sürer. Sabahı 10 kat daha berrak yapar.",
+        "teachingDeep": "Stanford nörobilimcisi Andrew Huberman, 2021 Huberman Lab podcast bölümünde tek bir kuralı tekrar tekrar vurguluyor: uyandıktan sonraki ilk 10 dakikada gözünü doğal güneş ışığına doğrult. Sebep, Johns Hopkins'ten Samer Hattar'ın 30 yıllık çalışması: hipotalamustaki suprachiasmatic nucleus (SCN), 20 bin nöronluk küçük bir bölge, vücudun ana saatidir. SCN doğrudan retinaya bağlı melanopsin hücreleriyle çalışıyor. Sabah ışığı bu hücreleri vurmadığında, vücut hâlâ \"gece\" zannediyor.\n\nMekanizma şu: SCN gözden gelen sinyali tipinde tanır, parlaklığını ölçer. Sabah retinaya çarpan 10.000 luksluk doğal ışık (cam arkasından bile değil, açık gökyüzü) kortizolün \"awakening response\" eğrisini doğru saate kilitliyor. Bu eğri tepe yapmazsa, sen yataktan çıktığında bile beynin \"gece kalıyor\" diyor. Gün boyu sersem ve dağınık hissetmenin temel sebebi bu — tembellik değil, sinyalsiz biyoloji.\n\nAma asıl tuzak burada değil. Asıl tuzak: \"Pencereye bakacağım\" diye düşünüp telefonu açmak. Hattar verisinde: pencereden 30 saniye bakmak yetmiyor, retina yeterli foton toplaması için en az 2-3 dakika sürekli gerek. Bu süre boyunca telefon kullanırsan göz bebekleri büzülür, doğal ışık miktarı yarıya düşer. Bir bakış değil, gerçek bir maruz kalma lazım.\n\nSu ve soğuk yüz neden bu zincirde? Huberman tekrar: gece boyu 300-500ml sıvı kaybediliyor, kan vizkositesi artıyor, beyin perfüzyonu yavaş. Tek bardak su 90 saniyede kanı seyreltir, bilişsel hız geri gelir. Soğuk yüz yıkamak ise vagus sinirini uyarıyor — Wim Hof araştırmalarının ardındaki temel mekanizma. Norepinefrin %200 artıyor 60 saniyede, dikkat keskinleşiyor. Üç eylem ayrı ayrı işe yarıyor, üçü birlikte sinerjik.\n\nManastır sabahları binyıllardır aynı zinciri tutuyor: önce ablusyon (su ile arınma), sonra şükür (genelde dışarı bakarak), sonra ilk dua. Şimdi sen aynı yapıyı modern dile çeviriyorsun: su iç, yüzünü yıka, gökyüzüne bak. Bilim onayladı, gelenek zaten biliyordu.",
+        "practice": {
+          "instruction": "Şu an saat sabahsa: kalk, bir bardak su iç (en az 250ml), yüzüne soğuk su çarp (en az 5 kere), sonra pencereye git ya da balkona çık. 2 dakika boyunca telefon yok, sadece gökyüzüne bak. Sabah değilse: yarın sabah alarm çaldığı anda bu zinciri yapacağını şimdi sesli söyle, telefonun yerini şimdi belirle.",
+          "seconds": 120,
+          "prompt": "Üç eylem zincirini ilk kez yaparken hangi adımda durakladın? Beyin hangi şeyi \"şart mı bu?\" diye sorguladı?"
+        },
+        "action": "Yarın sabah alarmı kapattığın ilk dakikada bu zinciri uygula: 250ml su, soğuk yüz, 2 dakika doğrudan gökyüzü. Telefonsuz, ekransız.",
         "reflectionPrompt": "Üçlü zincirden sonra, eski sabahlara göre nasıl hissettin?",
+        "reflectionPrompts": [
+          "Yarın sabah uyandığında, ilk 10 dakika içinde kaç saniye doğrudan gökyüzüne bakacağını şimdi söyle. Bu sayıyı duyduğunda gerçekçi mi geliyor?",
+          "Üç adımdan hangisi en zoru? \"Soğuk su\" diyorsan, kendine sor: gerçekten soğuk mu yoksa rahatsızlık mı? Bu zincire karşı en sık kullandığın bahane ne?"
+        ],
+        "commitments": [
+          "Yarın yatağın ucundaki bardak suya alarm çaldıktan 30 saniye içinde uzanacağım",
+          "Banyo musluğunu mavi soğuk konuma çevireceğim, 5 avuç su yüzüme",
+          "Telefonu sabah 60 dakika açmayacağım"
+        ],
         "quiz": [
           {
             "q": "Sabah üçlü zincir nedir?",
@@ -2043,13 +2121,75 @@
             "explain": "Soğuk şok = uyanıklık moduna geçiş."
           }
         ],
-        "proTip": "Soğuk yüz yıkamaktan sonra havluyu kullanma; suyun kendiliğinden kuruması ekstra uyandırır."
+        "scenarioQuiz": [
+          {
+            "q": "Sabah uyandın, pencere kapalı, perde inik. Telefonu açtın, yatak ışığını yaktın, kahveye gittin. 11:00 olduğunda bilişsel olarak donuktan. Gün kayboldu. En kritik hata neydi?",
+            "options": [
+              "Kahveyi geç içtin",
+              "İlk 10 dakika doğal ışığa maruz kalmadın, kortizol awakening response tetiklenmedi",
+              "Telefonu çok geç açtın",
+              "Yeterince uyumadın"
+            ],
+            "correct": 1,
+            "explain": "Andrew Huberman protokolünün özeti: doğal ışık ilk 10 dakikada SCN sinyali verir, kortizol awakening response doğru saate kilitlenir. Yapay ışık (yatak lambası) yeterli lux taşımıyor. Pencereye git, gökyüzü gör. Bulutlu havada bile lux miktarı kapalı odadan 100 kat fazla."
+          },
+          {
+            "q": "İstanbulda hava kapalı, gri. \"Bulutlu, ışık almaya değmez\" diyorsun. Bu mantık doğru mu?",
+            "options": [
+              "Doğru, bulutlu havada gerçekten ışık alınmaz",
+              "Yanlış, bulutlu hava bile kapalı odadan 100 kat fazla lux taşır",
+              "Sadece güneşli günler işe yarar",
+              "Lamba bile yeter"
+            ],
+            "correct": 1,
+            "explain": "Lux ölçümü: kapalı oda 100-300 lux, güneşli gün 50.000-100.000 lux, bulutlu gün 5.000-20.000 lux. Bulutlu hava bile iç mekandan 20-100 kat fazla. \"Yağmurlu, soğuk, üşürüm\" gerçek bahane değil. Pencereye yapışmak bile 10.000 luxa ulaşıyor. Bahane çoğu zaman havada değil kafanda."
+          },
+          {
+            "q": "Soğuk su yüzünü yıkamaya direniyorsun. \"Ilık daha sağlıklı\" diye düşünüyorsun. Hangisi doğru?",
+            "options": [
+              "Ilık su daha sağlıklı, soğuk strestir",
+              "Soğuk şok norepinefrin %200 artışı sağlıyor, kontrollü stres yararlı",
+              "Su sıcaklığı önemsiz",
+              "Sıcak yüz beyni uyandırır"
+            ],
+            "correct": 1,
+            "explain": "Vagus siniri yüzdeki termoreseptörlere doğrudan bağlı. Soğuk şok, sempatik sinir sistemini hızla aktive eder, norepinefrin pikine yol açar (Yale Pierre Lavoisier ekibi 2018). Sonuç: 60 saniyede dikkat keskinleşir, ruh hali normalleşir. Ilık su bu sinyali vermiyor. Soğuk hoşuna gitmiyor olabilir, ama amaç rahatlık değil uyanıklık."
+          },
+          {
+            "q": "Zincir sırasını karıştırdın: önce pencere açıp baktın, sonra su, sonra yüz. Daha az etkili oldu. Neden?",
+            "options": [
+              "Sıra önemli değil",
+              "Kortizol pikinden önce dehidre beyin yorgun, susuz beyin doğru sinyali işlemiyor",
+              "Pencereye bakmak son adım olmalı",
+              "Yüzü yıkamadan ışık etkisiz"
+            ],
+            "correct": 1,
+            "explain": "Mantık katmanlı. Su damarı açar, soğuk yüz beyni şoklar, ışık SCN sinyali verir. Ters sırada zincir hâlâ işe yarar ama %30 daha zayıf. En önemli kural ışığın ilk 10 dakikada gelmesi. Su ve yüz hızlandırıcı, ışık ise saatin kendisini ayarlıyor."
+          }
+        ],
+        "proTip": "Soğuk yüz yıkamaktan sonra havluyu kullanma, suyun kendiliğinden kuruması ekstra uyandırır."
       },
       "4": {
         "title": "Sabah Sessizliği",
-        "teaching": "Çoğu kişi sabahı bir gürültü banyosuna çevirir: bildirimler, haberler, podcast, telefon konuşması. Beyin, gün başlamadan tükenir.\n\nSessizlik bir lüks değil — temel ihtiyaç. İlk 60 dakikayı sessiz geçirmek, gün boyu daha az reaktif kılar.\n\nSessizlik hiçbir şey yapmamak değil. Düşünmek için yer açmak.",
-        "action": "Yarın ilk 60 dakikayı sessiz geçir: müzik yok, podcast yok, ses yok. Sadece sabah rutini ve düşünme.",
+        "hook": "Sabah 06:30. Çalar saat çaldı. 30 saniye içinde podcast açtın, fonda CNN, telefonda yorum bildirimleri. Beyin gün başlamadan 12 farklı insan sesini içine aldı. Saat 09:00 olduğunda kendi düşüncen kim, hiç bilmiyorsun.",
+        "teaching": "Çoğu kişi sabahı bir gürültü banyosuna çevirir: bildirimler, haberler, podcast, telefon konuşması. Beyin, gün başlamadan tükenir.\n\nSessizlik bir lüks değil, temel ihtiyaç. İlk 60 dakikayı sessiz geçirmek, gün boyu daha az reaktif kılar.\n\nSessizlik hiçbir şey yapmamak değil. Kendi düşüncen için yer açmak.",
+        "teachingDeep": "Georgetown bilgisayar bilimcisi Cal Newport, \"Deep Work\" (2016) kitabında modern yaşamın en ciddi maliyetini şöyle adlandırıyor: attention residue, yani dikkat tortusu. Sophie Leroy'nun 2009 University of Minnesota çalışmasından alınma terim: bir konudan başka bir konuya geçtiğinde, eski konunun zihinde bıraktığı kalıntı 23 dakika boyunca yeni iş üzerinde dolanıyor. Sabah uyandığın anda podcast açtıysan, podcastteki konu (Trump, kripto, futbol) 23 dakika boyunca senin gerçek odaklanmana sızıyor.\n\nMekanizma şu: beyin tek anda tek konuyu işleyemiyor. Görünüşte multitasking, gerçekte mikro task-switch. Her geçişte 0.5-1 saniyelik prefrontal yeniden yükleme maliyeti var. Sabahın ilk 60 dakikası dış uyaranlarla doluysa, prefrontal korteks reaktif moda kilitleniyor. Sonra ofise oturduğunda \"odaklanamıyorum\" diye yakınıyorsun — gerçek sebep, beyin daha akşamdan reaktif moda alıştırılmış.\n\nAma asıl tuzak burada değil. Asıl tuzak: \"sözsüz müzik dinliyorum, sessizlik bu zaten\" yalanı. Newport veri seti net: enstrümental müzik bile prefrontal kortekste işlem yükü oluşturuyor (Sussex ekibi, 2017 fMRI çalışması). Ritim, melodi, tını — bunların her biri arka planda dikkat tüketiyor. Gerçek sessizlik = ses yok, ekran yok, başka insan yok. Sadece kendi nefesin.\n\nNicholas Carr \"The Shallows\" (2010) kitabında uyarıyor: sürekli sesli ve görsel girdiye maruz kalan beyin, derin düşünme nöral yollarını fiziksel olarak kaybediyor. Beyin plastik, kullanmadığını söndürüyor. 6 yıl boyunca her sabah podcastle uyanan biri için derin sessizlik artık \"sıkıcı\" değil, fizyolojik olarak rahatsız edici. Çünkü ilgili sinir bağları zayıflamış.\n\nManastır geleneğinde \"büyük sessizlik\" (magnum silentium) — akşam Compline ayininden ertesi sabah Lauds ayinine kadar konuşma yok. Bin yıldır. Çünkü gözlemlemişler: en derin düşünce ve en sakin ruh, gürültüden yoksun bir 60 dakikadan doğuyor. Modern beynin senin için aynı kuralı önerdiği şey de bu. İlk 60 dakika: ses yok, ekran yok, başkasının düşüncesi yok. Sadece kendin. Bu sıkılma değil, geri kazanım.",
+        "practice": {
+          "instruction": "Şu an telefonu sessize al, yüzünü çevir. Sandalye veya yatak kenarına dik otur, ayaklar yere değsin, sırt düz. Gözler açık, uzaktaki bir noktaya bak. 2 dakika boyunca konuşma, müzik açma, ekrana bakma. Sadece nefesini say: bir nefes alış-veriş = bir. Aklın kaçtığında yargılama, sayıya geri dön.",
+          "seconds": 120,
+          "prompt": "Kaça kadar sayabildin kesintisiz? İlk kez beyin nereye kaçtı?"
+        },
+        "action": "Yarın sabah uyandıktan sonra 60 dakika ses açma: podcast yok, müzik yok, haber yok, telefon konuşması yok. Telefonu uçak modunda tut. Sadece sabah rutini ve kendi düşüncen.",
         "reflectionPrompt": "Sessiz sabah seni daha mı yorgun yaptı, yoksa daha mı dingin?",
+        "reflectionPrompts": [
+          "Son 30 günde kaç sabahı tam sessiz geçirdin? Sıfır mı? Bu sayıyı duyduğunda ilk gelen mazaret hangisi?",
+          "60 dakika tam sessiz olmak senin için tehdit gibi geliyorsa, hangi düşünce ortaya çıkmasından korkuyorsun? Adını koy."
+        ],
+        "commitments": [
+          "Yarın sabah uyandıktan sonra 60 dakika telefonu uçak modunda tutacağım",
+          "Bu akşam podcast/YouTube uygulamalarının sabah bildirimlerini kapatacağım",
+          "Yarın sabah duş alırken müzik yok — sadece su sesi"
+        ],
         "quiz": [
           {
             "q": "Sabah sessizlik niye lüks değil?",
@@ -2074,13 +2214,75 @@
             "explain": "Sessiz başlangıç = gün boyu sakin reaktivite."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "\"Sabah sessiz olmaya çalıştım ama duş alırken enstrümental jazz açtım, sözsüzdü.\" Bu sessizlik sayılır mı?",
+            "options": [
+              "Evet, söz yoksa sessizliktir",
+              "Hayır, enstrümental müzik bile prefrontal işlem yükü oluşturuyor",
+              "Caz hariç her müzik sayılır",
+              "Sadece sözlü müzik bozar"
+            ],
+            "correct": 1,
+            "explain": "Sussex 2017 fMRI çalışması: enstrümental müzik prefrontal kortekste %30 daha az ama yine de işlem yükü oluşturuyor. Sessizlik dediğimiz şey nöral istirahat. Ritim, melodi, tını dikkati tutuyor. Gerçek sessizlik = ses kaynağı yok. Müzik 60 dakikadan sonra başlayabilir."
+          },
+          {
+            "q": "Eşin sabah kahvaltıda konuşmak istiyor: \"Bugün ne yapacağız?\" Sen sessizlik protokolündesin. En akıllı hareket?",
+            "options": [
+              "Hiçbir şey söyleme, görmezden gel",
+              "Önceden anlaş: bu hafta sabah 60 dakika ben sessiz olacağım, sonra konuşalım",
+              "Konuşmayı kabul et, protokol unutulsun",
+              "Eşine de zorla sessizlik"
+            ],
+            "correct": 1,
+            "explain": "Sessizlik kuralı kendi sınırın. Çevrendekilere haber vermeden uygulamak ilişkiye zarar. Önceden açıkla: \"Sabah 60 dakika sessiz başlıyorum, beni iletişime gerek olmadan bırakırsan minnettar olurum.\" Çoğu yetişkin saygı duyar. Sessizlik manastır değil, profesyonel disiplin."
+          },
+          {
+            "q": "\"Ben podcast dinlerken daha iyi düşünüyorum, sessizlik beni bunaltıyor.\" Bu hangi olgudur?",
+            "options": [
+              "Doğru, herkesin tarzı farklı",
+              "Carrın \"the Shallows\" teşhisi: derin düşünme nöral yolları sürekli girdiyle zayıflamış, sessizlik tahammül edilemez geliyor",
+              "Sadece içe dönük insanlar için sessizlik işe yarar",
+              "Podcast bilgi verir, faydalıdır"
+            ],
+            "correct": 1,
+            "explain": "Nicholas Carr: \"Beyin plastik, kullanmadığını söndürür.\" Yıllardır podcastle düşünen biri için sessizlik rahatsız edici çünkü ilgili nöral yollar zayıflamış. Çözüm tahammül değil, yeniden inşa. İlk hafta zor olur, ikinci hafta tolere edilebilir, üçüncü hafta tercih edilen hale gelir. Beyin kasla aynı, yük altında güçlenir."
+          },
+          {
+            "q": "Sabah 60 dakika sessiz başladın, 45. dakikada \"sadece manşetlere bakıyorum\" diye telefonu açtın. 23 dakika kuralı ne diyor?",
+            "options": [
+              "Hızlı bakış zararsız",
+              "Manşet okuduktan sonra 23 dakika boyunca o konu prefrontalde dolanır, sessizliğin kazanımı buharlaşır",
+              "Manşet az olduğu için etkisiz",
+              "Sadece sosyal medya zarar"
+            ],
+            "correct": 1,
+            "explain": "Sophie Leroy: 23 dakikalık attention residue \"sadece manşet\" için bile geçerli. Beyin konuyu açtı, kapansa bile arka planda işliyor. 60 dakikalık sessizlik blokunu 45. dakikada kıran biri, etkili olarak sadece 22 dakika sessizlik kazandı. Tam blok kuralı: 60 = 60, kesintisiz."
+          }
+        ],
         "proTip": "İlk 30 dakikan boyunca konuşmaya da gerek yok — gerçek sessizlik içsel + dışsal birliktedir."
       },
       "5": {
         "title": "Sabah 5 Dakikalık Niyet",
+        "hook": "Bugün ne yapmak istediğini bilmiyorsan, gün sonunda neye gurur duyacağını bilmiyorsan, başkalarının senden istediği şeyleri yapmaya gideceksin. Telefon mesajı, e-posta, sosyal medya — bütün gün senin niyetini dış sesler dolduracak. Sabah 5 dakika ya senin, ya algoritmanın.",
         "teaching": "Çoğu kişi gününü reaktif başlar: e-posta, WhatsApp, bildirimler. Niyet ettiğin değil, sana gelen şeylere tepki verirsin.\n\n5 dakikalık niyet değiştirir bunu. Bir defter al. Üç soru: (1) Bugünün ana önceliği ne? (2) Hangi alışkanlıkları sürdüreceğim? (3) Akşam neye gurur duyacağım?\n\nBu 5 dakika, günün geri kalanını şekillendirir.",
-        "action": "Yarın sabah 5 dakika niyet pratiği yap. Bir kalem ve kağıt al, üç soruya yaz.",
+        "teachingDeep": "NYU psikoloji profesörü Gabriele Oettingen, 25 yıllık \"motivasyon ve niyet\" araştırmasını WOOP yöntemine indirgedi: Wish (istek), Outcome (sonuç), Obstacle (engel), Plan (plan). \"Rethinking Positive Thinking\" (2014) kitabında çarpıcı bulgu: sadece olumlu hayal kuran insanlar, gerçek hayatta hayallerini gerçekleştirme oranı düşük. Beyin hayali gerçekleşmiş gibi alıyor, motivasyon düşüyor. Buna karşılık, hem hedefi hem engeli yazılı şekilde geçmiş bireyler hedefe ulaşma oranını %50 artırıyor.\n\nMekanizma şu: Roy Baumeister, Florida State psikolojisi, \"Willpower\" (2011) kitabında ego depletion (irade tükenmesi) kavramını açıklıyor. İrade kas gibi yoruluyor. Sabah taze, akşam bitik. En önemli kararları yorgun iraden veremiyorsa, niyet kalmıyor — sürüklenme kalıyor. Niyeti SABAH yazmak demek, irade taze iken günü kilitlemek demek. Akşam yorgun beynin saatler önce yazılmış niyete itaat etmesi, yeni karar vermesinden 4 kat kolay (Baumeister verisi).\n\nAma asıl tuzak burada değil. Asıl tuzak: \"niyetimi zaten kafamda biliyorum, yazmaya gerek yok\" yanılgısı. Dominican University Gail Matthews 2015 çalışması: hedeflerini yazılı şekilde belirten katılımcıların ulaşma oranı, sadece düşünenlere göre %42 daha yüksek. Yazmak sembolik değil — el-beyin-göz üçgeni nöral kodlamayı 4 kata kadar derinleştiriyor. Düşünce uçucu, yazı sabit. Düşünce yarınki seni bağlamıyor, yazı bağlıyor.\n\nÜç soru tesadüfen seçilmedi. \"Ana öncelik\" = bugünün omurgası, en az 1 saatlik derin iş. \"Hangi alışkanlıkları sürdüreceğim\" = zincirleme küçük zaferler, dopamin sistemini sağlıklı tutuyor. \"Akşam neye gurur duyacağım\" = bitmiş günün gözünden bugünü görmek, Stoacıların \"premeditatio futurorum\" tekniği. Üç soru sabah yazıldı, akşam denetlendi — irade taze bir döngü kuruyor.\n\nManastır geleneği bu pratiği bin yıldır farklı isimle yapıyor: Stoik filozof Marcus Aurelius \"Düşünceler\" kitabını sabah yazdı, kendine sordu \"bugün hangi karakterimi göstereceğim?\" Benedikten rahipleri sabah \"intentio diei\" (günün niyeti) ile başlıyor. Aynı yapı. Yazılı kalem ve kağıt — telefon notu değil. Çünkü el ile yazmak beyin için fiziksel kararı pekiştiren ritüel. Ekran yazısı geçici, kağıt yazısı bağlayıcı. Bugün senin sıran: 3 satır, kalem, kağıt. 5 dakika.",
+        "practice": {
+          "instruction": "Bir kalem ve kağıt al, yoksa not defterinin son sayfasına yaz. ŞİMDİ, 3 satır yaz: (1) Yarın sabah uyanır uyanmaz ana önceliğim ne olacak? (2) Yarın hangi 3 alışkanlığı sürdüreceğim? (3) Yarın akşam neye gurur duymak istiyorum? Telefon notu olmaz, fiziksel kalem zorunlu. 3 dakika.",
+          "seconds": 180,
+          "prompt": "Yazarken kalemin durakladığı an oldu mu? Hangi sorunun cevabı en zor geldi?"
+        },
+        "action": "Yarın sabah ilk 10 dakikada bu 3 satırı yaz. Kalem ve kağıt. Akşam yatmadan tekrar bak, hangi satıra ulaştın hangine ulaşmadın işaretle.",
         "reflectionPrompt": "Niyet yazılı olunca, gün boyu kararlarını etkiledi mi?",
+        "reflectionPrompts": [
+          "Son 30 günde kaç sabah yazılı niyet ile başladın? Cevap sıfır ise: bunu okurken aklından geçen ilk savunma hangisi?",
+          "Bugünün ana önceliği 1 cümlede ne olur diye yazdığında durakladın mı? Eğer evet, neden? Belirsizlik mi, korkulan iş mi, çelişkili istekler mi?"
+        ],
+        "commitments": [
+          "Bu akşam yatağın yanına kalem ve küçük bir not defteri koyacağım",
+          "Yarın sabah uyandıktan sonra ilk 10 dakikada 3 satır yazacağım",
+          "Bu hafta her gece yatmadan önce o günkü 3 satırı tekrar bakıp kendime hesap soracağım"
+        ],
         "quiz": [
           {
             "q": "Reaktif gün başlangıcı ne demektir?",
@@ -2103,6 +2305,52 @@
             ],
             "correct": 2,
             "explain": "Öncelik, alışkanlık, gurur — üç soru günü şekillendirir."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "\"Niyetimi kafamda biliyorum, yazmaya gerek yok\" diyorsun. 30 günün sonunda hedef başarı oranın nedir?",
+            "options": [
+              "Aynı, yazmak farketmez",
+              "Yazanlardan yaklaşık %42 daha düşük (Dominican University Matthews 2015)",
+              "Daha yüksek çünkü esneksin",
+              "Sadece motivasyona bağlı"
+            ],
+            "correct": 1,
+            "explain": "Gail Matthews verisi: yazılı hedef sahipleri ulaşma oranını %42 artırıyor. \"Kafamda var\" demek ihmal değil, bilişsel yanılgı. Düşünce uçucu, gün içinde başka düşüncelerle yer değiştiriyor. Yazılı niyet sabit, akşam saatinde bile aynı yerde duruyor."
+          },
+          {
+            "q": "Niyetini Apple Notes'a yazdın, kalem-kağıt yok. \"Aynı şey değil mi?\" Hangisi doğru?",
+            "options": [
+              "Aynı, sadece niyet önemli",
+              "Hayır, el ile yazmak nöral kodlamayı 4 kat derinleştirir, ekran yazısı geçici",
+              "Tam tersi, telefon daha hızlı",
+              "Önemsiz"
+            ],
+            "correct": 1,
+            "explain": "Mueller ve Oppenheimer (Princeton 2014) ünlü laptop vs el yazısı çalışması: el yazısı bilgiyi 2 kat fazla hatırlatıyor. Sebep, ekran hızlı kopyalama, el ise zorunlu sentezleme. Niyet yazısında aynı dinamik. Telefonda yazılı niyet bağlamıyor, sabit nesne kağıt."
+          },
+          {
+            "q": "5 gündür sabah niyet yazıyorsun ama akşam tekrar bakmıyorsun. \"Yazmak yeter\" diyorsun. Bu sistem işliyor mu?",
+            "options": [
+              "Evet, yazmak başlı başına etkili",
+              "Yarısı: sabah niyet + akşam denetim olmazsa, hesap döngüsü kapanmıyor",
+              "Daha az yazmaya başla",
+              "Sadece sabah önemli"
+            ],
+            "correct": 1,
+            "explain": "Sistem iki ucu kapalı bir döngü: sabah taze irade ile yazılan niyet + akşam yorgun ama dürüst gözle denetim. Akşam bakmazsan niyet sadece dilek listesi. Hesap soran bir göz olmadan davranış değişmiyor (Locke ve Latham hedef belirleme teorisi 1990)."
+          },
+          {
+            "q": "Sabah niyet olarak yazdın: \"Bugün hayatımı düzelteceğim.\" Akşam başaramadın, kendinden iğrendin. Hata nerede?",
+            "options": [
+              "Hedef yazıldı ama belirsiz, ulaşılamaz büyüklükte, ölçülemez",
+              "Hedef küçük tutuldu",
+              "Yazılı niyet hep böyle olur",
+              "Niyetin kendisi yanlıştı"
+            ],
+            "correct": 0,
+            "explain": "Locke ve Latham: etkili hedef SMART — specific, measurable, achievable, relevant, time-bound. \"Hayatımı düzelteceğim\" beşinden hiçbiri. \"Bugün 1 saat odaklanmış iş yapacağım, telefonu kapatacağım\" — bu hem yazılı hem ölçülebilir. Yazmak yeter değil, doğru yazmak yeter."
           }
         ],
         "proTip": "Niyet sorularını yazılı yap. Beyin yazılı niyeti zihinsel niyetten 4x daha fazla hatırlar."
@@ -3505,10 +3753,26 @@
     },
     "mind-discipline": {
       "1": {
-        "title": "Tek Odak Kuralı",
+        "title": "Tek Odak Kuralı (Multitasking Bir Yalan)",
+        "hook": "Şu an ekranında kaç sekme açık? Telefonunda kaç uygulama arka planda? Sen 'odaklanıyorum' diyorsun ama beynin son 30 saniyede dört kez başka yere bakmak istedi. Bunu farkında bile değilsin — sorun zaten bu.",
         "teaching": "Beyin tek görev yapacak şekilde evrimleşmiş. Multitasking bir illüzyon — beyin sadece hızlı geçiş yapar, performans her geçişte düşer.\n\nDeep work tek odak demektir. Tek pencere, tek ses, tek niyet. Bu antrenman gerektirir — ilk gün 25 dakika zor, bir hafta sonra 90 dakika doğal.\n\nZihinsel kas. Geliştirilebilir. Bugün başlıyorsun.",
-        "action": "Bugün 25 dakika tek görev bloku yap (Pomodoro). Telefon başka odada. Bilgisayarda sadece o iş için açık sekme.",
+        "teachingDeep": "Utah Üniversitesi'nde David Strayer adında bir bilim insanı 10 yıl boyunca tek bir soruyu araştırdı: insan beyni gerçekten iki şeyi aynı anda yapabilir mi? 2010'da yayınladığı 'Supertasker' çalışmasının sonucu net: hayır. Binlerce insan test edildi — sadece %2,5'i (kırkta bir) gerçek anlamda paralel görev yapabiliyor. Geri kalan %97,5 — yani büyük ihtimalle sen — multitasking yaptığını sanırken aslında task-switching yapıyor.\n\nGeçiş anında ne oluyor: prefrontal korteks bir konunun kurallarını bellekten yüklerken diğerinin kurallarını siliyor. Strayer'ın laboratuvar ölçümleri: her geçişte hata oranı yaklaşık %40 artıyor, görev tamamlama süresi yaklaşık %40 uzuyor. İki iş 'aynı anda' yaparsan ikisi de yarım kalıyor — sığ işleniyor.\n\nAsıl tuzak burada değil. Asıl tuzak: multitasking yaparken kendini VERİMLİ HİSSEDİYORSUN. Bu da Strayer'ın bulgusu. Beyin meşgul olduğunu görüyor, dopamin küçük dozlarda salınıyor, sen 'çok iş yapıyorum' sanıyorsun. Gerçekte sığ-iş-sığ-iş-sığ-iş yapıyorsun, hiçbiri bitmiyor. Akşam yorgun ama hiçbir şey bitirmemiş halde uyuyorsun. Yorgunluk gerçek, üretim sahte.\n\nAdam Gazzaley 'The Distracted Mind' kitabında bunu 'cognitive control bottleneck' diye adlandırıyor: beynin çalışma belleği tek bir aktif bağlam tutabilir. İki sekme = iki bağlam = her bakışta bağlam yeniden yükleniyor. Yükleme süresi yarım ile iki saniye arası. Saatte 30 geçiş yaparsan, sadece geçişlerde 15-60 saniye harcıyorsun. Ama gerçek maliyet zaman değil — derinlik. Hiçbir bağlamda yeterince kalmıyorsun ki gerçek bağlantılar kurabilesin. Düşünce düz kalıyor.\n\nBugün antrenmana başlıyorsun. 25 dakika tek pencere. Hiçbir sırrı yok — sadece dirence katlanmak. Beynin geçiş yapmak isteyecek, sen yapmayacaksın. Yedinci dakika en zor olacak. On dördüncü dakikadan sonra kolaylaşır. Bir hafta sonra 25 dakika gülünç gelir, 60 dakika doğal olur.",
+        "practice": {
+          "instruction": "Şu an bilgisayardaysan: bir tanesi hariç tüm tarayıcı sekmelerini kapat. Telefonsa: bir uygulama dışında her şeyi kapat. Şimdi 120 saniyelik timer'a başla. Açık olan tek şeye bak. Hiçbir şey yapma — sadece bak. Geçiş yapma isteği geldiğinde fark et, geçişme.",
+          "seconds": 120,
+          "prompt": "120 saniye içinde kaç kez 'başka bir şey açayım' düşüncesi geldi? İlk dürtü kaçıncı saniyede geldi?"
+        },
+        "action": "Bugün 25 dakikalık tek görev bloku yap. Telefon başka odada. Tarayıcıda sadece o iş için açık tek sekme. Bittiğinde kaç kez geçiş yapmak istediğini bir kâğıda yaz.",
         "reflectionPrompt": "25 dakika sonra zihnin yorgun mu, daha mı net?",
+        "reflectionPrompts": [
+          "120 saniyelik tek-bakış pratiğinde geçiş yapma dürtüsünü ilk hangi anda hissettin? O an aklında SOMUT olarak ne vardı?",
+          "Son bir hafta içinde 'çok iş yaptım ama hiçbir şey bitirmedim' hissini yaşadığın bir akşamı yaz. O gün kaç sekme açıktı, kaç uygulamaya geçtin? Tahmin et."
+        ],
+        "commitments": [
+          "Bugün 25 dakikalık bir tek-sekme bloku yapacağım, telefon başka odada",
+          "Çalışma bilgisayarımda bugün ikiden fazla sekme açmayacağım",
+          "Bir görevi bitirmeden ikincisine geçmeyeceğim, geçiş anını fark edeceğim"
+        ],
         "quiz": [
           {
             "q": "Multitasking efsanesi nedir?",
@@ -3533,13 +3797,75 @@
             "explain": "%40 düşüş + hata oranı artışı."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Rapor yazıyorsun. Yanda WhatsApp açık, bir grup mesajı geliyor, üç saniye bakıyorsun. 'Önemli değil, sadece üç saniye' diyorsun. Strayer'a göre gerçek maliyet ne?",
+            "options": [
+              "Üç saniye — sadece bakış",
+              "%40 hata artışı sonraki paragraflarda + bağlamı tekrar yükleme",
+              "Sıfır — multitasking gerçek",
+              "Verimlilik artışı — beyin dinlendi"
+            ],
+            "correct": 1,
+            "explain": "David Strayer, Utah Üniversitesi: her geçiş prefrontal kortekste bağlam siler. Üç saniye baktın ama rapor bağlamı dağıldı, hata oranı sonraki paragraflarda %40 daha yüksek. 'Sadece üç saniye' bir yalan."
+          },
+          {
+            "q": "Bir arkadaşın 'ben aynı anda hem Netflix izleyip hem ödev yapabiliyorum, fark etmiyor' diyor. Cevabın?",
+            "options": [
+              "Doğru olabilir, herkesin beyni farklı",
+              "Strayer'ın supertasker çalışmasına göre %2,5 ihtimal; %97,5 ihtimal kendini kandırıyor",
+              "Yanlış, kimse yapamaz",
+              "Sadece zeki insanlar yapar"
+            ],
+            "correct": 1,
+            "explain": "Strayer 'Supertasker' (2010): binlerce kişi test edildi, sadece %2,5'i gerçek paralel görev yapabiliyor. İstatistik olarak arkadaşın muhtemelen kendini kandırıyor — ödev de izlemek de yarı kalitede çıkıyor, ama meşgul hissediyor."
+          },
+          {
+            "q": "Bir saatlik derin işin için oturdun. Yedinci dakikada beyninde 'maili kontrol etsem' düşüncesi patlıyor. Doğru tepki?",
+            "options": [
+              "Hızlıca aç, kapa, dön — 30 saniye sürer",
+              "Düşünceyi fark et, geçişme, oturmaya devam et — yedinci dakika zaten en zor olan",
+              "Bırak, başka zaman dene",
+              "Maile bak ama cevap verme"
+            ],
+            "correct": 1,
+            "explain": "Beyin geçiş alışkanlığını ilk 10-15 dakikada test eder. Yedinci dakika tepe nokta. Geçmezsen dürtü düşer, derinlik açılır. Geçersen baştan başlarsın. Buradaki sınav 30 saniye değil, 14. dakikaya kadar oturmak."
+          },
+          {
+            "q": "Akşam yorgunsun ama 'ne yaptım bugün' diye düşününce hiçbir somut iş bitmedi. Strayer ve Gazzaley'in açıklaması?",
+            "options": [
+              "Çok çalıştın — dinlen",
+              "Sığ-iş-sığ-iş döngüsünde kaldın; yorgunluk gerçek, üretim sahte",
+              "Konsantrasyon eksik — daha fazla kahve",
+              "Yetersiz uyku"
+            ],
+            "correct": 1,
+            "explain": "Adam Gazzaley 'The Distracted Mind': cognitive control bottleneck. Sürekli geçiş = sürekli bağlam yükleme = beyin enerjisi tüketimi yüksek, ama hiçbir bağlamda yeterince derin kalmadığın için somut üretim yok. Yorgunluk üretim göstergesi değil."
+          }
+        ],
         "proTip": "Telefonu hep odanın diğer ucuna koy. \"Ulaşmak için kalkmak\" gerekirse, çoğu kez vazgeçersin."
       },
       "2": {
-        "title": "Distraction Kill List",
+        "title": "Distraction Kill List (İsim Verilen Düşman Gücünü Kaybeder)",
+        "hook": "Şu an telefonun ekranında kaç uygulama ikonu var? Bilgisayarında kaç sekme, kaç bildirim balonu? Eğer cevabı tahmin ediyorsan ama bilmiyorsan — her biri bedavadan dikkatini çalıyor demektir. Adı olmayan düşmana karşı savaş kazanılmaz.",
         "teaching": "Dikkat dağıtıcılar görünmeyen düşmanlar. Her gün isimlerini listele: hangi uygulamalar, hangi kişiler, hangi düşünceler dikkatini bölüyor?\n\nListele = farkına var. Farkına vardığın şey gücünü kaybeder.\n\nBugün listene bakacak ve her dikkat dağıtıcı için bir savunma kuracaksın.",
-        "action": "5 dakikada bir liste yap: Bugün dikkatini bölen 5 şey ne? Her biri için bir savunma yaz.",
+        "teachingDeep": "Gloria Mark UC Irvine'de 20 yıldır tek bir soruyu araştırıyor: bir kesintiden sonra zihnin tam odağa geri dönmesi ne kadar sürüyor? 2004 yayınladığı orijinal çalışmada ofislerde çalışanları takip etti, kesintiden sonra ortalama 23 dakika 15 saniye buldu. 2023 kitabı 'Attention Span' ise daha kötü bir sayı veriyor: günümüzde insanlar bir ekran etkinliğinden diğerine ortalama 47 saniyede geçiyor. 2004'te bu süre 2,5 dakikaydı. 20 yılda dikkat ömrü dörtte birine düştü.\n\n47 saniye demek: gün boyu beynin gerçek odağa hiç ulaşamadan kayıyor. Mark'ın bulgusu: her kesinti küçük bir kortizol piki yaratıyor. Sürekli kesilen beyin = sürekli stres altında. Sebepsiz yere yorgun ve gergin hissetmenin biyolojisi bu.\n\nAsıl tuzak burada değil. Asıl tuzak: dikkat dağıtıcıların çoğu görünmez. Sen bildirimleri biliyorsun, ama beynindeki dikkat dağıtıcıları tanımıyorsun. Bir e-posta beklerken zihninde dönen 'acaba cevap geldi mi' düşüncesi de bir dikkat dağıtıcı. Yanda açık duran sessiz bir sekme de. Açık duran bir kapı bile. Mark'a göre dikkat dağıtıcının iki türü var: dışsal (bildirim, ses, hareket) ve içsel (düşünce, dürtü, alışkanlık). İçsel olanlar dışsallardan iki kat daha sık kesiyor — ama görünmediği için kontrol edilemiyor.\n\nİsim vermek savaşın yarısı. Bilişsel psikolojide buna 'affect labeling' diyorlar: UCLA'da Matthew Lieberman'ın fMRI çalışmaları gösterdi ki bir duyguya veya dürtüye isim verdiğinde amigdala aktivitesi düşüyor, prefrontal korteks devreye giriyor. Yani 'şu an telefonu kontrol etme dürtüsü' diye yazdığında, dürtü zayıflıyor — sadece adlandırmakla.\n\nBugün kâğıt ve kalem alacaksın. Liste yapacaksın. Her satır bir düşmanın adı: WhatsApp, e-posta, yan masadaki konuşma, açık duran tarayıcı sekmesi, kafanda dönen X düşüncesi. İsim koy. Sonra her birine bir savunma yaz. Görünür hale getirilen düşman silah kuşanılır, görünmez kalan düşman seni içeriden eritir.",
+        "practice": {
+          "instruction": "Bir kağıt ve kalem al. Şu an 120 saniyelik timer'a başla. Bu süre boyunca telefonundaki TÜM bildirim kaynaklarını say ve yaz. Uygulama uygulama: WhatsApp, e-posta, Instagram, oyun, banka uygulaması, hepsi. Sayını yaz. Düşünmeden, sadece kaydet.",
+          "seconds": 120,
+          "prompt": "Toplam kaç bildirim kaynağı çıktı? Beklediğinden az mı çok mu? Hangisini gördüğünde 'bunu kapatmam lazım' dedin?"
+        },
+        "action": "Bugün 5 dakikada bir kâğıda Distraction Kill List yaz. Sol kolonda dikkat dağıtıcının adı, sağ kolonda savunması. En az 5 madde. Kâğıdı çalışma masanın üstünde tut, gün boyu güncelle.",
         "reflectionPrompt": "Listenin en şaşırtıcı maddesi hangisiydi?",
+        "reflectionPrompts": [
+          "Listenin en utanç verici maddesi hangisiydi? Adını yazmaktan en çok hangisi seni rahatsız etti — niye?",
+          "Listede 'içsel' bir dikkat dağıtıcı var mı (örnek: gelecek hakkında endişe, telefonu kontrol etme dürtüsü)? Yazmadıysan, şimdi en az birini ekle ve niye yazmadığını sor."
+        ],
+        "commitments": [
+          "Bugün en az 5 maddelik bir Distraction Kill List yazacağım, kağıt üstünde",
+          "Listede en zorlu olan bir uygulamanın bildirimini bugün tamamen kapatacağım",
+          "Yarın aynı listeyi sabah tekrar yazacağım — eklenen veya silinen maddeyi fark edeceğim"
+        ],
         "quiz": [
           {
             "q": "Distraction Kill List nedir?",
@@ -3564,13 +3890,75 @@
             "explain": "Bilinç gücü — fark etmek alışkanlığı kırar."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Liste yapıyorsun, sadece dışsal düşmanları yazdın (WhatsApp, e-posta, sekmeler). Gloria Mark'a göre eksik kalan ne?",
+            "options": [
+              "Daha fazla uygulama eklemek",
+              "İçsel düşmanlar — düşünceler, dürtüler, beklentiler — dışsallardan iki kat daha sık kesiyor",
+              "Liste yeterli, içsel önemli değil",
+              "Bildirim ayarları"
+            ],
+            "correct": 1,
+            "explain": "Gloria Mark 'Attention Span' (2023): içsel kesintiler (düşünce, alışkanlık, dürtü) dışsallardan iki kat daha sık oluyor. 'WhatsApp'ı kontrol etme dürtüsü' de bir maddedir. Listene yazmadığın şey görünmez kalır, görünmez kalan şey kontrol edilemez."
+          },
+          {
+            "q": "Listende 'Instagram' yazdın. Yanına savunma olarak ne yazmak işe yarar?",
+            "options": [
+              "Daha az açacağım",
+              "Bildirimleri kapat + ana ekrandan kaldır + giriş engeli yarat",
+              "Mantıklı kullanırım",
+              "Sadece akşamları açarım"
+            ],
+            "correct": 1,
+            "explain": "Savunma somut + ortam değişikliği olmalı. 'Daha az açacağım' niyettir, irade isteyen plan. Bildirim kapatmak + ana ekrandan kaldırmak + 6 haneli şifre eklemek = ortam engeli. Walter Mischel'in çalışmaları gösteriyor: irade değil, mesafe işe yarar."
+          },
+          {
+            "q": "Listendeki 'kafamda dönen iş düşüncesi' maddesine savunma ne olabilir?",
+            "options": [
+              "Düşünmeyi bırakmaya çalışmak",
+              "Düşünceyi kâğıda yazıp 'sonra düşüneceğim' kutusuna atmak — beyin yazılı şeyi serbest bırakır",
+              "Telefonu açıp dikkat dağıtmak",
+              "İlaç almak"
+            ],
+            "correct": 1,
+            "explain": "David Allen 'Getting Things Done': beyin yazılı olmayanı taşıyacak diye yorulur. Düşünceyi yakalayıp 'sonra' kutusuna koyduğunda, beyin onu bırakır. 'Düşünmeyi bırakmak' işe yaramaz — beyne 'pembe fil düşünme' demek gibi."
+          },
+          {
+            "q": "Mark'ın 2023 verisi: insanlar bir ekran etkinliğinden diğerine ortalama 47 saniyede geçiyor. 2004'te 2,5 dakikaydı. Bu sayı sana ne anlatıyor?",
+            "options": [
+              "Teknoloji ilerledi, normal",
+              "Dikkat ömrü 20 yılda dörtte birine düştü; bu, doğal bir evrim değil ortamın kazandığı bir savaş",
+              "İnsanlar daha hızlı düşünüyor",
+              "Bilim hatalı"
+            ],
+            "correct": 1,
+            "explain": "Beyin 20 yılda evrimleşmez. Ortam değişti — bildirimler, sonsuz scroll, çoklu ekran. Sen ortamın kurbanı değilsin, ortamın mühendisisin. Distraction Kill List = ortamı yeniden mühendislemek."
+          }
+        ],
         "proTip": "Distraction listeni telefonun ana ekranına koy. Görmek = farkına varmak."
       },
       "3": {
-        "title": "Deep Work Bloku",
+        "title": "Deep Work Bloku (90 Dakikalık Ultradiyen Pencere)",
+        "hook": "Son ne zaman 90 dakika kesintisiz tek bir işle uğraştın? Telefon yok, bildirim yok, başka sekme yok, kimseye bakmak yok. Hatırlamıyorsan — son aylar muhtemelen hiç yapmadın. Sen 'çalışıyorum' diyorsun ama gerçekte hiç deep work yapmıyorsun.",
         "teaching": "Cal Newport: deep work = deep value. Yüzeysel iş kolayca yapılır, kolayca taklit edilir, az değer üretir. Derin iş zor, nadir, çok değerli.\n\nGünde 90 dakika gerçek deep work, 8 saatlik sığ işten 10x daha değerli sonuç verir.\n\nBu seviyeye ulaşmak için kademeli antrenman gerekir.",
-        "action": "Bugün 90 dakikalık tek görev bloku yap (Pomodoro değil — 90 dakika kesintisiz).",
+        "teachingDeep": "Cal Newport, Georgetown'da bilgisayar bilimi profesörü, 2016'da 'Deep Work' kitabını yazdı. Tezi tek cümleyle: 21. yüzyılda iki tür beceri var — kolayca otomatikleştirilebilen sığ iş ve değer üreten derin iş. Sığ iş herkesin yapabildiği şey: e-posta yanıtlamak, toplantı, raporlama. Derin iş zor odak gerektiren şey: yazmak, çözmek, kodlamak, öğrenmek, yaratmak. Newport'un iddiası: ekonomi giderek derin iş yapanı ödüllendiriyor, sığ iş yapanı eziyor. Çünkü sığ iş otomatikleştiriliyor, derin iş hâlâ insana özgü.\n\n90 dakika nereden geliyor? Nathaniel Kleitman 1950'lerde keşfetmişti: uyku sırasında beyin yaklaşık 90 dakikalık döngülerden geçiyor — REM ve non-REM arasında ultradiyen ritim. 1970'lerde araştırmacılar fark etti ki bu ritim uyanıkken de devam ediyor. Yaklaşık her 90 dakikada bir beyin yüksek odak fazından düşük odak fazına geçiyor. Yani 90 dakika sihirli sayı değil — biyolojik bir tavan. Bunun ötesinde zorlamak beyin yorgunluğu, hata, kararların kalitesinde düşüş getiriyor.\n\nAsıl tuzak burada değil. Asıl tuzak: 90 dakikayı bir oturuşta başaramayacağını sanıyorsun. Newport'un asıl bulgusu deep work'un öğrenilen bir beceri olması. Doğuştan kimse 90 dakika oturamıyor. Antrenmanla geliyor. Roman yazarı Maya Angelou 60 yaşına kadar 7 saatlik blok yazıyordu, başlangıçta 30 dakikadan başlamıştı. Newport kendisi de 'ilk hafta 25 dakika canıma yetiyordu' diye yazıyor.\n\nNewport iki kural koyuyor: birincisi, deep work bir alışkanlıktır, ilham değil. Yani sabit saat, sabit yer, sabit ritüel. İkincisi, deep work miktarı sınırlı — günde maksimum 3-4 saat. Bunun ötesi sığ iş için ayrılır. 8 saat deep work hedefi yalan, sürdürülemez.\n\nBugün 90 dakikalık tam blok zor olabilir. Önemli olan başlamak. Önce 25 dakika, sonra 45, sonra 60, sonra 90. Antrenman gerekiyor. Şimdi yapacağın 2 dakikalık göz-tek-nesne pratiği aslında küçük bir deep work kanıtı — beynin sadece tek bir şeye 120 saniye katlanabildiğini görmesi. Bir kez bunu görürse 90 dakika erişilebilir hedef olur.",
+        "practice": {
+          "instruction": "Önündeki SOMUT bir nesne seç: bir bardak, bir kalem, bir kapı kolu. Telefonu uzağa koy. 120 saniye boyunca sadece o nesneye bak. Dokunma, hareket ettirme. Adlandırma. Sadece bak. Zihnin başka yere kaçtığında — kaçacak — fark et ve nesneye geri dön.",
+          "seconds": 120,
+          "prompt": "120 saniye içinde zihnin kaç kez nesneden uzaklaştı? İlk uzaklaşma kaçıncı saniyede? Bu kısa pratikten bile yorulduysan, 90 dakikalık derin iş için ne kadar antrenman gerektiğini anlıyor musun?"
+        },
+        "action": "Bugün 1 deep work bloğu yap. 90 dakika hedefin ama başlangıçta 45 dakika tutsan da geçerli. Tek görev. Telefon başka odada. Bilgisayarda tek sekme. Başlamadan önce ne yapacağını bir kâğıda yaz: 'Bu 90 dakikada şunu bitireceğim: __________'",
         "reflectionPrompt": "90 dakikadan sonra bitirdiğin iş, sığ modunda kaç saatte biterdi?",
+        "reflectionPrompts": [
+          "Deep work bloğunda en zor olan an hangisiydi? Saatin kaçıncı dakikası? O an sana fısıldayan içsel ses ne dedi?",
+          "Newport'un 'deep work = ekonominin en değerli becerisi' tezini düşün. Sen son 30 günde toplam kaç saat derin iş yaptın? Tahmin et. Bu sayıyı görmek seni rahatsız ediyor mu?"
+        ],
+        "commitments": [
+          "Bugün takvimime 90 dakikalık bir deep work bloğu yazacağım — saat belli, görev belli",
+          "Blok başlamadan önce telefonu başka odaya bırakacağım, bildirimleri kapatacağım",
+          "Blokta tek bir görevle uğraşacağım; başka bir şeye geçmeden bitirene kadar oturacağım"
+        ],
         "quiz": [
           {
             "q": "Deep work günde kaç dakika optimal?",
@@ -3595,13 +3983,75 @@
             "explain": "Derin iş, derin değer üretir."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Deep work bloğu başlatıyorsun. 35. dakikada beynin 'bir bardak su getirsem' diyor. Doğru tepki?",
+            "options": [
+              "Su getir, beden ihtiyacı önemli",
+              "Notu al — 'su' yaz — bloğu bitir, sonra iç. Çoğu 'beden ihtiyacı' aslında geçiş bahanesi",
+              "Bloğu bitir, ama suyu unut",
+              "Hızlıca aç, bir yudum al, dön"
+            ],
+            "correct": 1,
+            "explain": "Newport'un kuralı: deep work başlamadan önce su, tuvalet, yiyecek hazır olmalı. Blok başladığında 'beden ihtiyacı' diyen ses çoğu zaman beynin geçiş arayışı. Bardakta 35. dakikada gerçek susuzluk başlamaz."
+          },
+          {
+            "q": "Bir arkadaşın 'ben günde 10 saat çalışıyorum, çok yoğunum' diyor. Newport'a göre eksik bilgi ne?",
+            "options": [
+              "10 saat fazla, dinlensin",
+              "10 saatin kaç saati DERİN iş, kaç saati sığ iş — büyük ihtimal 1-2 saat derin, 8-9 saat sığ",
+              "Tebrik et, başarılı",
+              "Eksik yok, çalışmak çalışmaktır"
+            ],
+            "correct": 1,
+            "explain": "Newport'un asıl bulgusu: insanlar 'çalışma' kelimesini sığ ve derin işi ayırmadan kullanıyor. Çoğu '10 saat çalıştım' diyen aslında 2 saat derin + 8 saat e-posta/toplantı yapıyor. Üretim derin işten geliyor — saat sayısından değil."
+          },
+          {
+            "q": "Ultradiyen ritim teorisine göre 90 dakika sonra ne yapmalısın?",
+            "options": [
+              "Bir blok daha — 'momentum kazandım'",
+              "15-20 dakika gerçek mola: yürü, su iç, pencereye bak, telefonsuz. Sonra ikinci blok",
+              "Sosyal medyaya bak, ödül hak ettin",
+              "Aralıksız devam et, dinlenme zayıflıktır"
+            ],
+            "correct": 1,
+            "explain": "Nathaniel Kleitman ultradiyen ritim: 90 dakika yüksek odak, 15-20 dakika düşük odak. Bu pencerede beyin glikojen yeniler, dopamin reseptörleri toparlar. Mola olmadan ikinci blok = ikinci blokun kalitesi dramatik düşer. Sosyal medya ise dinlenme değil — başka tür yorgunluk."
+          },
+          {
+            "q": "Newport günde maksimum ne kadar deep work öneriyor?",
+            "options": [
+              "1 saat",
+              "3-4 saat — bunun ötesi sürdürülemez ve sığ işi yutar",
+              "8 saat",
+              "Sınır yok"
+            ],
+            "correct": 1,
+            "explain": "Newport ve Anders Ericsson'un 'deliberate practice' araştırmaları: insan üst düzey odakta günde 3-4 saatten fazla kalamıyor. Bunun ötesini zorlamak performans düşüşü ve tükenme. 8 saat deep work hedefi bir hayal — sığ iş için de saat ayırman lazım."
+          }
+        ],
         "proTip": "Deep work başlamadan önce hedefini bir kâğıda yaz. \"Şu 90 dakikada şunu bitireceğim.\""
       },
       "4": {
-        "title": "Sabah Kuralı: Önemli İlk",
+        "title": "Sabah Kuralı: En Zor İşi Önce",
+        "hook": "Sabah uyandığında ilk yaptığın şey ne? Telefonu açtın, e-postaya baktın, WhatsApp'ı kontrol ettin — bu cümleyi okumadan önce belki üçünü de yaptın. Günün en taze, en yüksek odaklı 90 dakikasını başkasının önceliğine harcıyorsun. Sonra 'odaklanamıyorum' diyorsun.",
         "teaching": "Sabah istem gücün en yüksek. Akşam tükenmiş. Önemli işi sabaha al.\n\nSabah ilk 90 dakika = günün altın penceresi. Bu pencerede sığ iş yapmak (e-posta, WhatsApp) suç.\n\nÖncelik kuralı: günün en zorlu, en derin işi → ilk yapılır. Diğer her şey bekleyebilir.",
-        "action": "Yarın gününün en zor işini sabah 9–10:30 arasında yap. E-posta hayır. WhatsApp hayır. Sadece o iş.",
+        "teachingDeep": "Roy Baumeister 1996'da Florida State'te ünlü turp deneyini yaptı: katılımcılar bir odaya alındı, masada hem taze çikolata kurabiye hem turp vardı. Yarısına 'sadece turp ye' dendi, yarısına serbest bırakıldı. Sonra ikisi de imkansız bir bulmaca verildi. Turp grubu bulmacaya yarı süre dayandı. Sonuç: irade tükenir. Bunu 'ego depletion' (ego tüketimi) diye adlandırdı.\n\nBaumeister'in tezi son 15 yılda tartışmalı hale geldi — bazı tekrar deneyler aynı sonucu vermedi. Ama tartışmanın altında saklanan başka bir gerçek var: sabah istem gücün yüksek değil çünkü 'depo dolu' — sabah istem gücün yüksek çünkü kortizol seviyesi yüksek. Bu biyoloji, tartışmasız.\n\nCleveland Clinic verisi net: kortizol uyandıktan sonra 30-45 dakika içinde günün zirvesine çıkıyor — buna 'cortisol awakening response' (CAR) deniyor. CAR sırasında prefrontal korteks ekstra glikoz alıyor, dikkat ve karar verme keskinleşiyor. Bu pencere yaklaşık 2-3 saat sürüyor, sonra düşüşe geçiyor. Yani 06:00'da kalkan biri için 06:30-09:30 'altın 3 saat.' Bu pencerede yapılmayan derin iş hayatından kayıp.\n\nAsıl tuzak burada değil. Asıl tuzak: çoğu insan bu altın penceresini e-postayla, sosyal medyayla, haberle YAKIYOR. Telefonu kontrol ettiğin an, prefrontal korteksi sığ-iş moduna sokuyorsun. Beynin 'bugün gündem ne' diye soruyor ve cevap senin önceliklerin yerine BAŞKASININ önceliği oluyor: patronun maili, arkadaşın mesajı, dünya haberi. Sen sahip değilsin artık — operatörsün. Tepki veriyorsun, yaratmıyorsun.\n\nMark Twain'e atfedilen söz: 'En çirkin kurbağayı sabah ilk iş ye, gün boyu daha kötü bir şey olmayacağını bilerek dolaş.' Brian Tracy bu fikri 2001 'Eat That Frog' kitabıyla popülerleştirdi. Mantık basit: günün en zor, en kaçtığın işini sabah CAR penceresinde yap. Kortizol seninle, dopamin henüz harcanmamış, çevre sessiz. Yapmazsan o iş gün boyu zihninde dolaşır — yaptığın her başka şeyin altında bir gerginlik olur. Tracy'nin bulgusu: en zor işi öğleden sonraya bırakanların %80'i o işi o gün hiç yapmıyor.\n\nBugün küçük bir hareket yapacaksın: yarının kurbağasını ŞİMDİ yazacaksın. Kâğıda. Yatağının yanına. Sabah uyanır uyanmaz görecek olduğun yere. Telefondan önce.",
+        "practice": {
+          "instruction": "Şu an bir kâğıt parçası, post-it veya defter aç. Yarının EN ZOR, en kaçtığın işini tek cümleyle yaz. 'E-posta yazmak' değil — 'X müşterisine fiyat itirazı maili yazmak.' Somut, isim verilmiş, başlatılabilir. 120 saniyen var. Sonra o kâğıdı yarın sabah uyandığında ilk göreceğin yere koy.",
+          "seconds": 120,
+          "prompt": "Yazarken hangi iş aklına geldi ama yazmaktan kaçındın? O işten kaçma sebebin ne — gerçekten önemli olmadığı için mi, yoksa zor olduğu için mi?"
+        },
+        "action": "Yarın sabah uyandığında telefon AÇMA. Kâğıda yazdığın kurbağayı görerek başla. İlk 90 dakikanı sadece o işe ver. Bittiğinde — veya 90 dakika dolduğunda — telefon açabilirsin. Erken açtığın her dakika için bir gün geri tekrarlarsın.",
         "reflectionPrompt": "Sabah ilk 90 dk derin işle başladığında, gün geri kalanı nasıl gitti?",
+        "reflectionPrompts": [
+          "Yarının kurbağasını yazmak ne hissettirdi — rahatlama mı, gerginlik mi, kaçma isteği mi? O hissin altında ne var?",
+          "Son 30 günde sabah ilk 30 dakikanı telefonsuz yaşadığın kaç gün oldu? Sayı sıfırsa, bunun sana ne maliyeti olduğunu hesapla."
+        ],
+        "commitments": [
+          "Yarının en zor işini şu an kâğıda yazacağım, yatağımın yanına bırakacağım",
+          "Yarın sabah uyanır uyanmaz telefon açmayacağım, ilk 90 dakika sadece kurbağa",
+          "Telefonu bu gece odadan çıkarıp şarja başka yerde bırakacağım — sabah refleksini kıracağım"
+        ],
         "quiz": [
           {
             "q": "Sabah 90 dk altın penceresi neden?",
@@ -3626,13 +4076,75 @@
             "explain": "Sığ iş altın saatte yapılırsa suç."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Sabah uyandın, kortizol yüksek, kafan berrak. İlk 90 dakikada hangisi yanlış?",
+            "options": [
+              "En zor projeni açıp başlamak",
+              "E-postayı kontrol etmek — 'sadece önemli bir şey var mı diye bakacağım'",
+              "Telefonu açmadan kâğıt-kalem ile düşünmek",
+              "Yazma işine başlamak"
+            ],
+            "correct": 1,
+            "explain": "E-postanın 'sadece kontrol'ü yok. Açtığın an Cleveland Clinic verisine göre CAR penceresini başkasının gündemine teslim ediyorsun. 'Sadece bakacağım' bir bağımlılığın sesi — sigara içen birinin 'sadece nefes alacağım' demesiyle aynı."
+          },
+          {
+            "q": "Brian Tracy 'Eat That Frog' bulgusu: en zor işi öğleden sonraya bırakanların yüzdesi o işi o gün hiç yapmıyor?",
+            "options": [
+              "%20",
+              "%50",
+              "%80",
+              "%95"
+            ],
+            "correct": 2,
+            "explain": "Tracy'nin saha araştırması: %80. Mantıklı çünkü öğleden sonra hem kortizol düşer hem de gün başka kesintilerle dolar. Sabah yapmadığın zor iş, o gün hiç yapılmaz — yarına ertelenir, sonra haftaya."
+          },
+          {
+            "q": "Kortizol uyandıktan kaç dakika sonra zirveye çıkıyor (CAR)?",
+            "options": [
+              "10 dakika",
+              "30-45 dakika",
+              "2 saat",
+              "Kortizol günde sabit"
+            ],
+            "correct": 1,
+            "explain": "Cleveland Clinic ve birçok endokrinoloji çalışması: cortisol awakening response 30-45 dakikada zirve, 2-3 saat boyunca yüksek kalır. Bu pencerede prefrontal korteks ekstra glikoz alıyor — gün boyu bir daha bu seviyede odak alamazsın. Sabah duşunu erteleyebilirsin ama bu pencereyi erteleyemezsin."
+          },
+          {
+            "q": "Sabah kalktın, kurbağaya başlamak istiyorsun ama kafanda 'önce e-postaya bir bakayım, belki acil bir şey vardır' düşüncesi var. Bu düşünceyi nasıl test edersin?",
+            "options": [
+              "Düşünceye uy, baktıktan sonra döneceğim",
+              "Soruyu döndür: son 30 sabahta e-postada gerçek acil bir şey kaç kez vardı? Sıfıra yakınsa düşünce yalan söylüyor",
+              "Düşünceyi yok say, sonradan toparlanır",
+              "İçinde dolaştır ama uyma"
+            ],
+            "correct": 1,
+            "explain": "Beyin bahanelerini güvenilir veriyle çürütmek gerekir. 'Belki acil bir şey vardır' hipotezini son 30 sabaha karşı test et. Cevap büyük ihtimal sıfır. Hipotez yanlış. E-postayı sabah açma alışkanlığı acil değil — bağımlılık."
+          }
+        ],
         "proTip": "Sabah ilk e-postayı 11'den önce açma. Yapanın aksine, e-posta hep bekler."
       },
       "5": {
-        "title": "Telefon Aralık Kuralı",
+        "title": "Telefon Aralık Kuralı (Attention Residue Tuzağı)",
+        "hook": "Şu an telefonun yanında değilse, eli refleks olarak kaç saniyede ona uzanıyor? Telefonu yanına alıp kapatınca bile zihninde 'acaba bir şey geldi mi' düşüncesi sürüyor. Telefon kapalı, ama beynin hâlâ telefonda. Bu kalıntı seninle yaşıyor — sen onunla değil.",
         "teaching": "Telefonun sürekli açık olması = sürekli kesinti. Çalıştığın 8 saatte 50 kez bakıyorsan, 50 mikro-kesinti yaşıyor demektir.\n\nTelefon aralık kuralı: günde 2–3 belirlenmiş zaman dışında telefonu kapalı tut. Diğer zamanlar uçak modu.\n\nİlk hafta zor olur. İkinci hafta normalleşir.",
-        "action": "Bugün telefon aralık kuralını dene: 12:00, 17:00 ve 20:00 15 dakikalık kontrol. Diğer her zaman uçak modu.",
+        "teachingDeep": "Sophie Leroy adında bir araştırmacı 2009'da Minnesota Üniversitesi'nde küçük bir deney yaptı ama bulgusu deep work tartışmasını değiştirdi. Katılımcıları bir göreve oturttu, bitirmeden başka bir göreve geçirtti. Sonra yeni göreve odaklanma kapasitelerini ölçtü. Bulgu net: eski görevin parçaları zihinde 'kalıntı' olarak kalıyor. Leroy bu fenomene 'attention residue' (dikkat kalıntısı) adını verdi. Yeni görevdeki performans, kalıntı kaldıkça düşüyor — bazen kalıntı 30 dakika boyunca etkisini sürdürüyor.\n\nNicholas Carr 'The Shallows' (2010) kitabında bunu derinleştiriyor: internet ve özellikle akıllı telefon, beyni sürekli yarım kalmış görev durumuna sokuyor. Sen telefona her baktığında, bir önceki işin tamamlanmamış parçaları zihninde kalıntı bırakıyor, eş zamanlı olarak telefondan yeni bilgi yığını giriyor. Sonuç: beyin sürekli yarı-yüklü, hiçbir bağlamda tam değil. Carr buna 'sürekli kısmi dikkat' diyor.\n\nMarcus Raichle 2001'de Washington University'de fMRI çalışmalarıyla 'Default Mode Network' (DMN) keşfetti. DMN beyninde 'dinlenme' modunda aktifleşen bir ağ. Çoğu kişi DMN'i 'beynin uyuduğu hal' sanıyor — yanılgı. DMN aktifken beyin bilinçaltında bağlantı kuruyor, yaratıcılık üretiyor, hafıza birleştiriyor. Yaratıcı 'aha' anları, duş alırken gelen fikirler, gece uykuda çözüm — hep DMN. Telefonu her açtığında DMN'i kapatıyorsun. Sürekli açık telefon = sürekli kapalı DMN = sıfır içsel düşünme, sıfır yaratıcılık.\n\nAsıl tuzak burada değil. Asıl tuzak: kalıntıyı fark etmiyorsun. Leroy'un bulgusu — kalıntı bilinç eşiğinin altında çalışıyor. Sen 'kapattım' diyorsun, beynin 'hâlâ açık' diyor. İşte 'sebepsiz dağınık' hissinin biyolojisi. Sebep var: telefonu son baktığın andan beri zihninde dolaşan yarım yarım bilgi parçaları.\n\nÇözüm Leroy'da da, Newport'da da, Carr'da da aynı: batch checking (toplu kontrol). Telefonu rastgele zamanlarda açmak yerine, günde 2-3 belirli pencerede aç. 12:00'de 15 dakika, 17:00'de 15 dakika, 20:00'de 15 dakika. Diğer her zaman: uçak modu. Bu radikal görünebilir, gerçekte tersi — sürekli telefon açık olmak radikal. Bir önceki kuşak hayatını telefon olmadan yaşadı, hayatta kaldı.\n\nİlk hafta zor. 'Kaçırırım' korkusu yüksek. İkinci hafta beyin yeni baseline'a oturur. Üçüncü hafta normal bu olur. Telefon açıkken hissettiğin 'tetikte' hissi gider. Yerine sessiz bir genişlik gelir — DMN açılır, düşünebilirsin.",
+        "practice": {
+          "instruction": "Telefonunu şu an uçak moduna al ve yere bırak — koltuk altına, masanın diğer ucuna, başka odaya. 120 saniye boyunca yerinde otur. Hiçbir şey yapma. Telefon görünmez. Dürtü gelirse fark et, uzanma. Beynin 'ne kaçırıyorum' düşüncesini izle.",
+          "seconds": 120,
+          "prompt": "120 saniye içinde 'telefonu kontrol et' düşüncesi kaç kez geldi? İlk dürtü kaçıncı saniyede? Telefon görünmez olduğunda bedeninde bir hafifleme oldu mu, yoksa daha mı gergin?"
+        },
+        "action": "Bugün telefon aralık kuralını dene: 12:00'de 15 dk, 17:00'de 15 dk, 20:00'de 15 dk kontrol. Diğer her zaman uçak modu. Gün sonunda uçak modunda iken kaç kez telefonu kontrol etme dürtüsü geldiğini kâğıda yaz.",
         "reflectionPrompt": "Uçak modunda kaç kez telefon istedi? Hangi anda?",
+        "reflectionPrompts": [
+          "Bugün uçak modunda kalmak en zor hangi anda oldu? O anda hissettiğin 'kontrol etmeliyim' duygusunun altında ne vardı — kaçırma korkusu mu, sıkıntı mı, başka bir şey mi?",
+          "Telefonu açtığında gerçekten 'önemli' bir bilgi var mıydı, yoksa 8 yarım bilgi mi? Sayı ver — bugün 3 kontrol penceresinde kaç ÖNEMLİ ve kaç ÖNEMSİZ bildirim aldın?"
+        ],
+        "commitments": [
+          "Bugün telefonu 3 belirli zaman (12:00, 17:00, 20:00) dışında uçak modunda tutacağım",
+          "Telefon her uçak modundan açıldığında kaç bildirim çıktığını sayıp kaydedeceğim",
+          "Yatak odasına bu gece telefon sokmayacağım — sabah ilk yarım saat de uçak modunda kalacak"
+        ],
         "quiz": [
           {
             "q": "Telefon aralık kuralı nedir?",
@@ -3655,6 +4167,52 @@
             ],
             "correct": 2,
             "explain": "Her kontrol = mikro-kesinti = odak kaybı."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "Telefonu kapattın ama 5 dakika sonra hâlâ aklında 'bir şey geldi mi acaba' düşüncesi var. Bu nedir?",
+            "options": [
+              "Endişe — meditasyon yapmalısın",
+              "Sophie Leroy 'attention residue' — kalıntı bilinç eşiğinin altında çalışıyor, telefon kapalı ama beynin değil",
+              "Önemsiz, geçer",
+              "Kafein etkisi"
+            ],
+            "correct": 1,
+            "explain": "Sophie Leroy (2009): dikkat kalıntısı 30 dakikaya kadar sürebilir. Telefonu kapatmak yetmiyor — beyninin yarım kalan bağlamı toparlaması zaman istiyor. Bu yüzden batch checking'in ikinci faydası: kontrolden sonra 30 dakika daha derin işe geçmemek, kalıntının inmesini beklemek."
+          },
+          {
+            "q": "Duş alırken iyi bir fikir geldi. Marcus Raichle'a göre niye orada geldi, çalışma masandayken değil?",
+            "options": [
+              "Su rahatlatıcı",
+              "DMN (Default Mode Network) açıldı — telefon ve görev yokken beyin bilinçaltında bağlantı kuruyor",
+              "Tesadüf",
+              "Sıcaklık yardımcı oldu"
+            ],
+            "correct": 1,
+            "explain": "Marcus Raichle (2001): DMN'i keşfetti. Duş alırken telefon yok, ekran yok, görev yok — beyin DMN moduna girer, yaratıcı bağlantılar oluşur. Telefonu sürekli açık tutmak DMN'i sürekli kapatmak demek = sıfır yaratıcı içgörü. 'Aha' anları sandığın kadar tesadüfi değil — DMN açıldığı için geliyor."
+          },
+          {
+            "q": "Aralık kuralı denedin, 3. günde 'arkadaşlarım benimle iletişim kuramıyor, kaçırırım' kaygısı geldi. Doğru tepki?",
+            "options": [
+              "Aralık kuralını bırak, normal hayata dön",
+              "Veriyle test et: son 3 gün kaç kez 'gerçek acil' iletişim kaçırıldı? Cevap muhtemelen sıfır. Kaygı yalan söylüyor",
+              "Aralık kuralını gevşet, saatte bir kontrol et",
+              "Sadece WhatsApp'ı açık tut"
+            ],
+            "correct": 1,
+            "explain": "Carr ve Newport'un ortak bulgusu: bağımlılık akıllıdır, mantıklı görünen bahaneler üretir. 'Arkadaşlarım' kaygısını sayıyla test et. Gerçekten acil olan birisi telefon eder (sesli arama). Mesaj acil değildir — acil olduğunu varsayman bağımlılığın bir bahanesi."
+          },
+          {
+            "q": "Telefonu açtın, 5 dakika kontrol ettin. Sonra 25 dakikalık deep work bloğuna oturdun. Newport bu sıralamayı niye eleştirir?",
+            "options": [
+              "Eleştirmez, doğru sıra",
+              "Telefon kontrolünden sonra attention residue 30 dakika sürer — deep work bloğunun ilk 25 dakikası yarı yüklü",
+              "Çok kısa süre",
+              "Telefonu hiç açma, hiç bir zaman"
+            ],
+            "correct": 1,
+            "explain": "Leroy'un kalıntı süresi 30 dakika. Telefon kontrolünden hemen sonra deep work başlatmak = derin iş bloğunun yarısını kalıntı yutuyor. Doğru sıra: deep work blok ÖNCE, telefon kontrolü SONRA. Sıra önemli, sadece zaman miktarı değil."
           }
         ],
         "proTip": "Telefonu kontrol saatlerini takvime koy: 12:00 ve 17:00. Diğer her zaman uçak modu."
@@ -5058,9 +5616,25 @@
     "body-discipline": {
       "1": {
         "title": "Hareket Eşiği",
-        "teaching": "Modern hayat hareketsiz. 8 saat oturma kafanı kaplayan bulanıklığın ana sebebi. Kan akışı yavaşlıyor, beyin az oksijen alıyor, motivasyon düşüyor.\n\nÇözüm karmaşık değil: günde 30 dakika hareket. Yürüyüş, basit egzersiz, koşu — fark etmez. Önemli olan kan akışını arttırmak.\n\nGyme ihtiyaç yok. Bedeninle başla.",
-        "action": "Bugün 30 dakika tempolu yürüyüş yap. Sıkışık zaman varsa öğle aralağında 10 dk, akşam 20 dk böl.",
+        "hook": "Şu an oturuyorsun. Beş dakika önce de oturuyordun. Belki bir saat, belki üç. Kalçanın altındaki o ağırlık hissi — bedenin sana 'yapma' diyor. Sen duymuyorsun.",
+        "teaching": "Modern adam 11-13 saat günde oturuyor — yatağı saymadan. Beden hareket için tasarlandı, sandalye için değil. Her oturuş saatinde metabolizman yavaşlıyor, omurgan yığılıyor, kalça bükücülerin kısalıyor.\n\nÇözüm karmaşık değil: günde 30 dakika tempolu yürüyüş, 10K adım hedef, her saatte ayağa kalkma. Spor değil — varsayılan baseline.\n\nBu lessonun amacı net: senin baseline'ın artık 'oturuş' değil, 'hareket' olacak.",
+        "teachingDeep": "Mayo Clinic uzmanı James Levine 2014'te keskin bir cümle attı: 'Sitting is the new smoking.' Yavaş öldürüyor. Önemli ayrıntı: spor yapsan da yapmasan da, oturuş süresi tek başına bağımsız ölüm riski faktörü.\n\nLevine'in 2005 Science makalesi (NEAT: Non-Exercise Activity Thermogenesis) şunu gösterdi: zayıf ve obez insanlar arasında ana fark egzersiz değildi. Günlük 'kıpırdama' miktarıydı. Obez denekler ayakta 2.5 saat daha az duruyordu — günde 350 kalori, yılda 16 kg.\n\nPeter Attia 2023'te 'Outlive' kitabında daha keskin koyuyor: healthspan (sağlıklı yaşam süresi) için VO2max kadar belirleyici ikinci faktör 'günlük hareket hacmi.' En düşük VO2max'lı bireyler en yüksekten 5 kat fazla erken ölüyor — sigaradan ve diyabetten güçlü bir risk faktörü.\n\nAsıl tuzak burada: 1 saat gym sonrası 10 saat oturmak, oturmamış gibi sayılmıyor. Stuart Biddle'ın 2017 araştırması bir terim ortaya attı: 'active couch potato.' Spor yapan ama gün boyu oturan adam. Risk profili, hiç spor yapmayanla aynı. Bu sezgisizlik çoğu sporcuyu vuruyor.\n\nPratik bağlantı: oturuş sırasında hip flexors (kalça bükücüleri) kısalıyor. Kısa kalça bükücüleri = bel ağrısı, kötü postür, zayıf glutes. Glutes zayıfsa kalkış sırasında bel devreye giriyor — yıllar sonra bel fıtığı. Kalkıp 30 saniye duvar squat yaparak bu zinciri günde 8 kez kırarsan, 5 yıl sonra başka bir bedene sahip olursun.\n\nİyi haber: bedensel uyum hızlı. Sedanter biri 4 hafta düzenli yürüyüşten sonra mitokondri sayısını %20 arttırıyor. Beden 'değişmez' değil — hatırlatılmayı bekliyor. Bugün başlıyorsun.",
+        "practice": {
+          "instruction": "Şu an ayağa kalk. Telefonu yere ya da masaya bırak. 60 saniyelik timer başlat. Ayakta dur. Ayak parmaklarından yukarı tara: ayak bilekleri, baldırlar, dizler, kalçalar, bel, omuzlar, çene. Her bir bölge gergin mi gevşek mi fark et. Hareket etme — sadece dur ve hisset.",
+          "seconds": 60,
+          "prompt": "Tarama sırasında en gergin bölge neresiydi? O gerginliğin saat kaçtan beri orada olduğunu tahmin edebilir misin?"
+        },
+        "action": "Bugün 30 dakika kesintisiz yürüyüş yap — telefonsuz, podcastsiz, müziksiz. Sadece adımlarını ve nefesini duy.",
         "reflectionPrompt": "Yürüyüş sonrası zihinsel berraklık hissettin mi?",
+        "reflectionPrompts": [
+          "Body scan sırasında en gergin bölge neresiydi? O gerginlik saat kaçtan beri orada?",
+          "Bugün koltuğa oturmadan önce kaç saniye duraksadın? Beden 'yorgun değilim' dediğinde otomatik mi oturuyorsun?"
+        ],
+        "commitments": [
+          "Bugün her saat başı 2 dakika ayağa kalkacağım — alarm kuruyorum",
+          "Akşam koltuk yerine yere ya da ayakta yemek yerim bir öğün",
+          "Yatmadan 1 saat önce 5 dakika duvar squat yapacağım"
+        ],
         "quiz": [
           {
             "q": "Modern hayatın en büyük fiziksel sorunu?",
@@ -5085,13 +5659,75 @@
             "explain": "30 dakika tempolu hareket yeterli."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Sabah 7-9 spor yaptın. Sonra 9-19 masada oturdun. Akşam 'hak ettim' diye koltuğa kuruldun. Sağlık profilin?",
+            "options": [
+              "Spor + dinlenme = mükemmel",
+              "Active couch potato — Biddle 2017: oturuş hacmi sporu sıfırlıyor",
+              "Hiçbir fark yok",
+              "Daha kötü çünkü kas tükenmiş"
+            ],
+            "correct": 1,
+            "explain": "Stuart Biddle araştırması net: 1 saat egzersiz, 10 saat oturuşu kompanse etmiyor. Risk profilin, hiç spor yapmamış oturucudan farklı değil. Oturuş süresi başlı başına bağımsız risk."
+          },
+          {
+            "q": "Ofiste 8 saat oturma kaçınılmaz. En güçlü mikro-müdahale?",
+            "options": [
+              "Öğle yemeğini geç bırakmak",
+              "Her 30 dakikada 2 dakika ayağa kalkıp yürümek — Dunstan 2012",
+              "Daha rahat sandalye almak",
+              "Akşam spora gitmek"
+            ],
+            "correct": 1,
+            "explain": "Dunstan'ın 2012 Diabetes Care çalışması: her 20-30 dakikada 2 dakikalık ayağa kalkma, postprandial kan şekerini %24-30 düşürüyor. Sandalye konforu artırmak ters etki — oturuş süresini uzatır."
+          },
+          {
+            "q": "Günde 1 saat yürüyüş + 10 saat oturuş vs 4 saat ayakta + 5 saat oturuş. Kim kazanır?",
+            "options": [
+              "Yoğun yürüyüş yapan",
+              "4 saat ayakta — hacim sıklıktan önemli (Patel 2018)",
+              "Aynı",
+              "Kişiye göre değişir"
+            ],
+            "correct": 1,
+            "explain": "Patel'ın 2018 Annals of Internal Medicine çalışması 100K+ Amerikalıyı takip etti. Günde 11.5 saatten fazla oturuş +40% ölüm riski. 4 saat ayakta birinin oturuş süresi düşük; 1 saat yürüyüş 11 saat oturmayı silmiyor."
+          },
+          {
+            "q": "Bel ağrın var. Hareket acı veriyor. Doğru yaklaşım?",
+            "options": [
+              "Yat, dinlen, ilaç al",
+              "5 dakikalık yürüyüş ile başla — McGill: 2 günden uzun yatak istirahati zararlı",
+              "Sıkı spor yap, acıyı bastır",
+              "Hareketsiz kal, sonra doktora git"
+            ],
+            "correct": 1,
+            "explain": "Stuart McGill (Waterloo Üniversitesi omurga bilimi): akut bel ağrısında 2 günden uzun yatak istirahati iyileşmeyi yavaşlatır. Düşük yoğunluklu hareket (5-10 dakika yürüyüş, ağrısız aralık) iyileşmeyi hızlandırır. Çoğu kronik bel ağrısı = hareketsizlikten."
+          }
+        ],
         "proTip": "Hareket eşiğine dolaşırsan kahve ya da çay alırken ekstra adım at. Bu sezgisel olarak günlüğe eklenir."
       },
       "2": {
         "title": "Soğuk Duş Protokolü",
-        "teaching": "Soğuk şok = sempatik sinir sistemi aktivasyonu = adrenalin + dopamin = berrak zihin.\n\nWim Hof bilimi: soğuk maruziyet bağışıklık sistemini güçlendiriyor, depresyon belirtilerini azaltıyor, motivasyonu arttırıyor.\n\nİlk gün dayanılmaz. 7. gün rutine girer. 30. gün özlersin.",
-        "action": "Bugün duşun sonunda 30 saniye soğuk suyla bitir. Sıcaktan soğuğa geçiş — mücadele et.",
+        "hook": "Sıcak duş alırken kafanda 100 düşünce dolanıyor. Soğuk suyun ilk 3 saniyesinde tek bir düşünce kalır: dayan. İşte aradığın berraklık burada — sıcaktan değil.",
+        "teaching": "Soğuk şok = sempatik sinir sistemi aktivasyonu = adrenalin + dopamin patlaması = berrak zihin. Sıcak duş yumuşatır, soğuk duş bileyler.\n\nWim Hof yöntemi ve modern soğuk maruziyet araştırması net: günde 30-90 saniye soğuk maruziyet ruh halini düzeltir, bağışıklığı güçlendirir, kahverengi yağ aktivasyonu yapar.\n\nİlk gün dayanılmaz. 7. gün rutine girer. 30. gün özlenir. Soğuk, beden tarafından öğrenilen bir disiplin dilidir.",
+        "teachingDeep": "Susanna Søberg, Kopenhag Üniversitesi'nde 2021'de yaptığı Cell Reports Medicine çalışmasında, düzenli soğuk maruziyet alan erkek deneklerin kahverengi yağ aktivitesinin %358 (üç buçuk kat) arttığını gösterdi. Kahverengi yağ — beyaz yağdan farklı olarak — ısı üretmek için kalori yakan termojenik dokudur. Soğuk maruziyet bunu kronik olarak aktif tutar, metabolizmayı temelden yükseltir.\n\nKox ve Pickkers'ın 2014 PNAS çalışması, Wim Hof'un yöntemini takip eden deneklere E. coli endotoksini enjekte etti. Sonuç: deneklerde inflamasyon belirteçleri yarıdan fazla düştü, semptomlar (titreme, baş ağrısı) belirgin azaldı. Sempatik sinir sistemi 'iradi' kontrol altına alınabiliyor — bu daha önce mümkün sayılmıyordu.\n\nAndrew Huberman'ın Stanford podcast içeriği (2022) soğuk için keskin bir rakam veriyor: 11°C suya 1-3 dakika maruziyet sonrası norepinefrin seviyesi 5 kat (%500) artıyor ve 2-4 saat boyunca yüksek kalıyor. Norepinefrin = odak, dikkat, ruh hali. Bir bardak espressonun yapabileceğinin 4 katı, yan etki yok.\n\nAsıl tuzak burada: 'soğuk duş' alıp 5 saniye sonra çıkmak bağışıklık tetikleyici dozu vermiyor. Søberg eşiği şu: haftada toplam 11 dakika soğuk maruziyet (4 oturum × 2-3 dakika). Bunun altı placebo, üstü gereksiz.\n\nİkinci tuzak: nefes tutmak. Soğuğa girdiğinde refleks olarak nefes tutarsın — diyafram sıkışır, panik tetiklenir. Wim Hof'un birinci kuralı: 'go in on the exhale.' Nefes vererek gir, derin yavaş nefeslerle kal. Bu vagal tonu yükseltir, parasempatik dengeyi geri getirir.\n\nÜçüncü tuzak: soğuk + sıcak + soğuk kontrast döngüsü. Finlandiya sauna araştırması (Laukkanen 2018, JAMA Internal Medicine) sauna sonrası soğuk daldırmanın kalp damar yararlarını %40 artırdığını gösteriyor. Sıcak rahatlatır, soğuk uyarır, döngü adaptasyon yaratır.\n\nİlk gün dayanılmaz hissedersin. 'Yapamam' diyen ses — beynin termoregülasyon korkusu. 7-14 gün sonra aynı beyin 'sıcak duş yumuşak hissediyor' der. Beden öğreniyor. Sen öğretiyorsun.",
+        "practice": {
+          "instruction": "Şimdi banyoya git. Lavabo musluğunu sonuna kadar soğuğa aç. 60 saniyelik timer başlat. İki elini birden suyun altına koy. Çıkarma. Nefesini tutma — yavaş, derin, vererek nefes al. 60 saniye. Bittiğinde elleri çek, kuruluk hisset.",
+          "seconds": 60,
+          "prompt": "İlk 10 saniyede dürtün ne dedi? '15. saniyede çıkar' diye iç ses çıktı mı? Hangi saniyede beden uyum sağladı?"
+        },
+        "action": "Bugün duşun sonunda 30 saniye soğuk suyla bitir. Sıcaktan soğuğa geçişte nefes ver — tutma.",
         "reflectionPrompt": "Soğuk duştan sonra ilk dakikada ne hissettin?",
+        "reflectionPrompts": [
+          "Soğuk suyun altında geçen 30 saniyede zihninde kaç ayrı düşünce vardı? Sıcak duşta kaç tane olur?",
+          "Beden 'soğuk yok, yarın' dediği an — bu sesi son 1 hafta içinde başka hangi alanlarda duydun?"
+        ],
+        "commitments": [
+          "Bugün duşun son 30 saniyesini soğukla bitireceğim — nefes vererek",
+          "Sabah uyanır uyanmaz yüzümü 10 saniye soğuk suya tutacağım",
+          "Bu hafta toplam 11 dakika soğuk maruziyete ulaşacağım (Søberg eşiği)"
+        ],
         "quiz": [
           {
             "q": "Soğuk şok hangi sistemi aktif eder?",
@@ -5116,75 +5752,261 @@
             "explain": "30 saniye yeterli, fayda başlar."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Soğuk duşa girdin, ilk 3 saniyede nefesin tutuldu, panik geldi. Doğru tepki?",
+            "options": [
+              "Çık, beden hazır değil",
+              "Yavaş, derin nefes ver — Wim Hof birinci kuralı: 'go in on the exhale'",
+              "Daha sıkı tut, çelikleş",
+              "Çığlık at, baskıyı al"
+            ],
+            "correct": 1,
+            "explain": "Soğuk + nefes tutmak = panik döngüsü. Yavaş ve uzun nefes vermek vagus sinirini aktive eder, parasempatik dengeyi geri getirir. Beden saniyeler içinde sakinleşir."
+          },
+          {
+            "q": "Haftada 1 kez 2 dakika soğuk duş yapıyorsun. Søberg eşiği için yeterli mi?",
+            "options": [
+              "Yeterli — düzenli olduğu için",
+              "Yetersiz — Søberg eşiği haftada 11 dakika (4 oturum × 2-3 dk)",
+              "Çok fazla",
+              "İlgisiz, yine de işe yarar"
+            ],
+            "correct": 1,
+            "explain": "Susanna Søberg'in 2021 Cell Reports Medicine bulgusu: kahverengi yağ aktivasyonu için minimum haftalık doz 11 dakika. Haftada 2 dakika placebo eşiğinin altında — beden adaptasyona girmiyor."
+          },
+          {
+            "q": "Akşam yatmadan önce soğuk duş — iyi mi kötü mü?",
+            "options": [
+              "Mükemmel — uyku kalitesi artar",
+              "Kötü — soğuk = norepinefrin 4 saat yüksek, uyku gecikir (Huberman 2022)",
+              "Fark etmez",
+              "Sadece kış için iyi"
+            ],
+            "correct": 1,
+            "explain": "Huberman protokolü: soğuk maruziyet sonrası norepinefrin 2-4 saat yüksek kalır. Bu uyumayı geciktirir. Soğuk için ideal pencere: sabah ya da öğleden önce. Akşam soğuk istersen sıcak duşla bitir, beden gevşesin."
+          },
+          {
+            "q": "Sauna yok, buz banyosu da yok. Evde soğuğun en güçlü hali?",
+            "options": [
+              "Klima açmak",
+              "Duşun son 60 saniyesi tam soğuk + yüze 30 saniye buzlu su",
+              "Pencere açmak",
+              "Buz tutmak"
+            ],
+            "correct": 1,
+            "explain": "En sıradan musluk suyu 8-15°C arası. Bu Søberg eşiği için yeterli sıcaklık. Yüze buzlu su (mammalian dive reflex) bonus parasempatik aktivasyon — yutkunma refleksiyle kalp atımı yavaşlar, sakinlik gelir."
+          }
+        ],
         "proTip": "Soğuk duşa nefes verince başla. İçeride tutarsan beden gerilir, ver ki rahatlasın."
       },
       "3": {
-        "title": "Beslenmenin Temeli: Protein",
-        "teaching": "Beden proteinden inşa olur. Yetersiz protein = düşük enerji, düşük doku onarımı, düşük doygunluk.\n\nKural: vücut ağırlığının her kilogramı için 1g protein. 70 kg kişi için 70g/gün.\n\nKaynak: et, balık, yumurta, baklagiller, süt ürünleri. Atıştırmalık değil — öğün.",
-        "action": "Bugün her öğüne protein kaynağı ekle. Akşam toplam protein gramını hesapla.",
-        "reflectionPrompt": "Yeterli protein aldığında enerjin nasıldı?",
+        "title": "Hareket Borcu",
+        "hook": "Her gün hareket etmediğin saat, borç hesabına yazılıyor. Beden faiz işletiyor — 30'unda fark etmiyorsun, 45'inde diz ağrıyor, 60'ında merdiven kâbus. Bugün hesap kapatılıyor.",
+        "teaching": "Dünya Sağlık Örgütü 2020 kılavuzu net: yetişkinler için minimum haftalık 150 dakika orta yoğunluklu aerobik aktivite + haftada 2 gün direnç antrenmanı. Bunun altında her şey 'borç birikimi.'\n\nÇoğu insan bu rakamı duyunca 'ya, bu kadar mı sadece' der. Ama gerçek: nüfusun %75'i bu eşiğin altında. Sen muhtemelen onlardansın.\n\n150 dakika = günde 21 dakika. Telefondaki bir TikTok seansından az. Borç beden tarafından kabul edilmiyor — sadece ertelenebiliyor.",
+        "teachingDeep": "Stuart Biddle (Loughborough Üniversitesi) 2017'de 'movement debt' terimini bu alana ekledi: hareketsizlik birikimi, faiz işleten finansal borç gibi davranır. Bugün hareket etmemek 'bir gün' değil — 5 yıl sonra eklenecek bel ağrısı, 10 yıl sonra eklenecek tip 2 diyabet riski, 20 yıl sonra eklenecek sarkopeni.\n\nWHO 2020 kılavuzu 4 sayıyı hatırla:\n\n150 — haftalık orta yoğunluklu aerobik dakika (yürüyüş, bisiklet, hafif jog)\n75 — alternatif: haftalık yüksek yoğunluklu dakika (koşu, HIIT)\n2 — haftalık direnç antrenmanı gün sayısı (squat, push-up, ağırlık)\n10K — günlük adım hedefi (Banach 2023 meta-analiz: 7K-10K arası ölüm riski -40%)\n\nWHO eşiğinin altındaki popülasyonda, her 1 saatlik haftalık hareket eklemesi yıllık ölüm riskini %4 azaltıyor (Ekelund 2019 BMJ). Yani 150 dakikaya çıkmak küçük değil — büyük.\n\nAma asıl tuzak yoğunlukta değil. Süreklilikte. Stamatakis'in 2022 Nature Medicine çalışması 25K Britanyalıyı takip etti: günde 2-3 kez yapılan kısa (1-2 dakika) 'vigorous intermittent lifestyle physical activity' (VILPA) — merdiven, hızlı yürüyüş, çantayı taşımak — ölüm riskini 4 yıl içinde %40 düşürdü. Spor salonu olmadan. Antrenman olmadan. Sadece günü içine hareket dokumayla.\n\nDavid Patel'in 2018 çalışması da bunu pekiştiriyor: hareket hacmi sıklıktan önce. Günde 1 saat spor + 11 saat oturuş, günde 4 saat ayakta + spor yapmayandan daha yüksek riskli. Bu sezgisizlik. Beden 'spor yaptım' demiyor — 'gün boyu hareketli kaldın' diyor.\n\nPratik müdahale: bugün şu anda 20 vücut ağırlığı squat'ı yap. Ayağa kalk, ayakların omuz genişliğinde, kalçayı geriye it sanki arkadaki sandalyeye oturuyorsun. Diz ayak parmağı hizasını geçmesin. 20 tekrar — set bölme. Yapıp dönüp okumaya devam et.\n\nBu lessonun sonunda 20 squat yapmış olacaksın. 30 günde 600. Yıllık 7300. Tek bir konu, tek bir karar — 5 yılda 40,000 squat. Başka bir bedensin.",
+        "practice": {
+          "instruction": "Şu an ayağa kalk. Telefonu masaya bırak. 90 saniye boyunca, formla 20 squat yap: ayaklar omuz genişliğinde, kalça geri, dizler ayak parmağı hizasını geçmesin, göğüs dik. Tek tek say. Acele etme — form > hız. Süre dolmadan 20'ye ulaşırsan kalan saniyelerde nefes al.",
+          "seconds": 90,
+          "prompt": "20 squat sonrası nabzın ne durumda? 'Bu kadar mı?' diye düşündün mü, yoksa 'daha çok mu' diye düşündün?"
+        },
+        "action": "Bugün toplam 21 dakika hareket et (haftalık WHO eşiği = 21 dk/gün). Tek seans, bölünmüş — fark etmez.",
+        "reflectionPrompt": "Bugün ne kadar dakikada hareketliydin? Bu sayı seni rahatsız ediyor mu?",
+        "reflectionPrompts": [
+          "Geçen hafta haftalık 150 dakika WHO eşiğine ulaştın mı? Sayıyı tahmin et, sonra dürüst hesapla — fark var mı?",
+          "20 squat'ı 90 saniyede yaptın — bunu günde 3 kez yapmak hayatında neyi gerektirir? Engel ne?"
+        ],
+        "commitments": [
+          "Bugün 21 dakika kesintisiz hareket — tek seansta",
+          "Yarın sabah dişlerimi fırçalamadan önce 20 squat",
+          "Asansör yerine merdiven — bu hafta tek istisnasız"
+        ],
         "quiz": [
           {
-            "q": "Günlük protein kuralı?",
+            "q": "WHO haftalık aerobik eşiği?",
+            "options": [
+              "30 dakika",
+              "75 dakika",
+              "150 dakika",
+              "300 dakika"
+            ],
+            "correct": 2,
+            "explain": "150 dakika orta yoğunluklu = günde 21 dakika."
+          },
+          {
+            "q": "Direnç antrenmanı kaç gün?",
+            "options": [
+              "0 — sadece kardiyo yeterli",
+              "Haftada 1 gün",
+              "Haftada 2 gün",
+              "Her gün"
+            ],
+            "correct": 2,
+            "explain": "WHO 2020: minimum 2 gün direnç (squat, push-up, ağırlık)."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "Hafta sonu pazar günü 3 saat tek seferde yürüyorsun. Hafta içi hareketsizsin. WHO eşiği karşılanıyor mu?",
+            "options": [
+              "Evet — toplam dakika tuttu",
+              "Hayır — Stamatakis 2022: dağılım önemli, tek seferlik hacim sıklığı yenmiyor",
+              "Sadece kalori için sayar",
+              "Fark etmez, hareket = hareket"
+            ],
+            "correct": 1,
+            "explain": "Stamatakis'in 2022 Nature Medicine bulgusu: günlük 2-3 mikro hareket atağı (1-2 dk VILPA), tek seferlik uzun yürüyüşten daha güçlü mortalite koruması veriyor. Beden 'düzenli sinyal' istiyor, haftalık şok değil."
+          },
+          {
+            "q": "45 yaşındasın, ilk kez spora başlıyorsun. Birinci hafta hedefin?",
+            "options": [
+              "İlk gün 150 dakika — büyük başla",
+              "Günde 10 dakika yürüyüş, 2x hafta 5 squat — eşik altı ama düzenli",
+              "3 gün spor salonu, 4 gün dinlenme",
+              "Daha hazır olunca başla"
+            ],
+            "correct": 1,
+            "explain": "Yeni başlayan için kural: düşük doz, yüksek sıklık. 7 gün × 10 dakika yürüyüş = 70 dakika. WHO eşiğinin altında ama beden adaptasyon eğrisinde. 3. haftada 21 dakikaya çık. Aşırı başlangıç = 1 hafta sonra bırakma."
+          },
+          {
+            "q": "Günde 10K adım yapıyorsun. Squat ya da push-up yok. Yeterli mi?",
+            "options": [
+              "Evet — adım sayısı yeterli",
+              "Hayır — 50+ yaş sarkopeni için direnç antrenmanı gerekli (Galpin 2023)",
+              "40 yaşına kadar yeterli",
+              "Sadece erkekler için yeterli"
+            ],
+            "correct": 1,
+            "explain": "Andy Galpin (Cal State Fullerton, kas fizyoloji): 30 sonrası her yıl %1 kas kaybı (sarkopeni). Yürüyüş kasları zayıf bir uyarıdır. Haftada 2 gün direnç (squat, push-up, ağırlık) olmazsa, 50'sinde merdiven çıkmak zor."
+          },
+          {
+            "q": "Bugün 'zamanım yok' diyorsun. En dürüst gerçek?",
+            "options": [
+              "Doğru — modern hayat yoğun",
+              "Yanlış — 21 dakika = bir TikTok seansından az, mesele öncelik",
+              "Bazıları için doğru",
+              "İş hayatına bağlı"
+            ],
+            "correct": 1,
+            "explain": "Pew Research 2022: ortalama yetişkin günde 3 saat sosyal medya. 21 dakika = ekran süresinin %12'si. 'Zaman yok' = 'öncelik yok.' Bu farkı görmek = ilk adım."
+          }
+        ],
+        "proTip": "Sabah dişlerini fırçaladıktan sonra 20 squat. Habit stacking: var olan alışkanlığa yeniyi yapıştırırsan, ihtiyaç duyulan irade %80 azalır (BJ Fogg)."
+      },
+      "4": {
+        "title": "Protein ve Su",
+        "hook": "Bugün ne yedin tam olarak hatırlıyor musun? Toplam kaç gram protein? Kaç litre su? Bilmiyorsan beden boş gidiyor. Tahmin etmek bilmek değildir.",
+        "teaching": "Beden iki temel girdiyle çalışır: yapı malzemesi (protein) ve taşıyıcı (su). İkisi de eksikse, ne kadar spor yaparsan yap geri dönüş düşük.\n\nKural sayıları: günde vücut ağırlığının kilogramı başına 1.6g protein (sedentary için 1g, sporcu için 1.6-2.2g). Su: ağırlığın × 30-35ml (70 kg = 2.1-2.5L).\n\nÇoğu adam ikisini de yarı yarıya tutuyor. Sonra 'enerjim yok, performansım düşük' diye yakınıyor. Beden açıkça konuşuyor — sen duymuyorsun.",
+        "teachingDeep": "Andy Galpin (Cal State Fullerton, kas fizyoloji profesörü) 2023 podcastinde keskin bir rakam veriyor: yetişkinler için en sık eksik makro protein. Sedanter erkek günde 1g/kg eşiğinin altında. Sporcu ise 1.6-2.2g/kg arası optimum — bu eşiğin altı kas inşa edemez, sadece koruyabilir.\n\nLayne Norton'un 2018 Journal of the International Society of Sports Nutrition meta-analizi şunu netleştirdi: tek seansta 20-40g protein optimum kas sentezi pulse'ı veriyor. Bunun altı ise yetersiz uyarı, üstü ise israf. Yani günlük 1.6g/kg toplam değil — öğün başına 25-35g dağılımı gerekli. 3 öğün × 30g = 90g/gün = 56 kg adam için yeterli; 90 kg adam için yetersiz.\n\nKaynak hiyerarşisi (biyolojik değer): yumurta = 100, balık 80, tavuk 79, dana 74, baklagil 64. Tam tahıl ve sebze tek başına yetersiz — kombinasyon gerekli.\n\nŞimdi su tarafı. Tim Noakes (Cape Town Üniversitesi, eski spor hekimliği başkanı) 2003 kitabı 'Waterlogged'da uzun yıllar süren bir efsaneyi yıktı: 'Susamadan iç' tavsiyesi yanlış. Su tüketimi otomatik dehidrasyon koruyucusu değil — aksine, sporcular arasında exercise-associated hyponatremia (egzersize bağlı düşük sodyum) ölümlere yol açmıştı. Doğru kural: susama bedenin sinyalidir, dinle.\n\nAma bu 'iç dilediğin kadar' demek değil. Galpin sayıyı veriyor: günde ağırlığın × 30-35ml. 70 kg = 2.1-2.5L. Bu temel kural. Sıcak hava, yoğun antrenman, kafein tüketimi varsa +500ml-1L.\n\nİdrar rengi en pratik göstergedir: açık sarı = doğru. Saman sarısı = yeterli. Koyu sarı = yetersiz. Şeffaf = aşırı (su zehirlenmesi yakın).\n\nÜçüncü tuzak: kahve ve çay sayılır mı? Eski mit 'sayılmaz, idrar söker' — Noakes 2003 ve sonrası araştırma yanlışladı. Kahve net sıvı katkısı yapıyor. Günde 3-4 fincan kahve = 600-800ml sıvı + kafein faydası. Çay aynı.\n\nDördüncü tuzak: elektrolitler. Sadece su içip terlemekle birlikte sodyum, potasyum, magnezyum kaybediyorsun. Yoğun antrenman sonrası tuzlu/elektrolit içecek = baş ağrısı önler. Düz su + iyi yemek normalde yeterli.\n\nBu lessonun amacı: rakamları bilmek. Tartı çık, 1.6 ile çarp — günlük protein. Ağırlığını 30 ile çarp — günlük su. Bu iki sayı diğer hiçbir disiplinden önce.",
+        "practice": {
+          "instruction": "Şimdi git, bir bardak su (300ml) doldur ve döndüğünde tek seferde iç. 60 saniyelik timer başlat. Su gittiğinde gözle, midede ağırlığı hisset. Bittiğinde nefes al, mide-omurga ilişkisini fark et.",
+          "seconds": 60,
+          "prompt": "Bu sabahki ilk içeceğin neydi — su mu, kahve mi? Bedenin ne zaman gerçekten 'susuyorum' diye sinyal verdi son?"
+        },
+        "action": "Bugün ağırlığın × 1.6g protein + ağırlığın × 30ml su tüket. Akşam tartı, hesabını yap.",
+        "reflectionPrompt": "Yeterli protein aldığında enerjin nasıldı?",
+        "reflectionPrompts": [
+          "Bugün toplam ne kadar protein aldın — gerçek gram olarak? Tahminle gerçek arasındaki fark sana ne söylüyor?",
+          "İdrarın günün hangi diliminde en koyu? O an su yerine ne içiyorsun?"
+        ],
+        "commitments": [
+          "Bugün her öğüne 25-35g protein eklerim (yumurta, et, balık, baklagil)",
+          "Sabah uyanır uyanmaz 500ml su — kahveden 30 dk önce",
+          "Akşam tartı çıkar, ağırlık × 1.6 ve × 30 hesabı not edeceğim"
+        ],
+        "quiz": [
+          {
+            "q": "Günlük protein eşiği (sporcu için)?",
             "options": [
               "0.5g/kg",
               "1g/kg",
-              "2g/kg",
+              "1.6-2.2g/kg",
               "5g/kg"
             ],
-            "correct": 1,
-            "explain": "Vücut ağırlığının her kg'ı için 1g protein."
+            "correct": 2,
+            "explain": "Galpin/Norton: 1.6-2.2g/kg sporcu için optimum."
           },
           {
-            "q": "En kötü protein kaynağı?",
+            "q": "Günlük su (70 kg adam için)?",
             "options": [
-              "Et",
-              "Yumurta",
-              "Şekerli atıştırmalık",
-              "Baklagil"
+              "500ml",
+              "1L",
+              "2.1-2.5L",
+              "5L"
             ],
             "correct": 2,
-            "explain": "Atıştırmalık değil, öğün kaynağı."
+            "explain": "Ağırlık × 30-35ml = 70 kg için 2.1-2.5L."
           }
         ],
-        "proTip": "Protein her öğüne. 20-30g/öğün × 3 öğün = günlük 60-90g optimum."
-      },
-      "4": {
-        "title": "Şeker Kesme",
-        "teaching": "İşlenmiş şeker dopamin sömürüsünün en eski formu. Kan şekeri yükselir, çakılır, krash yaşarsın. Yorgunluk → daha şeker → döngü.\n\n7 günlük şeker kesme: net berraklaşma, kararlı enerji, uyku kalitesi artışı, kilo kaybı.\n\nBağımlılık 7 günde kırılır. Ondan sonra şeker tatsızlaşır.",
-        "action": "Bugün hiç işlenmiş şeker yeme. Tatlılar, gazlı içecekler, paketli atıştırmalıklar — hiçbiri. Doğal meyve OK.",
-        "reflectionPrompt": "Öğleden sonra şeker krizi hissettin mi? Ne yaptın?",
-        "quiz": [
+        "scenarioQuiz": [
           {
-            "q": "İşlenmiş şekerin etkisi?",
+            "q": "80 kg, sedanter. Günde 60g protein alıyorsun. Yeterli mi?",
             "options": [
-              "Stabil enerji",
-              "Yükseliş + crash",
-              "Kilo verdirir",
-              "Bağışıklık güçlendirir"
+              "Evet — kişisel ihtiyaca göre değişir",
+              "Yetersiz — eşik 80g (1g/kg sedanter); kas koruma için bile az",
+              "Çok fazla",
+              "Yaş 30'sa yeterli"
             ],
             "correct": 1,
-            "explain": "Şeker = yükseliş + crash döngüsü."
+            "explain": "Sedanter eşiği 1g/kg, sporcu 1.6-2.2g/kg. 80 kg adam için minimum 80g, optimum 130-175g. 60g eksik — kas sentezi alt eşiğin altında, sarkopeni hızlanır."
           },
           {
-            "q": "Şeker bağımlılığı kaç günde kırılır?",
+            "q": "Tek öğünde 80g protein (büyük biftek + yumurta) yedin. Geri kalan öğünlerde az. Optimum?",
             "options": [
-              "1",
-              "3",
-              "7",
-              "30"
+              "Evet — toplam günlük tuttu",
+              "Hayır — Norton 2018: öğün başına 20-40g optimum, fazlası israf, eksiği yetersiz",
+              "Sadece kas için fark eder",
+              "Aksine, daha verimli"
             ],
-            "correct": 2,
-            "explain": "7 gün sonra şeker tatsızlaşır."
+            "correct": 1,
+            "explain": "Layne Norton meta-analizi: tek seansta 20-40g protein optimum kas sentezi pulse'ı verir. 80g tek öğünde = ilk 40g kullanılır, kalan oksitlenir. 3 öğün × 30g dağılımı, 1 öğün × 90g'den çok daha etkili."
+          },
+          {
+            "q": "3 fincan kahve içtin, su yok. Hidrasyon durumu?",
+            "options": [
+              "Negatif — kahve dehidrasyon yapar (eski mit)",
+              "Pozitif — kahve net sıvı katkısı yapar (Noakes 2003 sonrası araştırma)",
+              "Sıfır — birbirini siler",
+              "Bilinmez"
+            ],
+            "correct": 1,
+            "explain": "2003 sonrası araştırma 'kahve dehidre eder' efsanesini yıktı. 3 fincan kahve = ~600ml sıvı katkısı. Ama tek kaynak su değil — ağırlık × 30ml hedefi için ek su gerekli. Kafein bonus, su substitute değil."
+          },
+          {
+            "q": "Susamadığın halde sürekli su içmen gerekiyor mu?",
+            "options": [
+              "Evet — günde 3L şart",
+              "Hayır — Noakes: susama sinyal, hyponatremia riski real; ağırlık × 30ml hedef yeter",
+              "Sadece sporcular için",
+              "Evet, idrar şeffaf olana kadar"
+            ],
+            "correct": 1,
+            "explain": "Tim Noakes 'Waterlogged' (2012): aşırı su = düşük sodyum (hyponatremia), maraton koşucularında ölümlere yol açtı. Doğru kılavuz: ağırlık × 30-35ml hedef, idrar açık sarı, susama sinyaline güven. Şeffaf idrar = aşırı."
           }
         ],
-        "proTip": "Şeker özlemini su + 1 tatlı meyve (elma) ile karşıla. 7 gün sonra özlem kırılır."
+        "proTip": "Sabah ilk içecek su — kahveden 30 dakika önce. Bu sıralama günü hidrasyon pozitif başlatır."
       },
       "5": {
-        "title": "Uyku Sertliği",
-        "teaching": "Uyku kalitesi tüm disiplinin temeli. Kötü uyumuş bir adam disiplinsizlik için optimize edilmiş. Karar verme zayıflar, irade pili düşük.\n\nUyku sertliği: 7-8 saat, 22:00 önce yatış, karanlık oda, serin sıcaklık (18-20°C).\n\nBu pazarlık edilmez. Hayatının her başka tarafı buna bağlı.",
-        "action": "Bugün uyku odanı sertleştir: perdeleri kapat, sıcaklığı 19°C ye al, telefon dışarıda. 22:30 yatış.",
+        "title": "Uyku Sertliği: Büyüme Hormonu Penceresi",
+        "hook": "Geceleri yetersiz uyuyorsan, gym'de geçirdiğin saatler boşa gidiyor. Kas büyük antrenmanda değil, derin uykuda inşa olur. 22-01 arasında değilsen yatakta, başka bir adamın çalışıyorsun.",
+        "teaching": "Uyku kalitesi tüm disiplinin temeli. Az ve geç uyumuş bir adam disiplinsizliğe optimize edilmiş — karar verme zayıflar, glikoz kontrolü bozulur, kas onarımı düşer, irade pili boşalır.\n\nUyku sertliği 4 koşul: 7-8 saat süre, 22:00 öncesi yatış, karanlık + 18-19°C oda, telefon dışarıda. Bu pazarlık edilmez. Spor, beslenme, soğuk — hepsi uykuya bağımlı.\n\nBu lessonda kritik nokta: '8 saat uyudum' tek başına yeterli değil. Hangi pencerede uyuduğun hayati. Çünkü beden kritik onarımı saat 22-01 arasında yapıyor.",
+        "teachingDeep": "Eve Van Cauter (Chicago Üniversitesi, sirkadiyen tıp) 2000'de Journal of Clinical Endocrinology and Metabolism'de yayımladığı çalışma kesin bir bulguyu netleştirdi: büyüme hormonu (GH) salımının %70-80'i derin yavaş dalga uykusunda (N3 — slow wave sleep) gerçekleşiyor. Ve N3 uykusu, total uykunun ilk üçte ikisinde yoğun.\n\nBu ne demek? Saat 22'de yatıp 6'da kalkarsan, ilk 4-5 saatte N3 zengin. Bu pencerede büyüme hormonu pulse'ları kasları onarır, yağ kullanımını yönetir, kemik yoğunluğunu korur. Saat 1'de yatıp 9'da kalkarsan, aynı 8 saat ama N3 penceresi 3-5 arasında — kortizol yükselişi ile çakışıyor, GH baskılanıyor. 8 saat uyudun ama büyüme hormonu yarı dozda salındı.\n\nMatthew Walker (Berkeley, 'Why We Sleep' 2017) bunu farklı bir açıdan koyuyor: deep slow-wave sleep ilk 4 saatte, REM (rüya, bilişsel onarım) son 4 saatte. İkisinin de optimum penceresi: 22:00-06:00. Yanlış pencerede uyumak = '8 saat uyudum ama dinlenmedim' hissi.\n\nPeter Attia'nın 'Outlive' 2023 kitabında atletik onarım için verdiği rakam keskin: sporcuların kas hipertrofisi, antrenmandan sonraki 48 saat içindeki 2 gecelik N3 uykusunun toplam süresine doğrudan bağlı. 6 saat uyuyan sporcu, 8 saat uyuyandan 60% daha az kas kazanıyor (aynı antrenman, aynı protein). Antrenman = sinyal. Uyku = inşa.\n\nAsıl tuzak: 'gece insanıyım' iddiası. Roenneberg ve Allebrandt'ın kronotip çalışmaları popülasyonun sadece %5'inin gerçek geç-kalkan ('owl') olduğunu gösteriyor. Geri kalan %95 'gece insanı' demek = 'gece telefonla yatıyorum, melatonin kaydı, alışkanlık genetik gibi hissediyor.' Genetik değil. Davranış.\n\nİkinci tuzak: hafta sonu telafi. Cuma 03, cumartesi 02, pazar 12'ye uyumak metabolik 'sosyal jet lag' yaratıyor (Roenneberg 2012). Hafta içi yatışla hafta sonu arasındaki 2+ saat fark, kalp hastalığı riskini %23 arttırıyor (Wong 2015). Düzenlilik > miktar.\n\nÜçüncü tuzak: oda sıcaklığı. Core body temperature uyku için 1°C düşmeli. 22°C üstü oda bunu engelliyor. 18-19°C optimal. 16°C altı titreme tetikliyor. Termostatı düşürmek tek başına derin uykuyu %15-20 arttırıyor.\n\nDördüncü tuzak: alkol. 'Uyku yardımcısı' diye 1 kadeh — Walker'ın bulgusu net: alkol REM uykusunu %30 baskılıyor. Sersemleme ≠ uyku. 8 saat 'uyumuş' olursun ama N3 ve REM eksik — sabah groggy + akşam atıştırma + ertesi gün performans düşük.\n\nBu lessonun amacı: bedene ait olan saatleri bedene geri vermek. 22:00 yatış, 19°C, telefon dışarıda — üç koşul. Bu üçü olmazsa, geri kalan her şey yarım.",
+        "practice": {
+          "instruction": "Şu an yatak odana git. Yatağa otur. 90 saniyelik timer başlat. 3 koşulu kontrol et: (1) Telefon yatak odasında mı — varsa şimdi başka odaya çıkar. (2) Termostat 19°C'ye ayarlanabilir mi — ayarla. (3) Pencere ışığı tam karartılabiliyor mu — perdeleri çek. Kalan saniyelerde yatağa uzan, gözleri kapat.",
+          "seconds": 90,
+          "prompt": "3 koşul içinden bugün hangisini ihlal ediyordun? Hangi koşula 'imkansız' diye direnç gösterdin?"
+        },
+        "action": "Bugün 22:30 yatakta ol. Telefon başka odada. Termostat 19°C. Perdeler kapalı.",
         "reflectionPrompt": "Sert uyku ortamında uykuya dalış süresinde değişim oldu mu?",
+        "reflectionPrompts": [
+          "Geçen hafta kaç gece 22:00'dan ÖNCE yatağa girdin? Sayı 0 ise bu sayı sana ne hissettiriyor?",
+          "Yatak odanda telefon yoksa hangi düşünce 'sabah ilk şey ne okuyacağım?' diye çıkıyor? Beden mi bağımlı, beyin mi?"
+        ],
+        "commitments": [
+          "Bu gece telefonu yatak odasından çıkaracağım — şarj başka odada",
+          "Termostatı 19°C'ye ayarladım/ayarlayacağım, perdeler kapalı",
+          "Yatış saatim 22:30 — bunu takvime randevu olarak ekledim"
+        ],
         "quiz": [
           {
             "q": "Disiplinin temeli?",
@@ -5207,6 +6029,52 @@
             ],
             "correct": 1,
             "explain": "18-20°C derin uyku için optimum."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "Cuma gecesi 02'de yattın, cumartesi 11'de kalktın. 9 saat uyudun. Hafta sonu telafisi mi?",
+            "options": [
+              "Evet — toplam saat tuttu",
+              "Hayır — Roenneberg 2012: 'sosyal jet lag' kalp riskini %23 yükseltir (Wong 2015)",
+              "İdeal",
+              "Sadece yaz için sorun"
+            ],
+            "correct": 1,
+            "explain": "Düzensiz yatış saatleri sirkadiyen ritmi parçalıyor. Hafta içi-sonu 2+ saat fark = 'sosyal jet lag.' Beden her hafta sürekli adaptasyon yapıyor, asla baseline'da değil. Düzenlilik miktardan önemli."
+          },
+          {
+            "q": "Sporcusun, 6 saat uyuyorsun, protein ve antrenman mükemmel. Kas kazanımı?",
+            "options": [
+              "Optimum — protein yetiyor",
+              "%60 düşük — N3 uyku eksikliği GH salımını yarıdan fazla baskılıyor (Van Cauter 2000)",
+              "Aynı",
+              "Daha iyi — beden daha sıkı çalışır"
+            ],
+            "correct": 1,
+            "explain": "Eve Van Cauter'in 2000 JCEM bulgusu: GH salımının %70-80'i N3 (derin) uykuda. 6 saat uyku N3 penceresinin önemli bölümünü siliyor. Aynı antrenman + protein ile 8 saat uyuyandan 60% daha az kas. Uyku = inşa, antrenman = sinyal."
+          },
+          {
+            "q": "Akşam 1 kadeh şarap uyumana yardımcı oluyor sanıyorsun. Gerçek?",
+            "options": [
+              "Yardımcı — gevşetir",
+              "Alkol REM uykusunu %30 baskılar (Walker), sersemleme uyku değildir",
+              "Sadece çok içersen kötü",
+              "Bireysel — tolerans var"
+            ],
+            "correct": 1,
+            "explain": "Matthew Walker bulgusu: alkol uykuyu hızlandırır ama REM evresini %30 baskılar. REM yoksa bilişsel onarım yok — sabah groggy, gün boyu odak düşük, atıştırma artar. 1 kadeh bile 3 gün toparlanma."
+          },
+          {
+            "q": "Yatak odasında telefon — kaç ayrı kötülük?",
+            "options": [
+              "Sadece blue light — 1",
+              "En az 3: blue light melatonini 90 dk geciktirir, gece kontrol dürtüsü, sabah ilk ekran",
+              "Hiç — modern hayat zaten içinde",
+              "2: ses ve titreşim"
+            ],
+            "correct": 1,
+            "explain": "Üç vuruş: (1) Blue light melatonin başlangıcını 90 dk geciktirir (Harvard). (2) Yatakta scroll = beyin uyanık kalır. (3) Gece uyanırsan 'saat kaç' bahanesi açar, yarım saat scroll. Yatak odası kuralı: telefon yok."
           }
         ],
         "proTip": "Yatak odası 18-20°C, karanlık, sessiz. 3 koşul = derin uyku garantisi."
@@ -6610,9 +7478,25 @@
     "money-discipline": {
       "1": {
         "title": "Görünmez Harcama Tehlikesi",
+        "hook": "Şu an banka hesabında ne kadar para var? Tahmin değil — kuruşuna kadar. Bilmiyor musun? İşte sorun bu. Cebindekini bilmeyen, harcamasını da bilmiyor demektir.",
         "teaching": "En tehlikeli harcamalar görünmez olanlar: aboneliğe giren, otomatik çekilen, küçük olan ama biriken.\n\nHerkesin 5–15 unutulmuş aboneliği var. Yıllık binlerce TL kayıp. Hiç fark edilmeden.\n\nBugün görünmezi görünür yapacağız.",
-        "action": "Banka hesap özetinden son 3 ayı geç. Her abonelik/tekrarlanan ödemeyi listele. Kullanmadıklarını şu an iptal et.",
+        "teachingDeep": "2011'de Daniel Kahneman 'Hızlı ve Yavaş Düşünme' kitabında bir kavramı popülerleştirdi: zihinsel hesap (mental accounting). Aslında Richard Thaler'in 1980'lerde ortaya attığı fikrin yeni baskısı. Beyin parayı tek havuz olarak görmez. Cebindeki nakit, banka hesabındaki maaş, kredi kartı limiti, abonelikler — her biri ayrı kova. Aynı 100 TL kovaya göre değişen ağırlıkta hissediliyor.\n\nHile burada: aylık 49 TL'lik bir abonelik beyne 'küçük' geliyor. Yılda 588 TL diye bakmıyorsun. 10 abonelik = ayda 490 TL, yılda 5.880 TL. Bu para tek seferde nakit olarak ödense, karar verirken titrerdin. Ama 10 ayrı kova olduğu için, beyin tek bir kararla bunları onaylıyor, sonra unutuyor.\n\nKahneman'ın 'kayıp aversiyonu' (loss aversion) bulgusu burada da çalışıyor: insan kayıp acısını kazanç sevincinin 2 katı hissediyor. Bir aboneliği iptal etmek beynine 'bir şeyi kaybetmek' gibi geliyor. Gerçek kayıp ise hiç kullanmadığın aboneliğe her ay verdiğin paradır. Beynin terazisi bozuk.\n\nMorgan Housel 'Paranın Psikolojisi' kitabında diyor: 'Servet, gördüğün şey değil. Servet, görünmeyen şey — harcamadığın paradır.' Cümleyi tersine çevir: yoksulluk da görünmez. Görünmez harcamalardır.\n\nTürkiye'de yüksek enflasyon kafa karıştırıyor. 'Zaten her şey pahalı, abonelik ne fark eder' bahanesi tam tersinin doğru olduğu bir ortamda kullanılıyor. Yüksek enflasyon ortamında 5.880 TL'yi BES'e, döviz mevduata veya altına yönlendirebilseydin, reel değerini bir miktar korurdun. Hiç kullanmadığın Spotify Family'de eridi onun yerine. Enflasyon disiplinli olanı koruyor, savruğu yok ediyor.\n\nGörünmezi görünür yapmadan bütçe yapılmaz. Bugün ilk adım: ekstreyi aç, gerçek sayıyı gör. Sayıyı bilmeden müzakere edilmez.",
+        "practice": {
+          "instruction": "Şimdi bankan uygulamasını aç. Son 30 günün ekstresine gir. 120 saniye boyunca, sadece tekrar eden ödemeleri (abonelik, üyelik, otomatik talimat) say. Alışveriş uygulaması açma — sadece banka ekstresi. Saymayı bitirince notlarına yaz: kaç tane abonelik ve aylık toplam ne kadar.",
+          "seconds": 120,
+          "prompt": "Tahmin ettiğin sayı kaçtı? Gerçek sayı kaçtı? Aradaki farkı 12 ile çarp — yıllık görünmez kaybın bu."
+        },
+        "action": "Banka hesap özetinden son 3 ayı geç. Her abonelik ve tekrarlanan ödemeyi listele. Kullanmadığın en az 1 tanesini şu an iptal et.",
         "reflectionPrompt": "Kaç abonelik bulundun? Yıllık ne kadar paraydı?",
+        "reflectionPrompts": [
+          "Bugün saydığın abonelik sayısı kaçtı? Aylık toplamı 12 ile çarp — yıllık ne çıkıyor? O parayla 1 yıl içinde ne yapabilirdin?",
+          "'Zaten enflasyon her şeyi yiyor, abonelik ne fark eder' diyorsan, dur ve cevap ver: enflasyon ortamında para kaybetmemenin yolu daha az kontrol mü, daha çok kontrol mü?"
+        ],
+        "commitments": [
+          "Bugün ekstreyi inceleyip kullanmadığım en az 1 aboneliği iptal edeceğim",
+          "Tüm aboneliklerimi notlar uygulamasına yazıp aylık toplamı çıkaracağım",
+          "Bu hafta hiçbir yeni aboneliğe imza atmayacağım — 7 günlük moratoryum"
+        ],
         "quiz": [
           {
             "q": "En tehlikeli harcama tipi?",
@@ -6637,13 +7521,75 @@
             "explain": "Görünmezi görünür yapmak ilk adım."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Ekstreni açtın: Spotify 59 TL, Netflix 149 TL, Disney+ 99 TL, YouTube Premium 89 TL, iCloud 39 TL, ChatGPT 700 TL, oyun aboneliği 79 TL, dergi 49 TL. Hangisi Kahneman'ın 'zihinsel hesap' tuzağıdır?",
+            "options": [
+              "En büyük olan — ChatGPT 700 TL açıkça dikkat çekiyor",
+              "Hepsi birlikte — ayda 1.263 TL, yılda 15.156 TL ama her biri ayrı kova olduğu için 'ucuz' hissediyor",
+              "Sadece dergi — kimse dergi okumaz",
+              "Hiçbiri tuzak değil, hepsi gereklidir"
+            ],
+            "correct": 1,
+            "explain": "Kahneman ve Thaler'in mental accounting bulgusu: aynı 1.263 TL tek faturada gelseydi karar verirken farklı hissederdin. 8 ayrı kova olunca beyin her birini izole değerlendiriyor — toplamı görmüyor. Tuzak parçalanmada."
+          },
+          {
+            "q": "6 aydır kullanmadığın bir spor salonu üyeliğin var, ayda 450 TL. İptal etmeye gidiyorsun ama 'sonbaharda başlarım' diyorsun. Bu hangi bilişsel hatadır?",
+            "options": [
+              "Mantıklı bir karar — gelecekteki niyetlerine güvenmek doğru",
+              "Loss aversion (kayıp aversiyonu) — iptali 'bir şeyi kaybetmek' gibi hissediyorsun, gerçek kayıp ise devam eden ödeme",
+              "Sadece tembellik, başka bir şey değil",
+              "Doğru karar — abonelik tekrar açmak yorucu"
+            ],
+            "correct": 1,
+            "explain": "Kahneman'ın loss aversion bulgusu: kayıp acısı kazanç sevincinin 2 katı. İptali 'kayıp' hissettiğin için 6 ay para yakıyorsun. Gerçek kayıp, hiç kullanmadığın salona her ay verdiğin 450 TL. 6 ayda 2.700 TL. Sezon başlayınca tekrar ödersin, ucuz olur."
+          },
+          {
+            "q": "'Enflasyon zaten yiyor, 200 TL abonelik takibi anlamsız' diyorsun. Hangisi gerçek?",
+            "options": [
+              "Doğru — yüksek enflasyonda küçük tutarlar önemsiz",
+              "Yüksek enflasyon ortamında her kuruş takibi daha önemli, çünkü reel değer kaybı paranı zaten eritiyor",
+              "Enflasyon olduğu için tasarruf zaten anlamsız",
+              "Doğru, ama sadece yüksek gelirli için"
+            ],
+            "correct": 1,
+            "explain": "Türkiye'de yüksek enflasyon disiplini gereksizleştirmez, gerektirir. Paran reel olarak eriyorsa ve bir de boş aboneliklere veriyorsan çift kayıptasın. Enflasyon disiplinli olanı koruyor, savruğu yok ediyor."
+          },
+          {
+            "q": "Bir aboneliği iptal etmeye karar verdin. En etkili an hangisi?",
+            "options": [
+              "Hafta sonu boş zaman olunca",
+              "Maaş gününde — para varken pozitif moddasın",
+              "ŞİMDİ, bu pratik bittikten 60 saniye içinde — niyet ile eylem arasındaki saat sayısı, eylemi öldürür",
+              "Aboneliğin bir sonraki yenileme tarihinde"
+            ],
+            "correct": 2,
+            "explain": "B.J. Fogg'un davranış araştırması: niyet ile eylem arasındaki gecikme, eylemin gerçekleşme olasılığını yarıya düşürüyor. 'Sonra yaparım' = 'yapmam.' Telefon zaten elinde, banka uygulaması zaten açık — iptal et, sonra başka ekrana geç."
+          }
+        ],
         "proTip": "Banka ekstresinin son 3 ayını yan yana koy. Tekrar eden harcamalar görünür olur."
       },
       "2": {
         "title": "Bütçe = Özgürlük",
+        "hook": "Geçen ay tam olarak kaç TL harcadın? Bilmiyorsan, bütçen yok demektir — sadece harcama alışkanlığın var. Maaşın gelir, gider, ay biter, 'nereye gitti' dersin. Para gitmez, sen ona izin verirsin.",
         "teaching": "Çoğu kişi bütçe kelimesinden kısıtlama anlar. Ama gerçekte bütçe = özgürlük.\n\nBilmediğin şeyi kontrol edemezsin. Ne kazandığını ve ne harcadığını net bilmek = paranı yönetmek.\n\n50/30/20 kuralı: gelirinin %50si zorunlu, %30u istediklerin, %20si tasarruf/yatırım. Sadelik var.",
-        "action": "Bugün bir tablo aç. Aylık gelirini yaz. 50/30/20 kategorilerine böl. Gerçek harcamalarını karşılaştır.",
+        "teachingDeep": "Morgan Housel 'Paranın Psikolojisi' (2020) kitabında bir tezi defalarca tekrarlıyor: 'Servete giden yol, yüksek gelir değil, yüksek tasarruf oranıdır.' Housel iki kişiyi karşılaştırıyor. Birinci kişi ayda 30.000 TL kazanıyor, 28.000 TL harcıyor — tasarruf oranı yaklaşık %7. İkinci kişi ayda 15.000 TL kazanıyor, 9.000 TL harcıyor — tasarruf oranı %40. 10 yıl sonra ikinci kişi, birincinin 3 katı varlığa sahip oluyor. Gelir önemli değil mi? Önemli ama belirleyici değil. Tasarruf oranı belirleyici.\n\nBu yüzden bütçe bir kısıtlama değil, kontrolün adıdır. Bütçesi olmayan, harcamasını bilmiyor. Harcamasını bilmeyen, tasarruf oranını bilmiyor. Tasarruf oranını bilmeyen, finansal hayatın gidişatını bilmiyor.\n\n50/30/20 kuralı (Elizabeth Warren ve kızı Amelia Tyagi, 'All Your Worth' 2005): %50 zorunlu giderler (kira, fatura, market, ulaşım), %30 istediklerin (yemek, eğlence, alışveriş), %20 tasarruf ve borç ödeme. Türkiye gibi yüksek enflasyon ortamında %50 zorunlu yetmeyebilir — kira tek başına geliri yiyebilir. Bu durumda kural şu: oranı kendi gerçekliğine adapte et, ama %20 tasarruf hedefinden taviz verme. Tasarruf bir artık değil — bir önceliktir. Önce kendine öde, sonra harca.\n\nRichard Thaler ve Cass Sunstein 'Nudge' (2008) kitabında 'varsayılan ayarın gücü' fikrini açıklıyor. Maaş geldiğinde manuel olarak tasarrufu transfer ederken iradenle savaşıyorsun. Tasarrufu otomatik EFT olarak ayarlarsan, savaş yok, varsayılan ayar tasarruf. Ramit Sethi 'I Will Teach You To Be Rich' kitabında buna 'conscious spending plan' (bilinçli harcama planı) diyor: para gelir gelmez kategorilere otomatik dağıtılır, sen sadece 'istediklerin' bölümünü harcarsın. Suçluluk yok, çünkü diğer kategoriler hâlihazırda halledildi.\n\nBütçesizlik özgürlük değildir, körlüktür. Görmeyen yönetemez. Bugün rakamla yüzleşeceksin.",
+        "practice": {
+          "instruction": "Şu an telefonunda not uygulamasını aç. 90 saniyen var. Üç başlık yaz: ZORUNLU (kira, fatura, market, ulaşım), İSTEK (yemek, eğlence, alışveriş), TASARRUF. Geçen ayın tahmini rakamlarını yan yana yaz. Tahmin yeter, mükemmel olmasın.",
+          "seconds": 90,
+          "prompt": "Hangi başlık seni şaşırttı? Tasarruf başlığında rakam 0 mı yazdı?"
+        },
+        "action": "Bugün bir tablo aç. Aylık net gelirini yaz. Geçen ay harcamalarını 50/30/20 kategorilerine böl. Tasarruf %20'den düşükse, hangi 'istek' kategorisini bu ay 1 dilim kestin?",
         "reflectionPrompt": "Hangi kategori sınırı aştı?",
+        "reflectionPrompts": [
+          "Geçen ay tasarruf oranın yüzde kaç çıktı? Bu sayıyı Housel'in iki adam karşılaştırmasıyla yan yana koy — 10 yıl sonra neredesin?",
+          "'Bu enflasyonda nasıl bütçe yapayım, hayat zaten zor' diyorsan: bütçesiz hayatın ucu açık. Bütçeli hayatın görünür. Hangisi daha çok stres veriyor — bilmek mi, bilmemek mi?"
+        ],
+        "commitments": [
+          "Bu hafta 7 gün her harcamayı not uygulamasına yazacağım — günde 30 saniye sürer",
+          "Bu ay sonunda 50/30/20 oranını gerçek rakamla çıkaracağım",
+          "Bu maaşta tasarruf transferini otomatik EFT olarak ayarlayacağım — varsayılan tasarruf"
+        ],
         "quiz": [
           {
             "q": "50/30/20 kuralı nedir?",
@@ -6668,13 +7614,75 @@
             "explain": "Bilinç = kontrol = özgürlük."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Ahmet ayda 40.000 TL kazanıyor, 38.500 TL harcıyor. Mehmet ayda 22.000 TL kazanıyor, 14.500 TL harcıyor. 10 yıl sonra hangisi daha varlıklı?",
+            "options": [
+              "Ahmet — daha yüksek gelir her zaman kazanır",
+              "Mehmet — tasarruf oranı %34, Ahmet'in %4. Housel'ın tezi: gelir değil oran belirler",
+              "Eşit olurlar — gelir farkı her şeyi dengeler",
+              "Belli olmaz — yatırım getirisine bağlı"
+            ],
+            "correct": 1,
+            "explain": "Morgan Housel 'Paranın Psikolojisi' tezi: tasarruf oranı her şeydir. Mehmet ayda 7.500 TL biriktiriyor, Ahmet 1.500 TL. 10 yılda Mehmet'in birikimi Ahmet'in 5 katı. Üstüne yatırım getirisi eklenirse fark katlanır."
+          },
+          {
+            "q": "Gelirin 25.000 TL. Kira 12.000 TL, faturalar 2.500 TL, market 3.500 TL. Zorunlu giderler %72'e çıktı, 50/30/20 oturmuyor. Ne yapacaksın?",
+            "options": [
+              "Kuralı boş ver, hayat zaten zor",
+              "Tasarruf hedefi %20'den taviz verme — %30 istek kısmını sıkıştır (yemek, abonelik, eğlence)",
+              "Daha pahalı eve taşın, çevre değişsin",
+              "Tüm tasarrufu kes, hayatın tadını çıkar"
+            ],
+            "correct": 1,
+            "explain": "50/30/20 sabit değil, prensiptir. Türkiye'nin yüksek kira gerçeği kural ihlali için bahane değil, 'istek' kısmını sıkıştırma daveti. Zorunlu %72 ise tasarruf hâlâ %20 — istek %8 düşer. Önce kendine öde."
+          },
+          {
+            "q": "Maaş geldi. Tasarrufu ne zaman ayırırsın?",
+            "options": [
+              "Ay sonunda — eğer artarsa biriktiririm",
+              "Maaş günü, ilk hareket olarak otomatik EFT ile tasarruf hesabına geçer — 'önce kendine öde'",
+              "Hiç ayırmam — yatırım dalgalanır, tasarruf düşer",
+              "Hesap bakiyem 50.000 TL geçince başlarım"
+            ],
+            "correct": 1,
+            "explain": "Thaler ve Sunstein 'Nudge' kuralı: varsayılan ayar belirleyici. Ay sonu artıkla tasarruf eden, %95 ihtimal hiç tasarruf etmez. Önce kendine öde — geri kalanıyla yaşa. Beynin sadece o miktarı görür, oraya alışır."
+          },
+          {
+            "q": "Bütçe yapmaya başladın, ilk hafta sapma var: 'istek' %30 yerine %42 gitti. Ne yapacaksın?",
+            "options": [
+              "Bütçeyi bırak — uygulanabilir değilmiş",
+              "Veriyi kabullen, gelecek haftaya ayarla — bütçe yargılama aracı değil, veri aracıdır",
+              "Kalan haftayı hiç harcama yaparak telafi et — açlıkla bütçe",
+              "Kategorileri değiştir, %42'ye uydur"
+            ],
+            "correct": 1,
+            "explain": "İlk ay her zaman sapmalı olur. Bütçe sana karne vermek için değil — gerçeği göstermek için. Sapmayı veri olarak oku: hangi gün, hangi kategori, hangi tetikleyici? Gelecek hafta o tetikleyici geldiğinde hazırsın."
+          }
+        ],
         "proTip": "50/30/20'yi 1 ay sıkı uygula, sonra esnetebilirsin. İlk ay temel oturmazsa esneklik anlamsız."
       },
       "3": {
         "title": "24-Saat Bekleme Kuralı",
+        "hook": "Son 7 günde anlık bir dürtüyle ne aldın? Sepete attığın anda kalbin hızlandı mı? Aldıktan 48 saat sonra hâlâ aynı heyecan var mı? Eğer cevap 'yok' ise, dopaminin tuzağına düştün — ürünün değil.",
         "teaching": "Anlık satın alma dürtüsü = dopamin, gerçek ihtiyaç değil. 24 saat bekledikten sonra %80inin gerekli olmadığını fark edersin.\n\nKural: 100 TL üstü her satın alma, sepete koy ama 24 saat bekle. Hala istiyor musun? Al. Unuttuysan, unutman gereken bir şeydi.\n\nBu basit kural yıllık binlerce TL kurtarır.",
-        "action": "Bugünden başlayarak 100 TL üstü her satın almayı 24 saat ertele. Bir bekleme listesi tut.",
+        "teachingDeep": "Dan Ariely 'Predictably Irrational' (2008) kitabında bir deney anlatıyor. MIT öğrencilerine boş kâğıtlar verildi. Yarısına sosyal güvenlik numarasının son iki rakamını yazmaları istendi, sonra ekrandaki şarap, çikolata, kitap fiyatlarını ne kadar ödeyecekleri soruldu. SSN'si yüksek olanlar (örneğin 95) ortalama %200 daha fazla teklif verdi. Rastgele bir sayı, hiç ilgisi olmayan, sonraki fiyat algısını ankraladı. Bu 'anchoring effect' (çapa etkisi).\n\nE-ticaret sitesi bunu kasten kullanıyor: 'Eski fiyat 1.499 TL, ŞİMDİ 599 TL.' 1.499 senin için çapa oldu. 599 ucuz hissettiriyor. Halbuki ürünün gerçek değeri belki 300 TL. Çapayı sen seçmedin — sana verildi.\n\nDopamin oyunu da burada devreye giriyor. Dürtüsel satın alma anında beynin dopamin salıyor — beklenti kimyasalı, gerçek tatmin değil. Ürün eline geçtiği anda dopamin düşer. Ariely bu duruma 'hedonic adaptation' (hazcı uyum) diyor: yeni edinmenin verdiği mutluluk 3-7 gün içinde baseline'a döner. Yıl boyu sürekli alarak hep o ilk dopamini aramak — bağımlılık döngüsü.\n\nRamit Sethi 'I Will Teach You To Be Rich' (2009) kitabında 'conscious spending' (bilinçli harcama) tezini sunuyor: önemsizlere harca, önemlilere kıs. Yani 24 saat kuralı her şey için değil — 'isteklerin' için. Latte alacaksan al (eğer gerçek değer veriyorsa). Ama 1.500 TL'lik kulaklığı 24 saat beklet. Eşik üstü tüm harcamalar bekletilir.\n\nKural neden çalışıyor: 24 saat dopamin ateşini söndürür. Beyin ürünü unutursa, gerçekten istemiyordun. Hâlâ aklındaysa, gerçek istek var. Sethi bunun 'regret-free spending' (pişmanlıksız harcama) ürettiğini söylüyor. Birçok kişi bu kuralı koyduğu hafta tasarrufunda %15-30 artış görüyor — hayat kalitesi düşmüyor, sadece beynin tuzakları azalıyor.\n\nTürkiye gerçekliği: e-ticaret push bildirimleri, 'flash indirim' ekranları, 'son 3 ürün kaldı' uyarıları — hepsi sentetik aciliyet. Gerçek aciliyet ölüm, hastalık, yangındır. Sepete eklenen kulaklık değil. 24 saat kuralı senin için bir kalkan — uygulamalar buna saldıracak. Hazır ol.",
+        "practice": {
+          "instruction": "Şimdi telefonunda en çok kullandığın alışveriş uygulamasını aç. 90 saniye boyunca, sadece SEPETİNE veya GEÇMİŞ SİPARİŞLERİNE bak. Sipariş yapma, ürün karıştırma — sadece bak. Sepette bekleyen ürünler var mı? Son 30 günde aldıkların hangisini hâlâ kullanıyorsun?",
+          "seconds": 90,
+          "prompt": "Sepette kaç gündür bekleyen ürün var? Geçen ay aldıklarından kaç tanesini hâlâ aktif kullanıyorsun? Aradaki fark senin dürtüsel harcama oranın."
+        },
+        "action": "Bugünden başlayarak 100 TL üstü her satın almayı 24 saat ertele. Telefonda bir 'bekleme listesi' notu aç, eklediğin tarihi yaz.",
         "reflectionPrompt": "Bugün ertelediğin neydi? 24 saat sonra hala istedin mi?",
+        "reflectionPrompts": [
+          "Son 30 günde aldıklarından kaç tanesini hâlâ kullanıyorsun? 'Kullanılmayan' sayısı × ortalama fiyat = bir aylık dürtü maliyeti. Bu sayıyı yıllığa çıkar.",
+          "Sepete eklerken hangi cümle geçti aklından — 'bunu hak ettim' mi, 'sadece bir kerelik' mi, 'indirim kaçacak' mı? O cümle dopaminin sesi, senin sesin değil."
+        ],
+        "commitments": [
+          "Bugünden itibaren 100 TL üstü tüm alışverişleri 24 saat bekleteceğim",
+          "Sepete eklediğim her ürünün altına ekleme tarihini yazacağım",
+          "Bir alışveriş uygulamasının bildirimlerini bu hafta kapatacağım — sentetik aciliyet alarmı"
+        ],
         "quiz": [
           {
             "q": "24-saat kuralı kaç TL üstüne uygulanır?",
@@ -6699,13 +7707,75 @@
             "explain": "%80 dürtüseldi, gereksizdi."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Bir e-ticaret sitesi 'Eski fiyat 2.499 TL, ŞİMDİ 899 TL' diye sunuyor. Sen 'ucuz' hissediyorsun. Hangi etki devrede?",
+            "options": [
+              "Bilinçli bir karar — gerçekten ucuz",
+              "Anchoring effect (çapa etkisi) — 2.499 senin için referans oldu, 899 ucuz hissetti. Ürünün gerçek değeri belki 500 TL",
+              "İyi bir indirim, almak akıllıca",
+              "Hiçbir etki yok, sadece basit matematik"
+            ],
+            "correct": 1,
+            "explain": "Dan Ariely'nin 'Predictably Irrational' deneyi: rastgele bir sayı bile sonraki fiyat algısını ankrar. 'Eski fiyat' çoğu zaman yapay yüksek tutulur — indirim algısı oluştursun diye. Çapayı sen seçmedin, sana verildi. Gerçek soru: ürün bedava olsa alır mıydın? Hayırsa pas geç."
+          },
+          {
+            "q": "Sepete 1.200 TL'lik bir kulaklık ekledin. App push' bildirimi: 'Son 2 saat, %30 indirim biter!' Ne yapacaksın?",
+            "options": [
+              "Hemen al — indirim kaçar",
+              "24 saat bekle. 'Son 2 saat' sentetik aciliyettir, gerçek değil. İndirim biterse bitsin — başka indirim gelecek",
+              "Yarısını al, riski azalt",
+              "Arkadaşına sor, hızlı karar ver"
+            ],
+            "correct": 1,
+            "explain": "Aciliyet, satın alma duygusunu manipüle eden en güçlü silah. Beyin 'kaçırma korkusu' (FOMO) ile çapraz kullanılır — gerçek karar verme devre dışı kalır. Gerçek bir aciliyet hayatına gerçek bir zarar gelir; bir kulaklığın 24 saatte biten indirimi, sadece tetikleme tasarımıdır. 24 saat sonra hâlâ istiyorsan, normal fiyatla bile al — yine ucuza çıkar."
+          },
+          {
+            "q": "24 saat geçti, sepetteki ürünü hâlâ istiyorsun. Hangi soru sıradadır?",
+            "options": [
+              "Hemen al, kural sağlandı",
+              "'Bu ürün bedava olsa, bunu kullanacak mıyım?' diye sor. Cevap evet ise al",
+              "Yarısını ucuz al",
+              "Bir 24 saat daha bekle"
+            ],
+            "correct": 1,
+            "explain": "Sethi'nin 'conscious spending' testi: ücretsiz olsa kullanır mıydın sorusu, gerçek kullanımı dürtüden ayırır. 'Bedava olsa kullanacağım' = gerçek değer. 'Almak istiyorum ama belki kullanmayabilirim' = dopamin hâlâ aktif. Bu sıralama: 24 saat bekle, sonra 'bedava olsa' testi, sonra al."
+          },
+          {
+            "q": "Bir arkadaşın yeni aldığı 3.500 TL'lik akıllı saati gösteriyor — 'süper olmuş'. Eve gidiyorsun, sen de baktın bakındın. Bu hangi etki?",
+            "options": [
+              "Mantıklı ihtiyaç — saat herkese lazım",
+              "Sosyal anchoring — başkasının seçimi senin için çapa oldu. Senin gerçek ihtiyacın değil, onunkine maruziyet",
+              "Sağlıklı bir keşif",
+              "Sadece reklam etkisi"
+            ],
+            "correct": 1,
+            "explain": "Ariely ve sosyal psikoloji araştırması: çevredekilerin tüketim seçimleri en güçlü çapadır. 'Süper olmuş' duyduğun anda, henüz 24 saat öncesine kadar ihtiyacın bile olmayan ürün senin için 'normal' oldu. Bu mekanizma fark edilmezse, arkadaş çevresinin tüm hayat tarzı senin bütçeni belirler. 24 saat kuralı sosyal çapalar için bile geçerli."
+          }
+        ],
         "proTip": "24 saat geçtikten sonra hala istediğini almak istiyorsan, gerçekten istediğindir. Çoğu için cevap \"hayır\" gelir."
       },
       "4": {
         "title": "Yemek Maliyeti Görünümü",
+        "hook": "Bu hafta dışarıda kaç öğün yedin? Toplamı kaç TL? Bilmiyorsan, 'küçük harcamalar' tuzağındasın. Her öğün 200 TL gibi görünür, yıllık 36.500 TL gibi görünmez. Aynı para, farklı kova — Kahneman geri geldi.",
         "teaching": "Dışarıda yemek vs evde pişirmek 5–10x maliyet farkı yaratır. Çoğu kişi bunu görmüyor çünkü küçük harcamalar.\n\n200 TL bir öğün × günde 3 öğün × ayda 30 = 18,000 TL/ay. Aynı yemekleri evde 60 TL ye yapabilirsin.\n\nDışarıda yemek tatil deneyimi olmalı, günlük rutin değil.",
-        "action": "Bugün 1 öğünü evde pişir. Maliyetini hesapla, dışarıda aynı yemeğin maliyetiyle karşılaştır.",
+        "teachingDeep": "David Bach 'The Automatic Millionaire' (2004) kitabında 'Latte Factor' (Latte Faktörü) kavramını popülerleştirdi: günde 5 dolar kahve = ayda 150 dolar = yılda 1.800 dolar = 30 yılda %7 yıllık getiriyle yatırılırsa ~187.000 dolar. Bach'ın iddiası: küçük günlük harcamaları kes, milyoner ol.\n\nHelaine Olen 'Pound Foolish' (2012) kitabında bu fikre sert eleştiri getirdi: matematik abartılı (her zaman %7 getiri olmaz, enflasyon dahil edilmemiş, kira/sağlık gibi büyük kalemler önemli kalır). Olen haklı. Ama bir şeyde haksız: Latte Factor'ün ASIL gücü matematik değil — disiplindir. Günde 50 TL 'küçük' diye gören biri, 5.000 TL'yi de 'küçük' görür. Davranış şablonu kalemlerin değil, zihnin şeklidir.\n\nBileşik faiz aritmetiği basit ama acımasız. Türkiye'deki gerçekçi mevduat senaryosu (yüksek faiz dönemi): %30 yıllık. Ayda 6.000 TL biriktirip mevduata yatırırsan: 10 yıl sonra ~1.180.000 TL (faiz dahil), 20 yıl sonra ~17 milyon TL, 30 yıl sonra ~245 milyon TL. Bu yüksek getiri nominal — yüksek enflasyonun bir kısmını yiyor. Reel olarak %5 net büyüme varsayarsak: 10 yıl sonra ayda 6.000 TL bugünkü değerle ~930.000 TL, 30 yıl sonra ~5 milyon TL. Yine de hiç biriktirmemekten katlanır şekilde fazla.\n\nBenjamin Franklin'e atfedilen söz: 'A penny saved is a penny earned.' Albert Einstein'a atfedilen 'bileşik faiz dünyanın 8. harikası' sözü uydurmadır (kaynağı yok), ama matematiği gerçek. Önemli olan kim söyledi değil — sayıların ne dediği.\n\nDışarıda yemek günde 300 TL fazla (3 öğün × 100 TL fark) demek, ayda 9.000 TL, yılda 108.000 TL. Üstüne yatırım getirisi: 10 yılda yaklaşık 1,7 milyon TL fark (nominal). Bu Latte Factor değil — Et Faktörü, Şarküteri Faktörü, Yemek Sepeti Faktörü. Adı önemli değil, prensibi aynı: ZİHNİN 'küçük' kategorisine koyduğu her harcama, gelecek senin oyununa giriyor.\n\nEvde pişirmek tasarruf değil — özgürlüktür. Mutfak basit dört hareket: doğra, kavur, baharatla, ye.",
+        "practice": {
+          "instruction": "Yemek sipariş uygulamanı (Yemeksepeti, Getir Yemek, Trendyol Yemek) aç. 90 saniye boyunca, SADECE son 30 günün geçmiş siparişlerine bak. Sipariş yapma — sadece bak. Sipariş sayısını ve toplamını not et.",
+          "seconds": 90,
+          "prompt": "Geçen ay kaç sipariş, toplamı kaç TL? Bu rakamı 12 ile çarp — yıllık ne çıkıyor? Aynı parayı evde pişirseydin %20'si kalırdı."
+        },
+        "action": "Bugün en az 1 öğünü evde pişir. Maliyetini hesapla (markete tek tek bak), dışarıda aynı yemeğin maliyetiyle karşılaştır. Farkı tasarruf hesabına transfer et — bu hafta birikmiş Latte Factor.",
         "reflectionPrompt": "Evde pişirmek ne kadar tasarruf etti? Tatlı miydi?",
+        "reflectionPrompts": [
+          "Bugün pişirdiğin öğünün maliyeti kaç TL'ydi? Dışarıda aynı yemek kaç TL? Aradaki farkı 365 ile çarp — yıllık potansiyel tasarrufun bu. O para ile 10 yıl sonra ne yapardın?",
+          "'Vaktim yok' bahanesi: telefon ekran süreni bir kontrol et. Günde 4 saatten az ise, 'vaktim yok' diyemezsin. Bahane fark edebilirsin?"
+        ],
+        "commitments": [
+          "Bu hafta en az 4 öğünü evde pişireceğim — kahvaltı sayılır",
+          "Bu hafta yemek siparişi uygulamasının bildirimlerini kapatacağım",
+          "Dışarıda yemeği 'planlı keyif' olarak işaretleyeceğim — günlük rutin değil, haftalık seçim"
+        ],
         "quiz": [
           {
             "q": "Ev pişirme vs dışarı maliyet farkı?",
@@ -6730,13 +7800,75 @@
             "explain": "Tatil deneyimi olmalı, günlük değil."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Günde 150 TL kahve + atıştırmalık alıyorsun. 'Küçük, ne olacak' diyorsun. 30 yıl boyunca aynı para %5 reel getiriyle yatırılırsa ne olur?",
+            "options": [
+              "Yaklaşık 100.000 TL — küçük rakam",
+              "Yaklaşık 3,7 milyon TL bugünkü değerle — Latte Factor'ün matematiği reel olarak bu",
+              "Hiçbir şey — enflasyon her şeyi yer",
+              "1 milyon — komik bir tutar"
+            ],
+            "correct": 1,
+            "explain": "Aylık 4.500 TL × 12 × 30 yıl + %5 reel bileşik getiri ≈ 3,7 milyon TL. Helaine Olen Latte Factor'ü matematiksel olarak abarttığı için eleştirir ama prensibi reddetmez: küçük tutarlar zihninde küçük, zamanla devasa. Disiplin yokluğunun maliyeti budur."
+          },
+          {
+            "q": "Saat 19:30. Açsın, yorgunsun, mutfağa girmek istemiyorsun. Yemek sipariş uygulaması açılıyor. Hangisi disiplin?",
+            "options": [
+              "Sipariş ver — bu sefer hak ettin",
+              "5 dakika dur. Mutfakta 15 dakikada hazırlanan basit bir yemek seç (omlet, makarna, kıymalı sandviç). Yorgunluk geçer, mutfak hareketi başlatınca dopamin gelir",
+              "Aç kal — daha kolay",
+              "Konserve aç — sağlıksız ama ucuz"
+            ],
+            "correct": 1,
+            "explain": "B.J. Fogg davranış araştırması: 'minimum eylem' başlatınca, kalan kısım çok daha kolay devam ediyor. Mutfağa girip su koymak bile sipariş kararını bozar. 15 dakikalık tarifler 'vaktim yok' bahanesinin cevabıdır. Yorgun olduğun gece sipariş = en pahalı gece."
+          },
+          {
+            "q": "Ayda 4.500 TL'yi dışarıda yemekten keserek tasarrufa aktardın. Bu parayı nereye koymak en disiplinli?",
+            "options": [
+              "Aynı bankada yedek hesaba — kolay erişim",
+              "Ayrı bankada vadeli mevduat veya BES, otomatik EFT ile aylık transfer — 'görünmez' tasarruf, görünen para harcanır",
+              "Yatak altında nakit — güvenli",
+              "Borsa, hızlı büyüsün"
+            ],
+            "correct": 1,
+            "explain": "Housel ve Sethi'nin ortak fikri: tasarrufu 'görünmez' yap. Aynı bankada hesap = kolayca al, harca. Ayrı banka = bir saniyelik fiziksel sürtünme bile geri çevirmeye yetiyor. BES vergi avantajıyla ek getiri sağlar. Borsa yüksek getirili ama yüksek riskli — disiplin temeli oturmadan girilmez."
+          },
+          {
+            "q": "Birisi sana 'Latte Factor saçmalık, asıl mesele gelir artırmak' diyor. Cevabın?",
+            "options": [
+              "Haklı, gelir önemli — kahve önemsiz",
+              "Yarı haklı: Helaine Olen matematiği abartılı buldu. Ama Latte Factor'ün gerçek değeri zihinsel — 'küçük' gören her şeyi küçük görme alışkanlığı, sonra büyük rakamlarda da aynı şekilde davranıyor",
+              "Tamamen haksız",
+              "Konu kapansın"
+            ],
+            "correct": 1,
+            "explain": "Olen'in Bach eleştirisi matematiksel doğru: getiri varsayımları abartılı, enflasyon ihmal edilmiş. Ama prensip doğru: günde 50 TL'yi 'küçük' gören zihin, ayda 5.000 TL'yi de küçük görür. Davranış kalemden değil, zihinden. Hem geliri artır hem disiplini kur — iki ayak."
+          }
+        ],
         "proTip": "Evde pişirmek karmaşık olmak zorunda değil. 4 hareket: doğra, kavur, baharatla, ye."
       },
       "5": {
         "title": "Acil Durum Fonu",
+        "hook": "Şu an işsiz kalsan, kaç ay kira ödeyebilirsin? Hesabında 3 aylık zorunlu gider duruyor mu? Hayırsa, finansal hayatın ip üstünde — bir hastalık, bir işsizlik, bir araba arızası seni borca atar. Disiplin, krizden değil — krize hazır olmaktan başlar.",
         "teaching": "Mali stres → kötü kararlar. Yatırımları erken sat, kredi al, ucuz işlere razı ol. Hepsi pahalı hatalar.\n\nAcil durum fonu = 3 aylık zorunlu giderlerin. İşsizlik, sağlık, beklenmedik durum için.\n\nBu fon olmadan finansal disiplin yapay. Gerçek temel bu.",
-        "action": "Bugün ayrı bir hesap aç (faizli mevduat OK). Maaşının %10unu o hesaba transfer et. Bu fon büyüyene kadar dokunma.",
+        "teachingDeep": "Morgan Housel 'Paranın Psikolojisi' (2020) kitabında 'room for error' (hata payı) kavramına bir bölüm ayırıyor. Tezi şu: 'Servet, kaybetmediğin paradır. Ve kaybetmemek için, yanılma payı bırakmalısın.' Housel bir çalışma aktarıyor — 2018, ABD Federal Rezervi: Amerikan hanelerinin %40'ı 400 dolarlık acil bir gideri karşılayamıyor. Bu insanlar fakir değil, ortalama gelirli. Sadece tampon yok. Bir araba arızası, bir diş, bir kira artışı = kredi kartı borcu = bir yıllık çıkış, sonra tekrar başla.\n\nJL Collins 'The Simple Path to Wealth' (2016) kitabında acil fon için bir başka adlandırma kullanıyor: 'F-You Money' — 'Defol Para'. Anlamı: hesabında o kadar para olmalı ki, kötü bir iş, kötü bir patron, kötü bir koşul çıktığında 'defol' deyip ayrılabilesin. 3 aylık zorunlu gider, F-You Money'nin ilk adımıdır. Sonra 6 ay, sonra 12 ay.\n\nNassim Taleb 'Antifragile' (2012) kitabında benzer fikri verir: 'Görünmeyen siyah kuğular her zaman olur. Kırılgan olan, görünmediği için unutur. Antifrajil olan, hazırdır.' Türkiye gerçekliği bunun klasik vakası: 2018 döviz şoku, 2020 pandemi, 2021 enflasyon spiral. Her seferinde acil fonu olanlar dayandı; olmayanlar tasfiye etmek zorunda kaldı.\n\nMatematik basit ama kritik: zorunlu giderlerin ayda 15.000 TL ise, 3 aylık fon = 45.000 TL. Aylık 4.500 TL biriktirirsen 10 ayda tamamlanır. Aylık 1.500 TL biriktirirsen 30 ayda. Bu süre boyunca 'yatırım yapayım mı?' diye sorma. Cevap hayır. Önce tampon, sonra yatırım. Housel: 'Yüksek getiri arayan, sıfırı görmemiş demektir.'\n\nFon nerede durmalı: Türkiye için 3 aylık vadeli mevduat (kolay bozulur) veya ayrı bir banka hesabı. Borsada değil. Kriptoda değil. Acil fon getiri için değil, var olmak için. Fonu tüm tasarruf birikiminin ÜSTÜNDE düşün — bu fon yatırım değildir.\n\nFon olmadan disiplin yapaydır. İlk şok geldiğinde sistem çöker. Disiplin gerçekten test edildiği gün, fonun yanında olmalı.",
+        "practice": {
+          "instruction": "Şu an telefonunda hesap makinesini aç. 90 saniye boyunca, geçen ay zorunlu giderlerinin toplamını topla: kira + faturalar + market + ulaşım + sağlık + sigorta + asgari minimum borç ödemeleri. Banka uygulaması açma — tahminle yaz. Toplamı 3 ile çarp: acil fon hedefin bu.",
+          "seconds": 90,
+          "prompt": "3 aylık hedef rakamın kaç TL? Şu an hesabında bunun yüzde kaçı var? Aradaki fark, finansal güvensizliğinin somut adıdır."
+        },
+        "action": "Bugün ayrı bir banka hesabı aç (faizli mevduat tercih edilir). Maaşının %10'unu o hesaba otomatik EFT olarak ayarla. 3 aylık zorunlu gider tutarına ulaşana kadar bu fona dokunma.",
         "reflectionPrompt": "%10 transfer hangi alandan kesilecek?",
+        "reflectionPrompts": [
+          "Bugün hesapladığın 3 aylık zorunlu gider tutarı kaç TL? Bunun yüzde kaçı şu an cebinde? 'Yapacağım' demek yetmiyor — bu fona bugün ne zaman ilk transferi yaptın?",
+          "JL Collins'in 'F-You Money' tanımına göre, hesabında ne kadar olunca kötü bir patrona 'defol' diyebilirdin? O sayı senin gerçek özgürlük rakamın."
+        ],
+        "commitments": [
+          "Bugün ayrı bir banka hesabı açacağım (Enpara, OnDigital, Garanti BBVA Vadeli veya başka bir kuruluş)",
+          "Maaşımın %10'unu o hesaba otomatik EFT ayarlayacağım — irade gücüne güvenmem",
+          "Acil fon hedefine ulaşana kadar yatırım, kripto, borsa yok — temel önce"
+        ],
         "quiz": [
           {
             "q": "Acil durum fonu kaç aylık olmalı?",
@@ -6759,6 +7891,52 @@
             ],
             "correct": 1,
             "explain": "Acil fon olmadan disiplin yapaydır."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "Acil fonun yok. Borsa yatırımın 80.000 TL. Şirketin küçüldü, işten çıkarılma riskindesin. Ne yapacaksın?",
+            "options": [
+              "Borsada kal — uzun vadede kazandırır",
+              "Borsadan 45.000 TL'yi (3 aylık zorunlu gider) çekip ayrı bir hesaba aktar. Yatırım disiplini kötüleşse de hayatta kalman birinci öncelik",
+              "Maaşının %50'sini hemen borsaya at — fırsat",
+              "Hiçbir şey yapma, bekle"
+            ],
+            "correct": 1,
+            "explain": "Housel'in 'room for error' kuralı: temelin yoksa, üst katları kurma. İşsizlik riski varken borsada beklemek = en kötü anda satmaya zorlanmak. Önce 3 aylık zorunlu gider çek, ayrı tut. Olası bir kriz çözüldükten sonra geri yatır. JL Collins de F-You Money'yi yatırımdan AYRI tutar."
+          },
+          {
+            "q": "Acil fonun var, 50.000 TL. Aklında 'borsa yükselişe geçti, bu parayı koysam %30 kazanırım' düşüncesi geçiyor. Ne yapacaksın?",
+            "options": [
+              "Borsaya koy — fırsat kaçar",
+              "Acil fon yatırım değil. Görevi seni krizden korumak. Yarısını koyarsan koruma yarıya düşer. Acil fonu yatırımla karıştırma — Housel'in net kuralı",
+              "Yarısını koy — risk dengele",
+              "Tümünü kripto yap — yüksek getiri"
+            ],
+            "correct": 1,
+            "explain": "Housel'in tek cümlesi: 'Yüksek getiri arayan, sıfırı görmemiş demektir.' Acil fonun varlığı, sıfır olasılığını yönetir. Bu paraya 'nasıl daha çok kazanırım' diye bakmak, sigortanı bozdurup kumar oynamaktır. Acil fon getiri için değil, var olmak için."
+          },
+          {
+            "q": "Acil fon hedefin 45.000 TL. Şu an 12.000 TL var. Doğum günün geldi, arkadaşların restoranda kutlama planlıyor — 800 TL hesap çıkacak. Ne yapacaksın?",
+            "options": [
+              "Acil fonun çok yavaş ilerliyor, kutlama önemli — git",
+              "Düşük maliyetli alternatif öner (evde toplantı, daha ucuz mekân). Acil fon bitmeden 'istek' kategorisi sıkıştırılır — sosyal yaşam tamamen iptal değil, optimize edilir",
+              "Hiç gitme, kendini izole et",
+              "Git ve doğum günü için 2 katı harca — ödüllendir"
+            ],
+            "correct": 1,
+            "explain": "Acil fon dönemi feragat değil — yeniden ayar. Sosyal yaşam kalır, formatı değişir. Ramit Sethi'nin 'conscious spending' kuralı: önemsizlere harca, önemlilere kıs. Doğum günü önemli, ama 800 TL restoran formatı esnek. Evde 200 TL ile aynı keyif. Aradaki 600 TL acil fona — 75 günlük hızlandırma."
+          },
+          {
+            "q": "3 aylık hedef tamamlandı, 45.000 TL fonun var. Sıradaki adım ne?",
+            "options": [
+              "Hedef tamam, artık yatırıma başla — tüm fazla parayı borsaya",
+              "Hedefi 6 aya çıkar, sonra 12 aya — JL Collins'in 'F-You Money' kavramı kademeli büyür. Aynı zamanda %20 tasarrufun bir bölümünü uzun vadeli yatırıma (BES, endeks fonu) yönlendir",
+              "Fonu harca — başardın, ödüllendir",
+              "Hiçbir şey yapma, beklerken erime izle"
+            ],
+            "correct": 1,
+            "explain": "3 ay minimum, 6 ay konfor, 12 ay özgürlük. JL Collins'in tezi: F-You Money büyüdükçe karar verme gücün büyür. 3 ay olunca acil fon, 12 ay olunca 'hayır deme gücü' (kötü patron, kötü iş, kötü teklif). Bu dönemde yeni para yatırıma akabilir — temel sağlam."
           }
         ],
         "proTip": "Acil fonu erişilemez yere koy: ayrı banka, ayrı kart. \"Görünür\" para harcanır."

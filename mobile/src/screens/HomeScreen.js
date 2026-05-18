@@ -99,6 +99,9 @@ export default function HomeScreen({ navigation }) {
     checkInCustomGoal,
     setActivePath,
     middayPauseCompletedAt,
+    eveningCloseCompletedAt,
+    tomorrowIntent,
+    friendPair,
   } = useApp();
 
   // Day-bucket booleans for the per-day cards. Stable across re-renders
@@ -123,6 +126,22 @@ export default function HomeScreen({ navigation }) {
   const middayWindowOpen = middayHour >= 12 && middayHour < 16;
   const middayDoneToday = middayPauseCompletedAt === todayDateStr;
   const showMiddayPill = middayWindowOpen;
+
+  // Evening Close pill visibility — only between 18:00 and 22:30 local
+  // time. Same two-state pattern as Midday: prominent when waiting,
+  // soft check when done. The window starts earlier than 20:30 so an
+  // early-evening user sees the affordance before the push fires.
+  // 22:30 cutoff keeps it off Home after the practical "go to bed"
+  // window has closed.
+  const eveningNow = new Date();
+  const eveningHour = eveningNow.getHours();
+  const eveningMinute = eveningNow.getMinutes();
+  // 18:00 ≤ now < 22:30. Mapped to integer minutes-since-midnight for
+  // a single clean comparison.
+  const eveningMins = eveningHour * 60 + eveningMinute;
+  const eveningWindowOpen = eveningMins >= 18 * 60 && eveningMins < 22 * 60 + 30;
+  const eveningDoneToday = eveningCloseCompletedAt === todayDateStr;
+  const showEveningPill = eveningWindowOpen;
 
   // Per-session adaptive coach dismiss. Once dismissed, the banner
   // hides until the next app launch (not persisted) — so the user
@@ -357,15 +376,43 @@ export default function HomeScreen({ navigation }) {
     fallback: t('home.greetingName', 'Disiplinci'),
   });
   const greeting = getGreeting(t);
-  // Stoic conditional subtitle. Five branches, ordered most-specific
-  // first. Reads `currentStreak` and `totalCompleted` from context so
-  // a returning user with prior progress doesn't get the same "first
-  // day" line as a brand-new install. Falls back to the original
-  // generic line — same JSX slot, only the text changes.
+  // Stoic conditional subtitle. Reads `currentStreak` and
+  // `totalCompleted` from context so a returning user with prior
+  // progress doesn't get the same "first day" line as a brand-new
+  // install. Falls back to the original generic line — same JSX
+  // slot, only the text changes.
+  //
+  // HIGHEST-PRIORITY branch: when the user picked a "tomorrow intent"
+  // during last night's Evening Close and `today` matches that
+  // intent's target date, surface it as the subtitle. This is the
+  // hand-off that closes the daily ritual cycle: the user's own
+  // commitment from yesterday greets them this morning.
   const subtitleText = (() => {
     const hour = new Date().getHours();
     const streak = currentStreak || 0;
     const completed = totalCompleted || 0;
+    // Tomorrow-intent hand-off — fire only in the morning so the line
+    // doesn't compete with the streak-risk evening branches. We treat
+    // "morning" generously (before 18:00) to handle late risers.
+    if (
+      tomorrowIntent
+      && tomorrowIntent.date === todayDateStr
+      && hour < 18
+    ) {
+      const intentLabelMap = {
+        discipline: t('eveningClose.intentDiscipline', 'Disiplin'),
+        focus: t('eveningClose.intentFocus', 'Odak'),
+        calm: t('eveningClose.intentCalm', 'Sakinlik'),
+      };
+      const intentLabel = intentLabelMap[tomorrowIntent.intent];
+      if (intentLabel) {
+        return t(
+          'home.intentSubtitle',
+          'Bugün için niyetin: {{intent}}.',
+          { intent: intentLabel },
+        );
+      }
+    }
     if (streak === 0 && completed === 0) {
       return t(
         'home.subtitleColdStart',
@@ -455,6 +502,32 @@ export default function HomeScreen({ navigation }) {
               {middayDoneToday
                 ? t('midday.middayCompletePill', '✓ Öğle Molası tamam')
                 : t('midday.middayWaitingPill', '🕐 Öğle Molası bekliyor')}
+            </Text>
+          </TouchableOpacity>
+        ) : null}
+
+        {/* Evening Close pill — mirror of the Midday pill but for the
+            18:00-22:30 window. Same two-state pattern: prominent when
+            waiting, soft check when done. Taps into the EveningClose
+            modal where the user closes the daily ritual cycle. */}
+        {showEveningPill ? (
+          <TouchableOpacity
+            style={[
+              styles.middayPill,
+              eveningDoneToday && styles.middayPillDone,
+            ]}
+            onPress={() => navigation.navigate('EveningClose')}
+            activeOpacity={0.85}
+          >
+            <Text
+              style={[
+                styles.middayPillText,
+                eveningDoneToday && styles.middayPillTextDone,
+              ]}
+            >
+              {eveningDoneToday
+                ? t('eveningClose.pillDone', '✓ Günü kapattın')
+                : t('eveningClose.pillWaiting', '🌙 Günü kapat (3 dk)')}
             </Text>
           </TouchableOpacity>
         ) : null}
@@ -561,6 +634,39 @@ export default function HomeScreen({ navigation }) {
             { id: 'lost', emoji: '😶‍🌫️' },
           ]}
         />
+
+        {/* Friend Code pill — single line, two states:
+              • unpaired: invite-style "🤝 Disiplin ortağı bul"
+              • paired:   live "🔥 [partner]: N gün"
+            Taps into the FriendCode modal in both cases. */}
+        <TouchableOpacity
+          style={[
+            styles.friendPill,
+            friendPair && styles.friendPillPaired,
+          ]}
+          onPress={() => navigation.navigate('FriendCode')}
+          activeOpacity={0.85}
+        >
+          <Text
+            style={[
+              styles.friendPillText,
+              friendPair && styles.friendPillTextPaired,
+            ]}
+            numberOfLines={1}
+          >
+            {friendPair
+              ? t('friendCode.homePillPaired', '🔥 {{name}}: {{streak}} gün', {
+                  name: friendPair.partnerName,
+                  streak: friendPair.partnerStreak || 0,
+                })
+              : t('friendCode.homePillUnpaired', '🤝 Disiplin ortağı bul')}
+          </Text>
+          <MaterialIcons
+            name="chevron-right"
+            size={18}
+            color={friendPair ? LT.onSurface : LT.onPrimary}
+          />
+        </TouchableOpacity>
 
         {/* Adaptive Coach — reads rolling quiz accuracy and surfaces a
             mastery nudge ("try a harder path") or a "slow down" reminder
@@ -1226,5 +1332,43 @@ const styles = StyleSheet.create({
   },
   middayPillTextDone: {
     color: LT.onSurfaceVariant,
+  },
+
+  // Friend Code pill — sits below DailyRitualsCarousel. Two states:
+  // unpaired (filled red, prompts the user to invite) and paired (soft
+  // surface, shows partner's streak). Single line by design — the
+  // accountability surface is "look how they're doing", not a feed.
+  friendPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderRadius: LT_RADIUS.pill,
+    backgroundColor: LT.primaryContainer,
+    shadowColor: LT.primaryContainer,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.22,
+    shadowRadius: 12,
+    elevation: 4,
+  },
+  friendPillPaired: {
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  friendPillText: {
+    flex: 1,
+    fontSize: 13,
+    fontWeight: '900',
+    letterSpacing: 0.4,
+    color: LT.onPrimary,
+  },
+  friendPillTextPaired: {
+    color: LT.onSurface,
   },
 });

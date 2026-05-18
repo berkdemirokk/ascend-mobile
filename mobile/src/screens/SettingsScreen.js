@@ -54,6 +54,8 @@ export default function SettingsScreen({ navigation }) {
     anonUsername,
     currentStreak,
     userProfile,
+    aiPersonalizeActive,
+    setAiPersonalizeEnabled,
   } = useApp();
 
   const vacationActive = (() => {
@@ -159,6 +161,30 @@ export default function SettingsScreen({ navigation }) {
     // Fire a single light tap if turning ON so the user immediately
     // feels the feedback they just enabled (instant confirmation).
     if (value) hapticImpactLight();
+  };
+
+  const toggleAiPersonalize = (value) => {
+    // Premium gate: free users see the row + can read what it does, but
+    // physically can't flip it on (cost reason — every "on" lesson is
+    // two Claude calls). Tapping when free → paywall prompt.
+    if (value && !isPremium) {
+      Alert.alert(
+        t('aiCoach.premiumRequired', 'Premium gerekli'),
+        t(
+          'aiCoach.premiumRequiredBody',
+          'Kişiselleştirilmiş AI koç sadece Premium üyelere açık. Her ders öncesi ve sonrasında sana özel mesajlar al.',
+        ),
+        [
+          { text: t('common.cancel', 'İptal'), style: 'cancel' },
+          {
+            text: t('common.goPremium', "Premium'a geç"),
+            onPress: () => navigation.navigate('Paywall'),
+          },
+        ],
+      );
+      return;
+    }
+    setAiPersonalizeEnabled(value);
   };
 
   const handleRestore = async () => {
@@ -427,7 +453,7 @@ export default function SettingsScreen({ navigation }) {
 
             {/* Haptics toggle — service was created earlier but the
                 UI to toggle it was missing. Mirrors sounds toggle. */}
-            <View style={styles.row}>
+            <View style={[styles.row, styles.rowBorder]}>
               <View style={styles.rowLeft}>
                 <View>
                   <Text style={styles.rowLabel}>{t('settings.haptics')}</Text>
@@ -439,6 +465,40 @@ export default function SettingsScreen({ navigation }) {
               <Switch
                 value={hapticsEnabled}
                 onValueChange={toggleHaptics}
+                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
+                thumbColor={LT.surfaceContainerLowest}
+              />
+            </View>
+
+            {/* AI Personalization toggle (Layer B) — premium-only.
+                Free users see the row but the switch can't go on; tapping
+                while free routes to the paywall. */}
+            <View style={styles.row}>
+              <View style={styles.rowLeft}>
+                <View style={{ flex: 1 }}>
+                  <View style={styles.aiRowTitleRow}>
+                    <Text style={styles.rowLabel}>
+                      {t('aiCoach.settingsLabel', 'Kişiselleştirilmiş AI Koç')}
+                    </Text>
+                    {!isPremium ? (
+                      <MaterialIcons
+                        name="workspace-premium"
+                        size={14}
+                        color={LT.primaryContainer}
+                      />
+                    ) : null}
+                  </View>
+                  <Text style={styles.rowSub}>
+                    {t(
+                      'aiCoach.settingsSub',
+                      'Her dersin başında ve sonunda sana özel mesajlar',
+                    )}
+                  </Text>
+                </View>
+              </View>
+              <Switch
+                value={!!aiPersonalizeActive}
+                onValueChange={toggleAiPersonalize}
                 trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
                 thumbColor={LT.surfaceContainerLowest}
               />
@@ -801,6 +861,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     marginTop: 2,
+  },
+  aiRowTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
   },
   rowValue: {
     color: LT.onSurfaceVariant,

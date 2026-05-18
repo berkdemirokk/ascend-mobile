@@ -11,6 +11,7 @@ import {
   Easing,
   Image,
   StatusBar,
+  ActivityIndicator,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -35,6 +36,7 @@ import {
   loadRewarded,
 } from '../services/ads';
 import StreakRepairModal from '../components/StreakRepairModal';
+import NPSModal from '../components/NPSModal';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import PathMilestoneScene, {
   detectPathSceneStage,
@@ -54,6 +56,10 @@ import { useAuth } from '../contexts/AuthContext';
 import { requestReviewIfAppropriate } from '../services/review';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
+import {
+  generateLessonIntro,
+  generateReflectionResponse,
+} from '../services/aiPersonalize';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 import { useAppMood } from '../hooks/useAppMood';
 
@@ -94,6 +100,11 @@ export default function LessonScreen({ navigation, route }) {
     dismissBrokenStreakRestore,
     userProfile,
     anonUsername,
+    aiPersonalizeActive,
+    customGoal,
+    _npsToast,
+    submitNps,
+    dismissNps,
   } = useApp();
   const { user } = useAuth();
   // Centralized name resolution — same priority as Home + Notifications.
@@ -232,6 +243,14 @@ export default function LessonScreen({ navigation, route }) {
   // the user wrote a reflection. Surfaces on celebration screen as
   // "a sage responds to your words". Empathy/voice-of-the-app hook.
   const [mirrorQuote, setMirrorQuote] = useState(null);
+  // AI Personalization (Layer B) — intro text rendered above teaching,
+  // sage response rendered on celebration. Both null until the async
+  // call resolves; null also means "skip rendering" (failure-safe).
+  // introLoading flips true while the API call is in flight so we can
+  // show a small inline spinner above teaching for up to 3s.
+  const [aiIntro, setAiIntro] = useState(null);
+  const [aiIntroLoading, setAiIntroLoading] = useState(false);
+  const [aiReflectionResponse, setAiReflectionResponse] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
@@ -401,6 +420,59 @@ export default function LessonScreen({ navigation, route }) {
       }
     };
   }, []);
+
+  // ── AI Personalization Layer (Layer B) — fire the lesson intro call
+  // when the user is on the TEACHING step and the feature is active. The
+  // service handles caching, day-cap, timeout, and silent failure; we
+  // just gate on (a) feature enabled, (b) on this step, (c) we don't
+  // already have a result. Failure → setAiIntro stays null and the
+  // intro block renders nothing.
+  useEffect(() => {
+    if (!aiPersonalizeActive) return;
+    if (step !== STEP.TEACHING) return;
+    if (aiIntro) return;
+    if (aiIntroLoading) return;
+    if (!path || !lesson) return;
+    // Pull the user's most recent reflection from any path. The service
+    // truncates upstream; we only need to pass the freshest signal.
+    const recentReflection = (() => {
+      try {
+        const all = Object.values(pathProgress || {});
+        for (let i = all.length - 1; i >= 0; i--) {
+          const r = all[i]?.reflections;
+          if (r && typeof r === 'object') {
+            const vals = Object.values(r);
+            if (vals.length > 0) return vals[vals.length - 1];
+          }
+        }
+      } catch {}
+      return '';
+    })();
+    setAiIntroLoading(true);
+    const userId = user?.id || anonUsername || 'anon';
+    const titleResolved = t(`lessons.${pathId}.${lesson.order}.title`, '');
+    generateLessonIntro({
+      userId,
+      lessonId,
+      lessonTitle: titleResolved || `${pathId}-${lesson.order}`,
+      pathId,
+      userName: firstName,
+      customGoal: customGoal?.text || '',
+      recentReflection,
+      locale: getCurrentLanguage(),
+    })
+      .then((text) => {
+        if (!mountedRef.current) return;
+        setAiIntro(text);
+        setAiIntroLoading(false);
+      })
+      .catch(() => {
+        if (!mountedRef.current) return;
+        setAiIntro(null);
+        setAiIntroLoading(false);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aiPersonalizeActive, step, lessonId]);
 
   if (!path || !lesson) {
     return (
@@ -637,6 +709,30 @@ export default function LessonScreen({ navigation, route }) {
       }
     }
 
+    // AI Personalization Layer (Layer B) — fire the post-reflection sage
+    // response in the background. Fully fire-and-forget; service handles
+    // cache/cap/timeout. Null result → render nothing on celebration.
+    // Gate on aiPersonalizeActive + a non-trivial reflection (the
+    // service itself has a length floor, but we save a call by short-
+    // circuiting here when there's clearly nothing to respond to).
+    if (aiPersonalizeActive && trimmedReflection && trimmedReflection.length >= 4) {
+      const userId = user?.id || anonUsername || 'anon';
+      generateReflectionResponse({
+        userId,
+        lessonId,
+        userReflection: trimmedReflection,
+        lessonTitle: title,
+        userName: firstName,
+        locale: getCurrentLanguage(),
+      })
+        .then((text) => {
+          if (mountedRef.current && text) setAiReflectionResponse(text);
+        })
+        .catch(() => {
+          // Silent failure — AI overlay is purely additive.
+        });
+    }
+
     completePathLesson({
       pathId,
       lessonId,
@@ -848,6 +944,35 @@ export default function LessonScreen({ navigation, route }) {
           </View>
         </View>
       )}
+
+      {/* AI Personalization Intro (Layer B) — rendered BEFORE the
+          teaching text so the user reads "their" intro first. While
+          loading, show a slim placeholder for up to 3 seconds. After
+          that the teaching stands alone — never block on the call.
+          Failure or feature-off → renders nothing. */}
+      {aiPersonalizeActive && aiIntroLoading && !aiIntro ? (
+        <View style={styles.aiIntroLoading}>
+          <ActivityIndicator size="small" color={LT.primaryContainer} />
+          <Text style={styles.aiIntroLoadingText}>
+            {t('aiCoach.introLoading', 'Sana özel mesaj hazırlanıyor...')}
+          </Text>
+        </View>
+      ) : null}
+      {aiIntro ? (
+        <View style={styles.aiIntroCard}>
+          <View style={styles.aiIntroLabelRow}>
+            <MaterialIcons name="auto-awesome" size={14} color="#7C3AED" />
+            <Text style={styles.aiIntroLabel}>
+              {firstName
+                ? t('aiCoach.introLabelPersonal', '{{name}}, BU DERS SENİN İÇİN', {
+                    name: firstName.toUpperCase(),
+                  })
+                : t('aiCoach.introLabel', 'BU DERS SENİN İÇİN')}
+            </Text>
+          </View>
+          <Text style={styles.aiIntroText}>{aiIntro}</Text>
+        </View>
+      ) : null}
 
       <View style={styles.teachingCard}>
         <View style={styles.cornerAccent} />
@@ -1666,6 +1791,26 @@ export default function LessonScreen({ navigation, route }) {
           onDismiss={dismissBrokenStreakRestore}
         />
 
+        {/* NPS feedback prompt — fires on the celebration screen for the
+            3rd lesson EVER and again on the 14-day streak. One-shot per
+            trigger (state stamps in AppContext). We only render when:
+              - celebration is showing (lesson context is on screen)
+              - the reducer set a toast for this trigger
+              - there's no pending streak-repair prompt (that takes
+                priority because it's time-critical retention).
+            The data starvation fix — turns the "anlamsız geliyor" black
+            box into structured feedback rows in Supabase. */}
+        <NPSModal
+          visible={
+            !!_npsToast && showCelebration && !pendingStreakRestore
+          }
+          trigger={_npsToast?.trigger}
+          userId={user?.id || null}
+          anonUsername={anonUsername || null}
+          onSubmit={submitNps}
+          onDismiss={dismissNps}
+        />
+
         {showCelebration && (
           <View style={styles.celebration}>
             {/* Top bar with title */}
@@ -1775,6 +1920,24 @@ export default function LessonScreen({ navigation, route }) {
                       : t('lesson.mirrorLabel', 'A SAGE RESPONDS')}
                   </Text>
                   <Text style={styles.mirrorQuote}>{mirrorQuote}</Text>
+                </View>
+              ) : null}
+
+              {/* AI Personalization Layer (Layer B) — sage response to
+                  the user's reflection text. Same visual treatment as
+                  the curated mirror quote (it's the same emotional
+                  beat), distinguished by the BİLGENİN YANITI label and
+                  the sparkle icon. Renders only after the async call
+                  resolves with non-null text. */}
+              {aiReflectionResponse ? (
+                <View style={styles.aiResponseCard}>
+                  <View style={styles.aiResponseLabelRow}>
+                    <MaterialIcons name="auto-awesome" size={12} color="#7C3AED" />
+                    <Text style={styles.aiResponseLabel}>
+                      {t('aiCoach.responseLabel', 'BİLGENİN YANITI')}
+                    </Text>
+                  </View>
+                  <Text style={styles.aiResponseText}>{aiReflectionResponse}</Text>
                 </View>
               ) : null}
 
@@ -2029,6 +2192,96 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   mirrorQuote: {
+    color: LT.onSurface,
+    fontSize: 14,
+    fontWeight: '500',
+    fontStyle: 'italic',
+    lineHeight: 20,
+    letterSpacing: -0.2,
+  },
+  // AI Personalization (Layer B) — intro card rendered above teaching.
+  // Distinguished by the gradient-ish purple tint + sparkle icon so the
+  // user reads it as "this is for you", not generic copy. Matches the
+  // visual register of the reflection-mirror card (same purple family).
+  aiIntroCard: {
+    marginBottom: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    backgroundColor: 'rgba(139, 92, 246, 0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(124, 58, 237, 0.25)',
+    alignSelf: 'stretch',
+  },
+  aiIntroLabelRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 6,
+  },
+  aiIntroLabel: {
+    color: '#7C3AED',
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+  },
+  aiIntroText: {
+    color: LT.onSurface,
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 21,
+    letterSpacing: -0.2,
+  },
+  // Slim loading placeholder while the intro API call is in flight.
+  // Caps visible duration to ~3s before falling through to teaching
+  // (driven by the 5s service timeout — the user may briefly see this
+  // and then no card at all if the call fails after this state clears).
+  aiIntroLoading: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    marginBottom: 14,
+    borderRadius: 10,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    alignSelf: 'stretch',
+  },
+  aiIntroLoadingText: {
+    color: LT.onSurfaceVariant,
+    fontSize: 12,
+    fontWeight: '600',
+    letterSpacing: 0.2,
+  },
+  // AI Personalization (Layer B) — sage response card on celebration.
+  // Visually heavier than the curated mirror card (solid left border
+  // matches but darker tint) to signal "this is generated for YOUR
+  // specific words", a step above the deterministic mirror lookup.
+  aiResponseCard: {
+    marginTop: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    backgroundColor: 'rgba(124, 58, 237, 0.10)',
+    borderLeftWidth: 3,
+    borderLeftColor: '#7C3AED',
+    alignSelf: 'stretch',
+  },
+  aiResponseLabelRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 6,
+  },
+  aiResponseLabel: {
+    color: '#7C3AED',
+    fontSize: 9,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+  },
+  aiResponseText: {
     color: LT.onSurface,
     fontSize: 14,
     fontWeight: '500',
