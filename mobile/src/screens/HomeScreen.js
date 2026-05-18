@@ -57,6 +57,7 @@ import {
 } from '../services/reflectionSignals';
 import { getFirstName } from '../services/displayName';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
+import { useAppMood } from '../hooks/useAppMood';
 
 export default function HomeScreen({ navigation }) {
   const { t } = useTranslation();
@@ -97,6 +98,7 @@ export default function HomeScreen({ navigation }) {
     clearCustomGoal,
     checkInCustomGoal,
     setActivePath,
+    middayPauseCompletedAt,
   } = useApp();
 
   // Day-bucket booleans for the per-day cards. Stable across re-renders
@@ -109,6 +111,18 @@ export default function HomeScreen({ navigation }) {
   const moodPickedToday = dailyMoodCheckInDate === todayDateStr
     ? dailyMoodCheckInValue
     : null;
+
+  // Midday Pause pill visibility — only between 12:00 and 16:00 local
+  // time. Two states:
+  //   • Waiting: not done today → prominent pill, taps into the modal.
+  //   • Done:    completed today → soft check pill, still tappable
+  //     (user can re-enter to read the quote / re-breathe) but visually
+  //     subordinated so it doesn't fight with TodayHeroCard.
+  // Outside the window the pill hides entirely so Home stays clean.
+  const middayHour = new Date().getHours();
+  const middayWindowOpen = middayHour >= 12 && middayHour < 16;
+  const middayDoneToday = middayPauseCompletedAt === todayDateStr;
+  const showMiddayPill = middayWindowOpen;
 
   // Per-session adaptive coach dismiss. Once dismissed, the banner
   // hides until the next app launch (not persisted) — so the user
@@ -274,6 +288,12 @@ export default function HomeScreen({ navigation }) {
     );
   }, [pathProgress]);
 
+  // Time-aware UI mood — drives a subtle full-screen tint overlay (and,
+  // later, copy tone). See hooks/useAppMood.js for the hour→palette
+  // table. Re-evaluates every 10 minutes so the night palette kicks in
+  // for users who keep the app open past 22:00.
+  const mood = useAppMood({ currentStreak, totalCompleted });
+
   const totalLessons = PATHS.reduce((s, p) => s + p.duration, 0);
 
   // Existing users (App Store update from a build < 53) finished onboarding
@@ -337,9 +357,62 @@ export default function HomeScreen({ navigation }) {
     fallback: t('home.greetingName', 'Disiplinci'),
   });
   const greeting = getGreeting(t);
+  // Stoic conditional subtitle. Five branches, ordered most-specific
+  // first. Reads `currentStreak` and `totalCompleted` from context so
+  // a returning user with prior progress doesn't get the same "first
+  // day" line as a brand-new install. Falls back to the original
+  // generic line — same JSX slot, only the text changes.
+  const subtitleText = (() => {
+    const hour = new Date().getHours();
+    const streak = currentStreak || 0;
+    const completed = totalCompleted || 0;
+    if (streak === 0 && completed === 0) {
+      return t(
+        'home.subtitleColdStart',
+        'Bugün hiçbir şey yapmadın. Yarına geçmek için bahane hazır mı?',
+      );
+    }
+    if (streak === 0 && completed > 0) {
+      return t(
+        'home.subtitleReturned',
+        'Geri döndün. Bu da bir şey. Şimdi otur.',
+      );
+    }
+    if (streak >= 7 && hour < 10) {
+      return t(
+        'home.subtitleEarlyDisciplined',
+        'Erken kalktın. Çoğu kalkmaz.',
+      );
+    }
+    if (hour >= 23 || hour < 5) {
+      return t(
+        'home.subtitleLateNight',
+        'Saat geç. Sessizlik, başkasının yapmadığı disiplindir.',
+      );
+    }
+    return t('home.subtitle', 'Disiplin yolunda bir gün daha. Hadi başla.');
+  })();
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      {/* Time-aware mood tint — additive overlay, never intercepts touches.
+          zIndex 0 keeps it behind every existing child (they layer naturally
+          via DOM order). */}
+      {mood.tintColor && mood.tintOpacity > 0 ? (
+        <View
+          pointerEvents="none"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: mood.tintColor,
+            opacity: mood.tintOpacity,
+            zIndex: 0,
+          }}
+        />
+      ) : null}
       <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
 
       <LightTopAppBar
@@ -356,13 +429,35 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.greetingBlock}>
           <Text style={styles.greetingLabel}>{greeting}</Text>
           <Text style={styles.greetingName}>{username}</Text>
-          <Text style={styles.greetingSubtitle}>
-            {t(
-              'home.subtitle',
-              'Disiplin yolunda bir gün daha. Hadi başla.',
-            )}
-          </Text>
+          <Text style={styles.greetingSubtitle}>{subtitleText}</Text>
         </View>
+
+        {/* Midday Pause pill — small affordance between 12:00 and 16:00.
+            Two states: waiting (red, prominent) and done (muted check).
+            Outside the window the pill hides entirely so Home is clean
+            for the rest of the day. Doesn't replace existing copy —
+            slots in as a ~32px-tall row between greeting and TodayHero. */}
+        {showMiddayPill ? (
+          <TouchableOpacity
+            style={[
+              styles.middayPill,
+              middayDoneToday && styles.middayPillDone,
+            ]}
+            onPress={() => navigation.navigate('MiddayPause')}
+            activeOpacity={0.85}
+          >
+            <Text
+              style={[
+                styles.middayPillText,
+                middayDoneToday && styles.middayPillTextDone,
+              ]}
+            >
+              {middayDoneToday
+                ? t('midday.middayCompletePill', '✓ Öğle Molası tamam')
+                : t('midday.middayWaitingPill', '🕐 Öğle Molası bekliyor')}
+            </Text>
+          </TouchableOpacity>
+        ) : null}
 
         {/* TodayHeroCard — merges streak hero + 7-day chain + daily goal
             into a single block. Replaces three previously stacked cards
@@ -1094,6 +1189,42 @@ const styles = StyleSheet.create({
   linkSub: {
     fontSize: 12,
     fontWeight: '500',
+    color: LT.onSurfaceVariant,
+  },
+
+  // Midday Pause pill — small (~32px), sits between greeting and TodayHero
+  middayPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 32,
+    paddingHorizontal: 14,
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 12,
+    borderRadius: LT_RADIUS.pill,
+    backgroundColor: LT.primaryContainer,
+    shadowColor: LT.primaryContainer,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  middayPillDone: {
+    // Less prominent once the user is done — soft surface, no shadow,
+    // hairline border. Still tappable so they can re-enter the screen.
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  middayPillText: {
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+    color: LT.onPrimary,
+  },
+  middayPillTextDone: {
     color: LT.onSurfaceVariant,
   },
 });

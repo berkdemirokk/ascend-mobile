@@ -82,7 +82,7 @@ export default function StreakRepairModal({
             >
               <Text style={styles.fireEmoji}>🔥</Text>
               <Text style={styles.brokenLabel}>
-                {t('streakRepair.brokenLabel', 'STREAK BREAKED')}
+                {t('streakRepair.brokenLabel', 'KIRILDI')}
               </Text>
               <View style={styles.streakRow}>
                 <Text style={styles.streakNum}>{brokenStreak}</Text>
@@ -93,14 +93,14 @@ export default function StreakRepairModal({
               <Text style={styles.title}>
                 {t(
                   'streakRepair.title',
-                  '{{n}} günlük serini geri al',
+                  '{{n}} gün. Bir ihmal.',
                   { n: brokenStreak },
                 )}
               </Text>
               <Text style={styles.body}>
                 {t(
                   'streakRepair.body',
-                  'Dün bir gün kaçırdın. Bugün tamamladığın derste — {{hours}} saat içinde restore edebilirsin.',
+                  'Dün bahanenin günüydü. Bugün düzeltmek için {{hours}} saatin var. Sonra silinir.',
                   { hours: hoursLeft },
                 )}
               </Text>
@@ -151,7 +151,7 @@ export default function StreakRepairModal({
                 style={styles.dismissBtn}
               >
                 <Text style={styles.dismissBtnText}>
-                  {t('streakRepair.dismissCta', 'Serini bırak')}
+                  {t('streakRepair.dismissCta', 'Bahane kabul edildi.')}
                 </Text>
               </TouchableOpacity>
             </LinearGradient>

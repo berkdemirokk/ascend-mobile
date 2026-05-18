@@ -24,10 +24,15 @@ const STREAK_AT_RISK_ID = 'ascend-streak-at-risk';
 const COMEBACK_ID = 'ascend-comeback';
 const FIRST_LESSON_NUDGE_ID = 'ascend-first-lesson-nudge';
 const D3_HABIT_FORMING_ID = 'ascend-d3-habit-forming';
+const MIDDAY_PAUSE_ID = 'ascend-midday-pause';
 
 // Category IDs — pre-registered with the system so notifications can
 // declare which set of action buttons they want. Set in setupNotifCategories.
 const CAT_LESSON_REMINDER = 'ascend.lesson-reminder';
+// Midday Pause has its own action button ("Aç" / "Open") and its own
+// navigation target (the MiddayPause modal), so it gets a separate
+// category id from the lesson-reminder family.
+const CAT_MIDDAY_PAUSE = 'ascend.midday-pause';
 
 /**
  * Register notification categories with iOS so notifications referencing
@@ -44,6 +49,18 @@ export const setupNotifCategories = async () => {
         buttonTitle: i18n.t('notifications.actionStartLesson'),
         options: {
           // Open the app to handle the action. Required for navigation.
+          opensAppToForeground: true,
+        },
+      },
+    ]);
+    // Midday Pause has its own "Aç" / "Open" action that deep-links to
+    // the MiddayPause modal. Separate category so the response listener
+    // can disambiguate from the lesson-reminder family.
+    await Notifications.setNotificationCategoryAsync(CAT_MIDDAY_PAUSE, [
+      {
+        identifier: 'open_midday_pause',
+        buttonTitle: i18n.t('notifications.actionOpenMiddayPause'),
+        options: {
           opensAppToForeground: true,
         },
       },
@@ -74,6 +91,14 @@ export const setupNotifResponseListener = () => {
     responseSub = Notifications.addNotificationResponseReceivedListener(
       (response) => {
         const action = response?.actionIdentifier;
+        const category =
+          response?.notification?.request?.content?.categoryIdentifier;
+        // Midday Pause: deep-link to the dedicated modal. Both the
+        // body tap and the "Aç" action button route here.
+        if (category === CAT_MIDDAY_PAUSE) {
+          navigateFromAnywhere('MiddayPause');
+          return;
+        }
         // The category buttons report their identifier. The "default"
         // identifier means the user tapped the notification body.
         const isStartLesson =
@@ -416,6 +441,40 @@ export const scheduleWeeklyRecap = async () => {
       // 1 = Sunday in expo-notifications' weekly trigger
       weekday: 1,
       hour: 19,
+      minute: 0,
+    },
+  });
+};
+
+/**
+ * Schedule the daily 13:00 Öğle Molası (Midday Pause) push. 60-second
+ * stoic break that doubles sessions/day in habit apps when paired with
+ * a unique modal experience (vs. yet another lesson nudge).
+ *
+ * Idempotent — cancels any prior copy first, then re-schedules. Safe to
+ * call on every app boot. Uses the DAILY trigger type so the system
+ * repeats it daily without us having to re-schedule.
+ */
+export const scheduleMiddayPause = async () => {
+  try {
+    await Notifications.cancelScheduledNotificationAsync(MIDDAY_PAUSE_ID);
+  } catch {
+    // no-op
+  }
+
+  await Notifications.scheduleNotificationAsync({
+    identifier: MIDDAY_PAUSE_ID,
+    content: {
+      title: i18n.t('notifications.middayPauseTitle'),
+      body: i18n.t('notifications.middayPauseBody'),
+      sound: true,
+      // CAT_MIDDAY_PAUSE deep-links the body tap + the "Aç" action button
+      // straight to the MiddayPause modal (see setupNotifResponseListener).
+      categoryIdentifier: CAT_MIDDAY_PAUSE,
+    },
+    trigger: {
+      type: SchedulableTriggerInputTypes.DAILY ?? 'daily',
+      hour: 13,
       minute: 0,
     },
   });

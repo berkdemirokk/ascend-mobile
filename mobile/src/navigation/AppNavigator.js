@@ -42,6 +42,7 @@ import ReflectionsScreen from '../screens/ReflectionsScreen';
 import InsightsScreen from '../screens/InsightsScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
 import LessonSearchScreen from '../screens/LessonSearchScreen';
+import MiddayPauseScreen from '../screens/MiddayPauseScreen';
 import WelcomeScreen from '../screens/auth/WelcomeScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
@@ -239,6 +240,15 @@ export default function AppNavigator() {
           component={LessonSearchScreen}
           options={{
             presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="MiddayPause"
+          component={MiddayPauseScreen}
+          options={{
+            presentation: 'modal',
+            headerShown: false,
             animation: 'slide_from_bottom',
           }}
         />

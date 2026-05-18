@@ -29,10 +29,26 @@
   "lessons": {
     "dopamine-detox": {
       "1": {
-        "title": "Bağımlılığın Bilimi",
+        "title": "Beynin Seni Nasıl Kandırıyor (Ve Bunu Bugün Tersine Çevireceksin)",
+        "hook": "Şu an telefonun nerede? Uzanabildiğin bir yerde mi? Bugün kaç kez sebepsiz açtın — bir bildirim yokken bile? Eğer sayıyı bilmiyorsan, problem zaten bu.",
         "teaching": "Dopamin bir ödül kimyasalı değil — beklenti kimyasalı. Beyin, gelecek ödülü hayal ederken dopamin salıyor, asıl ödül geldiğinde değil.\n\nTelefon ekranını kaydırırken her video, her bildirim küçük bir dopamin atışı veriyor. Beyin bunu öğreniyor: 'Telefon = ödül var.' Sonuç: telefonu sürekli kontrol etme, sıkıldıkça telefona uzanma, gerçek hayatın 'tatsız' gelmesi.\n\nİyi haber: bu öğrenme tersine çevrilebilir. Beyin 7-30 günde yeni baseline'a oturur. Şu an başlıyorsun.",
+        "teachingDeep": "1954'te James Olds adında bir bilim insanı kazara fareye dopamin merkezini elektrikle uyaran bir kablo bağladı. Fare aç, susuz — sadece kabloyu tetikleyen pedala basıyordu. Saatte 7000 kez. Açlıktan ölene kadar.\n\nSandılar ki: dopamin = ZEVK. Yanılmışlar.\n\nOlds'un fareleri pedala basarken zevk almıyordu — pedalı basmadan ÖNCEKİ bekleme anında dopamin patlıyordu. Asıl ödül geldiğinde dopamin DÜŞÜYORDU.\n\nDopamin = beklenti kimyasalı. 'Az sonra iyi bir şey olacak' hissi.\n\nŞimdi telefonuna bak. Ekranı her açışında beyin sormuyor 'videoyu izledim, mutlu muyum?' Beyin soruyor: 'BİR SONRAKİ video ne olacak?' İşte tuzak burada. Sen kayan ekranda mutluluğu aramıyorsun — beynin bir sonraki dopamin ipucunu arıyor. Tatmin asla gelmiyor çünkü kimyasal tatmin değil, beklentinin kimyasalı.\n\nİyi haber: bu öğrenilmiş bir döngü. Beyin 7-30 günde yeni baseline'a oturur. Pedala basmayı bırakan fare, 3 gün içinde normale döner. Sen de döneceksin.\n\nBugün ilk vidayı söküyoruz: bekleme penceresi. Beynin 'telefonu aç, hemen ödül al' otomatizmini kıracak küçük ama radikal bir mola.",
+        "practice": {
+          "instruction": "Şu an telefonunu uçak moduna al. Yere bırak. 90 saniyelik timer'a başla. Bu süre boyunca elini hareket ettirme, konuşma. Sadece nefes al ve 'telefona uzanma' dürtüsünü gözlemle.",
+          "seconds": 90,
+          "prompt": "Bittiğinde: kaç kez 'kontrol etmeliyim' düşüncesi geldi? Bedenin neresinde hissettin (göğüs, eller, çene)?"
+        },
         "action": "Bugün telefonunu açtığın her seferinde, ekrana bakmadan 10 saniye bekle. Sadece bekle. Sonra istediğini yap.",
         "reflectionPrompt": "Bugün telefonu kaç kez 'düşünmeden' açtığını fark ettin mi?",
+        "reflectionPrompts": [
+          "90 saniyelik pratikte 'telefona uzanma' dürtüsü ilk kaçıncı saniyede geldi? Bedeninde nerede hissettin?",
+          "Son 24 saatte telefonu açtığında SOMUT olarak ne aradığını düşündüğünü yaz, sonra GERÇEKTE ne yaptığını yaz. İkisi aynı mı?"
+        ],
+        "commitments": [
+          "Bugün telefonu açtığım her seferde 10 saniye bekleyeceğim",
+          "Yatak odasına telefon sokmayacağım bu gece",
+          "1 sosyal medya uygulamasını ana ekrandan kaldıracağım"
+        ],
         "quiz": [
           {
             "q": "Dopamin neyle salınır?",
@@ -55,6 +71,52 @@
             ],
             "correct": 2,
             "explain": "Bilim 7-30 günlük aralık gösteriyor."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "Arkadaşınla yemek yiyorsun. Telefonun masada, ekran aşağı. 8 dakikadır kimseden mesaj gelmedi ama elin telefona doğru gidiyor. Bu nedir?",
+            "options": [
+              "Gerçek ihtiyaç — biri seni arıyor olabilir",
+              "Phantom dopamin arama — beyin pedala basıyor",
+              "Sıkıntı — yemek arkadaşı sıkıcı",
+              "Alışkanlık ama zararsız"
+            ],
+            "correct": 1,
+            "explain": "Yemek arkadaşın sıkıcı olabilir ama elin 30 saniyede bir oraya gitmiyor. Beynin Olds'un faresi gibi pedal arıyor."
+          },
+          {
+            "q": "24 saatlik bir detoks denedin, 19. saatte Instagram açıp 30 saniye baktın. Şimdi ne?",
+            "options": [
+              "Başarısızsın, baştan başla",
+              "Veri olarak kaydet, devam et — 19 saat hâlâ değerli",
+              "Hiç önemli değil, normal",
+              "Sıfırla, ertesi gün dene"
+            ],
+            "correct": 1,
+            "explain": "Mükemmellik düşmandır. 19 saat, 0 saatten 19 saat daha iyidir. Her veri öğretir."
+          },
+          {
+            "q": "Sabah uyandın. İlk 10 dakikada beyin 'telefonu kontrol et' diyor. Hangisi pedala basmak DEĞİL?",
+            "options": [
+              "Bildirimlere bakmak",
+              "Hava durumunu kontrol etmek",
+              "WhatsApp'ı sadece 'bir saniye' açmak",
+              "Bir bardak su içip pencereyi açmak"
+            ],
+            "correct": 3,
+            "explain": "Su ve pencere = beden + duyu. Telefon = beklenti pedalı. Sabah açtığın ilk şey, beynine günün ne arayacağını söylüyor."
+          },
+          {
+            "q": "Detoksun 4. gününde sıkıntıdan patlıyorsun. Bu hisse ne diyeceksin?",
+            "options": [
+              "Bir şey yanlış, eski rutine dön",
+              "Baseline kalibrasyonu — tam beklenen sinyal",
+              "Yorgunluğum, uyuyayım",
+              "Sosyal medya açıp rahatlayayım"
+            ],
+            "correct": 1,
+            "explain": "Beyin yeni baseline'a oturuyor. Bu sıkıntı bir hata değil — fıçının dibi. Geçecek."
           }
         ],
         "proTip": "Bağımlılık hep bahane bekler — \"sadece 5 dakika\" o bahane."

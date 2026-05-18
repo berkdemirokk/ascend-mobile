@@ -22,6 +22,7 @@ import {
   scheduleComebackReminder,
   cancelComebackReminder,
   scheduleNewUserNudges,
+  scheduleMiddayPause,
 } from '../services/notifications';
 import { getFirstName } from '../services/displayName';
 
@@ -127,6 +128,12 @@ const initialState = {
   // Daily login bonus — date the user last received +5 XP for opening the
   // app. Sticky-by-date, so the bonus fires once per calendar day.
   dailyLoginGrantedAt: null,
+
+  // Midday Pause (Öğle Molası) — date string the user last completed
+  // the 13:00 60-second stoic break. Sticky-by-date so the pill on
+  // Home flips from "waiting" → "done" and the screen knows whether
+  // to grant the +5 XP again the same day (idempotent).
+  middayPauseCompletedAt: null,
 
   // Daily Goal bonus — date the user last hit the 3-lesson daily target
   // and received the +50 XP bonus. Sticky-by-date so the bonus fires
@@ -260,6 +267,7 @@ const ACTION_TYPES = {
   SET_CUSTOM_GOAL: 'SET_CUSTOM_GOAL',
   CLEAR_CUSTOM_GOAL: 'CLEAR_CUSTOM_GOAL',
   CHECK_IN_CUSTOM_GOAL: 'CHECK_IN_CUSTOM_GOAL',
+  COMPLETE_MIDDAY_PAUSE: 'COMPLETE_MIDDAY_PAUSE',
 };
 
 // Streak Repair threshold — only offer restore when the broken streak was
@@ -473,6 +481,15 @@ function appReducer(state, action) {
         totalXP: newTotalXP,
         level: newLevel,
       };
+    }
+
+    case ACTION_TYPES.COMPLETE_MIDDAY_PAUSE: {
+      // Idempotent per calendar day — re-entering the screen after
+      // completing once leaves state unchanged. XP grant is a separate
+      // dispatch (GRANT_BONUS_XP) so it likewise no-ops once awarded.
+      const today = getTodayDateString();
+      if (state.middayPauseCompletedAt === today) return state;
+      return { ...state, middayPauseCompletedAt: today };
     }
 
     case ACTION_TYPES.CLEAR_MILESTONE_TOAST:
@@ -954,6 +971,17 @@ export function AppProvider({ children }) {
     }).catch(() => {});
   }, [state._loaded, state.lastCompletedDate]);
 
+  // ── Midday Pause daily push (13:00) ────────────────────────────────────
+  // Schedules the recurring 13:00 push that opens the Öğle Molası modal.
+  // Idempotent — re-arms on every load so the same notification doesn't
+  // pile up across cold starts. Permission gating is handled inside
+  // Notifications.scheduleNotificationAsync at the OS layer; if the user
+  // hasn't granted permission the call no-ops silently.
+  useEffect(() => {
+    if (!state._loaded) return;
+    scheduleMiddayPause().catch(() => {});
+  }, [state._loaded]);
+
   // ── New-user retention nudges (D2 first-lesson + D3 habit-forming) ─────
   // Re-evaluated on every state change to total-lessons / streak / install
   // age so the pushes self-cancel as soon as the user makes progress.
@@ -1168,6 +1196,15 @@ export function AppProvider({ children }) {
   }, []);
 
   /**
+   * Mark today's Öğle Molası (Midday Pause) as completed. Idempotent
+   * per calendar day — subsequent calls on the same day no-op so the
+   * screen can fire safely even on re-entry.
+   */
+  const completeMiddayPause = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.COMPLETE_MIDDAY_PAUSE });
+  }, []);
+
+  /**
    * Set (or update) the user's custom personal goal. The first call
    * stamps createdAt; subsequent calls preserve it and only change
    * text/targetDays — so editing the goal doesn't reset progress.
@@ -1373,6 +1410,7 @@ export function AppProvider({ children }) {
     setDailyMood,
     grantBonusXP,
     clearMilestoneToast,
+    completeMiddayPause,
     clearDailyGoalToast,
     recordQuizAnswer,
     restoreBrokenStreak,

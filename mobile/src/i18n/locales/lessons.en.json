@@ -29,10 +29,26 @@
   "lessons": {
     "dopamine-detox": {
       "1": {
-        "title": "The Science of Addiction",
+        "title": "How Your Brain Tricks You (And You'll Reverse It Today)",
+        "hook": "Where is your phone right now? Within arm's reach? How many times did you open it today for no reason — with no notification waiting? If you don't know the number, that IS the problem.",
         "teaching": "Dopamine isn't a reward chemical — it's an anticipation chemical. Your brain releases dopamine while imagining a future reward, not when the reward arrives.\n\nWhile scrolling your phone, every video, every notification is a small dopamine hit. Your brain learns: 'Phone = reward exists.' Result: constantly checking your phone, reaching for it when bored, real life feeling 'flat.'\n\nGood news: this learning is reversible. Your brain settles into a new baseline in 7–30 days. You're starting now.",
+        "teachingDeep": "In 1954, a scientist named James Olds accidentally wired a rat with an electrode that stimulated its dopamine center. The rat — hungry, thirsty — just kept hitting the pedal that triggered the wire. 7,000 times an hour. Until it starved to death.\n\nThey assumed: dopamine = PLEASURE. They were wrong.\n\nOlds's rats weren't enjoying the pedal press — dopamine was firing in the waiting moment BEFORE the press. When the actual reward arrived, dopamine DROPPED.\n\nDopamine = the chemistry of anticipation. The feeling of 'something good is about to happen.'\n\nNow look at your phone. Every time you open the screen, your brain isn't asking 'I watched the video, am I happy?' Your brain is asking: 'What's the NEXT video going to be?' That's the trap. You're not looking for happiness on that scrolling screen — your brain is hunting for the next dopamine cue. Satisfaction never comes because the chemical isn't satisfaction, it's anticipation.\n\nGood news: this is a learned loop. The brain settles into a new baseline in 7-30 days. A rat that stops pressing the pedal is back to normal in 3 days. So will you be.\n\nToday we unscrew the first bolt: the waiting window. A small but radical pause that breaks the brain's 'open phone, instant reward' automation.",
+        "practice": {
+          "instruction": "Right now, put your phone in airplane mode. Set it on the ground. Start the 90-second timer. For this whole window, don't move your hand, don't speak. Just breathe and watch the urge to reach for the phone.",
+          "seconds": 90,
+          "prompt": "When it ends: how many times did the thought 'I should check it' come? Where did you feel it in your body (chest, hands, jaw)?"
+        },
         "action": "Every time you open your phone today, wait 10 seconds before looking at the screen. Just wait. Then do what you wanted.",
         "reflectionPrompt": "Did you notice how many times you opened your phone 'without thinking' today?",
+        "reflectionPrompts": [
+          "In the 90-second practice, at what second did the 'reach for the phone' urge first arrive? Where did you feel it in your body?",
+          "Write what you thought you were SPECIFICALLY looking for the last time you opened your phone in the last 24 hours, then write what you ACTUALLY did. Are they the same?"
+        ],
+        "commitments": [
+          "Every time I open my phone today, I will wait 10 seconds first",
+          "I will not bring my phone into the bedroom tonight",
+          "I will remove 1 social media app from my home screen"
+        ],
         "quiz": [
           {
             "q": "When is dopamine released?",
@@ -55,6 +71,52 @@
             ],
             "correct": 2,
             "explain": "Science shows 7-30 day window."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You're eating with a friend. Phone is on the table, screen down. Nobody has messaged you for 8 minutes, but your hand keeps drifting toward the phone. What is that?",
+            "options": [
+              "A real need — someone might be calling",
+              "Phantom dopamine seeking — your brain is hitting the pedal",
+              "Boredom — your dinner companion is boring",
+              "Habit but harmless"
+            ],
+            "correct": 1,
+            "explain": "Your dinner companion might be boring, but your hand isn't reaching every 30 seconds. Your brain is hunting the pedal like Olds's rat."
+          },
+          {
+            "q": "You tried a 24-hour detox, opened Instagram at hour 19 for 30 seconds. Now what?",
+            "options": [
+              "You failed, start over",
+              "Log it as data, keep going — 19 hours is still valuable",
+              "Doesn't matter, totally normal",
+              "Reset, try again tomorrow"
+            ],
+            "correct": 1,
+            "explain": "Perfection is the enemy. 19 hours is 19 hours better than 0. Every data point teaches."
+          },
+          {
+            "q": "You just woke up. In the first 10 minutes, your brain says 'check the phone.' Which of these is NOT hitting the pedal?",
+            "options": [
+              "Looking at notifications",
+              "Checking the weather",
+              "Opening WhatsApp 'just for a second'",
+              "Drinking a glass of water and opening the window"
+            ],
+            "correct": 3,
+            "explain": "Water and window = body + senses. Phone = anticipation pedal. The first thing you open in the morning tells your brain what to hunt for all day."
+          },
+          {
+            "q": "On day 4 of the detox, you're going stir-crazy with boredom. What do you call this feeling?",
+            "options": [
+              "Something is wrong, go back to the old routine",
+              "Baseline recalibration — exactly the expected signal",
+              "I'm tired, I'll sleep it off",
+              "Open social media to relax"
+            ],
+            "correct": 1,
+            "explain": "Your brain is settling into the new baseline. This boredom isn't an error — it's the bottom of the barrel. It will pass."
           }
         ],
         "proTip": "Addiction always waits for an excuse — \"just 5 minutes\" is that excuse."

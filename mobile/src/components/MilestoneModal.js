@@ -51,15 +51,23 @@ export default function MilestoneModal({ visible, streak, onClose }) {
 
   if (!milestone) return null;
 
+  // Tonal overhaul: confetti deleted, rainbow gradient swapped for an
+  // onyx → blood-red ramp. The new subtitle is a named witness/anchor —
+  // historical reference points (Marcus Aurelius, Sokrates) and concrete
+  // physiological framing so the milestone feels earned, not Disney.
+  // Falls back to the legacy short subtitle for any streak day not in
+  // the witness map (so older milestone numbers like 21/60 still work).
+  const witnessSubtitle = t(
+    `milestone.${streak}.witness`,
+    t(`milestone.${streak}.subtitle`, milestone.subtitle),
+  );
+
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
       <View style={styles.backdrop}>
-        {/* Confetti fires once per `visible` toggle; trigger key changes
-            with the streak number so each milestone gets a fresh burst. */}
-        {visible ? <ConfettiBurst trigger={streak} /> : null}
         <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
           <LinearGradient
-            colors={['#F59E0B', '#EF4444', '#7C3AED']}
+            colors={['#0A0A0A', '#2A0808', '#4A1414']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.gradient}
@@ -69,14 +77,14 @@ export default function MilestoneModal({ visible, streak, onClose }) {
               {t(`milestone.${streak}.title`, milestone.title)}
             </Text>
             <Text style={styles.subtitle}>
-              {t(`milestone.${streak}.subtitle`, milestone.subtitle)}
+              {witnessSubtitle}
             </Text>
             <Text style={styles.streakNumber}>
               {streak} {t('common.days').toLowerCase()}
             </Text>
             <TouchableOpacity onPress={onClose} style={styles.closeBtn} activeOpacity={0.8}>
               <Text style={styles.closeBtnText}>
-                {t('common.continue')} 🔥
+                {t('common.continue')}
               </Text>
             </TouchableOpacity>
           </LinearGradient>

@@ -144,7 +144,11 @@
     "greetingEvening": "İYİ AKŞAMLAR",
     "greetingNight": "GECE YARISI",
     "greetingName": "Disiplinci",
-    "subtitle": "Bir gün daha yolda. Bunu okuyan sen, artık farklı bir sensin.",
+    "subtitle": "Disiplin yolunda bir gün daha. Hadi başla.",
+    "subtitleColdStart": "Bugün hiçbir şey yapmadın. Yarına geçmek için bahane hazır mı?",
+    "subtitleReturned": "Geri döndün. Bu da bir şey. Şimdi otur.",
+    "subtitleEarlyDisciplined": "Erken kalktın. Çoğu kalkmaz.",
+    "subtitleLateNight": "Saat geç. Sessizlik, başkasının yapmadığı disiplindir.",
     "currentStreak": "MEVCUT SERİ",
     "longestStreak": "EN UZUN",
     "daysStrong": "GÜN",
@@ -199,6 +203,25 @@
     "completeTitle": "Ders Tamamlandı",
     "completeFooter": "Disiplin yolunda bir adım daha attın.",
     "greatWork": "Harika iş!",
+    "celebration": {
+      "start": "Başladın.",
+      "again": "Bir daha.",
+      "persist": "Yine geldin. Bunu unutma."
+    },
+    "growthLines": [
+      "Yanlış cevap, bir sonraki doğruya yakıt.",
+      "İlk seferde bilen yok. Bu yüzden ders var.",
+      "Marcus Aurelius da yanılırdı — defter tutmasının sebebi bu.",
+      "Acemilik ücreti ödedin. Şimdi öğrendin.",
+      "Bilmediğini bilmek bilmenin başlangıcı.",
+      "Yanlış, doğrunun çerçevesini çiziyor.",
+      "Her ustanın bir 'ilk yanlış cevabı' vardı.",
+      "Hata, soruyu daha iyi anlamak için fırsat.",
+      "Disiplin doğru bilmek değil — düzeltebilmek.",
+      "Bu yanlış senin yanlışın değil — bilginin yokluğuydu. Şimdi var.",
+      "Sokrates: 'Bildiğim tek şey hiçbir şey bilmediğim.'",
+      "Yanlışı kabul eden, doğruya en yakın."
+    ],
     "correct": "doğru",
     "nextLesson": "Sonraki Dersi Başla",
     "backToPath": "Yola Dön",
@@ -208,7 +231,16 @@
     "reviewBadge": "ÖNCEKİ DERSTEN · HATIRLAMA",
     "tomorrowTeaser": "YARIN",
     "mirrorLabel": "BİR BİLGE CEVAP VERDİ",
-    "mirrorLabelPersonal": "{{name}}, BİR BİLGE CEVAP VERDİ"
+    "mirrorLabelPersonal": "{{name}}, BİR BİLGE CEVAP VERDİ",
+    "hook": "GİRİŞ",
+    "hookContinue": "Devam et",
+    "practice": "PRATİK",
+    "practiceStart": "Başlat",
+    "practiceSkip": "Atla",
+    "practiceDone": "Tamamla",
+    "scenario": "SENARYO",
+    "pickOne": "Birini seç",
+    "commitChoose": "BUGÜN HANGİSİNİ YAPACAKSIN?"
   },
   "transform": {
     "entryLabel": "DÖNÜŞÜMÜN",
@@ -568,7 +600,28 @@
     "firstLessonNudgeBody": "Disiplin yolculuğunu dün başlattın — 5 dakika ayır, ilk dersi bitir.",
     "d3HabitTitle": "3. gün. Alışkanlık burada şekilleniyor.",
     "d3HabitBody": "2 gün bir tesadüf, 3 gün bir alışkanlığın başlangıcı. Bugün bırakırsan dönmek zor olur.",
-    "actionStartLesson": "Ders Başla"
+    "actionStartLesson": "Ders Başla",
+    "middayPauseTitle": "Öğle Molası",
+    "middayPauseBody": "60 saniye. Bir söz, bir nefes.",
+    "actionOpenMiddayPause": "Aç"
+  },
+  "midday": {
+    "middayLabel": "ÖĞLE MOLASI",
+    "middayHook": "60 saniye. Sustur. Otur.",
+    "middayBreathInhale": "Nefes al",
+    "middayBreathHold": "Tut",
+    "middayBreathExhale": "Ver",
+    "middayBreathStart": "BAŞLAT",
+    "middayBreathDone": "Tamam ✓",
+    "middayMoodPrompt": "Şu an nasılsın?",
+    "middayMoodHigh": "Yüksek",
+    "middayMoodMid": "Orta",
+    "middayMoodTired": "Yorgun",
+    "middayCloseLine": "Akşam 20:30'da seni bekliyoruz. Yarın için bir merak hazırlıyoruz.",
+    "middayWaitingPill": "🕐 Öğle Molası bekliyor",
+    "middayCompletePill": "✓ Öğle Molası tamam",
+    "middaySkip": "Geç",
+    "middayContinue": "Devam"
   },
   "share": {
     "streakStart": "Monk mode başlatıyorum 🔥 Disiplin. Odak. Tekrar.",
@@ -579,8 +632,8 @@
     "failedBody": "Bir sorun oluştu, tekrar dene."
   },
   "hearts": {
-    "outTitle": "Kalpler Bitti",
-    "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyerek 1 kalp kazan veya Premium'a geç.",
+    "outTitle": "Bugün yeter.",
+    "outSubtitle": "Kalp koruma değil — sınır. Yarın yeniden gelirsin. Ya da reklam izle, bir ders daha.",
     "refillIn": "Yenilenme: {{mins}}",
     "watchAd": "REKLAM İZLE, +1 KALP KAZAN",
     "goPremium": "PREMIUM İLE SINIRSIZ KALPLER",
@@ -612,15 +665,15 @@
     "placeholder": "Örn: Telefon bağımlılığımı kırmak ve hayatımı geri almak için."
   },
   "streakRepair": {
-    "brokenLabel": "SERİ KIRILDI",
+    "brokenLabel": "KIRILDI",
     "daysLabel": "GÜN",
-    "title": "{{n}} günlük serini geri al",
-    "body": "Dün bir gün kaçırdın. {{hours}} saat içinde restore edebilirsin.",
+    "title": "{{n}} gün. Bir ihmal.",
+    "body": "Dün bahanenin günüydü. Bugün düzeltmek için {{hours}} saatin var. Sonra silinir.",
     "useTokenCta": "1 jeton kullan ({{count}} kaldı)",
     "watchAdCta": "Reklamı izle, geri al",
     "unavailableCta": "Reklam yükleniyor...",
     "unavailableCtaPremium": "Jeton yok — premium'da ayda 12 jeton",
-    "dismissCta": "Serini bırak"
+    "dismissCta": "Bahane kabul edildi."
   },
   "dailyGoal": {
     "label": "BUGÜNÜN HEDEFİ",
@@ -761,14 +814,15 @@
     "7": "Efsane"
   },
   "milestone": {
-    "3":   { "title": "3 Gün!",    "subtitle": "Alev tutuştu" },
-    "7":   { "title": "1 Hafta!",  "subtitle": "Sertleşmeye başladın" },
-    "14":  { "title": "2 Hafta!",  "subtitle": "Yeni baseline kuruluyor" },
+    "3":   { "title": "3 Gün!",    "subtitle": "Alev tutuştu",            "witness": "Marcus Aurelius günlüğüne 3. günü yazdı. Sen de yazdın." },
+    "7":   { "title": "1 Hafta!",  "subtitle": "Sertleşmeye başladın",    "witness": "Bir hafta. Sokrates buradan başladı." },
+    "14":  { "title": "2 Hafta!",  "subtitle": "Yeni baseline kuruluyor", "witness": "İki hafta. Beyin yeni baseline'a oturuyor." },
     "21":  { "title": "3 Hafta!",  "subtitle": "Disiplin kalıcı" },
-    "30":  { "title": "30 Gün!",   "subtitle": "Yeni adam, yeni hayat" },
+    "30":  { "title": "30 Gün!",   "subtitle": "Yeni adam, yeni hayat",   "witness": "30 gün. Çoğu adam görmedi. Sen gördün." },
+    "50":  { "title": "50 Gün!",   "subtitle": "Disiplinci adı kazanılır","witness": "50. gün. Disiplinci adı kazanılır." },
     "60":  { "title": "60 Gün!",   "subtitle": "Saygı kazanılmış" },
-    "100": { "title": "100 Gün!",  "subtitle": "Efsanesin" },
-    "365": { "title": "1 Yıl!",    "subtitle": "Bilge" }
+    "100": { "title": "100 Gün!",  "subtitle": "Efsanesin",               "witness": "100. gün. Az kişi buraya geldi." },
+    "365": { "title": "1 Yıl!",    "subtitle": "Bilge",                   "witness": "Bir yıl. Sen başka bir adamsın." }
   },
   "dailyChallenges": {
     "cold_water": { "title": "Soğuk Su Şoku", "body": "Bugün 30 saniye soğuk duş veya yüzünü soğuk suyla yıka." },

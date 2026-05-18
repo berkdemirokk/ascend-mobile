@@ -27,6 +27,7 @@ const SYNCED_KEYS = [
   'pendingStreakRestore',
   'userWhy',
   'customGoal',
+  'middayPauseCompletedAt',
 ];
 
 export function pickSyncableState(state) {
@@ -225,6 +226,13 @@ export function mergeStates(localState, cloudPayload) {
       (localState.dailyGoalBonusGrantedAt || '')
         ? cloudPayload.dailyGoalBonusGrantedAt
         : localState.dailyGoalBonusGrantedAt || null,
+    // Midday Pause completion stamp — same later-date-wins rule so the
+    // pill on Home stays consistent across devices for the user.
+    middayPauseCompletedAt:
+      (cloudPayload.middayPauseCompletedAt || '') >
+      (localState.middayPauseCompletedAt || '')
+        ? cloudPayload.middayPauseCompletedAt
+        : localState.middayPauseCompletedAt || null,
     // Per-question quiz log (#2A). Per-question latest-wins merge so the
     // adaptive engine reads consistent answer history across devices.
     quizAnswers: mergeQuizAnswers(
