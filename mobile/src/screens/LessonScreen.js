@@ -49,6 +49,8 @@ import {
   playRecording,
 } from '../services/voiceRecording';
 import { getCurrentLanguage } from '../i18n';
+import { getFirstName } from '../services/displayName';
+import { useAuth } from '../contexts/AuthContext';
 import { requestReviewIfAppropriate } from '../services/review';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
@@ -86,7 +88,12 @@ export default function LessonScreen({ navigation, route }) {
     streakFreezes,
     restoreBrokenStreak,
     dismissBrokenStreakRestore,
+    userProfile,
+    anonUsername,
   } = useApp();
+  const { user } = useAuth();
+  // Centralized name resolution — same priority as Home + Notifications.
+  const firstName = getFirstName({ userProfile, user, anonUsername, fallback: '' });
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
   const lesson = useMemo(() => getLessonById(lessonId), [lessonId]);
@@ -1154,7 +1161,9 @@ export default function LessonScreen({ navigation, route }) {
               {mirrorQuote ? (
                 <View style={styles.mirrorCard}>
                   <Text style={styles.mirrorLabel}>
-                    {t('lesson.mirrorLabel', 'A SAGE RESPONDS')}
+                    {firstName
+                      ? t('lesson.mirrorLabelPersonal', { name: firstName.toUpperCase() })
+                      : t('lesson.mirrorLabel', 'A SAGE RESPONDS')}
                   </Text>
                   <Text style={styles.mirrorQuote}>{mirrorQuote}</Text>
                 </View>

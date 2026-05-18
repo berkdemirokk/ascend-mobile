@@ -118,16 +118,18 @@ export const requestNotificationPermissions = async () => {
 
 /**
  * Schedule a 9 AM daily reminder. Branches title/body on whether the user
- * has an active streak: "Begin monk mode" for first-day users vs.
- * "{n} days — discipline" for users carrying a streak. The previous
- * version passed `{ streak: '' }` which produced "🔥  days — discipline"
- * (double space + dangling word) — visually broken on the lock screen.
+ * has an active streak, and prefixes the user's first name when given —
+ * "Berk, your streak is at risk" feels infinitely more personal than
+ * "Your streak is at risk".
  *
  * @param {Object} [opts]
- * @param {number} [opts.currentStreak=0]  caller's current streak (from
- *   useApp().currentStreak), used to pick the right copy.
+ * @param {number} [opts.currentStreak=0]  caller's current streak
+ * @param {string} [opts.firstName]        optional first name to prefix
  */
-export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
+export const scheduleDailyReminder = async ({
+  currentStreak = 0,
+  firstName = '',
+} = {}) => {
   // Replace any previously scheduled copy of the same reminder so we don't
   // pile up duplicates every app launch.
   try {
@@ -140,9 +142,12 @@ export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
   const title = hasStreak
     ? i18n.t('notifications.reminderTitleProgress', { streak: currentStreak })
     : i18n.t('notifications.reminderTitleStart');
-  const body = hasStreak
+  const rawBody = hasStreak
     ? i18n.t('notifications.reminderBodyProgress')
     : i18n.t('notifications.reminderBodyStart');
+  // Prefix with first name when available — "Berk, take today's step"
+  // feels 10x more personal than the generic copy.
+  const body = firstName ? `${firstName}, ${rawBody.charAt(0).toLowerCase()}${rawBody.slice(1)}` : rawBody;
 
   await Notifications.scheduleNotificationAsync({
     identifier: DAILY_REMINDER_ID,
@@ -217,6 +222,7 @@ export const scheduleStreakAtRiskReminder = async ({
   todayCompleted,
   currentStreak,
   onVacation,
+  firstName = '',
 }) => {
   // Always cancel any existing copy first — we re-derive on every call.
   try {
@@ -234,11 +240,16 @@ export const scheduleStreakAtRiskReminder = async ({
   target.setHours(21, 0, 0, 0);
   if (now >= target) return; // too late today, daily reminder already covers tomorrow
 
+  const rawAtRiskBody = i18n.t('notifications.streakAtRiskBody');
+  const atRiskBody = firstName
+    ? `${firstName}, ${rawAtRiskBody.charAt(0).toLowerCase()}${rawAtRiskBody.slice(1)}`
+    : rawAtRiskBody;
+
   await Notifications.scheduleNotificationAsync({
     identifier: STREAK_AT_RISK_ID,
     content: {
       title: i18n.t('notifications.streakAtRiskTitle', { streak: currentStreak }),
-      body: i18n.t('notifications.streakAtRiskBody'),
+      body: atRiskBody,
       sound: true,
       // Streak-at-risk is the highest-urgency push — show "Start Lesson"
       // action button so the user can act without navigating manually.

@@ -106,8 +106,10 @@ export default function OnboardingScreen({ navigation }) {
           // New user → currentStreak is 0, so scheduleDailyReminder
           // will pick the "begin monk mode" variant (not the streak-
           // formatted one). Pass explicitly to keep the API contract
-          // clean and obvious.
-          scheduleDailyReminder({ currentStreak: 0 }).catch(() => {});
+          // clean and obvious. firstName from onboarding answers (or
+          // empty if they didn't enter a name on this build).
+          const firstName = (answers.name || '').split(/\s+/)[0] || '';
+          scheduleDailyReminder({ currentStreak: 0, firstName }).catch(() => {});
           scheduleWeeklyRecap().catch(() => {});
         }
       } catch {}

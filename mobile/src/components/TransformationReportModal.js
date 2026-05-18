@@ -8,7 +8,7 @@
 // Habit apps live or die on "did this thing actually do something for
 // me" feeling. Showing it explicitly is the retention magnet.
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Modal,
   View,
@@ -25,21 +25,51 @@ import { useTranslation } from 'react-i18next';
 import { LT } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
 import { hapticImpactMedium, hapticMilestone } from '../services/haptics';
+import MonthlyWrappedCard from './MonthlyWrappedCard';
+import { captureAndShare } from '../services/streakShare';
+import { getCurrentLanguage } from '../i18n';
 
 export default function TransformationReportModal({
   visible,
   report,
   isPremium,
+  anonUsername,
   onClose,
   onUpgradeTap,
 }) {
   const { t } = useTranslation();
+  // Ref to the off-screen Wrapped card. captureRef rasterizes the View
+  // tree at this ref's measured size (1080×1920) regardless of where
+  // it's positioned on screen. Renders absolutely off-screen via
+  // negative left so it never visually pollutes the UI.
+  const wrappedCardRef = useRef(null);
+  const [sharingWrapped, setSharingWrapped] = useState(false);
+
   if (!visible || !report) return null;
 
   // Share is now available for BOTH free and premium users.
   // Free users share headline stats only; premium share message can be
   // richer in a future iteration. The point: viral share is the cheapest
   // acquisition channel and gating it behind paywall was backwards.
+
+  // Spotify-Wrapped-style export — captures the off-screen card as a
+  // 1080×1920 PNG and opens the share sheet. The image is what gets
+  // posted to Instagram Stories / WhatsApp / X / Telegram, etc.
+  const handleWrappedShare = async () => {
+    if (sharingWrapped) return;
+    hapticImpactMedium();
+    setSharingWrapped(true);
+    try {
+      await captureAndShare({
+        viewRef: wrappedCardRef,
+        message: t('transform.shareIntro', "I'm growing on Ascend: Monk Mode."),
+      });
+    } catch {
+      // captureAndShare already swallows errors; this is belt-and-braces.
+    }
+    setSharingWrapped(false);
+  };
+
   const handleShare = async () => {
     hapticImpactMedium();
     const lines = [
@@ -177,6 +207,66 @@ export default function TransformationReportModal({
                   />
                 ) : null}
 
+                {/* Cadence — weekly avg + consistency %. */}
+                {(report.weeklyAvg > 0 || report.consistencyPct > 0) ? (
+                  <InsightCard
+                    icon="show-chart"
+                    title={t('transform.cadenceTitle', 'Your rhythm')}
+                    body={t('transform.cadenceBody', {
+                      weekly: report.weeklyAvg,
+                      consistency: report.consistencyPct,
+                    })}
+                  />
+                ) : null}
+
+                {/* Most challenging path — frames negatives positively. */}
+                {report.mostChallengingPath && report.mostChallengingAccuracy < 80 ? (
+                  <InsightCard
+                    icon="fitness-center"
+                    title={t('transform.challengeTitle', 'Where you grew the most')}
+                    body={(() => {
+                      const path = PATHS.find((x) => x.id === report.mostChallengingPath);
+                      const name = t(
+                        `paths.${report.mostChallengingPath}.shortTitle`,
+                        path?.shortTitle || report.mostChallengingPath,
+                      );
+                      return t('transform.challengeBody', {
+                        path: name,
+                        accuracy: report.mostChallengingAccuracy,
+                      });
+                    })()}
+                  />
+                ) : null}
+
+                {/* Reflection depth — count + avg words. Hidden when shallow. */}
+                {report.reflectionsCount >= 5 && report.avgReflectionWords > 0 ? (
+                  <InsightCard
+                    icon="format-quote"
+                    title={t('transform.depthTitle', 'How deep you go')}
+                    body={t('transform.depthBody', {
+                      count: report.reflectionsCount,
+                      avg: report.avgReflectionWords,
+                    })}
+                  />
+                ) : null}
+
+                {/* Spotify-Wrapped style PNG export — premium-only since
+                    the rich card is the premium hook. Captures the
+                    1080×1920 MonthlyWrappedCard off-screen and triggers
+                    the share sheet. Viral mechanic: IG Stories posts. */}
+                <TouchableOpacity
+                  onPress={handleWrappedShare}
+                  disabled={sharingWrapped}
+                  style={styles.wrappedShareBtn}
+                  activeOpacity={0.85}
+                >
+                  <MaterialIcons name="auto-awesome" size={20} color="#1E1B4B" />
+                  <Text style={styles.wrappedShareBtnText}>
+                    {sharingWrapped
+                      ? t('transform.wrappedShareLoading', 'Creating card...')
+                      : t('transform.wrappedShareCta', 'Share monthly wrapped')}
+                  </Text>
+                </TouchableOpacity>
               </>
             ) : (
               // Free user — premium teaser
@@ -211,6 +301,19 @@ export default function TransformationReportModal({
           </ScrollView>
         </SafeAreaView>
       </LinearGradient>
+
+      {/* Off-screen Wrapped card — rendered at 1080×1920 px but
+          positioned far off the viewport so it never visually
+          disturbs the UI. captureRef rasterizes it at full resolution
+          regardless. This is the image that gets shared. */}
+      <View style={styles.offscreen} pointerEvents="none">
+        <MonthlyWrappedCard
+          ref={wrappedCardRef}
+          report={report}
+          lang={(getCurrentLanguage() || 'tr').slice(0, 2)}
+          username={anonUsername}
+        />
+      </View>
     </Modal>
   );
 }
@@ -399,21 +502,57 @@ const styles = StyleSheet.create({
     letterSpacing: 1.0,
   },
 
-  // Share button (premium)
+  // Primary share button: the 1080×1920 Wrapped PNG export. This is
+  // the viral CTA — Spotify-Wrapped psychology. Gold for prominence.
+  wrappedShareBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    backgroundColor: '#FDE047',
+    paddingVertical: 16,
+    borderRadius: 14,
+    marginTop: 20,
+    shadowColor: '#FDE047',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.4,
+    shadowRadius: 14,
+    elevation: 6,
+  },
+  wrappedShareBtnText: {
+    color: '#1E1B4B',
+    fontSize: 14,
+    fontWeight: '900',
+    letterSpacing: 0.8,
+  },
+
+  // Secondary share — text-only share, for users who don't want the
+  // image card.
   shareBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    backgroundColor: '#FDE047',
-    paddingVertical: 14,
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    paddingVertical: 12,
     borderRadius: 12,
-    marginTop: 16,
+    marginTop: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.25)',
   },
   shareBtnText: {
-    color: '#1E1B4B',
-    fontSize: 13,
-    fontWeight: '900',
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '700',
     letterSpacing: 0.6,
+  },
+
+  // Off-screen container for the share image — captureRef reads the
+  // declared size of the View tree regardless of where it's positioned,
+  // so we push it far off-canvas to keep it invisible.
+  offscreen: {
+    position: 'absolute',
+    left: -10000,
+    top: 0,
   },
 });

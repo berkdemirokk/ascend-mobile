@@ -23,6 +23,7 @@ import {
   cancelComebackReminder,
   scheduleNewUserNudges,
 } from '../services/notifications';
+import { getFirstName } from '../services/displayName';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
 
@@ -151,6 +152,21 @@ const initialState = {
   // analytics, only via cloudSync (their own devices).
   userWhy: null,
 
+  // Custom Goal — user-defined personal goal tracked alongside the
+  // curriculum. Plain-text intent ("Wake at 6 AM every morning"),
+  // target day count, and a per-day check-in log. Surfaced on Home
+  // as a dedicated card and in Settings as an editor. Deeper
+  // personalization than path selection alone — the user names their
+  // own monster.
+  // Shape: {
+  //   text: string,
+  //   createdAt: ISO,
+  //   targetDays: number,                       // 30 | 60 | 90 default
+  //   checkIns: { 'YYYY-MM-DD': true },         // daily flag log
+  //   lastCheckInDate: 'YYYY-MM-DD' | null,
+  // }
+  customGoal: null,
+
   // Last lesson completed milestone celebration shown — flag UI reads to
   // trigger confetti animation once per milestone.
   _milestoneToast: null,
@@ -240,6 +256,9 @@ const ACTION_TYPES = {
   RESTORE_BROKEN_STREAK: 'RESTORE_BROKEN_STREAK',
   DISMISS_BROKEN_STREAK_RESTORE: 'DISMISS_BROKEN_STREAK_RESTORE',
   SET_USER_WHY: 'SET_USER_WHY',
+  SET_CUSTOM_GOAL: 'SET_CUSTOM_GOAL',
+  CLEAR_CUSTOM_GOAL: 'CLEAR_CUSTOM_GOAL',
+  CHECK_IN_CUSTOM_GOAL: 'CHECK_IN_CUSTOM_GOAL',
 };
 
 // Streak Repair threshold — only offer restore when the broken streak was
@@ -458,6 +477,45 @@ function appReducer(state, action) {
     case ACTION_TYPES.CLEAR_MILESTONE_TOAST:
       return { ...state, _milestoneToast: null };
 
+    case ACTION_TYPES.SET_CUSTOM_GOAL: {
+      // payload = { text, targetDays }. Either preserves the existing
+      // checkIns log (if the user is editing their goal text) or starts
+      // a fresh log (if there was no goal yet).
+      const text = String(action.payload?.text || '').trim();
+      if (!text) return state;
+      const targetDays = Math.max(7, Math.min(365, action.payload?.targetDays || 30));
+      const existing = state.customGoal || {};
+      return {
+        ...state,
+        customGoal: {
+          text,
+          targetDays,
+          createdAt: existing.createdAt || new Date().toISOString(),
+          checkIns: existing.checkIns || {},
+          lastCheckInDate: existing.lastCheckInDate || null,
+        },
+      };
+    }
+
+    case ACTION_TYPES.CLEAR_CUSTOM_GOAL:
+      return { ...state, customGoal: null };
+
+    case ACTION_TYPES.CHECK_IN_CUSTOM_GOAL: {
+      // One-tap "I did it today" check-in. Idempotent for the day.
+      if (!state.customGoal) return state;
+      const today = getTodayDateString();
+      if (state.customGoal.lastCheckInDate === today) return state;
+      const checkIns = { ...(state.customGoal.checkIns || {}), [today]: true };
+      return {
+        ...state,
+        customGoal: {
+          ...state.customGoal,
+          checkIns,
+          lastCheckInDate: today,
+        },
+      };
+    }
+
     case ACTION_TYPES.ENSURE_ANON_USERNAME: {
       // Generate once, then sticky. cloudSync will replicate the chosen
       // handle across devices so the user stays the same monk.
@@ -526,6 +584,7 @@ function appReducer(state, action) {
         reflections: {},
         reflectionAudio: {},
         quizCorrect: {},
+        quizTotal: {},
       };
       if (current.completed.includes(lessonId)) return state;
 
@@ -656,6 +715,13 @@ function appReducer(state, action) {
               ? { ...(current.reflectionAudio || {}), [lessonId]: reflectionAudioUri }
               : current.reflectionAudio || {},
             quizCorrect: { ...current.quizCorrect, [lessonId]: quizCorrect },
+            // Track per-lesson quiz length too so the adaptive coach
+            // can compute accuracy (correct/total). Stored alongside
+            // quizCorrect, idempotent — overwrites on re-completion.
+            quizTotal: {
+              ...(current.quizTotal || {}),
+              [lessonId]: quizTotal || 0,
+            },
           },
         },
         totalXP: newTotalXP,
@@ -834,16 +900,29 @@ export function AppProvider({ children }) {
     const today = getTodayDateString();
     const onVacation =
       !!state.vacationUntil && state.vacationUntil >= today;
+    // Thread the user's first name into the push body for personality —
+    // "Berk, you haven't completed today..." converts far better than
+    // the generic copy. Falls through gracefully when name is unknown.
+    const firstName = getFirstName({
+      userProfile: state.userProfile,
+      user,
+      anonUsername: state.anonUsername,
+      fallback: '',
+    });
     scheduleStreakAtRiskReminder({
       todayCompleted: state.lastCompletedDate === today,
       currentStreak: state.currentStreak || 0,
       onVacation,
+      firstName,
     }).catch(() => {});
   }, [
     state._loaded,
     state.lastCompletedDate,
     state.currentStreak,
     state.vacationUntil,
+    state.userProfile,
+    state.anonUsername,
+    user,
   ]);
 
   useEffect(() => {
@@ -1069,6 +1148,32 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.CLEAR_MILESTONE_TOAST });
   }, []);
 
+  /**
+   * Set (or update) the user's custom personal goal. The first call
+   * stamps createdAt; subsequent calls preserve it and only change
+   * text/targetDays — so editing the goal doesn't reset progress.
+   *
+   * @param {Object} goal
+   * @param {string} goal.text         the goal description
+   * @param {number} [goal.targetDays] target horizon (7..365, default 30)
+   */
+  const setCustomGoal = useCallback((goal) => {
+    dispatch({ type: ACTION_TYPES.SET_CUSTOM_GOAL, payload: goal });
+  }, []);
+
+  const clearCustomGoal = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.CLEAR_CUSTOM_GOAL });
+  }, []);
+
+  /**
+   * Mark today's custom-goal check-in. Idempotent per calendar day —
+   * subsequent calls on the same day no-op so the UI can safely fire
+   * on every tap.
+   */
+  const checkInCustomGoal = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.CHECK_IN_CUSTOM_GOAL });
+  }, []);
+
   const deleteAccount = useCallback(async () => {
     // Apple guideline 5.1.1(v): account creation requires server-side
     // deletion. Call the Supabase Edge Function 'delete-user' which removes
@@ -1114,10 +1219,26 @@ export function AppProvider({ children }) {
   }, []);
 
   const completePathLesson = useCallback(
-    ({ pathId, lessonId, reflection, reflectionAudioUri, quizCorrect = 0, xp = 15 }) => {
+    ({
+      pathId,
+      lessonId,
+      reflection,
+      reflectionAudioUri,
+      quizCorrect = 0,
+      quizTotal = 0,
+      xp = 15,
+    }) => {
       dispatch({
         type: ACTION_TYPES.COMPLETE_PATH_LESSON,
-        payload: { pathId, lessonId, reflection, reflectionAudioUri, quizCorrect, xp },
+        payload: {
+          pathId,
+          lessonId,
+          reflection,
+          reflectionAudioUri,
+          quizCorrect,
+          quizTotal,
+          xp,
+        },
       });
     },
     [],
@@ -1234,6 +1355,9 @@ export function AppProvider({ children }) {
     restoreBrokenStreak,
     dismissBrokenStreakRestore,
     setUserWhy,
+    setCustomGoal,
+    clearCustomGoal,
+    checkInCustomGoal,
     deleteAccount,
     setActivePath,
     completePathLesson,
