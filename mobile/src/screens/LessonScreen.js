@@ -78,6 +78,7 @@ export default function LessonScreen({ navigation, route }) {
     refillHearts,
     isInGracePeriod,
     grantBonusXP,
+    earnHeart,
     dailyLessonsCount,
     dailyGoalTarget,
     _dailyGoalToast,
@@ -1036,7 +1037,10 @@ export default function LessonScreen({ navigation, route }) {
             navigation.goBack();
           }}
           onRefill={() => {
-            refillHearts();
+            // Rewarded-ad path → +1 heart (NOT full refill). One ad,
+            // one heart. Avoids the previous "watch 1 ad → 5 hearts"
+            // bug that nuked the heart-economy entirely.
+            earnHeart();
             setOutOfHeartsVisible(false);
           }}
           onPaywall={() => {

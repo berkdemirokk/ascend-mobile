@@ -86,6 +86,7 @@ export default function HomeScreen({ navigation }) {
     hearts,
     heartsRefillAt,
     refillHearts,
+    earnHeart,
     dailyLessonsCount,
     dailyGoalTarget,
     userWhy,
@@ -586,7 +587,10 @@ export default function HomeScreen({ navigation }) {
         refillAt={heartsRefillAt}
         onClose={() => setOutOfHeartsVisible(false)}
         onRefill={() => {
-          refillHearts();
+          // Rewarded-ad path → +1 heart only (capped at 5). Watching
+          // an ad shouldn't reset the heart pool to full — it should
+          // reward one continuation, matching Duolingo's model.
+          earnHeart();
           setOutOfHeartsVisible(false);
         }}
         onPaywall={() => {

@@ -240,6 +240,7 @@ const ACTION_TYPES = {
   SET_ACTIVE_PATH: 'SET_ACTIVE_PATH',
   LOSE_HEART: 'LOSE_HEART',
   REFILL_HEARTS: 'REFILL_HEARTS',
+  EARN_HEART: 'EARN_HEART',
   RESET_AD_COUNTER: 'RESET_AD_COUNTER',
   RESET_PROGRESS: 'RESET_PROGRESS',
   ENSURE_ANON_USERNAME: 'ENSURE_ANON_USERNAME',
@@ -564,6 +565,24 @@ function appReducer(state, action) {
 
     case ACTION_TYPES.REFILL_HEARTS:
       return { ...state, hearts: 5, heartsRefillAt: null };
+
+    case ACTION_TYPES.EARN_HEART: {
+      // Single-heart reward from watching a rewarded ad. Previously the
+      // ad-watch path called refillHearts() which set hearts to 5 — one
+      // ad watch = full refill. That's overgenerous, dilutes the heart
+      // economy, and lets users grind through 25 wrong answers per ad
+      // without consequence. Now: 1 ad = +1 heart, capped at the 5
+      // ceiling, matching Duolingo's model.
+      //
+      // heartsRefillAt is only cleared when the ceiling is reached so
+      // the auto-refill timer keeps ticking through partial rewards.
+      const next = Math.min(5, (state.hearts || 0) + 1);
+      return {
+        ...state,
+        hearts: next,
+        heartsRefillAt: next >= 5 ? null : state.heartsRefillAt,
+      };
+    }
 
     case ACTION_TYPES.RESET_AD_COUNTER:
       return { ...state, actionsSinceLastAd: 0 };
@@ -1252,6 +1271,10 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.REFILL_HEARTS });
   }, []);
 
+  const earnHeart = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.EARN_HEART });
+  }, []);
+
   const resetAdCounter = useCallback(() => {
     dispatch({ type: ACTION_TYPES.RESET_AD_COUNTER });
   }, []);
@@ -1363,6 +1386,7 @@ export function AppProvider({ children }) {
     completePathLesson,
     loseHeart,
     refillHearts,
+    earnHeart,
     resetAdCounter,
     resetProgress,
   };

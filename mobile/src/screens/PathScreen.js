@@ -48,6 +48,7 @@ export default function PathScreen({ navigation }) {
     hearts,
     heartsRefillAt,
     refillHearts,
+    earnHeart,
   } = useApp();
 
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
@@ -279,7 +280,9 @@ export default function PathScreen({ navigation }) {
         visible={outOfHeartsVisible}
         onClose={() => setOutOfHeartsVisible(false)}
         onRefill={() => {
-          refillHearts();
+          // Rewarded-ad path → +1 heart only (capped at 5). One ad
+          // earns one continuation; not a full refill.
+          earnHeart();
           setOutOfHeartsVisible(false);
         }}
         refillAt={heartsRefillAt}
