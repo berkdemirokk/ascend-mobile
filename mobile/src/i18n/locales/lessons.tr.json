@@ -122,10 +122,26 @@
         "proTip": "Bağımlılık hep bahane bekler — \"sadece 5 dakika\" o bahane."
       },
       "2": {
-        "title": "Bildirimleri Söndür",
+        "title": "Bildirimleri Söndür (Beynindeki Cortisol Banyosunu Boşalt)",
+        "hook": "Şu an telefonunda kaç tane bildirim var? Bilmiyorsan zaten kaybetmişsin. Her ding sesinde göğsünde o küçük sıkışma — onu fark ediyor musun, yoksa artık baseline mi oldu?",
         "teaching": "Her bildirim dikkatinde bir mikro patlama yaratır. Araştırmalar: bir bildirimle dikkatin tam olarak işe geri dönmesi 23 dakika sürüyor.\n\nGünde 50 bildirim alıyorsan, gerçekte hiçbir an tam odakta değilsin. Beyin sürekli 'bir şey gelmiş mi' diye kontrol modunda.\n\nBildirimler sana hizmet etmiyor — uygulamalara hizmet ediyor. Onların büyüme metriklerine. Sen bunun maliyetini ödüyorsun.",
+        "teachingDeep": "2004'te UC Irvine'de bir bilim insanı — Gloria Mark — ofislerde insanları takip etti. Birisi dikkati dağıldığında, tam odağa geri dönmesi ne kadar sürüyor diye ölçtü. Sonuç beyninde patlama yapmalı: 23 dakika 15 saniye.\n\nDur ve düşün. Bir bildirim duydun. Bakmadın bile. Sadece ses. 23 dakika sonra zihnin gerçekten geri dönüyor o işe. Günde 30 bildirim alıyorsan — ki muhtemelen çok daha fazla — matematik basit: HİÇ tam odakta değilsin. Hiç. Tüm gün yarı-dikkatte yaşıyorsun.\n\nAma asıl mesele 23 dakika değil. Asıl mesele cortisol.\n\nHer bildirim sesi, beyninde küçük bir tehdit alarmı çalıştırıyor — 'Bir şey oluyor, dikkat et.' Adrenal bezler cortisol salıyor. Cortisol stres hormonu. Ve cortisolun yarı-ömrü kanında 60-90 dakika. Yani 10 bildirim = sabit cortisol banyosu, tüm gün boyunca. İşte 'sebepsiz yere yorgun' olduğun his bu. Sebep var. Telefon.\n\nBir de 'phantom vibration syndrome' var — gerçek terim, 2010'da Michelle Drouin tarafından isimlendirildi. Telefon titreşti sanıyorsun, bakıyorsun yok. Çünkü beynin titreşim sinyalini bekleyerek o kadar tetikte ki, gerçek olmayan sinyali halüsine ediyor. Sen artık telefon değilsin, telefonun bir uzantısısın.\n\nİyi haber: Pavlov tersine de çalışır. Bildirimleri keser, hayvan bir hafta içinde kontrol etmeyi bırakır. Beyninin yeni baseline'a oturması 7 gün. Bugün başlatıyoruz.\n\nKötü haber: bunu YARIN yapmazsan, hiç yapmayacaksın. 'Önemli bildirimleri kaybedebilirim' bahanesi — bağımlılığın sesi. Gerçekten önemli birisi seni ARAR.",
+        "practice": {
+          "instruction": "Şu an telefonunun Ayarlar'ına gir. Bildirimler bölümünü aç. 90 saniye boyunca, listeyi yukarıdan aşağı kaydır ve her uygulamanın bildirimini KAPAT. Sadece arama ve doğrudan mesaj kalsın. Düşünme, sorgulama — kapat. Süre bitince son.",
+          "seconds": 90,
+          "prompt": "Hangi uygulamayı kapatırken 'ya kaçırırsam' diye düşündün? O uygulama gerçekten önemli mi, yoksa bağımlılığın mı bağırıyor?"
+        },
         "action": "Telefonundaki TÜM uygulamaların bildirimlerini kapat. Sadece arama ve doğrudan mesaj kalsın. Bunu şu anda yap, ertelersen yapmazsın.",
         "reflectionPrompt": "En zor kapatılan bildirim hangisiydi? Niye?",
+        "reflectionPrompts": [
+          "Bildirimleri kapatırken en çok dirençle hangi uygulamayı kapadın? O dirence kim sahip — sen mi, beyninin alışkanlığı mı?",
+          "Son hafta içinde bir bildirim seni kesintiye uğrattıktan sonra, gerçekten 23 dakika sürdüğünü fark ettiğin bir an oldu mu? Yaz."
+        ],
+        "commitments": [
+          "Bugün tüm bildirimleri kapatacağım, sadece arama ve DM kalsın",
+          "Bugün telefonu sessiz moda alıp masadan uzağa koyacağım çalışırken",
+          "Mail ve mesajları bugün sadece 2 belirli saatte toplu kontrol edeceğim"
+        ],
         "quiz": [
           {
             "q": "Bir bildirimden sonra dikkat ne kadar dağılır?",
@@ -150,13 +166,75 @@
             "explain": "Bildirimler app'lerin growth metriklerine hizmet eder."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "Kitap okuyorsun, telefon yanında. Bir ding sesi geldi, bakmadın bile. 30 saniye sonra 'tamam geçti, devam' diyorsun. Gloria Mark araştırmasına göre gerçekten kaç dakika sonra zihnin kitaba geri döner?",
+            "options": [
+              "30 saniye — zaten bakmadın",
+              "5 dakika — biraz dağıldı",
+              "23 dakika — tam odak çok daha uzun sürüyor",
+              "Etkilemedi — bilinçaltı çalıştı"
+            ],
+            "correct": 2,
+            "explain": "UC Irvine, Gloria Mark, 2004: tam odağa dönüş ortalama 23 dakika 15 saniye. Bakman değil, sesin GELMESİ bile yetiyor. Beyin kesintiyi işlemek için döngü değiştiriyor."
+          },
+          {
+            "q": "Telefonun titreştiğini hissettin, bakıyorsun — hiçbir şey yok. Bu ne?",
+            "options": [
+              "Donanım hatası — telefonu değiştir",
+              "Phantom vibration syndrome — beyin sinyali halüsine ediyor",
+              "Kaslarda kasılma — kafein fazla",
+              "Tesadüf — düşünme"
+            ],
+            "correct": 1,
+            "explain": "Michelle Drouin, 2010: phantom vibration syndrome. Beynin bildirim sinyalini o kadar bekliyor ki, olmayan titreşimi halüsine ediyor. Telefonun seni eğitmiş, sen kendini değil."
+          },
+          {
+            "q": "Tüm bildirimleri kapattın. Bir hafta sonra fark ediyorsun: telefonu daha az kontrol ediyorsun. Niye?",
+            "options": [
+              "Telefonum bozuldu sanıyorum",
+              "Pavlov tersine işledi — uyarıcı yoksa refleks söner",
+              "Sıkıcı oldu, ilgimi çekmiyor",
+              "İrademi geliştirdim"
+            ],
+            "correct": 1,
+            "explain": "Pavlov klasik şartlanma tersine de çalışır. Ses → kontrol döngüsünü besleyen sinyal kalktı. Hayvan 7 günde söndürür refleksi. İrade değil — fizyoloji."
+          },
+          {
+            "q": "İşin için bildirim 'şart' olduğunu söylüyorsun — Slack, mail, takım yazışmaları. Ne yapacaksın?",
+            "options": [
+              "İstisna yap, onları açık tut",
+              "Hepsini kapat, günde 2 belirli saatte toplu kontrol et",
+              "Sadece önemli kişilerden bildirim al",
+              "Bildirim sesini kıs ama açık tut"
+            ],
+            "correct": 1,
+            "explain": "'Şart' bahane. Cal Newport'un 'deep work' araştırması: en üretken takımlar bildirimi kesip belirli saatlerde toplu cevaplar. Anlık cevap = anlık cortisol. 2 toplu blok = aynı iş, sıfır kesinti."
+          }
+        ],
         "proTip": "Bildirimleri kapatmak iletişimi kesmek değil — kontrolü almak."
       },
       "3": {
-        "title": "Sosyal Medya Orucu",
+        "title": "Sosyal Medya Orucu (Cebindeki Kumarhaneyi Kapat)",
+        "hook": "Elin telefona uzandı. Sen karar vermedin — el zaten oradaydı. Bu kim? Sen mi, yoksa cebinden seni eğiten makine mi?",
         "teaching": "Sosyal medya en hızlı dopamin kaynaklarından biri. Sonsuz scroll, beklenmedik içerikler, sosyal kıyaslama — beynini optimize edilmiş bir sömürü makinesine bağlıyorsun.\n\nBugün bir denemeyi başlatıyorsun: 24 saat sosyal medya yok. Instagram, TikTok, Twitter, YouTube Shorts — hepsi.\n\nİlk birkaç saat zor olacak. Telefonunu otomatik açıp uygulamaya gideceksin. Buna 'phantom reaching' denir. Normal. Geçer.",
+        "teachingDeep": "1957'de B.F. Skinner kafese güvercin koydu. Pedala bastığında bazen yem geliyordu, bazen gelmiyordu. Rastgele. Sabit pedalla yem alan güvercinlere göre, rastgele yem alan güvercinler pedalı 7 kat daha fazla bastı. Hatta yem TAMAMEN kesildikten sonra bile günlerce basmaya devam ettiler.\n\nSkinner buna 'intermittent reinforcement' dedi. Aralıklı pekiştirme. Davranışsal psikolojide BİLİNEN en güçlü şartlanma şeması. Kumarhane mantığı. Slot makinesi mantığı.\n\nVe senin Instagram feed'in.\n\nHer kaydırma bir pedala basma. Bazen çok iyi bir post — yem. Bazen sıkıcı — boş. Bazen seni kıskandıran bir tatil fotoğrafı — yem (cortisol bile dopamin gibi tetikliyor). Bazen hiç. Beynin asla biliyor olamıyor. Bu yüzden duramıyorsun. Tahmin edilebilen ödül beyni eğitmez — TAHMİN EDİLEMEYEN ödül eğitir.\n\nNir Eyal'ın 'Hooked' kitabındaki model: Tetik → Eylem → Değişken Ödül → Yatırım. Bildirim seni tetikler. Açarsın (eylem). Bazen iyi, bazen kötü içerik (değişken ödül). Sonra beğenirsin, paylaşırsın, yorum yaparsın (yatırım — geri dönmen için sebep). Bu model SİLİKON VADİSİ'NDE öğretiliyor. Senin alışkanlığın değil — birinin tasarımı.\n\nŞimdi 'phantom reaching' (hayalet uzanma) ne demek anlıyor musun? Elin bilincinden ÖNCE hareket ediyor. Çünkü Skinner güvercini gibi koşullanmışsın. Karar vermiyorsun. Pedala basıyorsun.\n\n24 saat tamam değil. Ama 24 saat bir BAŞLANGIÇ. Skinner'ın güvercinleri yem kesildikten sonra bile günlerce basmaya devam etti — ama sonunda söndü. Sen de söndüreceksin.\n\nUygulamayı silme — fazla radikal, başarısız olur. Sürtünme ekle. 'Düşmanlar' klasörüne taşı. Her açışın bilinçli olsun. Düşman olduğunu unutma.",
+        "practice": {
+          "instruction": "Şu an telefonun ana ekranını aç. Instagram'ı, TikTok'u, Twitter'ı, YouTube'u — hangileri varsa — bul. Ana ekrandan KALDIR (silme, sadece taşı). Yeni bir klasör yap, adını 'Düşmanlar' koy. Hepsini içine at. 60 saniyen var.",
+          "seconds": 60,
+          "prompt": "Hangisini taşırken 'bunu kaldırırsam ne yapacağım' diye düşündün? O düşünce sana mı ait, yoksa bağımlılığına mı?"
+        },
         "action": "Tüm sosyal medya uygulamalarını ana ekrandan kaldır. Bir klasöre koy ve klasörün adını 'Düşmanlar' yap. Bugün 24 saat hiçbirini açma.",
         "reflectionPrompt": "Hangi an 'Sadece bir kere bakayım' dürtüsü geldi? O an ne hissediyordun?",
+        "reflectionPrompts": [
+          "Son 24 saatte kaç kez bilincinden ÖNCE elin telefona uzandı? Tahmin değil — gerçekten say. Bu sayı sana ne söylüyor?",
+          "'Bir önemli şeyi kaçırırım' (FOMO) korkusu içinde — şimdiye kadar gerçekten kaçırdığın 'önemli' bir şey oldu mu? Yoksa korku tasarlanmış mı?"
+        ],
+        "commitments": [
+          "Bugün 24 saat boyunca sosyal medya uygulamalarına dokunmayacağım",
+          "Sosyal medya uygulamalarını 'Düşmanlar' klasörüne taşıyacağım, ana ekrandan kaldıracağım",
+          "Phantom reaching her olduğunda elimi durdurup '1 dakika ne hissediyorum' diye soracağım"
+        ],
         "quiz": [
           {
             "q": "Phantom reaching nedir?",
@@ -181,13 +259,75 @@
             "explain": "İlk denemede 24 saat yeterli — alışkanlığı kırar."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "24 saatlik oruçtasın. 14. saat. Elin telefona uzandı, sen 'açıyor muyum?' dediğinde el zaten orada. Bu nedir?",
+            "options": [
+              "İrade zayıflığı — daha çok dene",
+              "Phantom reaching — Skinner şartlanması, alışkanlık ihtiyaç değil",
+              "Gerçek ihtiyaç — bedenin sana bir şey söylüyor",
+              "Hata — pratik işe yaramıyor"
+            ],
+            "correct": 1,
+            "explain": "Skinner'ın güvercini gibi koşullanmışsın. Bilincin sonradan geliyor, refleks önde. Bu irade değil — fizyoloji. Fark etmek, kontrolü geri almanın başlangıcı."
+          },
+          {
+            "q": "Bir arkadaşın 'önemli' bir post paylaştı, sen göremedin — sıkışma hissediyorsun. Maliyet-fayda nedir?",
+            "options": [
+              "Sıkışma haklı — sosyal bağlantı kayboluyor",
+              "FOMO mühendislik ürünü — gerçek arkadaş seni ARAR",
+              "Bir kere açıp baksan bir şey olmaz",
+              "Postu görmemek seni dışlıyor"
+            ],
+            "correct": 1,
+            "explain": "FOMO (kaçırma korkusu) tesadüfen oluşmadı — uygulama tasarımcıları seni geri çekmek için bu duyguyu MÜHENDİSLENDİRDİ. Gerçekten önemli bir şey olduğunda, gerçek arkadaş sana mesaj atar, arar. Beslemende kaybolan şey önemli değil — uygulamanın seni kaybetmesi önemli onlar için."
+          },
+          {
+            "q": "'Sadece bir kez bakayım' diyorsun. Skinner'ın aralıklı pekiştirme araştırması bu konuda ne söyler?",
+            "options": [
+              "Bir kerelik fark etmez, dene",
+              "Aralıklı pekiştirme en güçlü şartlanma — bir kere = yem, döngü yeniden başlar",
+              "İrade meselesi, kontrol etmelisin",
+              "Tek bakış zarar vermez ama bağımlılık yapar"
+            ],
+            "correct": 1,
+            "explain": "1957 Skinner: aralıklı pekiştirmeyle şartlandırılan güvercinler, yem kesildikten SONRA bile günlerce pedala basar. Aralıklı yem = en güçlü reinforcement. Senin 'bir bakış' bir yem. Beyin döngüyü resetlemez — sıfırdan başlar."
+          },
+          {
+            "q": "24 saat tamam. Başardın. Şimdi kendini ödüllendirmek için 30 dakika scroll yapmak mantıklı mı?",
+            "options": [
+              "Evet, hak ettin — kontrollü ödül",
+              "Hayır — döngüyü tekrar başlatır, 24 saatin nöral kazancı silinir",
+              "Sınırlı süre tut, alarm kur",
+              "Sadece 'sağlıklı' içerik tüket"
+            ],
+            "correct": 1,
+            "explain": "Beyin baseline'a oturmaya başlamıştı. Şimdi 30 dakika scroll = Skinner güvercinine yem vermek. Pedala basma davranışı geri yükleniyor. 24 saat bir kazanım, başlangıç noktası — bitiş çizgisi değil."
+          }
+        ],
         "proTip": "24 saatlik oruç çoğu için ilk gerçek dijital sessizlik."
       },
       "4": {
         "title": "Junk İçerik Tüketimini Kes",
+        "hook": "Bugün sabahtan beri kaç dakika 'içerik' tükettin? Şimdi yarına kadar dur ve düşün: o tüketilen dakikaların kaçını yarın hatırlayacaksın? Cevap sıfıra yakınsa, sen içerik tüketmiyorsun — içerik seni tüketiyor.",
         "teaching": "Junk içerik = beynine boş kalori. YouTube'da rastgele video, Reddit'te scroll, sürekli haber kontrolü, podcast'leri sadece arka planda dinlemek.\n\nFark etmediğin şey: bu içerikler seni daha aptal yapmıyor sadece — daha aksesuar yapıyor. Beynin başkalarının düşüncelerini tüketmeye alışıyor, kendi düşüncelerini üretemez hale geliyor.\n\nBugün filtreyi kuruyoruz: tükettiğin her içerik bir amaç taşımalı.",
+        "teachingDeep": "2010'da Nicholas Carr 'The Shallows' (Sığlık) adında bir kitap yazdı. Tek soru sordu: 'İnternet beynimi değiştiriyor mu?' Cevap onu dehşete düşürdü.\n\nCarr fark etti ki — ve sonra fMRI taramaları doğruladı — internet kullanan beyin, kitap okuyan beyinle aynı beyin değil. Skim okuma, hızlı geçiş, bir başlıktan ötekine atlamak — beyni fiziksel olarak yeniden tellendiriyor. Derin okuma için gerekli sinir yolları zayıflıyor; göz gezdirme yolları kalınlaşıyor.\n\nCarr şunu yazdı: 'Eskiden ben bir scuba dalgıcıydım — fikirlerin derinine inerdim. Şimdi su kayağı yapıyorum — yüzeyde hızla geçiyorum.' Bu sadece şikayet değil — beynin yeni şeklinin tarifi.\n\nDopamin yeniliği ödüllendirir. Her yeni video, her yeni başlık, her yeni Reddit thread'i — beyne 'taze' diyor, dopamin damlatıyor. Ama burada tuzak var: beyin yeniliği gıda gibi sayıyor. Asla sindirmiyor.\n\nTüketim pasiftir. İçerik beynine giriyor, ama bağlanmıyor. Üretim aktif. Yazmak, çizmek, anlatmak — bilgiyi nöronlar arasında ağ kuruyor. Sadece üretim derinlik kuruyor; tüketim sadece genişlik üretiyor.\n\nÖlçü basit: bugün izlediğin 10 videodan, yarın 1'ini hatırlayacak mısın? 30 gün sonra? Çoğunluğunun cevabı 'hayır.' Yani o saatlerce harcadığın zaman, beyninin bir köşesinden geçti ama hiçbir şey bırakmadı. Su kayağı.\n\nBugün scuba dalgıcına geri dön.",
+        "practice": {
+          "instruction": "Şu an telefonunu eline al. Ana ekrandan ŞU UYGULAMALARI sil veya 'Düşmanlar' klasörüne taşı: YouTube, Reddit, Twitter/X, Instagram, TikTok, haber app'leri. 90 saniyen var. Hızlı.",
+          "seconds": 90,
+          "prompt": "Hangi uygulamayı silmeye/taşımaya en çok direndin? Beynin 'ama bu lazım' dedi mi? Hangi gerekçeyi uydurdu?"
+        },
         "action": "Bugün hiçbir içerik tüketme. Yalnızca üret. Yazı yaz, çiz, yürüyüşe çık ve düşün, biriyle gerçek konuşma yap. Bilgi tüketmek yok bugün.",
         "reflectionPrompt": "Bugün kaç kez 'bilgi açlığı' duydun? O açlık aslında ne için?",
+        "reflectionPrompts": [
+          "Son izlediğin YouTube/TikTok videosunu yaz — başlığını, konusunu, ne öğrendiğini. Hatırlamıyorsan, bu sana ne söylüyor?",
+          "Bugün içerik tüketmediğin saatte ne yaptın? Boşluk neye dönüştü — sıkıntıya mı, gerçek bir düşünceye mi, başka bir kaçışa mı?"
+        ],
+        "commitments": [
+          "YouTube/Reddit/haber app'lerini ana ekrandan kaldıracağım bugün",
+          "Çalışırken arka planda podcast veya video çalıştırmayacağım",
+          "Bugün en az 1 sayfa yazı yazacağım — tükettiğim hiçbir şeyle ilgili değil, kendi düşüncem"
+        ],
         "quiz": [
           {
             "q": "Junk içerik nedir?",
@@ -212,13 +352,75 @@
             "explain": "Üretmek tüketmekten daha besleyicidir."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "30 dakika YouTube izledin. Sonunda hissin: 'hiçbir şey öğrenmedim.' Beyninde ne oldu gerçekte?",
+            "options": [
+              "Yorgunluk — çok bilgi geldi sindiremedin",
+              "Skim-mod aktivasyonu — dopamin geldi, derin işleme yok",
+              "Şanssızlık — videolar kötüydü, başka algoritmaya bak",
+              "İlgi sorunu — daha sevdiğin konuyu izlemeliydin"
+            ],
+            "correct": 1,
+            "explain": "Nicholas Carr'ın 'sığlık': beyin yenilik dopaminini aldı (her video başlığı taze gibi) ama bilgi nöronlara bağlanmadı. Derin okuma yolu zayıf, göz gezdirme yolu kalın. Hata video değil — mod."
+          },
+          {
+            "q": "'Çalışırken arka planda podcast dinliyorum, böylece hem üretiyorum hem öğreniyorum.' Bu strateji gerçekten ne sağlıyor?",
+            "options": [
+              "İkili kazanç — hem iş hem bilgi",
+              "Hiçbiri — beyin iki şeye birden odaklanamaz, sadece sıkıntıdan kaçış",
+              "Yarım kazanç — biraz iş, biraz bilgi",
+              "Yaratıcı bağlam — fikirleri birleştiriyor"
+            ],
+            "correct": 1,
+            "explain": "Beyin paralel işleme yapamaz, hızlı task-switching yapar — her geçişte cortisol ve hata yükseliyor. Cal Newport'un 'Deep Work': arka plan ses sadece 'çalışıyorum' yanılsamasını veriyor. Asıl mesele: sessizliğin verdiği rahatsızlıktan kaçıyorsun."
+          },
+          {
+            "q": "Sabah gazete okumak da 'junk içerik' mi? Babalarımız yıllardır gazete okuyor.",
+            "options": [
+              "Evet, hepsi haber — hepsi junk",
+              "Bağlam — basılı gazete 20 dakika, sonu var; haber app sonsuz scroll feed = junk",
+              "Hayır, basılı her şey iyi",
+              "Sadece spor gazetesi junk"
+            ],
+            "correct": 1,
+            "explain": "Mesele içerik değil, FORMAT. Basılı gazetenin sonu var (kapak → arka), sınırlı bilgi. Haber app'i sonsuz besleme, algoritma sömürüsü, dopamin pedalı. Aynı haber, iki tamamen farklı beyin etkisi."
+          },
+          {
+            "q": "Bugün tüketim sıfıra indi. Akşam: 'Bugün hiçbir şey kaybetmedim ama bir şey de yapmadım' hissi. Ne kazandın gerçekte?",
+            "options": [
+              "Hiçbir şey — boşa gün geçti",
+              "Bağlam kaybı — herkes bir şey biliyor, ben bilmiyorum",
+              "Derin düşünme kapasitesi — beyin sindirim moduna geçti",
+              "Sadece rahat geçti, başarı yok"
+            ],
+            "correct": 2,
+            "explain": "Tüketim yokluğunda beyin sonunda 'sindirim' moduna geçer. Bilgi entegre olur, fikirler birleşir, kendi sesin geri gelir. Hissiyat 'boş' diyebilir ama nöral düzeyde inşa çalışıyor. Bu hissi tanı — gerçek üretim bunun üzerinden gelir."
+          }
+        ],
         "proTip": "Junk içerik = boş kalori. Üretim = besin."
       },
       "5": {
         "title": "Sıkılmaya İzin Ver",
+        "hook": "Son 24 saatte beynini KAÇ DAKİKA boş bıraktın? Beklemek değil — kuyrukta bile elinde telefon var. Hiçbir şey YAPMAMAK. Eğer cevap '5 dakikadan az' ise, sen sadece dijital tüketmiyorsun — yaratıcılığını boğuyorsun.",
         "teaching": "Modern hayat her boş anı doldurmaya programlandı. Asansörde telefon. Tuvalette telefon. Yürürken kulaklık. Yemek yerken video.\n\nSonuç: beyin asla idle moduna geçmiyor. Yaratıcılık idle modda doğar. Çözümler idle modda gelir. Kendini tanıma idle modda olur.\n\nSıkıntı bir hastalık değil — sinyal. 'Beynim boş zaman istiyor' diyor. Onu dinle.",
+        "teachingDeep": "2001'de Washington Üniversitesi'nden nörolog Marcus Raichle tuhaf bir şey fark etti: deneklerin beyni 'hiçbir şey yapmadığında' bile metabolik olarak çok aktifti. Aslında — şok edici şekilde — beyin 'görev modunda' (matematik, okuma) %5 daha fazla enerji harcıyor; 'boşluk modunda' nerdeyse aynı oranda yanıyordu.\n\nRaichle bu ağa Default Mode Network (DMN) adını verdi. DMN ne yapıyor? Beynin 'arka plan işleri': hafıza konsolidasyonu, anlam üretme, kendin hakkında düşünme, gelecek planlama, yaratıcı birleştirmeler. DMN sessizken çalışıyor — sen 'sıkıldığında.'\n\nŞimdi tehlikeli kısım: DMN sadece dış uyaran yokken aktive oluyor. Telefon = DMN katili. Asansörde telefon açtığın anda DMN kapanıyor, dikkat dış göreve geçiyor.\n\nCal Newport buna 'Digital Minimalism' diyor. Modern insan beynin yaratıcı şantiyesini kapadı çünkü 'boş an' korkuyu doğuruyor — sıkıntının huzursuzluğu. Ama o huzursuzluk, DMN'in ısınma sancısı. 2-3 dakika sonra geçer, derin düşünme başlar.\n\nAristoteles'in Atina'daki okulunda öğrenciler 'yürüyerek' düşünürdü — peripatetik felsefe. Nietzsche dağlarda yürürdü. Steve Jobs müzakerelerini yürüyüşte yapardı. Tesadüf değil — yürürken kulaklık YOK, ekran YOK, DMN açık, fikirler dolaşır.\n\nÇocukluğunda 'sıkıldım anne' derdin. Annen 'git oyna' derdi. Sıkıntı yaratıcılığa açılan kapıydı. Şimdi 'sıkıldım' der demez telefon açılıyor — kapı çalmadan kilitlendi.\n\nBugün kapıyı tekrar açıyoruz.",
+        "practice": {
+          "instruction": "Şimdi otur veya pencereye bak. Telefonunu yere ya da görmediğin bir yere koy. Müzik yok, kitap yok, dış uyaran yok. 2 dakika hiçbir şey YAPMA. Sadece düşüncelerin nereye giderse oraya bırak. Sıkıldığında — perfect, devam.",
+          "seconds": 120,
+          "prompt": "İlk huzursuzluk dalgası kaçıncı saniyede geldi? Geçtikten sonra beynin neye gitti — geçmiş, gelecek, hiç düşünmediğin bir şey?"
+        },
         "action": "Bugün 30 dakika hiçbir şey yapma. Telefonsuz, müziksiz, kitapsız. Sadece otur ya da yürü. Düşüncelerini gözlemle. Sıkılırsan harika, devam et.",
         "reflectionPrompt": "30 dakikanın sonunda zihninde hangi düşünce belirdi? Önceden farkında mıydın?",
+        "reflectionPrompts": [
+          "Bugün gün içinde 'boş bir an' bulduğunda (kuyruk, asansör, beklemek) refleksin ne oldu? Telefona uzanmayı kaç kez DURDURABİLDİN?",
+          "Son ne zaman tamamen sıkılarak yeni bir fikir geldi aklına? Eğer hatırlamıyorsan, beyninin DMN'i ne kadardır kapalı duruyor sence?"
+        ],
+        "commitments": [
+          "Bugün yürürken kulaklık takmayacağım — en az 1 yürüyüş",
+          "Asansörde, kuyrukta, tuvalette telefona uzanmayacağım — DMN'i çalıştıracağım",
+          "Akşam 10 dakika sadece pencereye bakacağım — telefon başka odada"
+        ],
         "quiz": [
           {
             "q": "Sıkıntının ana mesajı?",
@@ -241,6 +443,52 @@
             ],
             "correct": 1,
             "explain": "Idle mod = yaratıcılık tohumlarının çimlendiği yer."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "Marketin kasasında 30 saniye bekliyorsun. Sıra var. Refleksin telefon. Bu otomatik tepki neyi engelliyor?",
+            "options": [
+              "Hiçbir şey — boş zamanı değerlendiriyorsun",
+              "DMN aktivasyonu — beynin kendi kendine düşünmesini",
+              "Sosyal kibarlık — etrafa bakmamış oluyorsun",
+              "Stres — sıra uzunsa stres olur"
+            ],
+            "correct": 1,
+            "explain": "Marcus Raichle'ın DMN araştırması: 30 saniyelik boş an yetiyor beynin 'arka plan görevleri'ne dönmesi için. Hafıza konsolidasyonu, yaratıcı birleşim, kendin hakkında düşünme — hepsi o 30 saniyede başlıyor. Telefon = bu fırsatın iptali."
+          },
+          {
+            "q": "'Sıkıldığımda yaratıcı oluyorum' — bunu söyleyene ne dersin?",
+            "options": [
+              "Romantik bir mit — eski moda düşünce",
+              "Doğru — Raichle ve DMN araştırması destekli, sıkıntı yaratıcılığın yakıtı",
+              "Belki bazı kişiler için",
+              "Sadece sanatçılar için"
+            ],
+            "correct": 1,
+            "explain": "2001'den bu yana DMN araştırması net: yaratıcı içgörüler 'hiçbir şey yapmadığında' geliyor. 'Aha!' anının nörobiyolojisi DMN'in açık olmasını gerektiriyor. Bu mit değil — doğrulanmış bilim."
+          },
+          {
+            "q": "Çocukluğunda 'sıkıldım anne' derdin. Annen ne derdi? Şimdi elinde ne var bu boşluğu doldurmak için?",
+            "options": [
+              "Anne TV açardı, şimdi telefon — değişen bir şey yok",
+              "Annen 'git oyna' derdi, beynin çözüm üretirdi; şimdi telefon 'git scroll' diyor",
+              "Annem hep bir görev verirdi, şimdi telefon vermiyor",
+              "Çocukluk farklı, yetişkinde sıkıntı yok"
+            ],
+            "correct": 1,
+            "explain": "Boşluğu kaybettik. 30 yıl önce 'sıkıldım' demek bir başlangıçtı — şimdi bir bitiş. Anne 'git oyna' derken kapıyı açıyordu; telefon 'git scroll' diye kapatıyor. Aynı sıkıntı, iki tamamen farklı kader."
+          },
+          {
+            "q": "Yürürken kulaklık takmamak nasıl bir zihinsel egzersiz?",
+            "options": [
+              "Sıkıcı — sokak gürültüsü dinlersin",
+              "DMN'i sokağa salmak — düşünceler dolaşır, anlam üretilir; peripatetik felsefe",
+              "Tehlikeli — dikkat dağılır",
+              "Faydasız — yürüyüşte zaten düşünüyorsun"
+            ],
+            "correct": 1,
+            "explain": "Aristoteles 'peripatetik' filozoftu — yürüyerek düşünürdü. Nietzsche dağlarda yürüdü. Jobs müzakerelerini yürüyüşte yaptı. Tesadüf değil — yürürken DMN tam açık, sokak gürültüsü beynin 'arka plan ritmi' olarak işliyor. Kulaklık = DMN kapı."
           }
         ],
         "proTip": "Sıkıntıdan korkma — orada yaratıcılık yaşar."
@@ -1644,9 +1892,25 @@
     "silent-morning": {
       "1": {
         "title": "Erken Kalkmanın Anahtarı: Erken Yat",
+        "hook": "Sabah 5'te kalkamamanın sebebi alarm değil. Gece 1'de yatmandır. Ve gece 1'e kadar uyanık olmanın sebebi telefondur. Cebinde bir uyku katili taşıyorsun ve sabah niye yorgun uyandığını soruyorsun.",
         "teaching": "Erken kalkmanın sırrı sabahın saati değil, gecenin saati. Yatma saatini erkeneye çekmeden, erken kalkma sürdürülemez.\n\nMelatonin döngüsü 22:00–06:00 arası optimumdur. Bu pencerede uyumayan beyin derin uyku evrelerini eksik yaşar — sabah yorgun uyanmanın ana sebebi.\n\nBugün denklemi tersinden başlatıyorsun: erken yat, erken kalk. 21:30 yatış hedefiyle başla.",
+        "teachingDeep": "Berkeley Üniversitesi uyku bilimcisi Matthew Walker, 'Why We Sleep' (Neden Uyuruz) kitabında tek cümleyle özetliyor: 'Uykun ne kadar kısaysa, hayatın o kadar kısa.' Sadece şair değil — istatistik. Gece 6 saatten az uyuyanların kalp krizi riski 200% artıyor, kanser riski 40%, Alzheimer riski 33%.\n\nAma asıl tuzak burada değil. Asıl tuzak: 8 saat uyuyabilirsin AMA YANLIŞ PENCEREDE.\n\nWalker'ın araştırması net: deep slow-wave sleep (derin yavaş dalga uykusu) — beynin gerçek onarım fazı, hafıza konsolidasyonunun yapıldığı dönem — uykunun İLK 4 SAATİNDE yoğunlaşıyor. REM (rüya) uykusu ise SON 4 SAATTE. İkisinin de optimum penceresi: 22:00–06:00.\n\nEğer 02:00'de yatıp 10:00'da uyanırsan, 8 saat 'uyumuş' olursun ama melatonin dalgasını kaçırdın, derin uyku fazın eksik, REM evren bozuldu. Sabah 'uyudum ama dinlenmedim' hissi — bilim.\n\nMelatonin sirkadiyen ritimle yönetilir: saat 21:00 civarında yükselmeye başlar, 02:00 zirveye çıkar, 07:00 düşer. Şimdi telefonun blue light'ı (özellikle 480nm dalga boyu) melatonin üretimini DOĞRUDAN baskılar. Harvard araştırması: yatmadan önce 2 saat telefon kullanmak, melatonin başlangıcını 90 dakika geciktiriyor. Yani 21:00'de değil 22:30'da melatonin başlıyor — bütün döngü kaydı.\n\nKortizol ise tam tersi: 22:00'de en düşük, 06:00'da zirve. 'Uyanma hormonu' senin saatinden önce çalışıyor. 06:00'da kalkmıyorsan, kortizol piki seni uyanır halde yatakta yakalıyor — sonra düşüyor. 09:00'da uyandığında kortizol zaten azalmış. 'Groggy morning' (sersem sabah) hissinin nedeni bu.\n\nWalker yine: 'Uyku, doğanın bize verdiği tek ücretsiz ölümsüzlük iksiri.' Ama tek koşulla: doğru pencerede al.",
+        "practice": {
+          "instruction": "Şimdi telefonunda saat 21:30'a alarm kur. Alarmın adı: 'TELEFONU BIRAK.' Şu an yap, 60 saniyen var. Sonra ikinci adım: yatak odasında çalar saatin varsa, gece onu kullanacaksın — telefon başka odada şarjda. Eğer çalar saatin yoksa, bugün sipariş etme komutunu yaz.",
+          "seconds": 60,
+          "prompt": "21:30 alarmını kurarken hangi gerekçe geldi 'bu işe yaramaz' demek için? Beyninin uydurduğu bahaneyi yaz."
+        },
         "action": "Bu gece 21:30 yatağa gir. Telefonu yatak odasının dışına bırak. 22:00 uyumaya çalış.",
         "reflectionPrompt": "Erken yatmaya direnç gösteren ne oldu — beyninde hangi ses biraz daha dedi?",
+        "reflectionPrompts": [
+          "Geçen hafta kaç gece 22:00'den ÖNCE yatağa girdin? Eğer 0 ise, bu sayıyı görünce ne hissediyorsun?",
+          "Bu gece 21:30'da telefonu bırakmana ENGEL olacak şey ne? Ad ver: belirli bir dizi mi, belirli bir kişiyle yazışma mı, sadece 'son bir scroll' alışkanlığı mı?"
+        ],
+        "commitments": [
+          "Bu gece 21:30'da telefonu yatak odasından çıkaracağım — şarja başka odada",
+          "Kafeini bugün 14:00'ten sonra içmeyeceğim — yarı-ömrü 5-6 saat",
+          "21:00'dan sonra blue light yok — sadece kitap veya konuşma"
+        ],
         "quiz": [
           {
             "q": "Erken kalkmanın gerçek anahtarı?",
@@ -1669,6 +1933,52 @@
             ],
             "correct": 1,
             "explain": "22:00-06:00 arasında derin uyku derin olur."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "8 saat uyudun — 02:00'den 10:00'a. Ama gündüz yorgunsun. 'Yeterince uyumadım' demek yanlış. Asıl sorun ne?",
+            "options": [
+              "Belki rüya gördün — yorucu rüyalar",
+              "Yanlış pencere — 22-06 deep sleep penceresi kaçırıldı, REM eksik",
+              "Yemek — gece geç yemek yorgun yapar",
+              "Stres — uyku miktarı yetmiyor"
+            ],
+            "correct": 1,
+            "explain": "Matthew Walker: deep slow-wave sleep ilk 4 saatte yoğun, REM son 4 saatte. İkisi de melatonin döngüsüne bağlı (22-06). 02-10 arası uyku '8 saat' ama melatonin dalgası kaçırıldı, derin onarım eksik. 8 saat uyumak ≠ doğru uyumak."
+          },
+          {
+            "q": "'Ben gece insanıyım, doğam böyle' — gerçek mi efsane mi?",
+            "options": [
+              "Gerçek — herkesin kendi ritmi var",
+              "~%5 insan gerçek geç-kalkan kronotip; geri kalan %95 bunu sosyal alışkanlık olarak yapıyor",
+              "Tamamen efsane — herkesin ritmi aynı",
+              "Sadece sanatçılar için gerçek"
+            ],
+            "correct": 1,
+            "explain": "Kronotip araştırması (Roenneberg, Allebrandt): popülasyonun %5'i gerçek geç-kalkan ('owl' kronotipi). %95 için 'gece insanıyım' demek = 'gece telefonla yatıyorum, melatoninim kaydı, alışkanlık genetik gibi hissediyor.' İddianı sınamadın — bir hafta 22:00'de yat, sonra söyle."
+          },
+          {
+            "q": "Yatak odasında telefon = kaç kötülük? Sayıyabilirsin?",
+            "options": [
+              "1: sadece ışık",
+              "2: ışık ve bildirim",
+              "En az 3: blue light, scroll baştan çıkarma, gece kontrolü dürtüsü",
+              "Hiç: telefon zararsız bir alet"
+            ],
+            "correct": 2,
+            "explain": "Üç vuruş: (1) Blue light melatonini 90 dk geciktiriyor (Harvard). (2) Yatakta scroll = beyni uyanık tutmak, uykuya geçiş engelli. (3) Gece uyanırsan 'saat kaç' bakmak için açıyorsun, sonra yarım saat scroll. Yatak odası kuralı: telefon yok. Tartışma yok."
+          },
+          {
+            "q": "21:30 yatış hedefin var. En kritik tetikleyici ne? Telefon değil — başka bir şey.",
+            "options": [
+              "21:00'da telefonu bırakmak",
+              "19:00'dan sonra kafeini kesmek — kahve yarı-ömrü 5-6 saat",
+              "Sıkı yemek yememek",
+              "Soğuk duş almak"
+            ],
+            "correct": 1,
+            "explain": "Yarı-ömür 5-6 saat demek: 14:00'te içtiğin kahvenin yarısı hâlâ 20:00'de damarlarında. 22:00'de %25'i hâlâ aktif. Kafein melatonini doğrudan engelliyor (adenozin reseptörlerini blokluyor). Erken yatış sırrı çoğu zaman 14:00'te başlıyor, 21:00'de değil."
           }
         ],
         "proTip": "Yatma saatini \"günün en önemli randevusu\" olarak takvime ekle."

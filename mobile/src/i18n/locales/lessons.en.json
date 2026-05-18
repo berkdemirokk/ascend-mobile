@@ -122,10 +122,26 @@
         "proTip": "Addiction always waits for an excuse — \"just 5 minutes\" is that excuse."
       },
       "2": {
-        "title": "Kill Notifications",
+        "title": "Kill Notifications (Drain the Cortisol Bath in Your Brain)",
+        "hook": "How many notifications are sitting on your phone right now? If you don't know, you've already lost. Each ding — do you still feel that tiny tightening in your chest, or has it become your baseline?",
         "teaching": "Every notification creates a micro-explosion in your attention. Research: it takes 23 minutes to fully refocus after one notification.\n\nIf you get 50 notifications a day, you're never fully focused. Your brain is in constant 'is something incoming?' mode.\n\nNotifications don't serve you — they serve apps. Their growth metrics. You pay the cost.",
+        "teachingDeep": "In 2004, a scientist at UC Irvine — Gloria Mark — followed people in offices. When someone got interrupted, she measured how long it took them to return to full focus. The number should hit you: 23 minutes and 15 seconds.\n\nStop and think. You heard a notification. You didn't even look. Just the sound. 23 minutes later, your mind actually returns to the task. If you get 30 notifications a day — and you probably get many more — the math is simple: you're NEVER in full focus. Ever. You live the whole day at half attention.\n\nBut 23 minutes isn't the real story. Cortisol is.\n\nEvery notification sound triggers a small threat alarm in your brain — 'Something is happening, pay attention.' Your adrenal glands release cortisol. Cortisol is the stress hormone. Its half-life in your blood is 60-90 minutes. So 10 notifications = a steady cortisol bath, all day long. That tired-for-no-reason feeling? There's a reason. Your phone.\n\nThere's also 'phantom vibration syndrome' — a real term, named by Michelle Drouin in 2010. You feel your phone vibrate, you check, nothing's there. Because your brain is so primed waiting for the signal that it hallucinates the signal that didn't happen. You're not a person with a phone anymore. You're an extension of the phone.\n\nGood news: Pavlov works in reverse too. Cut the notifications, and the animal stops checking within a week. Your brain's new baseline takes 7 days. Today we start.\n\nBad news: if you don't do this TODAY, you won't. 'But I might miss something important' — that's the addiction speaking. People who actually matter will CALL you.",
+        "practice": {
+          "instruction": "Right now, go into your phone's Settings. Open Notifications. For the next 90 seconds, scroll the list top to bottom and TURN OFF every app's notifications. Keep only calls and direct messages. Don't think, don't question — turn it off. Stop when the timer ends.",
+          "seconds": 90,
+          "prompt": "Which app made you hesitate with 'what if I miss something'? Is that app actually important — or is your addiction shouting?"
+        },
         "action": "Turn OFF every notification on your phone. Keep only calls and direct messages. Do this now. If you postpone, you won't.",
         "reflectionPrompt": "Which notification was hardest to disable? Why?",
+        "reflectionPrompts": [
+          "Which app did you resist disabling the most? Who owns that resistance — you, or your brain's habit?",
+          "In the last week, was there a moment after a notification interrupted you where you actually noticed it took 23 minutes to return? Write it down."
+        ],
+        "commitments": [
+          "Today I will turn off all notifications, keeping only calls and DMs",
+          "Today I will put my phone on silent and away from my desk while working",
+          "Today I will check email and messages only at 2 specific batched times"
+        ],
         "quiz": [
           {
             "q": "Time to refocus after one notification?",
@@ -150,13 +166,75 @@
             "explain": "They serve apps' growth metrics, not you."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You're reading a book, phone nearby. A ding sounds. You didn't even look. 30 seconds later you tell yourself 'okay, moving on.' According to Gloria Mark's research, how long until your mind actually returns to the book?",
+            "options": [
+              "30 seconds — you didn't even look",
+              "5 minutes — slight distraction",
+              "23 minutes — full focus takes far longer",
+              "Zero — your subconscious worked through it"
+            ],
+            "correct": 2,
+            "explain": "UC Irvine, Gloria Mark, 2004: full refocus averages 23 minutes 15 seconds. You don't have to look — the sound ARRIVING is enough. Your brain switches loops to process the interruption."
+          },
+          {
+            "q": "You feel your phone vibrate. You check — nothing's there. What is this?",
+            "options": [
+              "Hardware fault — replace the phone",
+              "Phantom vibration syndrome — your brain hallucinates the signal",
+              "Muscle twitch — too much caffeine",
+              "Coincidence — don't think about it"
+            ],
+            "correct": 1,
+            "explain": "Michelle Drouin, 2010: phantom vibration syndrome. Your brain is so primed for the notification signal that it hallucinates vibrations that aren't there. Your phone has trained you, not the other way around."
+          },
+          {
+            "q": "You turned off all notifications. A week later you notice: you check your phone less. Why?",
+            "options": [
+              "I think my phone is broken",
+              "Pavlov worked in reverse — no cue, the reflex extinguishes",
+              "It got boring, lost interest",
+              "I developed willpower"
+            ],
+            "correct": 1,
+            "explain": "Classical conditioning runs both directions. Remove the sound → check loop's trigger, the reflex dies. Animals extinguish a conditioned response in about 7 days. Not willpower — physiology."
+          },
+          {
+            "q": "You say notifications are 'required' for work — Slack, email, team threads. What's the move?",
+            "options": [
+              "Make an exception, keep them on",
+              "Turn them all off, batch-check at 2 specific times a day",
+              "Only allow notifications from key people",
+              "Lower the notification volume but keep it on"
+            ],
+            "correct": 1,
+            "explain": "'Required' is the alibi. Cal Newport's 'deep work' research: the most productive teams disable notifications and batch-respond at fixed times. Real-time response = real-time cortisol. Two batched blocks = same output, zero interruption."
+          }
+        ],
         "proTip": "Turning off notifications isn't cutting communication — taking control."
       },
       "3": {
-        "title": "Social Media Fast",
+        "title": "Social Media Fast (Close the Casino in Your Pocket)",
+        "hook": "Your hand reached for the phone. You didn't decide — the hand was already there. Who's that? You, or the machine in your pocket that trained you?",
         "teaching": "Social media is one of the fastest dopamine sources. Infinite scroll, unpredictable content, social comparison — you've plugged your brain into an optimized exploitation machine.\n\nToday you start a test: 24 hours, no social media. Instagram, TikTok, Twitter, YouTube Shorts — all of it.\n\nThe first few hours will be hard. You'll auto-unlock your phone and reach for the app. This is 'phantom reaching.' Normal. It passes.",
+        "teachingDeep": "In 1957, B.F. Skinner put a pigeon in a box. When it pecked the lever, food sometimes came, sometimes didn't. Random. Compared to pigeons getting food on every peck, the random-reward pigeons pecked the lever 7 times more. Even after food was cut off completely, they kept pecking for days.\n\nSkinner called this 'intermittent reinforcement.' The most powerful conditioning schedule known in behavioral psychology. Casino logic. Slot machine logic.\n\nAnd your Instagram feed.\n\nEvery scroll is a pedal press. Sometimes a great post — food. Sometimes boring — nothing. Sometimes a vacation photo that makes you jealous — also food (cortisol triggers like dopamine does). Sometimes nothing. Your brain can never predict. That's why you can't stop. Predictable rewards don't condition the brain — UNPREDICTABLE ones do.\n\nNir Eyal's 'Hooked' model: Trigger → Action → Variable Reward → Investment. The notification triggers. You open it (action). Sometimes good, sometimes bad content (variable reward). Then you like, share, comment (investment — a reason to come back). This model is TAUGHT IN SILICON VALLEY. Your habit isn't yours — it's someone's design.\n\nNow do you understand 'phantom reaching'? Your hand moves BEFORE consciousness. Because you've been conditioned like Skinner's pigeon. You're not deciding. You're pecking the lever.\n\n24 hours isn't enough. But 24 hours is a START. Skinner's pigeons kept pecking for days after the food stopped — but eventually, the behavior extinguished. So will yours.\n\nDon't delete the app — too radical, you'll fail. Add friction. Move it into the 'Enemies' folder. Make every opening conscious. Remember: it's an enemy.",
+        "practice": {
+          "instruction": "Right now, open your phone's home screen. Find Instagram, TikTok, Twitter, YouTube — whatever you have. REMOVE them from the home screen (don't delete, just move). Create a new folder, name it 'Enemies.' Dump them all in. You have 60 seconds.",
+          "seconds": 60,
+          "prompt": "Which one made you think 'if I remove this, what will I do?' Whose thought is that — yours, or your addiction's?"
+        },
         "action": "Remove all social media apps from your home screen. Put them in a folder named 'Enemies.' Don't open any of them for 24 hours.",
         "reflectionPrompt": "When did the urge 'just one quick check' come up? What were you feeling at that moment?",
+        "reflectionPrompts": [
+          "In the last 24 hours, how many times did your hand reach for the phone BEFORE your consciousness? Not a guess — actually count. What does that number tell you?",
+          "Inside the 'I might miss something important' fear (FOMO) — has there ever ACTUALLY been an important thing you missed? Or is the fear engineered?"
+        ],
+        "commitments": [
+          "Today I will not touch social media apps for 24 hours",
+          "I will move social media apps into the 'Enemies' folder, off the home screen",
+          "Every time phantom reaching happens, I will stop my hand and ask 'what am I feeling right now?'"
+        ],
         "quiz": [
           {
             "q": "What is \"phantom reaching\"?",
@@ -181,13 +259,75 @@
             "explain": "24 hours breaks the habit on first try."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You're on the 24-hour fast. Hour 14. Your hand reached the phone, and by the time you ask 'am I opening it?', the hand is already there. What is this?",
+            "options": [
+              "Willpower weakness — try harder",
+              "Phantom reaching — Skinner conditioning, habit not need",
+              "A real need — your body is telling you something",
+              "Error — the practice doesn't work"
+            ],
+            "correct": 1,
+            "explain": "You're conditioned like Skinner's pigeon. Consciousness comes second, reflex first. This isn't willpower — it's physiology. Noticing is the start of taking control back."
+          },
+          {
+            "q": "A friend shared an 'important' post and you missed it — you feel anxious. What's the cost-benefit?",
+            "options": [
+              "The anxiety is valid — social connection is lost",
+              "FOMO is engineered — a real friend would CALL you",
+              "One quick check won't hurt",
+              "Missing the post excludes you"
+            ],
+            "correct": 1,
+            "explain": "FOMO didn't appear by accident — app designers ENGINEERED this emotion to pull you back. If something is actually important, a real friend texts or calls. What gets lost in your feed isn't important — what's important to them is YOU getting lost from the feed."
+          },
+          {
+            "q": "'Just one check.' What does Skinner's intermittent reinforcement research say about this?",
+            "options": [
+              "Once is fine, try it",
+              "Intermittent reinforcement is the strongest conditioning — one check = food, the loop restarts",
+              "It's willpower, you should control it",
+              "One look doesn't hurt but creates addiction"
+            ],
+            "correct": 1,
+            "explain": "1957 Skinner: pigeons conditioned on intermittent reinforcement kept pecking the lever for DAYS after food was cut off. Variable reward = strongest reinforcement schedule. Your 'one check' is food. The brain doesn't reset the loop — it restarts from zero."
+          },
+          {
+            "q": "24 hours done. You succeeded. Does it make sense to reward yourself with 30 minutes of scrolling?",
+            "options": [
+              "Yes, you earned it — controlled reward",
+              "No — it restarts the loop, the 24-hour neural gain is erased",
+              "Time-box it, set an alarm",
+              "Consume only 'healthy' content"
+            ],
+            "correct": 1,
+            "explain": "Your brain was just starting to settle to baseline. Now 30 minutes of scroll = feeding Skinner's pigeon. The lever-pressing behavior reloads. 24 hours is a gain, a starting point — not a finish line."
+          }
+        ],
         "proTip": "24-hour fast is the first true digital silence for most."
       },
       "4": {
         "title": "Cut Junk Content",
+        "hook": "How many minutes have you consumed 'content' since you woke up today? Now stop and ask yourself: how many of those minutes will you remember tomorrow? If the answer is near zero, you aren't consuming content — content is consuming you.",
         "teaching": "Junk content = empty calories for your brain. Random YouTube videos, Reddit scrolling, news refreshing, podcasts only as background.\n\nWhat you don't notice: this content isn't just making you dumber — it's making you an accessory. Your brain gets used to consuming others' thoughts and forgets how to produce its own.\n\nToday we install a filter: every piece of content you consume must serve a purpose.",
+        "teachingDeep": "In 2010, Nicholas Carr wrote a book called 'The Shallows.' He asked one question: 'Is the internet changing my brain?' The answer horrified him.\n\nCarr noticed — and fMRI scans later confirmed — that the brain of a heavy internet user is not the same brain as a book reader's. Skim reading, rapid switching, jumping from headline to headline — it physically rewires the brain. Neural pathways for deep reading weaken; pathways for skimming thicken.\n\nCarr wrote: 'I used to be a scuba diver — I would descend into the depth of ideas. Now I water-ski — I race across the surface.' That's not just lament. It's a description of the brain's new shape.\n\nDopamine rewards novelty. Every new video, every new headline, every new Reddit thread — your brain reads it as 'fresh,' drips dopamine. But here's the trap: your brain treats novelty like food. It never digests it.\n\nConsumption is passive. Content enters your brain but never connects. Production is active. Writing, drawing, explaining — these build neural networks. Only production creates depth; consumption only creates breadth.\n\nThe test is simple: of the 10 videos you watched today, will you remember 1 tomorrow? 30 days from now? For most, the answer is 'no.' Which means those hours you spent passed through a corner of your brain but left nothing. Water-skiing.\n\nToday, become the scuba diver again.",
+        "practice": {
+          "instruction": "Right now, take your phone. Delete from your home screen OR move into the 'Enemies' folder these apps: YouTube, Reddit, Twitter/X, Instagram, TikTok, news apps. You have 90 seconds. Fast.",
+          "seconds": 90,
+          "prompt": "Which app did you resist deleting/moving the most? Did your brain say 'but I need this'? What was the excuse it invented?"
+        },
         "action": "Don't consume any content today. Only produce. Write, draw, walk and think, have a real conversation. No information consumption today.",
         "reflectionPrompt": "How many times today did you feel 'information hunger'? What was that hunger really for?",
+        "reflectionPrompts": [
+          "Write down the last YouTube/TikTok video you watched — its title, its topic, what you learned. If you can't remember, what does that tell you?",
+          "What did you do in the hours you didn't consume content today? What did the emptiness turn into — boredom, real thought, or another escape?"
+        ],
+        "commitments": [
+          "I will remove YouTube/Reddit/news apps from my home screen today",
+          "I won't run podcasts or videos in the background while working",
+          "I will write at least 1 page today — not about anything I consumed, my own thought"
+        ],
         "quiz": [
           {
             "q": "What is junk content?",
@@ -212,13 +352,75 @@
             "explain": "Producing is more nourishing than consuming."
           }
         ],
+        "scenarioQuiz": [
+          {
+            "q": "You watched 30 minutes of YouTube. At the end your feeling: 'I learned nothing.' What actually happened in your brain?",
+            "options": [
+              "Fatigue — too much info to digest",
+              "Skim-mode activation — dopamine fired, no deep processing",
+              "Bad luck — the videos were weak, find a better algorithm",
+              "Interest problem — should have watched a topic you love"
+            ],
+            "correct": 1,
+            "explain": "Nicholas Carr's 'shallows': your brain got the novelty dopamine (every video title felt fresh) but the information never bonded with neurons. Deep reading pathway weak, skim pathway thick. The fault isn't the video — it's the mode."
+          },
+          {
+            "q": "'I listen to podcasts in the background while working — so I both produce and learn.' What does this strategy actually achieve?",
+            "options": [
+              "Double win — work and knowledge",
+              "Neither — the brain can't focus on two things at once, just escape from boredom",
+              "Half win — a little work, a little knowledge",
+              "Creative context — combines ideas"
+            ],
+            "correct": 1,
+            "explain": "The brain doesn't multitask; it rapid task-switches — every switch raises cortisol and errors. Cal Newport's 'Deep Work': background audio only gives you the illusion of 'I'm working.' The real issue: you're running from the discomfort of silence."
+          },
+          {
+            "q": "Is reading the morning newspaper also 'junk content'? Our fathers have read newspapers for decades.",
+            "options": [
+              "Yes, all news — all junk",
+              "Context matters — print newspaper 20 min, has an end; news app infinite scroll feed = junk",
+              "No, all print is fine",
+              "Only sports papers are junk"
+            ],
+            "correct": 1,
+            "explain": "The issue isn't content, it's FORMAT. A print newspaper has an end (front to back), bounded information. A news app is infinite feed, algorithmic exploitation, dopamine pedal. Same news, two completely different brain effects."
+          },
+          {
+            "q": "Today your consumption dropped to zero. By evening: 'I didn't lose anything today but I didn't do anything either.' What did you actually gain?",
+            "options": [
+              "Nothing — wasted day",
+              "Context loss — everyone knows something, I don't",
+              "Deep thinking capacity — brain switched to digest mode",
+              "Just rested, no achievement"
+            ],
+            "correct": 2,
+            "explain": "Without consumption your brain finally enters 'digest mode.' Information integrates, ideas connect, your own voice returns. The feeling may say 'empty' but at the neural level construction is running. Recognize this feeling — real production is built on it."
+          }
+        ],
         "proTip": "Junk content = empty calories. Producing = nourishment."
       },
       "5": {
         "title": "Allow Boredom",
+        "hook": "In the last 24 hours, how many MINUTES did you leave your brain empty? Not waiting — even in a queue you have a phone in your hand. Doing NOTHING. If the answer is 'less than 5 minutes,' you aren't just digital-consuming — you're suffocating your creativity.",
         "teaching": "Modern life is programmed to fill every empty moment. Phone in the elevator. Phone in the bathroom. Headphones while walking. Video while eating.\n\nResult: your brain never enters idle mode. Creativity is born in idle mode. Solutions come in idle mode. Self-knowledge happens in idle mode.\n\nBoredom isn't a sickness — it's a signal. Your brain saying: 'I need empty time.' Listen to it.",
+        "teachingDeep": "In 2001, a neurologist named Marcus Raichle at Washington University noticed something strange: his subjects' brains were metabolically very active even when they were 'doing nothing.' In fact — shockingly — the brain burns only about 5% MORE energy in 'task mode' (math, reading) than in 'rest mode.' The brain in idle is almost as hot as the brain at work.\n\nRaichle named this network the Default Mode Network (DMN). What does DMN do? The brain's 'background tasks': memory consolidation, meaning-making, thinking about yourself, planning the future, creative combinations. DMN runs in silence — when you're 'bored.'\n\nNow the dangerous part: DMN activates only when external stimulation is gone. Phone = DMN killer. The moment you open your phone in the elevator, DMN shuts down, attention switches to an external task.\n\nCal Newport calls this 'Digital Minimalism.' Modern humans have closed the brain's creative workshop because 'empty moments' produce fear — the unease of boredom. But that unease IS the warm-up pain of the DMN. It passes in 2-3 minutes; then deep thinking begins.\n\nIn Aristotle's school in Athens, students 'walked while thinking' — peripatetic philosophy. Nietzsche walked in the mountains. Steve Jobs held his negotiations on walks. Not coincidence — while walking there are NO headphones, NO screen, DMN open, ideas wander.\n\nAs a child you'd say 'Mom, I'm bored.' Mom said 'go play.' Boredom was the gateway to creativity. Now the second you say 'I'm bored' the phone is open — the gate locked before it could be knocked on.\n\nToday we open the gate again.",
+        "practice": {
+          "instruction": "Right now, sit down or look out a window. Put your phone on the floor or somewhere you can't see it. No music, no book, no external stimulation. For 2 minutes, do NOTHING. Just let your thoughts go wherever they go. When you get bored — perfect, keep going.",
+          "seconds": 120,
+          "prompt": "At what second did the first wave of unease arrive? After it passed, where did your brain go — past, future, something you've never thought about?"
+        },
         "action": "Do nothing for 30 minutes today. No phone, no music, no book. Just sit or walk. Observe your thoughts. If you get bored, great — keep going.",
         "reflectionPrompt": "What thought emerged in your mind by the end of 30 minutes? Were you aware of it before?",
+        "reflectionPrompts": [
+          "Today when you found an 'empty moment' during the day (queue, elevator, waiting) what was your reflex? How many times did you STOP yourself from reaching for the phone?",
+          "When was the last time you got a new idea while completely bored? If you can't remember, how long has your brain's DMN been shut off?"
+        ],
+        "commitments": [
+          "I won't wear headphones while walking today — at least 1 walk",
+          "In elevators, queues, bathrooms I won't reach for my phone — I'll let DMN run",
+          "In the evening I'll just look out a window for 10 minutes — phone in another room"
+        ],
         "quiz": [
           {
             "q": "Boredom's real message?",
@@ -241,6 +443,52 @@
             ],
             "correct": 1,
             "explain": "Idle mode = where creative seeds germinate."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You're waiting 30 seconds at a supermarket cashier. The line is moving. Your reflex is the phone. This automatic reaction blocks what?",
+            "options": [
+              "Nothing — you're using empty time well",
+              "DMN activation — your brain's self-directed thinking",
+              "Social politeness — you should look around",
+              "Stress — long lines cause stress"
+            ],
+            "correct": 1,
+            "explain": "Marcus Raichle's DMN research: 30 seconds is enough for the brain to return to its 'background tasks.' Memory consolidation, creative combination, thinking about yourself — they all start in those 30 seconds. Phone = cancellation of that opportunity."
+          },
+          {
+            "q": "'When I'm bored I get creative' — what do you say to someone who says this?",
+            "options": [
+              "Romantic myth — outdated thinking",
+              "True — Raichle and DMN research backed, boredom is the fuel of creativity",
+              "Maybe for some people",
+              "Only for artists"
+            ],
+            "correct": 1,
+            "explain": "DMN research since 2001 is clear: creative insights arrive 'while doing nothing.' The neurobiology of the 'Aha!' moment requires DMN to be open. This isn't myth — it's verified science."
+          },
+          {
+            "q": "As a child you'd say 'Mom, I'm bored.' What did your mother say? What do you have in your hand now to fill that emptiness?",
+            "options": [
+              "Mom turned on TV, now it's phone — nothing changed",
+              "Mom said 'go play,' your brain produced solutions; now the phone says 'go scroll'",
+              "Mom always gave a task, the phone doesn't",
+              "Childhood is different, adults don't get bored"
+            ],
+            "correct": 1,
+            "explain": "We lost the emptiness. 30 years ago saying 'I'm bored' was a beginning — now it's an end. When mom said 'go play' she opened the door; the phone says 'go scroll' and closes it. Same boredom, two completely different fates."
+          },
+          {
+            "q": "Walking without headphones — what kind of mental exercise is it?",
+            "options": [
+              "Boring — you just hear street noise",
+              "Letting DMN out on the street — thoughts wander, meaning emerges; peripatetic philosophy",
+              "Dangerous — attention scattered",
+              "Useless — you're already thinking while walking"
+            ],
+            "correct": 1,
+            "explain": "Aristotle was a 'peripatetic' philosopher — he thought while walking. Nietzsche walked in the mountains. Jobs held his negotiations on walks. Not coincidence — while walking DMN is fully open, street noise becomes background rhythm for the brain. Headphones = DMN closed."
           }
         ],
         "proTip": "Don't fear boredom — creativity lives there."
@@ -1644,9 +1892,25 @@
     "silent-morning": {
       "1": {
         "title": "The Key to Waking Early: Sleep Early",
+        "hook": "The reason you can't get up at 5 AM is not the alarm. It's that you went to bed at 1 AM. And the reason you were awake until 1 AM is the phone. You are carrying a sleep killer in your pocket and you ask why you wake up tired.",
         "teaching": "The secret of waking early is not the morning hour, it is the night hour. Without bringing bedtime earlier, waking early is not sustainable.\n\nThe melatonin cycle is optimal between 22:00 and 06:00. Brains that do not sleep in this window miss deep sleep stages, the main reason for tired mornings.\n\nToday you reverse the equation: sleep early, wake early. Start with a 21:30 bedtime goal.",
+        "teachingDeep": "Berkeley sleep scientist Matthew Walker, in 'Why We Sleep,' sums it up in one line: 'The shorter your sleep, the shorter your life.' Not a poet's metaphor — statistics. People who sleep less than 6 hours a night raise heart-attack risk by 200%, cancer risk by 40%, Alzheimer risk by 33%.\n\nBut the real trap isn't there. The real trap: you can sleep 8 hours AND IN THE WRONG WINDOW.\n\nWalker's research is clear: deep slow-wave sleep — the brain's true repair phase, the period of memory consolidation — is concentrated in the FIRST 4 HOURS of sleep. REM (dream) sleep is in the LAST 4 HOURS. Both have the same optimal window: 22:00–06:00.\n\nIf you sleep at 02:00 and wake at 10:00, you've 'slept' 8 hours but you missed the melatonin wave, your deep-sleep phase was incomplete, your REM cycles were disrupted. The morning feeling of 'I slept but didn't rest' — that's science.\n\nMelatonin is governed by the circadian rhythm: it starts rising around 21:00, peaks at 02:00, drops by 07:00. The blue light from your phone (specifically the 480nm wavelength) directly suppresses melatonin production. Harvard research: 2 hours of phone use before bed delays melatonin onset by 90 minutes. So melatonin starts at 22:30 instead of 21:00 — the entire cycle shifts.\n\nCortisol is the opposite: lowest at 22:00, peaks at 06:00. The 'wake hormone' is firing before you even rise. If you don't wake at 06:00, the cortisol peak catches you awake in bed — then declines. By 09:00 when you wake, cortisol is already falling. That's the 'groggy morning' feeling.\n\nWalker again: 'Sleep is the only free elixir of immortality nature has given us.' But on one condition: take it in the right window.",
+        "practice": {
+          "instruction": "Right now, set a 21:30 alarm on your phone. Name it: 'PUT DOWN THE PHONE.' Do this now, 60 seconds. Then the second step: if you have a real alarm clock in your bedroom, you'll use that — phone charges in another room. If you don't have a clock, write down the order command to buy one today.",
+          "seconds": 60,
+          "prompt": "While setting the 21:30 alarm, what excuse came up to say 'this won't work'? Write down the rationalization your brain invented."
+        },
         "action": "Tonight, get in bed by 21:30. Leave the phone outside the bedroom. Try to sleep by 22:00.",
         "reflectionPrompt": "What resisted sleeping early?",
+        "reflectionPrompts": [
+          "How many nights last week did you actually get to bed BEFORE 22:00? If it's 0, how do you feel seeing that number?",
+          "What will block you from putting the phone down at 21:30 tonight? Name it: a specific show, a chat with a specific person, or just the 'one last scroll' habit?"
+        ],
+        "commitments": [
+          "I will move the phone out of the bedroom at 21:30 tonight — charging in another room",
+          "I won't drink caffeine after 14:00 today — half-life is 5-6 hours",
+          "No blue light after 21:00 — only a book or conversation"
+        ],
         "quiz": [
           {
             "q": "Real key to waking early?",
@@ -1669,6 +1933,52 @@
             ],
             "correct": 1,
             "explain": "Deep sleep happens between 22:00-06:00."
+          }
+        ],
+        "scenarioQuiz": [
+          {
+            "q": "You slept 8 hours — from 02:00 to 10:00. But you're tired during the day. Saying 'I didn't sleep enough' is wrong. What's the real problem?",
+            "options": [
+              "Maybe you dreamed — tiring dreams",
+              "Wrong window — 22-06 deep sleep window missed, REM incomplete",
+              "Food — late dinner makes you tired",
+              "Stress — sleep quantity isn't enough"
+            ],
+            "correct": 1,
+            "explain": "Matthew Walker: deep slow-wave sleep is heavy in the first 4 hours, REM in the last 4. Both bound to the melatonin cycle (22-06). 02-10 sleep is '8 hours' but you missed the melatonin wave, deep repair was incomplete. 8 hours of sleep ≠ correct sleep."
+          },
+          {
+            "q": "'I'm a night person, that's my nature' — truth or myth?",
+            "options": [
+              "Truth — everyone has their own rhythm",
+              "~5% of people are genuine late chronotypes; the other 95% do it as a social habit",
+              "Total myth — everyone's rhythm is the same",
+              "Only true for artists"
+            ],
+            "correct": 1,
+            "explain": "Chronotype research (Roenneberg, Allebrandt): 5% of the population is a true late chronotype ('owl'). For the other 95%, 'I'm a night person' means 'I sleep with the phone, my melatonin shifted, the habit feels genetic.' You haven't tested the claim — try sleeping at 22:00 for a week, then say it."
+          },
+          {
+            "q": "Phone in the bedroom = how many evils? Can you count them?",
+            "options": [
+              "1: just the light",
+              "2: light and notification",
+              "At least 3: blue light, scroll temptation, night-check impulse",
+              "None: phone is a harmless tool"
+            ],
+            "correct": 2,
+            "explain": "Three hits: (1) Blue light delays melatonin by 90 min (Harvard). (2) Scrolling in bed = brain awake, sleep onset blocked. (3) If you wake at night you check 'what time is it,' then scroll for half an hour. Bedroom rule: no phone. Not negotiable."
+          },
+          {
+            "q": "Your goal is a 21:30 bedtime. What's the most critical trigger? It's not the phone — something else.",
+            "options": [
+              "Putting the phone down at 21:00",
+              "Cutting caffeine after 14:00 — coffee half-life is 5-6 hours",
+              "Not eating a heavy dinner",
+              "Taking a cold shower"
+            ],
+            "correct": 1,
+            "explain": "Half-life of 5-6 hours means: the coffee you drank at 14:00 still has half in your bloodstream at 20:00. At 22:00, 25% is still active. Caffeine blocks melatonin directly (it blocks adenosine receptors). The secret of an early bedtime often starts at 14:00, not 21:00."
           }
         ],
         "proTip": "Put your bedtime in the calendar as \"the most important appointment of the day.\""
