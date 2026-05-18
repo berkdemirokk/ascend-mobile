@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
+import { createContext, useContext, useReducer, useEffect, useCallback, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS, checkLevelUp } from '../config/constants';
 import { checkAchievements, checkSpecialAchievements } from '../config/achievements';
@@ -986,22 +986,34 @@ export function AppProvider({ children }) {
   // Re-evaluated on every state change to total-lessons / streak / install
   // age so the pushes self-cancel as soon as the user makes progress.
   // See services/notifications.js → scheduleNewUserNudges for the rules.
-  useEffect(() => {
-    if (!state._loaded) return;
-    const totalCompleted = Object.values(state.pathProgress || {}).reduce(
+  //
+  // Derived `totalLessonsForNudges` is memoized off pathProgress so the
+  // effect deps below depend on a stable NUMBER, not the path-progress
+  // object reference. Without this, every reducer dispatch (including
+  // unrelated ones like dailyMood, mysteryBox, custom-goal check-in)
+  // spawned a fresh pathProgress object and re-fired the notification
+  // schedule — thrashing the OS notification queue dozens of times per
+  // session. The only signal that should re-trigger this push schedule
+  // is the actual completion count change.
+  const totalLessonsForNudges = useMemo(
+    () => Object.values(state.pathProgress || {}).reduce(
       (s, p) => s + (p?.completed?.length || 0),
       0,
-    );
+    ),
+    [state.pathProgress],
+  );
+  useEffect(() => {
+    if (!state._loaded) return;
     scheduleNewUserNudges({
       installedAt: state.installedAt,
       currentStreak: state.currentStreak || 0,
-      totalLessonsCompleted: totalCompleted,
+      totalLessonsCompleted: totalLessonsForNudges,
     }).catch(() => {});
   }, [
     state._loaded,
     state.installedAt,
     state.currentStreak,
-    state.pathProgress,
+    totalLessonsForNudges,
   ]);
 
   // ── Push streak to public leaderboard whenever it changes ────────────────

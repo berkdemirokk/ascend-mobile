@@ -106,6 +106,8 @@
     "createAccountSub": "İlk dersini ücretsiz aç.",
     "namePlaceholder": "Adın",
     "passwordTooShort": "Şifre en az 6 karakter olmalı.",
+    "passwordHint": "En az 6 karakter",
+    "tagline": "Disiplin. Odak. Tekrar.",
     "signupSuccess": "Kayıt başarılı",
     "signupSuccessBody": "E-postanı kontrol et ve doğrulama linkine tıkla. Sonra giriş yap.",
     "signupWithEmail": "E-posta ile kayıt ol",

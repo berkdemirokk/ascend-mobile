@@ -106,6 +106,8 @@
     "createAccountSub": "Unlock your first lesson, free.",
     "namePlaceholder": "Your name",
     "passwordTooShort": "Password must be at least 6 characters.",
+    "passwordHint": "At least 6 characters",
+    "tagline": "Discipline. Focus. Repeat.",
     "signupSuccess": "Signup successful",
     "signupSuccessBody": "Check your email and click the verification link, then sign in.",
     "signupWithEmail": "Sign up with email",

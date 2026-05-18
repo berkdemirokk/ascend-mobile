@@ -1771,7 +1771,7 @@ export default function LessonScreen({ navigation, route }) {
                 <View style={styles.mirrorCard}>
                   <Text style={styles.mirrorLabel}>
                     {firstName
-                      ? t('lesson.mirrorLabelPersonal', { name: firstName.toUpperCase() })
+                      ? t('lesson.mirrorLabelPersonal', '{{name}}, A SAGE RESPONDS', { name: firstName.toUpperCase() })
                       : t('lesson.mirrorLabel', 'A SAGE RESPONDS')}
                   </Text>
                   <Text style={styles.mirrorQuote}>{mirrorQuote}</Text>

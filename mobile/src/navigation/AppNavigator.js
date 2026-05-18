@@ -14,18 +14,46 @@ import { useTranslation } from 'react-i18next';
 // taps, deep links). Exposed via `navigateFromAnywhere` below.
 export const navigationRef = createNavigationContainerRef();
 
+// Pending deep-link queue. When a notification is tapped on cold-boot,
+// the response listener fires before `NavigationContainer` is ready.
+// We queue the target here and flush it once `onReady` fires.
+// Only the LAST pending target is kept — older ones are stale.
+let _pendingNav = null;
+
 /**
  * Navigate from non-React code (e.g., a notification action handler).
- * No-ops if the navigator isn't ready yet (e.g., user tapped the
- * notification before the app finished cold-booting); the caller is
- * responsible for retrying or queueing if that case matters.
+ * If the navigator is ready, navigates immediately and returns true.
+ * If not (cold-boot from a notification tap), the target is queued
+ * and flushed when `NavigationContainer.onReady` fires. Returns false
+ * in that case so callers can log the deferred state if useful.
  */
 export const navigateFromAnywhere = (name, params) => {
   if (navigationRef.isReady()) {
     navigationRef.navigate(name, params);
     return true;
   }
+  // Queue for flush on NavigationContainer onReady
+  _pendingNav = { name, params };
   return false;
+};
+
+/**
+ * Called by NavigationContainer.onReady — flushes any deferred deep-link
+ * from a cold-boot notification tap. Idempotent: only one pending target
+ * is kept, and it's cleared after flush.
+ */
+const flushPendingNav = () => {
+  if (!_pendingNav) return;
+  const { name, params } = _pendingNav;
+  _pendingNav = null;
+  try {
+    if (navigationRef.isReady()) {
+      navigationRef.navigate(name, params);
+    }
+  } catch {
+    // Ignore — if navigation fails after ready, it's a transient
+    // condition we can't safely recover from here.
+  }
 };
 
 import { useApp } from '../contexts/AppContext';
@@ -159,7 +187,7 @@ export default function AppNavigator() {
   const needsAuth = !isAuthenticated && !guestMode;
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer ref={navigationRef} onReady={flushPendingNav}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,

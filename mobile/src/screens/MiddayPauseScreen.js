@@ -44,21 +44,24 @@ const getTodayKey = () => {
 
 // 4-7-8 breath. 1.5 cycles = 28.5s (inhale4 + hold7 + exhale8 + inhale4 +
 // hold4-truncated). Total fits the 30-second budget for Block B.
+// Hardcoded fallback per phase so the label never renders the raw i18n
+// key on screen if the locale block is missing or fails to load. This
+// is a defensive pattern used by every other t() site in the codebase.
 const BREATH_PHASES = [
-  { id: 'inhale', seconds: 4, labelKey: 'midday.middayBreathInhale' },
-  { id: 'hold',   seconds: 7, labelKey: 'midday.middayBreathHold' },
-  { id: 'exhale', seconds: 8, labelKey: 'midday.middayBreathExhale' },
-  { id: 'inhale', seconds: 4, labelKey: 'midday.middayBreathInhale' },
-  { id: 'hold',   seconds: 4, labelKey: 'midday.middayBreathHold' },
+  { id: 'inhale', seconds: 4, labelKey: 'midday.middayBreathInhale', fallback: 'Nefes al' },
+  { id: 'hold',   seconds: 7, labelKey: 'midday.middayBreathHold',   fallback: 'Tut' },
+  { id: 'exhale', seconds: 8, labelKey: 'midday.middayBreathExhale', fallback: 'Ver' },
+  { id: 'inhale', seconds: 4, labelKey: 'midday.middayBreathInhale', fallback: 'Nefes al' },
+  { id: 'hold',   seconds: 4, labelKey: 'midday.middayBreathHold',   fallback: 'Tut' },
   // Truncated final hold so we don't overrun 30 seconds. The user has
   // already done a full 4-7-8 cycle + a fresh 4-inhale + a brief 4-hold,
   // which feels complete without dragging.
 ];
 
 const MOOD_OPTIONS = [
-  { id: 'high',  emoji: '🔥',     labelKey: 'midday.middayMoodHigh' },
-  { id: 'mid',   emoji: '😐',     labelKey: 'midday.middayMoodMid' },
-  { id: 'tired', emoji: '😮‍💨', labelKey: 'midday.middayMoodTired' },
+  { id: 'high',  emoji: '🔥',     labelKey: 'midday.middayMoodHigh',  fallback: 'Yüksek' },
+  { id: 'mid',   emoji: '😐',     labelKey: 'midday.middayMoodMid',   fallback: 'Orta' },
+  { id: 'tired', emoji: '😮‍💨', labelKey: 'midday.middayMoodTired', fallback: 'Yorgun' },
 ];
 
 export default function MiddayPauseScreen({ navigation }) {
@@ -151,7 +154,7 @@ export default function MiddayPauseScreen({ navigation }) {
       : null;
 
   const breathLabel = currentPhase
-    ? `${t(currentPhase.labelKey)} · ${currentPhase.seconds}`
+    ? `${t(currentPhase.labelKey, currentPhase.fallback)} · ${currentPhase.seconds}`
     : breathDone
       ? t('midday.middayBreathDone', '✓')
       : t('midday.middayBreathStart', 'Başlat');
