@@ -102,6 +102,65 @@ export const buildTransformationReport = (state) => {
   const currentStreak = state.currentStreak || 0;
   const longestStreak = state.longestStreak || 0;
 
+  // ── Average reflection length ──────────────────────────────────────
+  // Per-reflection word average — tells the user "you write thoughtful
+  // reflections" or "you scribble" without judgement. Just data.
+  const nonEmptyReflections = reflectionTexts.filter(
+    (t) => String(t || '').trim().length > 0,
+  );
+  const avgReflectionWords =
+    nonEmptyReflections.length > 0
+      ? Math.round(totalReflectionWords / nonEmptyReflections.length)
+      : 0;
+
+  // ── Most challenging path (lowest quiz accuracy) ──────────────────
+  // Per-path quiz accuracy from completePathLesson's stored quizCorrect.
+  // For each path: sum(quizCorrect across completed lessons) / (lessons
+  // completed × assumed 2 quiz per lesson). It's an estimate but
+  // directionally accurate.
+  let mostChallengingPath = null;
+  let mostChallengingAccuracy = 1.0;
+  for (const [pathId, p] of Object.entries(state.pathProgress || {})) {
+    const completedCount = p?.completed?.length || 0;
+    if (completedCount < 3) continue; // need signal — skip tiny samples
+    const totalCorrect = Object.values(p?.quizCorrect || {}).reduce(
+      (s, n) => s + (Number(n) || 0),
+      0,
+    );
+    const estimatedTotalQuestions = completedCount * 2;
+    const accuracy =
+      estimatedTotalQuestions > 0
+        ? totalCorrect / estimatedTotalQuestions
+        : 1.0;
+    if (accuracy < mostChallengingAccuracy) {
+      mostChallengingAccuracy = accuracy;
+      mostChallengingPath = pathId;
+    }
+  }
+
+  // ── Weekly average (lessons per week since first activity) ────────
+  // First active day determines the timeframe. Total lessons / weeks.
+  let weeklyAvg = 0;
+  const lessonDates = Object.keys(lessonHistory).sort();
+  if (lessonDates.length > 0) {
+    const firstDate = new Date(lessonDates[0]);
+    const daysSinceFirst =
+      Math.max(1, Math.floor((Date.now() - firstDate.getTime()) / 86400000));
+    const weeksSinceFirst = Math.max(1, daysSinceFirst / 7);
+    weeklyAvg = Math.round((lessonsTotal / weeksSinceFirst) * 10) / 10;
+  }
+
+  // ── Consistency % (active days / days-since-first-activity) ───────
+  // The proof-of-discipline metric. 100% means lesson every day, 50%
+  // means every other day, etc.
+  let consistencyPct = 0;
+  if (lessonDates.length > 0) {
+    const firstDate = new Date(lessonDates[0]);
+    const daysSinceFirst =
+      Math.max(1, Math.floor((Date.now() - firstDate.getTime()) / 86400000));
+    consistencyPct = Math.round((activeDays / daysSinceFirst) * 100);
+  }
+
   return {
     // Core counts
     lessonsTotal,
@@ -115,17 +174,25 @@ export const buildTransformationReport = (state) => {
 
     // Path progress
     pathStats,
+    mostChallengingPath,
+    mostChallengingAccuracy: Math.round(mostChallengingAccuracy * 100), // 0-100
 
     // Reflections
     totalReflectionWords,
+    avgReflectionWords,
     topReflectionTopics,
+    reflectionsCount: nonEmptyReflections.length,
 
     // Mood
     onboardingMood,
     recentMood,
     moodShifted,
 
-    // Time-of-day inference (TODO — needs hour granularity in logs)
+    // Time pattern (TODO — needs hour granularity in logs)
     activeHourLabel,
+
+    // Cadence
+    weeklyAvg,
+    consistencyPct,
   };
 };

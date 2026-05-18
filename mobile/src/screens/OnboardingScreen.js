@@ -67,6 +67,26 @@ export default function OnboardingScreen({ navigation }) {
     setActivePath(selectedPath);
     completeOnboarding();
 
+    // "First win in 60 seconds" (#2A retention move) — drop the user
+    // straight into Lesson 1 of the path they just picked, instead of
+    // dumping them on Home with 4+ cards to parse. The user just told
+    // us what they want; honoring that immediately is the strongest
+    // possible D1 retention move (Stoic + Habitica both do this).
+    // Small delay so AppNavigator's onboarded-state transition lands
+    // and the Onboarding stack unmounts cleanly before we navigate.
+    setTimeout(() => {
+      try {
+        navigation?.navigate?.('Lesson', {
+          pathId: selectedPath,
+          lessonId: `${selectedPath}-1`,
+        });
+      } catch (e) {
+        // Navigation may fail if the user backed out fast; fall back
+        // to default Home landing. No user-visible error needed.
+        console.warn('[onboarding] auto-start lesson failed:', e?.message);
+      }
+    }, 350);
+
     // Sequenced post-onboarding flow (Apple-compliant ordering):
     //   1. Notification permission (5.1.1 — ask at meaningful moment)
     //   2. ATT prompt (App Tracking Transparency)
@@ -86,8 +106,10 @@ export default function OnboardingScreen({ navigation }) {
           // New user → currentStreak is 0, so scheduleDailyReminder
           // will pick the "begin monk mode" variant (not the streak-
           // formatted one). Pass explicitly to keep the API contract
-          // clean and obvious.
-          scheduleDailyReminder({ currentStreak: 0 }).catch(() => {});
+          // clean and obvious. firstName from onboarding answers (or
+          // empty if they didn't enter a name on this build).
+          const firstName = (answers.name || '').split(/\s+/)[0] || '';
+          scheduleDailyReminder({ currentStreak: 0, firstName }).catch(() => {});
           scheduleWeeklyRecap().catch(() => {});
         }
       } catch {}

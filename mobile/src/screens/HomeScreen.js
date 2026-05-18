@@ -27,13 +27,16 @@ import {
 import LightTopAppBar from '../components/LightTopAppBar';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
-import DailyQuoteCard from '../components/DailyQuoteCard';
-import LessonQueueCard from '../components/LessonQueueCard';
-import DailyMysteryBox from '../components/DailyMysteryBox';
-import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
+import TodayHeroCard from '../components/TodayHeroCard';
+import WhatToDoCard from '../components/WhatToDoCard';
+import DailyRitualsCarousel from '../components/DailyRitualsCarousel';
+import YourWhyCard from '../components/YourWhyCard';
+import CustomGoalCard from '../components/CustomGoalCard';
+import AdaptiveCoachCard from '../components/AdaptiveCoachCard';
+import { REWARDS as MYSTERY_REWARDS } from '../components/DailyMysteryBox';
+import { getAdaptiveSuggestion } from '../services/adaptiveCoach';
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
-import DailyPlanCard from '../components/DailyPlanCard';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import { generateDailyPlan } from '../services/dailyPlanGenerator';
 import {
@@ -52,7 +55,9 @@ import {
   dominantReflectionCategory,
   collectReflectionTexts,
 } from '../services/reflectionSignals';
+import { getFirstName } from '../services/displayName';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
+import { useAppMood } from '../hooks/useAppMood';
 
 export default function HomeScreen({ navigation }) {
   const { t } = useTranslation();
@@ -82,6 +87,21 @@ export default function HomeScreen({ navigation }) {
     hearts,
     heartsRefillAt,
     refillHearts,
+    earnHeart,
+    dailyLessonsCount,
+    dailyGoalTarget,
+    userWhy,
+    setUserWhy,
+    anonUsername,
+    customGoal,
+    setCustomGoal,
+    clearCustomGoal,
+    checkInCustomGoal,
+    setActivePath,
+    middayPauseCompletedAt,
+    eveningCloseCompletedAt,
+    tomorrowIntent,
+    friendPair,
   } = useApp();
 
   // Day-bucket booleans for the per-day cards. Stable across re-renders
@@ -94,6 +114,53 @@ export default function HomeScreen({ navigation }) {
   const moodPickedToday = dailyMoodCheckInDate === todayDateStr
     ? dailyMoodCheckInValue
     : null;
+
+  // Midday Pause pill visibility — only between 12:00 and 16:00 local
+  // time. Two states:
+  //   • Waiting: not done today → prominent pill, taps into the modal.
+  //   • Done:    completed today → soft check pill, still tappable
+  //     (user can re-enter to read the quote / re-breathe) but visually
+  //     subordinated so it doesn't fight with TodayHeroCard.
+  // Outside the window the pill hides entirely so Home stays clean.
+  const middayHour = new Date().getHours();
+  const middayWindowOpen = middayHour >= 12 && middayHour < 16;
+  const middayDoneToday = middayPauseCompletedAt === todayDateStr;
+  const showMiddayPill = middayWindowOpen;
+
+  // Evening Close pill visibility — only between 18:00 and 22:30 local
+  // time. Same two-state pattern as Midday: prominent when waiting,
+  // soft check when done. The window starts earlier than 20:30 so an
+  // early-evening user sees the affordance before the push fires.
+  // 22:30 cutoff keeps it off Home after the practical "go to bed"
+  // window has closed.
+  const eveningNow = new Date();
+  const eveningHour = eveningNow.getHours();
+  const eveningMinute = eveningNow.getMinutes();
+  // 18:00 ≤ now < 22:30. Mapped to integer minutes-since-midnight for
+  // a single clean comparison.
+  const eveningMins = eveningHour * 60 + eveningMinute;
+  const eveningWindowOpen = eveningMins >= 18 * 60 && eveningMins < 22 * 60 + 30;
+  const eveningDoneToday = eveningCloseCompletedAt === todayDateStr;
+  const showEveningPill = eveningWindowOpen;
+
+  // Per-session adaptive coach dismiss. Once dismissed, the banner
+  // hides until the next app launch (not persisted) — so the user
+  // isn't pestered, but a fresh signal can re-surface tomorrow.
+  const [adaptiveDismissed, setAdaptiveDismissed] = useState(false);
+
+  // Compute the adaptive suggestion off pathProgress + activePathId.
+  // Memoized so we only recompute when one of those actually changes;
+  // the hot path is cheap (5-element rolling avg) but useMemo keeps
+  // child renders stable.
+  const adaptiveSuggestion = useMemo(
+    () =>
+      getAdaptiveSuggestion({
+        pathProgress,
+        activePathId,
+        isPremium,
+      }),
+    [pathProgress, activePathId, isPremium],
+  );
 
   // OutOfHearts gating — Home has three entry points into a lesson
   // (today CTA button, lesson queue card, 3+ streak auto-route). Without
@@ -240,12 +307,13 @@ export default function HomeScreen({ navigation }) {
     );
   }, [pathProgress]);
 
-  const totalLessons = PATHS.reduce((s, p) => s + p.duration, 0);
+  // Time-aware UI mood — drives a subtle full-screen tint overlay (and,
+  // later, copy tone). See hooks/useAppMood.js for the hour→palette
+  // table. Re-evaluates every 10 minutes so the night palette kicks in
+  // for users who keep the app open past 22:00.
+  const mood = useAppMood({ currentStreak, totalCompleted });
 
-  const handleStartLesson = () => {
-    if (!currentLesson) return;
-    attemptStartLesson(currentLesson.pathId, currentLesson.id);
-  };
+  const totalLessons = PATHS.reduce((s, p) => s + p.duration, 0);
 
   // Existing users (App Store update from a build < 53) finished onboarding
   // before the ATT-then-init-ads flow existed, so AdMob never booted for
@@ -298,17 +366,100 @@ export default function HomeScreen({ navigation }) {
   //   2. Supabase auth metadata (signup or Apple Sign-In full name)
   //   3. The local part of the email (e.g. "berk@x.com" -> "berk")
   //   4. Generic fallback string
-  const profileName = userProfile?.name?.trim();
-  const metaName = user?.user_metadata?.name?.trim();
-  const emailLocal = (user?.email || '').split('@')[0];
-  const username =
-    profileName ||
-    metaName ||
-    (emailLocal ? capitalize(emailLocal) : t('home.greetingName', 'Disiplinci'));
+  // Display name resolution centralized in services/displayName.js
+  // so every surface (Home, Lesson, Notifications, Mirror) addresses
+  // the user by the SAME name with the SAME priority order.
+  const username = getFirstName({
+    userProfile,
+    user,
+    anonUsername,
+    fallback: t('home.greetingName', 'Disiplinci'),
+  });
   const greeting = getGreeting(t);
+  // Stoic conditional subtitle. Reads `currentStreak` and
+  // `totalCompleted` from context so a returning user with prior
+  // progress doesn't get the same "first day" line as a brand-new
+  // install. Falls back to the original generic line — same JSX
+  // slot, only the text changes.
+  //
+  // HIGHEST-PRIORITY branch: when the user picked a "tomorrow intent"
+  // during last night's Evening Close and `today` matches that
+  // intent's target date, surface it as the subtitle. This is the
+  // hand-off that closes the daily ritual cycle: the user's own
+  // commitment from yesterday greets them this morning.
+  const subtitleText = (() => {
+    const hour = new Date().getHours();
+    const streak = currentStreak || 0;
+    const completed = totalCompleted || 0;
+    // Tomorrow-intent hand-off — fire only in the morning so the line
+    // doesn't compete with the streak-risk evening branches. We treat
+    // "morning" generously (before 18:00) to handle late risers.
+    if (
+      tomorrowIntent
+      && tomorrowIntent.date === todayDateStr
+      && hour < 18
+    ) {
+      const intentLabelMap = {
+        discipline: t('eveningClose.intentDiscipline', 'Disiplin'),
+        focus: t('eveningClose.intentFocus', 'Odak'),
+        calm: t('eveningClose.intentCalm', 'Sakinlik'),
+      };
+      const intentLabel = intentLabelMap[tomorrowIntent.intent];
+      if (intentLabel) {
+        return t(
+          'home.intentSubtitle',
+          'Bugün için niyetin: {{intent}}.',
+          { intent: intentLabel },
+        );
+      }
+    }
+    if (streak === 0 && completed === 0) {
+      return t(
+        'home.subtitleColdStart',
+        'Bugün hiçbir şey yapmadın. Yarına geçmek için bahane hazır mı?',
+      );
+    }
+    if (streak === 0 && completed > 0) {
+      return t(
+        'home.subtitleReturned',
+        'Geri döndün. Bu da bir şey. Şimdi otur.',
+      );
+    }
+    if (streak >= 7 && hour < 10) {
+      return t(
+        'home.subtitleEarlyDisciplined',
+        'Erken kalktın. Çoğu kalkmaz.',
+      );
+    }
+    if (hour >= 23 || hour < 5) {
+      return t(
+        'home.subtitleLateNight',
+        'Saat geç. Sessizlik, başkasının yapmadığı disiplindir.',
+      );
+    }
+    return t('home.subtitle', 'Disiplin yolunda bir gün daha. Hadi başla.');
+  })();
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      {/* Time-aware mood tint — additive overlay, never intercepts touches.
+          zIndex 0 keeps it behind every existing child (they layer naturally
+          via DOM order). */}
+      {mood.tintColor && mood.tintOpacity > 0 ? (
+        <View
+          pointerEvents="none"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: mood.tintColor,
+            opacity: mood.tintOpacity,
+            zIndex: 0,
+          }}
+        />
+      ) : null}
       <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
 
       <LightTopAppBar
@@ -325,61 +476,78 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.greetingBlock}>
           <Text style={styles.greetingLabel}>{greeting}</Text>
           <Text style={styles.greetingName}>{username}</Text>
-          <Text style={styles.greetingSubtitle}>
-            {t(
-              'home.subtitle',
-              'Disiplin yolunda bir gün daha. Hadi başla.',
-            )}
-          </Text>
+          <Text style={styles.greetingSubtitle}>{subtitleText}</Text>
         </View>
 
-        {/* Streak Hero Card */}
-        <TouchableOpacity
-          style={styles.streakHero}
-          onPress={() => setStreakInfoVisible(true)}
-          activeOpacity={0.9}
-        >
-          <View style={styles.streakHeroLeft}>
-            <Text style={styles.streakHeroLabel}>
-              {t('home.currentStreak', 'MEVCUT SERİ')}
-            </Text>
-            <View style={styles.streakHeroNumberRow}>
-              <Text style={styles.streakHeroNumber}>{currentStreak}</Text>
-              <MaterialIcons
-                name="local-fire-department"
-                size={42}
-                color={LT.primaryContainer}
-              />
-            </View>
-            <Text style={styles.streakHeroSub}>
-              {t('home.daysStrong', 'GÜN')}
-            </Text>
-          </View>
-          <View style={styles.streakHeroRight}>
-            <Text style={styles.streakBestLabel}>
-              {t('home.longestStreak', 'EN UZUN')}
-            </Text>
-            <Text style={styles.streakBest}>{longestStreak || 0}</Text>
-            <Text style={styles.streakBestSub}>
-              {t('home.daysStrong', 'GÜN')}
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        {/* Habit chain — last 7 days */}
-        <View style={styles.chainRow}>
-          {chainDays.map((d) => (
-            <View
-              key={d.key}
+        {/* Midday Pause pill — small affordance between 12:00 and 16:00.
+            Two states: waiting (red, prominent) and done (muted check).
+            Outside the window the pill hides entirely so Home is clean
+            for the rest of the day. Doesn't replace existing copy —
+            slots in as a ~32px-tall row between greeting and TodayHero. */}
+        {showMiddayPill ? (
+          <TouchableOpacity
+            style={[
+              styles.middayPill,
+              middayDoneToday && styles.middayPillDone,
+            ]}
+            onPress={() => navigation.navigate('MiddayPause')}
+            activeOpacity={0.85}
+          >
+            <Text
               style={[
-                styles.chainDot,
-                d.active && styles.chainDotActive,
-                d.isToday && styles.chainDotToday,
-                d.isToday && d.active && styles.chainDotTodayActive,
+                styles.middayPillText,
+                middayDoneToday && styles.middayPillTextDone,
               ]}
-            />
-          ))}
-        </View>
+            >
+              {middayDoneToday
+                ? t('midday.middayCompletePill', '✓ Öğle Molası tamam')
+                : t('midday.middayWaitingPill', '🕐 Öğle Molası bekliyor')}
+            </Text>
+          </TouchableOpacity>
+        ) : null}
+
+        {/* Evening Close pill — mirror of the Midday pill but for the
+            18:00-22:30 window. Same two-state pattern: prominent when
+            waiting, soft check when done. Taps into the EveningClose
+            modal where the user closes the daily ritual cycle. */}
+        {showEveningPill ? (
+          <TouchableOpacity
+            style={[
+              styles.middayPill,
+              eveningDoneToday && styles.middayPillDone,
+            ]}
+            onPress={() => navigation.navigate('EveningClose')}
+            activeOpacity={0.85}
+          >
+            <Text
+              style={[
+                styles.middayPillText,
+                eveningDoneToday && styles.middayPillTextDone,
+              ]}
+            >
+              {eveningDoneToday
+                ? t('eveningClose.pillDone', '✓ Günü kapattın')
+                : t('eveningClose.pillWaiting', '🌙 Günü kapat (3 dk)')}
+            </Text>
+          </TouchableOpacity>
+        ) : null}
+
+        {/* TodayHeroCard — merges streak hero + 7-day chain + daily goal
+            into a single block. Replaces three previously stacked cards
+            so the Home feed leads with one focused "today" status pane. */}
+        <TodayHeroCard
+          currentStreak={currentStreak}
+          longestStreak={longestStreak || 0}
+          chainDays={chainDays}
+          dailyLessonsCount={dailyLessonsCount}
+          dailyGoalTarget={dailyGoalTarget}
+          onPress={() => setStreakInfoVisible(true)}
+        />
+
+        {/* "Your Why" pinned card — the user's own self-stated reason
+            for being here. Strongest emotional re-engagement surface
+            in the app; user sees their past commitment every open. */}
+        <YourWhyCard userWhy={userWhy} onSave={setUserWhy} />
 
         {/* Weekend Premium offer — only Sat/Sun, nudges high-intent users */}
         {isWeekendOffer && !isPremium ? (
@@ -403,43 +571,27 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         ) : null}
 
-        {/* Daily Mystery Challenge */}
-        {dailyChallenge ? (
-          <TouchableOpacity
-            onPress={dailyChallengeDone ? undefined : () => completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)}
-            activeOpacity={dailyChallengeDone ? 1 : 0.85}
-            style={[
-              styles.challengeCard,
-              dailyChallengeDone && styles.challengeCardDone,
-            ]}
-          >
-            <View style={styles.challengeIconBox}>
-              <Text style={styles.challengeIcon}>{dailyChallenge.icon}</Text>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.challengeLabel}>
-                {dailyChallengeDone
-                  ? t('home.challengeDone', 'BUGÜNÜN BONUSU TAMAMLANDI')
-                  : t('home.challengeLabel', 'BUGÜNÜN BONUSU · +25 XP')}
-              </Text>
-              <Text style={styles.challengeTitle}>
-                {t(dailyChallenge.titleKey, dailyChallenge.titleFallback)}
-              </Text>
-              <Text style={styles.challengeBody} numberOfLines={2}>
-                {t(dailyChallenge.bodyKey, dailyChallenge.bodyFallback)}
-              </Text>
-            </View>
-            {dailyChallengeDone ? (
-              <MaterialIcons name="check-circle" size={26} color={LT.primaryContainer} />
-            ) : (
-              <MaterialIcons name="bolt" size={22} color={LT.primary} />
-            )}
-          </TouchableOpacity>
-        ) : null}
+        {/* WhatToDoCard — single "start a lesson" surface. Internally
+            switches between premium daily plan, free CTA, and all-done
+            celebration. Replaces DailyPlanCard + LessonQueueCard +
+            inline Today's CTA section. */}
+        <WhatToDoCard
+          isPremium={isPremium}
+          plan={dailyPlan}
+          currentLesson={currentLesson}
+          activePath={activePath}
+          pathProgress={pathProgress}
+          onStartLesson={(pathId, lessonId) =>
+            attemptStartLesson(pathId, lessonId)
+          }
+          onViewPaths={() =>
+            navigation.navigate('MainTabs', { screen: 'Paths' })
+          }
+          onUpgradeTap={() => navigation.navigate('Paywall')}
+        />
 
         {/* Weekend Boost Banner — only renders Sat/Sun. Premium: gold
-            "active" celebration banner. Free: pink upsell CTA → paywall.
-            Premium becomes a QUALITATIVE difference, not just no-ads. */}
+            "active" celebration banner. Free: pink upsell CTA → paywall. */}
         <WeekendBoostBanner
           isPremium={isPremium}
           onUpgradeTap={() => navigation.navigate('Paywall')}
@@ -447,8 +599,7 @@ export default function HomeScreen({ navigation }) {
 
         {/* Streak Risk Banner — loss-aversion prompt shown ONLY when
             (a) user has a streak >= 2, (b) today is not yet done,
-            (c) it's 18:00+, (d) not on vacation. Drives 30-40% of
-            evening sessions in habit apps. */}
+            (c) it's 18:00+, (d) not on vacation. */}
         <StreakRiskBanner
           currentStreak={currentStreak}
           todayCompleted={todayCompleted}
@@ -460,119 +611,89 @@ export default function HomeScreen({ navigation }) {
           }}
         />
 
-        {/* Daily Plan — Premium "smart coach" picks 3 lessons for the
-            user based on their signals. Free users see an upsell teaser. */}
-        <DailyPlanCard
-          plan={dailyPlan}
-          isPremium={isPremium}
-          onStartLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
+        {/* DailyRitualsCarousel — horizontally swipeable row that merges
+            four previously full-width cards (daily challenge, mystery
+            box, mood check-in, daily quote). Each tile preserves its
+            core action; the carousel just stacks them horizontally so
+            the Home feed reclaims ~600px of vertical space. */}
+        <DailyRitualsCarousel
+          challenge={dailyChallenge}
+          challengeDone={dailyChallengeDone}
+          onCompleteChallenge={() =>
+            completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)
           }
-          onUpgradeTap={() => navigation.navigate('Paywall')}
-        />
-
-        {/* Lesson Queue — surfaces the next uncompleted lesson so users
-            can one-tap into their next session. Removes decision fatigue
-            (which is the #1 churn cause for habit apps per Duolingo data). */}
-        <LessonQueueCard
-          activePathId={activePathId}
-          pathProgress={pathProgress}
-          onPressLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
-          }
-        />
-
-        {/* Daily Mystery Box — variable-reward retention mechanic. One
-            open per calendar day, random reward (XP, streak freeze, or
-            rare bonus). Variable rewards are the most-addictive
-            reinforcement pattern in behavioral psychology — the
-            casino/social-media loop. Big retention lever. */}
-        <DailyMysteryBox
-          alreadyOpenedToday={mysteryBoxOpenedToday}
+          alreadyOpenedBox={mysteryBoxOpenedToday}
           lastReward={dailyMysteryBoxLastReward}
-          onOpen={openMysteryBox}
-        />
-
-        {/* Daily Mood Check-in — refreshes the mood personalization
-            signal each calendar day so the daily challenge adapts to
-            how the user actually feels today, not their one-time
-            onboarding answer. Collapses to a pill once picked. */}
-        <DailyMoodCheckIn
+          rewards={MYSTERY_REWARDS}
+          onOpenBox={openMysteryBox}
           todayMood={moodPickedToday}
-          onPick={setDailyMood}
+          onPickMood={setDailyMood}
+          moodOptions={[
+            { id: 'motivated', emoji: '🔥' },
+            { id: 'fresh', emoji: '☀️' },
+            { id: 'lost', emoji: '😶‍🌫️' },
+          ]}
         />
 
-        {/* Daily Stoic / discipline quote — fresh per calendar day, same
-            for all devices. Anchor of the "morning routine" of opening
-            the app: novelty + value before asking for any action. */}
-        <DailyQuoteCard />
+        {/* Friend Code pill — single line, two states:
+              • unpaired: invite-style "🤝 Disiplin ortağı bul"
+              • paired:   live "🔥 [partner]: N gün"
+            Taps into the FriendCode modal in both cases. */}
+        <TouchableOpacity
+          style={[
+            styles.friendPill,
+            friendPair && styles.friendPillPaired,
+          ]}
+          onPress={() => navigation.navigate('FriendCode')}
+          activeOpacity={0.85}
+        >
+          <Text
+            style={[
+              styles.friendPillText,
+              friendPair && styles.friendPillTextPaired,
+            ]}
+            numberOfLines={1}
+          >
+            {friendPair
+              ? t('friendCode.homePillPaired', '🔥 {{name}}: {{streak}} gün', {
+                  name: friendPair.partnerName,
+                  streak: friendPair.partnerStreak || 0,
+                })
+              : t('friendCode.homePillUnpaired', '🤝 Disiplin ortağı bul')}
+          </Text>
+          <MaterialIcons
+            name="chevron-right"
+            size={18}
+            color={friendPair ? LT.onSurface : LT.onPrimary}
+          />
+        </TouchableOpacity>
 
-        {/* Today's CTA Card */}
-        <View style={styles.ctaCard}>
-          <View style={styles.ctaCardHeader}>
-            <Text style={styles.ctaCardLabel}>
-              {t('home.todayCta', 'BUGÜNÜN GÖREVİ')}
-            </Text>
-            <View style={styles.ctaPathBadge}>
-              <MaterialIcons
-                name={activePath.materialIcon}
-                size={12}
-                color={LT.onSurfaceVariant}
-              />
-              <Text style={styles.ctaPathBadgeText}>
-                {t(`paths.${activePath.id}.shortTitle`, activePath.id)}
-              </Text>
-            </View>
-          </View>
-          <Text style={styles.ctaTitle}>
-            {currentLesson
-              ? t(
-                  `lessons.${currentLesson.pathId}.${currentLesson.order}.title`,
-                  `${t('path.lessonLabel', 'Ders')} ${currentLesson.order}`,
-                )
-              : t('home.allDone', 'Tüm dersleri tamamladın 🎉')}
-          </Text>
-          <Text style={styles.ctaDescription}>
-            {currentLesson
-              ? t(
-                  `lessons.${currentLesson.pathId}.${currentLesson.order}.summary`,
-                  t(
-                    'home.ctaGenericSub',
-                    'Bugünün adımı seni bekliyor. ~5 dakika.',
-                  ),
-                )
-              : t(
-                  'home.allDoneSub',
-                  'Yeni yola geçebilir veya tekrar pratiği yapabilirsin.',
-                )}
-          </Text>
-          {currentLesson ? (
-            <TouchableOpacity
-              style={styles.ctaButton}
-              onPress={handleStartLesson}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.ctaButtonText}>
-                {t('home.startNow', 'PRATİĞE BAŞLA')}
-              </Text>
-              <MaterialIcons
-                name="arrow-forward"
-                size={20}
-                color={LT.onPrimary}
-              />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              style={[styles.ctaButton, styles.ctaButtonSecondary]}
-              onPress={() => navigation.navigate('MainTabs', { screen: 'Paths' })}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.ctaButtonTextSecondary}>
-                {t('home.viewPaths', 'YOLLARA GÖZAT')}
-              </Text>
-            </TouchableOpacity>
-          )}
-        </View>
+        {/* Adaptive Coach — reads rolling quiz accuracy and surfaces a
+            mastery nudge ("try a harder path") or a "slow down" reminder
+            ("re-read before pushing forward"). Per-session dismissible. */}
+        {!adaptiveDismissed && adaptiveSuggestion ? (
+          <AdaptiveCoachCard
+            suggestion={adaptiveSuggestion}
+            onSwitchPath={(pid) => {
+              if (pid) setActivePath(pid);
+              navigation.navigate('MainTabs', { screen: 'Paths' });
+            }}
+            onOpenPaths={() =>
+              navigation.navigate('MainTabs', { screen: 'Paths' })
+            }
+            onDismiss={() => setAdaptiveDismissed(true)}
+          />
+        ) : null}
+
+        {/* Custom Personal Goal — user-defined target alongside the
+            curriculum. Empty state = soft prompt; active state = progress
+            bar + daily check-in. Biggest single "this app knows me" lever. */}
+        <CustomGoalCard
+          customGoal={customGoal}
+          onSave={setCustomGoal}
+          onCheckIn={checkInCustomGoal}
+          onClear={clearCustomGoal}
+        />
 
         {/* Quick Stats Strip */}
         <View style={styles.statsStrip}>
@@ -667,7 +788,10 @@ export default function HomeScreen({ navigation }) {
         refillAt={heartsRefillAt}
         onClose={() => setOutOfHeartsVisible(false)}
         onRefill={() => {
-          refillHearts();
+          // Rewarded-ad path → +1 heart only (capped at 5). Watching
+          // an ad shouldn't reset the heart pool to full — it should
+          // reward one continuation, matching Duolingo's model.
+          earnHeart();
           setOutOfHeartsVisible(false);
         }}
         onPaywall={() => {
@@ -1172,5 +1296,79 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     color: LT.onSurfaceVariant,
+  },
+
+  // Midday Pause pill — small (~32px), sits between greeting and TodayHero
+  middayPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 32,
+    paddingHorizontal: 14,
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 12,
+    borderRadius: LT_RADIUS.pill,
+    backgroundColor: LT.primaryContainer,
+    shadowColor: LT.primaryContainer,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.18,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  middayPillDone: {
+    // Less prominent once the user is done — soft surface, no shadow,
+    // hairline border. Still tappable so they can re-enter the screen.
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  middayPillText: {
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+    color: LT.onPrimary,
+  },
+  middayPillTextDone: {
+    color: LT.onSurfaceVariant,
+  },
+
+  // Friend Code pill — sits below DailyRitualsCarousel. Two states:
+  // unpaired (filled red, prompts the user to invite) and paired (soft
+  // surface, shows partner's streak). Single line by design — the
+  // accountability surface is "look how they're doing", not a feed.
+  friendPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderRadius: LT_RADIUS.pill,
+    backgroundColor: LT.primaryContainer,
+    shadowColor: LT.primaryContainer,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.22,
+    shadowRadius: 12,
+    elevation: 4,
+  },
+  friendPillPaired: {
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  friendPillText: {
+    flex: 1,
+    fontSize: 13,
+    fontWeight: '900',
+    letterSpacing: 0.4,
+    color: LT.onPrimary,
+  },
+  friendPillTextPaired: {
+    color: LT.onSurface,
   },
 });

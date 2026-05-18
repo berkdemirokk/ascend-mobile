@@ -479,6 +479,7 @@ export default function ProfileScreen({ navigation }) {
         visible={reportVisible}
         report={transformationReport}
         isPremium={isPremium}
+        anonUsername={anonUsername}
         onClose={() => setReportVisible(false)}
         onUpgradeTap={() => {
           setReportVisible(false);

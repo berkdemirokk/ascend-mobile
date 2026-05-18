@@ -28,6 +28,7 @@ import {
   scheduleDailyReminder,
   cancelAllNotifications,
 } from '../services/notifications';
+import { AI_PERSONALIZE_FEATURE_ENABLED } from '../services/aiPersonalize';
 import { restorePurchases } from '../services/purchases';
 import { setMuted, isMuted } from '../services/sounds';
 import {
@@ -53,6 +54,9 @@ export default function SettingsScreen({ navigation }) {
     endVacation,
     anonUsername,
     currentStreak,
+    userProfile,
+    aiPersonalizeActive,
+    setAiPersonalizeEnabled,
   } = useApp();
 
   const vacationActive = (() => {
@@ -160,6 +164,30 @@ export default function SettingsScreen({ navigation }) {
     if (value) hapticImpactLight();
   };
 
+  const toggleAiPersonalize = (value) => {
+    // Premium gate: free users see the row + can read what it does, but
+    // physically can't flip it on (cost reason — every "on" lesson is
+    // two Claude calls). Tapping when free → paywall prompt.
+    if (value && !isPremium) {
+      Alert.alert(
+        t('aiCoach.premiumRequired', 'Premium gerekli'),
+        t(
+          'aiCoach.premiumRequiredBody',
+          'Kişiselleştirilmiş AI koç sadece Premium üyelere açık. Her ders öncesi ve sonrasında sana özel mesajlar al.',
+        ),
+        [
+          { text: t('common.cancel', 'İptal'), style: 'cancel' },
+          {
+            text: t('common.goPremium', "Premium'a geç"),
+            onPress: () => navigation.navigate('Paywall'),
+          },
+        ],
+      );
+      return;
+    }
+    setAiPersonalizeEnabled(value);
+  };
+
   const handleRestore = async () => {
     if (restoring) return;
     setRestoring(true);
@@ -210,7 +238,11 @@ export default function SettingsScreen({ navigation }) {
         return;
       }
       try {
-        await scheduleDailyReminder({ currentStreak });
+        // Pass the user's first name so the reminder body is
+        // personalized ("Berk, take today's step" vs the generic).
+        const firstName =
+          (userProfile?.name || '').trim().split(/\s+/)[0] || '';
+        await scheduleDailyReminder({ currentStreak, firstName });
       } catch (e) {
         console.warn('schedule daily reminder failed:', e?.message);
       }
@@ -236,7 +268,7 @@ export default function SettingsScreen({ navigation }) {
     Alert.alert(
       t('settings.signOutTitle', 'Çıkış yap'),
       t(
-        'settings.signOutBody',
+        'settings.signOutConfirm',
         'Hesabından çıkış yapmak istediğine emin misin? İlerlemen bu cihazda kalacak.',
       ),
       [
@@ -422,7 +454,7 @@ export default function SettingsScreen({ navigation }) {
 
             {/* Haptics toggle — service was created earlier but the
                 UI to toggle it was missing. Mirrors sounds toggle. */}
-            <View style={styles.row}>
+            <View style={[styles.row, styles.rowBorder]}>
               <View style={styles.rowLeft}>
                 <View>
                   <Text style={styles.rowLabel}>{t('settings.haptics')}</Text>
@@ -438,6 +470,45 @@ export default function SettingsScreen({ navigation }) {
                 thumbColor={LT.surfaceContainerLowest}
               />
             </View>
+
+            {/* AI Personalization toggle (Layer B) — premium-only.
+                Free users see the row but the switch can't go on; tapping
+                while free routes to the paywall.
+                Hidden entirely when the feature flag is off — the row
+                stays in the codebase so flipping the flag back on in
+                aiPersonalize.js immediately restores the UI. */}
+            {AI_PERSONALIZE_FEATURE_ENABLED ? (
+            <View style={styles.row}>
+              <View style={styles.rowLeft}>
+                <View style={{ flex: 1 }}>
+                  <View style={styles.aiRowTitleRow}>
+                    <Text style={styles.rowLabel}>
+                      {t('aiCoach.settingsLabel', 'Kişiselleştirilmiş AI Koç')}
+                    </Text>
+                    {!isPremium ? (
+                      <MaterialIcons
+                        name="workspace-premium"
+                        size={14}
+                        color={LT.primaryContainer}
+                      />
+                    ) : null}
+                  </View>
+                  <Text style={styles.rowSub}>
+                    {t(
+                      'aiCoach.settingsSub',
+                      'Her dersin başında ve sonunda sana özel mesajlar',
+                    )}
+                  </Text>
+                </View>
+              </View>
+              <Switch
+                value={!!aiPersonalizeActive}
+                onValueChange={toggleAiPersonalize}
+                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
+                thumbColor={LT.surfaceContainerLowest}
+              />
+            </View>
+            ) : null}
           </Section>
 
           {/* Account */}
@@ -796,6 +867,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     marginTop: 2,
+  },
+  aiRowTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
   },
   rowValue: {
     color: LT.onSurfaceVariant,

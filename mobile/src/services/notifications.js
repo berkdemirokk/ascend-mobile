@@ -22,10 +22,21 @@ const EVENING_REMINDER_ID = 'ascend-evening-reminder';
 const WEEKLY_RECAP_ID = 'ascend-weekly-recap';
 const STREAK_AT_RISK_ID = 'ascend-streak-at-risk';
 const COMEBACK_ID = 'ascend-comeback';
+const FIRST_LESSON_NUDGE_ID = 'ascend-first-lesson-nudge';
+const D3_HABIT_FORMING_ID = 'ascend-d3-habit-forming';
+const MIDDAY_PAUSE_ID = 'ascend-midday-pause';
+const EVENING_CLOSE_ID = 'ascend-evening-close';
 
 // Category IDs — pre-registered with the system so notifications can
 // declare which set of action buttons they want. Set in setupNotifCategories.
 const CAT_LESSON_REMINDER = 'ascend.lesson-reminder';
+// Midday Pause has its own action button ("Aç" / "Open") and its own
+// navigation target (the MiddayPause modal), so it gets a separate
+// category id from the lesson-reminder family.
+const CAT_MIDDAY_PAUSE = 'ascend.midday-pause';
+// Evening Close mirrors Midday Pause: own action button + deep-link
+// target (the EveningClose modal). Closes the daily ritual cycle.
+const CAT_EVENING_CLOSE = 'ascend.evening-close';
 
 /**
  * Register notification categories with iOS so notifications referencing
@@ -42,6 +53,30 @@ export const setupNotifCategories = async () => {
         buttonTitle: i18n.t('notifications.actionStartLesson'),
         options: {
           // Open the app to handle the action. Required for navigation.
+          opensAppToForeground: true,
+        },
+      },
+    ]);
+    // Midday Pause has its own "Aç" / "Open" action that deep-links to
+    // the MiddayPause modal. Separate category so the response listener
+    // can disambiguate from the lesson-reminder family.
+    await Notifications.setNotificationCategoryAsync(CAT_MIDDAY_PAUSE, [
+      {
+        identifier: 'open_midday_pause',
+        buttonTitle: i18n.t('notifications.actionOpenMiddayPause'),
+        options: {
+          opensAppToForeground: true,
+        },
+      },
+    ]);
+    // Evening Close: same pattern as Midday Pause. Action button +
+    // body tap both deep-link into the EveningClose modal via the
+    // response listener below.
+    await Notifications.setNotificationCategoryAsync(CAT_EVENING_CLOSE, [
+      {
+        identifier: 'open_evening_close',
+        buttonTitle: i18n.t('notifications.actionOpenEveningClose'),
+        options: {
           opensAppToForeground: true,
         },
       },
@@ -72,6 +107,20 @@ export const setupNotifResponseListener = () => {
     responseSub = Notifications.addNotificationResponseReceivedListener(
       (response) => {
         const action = response?.actionIdentifier;
+        const category =
+          response?.notification?.request?.content?.categoryIdentifier;
+        // Midday Pause: deep-link to the dedicated modal. Both the
+        // body tap and the "Aç" action button route here.
+        if (category === CAT_MIDDAY_PAUSE) {
+          navigateFromAnywhere('MiddayPause');
+          return;
+        }
+        // Evening Close: same shape as Midday Pause. Body tap +
+        // "Aç" action both open the EveningClose modal.
+        if (category === CAT_EVENING_CLOSE) {
+          navigateFromAnywhere('EveningClose');
+          return;
+        }
         // The category buttons report their identifier. The "default"
         // identifier means the user tapped the notification body.
         const isStartLesson =
@@ -116,16 +165,18 @@ export const requestNotificationPermissions = async () => {
 
 /**
  * Schedule a 9 AM daily reminder. Branches title/body on whether the user
- * has an active streak: "Begin monk mode" for first-day users vs.
- * "{n} days — discipline" for users carrying a streak. The previous
- * version passed `{ streak: '' }` which produced "🔥  days — discipline"
- * (double space + dangling word) — visually broken on the lock screen.
+ * has an active streak, and prefixes the user's first name when given —
+ * "Berk, your streak is at risk" feels infinitely more personal than
+ * "Your streak is at risk".
  *
  * @param {Object} [opts]
- * @param {number} [opts.currentStreak=0]  caller's current streak (from
- *   useApp().currentStreak), used to pick the right copy.
+ * @param {number} [opts.currentStreak=0]  caller's current streak
+ * @param {string} [opts.firstName]        optional first name to prefix
  */
-export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
+export const scheduleDailyReminder = async ({
+  currentStreak = 0,
+  firstName = '',
+} = {}) => {
   // Replace any previously scheduled copy of the same reminder so we don't
   // pile up duplicates every app launch.
   try {
@@ -138,9 +189,12 @@ export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
   const title = hasStreak
     ? i18n.t('notifications.reminderTitleProgress', { streak: currentStreak })
     : i18n.t('notifications.reminderTitleStart');
-  const body = hasStreak
+  const rawBody = hasStreak
     ? i18n.t('notifications.reminderBodyProgress')
     : i18n.t('notifications.reminderBodyStart');
+  // Prefix with first name when available — "Berk, take today's step"
+  // feels 10x more personal than the generic copy.
+  const body = firstName ? `${firstName}, ${rawBody.charAt(0).toLowerCase()}${rawBody.slice(1)}` : rawBody;
 
   await Notifications.scheduleNotificationAsync({
     identifier: DAILY_REMINDER_ID,
@@ -215,6 +269,7 @@ export const scheduleStreakAtRiskReminder = async ({
   todayCompleted,
   currentStreak,
   onVacation,
+  firstName = '',
 }) => {
   // Always cancel any existing copy first — we re-derive on every call.
   try {
@@ -232,11 +287,16 @@ export const scheduleStreakAtRiskReminder = async ({
   target.setHours(21, 0, 0, 0);
   if (now >= target) return; // too late today, daily reminder already covers tomorrow
 
+  const rawAtRiskBody = i18n.t('notifications.streakAtRiskBody');
+  const atRiskBody = firstName
+    ? `${firstName}, ${rawAtRiskBody.charAt(0).toLowerCase()}${rawAtRiskBody.slice(1)}`
+    : rawAtRiskBody;
+
   await Notifications.scheduleNotificationAsync({
     identifier: STREAK_AT_RISK_ID,
     content: {
       title: i18n.t('notifications.streakAtRiskTitle', { streak: currentStreak }),
-      body: i18n.t('notifications.streakAtRiskBody'),
+      body: atRiskBody,
       sound: true,
       // Streak-at-risk is the highest-urgency push — show "Start Lesson"
       // action button so the user can act without navigating manually.
@@ -295,6 +355,92 @@ export const cancelComebackReminder = async () => {
 };
 
 /**
+ * D2/D3 retention nudges — addresses the deadliest churn window in habit apps.
+ * Industry data: 60-70% of habit-app installs churn between D1 and D3 before
+ * any streak exists to lose. The existing daily reminder + streak-at-risk
+ * pushes only kick in once streak ≥ 1 (or ≥ 2 for streak-at-risk), leaving
+ * brand-new users with NO targeted re-engagement.
+ *
+ * Two pushes scheduled here:
+ *
+ *   1. First-Lesson Nudge — fires tomorrow at 19:00 if user has 0 lessons
+ *      completed. Cancels itself the moment they finish a lesson. Catches
+ *      the "installed yesterday, never came back" cohort.
+ *
+ *   2. D3 Habit-Forming — fires 3 days after install if streak is still 0
+ *      or 1. Body specifically frames "3 days = habit forming" (behavioral
+ *      psych: the modal D3 break-point is the strongest churn predictor).
+ *
+ * Both are idempotent — re-callable on every app open and lesson completion.
+ *
+ * @param {Object} ctx
+ * @param {string|null} ctx.installedAt  ISO install timestamp
+ * @param {number}      ctx.currentStreak
+ * @param {number}      ctx.totalLessonsCompleted
+ */
+export const scheduleNewUserNudges = async ({
+  installedAt,
+  currentStreak,
+  totalLessonsCompleted,
+}) => {
+  // Wipe any previously-scheduled copies — we re-derive every call.
+  try { await Notifications.cancelScheduledNotificationAsync(FIRST_LESSON_NUDGE_ID); } catch {}
+  try { await Notifications.cancelScheduledNotificationAsync(D3_HABIT_FORMING_ID); } catch {}
+
+  // Guard: only fire for genuinely new users.
+  if (!installedAt) return;
+  const installedMs = new Date(installedAt).getTime();
+  if (Number.isNaN(installedMs)) return;
+  const hoursSinceInstall = (Date.now() - installedMs) / (60 * 60 * 1000);
+  if (hoursSinceInstall > 96) return; // older than 4 days — handled by other pushes
+
+  // ── 1. First-Lesson Nudge (tomorrow 19:00 if 0 lessons done) ─────────
+  if ((totalLessonsCompleted || 0) === 0) {
+    const tomorrow7pm = new Date();
+    tomorrow7pm.setDate(tomorrow7pm.getDate() + 1);
+    tomorrow7pm.setHours(19, 0, 0, 0);
+    // Avoid scheduling in the past if the call happens after 19:00.
+    if (tomorrow7pm.getTime() > Date.now() + 60_000) {
+      await Notifications.scheduleNotificationAsync({
+        identifier: FIRST_LESSON_NUDGE_ID,
+        content: {
+          title: i18n.t('notifications.firstLessonNudgeTitle'),
+          body: i18n.t('notifications.firstLessonNudgeBody'),
+          sound: true,
+          categoryIdentifier: CAT_LESSON_REMINDER,
+        },
+        trigger: {
+          type: SchedulableTriggerInputTypes.DATE ?? 'date',
+          date: tomorrow7pm,
+        },
+      });
+    }
+  }
+
+  // ── 2. D3 Habit-Forming push (D3 at 10:00 if streak still 0-1) ───────
+  if ((currentStreak || 0) <= 1) {
+    const d3 = new Date(installedMs + 3 * 24 * 60 * 60 * 1000);
+    d3.setHours(10, 0, 0, 0);
+    // Only schedule if D3 is still in the future.
+    if (d3.getTime() > Date.now() + 60_000) {
+      await Notifications.scheduleNotificationAsync({
+        identifier: D3_HABIT_FORMING_ID,
+        content: {
+          title: i18n.t('notifications.d3HabitTitle'),
+          body: i18n.t('notifications.d3HabitBody'),
+          sound: true,
+          categoryIdentifier: CAT_LESSON_REMINDER,
+        },
+        trigger: {
+          type: SchedulableTriggerInputTypes.DATE ?? 'date',
+          date: d3,
+        },
+      });
+    }
+  }
+};
+
+/**
  * Schedule a weekly recap notification — every Sunday at 19:00 local time.
  * The notification is the come-back trigger that pulls the user into the
  * Stats tab on the slowest engagement day of the week.
@@ -322,6 +468,74 @@ export const scheduleWeeklyRecap = async () => {
   });
 };
 
+/**
+ * Schedule the daily 13:00 Öğle Molası (Midday Pause) push. 60-second
+ * stoic break that doubles sessions/day in habit apps when paired with
+ * a unique modal experience (vs. yet another lesson nudge).
+ *
+ * Idempotent — cancels any prior copy first, then re-schedules. Safe to
+ * call on every app boot. Uses the DAILY trigger type so the system
+ * repeats it daily without us having to re-schedule.
+ */
+export const scheduleMiddayPause = async () => {
+  try {
+    await Notifications.cancelScheduledNotificationAsync(MIDDAY_PAUSE_ID);
+  } catch {
+    // no-op
+  }
+
+  await Notifications.scheduleNotificationAsync({
+    identifier: MIDDAY_PAUSE_ID,
+    content: {
+      title: i18n.t('notifications.middayPauseTitle'),
+      body: i18n.t('notifications.middayPauseBody'),
+      sound: true,
+      // CAT_MIDDAY_PAUSE deep-links the body tap + the "Aç" action button
+      // straight to the MiddayPause modal (see setupNotifResponseListener).
+      categoryIdentifier: CAT_MIDDAY_PAUSE,
+    },
+    trigger: {
+      type: SchedulableTriggerInputTypes.DAILY ?? 'daily',
+      hour: 13,
+      minute: 0,
+    },
+  });
+};
+
+/**
+ * Schedule the daily 20:30 Günü Kapat (Evening Close) push. Closes
+ * the daily ritual cycle: morning lesson → midday breath → evening
+ * close. 3-minute ritual that surfaces tomorrow's intent and the
+ * cliffhanger title for tomorrow's lesson (curiosity gap → return).
+ *
+ * Idempotent — cancels any prior copy first, then re-schedules. Safe
+ * to call on every app boot. Mirrors scheduleMiddayPause exactly.
+ */
+export const scheduleEveningClose = async () => {
+  try {
+    await Notifications.cancelScheduledNotificationAsync(EVENING_CLOSE_ID);
+  } catch {
+    // no-op
+  }
+
+  await Notifications.scheduleNotificationAsync({
+    identifier: EVENING_CLOSE_ID,
+    content: {
+      title: i18n.t('notifications.eveningCloseTitle'),
+      body: i18n.t('notifications.eveningCloseBody'),
+      sound: true,
+      // CAT_EVENING_CLOSE: body tap + "Aç" action both deep-link
+      // straight to the EveningClose modal.
+      categoryIdentifier: CAT_EVENING_CLOSE,
+    },
+    trigger: {
+      type: SchedulableTriggerInputTypes.DAILY ?? 'daily',
+      hour: 20,
+      minute: 30,
+    },
+  });
+};
+
 export const sendCelebrationNotification = async (title, body) => {
   await Notifications.scheduleNotificationAsync({
     content: {
@@ -331,6 +545,46 @@ export const sendCelebrationNotification = async (title, body) => {
     },
     trigger: null, // immediate
   });
+};
+
+/**
+ * Partner-streak-broken push. Fires immediately (trigger: null) when the
+ * AppContext polling effect detects that the user's accountability partner
+ * just dropped from a non-zero streak to 0. Frames the moment as a duty,
+ * not a guilt trip — the user's job is to keep going, not to comfort.
+ *
+ * No identifier reuse — every partner-break event is a distinct moment, so
+ * the OS notification center can show a history if multiple happen.
+ *
+ * @param {Object} args
+ * @param {string} args.partnerName  partner's anonUsername (e.g., "monk_4821")
+ * @param {number} args.daysWasted   how many days of streak the partner just lost
+ */
+export const schedulePartnerStreakBrokenPush = async ({
+  partnerName,
+  daysWasted,
+}) => {
+  if (!partnerName || !daysWasted || daysWasted < 1) return;
+  try {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: i18n.t('friendCode.partnerBrokeStreakTitle', {
+          name: partnerName,
+        }),
+        body: i18n.t('friendCode.partnerBrokeStreakBody', {
+          name: partnerName,
+          days: daysWasted,
+        }),
+        sound: true,
+        // No category — there's no useful action button. The user opens the
+        // app on their own terms; we don't want to nudge them to "respond"
+        // because the brand promise is no chat, no friend feed.
+      },
+      trigger: null, // immediate
+    });
+  } catch (e) {
+    console.warn('schedulePartnerStreakBrokenPush failed:', e?.message);
+  }
 };
 
 export const cancelAllNotifications = async () => {

@@ -90,12 +90,12 @@ export default function OutOfHeartsModal({
           </View>
 
           <Text style={styles.title}>
-            {t('hearts.outTitle', 'Kalpler Bitti')}
+            {t('hearts.outTitle', 'Bugün yeter.')}
           </Text>
           <Text style={styles.subtitle}>
             {t(
               'hearts.outSubtitle',
-              "Devam etmek için kalp gerekli. Reklam izleyerek 1 kalp kazan veya Premium'a geç.",
+              'Kalp koruma değil — sınır. Yarın yeniden gelirsin. Ya da reklam izle, bir ders daha.',
             )}
           </Text>
 

@@ -11,6 +11,7 @@ import {
   Easing,
   Image,
   StatusBar,
+  ActivityIndicator,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -18,8 +19,24 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 
 import { useApp } from '../contexts/AppContext';
-import { getPathById, getLessonById, getQuizForLesson } from '../data/paths';
-import { showInterstitial, shouldShowAd, requestTrackingPermissionIfNeeded } from '../services/ads';
+import {
+  getPathById,
+  getLessonById,
+  isPathComplete,
+  getCurrentLesson,
+} from '../data/paths';
+import { PATHS } from '../data/paths';
+import { getAdaptiveQuiz } from '../services/adaptiveQuiz';
+import {
+  showInterstitial,
+  shouldShowAd,
+  requestTrackingPermissionIfNeeded,
+  showRewarded,
+  isRewardedReady,
+  loadRewarded,
+} from '../services/ads';
+import StreakRepairModal from '../components/StreakRepairModal';
+import NPSModal from '../components/NPSModal';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import PathMilestoneScene, {
   detectPathSceneStage,
@@ -34,13 +51,22 @@ import {
   playRecording,
 } from '../services/voiceRecording';
 import { getCurrentLanguage } from '../i18n';
+import { getFirstName } from '../services/displayName';
+import { useAuth } from '../contexts/AuthContext';
 import { requestReviewIfAppropriate } from '../services/review';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
+import {
+  generateLessonIntro,
+  generateReflectionResponse,
+} from '../services/aiPersonalize';
 import { LT, LT_RADIUS } from '../config/lightTheme';
+import { useAppMood } from '../hooks/useAppMood';
 
 const STEP = {
+  HOOK: 'hook',
   TEACHING: 'teaching',
+  PRACTICE: 'practice',
   QUIZ: 'quiz',
   COMMIT: 'commit',
 };
@@ -61,16 +87,114 @@ export default function LessonScreen({ navigation, route }) {
     refillHearts,
     isInGracePeriod,
     grantBonusXP,
+    earnHeart,
+    dailyLessonsCount,
+    dailyGoalTarget,
+    _dailyGoalToast,
+    clearDailyGoalToast,
+    quizAnswers,
+    recordQuizAnswer,
+    pendingStreakRestore,
+    streakFreezes,
+    restoreBrokenStreak,
+    dismissBrokenStreakRestore,
+    userProfile,
+    anonUsername,
+    aiPersonalizeActive,
+    customGoal,
+    _npsToast,
+    submitNps,
+    dismissNps,
   } = useApp();
+  const { user } = useAuth();
+  // Centralized name resolution — same priority as Home + Notifications.
+  const firstName = getFirstName({ userProfile, user, anonUsername, fallback: '' });
+
+  // Top-level totalCompleted for the mood hook. There's a separate local
+  // const named totalCompleted inside the completion handler below; this
+  // one is component-scoped so the hook stays at the top level (rules of
+  // hooks) and re-derives only when pathProgress changes.
+  const totalCompletedForMood = useMemo(
+    () =>
+      Object.values(pathProgress || {}).reduce(
+        (sum, p) => sum + (p?.completed?.length || 0),
+        0,
+      ),
+    [pathProgress],
+  );
+  // Time-aware UI mood (palette/tone + optional background tint). See
+  // hooks/useAppMood.js. Rendered as an absolute pointerEvents-none
+  // overlay below so it never blocks lesson interaction.
+  const mood = useAppMood({
+    currentStreak,
+    totalCompleted: totalCompletedForMood,
+  });
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
   const lesson = useMemo(() => getLessonById(lessonId), [lessonId]);
-  const quiz = useMemo(
-    () => (path && lesson ? getQuizForLesson(t, pathId, lesson.order) : []),
-    [path, lesson, pathId, t],
-  );
+  // Adaptive quiz (#2A) — append 1-2 review questions from prior lessons
+  // in the same path when the user has demonstrated accuracy. Snapshot
+  // at lesson mount so the question set is stable across re-renders
+  // (otherwise random picks would jitter on every state update).
+  const adaptiveQuizRef = useRef(null);
+  if (adaptiveQuizRef.current === null && path && lesson) {
+    adaptiveQuizRef.current = getAdaptiveQuiz({
+      t,
+      pathId,
+      lessonOrder: lesson.order,
+      pathProgress,
+      quizAnswers,
+    });
+  }
+  const adaptiveQuiz = adaptiveQuizRef.current || {
+    questions: [],
+    baseLength: 0,
+    bonusCount: 0,
+  };
 
-  const [step, setStep] = useState(STEP.TEACHING);
+  // NEW SCHEMA: scenarioQuiz overrides the base quiz when present. The
+  // adaptive engine still gathers from `.quiz` (which we keep on every
+  // lesson as a fallback) for review/bonus picks from PRIOR lessons —
+  // but for the CURRENT lesson, we render scenarioQuiz as base if it
+  // exists. Bonus picks (adaptiveQuiz.bonusMeta) are appended after.
+  const scenarioQuizRaw = path && lesson
+    ? t(`lessons.${pathId}.${lesson.order}.scenarioQuiz`, { returnObjects: true })
+    : null;
+  const scenarioQuiz = Array.isArray(scenarioQuizRaw) ? scenarioQuizRaw : null;
+  // When scenarioQuiz is present, replace the base portion of the
+  // adaptive questions; keep the bonus review tail intact.
+  const bonusTail = adaptiveQuiz.questions.slice(adaptiveQuiz.baseLength);
+  const quiz = scenarioQuiz
+    ? [...scenarioQuiz, ...bonusTail]
+    : adaptiveQuiz.questions;
+  const baseQuizLength = scenarioQuiz
+    ? scenarioQuiz.length
+    : adaptiveQuiz.baseLength;
+
+  // NEW SCHEMA: probe optional fields for the dynamic step machine.
+  // Detection is presence-based — a field is "active" if it returns a
+  // non-empty value/array from i18n. Old short lessons resolve to
+  // empty/key-name fallbacks and skip the new steps entirely.
+  const hookKey = path && lesson ? `lessons.${pathId}.${lesson.order}.hook` : '';
+  const hookRaw = hookKey ? t(hookKey, '') : '';
+  const hookText = hookRaw && hookRaw !== hookKey ? hookRaw : '';
+  const hasHook = hookText.length > 0;
+
+  const practiceRaw = path && lesson
+    ? t(`lessons.${pathId}.${lesson.order}.practice`, { returnObjects: true })
+    : null;
+  const practiceObj =
+    practiceRaw &&
+    typeof practiceRaw === 'object' &&
+    !Array.isArray(practiceRaw) &&
+    typeof practiceRaw.instruction === 'string' &&
+    typeof practiceRaw.seconds === 'number'
+      ? practiceRaw
+      : null;
+  const hasPractice = !!practiceObj;
+
+  // Initial step: HOOK if available, otherwise the legacy TEACHING.
+  const [step, setStep] = useState(hasHook ? STEP.HOOK : STEP.TEACHING);
   const [quizIndex, setQuizIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [revealed, setRevealed] = useState(false);
@@ -79,6 +203,24 @@ export default function LessonScreen({ navigation, route }) {
   const [reflection, setReflection] = useState('');
   const [actionDone, setActionDone] = useState(false);
   const [completing, setCompleting] = useState(false);
+  // NEW SCHEMA: practice step state.
+  // - practiceStarted: user has tapped "Başlat" — timer is running.
+  // - practiceSecondsLeft: integer countdown shown on the timer ring.
+  // - practiceFinished: timer hit 0 OR user tapped "Atla". Unlocks
+  //   the continue CTA for the practice step.
+  const [practiceStarted, setPracticeStarted] = useState(false);
+  const [practiceSecondsLeft, setPracticeSecondsLeft] = useState(
+    practiceObj ? practiceObj.seconds : 0,
+  );
+  const [practiceFinished, setPracticeFinished] = useState(false);
+  // Practice-step reflection (the post-timer prompt). Separate from the
+  // commit-step reflection so the two don't overwrite each other.
+  const [practiceNote, setPracticeNote] = useState('');
+  // NEW SCHEMA: selectedCommitment — index into commitments[]. When
+  // commitments is null (old lessons), we still use the legacy
+  // actionDone checkbox flow. When commitments is set, picking one
+  // both selects it AND counts as "actionDone".
+  const [selectedCommitment, setSelectedCommitment] = useState(null);
   const [showCelebration, setShowCelebration] = useState(false);
   const [milestoneVisible, setMilestoneVisible] = useState(false);
   const [milestoneStreak, setMilestoneStreak] = useState(0);
@@ -101,6 +243,14 @@ export default function LessonScreen({ navigation, route }) {
   // the user wrote a reflection. Surfaces on celebration screen as
   // "a sage responds to your words". Empathy/voice-of-the-app hook.
   const [mirrorQuote, setMirrorQuote] = useState(null);
+  // AI Personalization (Layer B) — intro text rendered above teaching,
+  // sage response rendered on celebration. Both null until the async
+  // call resolves; null also means "skip rendering" (failure-safe).
+  // introLoading flips true while the API call is in flight so we can
+  // show a small inline spinner above teaching for up to 3s.
+  const [aiIntro, setAiIntro] = useState(null);
+  const [aiIntroLoading, setAiIntroLoading] = useState(false);
+  const [aiReflectionResponse, setAiReflectionResponse] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
@@ -194,20 +344,135 @@ export default function LessonScreen({ navigation, route }) {
   const celebrationScale = useRef(new Animated.Value(0)).current;
   const xpY = useRef(new Animated.Value(0)).current;
   const stepProgress = useRef(new Animated.Value(0.33)).current;
+  // Practice-step countdown. Animated 0 → 1 over (seconds * 1000)ms.
+  // The Animated.Value drives both the visible ring fill AND the
+  // displayed integer seconds-left (via an Animated.listener that
+  // setStates the integer text — RN can't render Animated values as
+  // text directly).
+  const practiceAnim = useRef(new Animated.Value(0)).current;
+  const practiceAnimRef = useRef(null); // current Animated.timing handle
 
   const alreadyCompleted = pathProgress?.[pathId]?.completed?.includes(lessonId);
 
+  // DYNAMIC STEP MACHINE — list of steps to walk through for THIS lesson.
+  // Presence-based: a step is included only when its source field
+  // exists. Old lessons (no hook / no practice) produce the legacy
+  // [TEACHING, QUIZ, COMMIT] sequence.
+  const steps = useMemo(
+    () =>
+      [
+        hasHook ? STEP.HOOK : null,
+        STEP.TEACHING,
+        hasPractice ? STEP.PRACTICE : null,
+        quiz.length > 0 ? STEP.QUIZ : null,
+        STEP.COMMIT,
+      ].filter(Boolean),
+    [hasHook, hasPractice, quiz.length],
+  );
+
+  // Drive the top progress bar from where we are in the step list.
+  // First step = 1/N filled, last step = 1.0. Falls back to 0.33 when
+  // step isn't in the list (defensive — shouldn't happen).
   useEffect(() => {
-    let target = 0.33;
-    if (step === STEP.QUIZ) target = 0.66;
-    else if (step === STEP.COMMIT) target = 1.0;
+    const idx = steps.indexOf(step);
+    const target = idx >= 0 && steps.length > 0
+      ? (idx + 1) / steps.length
+      : 0.33;
     Animated.timing(stepProgress, {
       toValue: target,
       duration: 350,
       easing: Easing.out(Easing.cubic),
       useNativeDriver: false,
     }).start();
-  }, [step, stepProgress]);
+  }, [step, steps, stepProgress]);
+
+  // Helper: jump to the step AFTER the current one in the dynamic list.
+  // If we're at the last step, this is a no-op (the COMMIT step's CTA
+  // triggers handleComplete instead).
+  const goToNextStep = (current) => {
+    const idx = steps.indexOf(current);
+    if (idx < 0 || idx >= steps.length - 1) return null;
+    return steps[idx + 1];
+  };
+
+  // Wire the practice Animated.Value to a state-backed integer text.
+  // Update only when the displayed seconds actually change (so we
+  // don't churn setState 60fps). Effect runs every render but the
+  // listener registration is idempotent. Pulled UP here (above the
+  // path/lesson early-return) to keep the hook-call order stable.
+  useEffect(() => {
+    if (!practiceObj) return undefined;
+    const id = practiceAnim.addListener(({ value }) => {
+      const left = Math.max(0, Math.ceil(practiceObj.seconds * (1 - value)));
+      setPracticeSecondsLeft((prev) => (prev === left ? prev : left));
+    });
+    return () => {
+      practiceAnim.removeListener(id);
+    };
+  }, [practiceAnim, practiceObj]);
+
+  // Cleanup: stop the timer if user navigates away mid-practice.
+  useEffect(() => {
+    return () => {
+      if (practiceAnimRef.current) {
+        practiceAnimRef.current.stop();
+        practiceAnimRef.current = null;
+      }
+    };
+  }, []);
+
+  // ── AI Personalization Layer (Layer B) — fire the lesson intro call
+  // when the user is on the TEACHING step and the feature is active. The
+  // service handles caching, day-cap, timeout, and silent failure; we
+  // just gate on (a) feature enabled, (b) on this step, (c) we don't
+  // already have a result. Failure → setAiIntro stays null and the
+  // intro block renders nothing.
+  useEffect(() => {
+    if (!aiPersonalizeActive) return;
+    if (step !== STEP.TEACHING) return;
+    if (aiIntro) return;
+    if (aiIntroLoading) return;
+    if (!path || !lesson) return;
+    // Pull the user's most recent reflection from any path. The service
+    // truncates upstream; we only need to pass the freshest signal.
+    const recentReflection = (() => {
+      try {
+        const all = Object.values(pathProgress || {});
+        for (let i = all.length - 1; i >= 0; i--) {
+          const r = all[i]?.reflections;
+          if (r && typeof r === 'object') {
+            const vals = Object.values(r);
+            if (vals.length > 0) return vals[vals.length - 1];
+          }
+        }
+      } catch {}
+      return '';
+    })();
+    setAiIntroLoading(true);
+    const userId = user?.id || anonUsername || 'anon';
+    const titleResolved = t(`lessons.${pathId}.${lesson.order}.title`, '');
+    generateLessonIntro({
+      userId,
+      lessonId,
+      lessonTitle: titleResolved || `${pathId}-${lesson.order}`,
+      pathId,
+      userName: firstName,
+      customGoal: customGoal?.text || '',
+      recentReflection,
+      locale: getCurrentLanguage(),
+    })
+      .then((text) => {
+        if (!mountedRef.current) return;
+        setAiIntro(text);
+        setAiIntroLoading(false);
+      })
+      .catch(() => {
+        if (!mountedRef.current) return;
+        setAiIntro(null);
+        setAiIntroLoading(false);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [aiPersonalizeActive, step, lessonId]);
 
   if (!path || !lesson) {
     return (
@@ -224,26 +489,130 @@ export default function LessonScreen({ navigation, route }) {
 
   const i18nBase = `lessons.${pathId}.${lesson.order}`;
   const title = t(`${i18nBase}.title`, `${lesson.order}`);
-  const teaching = t(`${i18nBase}.teaching`, '');
+  // NEW SCHEMA: teachingDeep (200-300 word version) replaces teaching
+  // when present. Falls back to the short legacy teaching otherwise.
+  const teachingShort = t(`${i18nBase}.teaching`, '');
+  const teachingDeepKey = `${i18nBase}.teachingDeep`;
+  const teachingDeepRaw = t(teachingDeepKey, '');
+  const teachingDeep =
+    teachingDeepRaw && teachingDeepRaw !== teachingDeepKey
+      ? teachingDeepRaw
+      : '';
+  const teaching = teachingDeep || teachingShort;
   const action = t(`${i18nBase}.action`, '');
   const reflectionPrompt = t(`${i18nBase}.reflectionPrompt`, '');
+  // NEW SCHEMA: reflectionPrompts (array) overrides single reflectionPrompt.
+  const reflectionPromptsRaw = t(`${i18nBase}.reflectionPrompts`, {
+    returnObjects: true,
+  });
+  const reflectionPrompts = Array.isArray(reflectionPromptsRaw)
+    ? reflectionPromptsRaw
+    : null;
+  // NEW SCHEMA: commitments (array of 3 strings — user picks one) overrides
+  // the single `action`. When present, the commit step shows pickable
+  // cards; the picked text becomes the commitment that's marked done.
+  const commitmentsRaw = t(`${i18nBase}.commitments`, { returnObjects: true });
+  const commitments = Array.isArray(commitmentsRaw) ? commitmentsRaw : null;
   const proTipKey = `${i18nBase}.proTip`;
   const proTipRaw = t(proTipKey, '');
   const proTip = proTipRaw && proTipRaw !== proTipKey ? proTipRaw : '';
   const hasQuiz = quiz.length > 0;
   const currentQuestion = hasQuiz ? quiz[quizIndex] : null;
 
-  const handleTeachingNext = () => {
+  // Walk forward in the dynamic step list. Used by every step's
+  // "continue" CTA — HOOK → TEACHING, TEACHING → PRACTICE/QUIZ/COMMIT,
+  // PRACTICE → QUIZ/COMMIT, etc. Each renderer's CTA calls this with
+  // its own step name so we don't have to hardcode pairwise links.
+  const advanceFrom = (current) => {
     playSound('tap').catch(() => {});
-    if (hasQuiz) setStep(STEP.QUIZ);
-    else setStep(STEP.COMMIT);
+    const next = goToNextStep(current);
+    if (next) setStep(next);
   };
+
+  // Legacy handler retained as a thin wrapper (callers downstream may
+  // expect this name). Behaves correctly for old AND new lessons via
+  // the dynamic step list.
+  const handleTeachingNext = () => advanceFrom(STEP.TEACHING);
+
+  // PRACTICE step controls — start the countdown, skip it, or react to
+  // it finishing. Animation drives both the ring fill and the visible
+  // integer seconds-left via a listener.
+  const handleStartPractice = () => {
+    if (!practiceObj || practiceStarted) return;
+    playSound('tap').catch(() => {});
+    Haptics.selectionAsync().catch(() => {});
+    setPracticeStarted(true);
+    setPracticeFinished(false);
+    practiceAnim.setValue(0);
+    practiceAnimRef.current = Animated.timing(practiceAnim, {
+      toValue: 1,
+      duration: practiceObj.seconds * 1000,
+      easing: Easing.linear,
+      // We're reading the value in a listener (for the integer text)
+      // and binding it to a non-transform style (the ring's width), so
+      // we MUST stay on the JS driver.
+      useNativeDriver: false,
+    });
+    practiceAnimRef.current.start(({ finished }) => {
+      if (!finished) return;
+      // Timer ran to completion (not interrupted by Skip).
+      safeSet(setPracticeFinished)(true);
+      safeSet(setPracticeSecondsLeft)(0);
+      playSound('correct').catch(() => {});
+      Haptics.notificationAsync(
+        Haptics.NotificationFeedbackType.Success,
+      ).catch(() => {});
+    });
+  };
+
+  const handleSkipPractice = () => {
+    if (!practiceObj) return;
+    playSound('tap').catch(() => {});
+    if (practiceAnimRef.current) {
+      practiceAnimRef.current.stop();
+      practiceAnimRef.current = null;
+    }
+    setPracticeStarted(true);
+    setPracticeFinished(true);
+    setPracticeSecondsLeft(0);
+  };
+
+  const handlePracticeContinue = () => advanceFrom(STEP.PRACTICE);
+  const handleHookContinue = () => advanceFrom(STEP.HOOK);
 
   const handleQuizAnswer = (idx) => {
     if (revealed) return;
     setSelectedAnswer(idx);
     setRevealed(true);
     const isCorrect = idx === currentQuestion.correct;
+    // Record per-question answer for the adaptive engine.
+    //
+    // Original quiz questions (quizIndex < baseQuizLength): record
+    // under the current lesson — this is the canonical answer log.
+    //
+    // Review/bonus questions (quizIndex >= baseQuizLength): record
+    // under the ORIGINAL lesson's id+qIndex via bonusMeta. We want the
+    // user's latest attempt at that concept to update the adaptive
+    // engine's view of mastery; logging under the current lesson would
+    // (a) lose the original record's existence and (b) double-count
+    // the same answer in path-level accuracy.
+    if (quizIndex < baseQuizLength) {
+      recordQuizAnswer({
+        lessonId,
+        questionIndex: quizIndex,
+        correct: isCorrect,
+      });
+    } else {
+      const bonusIdx = quizIndex - baseQuizLength;
+      const meta = adaptiveQuiz.bonusMeta?.[bonusIdx];
+      if (meta) {
+        recordQuizAnswer({
+          lessonId: meta.fromLessonId,
+          questionIndex: meta.fromQIndex,
+          correct: isCorrect,
+        });
+      }
+    }
     if (isCorrect) {
       setCorrectCount((c) => c + 1);
       playSound('correct').catch(() => {});
@@ -291,7 +660,12 @@ export default function LessonScreen({ navigation, route }) {
     setSelectedAnswer(null);
     setRevealed(false);
     if (quizIndex + 1 < quiz.length) setQuizIndex((i) => i + 1);
-    else setStep(STEP.COMMIT);
+    else {
+      // End of quiz → advance to whatever the next step is (usually
+      // COMMIT, but the dynamic step list is the source of truth).
+      const next = goToNextStep(STEP.QUIZ);
+      if (next) setStep(next);
+    }
   };
 
   const handleComplete = async () => {
@@ -303,11 +677,28 @@ export default function LessonScreen({ navigation, route }) {
       playSound('complete').catch(() => {});
     } catch {}
 
+    // NEW SCHEMA: stitch the practice note + chosen commitment into
+    // the reflection payload so they're persisted in the same field
+    // as legacy reflections (no reducer changes needed). The user's
+    // free-form reflection still leads; the structured bits get
+    // appended after a separator only when they have content.
+    const userReflection = reflection.trim();
+    const practiceNoteTrim = practiceNote.trim();
+    const chosenCommitment =
+      commitments && selectedCommitment !== null
+        ? commitments[selectedCommitment]
+        : '';
+    const parts = [];
+    if (userReflection) parts.push(userReflection);
+    if (practiceNoteTrim) parts.push(`PRATİK: ${practiceNoteTrim}`);
+    if (chosenCommitment) parts.push(`TAAHHÜT: ${chosenCommitment}`);
+    const compositeReflection = parts.join('\n\n');
+
     // Reflection Mirror — if the user wrote anything, pick a matching
     // quote from our curated library and surface it on the celebration
     // screen. Empathy hook: the app "heard" them. Fire-and-forget;
     // pure local logic, no async.
-    const trimmedReflection = reflection.trim();
+    const trimmedReflection = userReflection;
     if (trimmedReflection) {
       try {
         const lang = getCurrentLanguage();
@@ -318,10 +709,34 @@ export default function LessonScreen({ navigation, route }) {
       }
     }
 
+    // AI Personalization Layer (Layer B) — fire the post-reflection sage
+    // response in the background. Fully fire-and-forget; service handles
+    // cache/cap/timeout. Null result → render nothing on celebration.
+    // Gate on aiPersonalizeActive + a non-trivial reflection (the
+    // service itself has a length floor, but we save a call by short-
+    // circuiting here when there's clearly nothing to respond to).
+    if (aiPersonalizeActive && trimmedReflection && trimmedReflection.length >= 4) {
+      const userId = user?.id || anonUsername || 'anon';
+      generateReflectionResponse({
+        userId,
+        lessonId,
+        userReflection: trimmedReflection,
+        lessonTitle: title,
+        userName: firstName,
+        locale: getCurrentLanguage(),
+      })
+        .then((text) => {
+          if (mountedRef.current && text) setAiReflectionResponse(text);
+        })
+        .catch(() => {
+          // Silent failure — AI overlay is purely additive.
+        });
+    }
+
     completePathLesson({
       pathId,
       lessonId,
-      reflection: reflection.trim(),
+      reflection: compositeReflection,
       reflectionAudioUri: recordingUri || null,
       quizCorrect: correctCount,
       // Total quiz length is forwarded so the reducer can detect a
@@ -378,6 +793,12 @@ export default function LessonScreen({ navigation, route }) {
   };
 
   const handleCelebrationContinue = async () => {
+    // Drop the daily-goal toast now that the user has acknowledged the
+    // celebration. Otherwise a subsequent lesson within the same
+    // session would re-render the +50 XP pill even though the bonus
+    // already fired once.
+    if (_dailyGoalToast) clearDailyGoalToast();
+
     const totalCompleted = Object.values(pathProgress || {}).reduce(
       (s, p) => s + (p?.completed?.length || 0),
       0,
@@ -418,6 +839,11 @@ export default function LessonScreen({ navigation, route }) {
   };
 
   const handleNextLesson = async () => {
+    // Same cleanup as handleCelebrationContinue — the toast belongs to
+    // *this* completion's celebration, not to the next lesson the user
+    // is about to start.
+    if (_dailyGoalToast) clearDailyGoalToast();
+
     // Find the next lesson in the same path that isn't completed
     const completedSet = new Set(pathProgress?.[pathId]?.completed || []);
     completedSet.add(lessonId); // include the just-completed one
@@ -484,20 +910,69 @@ export default function LessonScreen({ navigation, route }) {
     </View>
   );
 
+  // NEW SCHEMA: HOOK step — opens the lesson with a sharp scenario or
+  // pointed question. Single short block; no quiz, no proTip, just the
+  // hook text + the lesson title (so the user has context). The CTA
+  // ("Devam et") sits in the bottom bar like every other step.
+  const renderHook = () => (
+    <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+      <Text style={styles.stepLabel}>{t('lesson.hook', 'GİRİŞ')}</Text>
+      <Text style={styles.title}>{title}</Text>
+      <View style={styles.hookCard}>
+        <Text style={styles.hookText}>{hookText}</Text>
+      </View>
+      <View style={{ height: 120 }} />
+    </ScrollView>
+  );
+
   const renderTeaching = () => (
     <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
       <Text style={styles.stepLabel}>📖 {t('lesson.teaching', 'ÖĞRETİM')}</Text>
-      <Text style={styles.title}>{title}</Text>
+      {/* If we already showed the HOOK step, the title is now redundant
+          at the top of TEACHING — but keep it for the legacy short-lesson
+          path where TEACHING is the first step the user sees. */}
+      {hasHook ? null : <Text style={styles.title}>{title}</Text>}
 
-      <View style={styles.heroBox}>
-        <LinearGradient
-          colors={[LT.surfaceContainerLowest, LT.surfaceContainerLowest]}
-          style={StyleSheet.absoluteFillObject}
-        />
-        <View style={styles.heroMascot}>
-          <MaterialIcons name="self-improvement" size={68} color={LT.primaryContainer} />
+      {hasHook ? null : (
+        <View style={styles.heroBox}>
+          <LinearGradient
+            colors={[LT.surfaceContainerLowest, LT.surfaceContainerLowest]}
+            style={StyleSheet.absoluteFillObject}
+          />
+          <View style={styles.heroMascot}>
+            <MaterialIcons name="self-improvement" size={68} color={LT.primaryContainer} />
+          </View>
         </View>
-      </View>
+      )}
+
+      {/* AI Personalization Intro (Layer B) — rendered BEFORE the
+          teaching text so the user reads "their" intro first. While
+          loading, show a slim placeholder for up to 3 seconds. After
+          that the teaching stands alone — never block on the call.
+          Failure or feature-off → renders nothing. */}
+      {aiPersonalizeActive && aiIntroLoading && !aiIntro ? (
+        <View style={styles.aiIntroLoading}>
+          <ActivityIndicator size="small" color={LT.primaryContainer} />
+          <Text style={styles.aiIntroLoadingText}>
+            {t('aiCoach.introLoading', 'Sana özel mesaj hazırlanıyor...')}
+          </Text>
+        </View>
+      ) : null}
+      {aiIntro ? (
+        <View style={styles.aiIntroCard}>
+          <View style={styles.aiIntroLabelRow}>
+            <MaterialIcons name="auto-awesome" size={14} color="#7C3AED" />
+            <Text style={styles.aiIntroLabel}>
+              {firstName
+                ? t('aiCoach.introLabelPersonal', '{{name}}, BU DERS SENİN İÇİN', {
+                    name: firstName.toUpperCase(),
+                  })
+                : t('aiCoach.introLabel', 'BU DERS SENİN İÇİN')}
+            </Text>
+          </View>
+          <Text style={styles.aiIntroText}>{aiIntro}</Text>
+        </View>
+      ) : null}
 
       <View style={styles.teachingCard}>
         <View style={styles.cornerAccent} />
@@ -539,14 +1014,117 @@ export default function LessonScreen({ navigation, route }) {
     </ScrollView>
   );
 
+  // NEW SCHEMA: PRACTICE step — in-lesson exercise.
+  // - Idle:    show the instruction + a big "Başlat" button.
+  // - Running: show a countdown ring + the integer seconds left.
+  //            User can tap "Atla" to skip.
+  // - Done:    show the post-timer prompt (if any) with a text input.
+  //            Continue CTA in the bottom bar is unlocked.
+  const renderPractice = () => {
+    if (!practiceObj) return null;
+    const total = practiceObj.seconds;
+    const ringFill = practiceAnim.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0%', '100%'],
+    });
+    return (
+      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+        <Text style={styles.stepLabel}>{t('lesson.practice', 'PRATİK')}</Text>
+        <Text style={styles.title}>{title}</Text>
+
+        <View style={styles.practiceInstructionCard}>
+          <MaterialIcons name="self-improvement" size={28} color={LT.primaryContainer} />
+          <Text style={styles.practiceInstructionText}>
+            {practiceObj.instruction}
+          </Text>
+        </View>
+
+        {/* Timer block — bar fill (linear, not a circular ring, to
+            stay framework-light without bringing in SVG) + the big
+            integer seconds-left countdown. */}
+        <View style={styles.practiceTimerWrap}>
+          <Text style={styles.practiceTimerNumber}>
+            {practiceStarted ? practiceSecondsLeft : total}
+            <Text style={styles.practiceTimerUnit}>s</Text>
+          </Text>
+          <View style={styles.practiceTimerTrack}>
+            <Animated.View
+              style={[
+                styles.practiceTimerFill,
+                { width: practiceStarted ? ringFill : '0%' },
+              ]}
+            />
+          </View>
+        </View>
+
+        {!practiceStarted ? (
+          <TouchableOpacity
+            onPress={handleStartPractice}
+            activeOpacity={0.9}
+            style={styles.practiceStartBtn}
+          >
+            <MaterialIcons name="play-arrow" size={22} color={LT.onPrimary} />
+            <Text style={styles.practiceStartBtnText}>
+              {t('lesson.practiceStart', 'Başlat')}
+            </Text>
+          </TouchableOpacity>
+        ) : !practiceFinished ? (
+          <TouchableOpacity
+            onPress={handleSkipPractice}
+            activeOpacity={0.85}
+            style={styles.practiceSkipBtn}
+          >
+            <Text style={styles.practiceSkipBtnText}>
+              {t('lesson.practiceSkip', 'Atla')}
+            </Text>
+          </TouchableOpacity>
+        ) : null}
+
+        {practiceFinished && practiceObj.prompt ? (
+          <View style={styles.practicePromptWrap}>
+            <Text style={styles.practicePromptLabel}>{practiceObj.prompt}</Text>
+            <TextInput
+              value={practiceNote}
+              onChangeText={(txt) => setPracticeNote(txt.slice(0, REFLECTION_MAX))}
+              placeholder={t('lesson.reflectionPlaceholder', 'Düşüncelerini buraya yaz...')}
+              placeholderTextColor={LT.outline}
+              multiline
+              style={styles.reflectionInput}
+            />
+            <View style={styles.reflectionMeta}>
+              <Text style={styles.reflectionMetaText}>
+                {t('lesson.optional', 'OPSİYONEL')}
+              </Text>
+              <Text style={styles.reflectionMetaText}>
+                {practiceNote.length} / {REFLECTION_MAX}
+              </Text>
+            </View>
+          </View>
+        ) : null}
+
+        <View style={{ height: 120 }} />
+      </ScrollView>
+    );
+  };
+
   const renderQuiz = () => {
     if (!currentQuestion) return null;
     const letters = ['A', 'B', 'C', 'D'];
+    // Adaptive review question — surfaced because the user has shown
+    // mastery in this path. Different visual treatment so the user
+    // understands "this is from an earlier lesson, not a curveball".
+    const isReviewQuestion = quizIndex >= baseQuizLength;
+    // When scenarioQuiz is the active source, the step chip reads
+    // "SENARYO" instead of "QUIZ" — these are application questions,
+    // not recall questions.
+    const quizLabel = scenarioQuiz
+      ? t('lesson.scenario', 'SENARYO')
+      : t('lesson.quiz', 'QUIZ');
     return (
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.stepChip}>
           <Text style={styles.stepChipText}>
-            🧠 {t('lesson.quiz', 'QUIZ')} — {quizIndex + 1}/{quiz.length}
+            🧠 {quizLabel} — {quizIndex + 1}/{quiz.length}
           </Text>
         </View>
         {/* Critical hit flash — pops in when the user just rolled the
@@ -555,6 +1133,17 @@ export default function LessonScreen({ navigation, route }) {
           <View style={styles.critFlash}>
             <Text style={styles.critFlashText}>
               {t('lesson.critHit', '⚡ CRITICAL HIT! +25 XP')}
+            </Text>
+          </View>
+        ) : null}
+        {/* Review-question badge — adaptive engine pulled this question
+            from an earlier lesson in the same path (spaced repetition).
+            Helps the user understand the format change. */}
+        {isReviewQuestion ? (
+          <View style={styles.reviewBadge}>
+            <MaterialIcons name="history-edu" size={14} color="#7C3AED" />
+            <Text style={styles.reviewBadgeText}>
+              {t('lesson.reviewBadge', 'ÖNCEKİ DERSTEN · HATIRLAMA')}
             </Text>
           </View>
         ) : null}
@@ -633,8 +1222,81 @@ export default function LessonScreen({ navigation, route }) {
           </View>
         )}
 
+        {/* Growth-frame line on wrong answer — single quiet sentence
+            reframing the miss as part of the work. Deterministic pick
+            from a 12-line pool keyed by (lessonId, quizIndex) so the
+            same wrong answer always shows the same line (stable —
+            replays don't shuffle). Tonal: stoic, no cheerleading,
+            no apology — just frame. */}
+        {revealed && selectedAnswer !== currentQuestion.correct && (() => {
+          const growthLines = t('lesson.growthLines', { returnObjects: true });
+          if (!Array.isArray(growthLines) || growthLines.length === 0) return null;
+          // Cheap deterministic string hash. Stable per (lessonId, qIdx).
+          let h = 0;
+          const key = `${lessonId || ''}::${quizIndex}`;
+          for (let i = 0; i < key.length; i++) {
+            h = (h * 31 + key.charCodeAt(i)) | 0;
+          }
+          const idx = Math.abs(h) % growthLines.length;
+          const line = growthLines[idx];
+          if (!line) return null;
+          return (
+            <View style={styles.growthLineBox}>
+              <Text style={styles.growthLineText}>{line}</Text>
+            </View>
+          );
+        })()}
+
         <View style={{ height: 100 }} />
       </ScrollView>
+    );
+  };
+
+  // commitments[] (when present) replaces the single `action` checkbox.
+  // User picks ONE — the picked one becomes both the displayed
+  // commitment AND counts as "actionDone" for the completion CTA.
+  const renderCommitmentsList = () => {
+    if (!commitments) return null;
+    return (
+      <View style={styles.commitmentsWrap}>
+        <Text style={styles.commitmentsLabel}>
+          {t('lesson.commitChoose', 'BUGÜN HANGİSİNİ YAPACAKSIN?')}
+        </Text>
+        {commitments.map((c, idx) => {
+          const isSelected = selectedCommitment === idx;
+          return (
+            <TouchableOpacity
+              key={idx}
+              onPress={() => {
+                if (alreadyCompleted) return;
+                playSound('tap').catch(() => {});
+                Haptics.selectionAsync().catch(() => {});
+                setSelectedCommitment(isSelected ? null : idx);
+                // Picking a commitment satisfies "actionDone" so the
+                // bottom CTA unlocks. Unpicking re-locks it.
+                setActionDone(!isSelected);
+              }}
+              activeOpacity={alreadyCompleted ? 1 : 0.85}
+              style={[
+                styles.commitmentCard,
+                isSelected && styles.commitmentCardActive,
+              ]}
+            >
+              <View
+                style={[
+                  styles.commitmentRadio,
+                  isSelected && styles.commitmentRadioActive,
+                ]}
+              >
+                {isSelected ? (
+                  <MaterialIcons name="check" size={16} color={LT.onPrimary} />
+                ) : null}
+              </View>
+              <Text style={styles.commitmentText}>{c}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
     );
   };
 
@@ -659,35 +1321,121 @@ export default function LessonScreen({ navigation, route }) {
         </LinearGradient>
       </View>
 
-      <TouchableOpacity
-        style={[
-          styles.actionCard,
-          (actionDone || alreadyCompleted) && styles.actionCardActive,
-        ]}
-        onPress={() => !alreadyCompleted && setActionDone(!actionDone)}
-        activeOpacity={alreadyCompleted ? 1 : 0.8}
-      >
-        <View
+      {commitments ? (
+        renderCommitmentsList()
+      ) : (
+        <TouchableOpacity
           style={[
-            styles.checkbox,
-            (actionDone || alreadyCompleted) && styles.checkboxActive,
+            styles.actionCard,
+            (actionDone || alreadyCompleted) && styles.actionCardActive,
           ]}
+          onPress={() => !alreadyCompleted && setActionDone(!actionDone)}
+          activeOpacity={alreadyCompleted ? 1 : 0.8}
         >
-          {(actionDone || alreadyCompleted) && (
-            <MaterialIcons name="check" size={18} color={LT.onPrimary} />
-          )}
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.actionText}>{action}</Text>
-          {!alreadyCompleted && !actionDone && (
-            <Text style={styles.actionHint}>
-              {t('lesson.tapToCheck', 'YAPTIĞINDA İŞARETLE')}
-            </Text>
-          )}
-        </View>
-      </TouchableOpacity>
+          <View
+            style={[
+              styles.checkbox,
+              (actionDone || alreadyCompleted) && styles.checkboxActive,
+            ]}
+          >
+            {(actionDone || alreadyCompleted) && (
+              <MaterialIcons name="check" size={18} color={LT.onPrimary} />
+            )}
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.actionText}>{action}</Text>
+            {!alreadyCompleted && !actionDone && (
+              <Text style={styles.actionHint}>
+                {t('lesson.tapToCheck', 'YAPTIĞINDA İŞARETLE')}
+              </Text>
+            )}
+          </View>
+        </TouchableOpacity>
+      )}
 
-      {reflectionPrompt ? (
+      {/* Reflection block — when the new schema's reflectionPrompts[]
+          is present, render EACH prompt as a labelled section sharing
+          ONE textarea (we still only persist one reflection string —
+          the prompts are guidance for the writer, not separate fields.
+          Keeping the storage shape one-string also avoids touching the
+          completePathLesson reducer + history pages). */}
+      {reflectionPrompts && reflectionPrompts.length > 0 ? (
+        <View style={styles.reflectionWrap}>
+          {reflectionPrompts.map((p, i) => (
+            <Text
+              key={i}
+              style={[
+                styles.reflectionLabel,
+                i > 0 && { marginTop: 8 },
+              ]}
+            >
+              {`${i + 1}. ${p}`}
+            </Text>
+          ))}
+          <View style={styles.reflectionBox}>
+            <TextInput
+              value={reflection}
+              onChangeText={(txt) => setReflection(txt.slice(0, REFLECTION_MAX))}
+              placeholder={t('lesson.reflectionPlaceholder', 'Düşüncelerini buraya yaz...')}
+              placeholderTextColor={LT.outline}
+              multiline
+              style={styles.reflectionInput}
+              editable={!alreadyCompleted}
+            />
+            <View style={styles.reflectionEditIcon} pointerEvents="none">
+              <MaterialIcons name="edit-note" size={20} color={LT.outline} />
+            </View>
+          </View>
+          <View style={styles.reflectionMeta}>
+            <Text style={styles.reflectionMetaText}>
+              {t('lesson.optional', 'OPSİYONEL')}
+            </Text>
+            <Text style={styles.reflectionMetaText}>
+              {reflection.length} / {REFLECTION_MAX}
+            </Text>
+          </View>
+
+          {/* Voice journal — record / play row. Stored locally. */}
+          <View style={styles.voiceRow}>
+            <TouchableOpacity
+              onPress={handleToggleRecord}
+              activeOpacity={0.85}
+              style={[styles.voiceBtn, recording && styles.voiceBtnRecording]}
+              disabled={alreadyCompleted}
+            >
+              <MaterialIcons
+                name={recording ? 'stop-circle' : 'mic'}
+                size={18}
+                color={recording ? LT.onPrimary : LT.primary}
+              />
+              <Text
+                style={[
+                  styles.voiceBtnText,
+                  recording && styles.voiceBtnTextRecording,
+                ]}
+              >
+                {recording
+                  ? t('lesson.voiceStop', 'KAYDI DURDUR')
+                  : recordingUri
+                  ? t('lesson.voiceReRecord', 'YENİDEN KAYDET')
+                  : t('lesson.voiceRecord', 'SESLİ KAYIT')}
+              </Text>
+            </TouchableOpacity>
+            {recordingUri && !recording ? (
+              <TouchableOpacity
+                onPress={handlePlayRecording}
+                activeOpacity={0.85}
+                style={styles.voicePlayBtn}
+              >
+                <MaterialIcons name="play-circle-fill" size={20} color={LT.primary} />
+                <Text style={styles.voicePlayText}>
+                  {t('lesson.voicePlay', 'DİNLE')}
+                </Text>
+              </TouchableOpacity>
+            ) : null}
+          </View>
+        </View>
+      ) : reflectionPrompt ? (
         <View style={styles.reflectionWrap}>
           <Text style={styles.reflectionLabel}>{reflectionPrompt}</Text>
           <View style={styles.reflectionBox}>
@@ -760,6 +1508,23 @@ export default function LessonScreen({ navigation, route }) {
   );
 
   const renderBottomCTA = () => {
+    if (step === STEP.HOOK) {
+      return (
+        <View style={styles.bottomCTAWrap}>
+          <TouchableOpacity onPress={handleHookContinue} activeOpacity={0.9} style={styles.ctaShadow}>
+            <LinearGradient
+              colors={[LT.primaryContainer, LT.primaryContainer]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.ctaButton}
+            >
+              <Text style={styles.ctaText}>{t('lesson.hookContinue', 'Devam et')}</Text>
+              <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} />
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      );
+    }
     if (step === STEP.TEACHING) {
       return (
         <View style={styles.bottomCTAWrap}>
@@ -772,6 +1537,42 @@ export default function LessonScreen({ navigation, route }) {
             >
               <Text style={styles.ctaText}>{t('lesson.gotIt', 'Anladım')}</Text>
               <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} />
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+    if (step === STEP.PRACTICE) {
+      // Continue is gated until the timer either ran out OR the user
+      // explicitly tapped "Atla". That way the user can't bypass the
+      // exercise by tapping Continue immediately.
+      const canContinue = practiceFinished;
+      return (
+        <View style={styles.bottomCTAWrap}>
+          <TouchableOpacity
+            onPress={handlePracticeContinue}
+            disabled={!canContinue}
+            activeOpacity={0.9}
+            style={styles.ctaShadow}
+          >
+            <LinearGradient
+              colors={
+                canContinue
+                  ? [LT.primaryContainer, LT.primaryContainer]
+                  : [LT.surfaceContainerHigh, LT.surfaceContainerHigh]
+              }
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.ctaButton}
+            >
+              <Text style={[styles.ctaText, !canContinue && { opacity: 0.5 }]}>
+                {canContinue
+                  ? t('common.continue', 'Devam')
+                  : t('lesson.practiceDone', 'Tamamla')}
+              </Text>
+              {canContinue && (
+                <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} />
+              )}
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -845,6 +1646,23 @@ export default function LessonScreen({ navigation, route }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      {/* Time-aware mood tint — additive overlay, never intercepts touches.
+          Children render after, so they sit above this on z-axis. */}
+      {mood.tintColor && mood.tintOpacity > 0 ? (
+        <View
+          pointerEvents="none"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: mood.tintColor,
+            opacity: mood.tintOpacity,
+            zIndex: 0,
+          }}
+        />
+      ) : null}
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
         <View style={[styles.glow, { top: -80, right: -60 }]} pointerEvents="none" />
@@ -855,7 +1673,9 @@ export default function LessonScreen({ navigation, route }) {
 
         {renderTopBar()}
 
+        {step === STEP.HOOK && renderHook()}
         {step === STEP.TEACHING && renderTeaching()}
+        {step === STEP.PRACTICE && renderPractice()}
         {step === STEP.QUIZ && renderQuiz()}
         {step === STEP.COMMIT && renderCommit()}
 
@@ -875,6 +1695,35 @@ export default function LessonScreen({ navigation, route }) {
           pathId={pathId}
           stage={pathSceneStage}
           onClose={() => setPathSceneVisible(false)}
+          // Stage-50 "next path" affordance — find the first uncompleted
+          // path AFTER the current one and prep a navigate target. This
+          // is the auto-next-path retention move (highest-leverage at
+          // path completion since these are the most-engaged users at
+          // their highest risk of "done, uninstall" churn).
+          nextPathName={(() => {
+            if (pathSceneStage !== 50) return null;
+            const next = PATHS.find(
+              (p) => p.id !== pathId && !isPathComplete(p, pathProgress),
+            );
+            if (!next) return null;
+            return t(`paths.${next.id}.title`, next.id);
+          })()}
+          onStartNextPath={(() => {
+            if (pathSceneStage !== 50) return null;
+            const next = PATHS.find(
+              (p) => p.id !== pathId && !isPathComplete(p, pathProgress),
+            );
+            if (!next) return null;
+            const nextLesson = getCurrentLesson(next, pathProgress);
+            if (!nextLesson) return null;
+            return () => {
+              setPathSceneVisible(false);
+              navigation.replace('Lesson', {
+                pathId: next.id,
+                lessonId: nextLesson.id,
+              });
+            };
+          })()}
         />
 
         {/* Sage Mode — Premium audio-guided deep session. Triggered
@@ -904,13 +1753,62 @@ export default function LessonScreen({ navigation, route }) {
             navigation.goBack();
           }}
           onRefill={() => {
-            refillHearts();
+            // Rewarded-ad path → +1 heart (NOT full refill). One ad,
+            // one heart. Avoids the previous "watch 1 ad → 5 hearts"
+            // bug that nuked the heart-economy entirely.
+            earnHeart();
             setOutOfHeartsVisible(false);
           }}
           onPaywall={() => {
             setOutOfHeartsVisible(false);
             navigation.navigate('Paywall');
           }}
+        />
+
+        {/* Streak Repair (#2A retention) — only renders during celebration
+            since that's when pendingStreakRestore was just populated by
+            the reducer. After interaction, the field is cleared and the
+            modal disappears. */}
+        <StreakRepairModal
+          visible={!!pendingStreakRestore && showCelebration}
+          brokenStreak={pendingStreakRestore?.brokenStreak}
+          expiresAt={pendingStreakRestore?.expiresAt}
+          isPremium={isPremium}
+          streakFreezes={streakFreezes || 0}
+          rewardedReady={isRewardedReady()}
+          onWatchAd={async () => {
+            // Caller-side: show the rewarded ad, then restore if user
+            // watched it through. If they bailed before the reward
+            // event, do nothing — modal stays open so they can retry.
+            const earned = await showRewarded();
+            if (earned) restoreBrokenStreak({ useToken: false });
+            // Preload next rewarded ad regardless (so a future repair
+            // prompt is immediately actionable).
+            loadRewarded().catch(() => {});
+            return earned;
+          }}
+          onUseToken={() => restoreBrokenStreak({ useToken: true })}
+          onDismiss={dismissBrokenStreakRestore}
+        />
+
+        {/* NPS feedback prompt — fires on the celebration screen for the
+            3rd lesson EVER and again on the 14-day streak. One-shot per
+            trigger (state stamps in AppContext). We only render when:
+              - celebration is showing (lesson context is on screen)
+              - the reducer set a toast for this trigger
+              - there's no pending streak-repair prompt (that takes
+                priority because it's time-critical retention).
+            The data starvation fix — turns the "anlamsız geliyor" black
+            box into structured feedback rows in Supabase. */}
+        <NPSModal
+          visible={
+            !!_npsToast && showCelebration && !pendingStreakRestore
+          }
+          trigger={_npsToast?.trigger}
+          userId={user?.id || null}
+          anonUsername={anonUsername || null}
+          onSubmit={submitNps}
+          onDismiss={dismissNps}
         />
 
         {showCelebration && (
@@ -933,7 +1831,15 @@ export default function LessonScreen({ navigation, route }) {
                     { transform: [{ scale: celebrationScale }] },
                   ]}
                 >
-                  🔥
+                  {/* Stoic streak-band emoji. Sapling for the first day, fire
+                      for the middle range where the habit is still burning
+                      itself in, then onyx stone once discipline has
+                      solidified. Tonal — no party here. */}
+                  {(currentStreak || 0) <= 1
+                    ? '🌱'
+                    : (currentStreak || 0) >= 14
+                      ? '🗿'
+                      : '🔥'}
                 </Animated.Text>
                 <View style={styles.celebrationRing} />
               </View>
@@ -946,7 +1852,13 @@ export default function LessonScreen({ navigation, route }) {
                 +{15 + correctCount * 5} XP
               </Animated.Text>
               <Text style={styles.celebrationHeading}>
-                {t('lesson.greatWork', 'Harika iş!')}
+                {/* 3-band celebration line keyed off streak. Acknowledges
+                    the action without cheerleading — stoic register. */}
+                {(currentStreak || 0) <= 1
+                  ? t('lesson.celebration.start', 'Başladın.')
+                  : (currentStreak || 0) <= 6
+                    ? t('lesson.celebration.again', 'Bir daha.')
+                    : t('lesson.celebration.persist', 'Yine geldin. Bunu unutma.')}
               </Text>
               <Text style={styles.celebrationSubtitle}>
                 {t(
@@ -964,6 +1876,38 @@ export default function LessonScreen({ navigation, route }) {
                 </View>
               )}
 
+              {/* Daily Goal pill — two states. Hit: celebrates the +50 XP
+                  bonus we just granted in the reducer. Progress: nudges
+                  the user with how many lessons are left to hit the goal.
+                  _dailyGoalToast is set by COMPLETE_PATH_LESSON when this
+                  completion crossed the threshold; non-null means we are
+                  currently in the celebration moment for it. */}
+              {_dailyGoalToast ? (
+                <View style={styles.dailyGoalHitPill}>
+                  <MaterialIcons name="emoji-events" size={14} color="#B45309" />
+                  <Text style={styles.dailyGoalHitText}>
+                    {t('lesson.dailyGoalHit', 'GÜNLÜK HEDEF · +{{bonus}} XP', {
+                      bonus: _dailyGoalToast.bonus,
+                    })}
+                  </Text>
+                </View>
+              ) : dailyLessonsCount > 0 && dailyLessonsCount < dailyGoalTarget ? (
+                <View style={styles.dailyGoalProgressPill}>
+                  <MaterialIcons name="flag" size={14} color={LT.primaryContainer} />
+                  <Text style={styles.dailyGoalProgressText}>
+                    {t(
+                      'lesson.dailyGoalProgress',
+                      'Bugün {{current}}/{{target}} ders — {{remaining}} kaldı',
+                      {
+                        current: dailyLessonsCount,
+                        target: dailyGoalTarget,
+                        remaining: dailyGoalTarget - dailyLessonsCount,
+                      },
+                    )}
+                  </Text>
+                </View>
+              ) : null}
+
               {/* Reflection Mirror — surfaces a curated quote that
                   echoes the user's journal entry. The app shows it
                   "heard" them. Empathy hook; the strongest single
@@ -971,9 +1915,29 @@ export default function LessonScreen({ navigation, route }) {
               {mirrorQuote ? (
                 <View style={styles.mirrorCard}>
                   <Text style={styles.mirrorLabel}>
-                    {t('lesson.mirrorLabel', 'A SAGE RESPONDS')}
+                    {firstName
+                      ? t('lesson.mirrorLabelPersonal', '{{name}}, A SAGE RESPONDS', { name: firstName.toUpperCase() })
+                      : t('lesson.mirrorLabel', 'A SAGE RESPONDS')}
                   </Text>
                   <Text style={styles.mirrorQuote}>{mirrorQuote}</Text>
+                </View>
+              ) : null}
+
+              {/* AI Personalization Layer (Layer B) — sage response to
+                  the user's reflection text. Same visual treatment as
+                  the curated mirror quote (it's the same emotional
+                  beat), distinguished by the BİLGENİN YANITI label and
+                  the sparkle icon. Renders only after the async call
+                  resolves with non-null text. */}
+              {aiReflectionResponse ? (
+                <View style={styles.aiResponseCard}>
+                  <View style={styles.aiResponseLabelRow}>
+                    <MaterialIcons name="auto-awesome" size={12} color="#7C3AED" />
+                    <Text style={styles.aiResponseLabel}>
+                      {t('aiCoach.responseLabel', 'BİLGENİN YANITI')}
+                    </Text>
+                  </View>
+                  <Text style={styles.aiResponseText}>{aiReflectionResponse}</Text>
                 </View>
               ) : null}
 
@@ -1160,6 +2124,27 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0.6,
   },
+  // Adaptive review-question badge — purple to differentiate from the
+  // crit-hit flash (gold) and the normal quiz progress chip.
+  reviewBadge: {
+    marginTop: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: 'rgba(124, 58, 237, 0.10)',
+    borderColor: 'rgba(124, 58, 237, 0.35)',
+    borderWidth: 1,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 999,
+    alignSelf: 'flex-start',
+  },
+  reviewBadgeText: {
+    color: '#7C3AED',
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.0,
+  },
   // Cliffhanger — small teaser card on the celebration screen showing
   // tomorrow's lesson title. Drives curiosity-gap return: "what does
   // that mean?" → user opens the app tomorrow to find out.
@@ -1207,6 +2192,96 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   mirrorQuote: {
+    color: LT.onSurface,
+    fontSize: 14,
+    fontWeight: '500',
+    fontStyle: 'italic',
+    lineHeight: 20,
+    letterSpacing: -0.2,
+  },
+  // AI Personalization (Layer B) — intro card rendered above teaching.
+  // Distinguished by the gradient-ish purple tint + sparkle icon so the
+  // user reads it as "this is for you", not generic copy. Matches the
+  // visual register of the reflection-mirror card (same purple family).
+  aiIntroCard: {
+    marginBottom: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    backgroundColor: 'rgba(139, 92, 246, 0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(124, 58, 237, 0.25)',
+    alignSelf: 'stretch',
+  },
+  aiIntroLabelRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 6,
+  },
+  aiIntroLabel: {
+    color: '#7C3AED',
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+  },
+  aiIntroText: {
+    color: LT.onSurface,
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 21,
+    letterSpacing: -0.2,
+  },
+  // Slim loading placeholder while the intro API call is in flight.
+  // Caps visible duration to ~3s before falling through to teaching
+  // (driven by the 5s service timeout — the user may briefly see this
+  // and then no card at all if the call fails after this state clears).
+  aiIntroLoading: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    marginBottom: 14,
+    borderRadius: 10,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    alignSelf: 'stretch',
+  },
+  aiIntroLoadingText: {
+    color: LT.onSurfaceVariant,
+    fontSize: 12,
+    fontWeight: '600',
+    letterSpacing: 0.2,
+  },
+  // AI Personalization (Layer B) — sage response card on celebration.
+  // Visually heavier than the curated mirror card (solid left border
+  // matches but darker tint) to signal "this is generated for YOUR
+  // specific words", a step above the deterministic mirror lookup.
+  aiResponseCard: {
+    marginTop: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    backgroundColor: 'rgba(124, 58, 237, 0.10)',
+    borderLeftWidth: 3,
+    borderLeftColor: '#7C3AED',
+    alignSelf: 'stretch',
+  },
+  aiResponseLabelRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 6,
+  },
+  aiResponseLabel: {
+    color: '#7C3AED',
+    fontSize: 9,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+  },
+  aiResponseText: {
     color: LT.onSurface,
     fontSize: 14,
     fontWeight: '500',
@@ -1357,6 +2432,22 @@ const styles = StyleSheet.create({
   explainText: {
     flex: 1, color: LT.onSurface,
     fontSize: 13, lineHeight: 20, fontStyle: 'italic',
+  },
+  // Growth-frame line under the explain box on a wrong answer. Quiet
+  // type — smaller, muted, no icon, no background fill. Intentionally
+  // visually subordinate to the explainBox so it reads as a closing
+  // thought, not a second piece of information to parse.
+  growthLineBox: {
+    marginTop: 10,
+    paddingHorizontal: 14,
+  },
+  growthLineText: {
+    color: LT.onSurfaceVariant,
+    fontSize: 12,
+    lineHeight: 18,
+    fontStyle: 'italic',
+    fontWeight: '500',
+    textAlign: 'left',
   },
 
   commitMascotWrap: { alignItems: 'center', marginBottom: 24 },
@@ -1578,6 +2669,44 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 0.4,
   },
+  // Daily goal pills — paired with celebrationStatPill above so all three
+  // chips line up visually on the celebration screen.
+  dailyGoalHitPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#FEF3C7', // amber-100
+    borderColor: '#FCD34D', // amber-300
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    marginTop: 6,
+  },
+  dailyGoalHitText: {
+    color: '#B45309', // amber-700
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 0.4,
+  },
+  dailyGoalProgressPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderColor: LT.surfaceContainerHigh,
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 999,
+    marginTop: 6,
+  },
+  dailyGoalProgressText: {
+    color: LT.onSurface,
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
   celebrationCTAs: {
     paddingHorizontal: 20,
     paddingBottom: 32,
@@ -1613,5 +2742,181 @@ const styles = StyleSheet.create({
     color: LT.onSurfaceVariant,
     fontSize: 14,
     fontWeight: '700',
+  },
+
+  // ============================================================
+  // NEW SCHEMA STYLES — Hook / Practice / Commitments
+  // ============================================================
+
+  // HOOK step — single bold scenario card. Larger type than the
+  // standard teaching card so the user feels "stopped" by it.
+  hookCard: {
+    marginTop: 12,
+    paddingVertical: 24,
+    paddingHorizontal: 22,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderLeftWidth: 4,
+    borderLeftColor: LT.primaryContainer,
+    borderRadius: 14,
+    borderTopWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderTopColor: LT.outlineVariant,
+    borderRightColor: LT.outlineVariant,
+    borderBottomColor: LT.outlineVariant,
+  },
+  hookText: {
+    color: LT.onSurface,
+    fontSize: 18,
+    fontWeight: '600',
+    lineHeight: 28,
+    letterSpacing: -0.2,
+  },
+
+  // PRACTICE step — instruction card + timer block + skip/start CTAs.
+  practiceInstructionCard: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 14,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 24,
+  },
+  practiceInstructionText: {
+    flex: 1,
+    color: LT.onSurface,
+    fontSize: 15,
+    lineHeight: 23,
+    fontWeight: '500',
+  },
+  practiceTimerWrap: {
+    alignItems: 'center',
+    marginBottom: 24,
+    paddingVertical: 8,
+  },
+  practiceTimerNumber: {
+    color: LT.primaryContainer,
+    fontSize: 80,
+    fontWeight: '900',
+    letterSpacing: -2,
+    lineHeight: 88,
+    fontVariant: ['tabular-nums'],
+  },
+  practiceTimerUnit: {
+    color: LT.onSurfaceVariant,
+    fontSize: 32,
+    fontWeight: '700',
+    letterSpacing: -1,
+  },
+  practiceTimerTrack: {
+    width: '100%',
+    height: 8,
+    marginTop: 16,
+    backgroundColor: LT.surfaceContainerHigh,
+    borderRadius: 4,
+    overflow: 'hidden',
+  },
+  practiceTimerFill: {
+    height: '100%',
+    backgroundColor: LT.primaryContainer,
+    borderRadius: 4,
+  },
+  practiceStartBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    backgroundColor: LT.primaryContainer,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 16,
+    shadowColor: LT.primaryContainer,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 4,
+  },
+  practiceStartBtnText: {
+    color: LT.onPrimary,
+    fontSize: 16,
+    fontWeight: '800',
+    letterSpacing: 0.4,
+  },
+  practiceSkipBtn: {
+    alignSelf: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+  },
+  practiceSkipBtnText: {
+    color: LT.onSurfaceVariant,
+    fontSize: 13,
+    fontWeight: '700',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
+  practicePromptWrap: {
+    marginTop: 8,
+    gap: 8,
+  },
+  practicePromptLabel: {
+    color: LT.primaryContainer,
+    fontSize: 14,
+    fontWeight: '600',
+    fontStyle: 'italic',
+    lineHeight: 20,
+    paddingHorizontal: 4,
+  },
+
+  // Commitments list — 3 radio-style cards, pick one.
+  commitmentsWrap: {
+    gap: 10,
+    marginBottom: 24,
+  },
+  commitmentsLabel: {
+    color: LT.onSurfaceVariant,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.6,
+    textTransform: 'uppercase',
+    marginBottom: 6,
+    paddingHorizontal: 4,
+  },
+  commitmentCard: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 14,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1.5,
+    borderColor: LT.outlineVariant,
+    borderRadius: 16,
+    padding: 16,
+  },
+  commitmentCardActive: {
+    borderColor: LT.primaryContainer,
+    backgroundColor: 'rgba(227, 18, 18, 0.06)',
+  },
+  commitmentRadio: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: LT.outlineVariant,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 2,
+  },
+  commitmentRadioActive: {
+    backgroundColor: LT.primaryContainer,
+    borderColor: LT.primaryContainer,
+  },
+  commitmentText: {
+    flex: 1,
+    color: LT.onSurface,
+    fontSize: 15,
+    fontWeight: '600',
+    lineHeight: 22,
   },
 });

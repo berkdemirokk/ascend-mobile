@@ -6,6 +6,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
 /**
@@ -23,12 +24,13 @@ export default function LightTopAppBar({
   brand = 'ASCEND',
   rightContent = null,
 }) {
+  const { t } = useTranslation();
   return (
     <View style={styles.bar}>
       <TouchableOpacity
         onPress={onAvatarPress}
         style={styles.avatarBtn}
-        accessibilityLabel="Settings"
+        accessibilityLabel={t('settings.title', 'Settings')}
         activeOpacity={0.7}
       >
         <View style={styles.avatarCircle}>

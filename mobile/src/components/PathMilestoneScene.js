@@ -85,7 +85,14 @@ export const detectPathSceneStage = (completedAfter) => {
   return null;
 };
 
-export default function PathMilestoneScene({ visible, pathId, stage, onClose }) {
+export default function PathMilestoneScene({
+  visible,
+  pathId,
+  stage,
+  onClose,
+  onStartNextPath, // optional: only meaningful when stage === 50
+  nextPathName,    // optional: display name for the next path CTA
+}) {
   const { t } = useTranslation();
   const scale = useRef(new Animated.Value(0)).current;
   const scene = getPathScene(pathId, stage);
@@ -124,11 +131,46 @@ export default function PathMilestoneScene({ visible, pathId, stage, onClose }) 
             <Text style={styles.emoji}>{scene.emoji}</Text>
             <Text style={styles.title}>{t(scene.titleKey)}</Text>
             <Text style={styles.body}>{t(scene.bodyKey)}</Text>
-            <TouchableOpacity onPress={onClose} style={styles.closeBtn} activeOpacity={0.85}>
-              <Text style={styles.closeBtnText}>
-                {t('pathScene.continueCta', 'Continue the journey →')}
-              </Text>
-            </TouchableOpacity>
+            {/* Stage 50 (path-complete) special-cases the CTA to nudge
+                into the NEXT path. Path-completers are the highest-LTV
+                cohort about to churn because they've "finished" — the
+                one-tap-to-next-path CTA is the cheapest re-engagement
+                lever for them. Other stages keep the original "Continue
+                the journey" close button. */}
+            {stage === 50 && onStartNextPath ? (
+              <>
+                <TouchableOpacity
+                  onPress={onStartNextPath}
+                  style={styles.primaryBtn}
+                  activeOpacity={0.85}
+                >
+                  <Text style={styles.primaryBtnText}>
+                    {nextPathName
+                      ? t(
+                          'pathScene.nextPathCta',
+                          'Sıradaki yol: {{name}} →',
+                          { name: nextPathName },
+                        )
+                      : t('pathScene.nextPathCtaGeneric', 'Sıradaki yola başla →')}
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={onClose}
+                  style={styles.closeBtn}
+                  activeOpacity={0.7}
+                >
+                  <Text style={styles.closeBtnText}>
+                    {t('pathScene.laterCta', 'Sonra')}
+                  </Text>
+                </TouchableOpacity>
+              </>
+            ) : (
+              <TouchableOpacity onPress={onClose} style={styles.closeBtn} activeOpacity={0.85}>
+                <Text style={styles.closeBtnText}>
+                  {t('pathScene.continueCta', 'Continue the journey →')}
+                </Text>
+              </TouchableOpacity>
+            )}
           </LinearGradient>
         </Animated.View>
       </View>
@@ -189,6 +231,21 @@ const styles = StyleSheet.create({
   },
   closeBtnText: {
     color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '900',
+    letterSpacing: 0.6,
+  },
+  // Path-50 primary CTA — gold contrast against the indigo/purple
+  // gradient so it visually claims "this is the next move."
+  primaryBtn: {
+    backgroundColor: '#FDE047',
+    paddingHorizontal: 28,
+    paddingVertical: 14,
+    borderRadius: 14,
+    marginBottom: 10,
+  },
+  primaryBtnText: {
+    color: '#1E1B4B',
     fontSize: 14,
     fontWeight: '900',
     letterSpacing: 0.6,
