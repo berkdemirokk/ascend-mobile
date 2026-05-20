@@ -47,7 +47,12 @@ async function ensureLoaded() {
     Audio = mod.Audio;
     if (Audio?.setAudioModeAsync) {
       await Audio.setAudioModeAsync({
-        playsInSilentModeIOS: false,
+        // Was false — meant any iPhone on silent mode (the majority)
+        // heard NOTHING. User feedback was "ses kötü" partly because
+        // the sounds weren't playing at all. Now they fire even on
+        // silent. Volume is still capped at 0.6 in createAsync() so
+        // they're audible but not jarring.
+        playsInSilentModeIOS: true,
         staysActiveInBackground: false,
         shouldDuckAndroid: true,
       });
