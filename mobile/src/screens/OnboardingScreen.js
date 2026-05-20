@@ -35,6 +35,8 @@ import {
   loadInterstitial,
   loadRewarded,
 } from '../services/ads';
+import { track } from '../services/analytics';
+import { useAuth } from '../contexts/AuthContext';
 
 const STEPS = ['welcome', 'personalize', 'pickPath', 'upsell'];
 
@@ -51,6 +53,7 @@ const GOAL_TO_PATH = {
 export default function OnboardingScreen({ navigation }) {
   const { t } = useTranslation();
   const { completeOnboarding, setUserProfile, setActivePath, isPremium } = useApp();
+  const { user } = useAuth();
   const [step, setStep] = useState('welcome');
   const [selectedPath, setSelectedPath] = useState('dopamine-detox');
   const [answers, setAnswers] = useState({ goal: null, time: null, mood: null });
@@ -67,6 +70,21 @@ export default function OnboardingScreen({ navigation }) {
     });
     setActivePath(selectedPath);
     completeOnboarding();
+
+    // Funnel event — top of the activation funnel. Props capture the
+    // personalization signal so we can later see e.g. "is the focus goal
+    // group converting better than discipline?".
+    track({
+      event: 'onboarding_completed',
+      userId: user?.id,
+      props: {
+        path: selectedPath,
+        goal: answers.goal,
+        time: answers.time,
+        mood: answers.mood,
+        isPremium: !!isPremium,
+      },
+    });
 
     // Sequenced post-onboarding flow (Apple-compliant ordering):
     //   1. Notification permission (5.1.1 — ask at meaningful moment)

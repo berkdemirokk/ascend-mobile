@@ -21,12 +21,15 @@ import {
   getPurchasesDiagnostics,
 } from '../services/purchases';
 import { getPaywallVariant, logPaywallEvent } from '../config/paywallVariants';
+import { track } from '../services/analytics';
+import { useAuth } from '../contexts/AuthContext';
 import { LT } from '../config/lightTheme';
 import { LEGAL } from '../config/constants';
 
 export default function PaywallScreen({ navigation }) {
   const { t } = useTranslation();
   const { setPremium } = useApp();
+  const { user } = useAuth();
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [isRestoring, setIsRestoring] = useState(false);
   const [selected, setSelected] = useState('yearly');
@@ -46,10 +49,21 @@ export default function PaywallScreen({ navigation }) {
         const v = await getPaywallVariant();
         setVariant(v);
         logPaywallEvent(v.id, 'view');
+        // Funnel event — paywall impression. Compared against `lesson_completed`
+        // this tells us if users are seeing it at all (paywall trigger working),
+        // and compared against actual subscriptions this gives conversion rate.
+        track({
+          event: 'paywall_shown',
+          userId: user?.id,
+          props: { variant: v?.id || null },
+        });
       } catch {
         setVariant({ id: 'A' });
       }
     })();
+    // user.id may not be ready on first render; we fire once on mount
+    // intentionally — paywall impressions shouldn't multi-count.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const monthlyPrice = packages.monthly?.product?.priceString || '₺149,99';

@@ -38,6 +38,8 @@ import { requestReviewIfAppropriate } from '../services/review';
 import { cancelFirstWeekHooks } from '../services/notifications';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
+import { track } from '../services/analytics';
+import { useAuth } from '../contexts/AuthContext';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
 const STEP = {
@@ -50,6 +52,7 @@ const REFLECTION_MAX = 250;
 
 export default function LessonScreen({ navigation, route }) {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const { pathId, lessonId } = route.params || {};
   const {
     completePathLesson,
@@ -115,10 +118,20 @@ export default function LessonScreen({ navigation, route }) {
   const mountedRef = useRef(true);
   useEffect(() => {
     mountedRef.current = true;
+    // Funnel event — user opened a lesson. Compared against
+    // `lesson_completed` this gives us the per-lesson abandonment rate.
+    track({
+      event: 'lesson_started',
+      userId: user?.id,
+      props: { pathId, lessonId, lessonOrder: lesson?.order || null },
+    });
     return () => {
       mountedRef.current = false;
       ttsStop().catch(() => {});
     };
+    // We intentionally only want this event ONCE on mount, even if user
+    // / route changes mid-screen, so deps are empty.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const safeSet = (setter) => (...args) => {
     if (mountedRef.current) setter(...args);
@@ -332,6 +345,23 @@ export default function LessonScreen({ navigation, route }) {
       // critBonusXP is granted as raw bonus, NOT subject to the
       // multipliers (already a bonus mechanic on its own).
       xp: 15 + correctCount * 5 + critBonusXP,
+    });
+
+    // Funnel event — activation moment. Compared against `lesson_started`
+    // this gives in-lesson dropout. Compared against `onboarding_completed`
+    // this gives the activation rate (the single most important early
+    // funnel metric).
+    track({
+      event: 'lesson_completed',
+      userId: user?.id,
+      props: {
+        pathId,
+        lessonId,
+        lessonOrder: lesson?.order || null,
+        quizCorrect: correctCount,
+        quizTotal: quiz.length,
+        wroteReflection: !!trimmedReflection,
+      },
     });
 
     setShowCelebration(true);
