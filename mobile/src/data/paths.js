@@ -5,6 +5,13 @@
 // All teaching/action/reflection text is in i18n keys (per-locale).
 
 // Each path has both an emoji (legacy) and a materialIcon (Stitch design).
+// Free-lesson tuning: brand-new users were hitting the paywall too fast
+// (5 lessons on the primary path ≈ one sitting), then bailing because the
+// app felt "thin" before they'd even built a habit. Doubling the free
+// allowance on the primary path and bumping the secondary paths from 3
+// to 5 still keeps premium scarce (30 of 250 lessons free = 12%), but
+// gives the user real time to feel the streak forming before being asked
+// to pay.
 export const PATHS = [
   {
     id: 'dopamine-detox',
@@ -13,7 +20,7 @@ export const PATHS = [
     color: '#FF6B6B',
     duration: 50,
     order: 1,
-    freeLessons: 5,
+    freeLessons: 10,
   },
   {
     id: 'silent-morning',
@@ -22,7 +29,7 @@ export const PATHS = [
     color: '#FDE047',
     duration: 50,
     order: 2,
-    freeLessons: 3,
+    freeLessons: 5,
   },
   {
     id: 'mind-discipline',
@@ -31,7 +38,7 @@ export const PATHS = [
     color: '#6366F1',
     duration: 50,
     order: 3,
-    freeLessons: 3,
+    freeLessons: 5,
   },
   {
     id: 'body-discipline',
@@ -40,7 +47,7 @@ export const PATHS = [
     color: '#10B981',
     duration: 50,
     order: 4,
-    freeLessons: 3,
+    freeLessons: 5,
   },
   {
     id: 'money-discipline',
@@ -49,7 +56,7 @@ export const PATHS = [
     color: '#F59E0B',
     duration: 50,
     order: 5,
-    freeLessons: 3,
+    freeLessons: 5,
   },
 ];
 

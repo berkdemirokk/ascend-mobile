@@ -187,7 +187,10 @@
     "backToPath": "Yola Dön",
     "critHit": "⚡ KRİTİK VURUŞ! +25 XP",
     "tomorrowTeaser": "YARIN",
-    "mirrorLabel": "BİR BİLGE CEVAP VERDİ"
+    "mirrorLabel": "BİR BİLGE CEVAP VERDİ",
+    "takeawayLabel": "BUGÜN ÖĞRENDİN",
+    "explainCorrect": "NEDEN DOĞRU",
+    "explainWrong": "AÇIKLAMA"
   },
   "transform": {
     "entryLabel": "DÖNÜŞÜMÜN",

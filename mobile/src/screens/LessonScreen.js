@@ -657,13 +657,49 @@ export default function LessonScreen({ navigation, route }) {
           })}
         </View>
 
+        {/* Explain box — surfaced after the user picks an answer. Now
+            visually louder (was italic + small + low contrast, looked
+            like a footnote). User feedback: "they solve the test but
+            the point is unclear." If the lesson author wrote an
+            `explain`, we now SHOW it as a proper answer key, not as a
+            whisper. Label varies on correctness so the user can tell
+            "I got it right because X" vs. "Here's why the answer is Y." */}
         {revealed && currentQuestion.explain && (
-          <View style={styles.explainBox}>
-            <MaterialIcons
-              name={selectedAnswer === currentQuestion.correct ? 'check-circle' : 'info'}
-              size={18}
-              color={selectedAnswer === currentQuestion.correct ? '#10B981' : '#FDE047'}
-            />
+          <View
+            style={[
+              styles.explainBox,
+              selectedAnswer === currentQuestion.correct
+                ? styles.explainBoxCorrect
+                : styles.explainBoxLearn,
+            ]}
+          >
+            <View style={styles.explainHeader}>
+              <MaterialIcons
+                name={
+                  selectedAnswer === currentQuestion.correct
+                    ? 'check-circle'
+                    : 'lightbulb'
+                }
+                size={18}
+                color={
+                  selectedAnswer === currentQuestion.correct
+                    ? '#10B981'
+                    : LT.primaryContainer
+                }
+              />
+              <Text
+                style={[
+                  styles.explainLabel,
+                  selectedAnswer === currentQuestion.correct
+                    ? styles.explainLabelCorrect
+                    : styles.explainLabelLearn,
+                ]}
+              >
+                {selectedAnswer === currentQuestion.correct
+                  ? t('lesson.explainCorrect', 'NEDEN DOĞRU')
+                  : t('lesson.explainWrong', 'AÇIKLAMA')}
+              </Text>
+            </View>
             <Text style={styles.explainText}>{currentQuestion.explain}</Text>
           </View>
         )}
@@ -999,6 +1035,30 @@ export default function LessonScreen({ navigation, route }) {
                 </View>
               )}
 
+              {/* "Today you learned" takeaway card — surfaces the first
+                  sentence of the teaching as a one-line summary. User
+                  feedback: "they solve the quiz but the point is unclear."
+                  This card directly answers "what did I just learn?"
+                  Without it the celebration was all dopamine and no
+                  cognition — feels like a game, not learning. */}
+              {(() => {
+                const teachingText = t(`${i18nBase}.teaching`, '');
+                if (!teachingText) return null;
+                const firstSentence = teachingText
+                  .split(/[.!?](?=\s|$)/)
+                  .map((s) => s.trim())
+                  .filter((s) => s.length > 10)[0];
+                if (!firstSentence) return null;
+                return (
+                  <View style={styles.takeawayCard}>
+                    <Text style={styles.takeawayLabel}>
+                      🎯 {t('lesson.takeawayLabel', 'BUGÜN ÖĞRENDİN')}
+                    </Text>
+                    <Text style={styles.takeawayBody}>{firstSentence}.</Text>
+                  </View>
+                );
+              })()}
+
               {/* Reflection Mirror — surfaces a curated quote that
                   echoes the user's journal entry. The app shows it
                   "heard" them. Empathy hook; the strongest single
@@ -1222,6 +1282,34 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     letterSpacing: -0.2,
   },
+  // "Today you learned" takeaway card on the celebration screen. Surfaces
+  // the first sentence of the teaching so the user actually walks away
+  // remembering WHAT they learned, not just that they tapped a button.
+  takeawayCard: {
+    marginTop: 18,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    backgroundColor: 'rgba(227, 18, 18, 0.06)',
+    borderLeftWidth: 3,
+    borderLeftColor: LT.primaryContainer,
+    alignSelf: 'stretch',
+    maxWidth: 380,
+  },
+  takeawayLabel: {
+    color: LT.primaryContainer,
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.6,
+    marginBottom: 6,
+  },
+  takeawayBody: {
+    color: LT.onSurface,
+    fontSize: 14,
+    fontWeight: '600',
+    lineHeight: 20,
+    letterSpacing: -0.1,
+  },
   // Reflection Mirror — sage-quote card surfaced on celebration screen
   // after a user submits a reflection. Empathy hook.
   mirrorCard: {
@@ -1382,16 +1470,35 @@ const styles = StyleSheet.create({
   optionText: { flex: 1, color: LT.onSurface, fontSize: 15, fontWeight: '600' },
 
   explainBox: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 10,
     backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: 12, padding: 14, marginTop: 16,
+    borderRadius: 12, padding: 16, marginTop: 16,
     borderWidth: 1, borderColor: LT.outlineVariant,
+    borderLeftWidth: 4,
   },
+  explainBoxCorrect: {
+    borderLeftColor: '#10B981',
+    backgroundColor: 'rgba(16, 185, 129, 0.06)',
+  },
+  explainBoxLearn: {
+    borderLeftColor: LT.primaryContainer,
+    backgroundColor: 'rgba(227, 18, 18, 0.05)',
+  },
+  explainHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  explainLabel: {
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.6,
+  },
+  explainLabelCorrect: { color: '#10B981' },
+  explainLabelLearn: { color: LT.primaryContainer },
   explainText: {
-    flex: 1, color: LT.onSurface,
-    fontSize: 13, lineHeight: 20, fontStyle: 'italic',
+    color: LT.onSurface,
+    fontSize: 15, lineHeight: 22, fontWeight: '500',
   },
 
   commitMascotWrap: { alignItems: 'center', marginBottom: 24 },

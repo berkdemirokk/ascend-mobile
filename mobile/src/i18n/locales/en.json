@@ -187,7 +187,10 @@
     "backToPath": "Back to Path",
     "critHit": "⚡ CRITICAL HIT! +25 XP",
     "tomorrowTeaser": "TOMORROW",
-    "mirrorLabel": "A SAGE RESPONDS"
+    "mirrorLabel": "A SAGE RESPONDS",
+    "takeawayLabel": "TODAY YOU LEARNED",
+    "explainCorrect": "WHY IT'S RIGHT",
+    "explainWrong": "EXPLANATION"
   },
   "transform": {
     "entryLabel": "YOUR TRANSFORMATION",
