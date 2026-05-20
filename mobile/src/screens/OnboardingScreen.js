@@ -27,6 +27,7 @@ import {
   requestNotificationPermissions,
   scheduleDailyReminder,
   scheduleWeeklyRecap,
+  scheduleFirstWeekHooks,
 } from '../services/notifications';
 import {
   requestTrackingPermissionIfNeeded,
@@ -89,6 +90,12 @@ export default function OnboardingScreen({ navigation }) {
           // clean and obvious.
           scheduleDailyReminder({ currentStreak: 0 }).catch(() => {});
           scheduleWeeklyRecap().catch(() => {});
+          // D1 + D3 first-week hooks — these are the only outside-app
+          // touchpoint for a brand-new user before they build a streak,
+          // and they're the highest-leverage retention push slots we have.
+          // Cancelled automatically by LessonScreen once the user finishes
+          // their first lesson (no nagging the already-activated).
+          scheduleFirstWeekHooks().catch(() => {});
         }
       } catch {}
       try {
@@ -160,9 +167,11 @@ export default function OnboardingScreen({ navigation }) {
     setTimeout(() => navigation?.navigate?.('Paywall'), 300);
   };
 
-  // Personalize step requires the goal pick before moving forward — time/mood
-  // are nice-to-have but goal drives path pre-selection so it's mandatory.
-  const canAdvance = step !== 'personalize' || answers.goal != null;
+  // Personalize step USED to require a goal pick (canAdvance = goal != null).
+  // That was killing D1: users hit a mandatory form before seeing the app
+  // and bailed. Goal pre-selects the path nicely when chosen, but it's
+  // strictly optional now — empty goal falls back to the default path.
+  const canAdvance = true;
 
   return (
     <SafeAreaView style={styles.safeArea}>

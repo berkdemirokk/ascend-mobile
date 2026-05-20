@@ -22,6 +22,32 @@ const EVENING_REMINDER_ID = 'ascend-evening-reminder';
 const WEEKLY_RECAP_ID = 'ascend-weekly-recap';
 const STREAK_AT_RISK_ID = 'ascend-streak-at-risk';
 const COMEBACK_ID = 'ascend-comeback';
+// D1 / D3 first-week hooks — schedule once at onboarding-finish. These
+// are the highest-leverage push slots: brand-new users have no streak to
+// lose, so the daily 9 AM reminder is their only outside-app touchpoint,
+// and one bland message at 9 AM doesn't beat the post-install novelty
+// decay. D1 (next-day evening) catches "did you forget us?", D3 catches
+// "you said you'd start — three days in, here we are."
+const D1_HOOK_ID = 'ascend-d1-hook';
+const D3_HOOK_ID = 'ascend-d3-hook';
+
+// Pool size for the rotating daily reminder copy. Variants live in i18n
+// (notifications.dailyV0Title ... dailyV{N-1}Title) so they can be localised.
+const DAILY_START_VARIANTS = 4;   // for users with no streak yet
+const DAILY_PROGRESS_VARIANTS = 6; // for users with an active streak
+
+/**
+ * Pick today's daily-reminder variant deterministically by day-of-year.
+ * Re-runs of scheduleDailyReminder on the same day get the same copy
+ * (idempotent); the next day rotates. Used to break the
+ * one-message-every-morning monotony that was killing first-week engagement.
+ */
+const pickDailyVariantIndex = (variantCount) => {
+  const now = new Date();
+  const yearStart = new Date(now.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor((now - yearStart) / (1000 * 60 * 60 * 24));
+  return dayOfYear % Math.max(1, variantCount);
+};
 
 // Category IDs — pre-registered with the system so notifications can
 // declare which set of action buttons they want. Set in setupNotifCategories.
@@ -134,13 +160,35 @@ export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
     // no-op — notification may not exist yet
   }
 
+  // Rotate through a pool of copy by day-of-year so users don't see the
+  // same line every morning. Falls back to the legacy reminderTitleStart/
+  // reminderTitleProgress keys when a variant key is missing (so a partial
+  // i18n drop still works).
   const hasStreak = (currentStreak || 0) > 0;
-  const title = hasStreak
-    ? i18n.t('notifications.reminderTitleProgress', { streak: currentStreak })
-    : i18n.t('notifications.reminderTitleStart');
-  const body = hasStreak
-    ? i18n.t('notifications.reminderBodyProgress')
-    : i18n.t('notifications.reminderBodyStart');
+  const variantCount = hasStreak ? DAILY_PROGRESS_VARIANTS : DAILY_START_VARIANTS;
+  const variantIdx = pickDailyVariantIndex(variantCount);
+  const prefix = hasStreak ? 'dailyProgress' : 'dailyStart';
+  const fallbackTitleKey = hasStreak
+    ? 'notifications.reminderTitleProgress'
+    : 'notifications.reminderTitleStart';
+  const fallbackBodyKey = hasStreak
+    ? 'notifications.reminderBodyProgress'
+    : 'notifications.reminderBodyStart';
+
+  const title = i18n.t(
+    `notifications.${prefix}${variantIdx}Title`,
+    {
+      defaultValue: i18n.t(fallbackTitleKey, { streak: currentStreak }),
+      streak: currentStreak,
+    },
+  );
+  const body = i18n.t(
+    `notifications.${prefix}${variantIdx}Body`,
+    {
+      defaultValue: i18n.t(fallbackBodyKey, { streak: currentStreak }),
+      streak: currentStreak,
+    },
+  );
 
   await Notifications.scheduleNotificationAsync({
     identifier: DAILY_REMINDER_ID,
@@ -160,6 +208,71 @@ export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
       minute: 0,
     },
   });
+};
+
+/**
+ * D1 + D3 "first week" hooks. Both fire at 19:30 on day +1 and day +3 from
+ * the moment this function is called (i.e. onboarding finish). They're
+ * scheduled once and self-cancel if the user finishes a lesson sooner via
+ * cancelFirstWeekHooks(). Cheap to call again — we always cancel before
+ * scheduling.
+ *
+ * Why 19:30? Phones are most actively in-hand in early evening, and at
+ * that hour the user has finished work/school and has a believable window
+ * to do a 5-min lesson tonight.
+ */
+export const scheduleFirstWeekHooks = async () => {
+  try {
+    await Notifications.cancelScheduledNotificationAsync(D1_HOOK_ID);
+    await Notifications.cancelScheduledNotificationAsync(D3_HOOK_ID);
+  } catch {}
+
+  const makeTarget = (daysAhead) => {
+    const target = new Date();
+    target.setDate(target.getDate() + daysAhead);
+    target.setHours(19, 30, 0, 0);
+    return target;
+  };
+
+  await Notifications.scheduleNotificationAsync({
+    identifier: D1_HOOK_ID,
+    content: {
+      title: i18n.t('notifications.d1HookTitle'),
+      body: i18n.t('notifications.d1HookBody'),
+      sound: true,
+      categoryIdentifier: CAT_LESSON_REMINDER,
+    },
+    trigger: {
+      type: SchedulableTriggerInputTypes.DATE ?? 'date',
+      date: makeTarget(1),
+    },
+  });
+
+  await Notifications.scheduleNotificationAsync({
+    identifier: D3_HOOK_ID,
+    content: {
+      title: i18n.t('notifications.d3HookTitle'),
+      body: i18n.t('notifications.d3HookBody'),
+      sound: true,
+      categoryIdentifier: CAT_LESSON_REMINDER,
+    },
+    trigger: {
+      type: SchedulableTriggerInputTypes.DATE ?? 'date',
+      date: makeTarget(3),
+    },
+  });
+};
+
+/**
+ * Cancel the D1/D3 hooks. Call this when the user completes their first
+ * lesson — they're already activated; the "did you forget?" angle would
+ * read as nagging.
+ */
+export const cancelFirstWeekHooks = async () => {
+  try {
+    await Notifications.cancelScheduledNotificationAsync(D1_HOOK_ID);
+    await Notifications.cancelScheduledNotificationAsync(D3_HOOK_ID);
+  } catch {}
 };
 
 /**
@@ -221,10 +334,13 @@ export const scheduleStreakAtRiskReminder = async ({
     await Notifications.cancelScheduledNotificationAsync(STREAK_AT_RISK_ID);
   } catch {}
 
-  // No-op if user already completed today, has no streak to lose, or is on
-  // vacation (streak frozen — no risk).
+  // No-op if user already completed today, has no streak yet, or is on
+  // vacation (streak frozen — no risk). Threshold was 2 — at that level
+  // brand-new users who finished their FIRST lesson got no risk push,
+  // which was the exact moment they most needed one. Now even a 1-day
+  // streak triggers it.
   if (todayCompleted) return;
-  if ((currentStreak || 0) < 2) return;
+  if ((currentStreak || 0) < 1) return;
   if (onVacation) return;
 
   const now = new Date();

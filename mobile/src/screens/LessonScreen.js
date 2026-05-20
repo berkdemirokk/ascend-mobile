@@ -35,6 +35,7 @@ import {
 } from '../services/voiceRecording';
 import { getCurrentLanguage } from '../i18n';
 import { requestReviewIfAppropriate } from '../services/review';
+import { cancelFirstWeekHooks } from '../services/notifications';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
 import { LT, LT_RADIUS } from '../config/lightTheme';
@@ -387,6 +388,10 @@ export default function LessonScreen({ navigation, route }) {
     // Apple guideline: don't ask for tracking before user understands app.
     if (totalCompleted === 1) {
       requestTrackingPermissionIfNeeded().catch(() => {});
+      // First-week D1/D3 hooks were "did you forget to come back?" pushes
+      // scheduled at onboarding. Now that the user finished their first
+      // lesson they're activated — cancel the hooks so we don't nag.
+      cancelFirstWeekHooks().catch(() => {});
     }
 
     // Store review prompt — gated to >= 3 lessons, >= 2 streak, 24h since last.
