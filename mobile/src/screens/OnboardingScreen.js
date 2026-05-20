@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
+  TextInput,
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
@@ -56,7 +57,15 @@ export default function OnboardingScreen({ navigation }) {
   const { user } = useAuth();
   const [step, setStep] = useState('welcome');
   const [selectedPath, setSelectedPath] = useState('dopamine-detox');
-  const [answers, setAnswers] = useState({ goal: null, time: null, mood: null });
+  // `name` lives inside answers so it stays in userProfile.answers and
+  // syncs to the cloud alongside goal/time/mood. Empty string by default
+  // (skippable) — the app falls back to "Sen" wherever name is null/empty.
+  const [answers, setAnswers] = useState({
+    name: '',
+    goal: null,
+    time: null,
+    mood: null,
+  });
 
   const buttonScale = useSharedValue(1);
   const animatedButtonStyle = useAnimatedStyle(() => ({
@@ -65,6 +74,10 @@ export default function OnboardingScreen({ navigation }) {
 
   const finishOnboarding = () => {
     setUserProfile({
+      // Hoist name to the top level so HomeScreen/notifications can read
+      // userProfile.name without spelunking into answers. answers still
+      // keeps it for cloudSync compatibility.
+      name: (answers.name || '').trim() || null,
       goals: answers.goal ? [answers.goal] : ['discipline'],
       answers,
     });
@@ -106,14 +119,19 @@ export default function OnboardingScreen({ navigation }) {
           // will pick the "begin monk mode" variant (not the streak-
           // formatted one). Pass explicitly to keep the API contract
           // clean and obvious.
-          scheduleDailyReminder({ currentStreak: 0 }).catch(() => {});
+          scheduleDailyReminder({
+            currentStreak: 0,
+            userName: answers.name || '',
+          }).catch(() => {});
           scheduleWeeklyRecap().catch(() => {});
           // D1 + D3 first-week hooks — these are the only outside-app
           // touchpoint for a brand-new user before they build a streak,
           // and they're the highest-leverage retention push slots we have.
           // Cancelled automatically by LessonScreen once the user finishes
           // their first lesson (no nagging the already-activated).
-          scheduleFirstWeekHooks().catch(() => {});
+          scheduleFirstWeekHooks({ userName: answers.name || '' }).catch(
+            () => {},
+          );
         }
       } catch {}
       try {
@@ -165,6 +183,10 @@ export default function OnboardingScreen({ navigation }) {
     // Save profile + activate path BEFORE going to paywall, so even if user
     // backs out we don't lose onboarding state
     setUserProfile({
+      // Hoist name to the top level so HomeScreen/notifications can read
+      // userProfile.name without spelunking into answers. answers still
+      // keeps it for cloudSync compatibility.
+      name: (answers.name || '').trim() || null,
       goals: answers.goal ? [answers.goal] : ['discipline'],
       answers,
     });
@@ -386,10 +408,28 @@ function PersonalizeStep({ t, answers, onAnswer }) {
     <ScrollView
       contentContainerStyle={styles.personalizeContent}
       showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
     >
       <Text style={styles.personalizeIntro}>
         {t('onboarding.personalizeIntro', 'Sana özel plan için 3 hızlı soru')}
       </Text>
+
+      {/* Name — optional. Drives personalised push titles + Home greeting.
+          Opt-out friendly (placeholder hints that it's skippable). */}
+      <Text style={styles.personalizeQ}>
+        {t('onboarding.qName', 'Sana nasıl seslenelim?')}
+      </Text>
+      <TextInput
+        value={answers.name || ''}
+        onChangeText={(txt) => onAnswer('name', txt.slice(0, 24))}
+        placeholder={t('onboarding.namePlaceholder', 'Adın (opsiyonel)')}
+        placeholderTextColor={LT.outline}
+        autoCapitalize="words"
+        autoCorrect={false}
+        maxLength={24}
+        returnKeyType="done"
+        style={styles.nameInput}
+      />
 
       {/* Goal */}
       <Text style={styles.personalizeQ}>
@@ -1031,6 +1071,18 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 14,
     letterSpacing: -0.2,
+  },
+  nameInput: {
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    borderRadius: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    color: LT.onSurface,
+    fontWeight: '600',
+    marginBottom: 8,
   },
   optionList: {
     gap: 8,

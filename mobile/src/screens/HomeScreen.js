@@ -135,6 +135,26 @@ export default function HomeScreen({ navigation }) {
     return dominantReflectionCategory(weights);
   }, [pathProgress]);
 
+  // Reflection insight — surfaces the per-category counts as a visible
+  // card so the user can see "the app actually read what I wrote." For
+  // the longest time reflectionSignals only quietly biased the daily
+  // challenge picker — invisible personalization is the same as no
+  // personalization from the user's perspective. Threshold: at least 3
+  // reflections AND a dominant category with >=3 hits (same gate as
+  // dominantReflectionCategory).
+  const reflectionInsight = useMemo(() => {
+    const texts = collectReflectionTexts(pathProgress);
+    if (texts.length < 3) return null;
+    const weights = analyzeReflections(texts);
+    const dominant = dominantReflectionCategory(weights);
+    if (!dominant) return null;
+    return {
+      category: dominant,
+      count: weights[dominant],
+      totalReflections: texts.length,
+    };
+  }, [pathProgress]);
+
   // Daily Plan — 3 lessons curated for the user today based on their
   // active path + reflection-derived focus + onboarding goal. Premium-
   // only feature; free users see a teaser/upsell version.
@@ -294,15 +314,18 @@ export default function HomeScreen({ navigation }) {
   }, [todayCompleted, currentLesson, currentStreak, navigation, isPremium, hearts]);
 
   // Prefer the user's actual name when we have one. Sources, in order:
-  //   1. Onboarding profile (user typed it)
-  //   2. Supabase auth metadata (signup or Apple Sign-In full name)
-  //   3. The local part of the email (e.g. "berk@x.com" -> "berk")
-  //   4. Generic fallback string
+  //   1. Onboarding profile name (user typed it)
+  //   2. Onboarding answers.name (older builds stored it here)
+  //   3. Supabase auth metadata (signup or Apple Sign-In full name)
+  //   4. The local part of the email (e.g. "berk@x.com" -> "berk")
+  //   5. Generic fallback string
   const profileName = userProfile?.name?.trim();
+  const answerName = userProfile?.answers?.name?.trim();
   const metaName = user?.user_metadata?.name?.trim();
   const emailLocal = (user?.email || '').split('@')[0];
   const username =
     profileName ||
+    answerName ||
     metaName ||
     (emailLocal ? capitalize(emailLocal) : t('home.greetingName', 'Disiplinci'));
   const greeting = getGreeting(t);
@@ -470,6 +493,43 @@ export default function HomeScreen({ navigation }) {
           }
           onUpgradeTap={() => navigation.navigate('Paywall')}
         />
+
+        {/* Reflection Insight — makes the silent reflectionSignals analyzer
+            VISIBLE to the user. Shows up only after they've written ≥3
+            reflections AND there's a dominant category. "The app read me"
+            is the strongest single trust hook for any journaling product
+            (see Stoic's AI Mentor surface). Tap routes to the Reflections
+            screen so they can re-read what they wrote. */}
+        {reflectionInsight && (
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={() => navigation.navigate('Reflections')}
+            style={styles.insightCard}
+          >
+            <View style={styles.insightHeader}>
+              <MaterialIcons
+                name="auto-stories"
+                size={18}
+                color={LT.primaryContainer}
+              />
+              <Text style={styles.insightLabel}>
+                {t('home.insightLabel', 'YANSIMALARIN BANA NE SÖYLEDİ')}
+              </Text>
+            </View>
+            <Text style={styles.insightBody}>
+              {t('home.insightBody', {
+                count: reflectionInsight.count,
+                total: reflectionInsight.totalReflections,
+                category: t(
+                  `home.insightCat.${reflectionInsight.category}`,
+                  reflectionInsight.category,
+                ),
+                defaultValue:
+                  '{{total}} yansımana baktım. En çok {{category}} konusunu yazıyorsun ({{count}} kez geçti). Bu sana bir şey söylüyor.',
+              })}
+            </Text>
+          </TouchableOpacity>
+        )}
 
         {/* Lesson Queue — surfaces the next uncompleted lesson so users
             can one-tap into their next session. Removes decision fatigue
@@ -952,6 +1012,40 @@ const styles = StyleSheet.create({
     color: LT.onSurfaceVariant,
     fontWeight: '500',
     lineHeight: 16,
+  },
+
+  // Reflection-insight card: surfaces the substring-matcher's findings
+  // back to the user. Soft red left border keeps brand presence without
+  // shouting; the whole card is tappable to route to the Reflections list.
+  insightCard: {
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 14,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderRadius: LT_RADIUS.xl,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    borderLeftWidth: 4,
+    borderLeftColor: LT.primaryContainer,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+  },
+  insightHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  insightLabel: {
+    color: LT.primaryContainer,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+  },
+  insightBody: {
+    color: LT.onSurface,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '500',
   },
 
   ctaCard: {

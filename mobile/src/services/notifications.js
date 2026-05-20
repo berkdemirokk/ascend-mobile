@@ -151,7 +151,10 @@ export const requestNotificationPermissions = async () => {
  * @param {number} [opts.currentStreak=0]  caller's current streak (from
  *   useApp().currentStreak), used to pick the right copy.
  */
-export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
+export const scheduleDailyReminder = async ({
+  currentStreak = 0,
+  userName = '',
+} = {}) => {
   // Replace any previously scheduled copy of the same reminder so we don't
   // pile up duplicates every app launch.
   try {
@@ -175,18 +178,32 @@ export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
     ? 'notifications.reminderBodyProgress'
     : 'notifications.reminderBodyStart';
 
-  const title = i18n.t(
+  // Personalised vocative: "Berk, ..." prefixed onto the title when the
+  // user gave us a name in onboarding. Empty/null name falls through to
+  // the generic title — never produces "  ," or a dangling comma.
+  const trimmedName = (userName || '').trim();
+  const interpolations = { streak: currentStreak, name: trimmedName };
+
+  const rawTitle = i18n.t(
     `notifications.${prefix}${variantIdx}Title`,
     {
-      defaultValue: i18n.t(fallbackTitleKey, { streak: currentStreak }),
-      streak: currentStreak,
+      defaultValue: i18n.t(fallbackTitleKey, interpolations),
+      ...interpolations,
     },
   );
+  // When the user has a name, prefix the title with it for 1 in 3 pushes
+  // (modulus on variantIdx) — over-personalisation feels creepy, under-
+  // personalisation defeats the point. Once-every-three is the sweet spot.
+  const title =
+    trimmedName && variantIdx % 3 === 0
+      ? `${trimmedName}, ${rawTitle.charAt(0).toLowerCase()}${rawTitle.slice(1)}`
+      : rawTitle;
+
   const body = i18n.t(
     `notifications.${prefix}${variantIdx}Body`,
     {
-      defaultValue: i18n.t(fallbackBodyKey, { streak: currentStreak }),
-      streak: currentStreak,
+      defaultValue: i18n.t(fallbackBodyKey, interpolations),
+      ...interpolations,
     },
   );
 
@@ -221,7 +238,7 @@ export const scheduleDailyReminder = async ({ currentStreak = 0 } = {}) => {
  * that hour the user has finished work/school and has a believable window
  * to do a 5-min lesson tonight.
  */
-export const scheduleFirstWeekHooks = async () => {
+export const scheduleFirstWeekHooks = async ({ userName = '' } = {}) => {
   try {
     await Notifications.cancelScheduledNotificationAsync(D1_HOOK_ID);
     await Notifications.cancelScheduledNotificationAsync(D3_HOOK_ID);
@@ -234,10 +251,19 @@ export const scheduleFirstWeekHooks = async () => {
     return target;
   };
 
+  const trimmedName = (userName || '').trim();
+  // For first-week hooks we always personalise if we have a name — these
+  // are the highest-leverage retention pushes and the user JUST gave us
+  // their name, so it'll feel coherent.
+  const prefix = (raw) =>
+    trimmedName
+      ? `${trimmedName}, ${raw.charAt(0).toLowerCase()}${raw.slice(1)}`
+      : raw;
+
   await Notifications.scheduleNotificationAsync({
     identifier: D1_HOOK_ID,
     content: {
-      title: i18n.t('notifications.d1HookTitle'),
+      title: prefix(i18n.t('notifications.d1HookTitle')),
       body: i18n.t('notifications.d1HookBody'),
       sound: true,
       categoryIdentifier: CAT_LESSON_REMINDER,
@@ -251,7 +277,7 @@ export const scheduleFirstWeekHooks = async () => {
   await Notifications.scheduleNotificationAsync({
     identifier: D3_HOOK_ID,
     content: {
-      title: i18n.t('notifications.d3HookTitle'),
+      title: prefix(i18n.t('notifications.d3HookTitle')),
       body: i18n.t('notifications.d3HookBody'),
       sound: true,
       categoryIdentifier: CAT_LESSON_REMINDER,
