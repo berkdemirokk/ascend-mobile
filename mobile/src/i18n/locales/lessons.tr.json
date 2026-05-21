@@ -1582,9 +1582,9 @@
     "silent-morning": {
       "1": {
         "title": "Erken Kalkmanın Anahtarı: Erken Yat",
-        "teaching": "Erken kalkmanın sırrı sabahın saati değil, gecenin saati. Yatma saatini erkeneye çekmeden, erken kalkma sürdürülemez.\n\nMelatonin döngüsü 22:00–06:00 arası optimumdur. Bu pencerede uyumayan beyin derin uyku evrelerini eksik yaşar — sabah yorgun uyanmanın ana sebebi.\n\nBugün denklemi tersinden başlatıyorsun: erken yat, erken kalk. 21:30 yatış hedefiyle başla.",
-        "action": "Bu gece 21:30 yatağa gir. Telefonu yatak odasının dışına bırak. 22:00 uyumaya çalış.",
-        "reflectionPrompt": "Erken yatmaya direnç gösteren ne oldu — beyninde hangi ses biraz daha dedi?",
+        "teaching": "Sabah 6'da kalkmak istiyorsun. Geçen pazar yine söz verdin kendine. Pazartesi alarm çaldı, snooze, snooze, snooze. 7:30'da yine geç. Niye? Çünkü gece 1'de yattın. **Erken kalkmanın sırrı sabahın saati değil, gecenin saati**. Yatma saatini erkeneye çekmeden, erken kalkma sürdürülemez.\n\nMatthew Walker (UC Berkeley, **Why We Sleep**): vücut 8 saatlik uyku için tasarlanmış. Bu 8 saat de **belirli pencerede** olmalı. Melatonin döngüsü 22:00–06:00 arası optimumdur. Bu pencerede uyumayan beyin **derin uyku evrelerini** (NREM stage 3-4) eksik yaşar — sabah yorgun uyanmanın ana sebebi.\n\nBeyin saat 22:30 civarı melatonin pikine girer. Eğer o saatte uyanıksan (ekran, kahve, aktif iş) — beyin 'pencereyi kaçırdı' der, melatonin yeniden basılır. 4-5 saat sonra düşer ama derin uyku kaçırılmıştır.\n\nBugün denklemi tersinden başlatıyorsun: **erken yat, erken kalk**. 21:30 yatış hedefiyle başla. 22:00 uyu. Sabah 6'da doğal uyanırsın — alarm gerekmez 1-2 hafta sonra.",
+        "action": "Bu gece **21:30 yatağa gir**. Telefonu yatak odasının dışına bırak. 22:00'a kadar uyumaya çalış. Yarın saat 6'da uyanmayı dene.",
+        "reflectionPrompt": "Erken yatmaya direnç gösteren ne oldu — beyninde hangi ses 'biraz daha' dedi? O ses ne istiyordu gerçekte?",
         "quiz": [
           {
             "q": "Erken kalkmanın gerçek anahtarı?",
@@ -1613,9 +1613,9 @@
       },
       "2": {
         "title": "Alarmı Telefonsuz Yap",
-        "teaching": "Alarm = telefon = scroll = günün başı zaten kaybedilmiş. Alarm fonksiyonunu telefondan ayırmak zihinsel sınır kurmaktır.\n\nFiziksel bir alarm saati al. Telefonu odanın dışında bırak. Sabah ilk dokunduğun şey alarm butonu olsun, ekran değil.",
-        "action": "Bugün fiziksel bir alarm saati al ya da sipariş et. Yatmadan önce telefonu odanın dışına bırak.",
-        "reflectionPrompt": "Alarm butonu yerine ekran açma alışkanlığını ne kadar zor değiştireceğini düşünüyorsun?",
+        "teaching": "Alarm çaldı. Eli telefona uzandın, alarmı kapattın. **Refleks**: aynı el bildirimleri kontrol etti. Sonra Instagram, sonra mesajlar, sonra haberler. 20 dakika geçti, hala yataktasın. Gün başlamadan ekran-aralığına girdi.\n\n**Alarm = telefon = scroll = günün başı kaybedilmiş.** Alarm fonksiyonunu telefondan ayırmak basit bir araç değişikliği değil — **zihinsel sınır** kurmak.\n\nFiziksel bir alarm saati ₺50-100 — bir kahve fiyatı. Ama getirisi: günün ilk 30-60 dakikasını **ekransız** geçirmek. Bu 'niyet penceresi' (dopamin reseptörleri en hassas, kortizol piki en yüksek) — bu pencerede ne yaparsan beyin onu 'önemli' diye kayıt eder.\n\nFiziksel ayrılık önemli. Telefonu odanın **dışına** koy — uzanıp alamadığın kadar uzakta. Kalkıp gitmek gerekiyorsa, beyin 'gerçekten ihtiyacım var mı?' sorusuna fırsat bulur. Genelde cevap **hayır**.",
+        "action": "Bugün **fiziksel bir alarm saati** al ya da sipariş et (₺50-100, herhangi). Yatmadan önce telefonu odanın dışına bırak.",
+        "reflectionPrompt": "Alarm butonu yerine ekran açma alışkanlığını ne kadar zor değiştireceğini düşünüyorsun? O zorluk neyle ilgili?",
         "quiz": [
           {
             "q": "Telefonu alarm olarak kullanmak neden kötü?",
@@ -1644,9 +1644,9 @@
       },
       "3": {
         "title": "Su, Yüz, Pencere",
-        "teaching": "Uyandığında üç eylem zinciri kur: bir bardak su iç, yüzünü yıka, pencereyi aç (veya dışarı çık 1 dakika).\n\nSu — gece dehidrasyonunu kırar, beyin uyandırır. Yüzünü yıkamak — soğuk şok parasempatik moddan çıkarır. Doğal ışık — sirkadiyen ritim sıfırlanır.\n\nBu 3 dakikalık zincir, sabahı eskisinden 10x daha berrak yapar.",
-        "action": "Yarın bu zinciri uygula. Uyanır uyanmaz: su iç → yüzünü yıka → pencereye yaklaş. Telefonsuz.",
-        "reflectionPrompt": "Üçlü zincirden sonra, eski sabahlara göre nasıl hissettin?",
+        "teaching": "Uyandın. Hala uykulu, gözler açık değil tam. Eskiden ilk hareket: telefon. Şimdi telefon başka odada — peki ne yapacaksın? İşte sabah ritüelinin temeli bu boş noktada başlıyor.\n\nUyandığında **üç eylem zinciri** kur:\n1. **Bir bardak su iç** — gece 6-8 saat dehidrasyon kırılır, beyin hidrate olur (kafa karışıklığının %40'ı dehidrasyondan)\n2. **Yüzünü yıka (soğuk)** — soğuk şok parasempatik (uyku) modundan sempatik (uyanıklık) moduna geçirir, kortizol baseline'ı netleşir\n3. **Pencereyi aç veya dışarı çık 1 dakika** — sabah ışığı (1000-10000 lux) retinaya çarpar, suprakiazmatik çekirdek sirkadiyen ritmi sıfırlar\n\nAndrew Huberman protokolü: uyandıktan **30-60 dakika** içinde sabah ışığı = gece daha kolay uyku + gün boyu enerji düzeyi.\n\nBu 3 dakikalık zincir, sabahı eskisinden **10x daha berrak** yapar. Kahveden önce.",
+        "action": "Yarın bu zinciri uygula. Uyanır uyanmaz: **su iç → yüzünü yıka → pencereye yaklaş**. Telefonsuz, kahvesiz.",
+        "reflectionPrompt": "Üçlü zincirden sonra, eski sabahlara göre nasıl hissettin? Beyin daha mı netti? Enerji ne zamana kadar sürdü?",
         "quiz": [
           {
             "q": "Sabah üçlü zincir nedir?",
@@ -1675,9 +1675,9 @@
       },
       "4": {
         "title": "Sabah Sessizliği",
-        "teaching": "Çoğu kişi sabahı bir gürültü banyosuna çevirir: bildirimler, haberler, podcast, telefon konuşması. Beyin, gün başlamadan tükenir.\n\nSessizlik bir lüks değil — temel ihtiyaç. İlk 60 dakikayı sessiz geçirmek, gün boyu daha az reaktif kılar.\n\nSessizlik hiçbir şey yapmamak değil. Düşünmek için yer açmak.",
-        "action": "Yarın ilk 60 dakikayı sessiz geçir: müzik yok, podcast yok, ses yok. Sadece sabah rutini ve düşünme.",
-        "reflectionPrompt": "Sessiz sabah seni daha mı yorgun yaptı, yoksa daha mı dingin?",
+        "teaching": "Çoğu kişi sabahı bir **gürültü banyosuna** çevirir: telefonun bildirim sesi, haber kanalı, podcast, telefon konuşması, kahvaltıda dizi. Beyin daha gün başlamadan **tükenir**. 9'da iş yerine giderken zaten 200 dijital uyaranla karşılaşmış oluyorsun.\n\n**Sessizlik bir lüks değil — temel ihtiyaç.** Cal Newport (Digital Minimalism): 'Solitude (yalnızlık + sessizlik) modern hayatın en kıt kaynağı, en değerli zihinsel arazi.' Çünkü:\n- **Yaratıcılık** sessizlikte doğar (DMN aktif)\n- **Kendini tanıma** sessizlikte olur\n- **Karar verme** sessizlikte netleşir\n- **Anksiyete** sessizlikte düşer (kortizol baseline)\n\nİlk 60 dakikayı sessiz geçirmek, gün boyu daha **az reaktif** kılar. Reaktif gün = başkalarının ajandası. Niyetli gün = senin ajandan.\n\nSessizlik **hiçbir şey yapmamak değil**. Düşünmek için yer açmak. Sade rutin: su, yüz, pencere, kahvaltı, niyet pratiği — hepsi sessizce. Beyin bu boşlukta günü kurar.",
+        "action": "Yarın **ilk 60 dakikayı sessiz** geçir: müzik yok, podcast yok, ses yok, konuşma minimum. Sadece sabah rutini ve düşünme.",
+        "reflectionPrompt": "Sessiz sabah seni daha mı yorgun yaptı, yoksa daha mı dingin? Düşüncelerinde hangi yeni şey belirdi?",
         "quiz": [
           {
             "q": "Sabah sessizlik niye lüks değil?",
@@ -1706,9 +1706,9 @@
       },
       "5": {
         "title": "Sabah 5 Dakikalık Niyet",
-        "teaching": "Çoğu kişi gününü reaktif başlar: e-posta, WhatsApp, bildirimler. Niyet ettiğin değil, sana gelen şeylere tepki verirsin.\n\n5 dakikalık niyet değiştirir bunu. Bir defter al. Üç soru: (1) Bugünün ana önceliği ne? (2) Hangi alışkanlıkları sürdüreceğim? (3) Akşam neye gurur duyacağım?\n\nBu 5 dakika, günün geri kalanını şekillendirir.",
-        "action": "Yarın sabah 5 dakika niyet pratiği yap. Bir kalem ve kağıt al, üç soruya yaz.",
-        "reflectionPrompt": "Niyet yazılı olunca, gün boyu kararlarını etkiledi mi?",
+        "teaching": "Sabah 8:30. İş yerine geldin. E-postaları açtın. Üç acil bekleyen. WhatsApp'ta 17 mesaj. Slack'te toplantı bildirimi. **9:00'da** — gün başlamadan 1.5 saat geçmiş ve sen hiçbir şeye **niyet etmedin**. Sadece tepki verdin.\n\nÇoğu kişi gününü **reaktif** başlar: e-posta, WhatsApp, bildirimler, haberler. Niyet ettiğin değil, sana gelen şeylere tepki verirsin. Bu hayat tarzının istatistiği net (McKinsey 2022 study): bilgi işçilerinin verimli iş saatleri **günde 2.8 saat** — geri kalan tepki + context switch.\n\n**5 dakikalık niyet** değiştirir bunu. Bir defter al (telefon değil — yazma kasla bağ kurar). Üç soru:\n1. **Bugünün ana önceliği ne?** (Tek mesele — birden çok değil)\n2. **Hangi alışkanlıkları sürdüreceğim?** (Streak'ler, kuralar)\n3. **Akşam neye gurur duyacağım?** (End-of-day reverse engineering)\n\nDavid Allen (Getting Things Done) tezini bu: gün başında 'önemli' net değilse, gün sonu 'iyi' net olmaz.\n\nBu 5 dakika, günün geri kalanını **şekillendirir**. Önemli işler önce yapılır, e-posta sonraya kalır. Niyet senin elinde.",
+        "action": "Yarın sabah **5 dakika niyet pratiği** yap. Bir kalem ve kağıt al, üç soruya yaz. Telefon yok, e-posta yok.",
+        "reflectionPrompt": "Niyet yazılı olunca, gün boyu kararlarını etkiledi mi? Hangi karar farklı oldu?",
         "quiz": [
           {
             "q": "Reaktif gün başlangıcı ne demektir?",
