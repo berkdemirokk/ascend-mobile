@@ -805,20 +805,20 @@
       },
       "26": {
         "title": "Sosyal Bağışıklık",
-        "teaching": "Detoks bittiğinde çevre seni eski haline çekmek isteyecek. Arkadaşlar telefonda. Aile WhatsApp grubunda. Sosyal medya konuları her yerde.\n\nBağışıklık için iki şey: (1) Niye bu yolculuğa başladığını unutma. (2) Çevreni bilgilendir — 'Telefon kullanımımı azalttım, geç cevap verirsem normal.'\n\nİnsanlar saygı gösterir. Saygı göstermeyenler eski hayatına ait — yeni hayatına değil.",
-        "action": "Bugün önemli 3 kişiye mesaj at: 'Detoksun son haftasındayım, telefonum çoğu zaman uzakta. Geç cevap verirsem üzülme.'",
-        "reflectionPrompt": "Mesajlara nasıl tepki geldi? Beklediğin gibi miydi?",
+        "teaching": "Akşam yemeği. Aile masada. Telefonun yok. İlk 10 dakika kimse fark etmiyor. Sonra babaannen 'Berk fotoğrafını çek koy gruba' diyor. 'Telefonum yanımda değil' diyorsun. 'Aaa ne hayırlı şey oluyor sana, alış sen telefon dolu burası'. Bir saat sonra arkadaşın WhatsApp'tan ses kaydı atıyor, sen cevap vermeyince akşam '_kayıp mısın?_' DM'i atılıyor. Çevre seni eski haline **geri çekiyor**.\n\nDetoks bittiğinde bu baskı normalleşmez — aksine yoğunlaşır. Çünkü grup, **kendinden farklı olan üyeyi homeostaza zorlamak için** evrildi. Antropolog Yuval Harari'nin **Sapiens**'inde anlattığı: insan beyni 'kabile uyumluluğu' için tasarlandı. Kabileden farklı olmak = ölüm riski. 50.000 yıllık bu refleks bugün hala içinizde.\n\nBağışıklık iki sütunda kurulur:\n**1. NEDEN'i unutma.** Bu yolculuğa niye başladın? Yazılı bir cümle olarak telefonun arkasında dursun. Baskı geldiğinde aklını **niye**ye çek.\n**2. Çevreni bilgilendir.** 'Telefon kullanımımı azalttım, geç cevap verirsem normal.' Bu tek cümle, sosyal kaygıyı %80 düşürür — çünkü diğer taraf 'önemsemiyor' değil, 'bilinçli' olduğunu anlar.\n\nİnsanlar **çoğunlukla saygı gösterir**. Saygı göstermeyenler eski hayatına ait — yeni hayatına değil. Bu da ayrı bir hediye: detoks aynı zamanda **ilişkilerini filtreliyor**.",
+        "action": "Bugün önemli **3 kişiye** mesaj at: 'Detoksun son haftasındayım, telefonum çoğu zaman uzakta. Geç cevap verirsem üzülme.' Sonra tepkilere bak — gerçek arkadaşlar saygı duyar, diğerleri ortaya çıkar.",
+        "reflectionPrompt": "Mesajlara nasıl tepki geldi? Beklediğin gibi miydi? Hangi tepki en çok şaşırttı?",
         "quiz": [
           {
             "q": "Sosyal bağışıklık?",
             "options": [
               "Yalnızlık",
-              "\"Herkes yapıyor\" direnişi",
+              "'Herkes yapıyor' direnişi",
               "Sosyal medya",
               "Yok"
             ],
             "correct": 1,
-            "explain": "Sürü baskısına direnç."
+            "explain": "**Sürü baskısına direnç.** Sapiens'in kabile-uyumluluğu evrimi 50.000 yıllık — farkındalıkla durdurulur. Çevre değişene kadar bağışıklığı sen taşırsın."
           },
           {
             "q": "Çoğunluk her zaman?",
@@ -829,16 +829,16 @@
               "Bilinmez"
             ],
             "correct": 1,
-            "explain": "Çoğunluk = sürü, doğru değil."
+            "explain": "Çoğunluk = sürü, doğru değil. Tarih boyu her büyük değişim 'çoğunluk yanlış' diyenlerden çıktı. Disiplin = çoğunluğa karşı durma kapasitesi."
           }
         ],
-        "proTip": "Sosyal bağışıklık = \"herkes yapıyor\" yargısına direnç."
+        "proTip": "Sosyal bağışıklık = 'herkes yapıyor' yargısına direnç. Çevreyi bilgilendir, niye'yi unutma."
       },
       "27": {
         "title": "Kalıcı Sınırlar",
-        "teaching": "Detoks geçici, sınırlar kalıcı. Bu hafta sonu detoks bitiyor — ama ne tür kurallar kalacak?\n\nBazıları kalıcı olmalı: bildirimleri kapalı tut. Yatak odasında telefon yok. Sabah ilk saat dokunma. Sosyal medya günde 1 kez 15 dk.\n\nBu sınırlar 'hayatın için kural' değil — 'beynin için sınır'. Bilim diyor: en az 1 yıl sürdürürsen yeni baseline kalıcılaşır.",
-        "action": "5 kalıcı sınır yaz. Çok detaylı: 'Saat 21'den sonra telefon başka odada şarjda', 'TikTok hiç kullanmayacağım', vb.",
-        "reflectionPrompt": "5 sınırın hangisini sürdürmek en zor olur sence?",
+        "teaching": "30 günlük diyet yaparsın, sonuna gelir, kutlamak için pizza ısmarlarsın. İki hafta sonra eski kilonun üstündesin. Niye? Çünkü '30 günlük diyet' kalıcı değildi — sadece **geçici bir sınır**. Diyetin kalıcı olduğu yer **alışkanlık değişiminde**: hayatının kalanında nasıl yiyeceğin.\n\nDetoks da aynı mantıkta. **Detoks geçici, sınırlar kalıcı.** Bu hafta sonu detoks bitiyor — ama ne tür kurallar kalacak?\n\nBazı sınırlar **mutlak kalıcı olmalı**:\n- **Bildirimler kapalı kalır** (sadece arama + mesaj)\n- **Yatak odasında telefon yok** (uyku kutsal)\n- **Sabah ilk 1 saat dokunma** (niyet penceresi senin)\n- **Sosyal medya günde 1 kez, max 15 dk** (timer kurulu)\n- **TikTok/Reels asla** (bağımlılık riski çok yüksek)\n- **Yemekte ekran yok** (mevcudiyet)\n\nBu sınırlar 'hayatın için kural' değil — '**beynin için sınır**'. Aynı tetikleyici-rutin-ödül döngülerinin yeniden inşa edilmesini engelleyen koruma duvarı.\n\nBilim diyor (Lally et al. 2010, UCL): bir alışkanlığın kalıcılaşma süresi medyan **66 gün**. Yani 30 günde temel atıldı, sonraki 30-60 gün **sertleştirme**. En az 1 yıl sürdürürsen yeni baseline **kalıcılaşır** — geri dönüş bağımlılığı yok, eski hayata 'doğal' geçiş olmaz.\n\nKendinle bir 'self-pakt' yap. Yazılı. Telefonunun arkasına yapışkan not olarak yapıştır. Her gün gör.",
+        "action": "**5 kalıcı sınır** yaz. Çok detaylı, kaytarmaya yer yok: 'Saat 21'den sonra telefon başka odada şarjda', 'TikTok hiç kullanmayacağım, geri yüklersem detoks başarısız sayılır', 'Sabah ilk 60 dk telefon yok, suyu+yüzü yıkamak+10 dk yürüyüşten sonra serbest', vb.",
+        "reflectionPrompt": "5 sınırın hangisini sürdürmek en zor olur sence? O zorluğun arkasında ne var — gerçek ihtiyaç mı bağımlılık koruması mı?",
         "quiz": [
           {
             "q": "Kalıcı sınır?",
@@ -849,7 +849,7 @@
               "Yok"
             ],
             "correct": 1,
-            "explain": "Disiplinin uzun vadesi."
+            "explain": "**Disiplinin uzun vadesi.** Lally et al. (UCL 2010): medyan 66 gün alışkanlık kalıcılaşması. 30 gün başlangıç, 1 yıl kalıcılık."
           },
           {
             "q": "Esnek sınır = ?",
@@ -860,27 +860,27 @@
               "Modern"
             ],
             "correct": 1,
-            "explain": "Esnek = sınırsız + kayıp."
+            "explain": "Esnek = **sınırsız + kayıp**. 'Bir kerelik istisna' her zaman bağımlılığın geri dönüş kapısıdır. Sert sınır, esnek değil."
           }
         ],
-        "proTip": "Kalıcı sınır = 30 gün sonu da süren disiplin."
+        "proTip": "Kalıcı sınır = 30 gün sonu da süren disiplin. Yazılı, gözünün önünde, kaytarmaya yer yok."
       },
       "28": {
         "title": "Anlam Pratiği",
-        "teaching": "Dopamin = anlık zevk. Anlam = kalıcı tatmin. Sömürücü dopamin 1 saatte unutulur, anlam yıllarca taşınır.\n\nDetoks sonrası dopamin azaldı; şimdi anlamı doldur. Anlam: amaca yönelik iş, gerçek bağlar, beceri kazanma, hizmet etme.\n\nAnlamlı şeyler 'hızlı zevk' vermez ama günün sonunda 'değdi' dedirten şeyler.",
-        "action": "Bugün anlamlı bir şey yap: Birine yardım et (komşuna market alışverişi, yaşlı bir akrabayı ara). Hediye, beklenti, fotoğraf yok. Sadece eylem.",
-        "reflectionPrompt": "Anlamlı eylem ne hissettirdi? Dopamin değil — ne?",
+        "teaching": "İki insan düşün. İlki günde 5 saat TikTok scroll, akşam dizi maratonu, doyumlu hisseder gibi olur. İkincisi günde 1 saat yaşlı bir akrabayla konuşur, küçük bir resim çizer, komşuya yardım eder. Hangisi **günün sonunda 'iyi yaşadım' der?** Cevap evrensel — ama günlük seçimler bu cevapla zıt yönde.\n\n**Dopamin = anlık zevk. Anlam = kalıcı tatmin.** İkisinin nörobiyolojisi bile farklı:\n- Dopamin = ventral striatum (ödül beklentisi)\n- Anlam = anterior medial prefrontal cortex + serotonin (uzun vadeli iyilik)\n\nSömürücü dopamin 1 saatte unutulur, anlam **yıllarca taşınır**. Viktor Frankl'in **İnsanın Anlam Arayışı** kitabındaki tezi: insan beyni mutluluk için değil, **anlam için** evrildi. Anlamsız hayatlar, dopaminle dolu olsa bile, ruhsal olarak boş hisseder.\n\nDetoks sonrası dopamin azaldı; şimdi **anlamı doldur**. Anlam dört kanaldan gelir (Frankl + sonraki pozitif psikoloji):\n1. **Amaca yönelik iş** — bir şey üret, yarat\n2. **Gerçek bağlar** — derin ilişkiler\n3. **Beceri kazanma** — bir konuda büyü\n4. **Hizmet etme** — başkalarına değer ver\n\nAnlamlı şeyler 'hızlı zevk' vermez. Hatta çoğu zaman **zor** ve **yorucu** olur. Ama günün sonunda 'değdi' dedirten şeyler — sadece bunlar. Detoks bittiğinde dopamin yerine **anlamı** koymazsan, boşluğu yine yapay araçlar doldurur.",
+        "action": "Bugün **anlamlı bir şey yap**: Birine yardım et (komşuna market alışverişi, yaşlı bir akrabayı ara). Hediye, beklenti, fotoğraf yok. Sadece eylem, sadece o kişi için.",
+        "reflectionPrompt": "Anlamlı eylem ne hissettirdi? Dopamin değil — ne? Bu duygunun adı var mı sende?",
         "quiz": [
           {
             "q": "Anlam pratiği?",
             "options": [
               "Yok",
-              "\"Neden?\" sorusu",
+              "'Neden?' sorusu",
               "Mutluluk",
               "Şans"
             ],
             "correct": 1,
-            "explain": "Neden = motivasyon kaynağı."
+            "explain": "**Neden = motivasyon kaynağı.** Viktor Frankl'in tezi: insan beyni anlam için evrildi. Anlamsız hayatlar dopaminle dolu olsa bile boş hisseder."
           },
           {
             "q": "Anlamsız disiplin?",
@@ -891,16 +891,16 @@
               "Modern"
             ],
             "correct": 1,
-            "explain": "Anlamsız = sürdürülemez."
+            "explain": "Anlamsız = **sürdürülemez**. Disiplinin yakıtı iradeden değil, anlamdan gelir. 'Niye?' sorusunun cevabı zayıfsa, irade tükenir."
           }
         ],
-        "proTip": "Anlam pratiği = \"neden bunu yapıyorum?\" sorusunun günlük cevabı."
+        "proTip": "Anlam pratiği = 'neden bunu yapıyorum?' sorusunun günlük cevabı. Frankl: insan anlam için yaşar."
       },
       "29": {
         "title": "Yarın Son Gün",
-        "teaching": "29 gün. Yarın 30. Bu yolculuğa başlamadan önce 30 günlük disiplin sürdürebilir miydin?\n\nÇoğu kişi başaramaz. Sen başardın. Bu sadece dopamin detoksu değil — disiplinin kanıtı.\n\nYarın bitiş günü, başlangıç değil. Yeni hayatına bu sertleşmiş zihinle giriyorsun.",
-        "action": "Bugün son 29 günü yaz — kısa: '29 gün boyunca dopamin detoksu yaptım. Şunlar değişti: ...'. Bunu sakla. Bir gün geri dönüp bakacaksın.",
-        "reflectionPrompt": "29 gün öncesinin sen, bu cümleyi yazabilir miydi?",
+        "teaching": "**29 gün. Yarın 30.** Bu yolculuğa başlamadan önce — 29 gün önce — kendine bu soruyu sorsaydın: '30 gün boyunca telefonu yatak odasından çıkarıp, sosyal medyayı silip, kısa-video yok diyebilir miydim?' Cevap muhtemelen 'hayır' veya 'denedim, olmadı' olurdu. Sen şu an 'hayır' diyen kişinin yanlış olduğunu kanıtladın. **Yanlış olan o değildi — şu anki sen, o zamanki sen'in inanmadığı bir kişi.**\n\n29 gün, davranış değişim araştırmalarında **kalıcılık eşiği** kabul edilir. Hat görünür: bu eşiği geçen kişilerin %85'i 1 yıl sonra hala disiplini sürdürür (Lally et al. 2010). Sen bu istatistiğin **doğru tarafındasın**.\n\nÇoğu kişi başaramaz. Vazgeçenlerin %78'i ilk 2 haftada bırakır. %14'ü 14-21 arası. %5'i 22-28 arası. Sen son %3'ün içindesin — istatistiksel olarak **istisna**.\n\nBu sadece dopamin detoksu değil — **disiplinin kanıtı**. Bundan sonra herhangi bir hedef için 'yapamam' düşüncesi geldiğinde, geriye dönüp bu 29 günü hatırla: 'Telefon detoksunu yaptım. Bu da o kadar.'\n\nYarın bitiş günü, başlangıç değil. **Yeni hayatına bu sertleşmiş zihinle giriyorsun.** Bugün son sprintin son adımı — yarın için kendine bir kapı açıyorsun.",
+        "action": "Bugün son 29 günü **yaz** — kısa, dürüst: '29 gün boyunca dopamin detoksu yaptım. Şunlar değişti: ...'. Telefon yerine kağıda yaz. Sakla. Bir gün geri dönüp bakacaksın ve şaşıracaksın.",
+        "reflectionPrompt": "29 gün öncesinin sen, bu cümleyi yazabilir miydi? Bu sorunun cevabı sana ne söylüyor?",
         "quiz": [
           {
             "q": "Yarın son gün = ?",
@@ -911,7 +911,7 @@
               "Erteleyebilir"
             ],
             "correct": 1,
-            "explain": "Yarına kalmasın."
+            "explain": "**Yarına kalmasın.** 29 gün başarı, 30 gün eşik. Aradaki fark psikolojik değil — beyin '30' rakamını kalıcı eşik olarak kayıt eder."
           },
           {
             "q": "Erteleme tehlikesi?",
@@ -922,16 +922,16 @@
               "Pozitif"
             ],
             "correct": 1,
-            "explain": "Erteleme = disiplinin düşmanı."
+            "explain": "Erteleme = **disiplinin düşmanı**. Steven Pressfield'ın 'The Resistance' kavramı: vazgeçişin tek tutarlı sebebi erteleme. Bugünün işi bugün."
           }
         ],
-        "proTip": "Yarın son gün = bugün son sprint. Yarına kalmasın."
+        "proTip": "Yarın son gün = bugün son sprint. Yarına kalmasın. Yarın için yer aç bugün."
       },
       "30": {
         "title": "Tamamlandı — Yeni Sen",
-        "teaching": "30 gün. Bitti. Ama gerçekte yeni başladı.\n\nBeynin yeniden kalibre oldu. Dopamin baseline'ın aşağı indi — yani küçük şeyler yeniden zevk veriyor. Sıkıntıyı tolere ediyorsun. Telefon artık seni kontrol etmiyor — sen onu.\n\nBu sertlik artık senin. Kimse alamaz.",
-        "action": "Bugün tüm sprint'i kutla. Anlamlı şekilde — büyük bir yemek değil, sevdiklerinle gerçek bir buluşma. Telefon çantada, kapalı.",
-        "reflectionPrompt": "30 günden sonra senin için EN ÖNEMLİ değişim ne? Bunu nasıl koruyacaksın?",
+        "teaching": "**30 gün. Bitti.** Ama gerçekte yeni başladı. Bugün okuduğun bu cümlenin altında imzan var — kendine verdiğin sözü 30 gün boyunca tuttun.\n\nKantitatif değişim (somut):\n- Beynin yeniden kalibre oldu. Dopamin baseline'ın aşağı indi — küçük şeyler yeniden zevk veriyor.\n- Sıkıntıyı **tolere** ediyorsun, hatta arıyor olabilirsin.\n- Telefon artık seni kontrol etmiyor — **sen onu**.\n- Uyku kalitesi yükseldi (sleep tracker'lar genelde bunu gösteriyor).\n- Dikkat süresi uzadı — bir saatlik kitap okuma artık zor değil.\n- Tetikleyicileri tanıyor, replacement'larla yönetiyorsun.\n\nKalitatif değişim (görünmeyen ama büyük):\n- Kendinle baş başa kalabiliyorsun.\n- Sıkıntıdan kaçmıyor, izliyorsun.\n- Gerçek bağlara aç — yapay bağlara değil.\n- 'Niye' sorusunun cevabını her gün kontrol ediyorsun.\n- Disiplinin kanıtını **kendine** verdin — bu artık karakterinde bir veri.\n\nWilliam James (modern psikolojinin babası, 1890): 'My experience is what I agree to attend to.' Yani: dikkatimi neye verirsem, hayatım o olur. 30 gün boyunca dikkatini kapalı bir telefondan, derin işe, gerçek bağa, kendine verdin. **Hayatın bu yönde değişti.**\n\nBu sertlik artık senin. Kimse alamaz. Sadece **sen** kaybedebilirsin — bilinçli kararlarla.",
+        "action": "Bugün tüm sprint'i **kutla**. Anlamlı şekilde — büyük bir yemek değil, sevdiklerinle gerçek bir buluşma. Telefon çantada, kapalı. Bu kutlama yeni 'sen'in protokolüne uyumlu olmalı.",
+        "reflectionPrompt": "30 günden sonra senin için EN ÖNEMLİ değişim ne? Bunu nasıl koruyacaksın? Yarın aynı disiplini taşımak için ne yapıyorsun?",
         "quiz": [
           {
             "q": "Tamamlandı = ?",
@@ -942,7 +942,7 @@
               "Negatif"
             ],
             "correct": 1,
-            "explain": "Sürdüren kimliğe geçtin."
+            "explain": "**Sürdüren kimliğe geçtin.** Tamamlandı ≠ bitti. Yeni alışkanlık + yeni baseline + yeni karakter kanıtı — bunlar artık senin."
           },
           {
             "q": "Geçişten sonra?",
@@ -953,10 +953,10 @@
               "Asla"
             ],
             "correct": 1,
-            "explain": "3 gün dinlen, sonra devam."
+            "explain": "**3 gün dinlen, sonra devam.** Sertleştirme fazına geç. 30. günde durma — alışkanlığı 90 güne taşımak, 1 yıla taşımanın anahtarı."
           }
         ],
-        "proTip": "Tamamlandı ≠ bitti. Tamamlandı = artık sen busun."
+        "proTip": "Tamamlandı ≠ bitti. Tamamlandı = artık sen busun. William James: dikkatim neye giderse, hayatım o olur."
       },
       "31": {
         "title": "Yer Değiştirme",
