@@ -178,6 +178,11 @@ export default function LessonScreen({ navigation, route }) {
     const lang = getCurrentLanguage?.() === 'en' ? 'en-US' : 'tr-TR';
     const ok = await ttsSpeak(teaching, {
       lang,
+      // Pass the lesson coordinates so tts.js can attempt the
+      // pre-recorded Piper MP3 from the GitHub release. Falls back
+      // to system TTS automatically if that MP3 isn't available.
+      pathId,
+      lessonOrder: lesson?.order,
       onDone: () => safeSet(setIsSpeaking)(false),
       onError: () => safeSet(setIsSpeaking)(false),
     });

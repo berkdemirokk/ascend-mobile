@@ -1,0 +1,84 @@
+name: Generate Lesson Audio (Piper TTS)
+
+# Generates per-lesson MP3 narration via Piper TTS (open-source neural
+# text-to-speech, rhasspy/piper). Output is uploaded to the
+# `lesson-audio-v1` GitHub release where the mobile app streams it
+# at runtime. No server, no per-character cost — pure open-source
+# voice models hosted on GitHub.
+
+on:
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: 'Path IDs (comma-separated, or "all")'
+        type: string
+        default: 'dopamine-detox'
+      lesson_range:
+        description: 'Lesson range like "1-5" or "all"'
+        type: string
+        default: '1-5'
+      voice:
+        description: 'Piper voice model'
+        type: choice
+        options:
+          - tr_TR-fahrettin-medium
+          - tr_TR-fettah-medium
+          - tr_TR-dfki-medium
+        default: tr_TR-fahrettin-medium
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install piper-tts
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Download Turkish voice model
+        run: |
+          mkdir -p voices
+          cd voices
+          VOICE="${{ inputs.voice }}"
+          # HuggingFace path: tr/tr_TR/<speaker>/medium/<voice>.onnx
+          SPEAKER=$(echo "$VOICE" | sed -E 's/tr_TR-(.+)-medium/\1/')
+          BASE="https://huggingface.co/rhasspy/piper-voices/resolve/main/tr/tr_TR/${SPEAKER}/medium"
+          curl -fsSL "${BASE}/${VOICE}.onnx" -o "${VOICE}.onnx"
+          curl -fsSL "${BASE}/${VOICE}.onnx.json" -o "${VOICE}.onnx.json"
+          ls -la
+
+      - name: Generate audio files
+        run: |
+          mkdir -p audio_out
+          python3 scripts/generate-lesson-audio.py \
+            --lessons mobile/src/i18n/locales/lessons.tr.json \
+            --voice voices/${{ inputs.voice }}.onnx \
+            --paths "${{ inputs.paths }}" \
+            --lesson-range "${{ inputs.lesson_range }}" \
+            --output audio_out/
+          ls -la audio_out/
+
+      - name: Upload audio as release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: lesson-audio-v1
+          name: Lesson Audio v1
+          body: |
+            Pre-recorded Piper TTS narration for Ascend lessons (Turkish).
+            Voice: ${{ inputs.voice }}.
+            App downloads these MP3s on demand when the user taps "Sesli Dinle".
+          files: audio_out/*.mp3
+          fail_on_unmatched_files: false
+          # Keep adding to the same release — don't overwrite.
+          make_latest: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
