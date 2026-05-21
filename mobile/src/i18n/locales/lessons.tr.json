@@ -495,9 +495,9 @@
       },
       "16": {
         "title": "Yarıyı Geçtin — Onay",
-        "teaching": "Bugün 16. gün. Yarının üstüne çıktın. Şimdi içsel iki yön belirginleşti:\n\n(1) Eski sen: Hızlı dopamin geri istiyor. Bahaneler arıyor. 'Bir gün ara verirsem ne olur?' diyor.\n\n(2) Yeni sen: Sakin, kararlı, daha az reaktif. Boşluğu seviyor.\n\n14 gün daha. En zor kısım geride.",
-        "action": "Bugün kendine bir hediye al — ama sıradan değil. Kitap, kaliteli yemek, doğa yürüyüşü. Düşük dopamin, yüksek anlam.",
-        "reflectionPrompt": "İki kişilik (eski ve yeni) arasında bugün hangisi daha güçlüydü?",
+        "teaching": "Bugün 16. gün. **Yarının üstüne çıktın.** Bu hafif görünür ama büyük bir veridir — istatistiksel olarak, davranış değişimi yapanların %78'i ilk iki haftada vazgeçer. Sen bu istatistiğin dışına çıktın. Bu bir karakter işareti, geçici motivasyon değil.\n\nŞimdi içinde iki yön belirginleşti:\n\n**(1) Eski sen:** Hızlı dopamin geri istiyor. Bahaneler arıyor. 'Bir gün ara verirsem ne olur?', 'Aslında dengeli kullanım daha sağlıklı', 'Bu işten haber almam lazım'... Bu cümleler eski 'sen'in son nefesleri. Yumuşak görünen ama saldırgan. Beyin homeostaz'a dönmek istiyor — bilinçaltında detoks'u sonlandırmak için entelektüel kılıflar üretiyor.\n\n**(2) Yeni sen:** Sakin, kararlı, daha az reaktif. Telefonu açmadığında **mahrum** hissetmiyor — özgür hissediyor. Boşluğa tahammül ediyor, hatta seviyor. Bu, beyin baseline'ının normale dönmeye başladığının somut işareti.\n\nKim daha güçlü, hangisi galip gelecek — bu sonraki 14 gün belirleyecek.\n\nİyi haber: nörobiyolojik olarak **en zor kısım geride**. Beyin yeni baseline'ı kurmaya başladı. 17-22 gün arası 'netlik fazı' — burada yaratıcılık, derin uyku, içsel sakinlik yerleşir. 23-30 gün arası 'kabul fazı' — eski hayat sana **uzak** ve **garip** gelir.\n\nKendine bugün özel davran. Ama bu 'özel'lik **eski tarz** olmamalı — yani 4 saat dizi, sürekli yemek, junk içerik değil. Yeni-sen ödülleri: bir saatlik kaliteli yürüyüş, sevdiğin yemekten **bilinçli olarak** yemek (önüne koyup yemek, telefonla değil), iyi bir kitabın 30 sayfası. **Düşük dopamin, yüksek anlam.**",
+        "action": "Bugün kendine bir hediye al — ama **sıradan değil**. Kitap, kaliteli yemek, doğa yürüyüşü, müzik dinleyerek bir saat oturmak. Düşük dopamin, yüksek anlam. 'Eskiden bana ödül gibi gelmeyen' bir şey seç bilinçli olarak.",
+        "reflectionPrompt": "İki kişilik (eski ve yeni) arasında bugün hangisi daha güçlüydü? Hangisi sana 'gerçek sen' gibi geliyor?",
         "quiz": [
           {
             "q": "Yarıyolu geçince?",
@@ -508,7 +508,7 @@
               "Yorgunluk"
             ],
             "correct": 1,
-            "explain": "En zor kısım geçti."
+            "explain": "Davranış değişimi araştırmalarında ilk 2 hafta en zor. Sen o eşiği geçtin — istatistiksel olarak vazgeçenlerin %78'inin dışındasın."
           },
           {
             "q": "Onay önemi?",
@@ -519,16 +519,16 @@
               "Hatırlatıcı"
             ],
             "correct": 1,
-            "explain": "Onay = devam motivasyonu."
+            "explain": "Onay = **devam motivasyonu**. Beyin küçük zaferleri kayıt eder ve bir sonrakini daha kolay yapar. Kendini onaylama disiplinin bir parçası."
           }
         ],
-        "proTip": "Yarıyı geçtin = arkadan vurulmaz. En zor kısım geçti."
+        "proTip": "Yarıyı geçtin = arkadan vurulmaz. En zor kısım geçti. 14 gün — kal."
       },
       "17": {
         "title": "Nefes Disiplini",
-        "teaching": "Stresli olduğunda dopamin arayışı artar. Stress = kaçma istiği. Beyin telefona uzanır.\n\nNefes bu döngüyü kırar. 4-7-8 nefes tekniği: 4 saniye al, 7 saniye tut, 8 saniye ver. 4 round = 1 dakika. Beyin parasempatik moda geçer.\n\nBu telefon yerine geçen alternatif. Stres anında nefes — telefon değil.",
-        "action": "Bugün 3 ayrı zamanda 4-7-8 nefes yap. Sabah uyanınca, öğle aralığında, yatmadan önce.",
-        "reflectionPrompt": "Nefes sonrası ne fark ettin? Telefon arzusu değişti mi?",
+        "teaching": "Trafik sıkıştı. Patron mail attı, gerginleştin. Bir tartışma yaşadın. Sıkıldın. Bu beş farklı an, beyninde tek bir refleks tetikliyor: **telefon**. Çünkü beyin 'rahatsızlık' → 'kaçış' bağlantısını kurmuş.\n\nStresli olduğunda dopamin arayışı artar. Stress = kaçma isteği. Telefonsuz bir hayatta bu istek geldiğinde **ne yapacaksın?** Detoks 17. gün, bu sorunun cevabını öğreneceksin.\n\nCevap: **nefes**.\n\nDr. Andrew Weil'in 4-7-8 nefes tekniği bu döngüyü kırar:\n- **4 saniye** al (burundan, derin)\n- **7 saniye** tut (akciğer dolu)\n- **8 saniye** ver (ağızdan, yavaş)\n- **4 round** = 1 dakika\n\nBu spesifik ritim **vagal sinir sistemini** aktive eder. Vagal sinir vücuttaki en büyük parasempatik sinir — yani 'sakinleşme modunun' aracısı. 60 saniyede beyin **fight-or-flight'tan rest-and-digest'e** geçer. Kalp atışı düşer, kortizol salınımı yavaşlar, prefrontal korteks (mantıklı karar verme) yeniden devreye girer.\n\nDr. Stanford'da Andrew Huberman'ın **physiological sigh** araştırması da bu mekanizmaya dayanır: iki kısa nefes al, uzun nefes ver — 30 saniyede kalp ritmini düşürür.\n\nBu telefon yerine geçen **alternatif kaçış**tır. Stres anında nefes — telefon değil. Ve nefesin avantajı: yanında her zaman var, ücretsiz, bağımlılık yapmıyor.\n\nİlk birkaç gün garip gelir (refleks telefondu, şimdi nefes). Ama 1 hafta sonra otomatik olur. Stres geldiğinde el cebine değil, içeri gider.",
+        "action": "Bugün **3 ayrı zamanda** 4-7-8 nefes yap (her birinde 4 round). Sabah uyanınca, öğle aralığında, yatmadan önce. Zorunda olmasan da yap — alışkanlık inşası.",
+        "reflectionPrompt": "Nefes sonrası ne fark ettin? Telefon arzusu değişti mi? Veya beden farklı mı hissettin?",
         "quiz": [
           {
             "q": "4-7-8 nefesi?",
@@ -539,7 +539,7 @@
               "Yavaş"
             ],
             "correct": 1,
-            "explain": "Klasik anlık sakinlik tekniği."
+            "explain": "Dr. Andrew Weil tekniği — vagal sinir aktivasyonu için spesifik ritim. 60 saniyede fight-or-flight'tan rest-and-digest'e geçiş."
           },
           {
             "q": "Etkisi?",
@@ -550,16 +550,16 @@
               "Stres"
             ],
             "correct": 1,
-            "explain": "Parasempatik aktivasyon."
+            "explain": "**Parasempatik aktivasyon** — kalp atışı düşer, kortizol yavaşlar, prefrontal korteks devreye girer. Bilimsel olarak ölçülmüş."
           }
         ],
-        "proTip": "4-7-8 nefesi: 4 al, 7 tut, 8 ver. Anlık sakinlik."
+        "proTip": "4-7-8 nefesi: 4 al, 7 tut, 8 ver. Anlık sakinlik. Telefonsuz hayatın yeni reflexi."
       },
       "18": {
         "title": "Dijital Minimalizm",
-        "teaching": "Cal Newport'un kavramı: ihtiyacın olmayan dijital aracı sil. Hayatına gerçek değer katmıyorsa = sömürüyor.\n\n10 uygulama yeter çoğu insana. Mesaj, navigasyon, banka, kamera, takvim, müzik, podcast, e-posta, hava durumu, alışveriş.\n\nGeri kalanı düşman. Sosyal medya, oyun, gereksiz alış-veriş app'leri — birer dakika çekiyor.",
-        "action": "Telefonundaki TÜM uygulamaları gözden geçir. Son 30 günde açmadığın hepsini sil. Tereddüt ettiklerini sil. Geri yüklersin gerekirse — gerek olmaz.",
-        "reflectionPrompt": "Kaç uygulama sildin? Hangisini en zor sildin?",
+        "teaching": "Telefonunun ana ekranına bak. Ardından klasörlere gir, ikinci sayfaya, üçüncü sayfaya. Toplam kaç uygulama var? Çoğu insanda 80-150 arası. Şimdi gerçek soru: **son 30 günde** kaçını açtın? Cevap muhtemelen 15-20 civarı. Geri kalan 100+ uygulama dijital **bagaj** — telefonu açıp ana ekranı görmek görsel kirlilik yapıyor, beyin sürekli 'belki birini açmalıyım' moduna sokulmuş oluyor.\n\nCal Newport'un **Dijital Minimalizm** kitabı bu kavramı netleştirdi: ihtiyacın olmayan her dijital aracı sil. Hayatına **gerçek değer katmıyorsa** = sömürüyor. Hiçbir uygulama nötr değil — ya değer katar ya zaman çalar. Orta yok.\n\nNewport'un tezi: 10-15 uygulama yeter çoğu insana. Tipik liste:\n- **İletişim:** Mesaj, WhatsApp, telefon\n- **Navigasyon:** Maps\n- **Ödeme:** Banka uygulaması\n- **Kayıt:** Kamera, Notlar, Takvim\n- **İş aracı:** E-posta, Slack (gerekirse)\n- **Eğlence/araç:** Müzik (Spotify), Podcast, Kindle\n- **Sağlık:** Hava durumu, sağlık takip\n\nGeri kalanı **düşman**. Sosyal medya, oyun, alışveriş app'leri, lifestyle app'leri, news app'leri — her biri günde birer dakika çekiyor. 100 app × 1 dakika = 100 dakika kayıp her gün.\n\nMinimal telefon size **zaman geri verir, ama daha önemlisi: dikkat geri verir**. Ana ekranı temiz görünce, beyin 'kontrol bende' sinyalini alıyor. Açtığında **niyetli** kullanım reflexi gelişiyor.\n\nDeneme: 30 gün uygulamasız yaşa. Çoğu insan birkaç gün içinde **özlemediğini** fark eder. Geri yüklediği app'lerin %80'i şuanda silinmiş.",
+        "action": "Telefonundaki **TÜM uygulamaları** gözden geçir. Son 30 günde açmadığın hepsini sil. Tereddüt ettiklerini sil. Geri yüklersin gerekirse — ama gerek olmayacağını göreceksin. Hedef: 15 uygulamada in.",
+        "reflectionPrompt": "Kaç uygulama sildin? Hangisini en zor sildin — niye? O zorluğun arkasında ne var?",
         "quiz": [
           {
             "q": "Dijital minimalizm?",
@@ -570,7 +570,7 @@
               "Pahalı"
             ],
             "correct": 1,
-            "explain": "Sadece gerekli + üretici."
+            "explain": "Cal Newport: **olmazsa olmaz + üretici** uygulamalar. Geri kalan dijital bagaj — görsel kirlilik ve niyetsiz kullanım tetikleyicisi."
           },
           {
             "q": "Cal Newport tezi?",
@@ -581,16 +581,16 @@
               "Random"
             ],
             "correct": 1,
-            "explain": "Az ama derin tüketim."
+            "explain": "Az ama derin tüketim. Hiçbir uygulama nötr değil — ya değer katar ya zaman çalar. Orta yok."
           }
         ],
-        "proTip": "Dijital minimalizm = \"olmazsa olmaz\" + \"verimlilik\" haricinde her şey."
+        "proTip": "Dijital minimalizm = 'olmazsa olmaz' + 'verimlilik' haricinde her şey gider."
       },
       "19": {
         "title": "Yavaşla",
-        "teaching": "Hızlı dopamin alışkanlığı 'her şey hemen olmalı' beklentisini yaratır. Sıraya girmek dayanılmaz. Yemek pişirmek uzun. Kitap okumak yavaş.\n\nDetoks bu beklentileri yeniliyor. Yavaş şeyler yeniden zevk veriyor.\n\nBugün yavaşla. Aceleyi reddet. Bir saat 30 dakikada değil 60 dakikada yap.",
-        "action": "Bugün bir öğünü yavaş ye — telefon yok, ekran yok. Her lokmayı 20 saniye çiğne. Yemekten zevk al.",
-        "reflectionPrompt": "Yavaş yemek hangi tatları geri getirdi? Daha tok hissettin mi?",
+        "teaching": "Marketin kasasında sıraya girdin. 3 kişi var önünde. Refleks: telefon çıkar. 60 saniye boşluğu doldur. Sonra eve git, yemek pişir — 'çok zaman alıyor', yarısını mikrodalga yap. Akşam kitap aç — 5 sayfa sonra 'sıkıcı', bırak diziyi aç. Her şey bir saniye **bekleyemez** hale gelmiş.\n\nHızlı dopamin alışkanlığı 'her şey hemen olmalı' beklentisini yaratır. Bu beklenti hayatı yaşanmaz hale getirir çünkü hayatın çoğu **yavaş**:\n- Yemek pişirmek 30-45 dakika\n- Kaliteli sohbet yarım saat\n- Kitap okumak saatler\n- İlişki kurmak yıllar\n- Bir alışkanlık edinmek 21-90 gün\n- İyi olmak ömür boyu\n\nSıkı dopaminin sömürdüğü beyin bunlara tahammül edemez. Mikrodalga yemek yer, scroll'la sohbet eder, özetle kitap okur (YouTube 'kitabı 5 dakikada anlattım'), Tinder'la ilişki kurar... Hızla yaşar, ama **gerçekten yaşamaz**.\n\nDetoks bu beklentileri yeniliyor. 19. günde, beyin yavaşlığa **yeniden tahammül** ediyor. Hatta — burası şaşırtıcı — **zevk almaya başlıyor**. Yavaş yemek tadı geri geliyor. Sayfa çevirmek meditatif hissediyor. Sıraya girmek 'aman ne yapayım' yerine 'sakin bir an' oluyor.\n\nKarl Honoré'nin **In Praise of Slow** kitabı: Slow Movement, modern Batı kültürünün 'her şey hemen' takıntısına karşı bilinçli direniş. Slow food, slow travel, slow reading, slow living — hepsi aynı tezde birleşir: **yavaş = derin = anlamlı**.\n\nHızlı yaşam = kontrolsüz yaşam. Yavaşlama = disiplinin **görsel formu**. Yemek yerken telefon kullanmayan kişi, hayatın geri kalanında da kontrol sahibidir.",
+        "action": "Bugün bir öğünü **yavaş ye** — telefon yok, ekran yok, konuşma yok. Her lokmayı 20 saniye çiğne. Tadına bak. Yemek bittiğinde 5 dakika otur, ne hissettiğine bak.",
+        "reflectionPrompt": "Yavaş yemek hangi tatları geri getirdi? Daha tok mu hissettin? Eskiden bu yemeği nasıl yiyordun?",
         "quiz": [
           {
             "q": "Yavaşlama = ?",
@@ -601,7 +601,7 @@
               "Etkisiz"
             ],
             "correct": 1,
-            "explain": "Yavaş = kontrollü."
+            "explain": "Yavaş = **kontrollü**. Sıkı dopaminin sömürdüğü beyin yavaşlığa tahammül edemez — yavaşlama tahammülü, disiplin gücünün ölçüsüdür."
           },
           {
             "q": "Hızlı yaşam?",
@@ -612,16 +612,16 @@
               "Disiplin"
             ],
             "correct": 1,
-            "explain": "Hız = kontrol kaybı."
+            "explain": "Hız = **kontrol kaybı**. Modern 'her şey hemen olsun' takıntısı, hayatın gerçek anlamlarını (yavaş şeyleri) yaşanmaz hale getirir."
           }
         ],
-        "proTip": "Yavaşlama = disiplinin görsel formu. Hızlı = kontrolsüz."
+        "proTip": "Yavaşlama = disiplinin görsel formu. Hızlı = kontrolsüz. Slow Movement bu ilkenin felsefesi."
       },
       "20": {
         "title": "20. Gün — Yeni Baseline",
-        "teaching": "Beyin dopamin reseptörlerini yeniden kalibre etmiş olabilir. 'Düz' olarak hissettiğin durum aslında yeni normal. Stimülasyon olmadan hayatın acı çekmediğini fark ettin mi?\n\nÇoğu kişi bu noktada şaşırır: 'Daha az aslında daha iyi.' Bu büyük bir öğretmen.\n\n10 gün kaldı. Şimdi bu yeni baseline'ı sertleştirmeyi öğreneceksin.",
-        "action": "20 günü kutla — ama dopamin bombası ile değil. Sevdiğin biriyle birlikte sessiz bir aktivite yap. Yürüyüş, yemek, doğa.",
-        "reflectionPrompt": "20 gün önceki 'sen' ile şu anki 'sen' arasındaki en büyük fark ne?",
+        "teaching": "Bugün 20. gün. **Detoks'un üçte ikisi bitti.** Beyin dopamin reseptörlerini yeniden kalibre etmiş olabilir. Şu fenomeni fark ettiysen, kanıttır:\n\n'Düz' olarak hissettiğin durum aslında **yeni normal**. Stimülasyon olmadan hayatın acı çekmediğini fark ettin mi? Yatağa girip 10 dakika sessiz uyumak için bekleyebiliyor musun? Bir kahve içerken telefon olmadan sıkılmıyor musun? Bir sohbete tamamen mevcut olarak girebiliyor musun? Bunlar nörobiyolojik göstergelerdir.\n\nÇoğu kişi bu noktada şaşırır: **'Daha az aslında daha iyi.'** Bu büyük bir öğretmen. Bağımlılık döneminde aklın bu fikre tahammül edemezdi — sürekli daha fazla, daha hızlı, daha parlak isterdi. Şimdi sade bir yemek tatmin ediyor. Sıradan bir yürüyüş besliyor. Eski 'eğlenceli' şeyler (4 saat dizi maratonu, sürekli atıştırma + telefon) artık **yorucu** geliyor.\n\nBilimsel olarak: 7-30 günlük 'dopamin fasting' (Stanford Dr. Cameron Sepah'ın araştırma alanı) reseptör hassasiyetini sıfırlar. Beyin **doğal ödüllere** yeniden hassaslaşır. Bir gün önce sıkıcı gelen şey bir gün sonra zevkli olabilir.\n\n**10 gün kaldı.** Bu son 10 gün 'sertleştirme' bölümü — yeni baseline'ı kalıcı yapma. Çünkü detoks bittiğinde tehlike geri dönüş. İrade rahatlar, beyin 'bir kerelik' diyebilir. Son 10 günde **yeni kim** olmak istediğine karar vereceksin.\n\nBu gün özel. Ama kutlama da yeni-sen ile uyumlu olmalı. Eski-sen 'bir kasa bira + 6 saat dizi + Domino's' diyebilirdi. Yeni-sen sessiz bir yürüyüş, kaliteli bir akşam yemeği, sevdiğin biriyle gerçek sohbet diyor. **Düşük dopamin, yüksek anlam** — bu yeni hayatın slogan'ı.",
+        "action": "20 günü kutla — ama dopamin bombası ile **değil**. Sevdiğin biriyle birlikte sessiz bir aktivite yap. Doğa yürüyüşü, kaliteli yemek, derin sohbet. Bu kutlama yeni-sen'in protokolü.",
+        "reflectionPrompt": "20 gün önceki 'sen' ile şu anki 'sen' arasındaki en büyük fark ne? Birine anlatsan en çok hangisi şaşırtırdı?",
         "quiz": [
           {
             "q": "Yeni baseline?",
@@ -632,7 +632,7 @@
               "Aynı"
             ],
             "correct": 1,
-            "explain": "Beyin yeni standarta oturdu."
+            "explain": "Beyin yeni standarta oturdu. Eskiden tahammülsüz olduğun durumlar (sıkıntı, sessizlik, yavaşlık) şimdi normal — hatta hoş."
           },
           {
             "q": "Bilim onayı?",
@@ -643,10 +643,10 @@
               "Asla"
             ],
             "correct": 1,
-            "explain": "7-30 günlük adaptasyon süresi."
+            "explain": "Stanford Dr. Cameron Sepah araştırması: **7-30 günlük dopamine fasting** reseptör hassasiyetini sıfırlar. Beyin doğal ödüllere yeniden hassaslaşır."
           }
         ],
-        "proTip": "Yeni baseline = 30 gün öncenin sıkıntısı şimdi normal."
+        "proTip": "Yeni baseline = 30 gün öncenin sıkıntısı şimdi normal. Düşük dopamin, yüksek anlam — yeni sloganın."
       },
       "21": {
         "title": "Tetikleyicileri Tanı",
