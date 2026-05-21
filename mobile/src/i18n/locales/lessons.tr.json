@@ -650,9 +650,9 @@
       },
       "21": {
         "title": "Tetikleyicileri Tanı",
-        "teaching": "Her dopamin arzusunun bir tetikleyicisi var. Sıkıntı, üzüntü, yalnızlık, yorgunluk, başarısızlık duygusu — bunlar 'kaçma' isteği yaratır. Kaçış genelde telefona oluyor.\n\nTetikleyici bilgisi güçtür. Bilirsen, otomatik tepkiyi kırarsın. 'Sıkıldım' yerine 'Sıkıldığım için telefona uzanıyorum, ama gerçek ihtiyacım sıkıntıda oturmak'.",
-        "action": "Bugün her dopamin dürtüsü geldiğinde 1 cümle yaz: 'Şu an X hissediyorum, telefon istiyorum.' Akşam listene bak.",
-        "reflectionPrompt": "En sık tekrarlayan tetikleyici hangisi? O duygu seni gerçekte ne istiyor?",
+        "teaching": "Bir an düşün: dün telefona en sık ne zaman uzandın? **Niye o anda?** Cevap genelde 'bilmiyorum' olur. Otomatik bir refleksti. Ama hiçbir refleks gerçekten 'sebepsiz' değil — bilinç-altında bir tetikleyici çağırdı, sen cevap verdin.\n\nDavranış bilimi (Charles Duhigg'in **The Power of Habit** modeli) her alışkanlığı 3 parçada çözüyor:\n1. **Cue (tetikleyici)** — duygu, durum, zaman, kişi\n2. **Routine (rutin)** — telefonu açma\n3. **Reward (ödül)** — dopamin atışı veya kaçış\n\nDavranışı değiştirmek için **cue'yu tanımak** ilk adım. Çünkü routine'i durdurmak iradeye dayanır (zayıf); cue'yu tanımak farkındalığa dayanır (güçlü).\n\nBüyük tetikleyiciler:\n- **Sıkıntı** (en sık — beyin uyaran arıyor)\n- **Üzüntü** (kaçma isteği)\n- **Yalnızlık** (sahte bağ arıyor)\n- **Yorgunluk** (irade tükenmiş, otomatik mod)\n- **Başarısızlık duygusu** (anlık ödül arıyor, kendi-acımayı dindirmek için)\n- **Boş zaman / sıra bekleme** (ortam fırsatı yaratıyor)\n\nTetikleyici bilgisi **güçtür**. Bilirsen, otomatik tepkiyi kırarsın. 'Sıkıldım' yerine 'Sıkıldığım için telefona uzanıyorum, ama gerçek ihtiyacım sıkıntıda oturmak'. Bu **meta-farkındalık** — düşüncenin düşüncesi. Bu refleksi kırar.\n\nBugünün egzersizi sade ama güçlü: her dopamin dürtüsü geldiğinde DURAKLA, hangi duygu ya da durumun tetiklediğini **yaz**. Akşam listeye bak — patternler çıkar.",
+        "action": "Bugün her dopamin dürtüsü geldiğinde **1 cümle yaz** (telefonun Notes uygulamasında veya kağıtta): 'Şu an X hissediyorum, telefon istiyorum.' Hiçbir şey değiştirmeye çalışma, sadece **kayıt al**. Akşam listene bak — hangi duygu tekrarlanıyor?",
+        "reflectionPrompt": "En sık tekrarlayan tetikleyici hangisi? O duygu sana gerçekte ne istiyor — gerçek ihtiyacın ne?",
         "quiz": [
           {
             "q": "Tetikleyici nasıl tanı?",
@@ -663,7 +663,7 @@
               "Etkisiz"
             ],
             "correct": 1,
-            "explain": "Yazılı = bilinçli."
+            "explain": "**Yazılı = bilinçli.** Akılda kalan tetikleyici unutulur, yazılan tetikleyici farkındalığa dönüşür. The Power of Habit'in temel egzersizi."
           },
           {
             "q": "En sık tetikleyici?",
@@ -674,16 +674,16 @@
               "Mutluluk"
             ],
             "correct": 1,
-            "explain": "Sıkıntı = ana tetikleyici."
+            "explain": "**Sıkıntı = ana tetikleyici.** Beyin uyaran arıyor, telefon en hızlı yol. Sıkıntıya tahammül kasını geliştirirsen, otomatik refleksin yarısı çöker."
           }
         ],
-        "proTip": "Tetikleyiciyi yazılı tut: \"Hangi durumda telefona uzandım?\""
+        "proTip": "Tetikleyiciyi yazılı tut: 'Hangi durumda telefona uzandım?' Patternler çıkar, refleks kırılır."
       },
       "22": {
         "title": "Replacement Stratejisi",
-        "teaching": "Kötü alışkanlığı sadece silmek yetmez. Yerine ne koyacaksın?\n\nNefes telefonun yerini alır. Yürüyüş scroll'un yerini alır. Soğuk duş kahvaltı scrollunun yerini alır. Kitap dizi izlemenin yerini alır.\n\nDetoks sonrası geri dönüşü engelleyen şey: yeni davranışların yerleşmesi. Bugün ne koyacaksın?",
-        "action": "Şu 5 saatlik dilim için bir replacement listesi yaz: telefon dürtüsü gelince ne yapacaksın? (Örn: nefes 4-7-8, 10 squat, su iç, dışarı çık.)",
-        "reflectionPrompt": "Hangi replacement işe yaradı? Hangisi sahte geldi?",
+        "teaching": "Dün tetikleyicileri tanıdın. Bugün **yerine ne koyacağını** öğreniyorsun. Çünkü davranış bilimi netçesinin söylüyor: **kötü alışkanlığı sadece silmek yetmez** — vakum kalır, bir süre sonra başka kötü bir alışkanlık o vakumu doldurur. Sigarayı bırakanın yemeğe başlaması, alkolü bırakanın ekrana başlaması, telefonu bırakanın atıştırmaya başlaması... hep aynı mekanizma.\n\nÇözüm: **replacement**. Eski cue → eski routine yerine, eski cue → **yeni** routine.\n\nÖrnek replacement haritası:\n- **Sıkıntı** → telefon (eski) → **4-7-8 nefes** (yeni)\n- **Yalnızlık** → scroll (eski) → **gerçek arama** (yeni)\n- **Yorgunluk** → reels (eski) → **10 dakika uzanma + gözleri kapama** (yeni)\n- **Boş zaman / sıra** → telefon (eski) → **insan gözleme + 1 derin nefes** (yeni)\n- **Yemek sırası** → ekran (eski) → **yemekle mevcut olma, lokmaları sayma** (yeni)\n- **Yatak öncesi** → Instagram (eski) → **kitap 10 sayfa** (yeni)\n- **Stres** → atıştırma (eski) → **soğuk su yüzüne, ardından nefes** (yeni)\n\nReplacement'ın **3 kuralı**:\n1. Mevcut olmalı (her zaman yapabilirsin — nefes, push-up, su)\n2. Hızlı olmalı (refleks anında — 30 sn'de başlasın)\n3. Hafif ödüllü olmalı (tam yoksunluk değil, sadece daha sağlıklı kaçış)\n\nDetoks sonrası **geri dönüşü engelleyen şey budur** — yeni davranışların yerleşmesi. Bugün hangi 3-5 replacement'ı kalıcı olarak hayatına alıyorsun, karar ver.",
+        "action": "**5-7 saatlik bir dilim** için replacement listesi yaz: telefon dürtüsü gelince ne yapacaksın? Örnek: 'Sıkılınca → 4-7-8 nefes'. 'Yorulunca → su iç + 10 squat'. 'Yalnız hissedince → birine arama'. Listeyi telefonun arkasına yapışkan not olarak yapıştır.",
+        "reflectionPrompt": "Hangi replacement gerçekten işe yaradı, hangisi sahte geldi? Sahte olanı niye sahte hissetti?",
         "quiz": [
           {
             "q": "Replacement stratejisi?",
@@ -694,7 +694,7 @@
               "Bekle"
             ],
             "correct": 1,
-            "explain": "Alternatif davranış öner."
+            "explain": "**Eski cue → yeni routine.** Boş vakum bırakmaz, başka bir kötü alışkanlık doldurmaz."
           },
           {
             "q": "Örnek alternatifler?",
@@ -705,27 +705,27 @@
               "Bilinmez"
             ],
             "correct": 1,
-            "explain": "Sağlıklı refleks alternatifleri."
+            "explain": "Mevcut, hızlı, hafif ödüllü davranışlar: nefes, 10 squat, su, soğuk yüz suyu, insan gözleme. Her ortamda yapılabilir."
           }
         ],
-        "proTip": "Replacement = telefon refleksi yerine derin nefes / 5 push-up / su iç."
+        "proTip": "Replacement = telefon refleksi yerine derin nefes / 5 push-up / su iç. 3 kural: mevcut, hızlı, hafif ödüllü."
       },
       "23": {
         "title": "Negatif Görselleştirme",
-        "teaching": "Stoacılar 'premeditatio malorum' yaparlar — kötü olanı önceden hayal et. 'Bu detoksu kaybedersem nasıl olur?' diye düşün.\n\nEski hayatına 1 saatlik bir dönüş hayal et: scroll, junk food, rastgele video. Sonra bu detoksta olduğun şu anla karşılaştır.\n\nKayıp acısı kazanma sevincinden 2x daha güçlüdür. Bunu silah olarak kullan.",
-        "action": "5 dakika gözünü kapa. Detoksta olmadığın 24 saatlik bir gün hayal et — eski telefon alışkanlıkları, eski yorgunluk. Sonra şu ana dön.",
-        "reflectionPrompt": "Eski güne dönmek ne hissettirdi?",
+        "teaching": "Çoğu motivasyon kitabı **pozitif görselleştirme** öğretir: 'Başarını gözünde canlandır, hedeflerin gerçekleşecek!' Bu bir noktaya kadar işe yarar, ama davranış değişimi için zayıftır. Çünkü beyin başarının hayalini **gerçek başarı** ile karıştırır — dopamin salınır, motivasyon **azalır**, çünkü iş bitmiş gibi hissedersin.\n\nStoacılar 2000 yıl önce daha güçlü bir teknik buldular: **premeditatio malorum** — 'kötü olanı önceden hayal et'. Marcus Aurelius, Seneca, Epictetus — hepsi bu egzersizi günlük yapardı. Her gün sabah: 'Bugün hangi kayıpları yaşayabilirim?' diye düşün, içsel hazırlığı yap.\n\nBu detoks için adapte edersek: '**Bu detoksu kaybedersem nasıl olur?**' diye düşün. Vazgeçtiğin 24 saati zihninde detaylı hayal et:\n- Sabah uyanır uyanmaz telefona uzanırsın\n- 30 dakika scroll, beyin yorgun başlar günü\n- Kahvaltıda Instagram, tat alamadığın yemek\n- Trafikte Reels, evine asla dönüşü olmayan saatler\n- Akşam dizi maratonu, uyku kalitesiz\n- Yatakta son scroll, ertesi gün yine yorgun\n\nŞimdi şu ana dön. Şu an detoksta olduğun yer. **Hangisi daha iyi?**\n\nBu egzersiz **kayıp aversionunu** silah olarak kullanır. Kahneman'ın Nobel ödüllü Prospect Theory'si net: **kayıp acısı, kazanma sevincinden 2x daha güçlü**. 'Yeni hayatımı kaybedersem...' hissi, 'eski hayatıma dönmek istiyorum' arzusundan daha güçlü olur.\n\nGöz önünde canlandırmak yetmez — 5 dakika otur, **gerçekten yaşa** o hayali. Sonra gerçek hayatına dönmenin rahatlamasıyla devam et.",
+        "action": "**5 dakika gözünü kapat.** Detoksta olmadığın 24 saatlik bir günü hayal et — eski telefon alışkanlıkları, eski yorgunluk, eski boş hissi. Detayda yaşa. Sonra şu ana dön — ne hissediyorsun, fark et.",
+        "reflectionPrompt": "Eski güne hayalî dönüş ne hissettirdi? Şu an ne kazandığını fark ettin mi?",
         "quiz": [
           {
             "q": "Negatif görselleştirme?",
             "options": [
               "Pozitif düşün",
-              "\"Ne kaybederim?\"",
+              "'Ne kaybederim?'",
               "Görmezden gel",
               "Hızlandır"
             ],
             "correct": 1,
-            "explain": "Kaybı görselleştir."
+            "explain": "**Kaybı görselleştir.** Kahneman'ın Prospect Theory'si: kayıp acısı 2x daha güçlü, davranış değişimi için pozitif görselleştirmeden etkili."
           },
           {
             "q": "Stoik felsefe?",
@@ -736,16 +736,16 @@
               "Modern"
             ],
             "correct": 1,
-            "explain": "Stoa'nın klasik tekniği."
+            "explain": "Stoa'nın klasik tekniği — Marcus Aurelius, Seneca, Epictetus günlük yapardı. 'Kötü olanı önceden hayal et' = içsel dayanıklılık inşası."
           }
         ],
-        "proTip": "Negatif görselleştirme: \"Bu telefonu kontrol edersem ne kaybederim?\""
+        "proTip": "Negatif görselleştirme: 'Bu telefonu kontrol edersem ne kaybederim?' Kayıp aversionu en güçlü motivatör."
       },
       "24": {
         "title": "Telefonu Araç Yap",
-        "teaching": "Telefon bir araç. Sen onu kullanırsın, o seni değil. Detoks sonrası ilişkin bu olmalı.\n\nAraç olduğunda: niyetli açarsın (şunu yapacağım), yaparsın, kaparsın. Eğlence için açmazsın. 'Sıkıldım' diye açmazsın.\n\nDetoks bittiğinde geri yükleyebilirsin bazı şeyleri. Ama yeni kuralla: niyetli kullanım.",
-        "action": "Bugün telefonu açtığın her seferinde, açmadan ÖNCE 'şunu yapacağım' diye yüksek sesle söyle. Bittiğinde kapat. Eğlence yok.",
-        "reflectionPrompt": "Niyetli kullanım, 'sadece bakma' kullanımına göre nasıldı?",
+        "teaching": "Bir çekiç düşün. Sen çekici aldığında ne yaparsın? **Bir çivi çakarsın.** Çekici aldıktan sonra 'şimdi ne yapsam' diye saatlerce ona bakmıyorsun. Çekiç tamamen kullanılana kadar kullanılır, sonra kenara koyulur. Aslında: çekici karıştırırken zaman geçirsen 'çekiç bağımlılığı' var derdik.\n\nTelefon **bir araç**. Sen onu kullanırsın, o seni değil. Detoks sonrası ilişkin bu olmalı.\n\nAma çoğu insan için telefon araç değil — **arkadaş**, **eğlence merkezi**, **kaçış noktası**, **kimlik parçası**. Bu yüzden açtığında 'ne yapayım' demeden 45 dakika geçirir. Çekiç bir aracı, telefon ise bir **alan**.\n\n**Araç olduğunda işlem zinciri**:\n1. Niyet (şunu yapacağım — mesaj attıracağım / harita bakacağım / fatura ödeyeceğim)\n2. Aç\n3. Yap\n4. Kapat\n5. Cebe / başka odaya koy\n\nNiyetsiz açışlar yasak. Açmadan önce **soru**: 'Şu an telefonu açmaya niyetim ne?' Cevabı yoksa, açma. 'Bir şey kontrol edeyim' yetmez — **hangi şey?**\n\nDetoks bittiğinde bazı uygulamaları geri yükleyebilirsin. Ama yeni kuralla: **niyetli kullanım**. Instagram'ı geri yükleyebilirsin, ama 'sadece günde 10 dakika, belirli kişileri görmek için'. Asla 'rastgele scroll' için değil.\n\nBu küçük bir disiplin gibi görünür ama hayatın saatlerini sana **geri verir**. Ortalama bir kişi telefona günde 4 saat harcıyor (Apple Screen Time verisi). Niyetli kullanımda bu 30 dakikaya iner. Günde 3.5 saat = haftada 24.5 saat = yılda **bir gün fazladan hayat** kazanırsın.",
+        "action": "Bugün telefonu açtığın **her seferinde**, açmadan ÖNCE 'şunu yapacağım' diye yüksek sesle (veya içinden açıkça) söyle. Bittiğinde kapat. Eğlence için açış yok. Cevapsız sebep yok.",
+        "reflectionPrompt": "Niyetli kullanım, 'sadece bakma' kullanımına göre nasıldı? Toplam telefon süresi ne kadar düştü?",
         "quiz": [
           {
             "q": "Telefon araç olunca?",
@@ -756,7 +756,7 @@
               "Yok"
             ],
             "correct": 1,
-            "explain": "Açmadan önce niyet kontrolü."
+            "explain": "**Açmadan önce niyet kontrolü.** Çekiç gibi: belirli iş için açılır, iş bitince kapatılır. 'Sadece bakma' kullanımı = araçlık kaybı."
           },
           {
             "q": "Niyetsiz açış etkisi?",
@@ -767,16 +767,16 @@
               "Pozitif"
             ],
             "correct": 1,
-            "explain": "Niyetsiz açış = scroll kaybı."
+            "explain": "**Niyetsiz açış = scroll kaybı.** Ortalama 4 saat/gün, niyetli kullanımda 30 dk'ya iner — yılda fazladan bir gün hayat."
           }
         ],
-        "proTip": "Telefon araç olunca: \"açtığımda niyetim ne?\" sorusunu sor."
+        "proTip": "Telefon araç olunca: 'açtığımda niyetim ne?' sorusunu sor. Cevabın yoksa, açma."
       },
       "25": {
         "title": "Final Sprint Başlıyor",
-        "teaching": "Son 5 gün. Bu sprint'in en kritik kısmı. Beyin yeni baseline'a oturmak için bu son haftayı bitirmeli. Aksi takdirde 'half-detox' olur ve geri dönüş kolay olur.\n\nBu hafta zorluğun arttığını hissedebilirsin. 'Bitti, başardım' düşüncesiyle erken pes etmek yaygın.\n\nBitiş çizgisi 30. gün. 25, 26, 27, 28, 29, 30. Bitir.",
-        "action": "Bugün son 5 günün kararını yaz: Hangi alışkanlıkları kalıcı tutacaksın? Hangi telefon uygulamalarını GERİ YÜKLEMEYECEKSİN?",
-        "reflectionPrompt": "Detoks bitti diye geri yüklemeyeceğin uygulama hangisi? Niye?",
+        "teaching": "Maraton koşucularına soracak olsan: en zor kilometre hangisi? Cevap 1 değil, 21 değil — **35-40 arası**. Çünkü orada 'bitmek üzere' hissi gelir ve beyin gücü erkenden bırakır. 'Bitti, başardım' duygusu, asıl başarmaktan **bir adım önce** insanı durdurur. Maratoncuların %20'si tam 35-40 km arasında bırakır.\n\nSon 5 gün — sprint'in en kritik kısmı. Beyin yeni baseline'a **tamamen** oturmak için bu son haftayı bitirmeli. Aksi takdirde 'half-detox' olur — kısmen değişmiş bir beyin, eski refleksleri tetiklemeye **daha yatkın**. Yeniden başlatma daha zor olur.\n\nBilim: 21 günde alışkanlığın **temeli** atılır (Maxwell Maltz'ın klasik çalışması), 30 günde **kalıcılaşır** (Lally et al. 2010, University College London). Sen 25. gündesin — temeller hazır, kalıcılık inşası bitmedi.\n\nBu hafta zorluğun **arttığını** hissedebilirsin. Normal: beyin son bir umutla 'detoks'u durdurma' baskısı yapıyor. 'Bitti, başardım' düşüncesiyle erken pes etmek yaygın. Bu beynin son trick'i.\n\nBitiş çizgisi **30. gün**. 25, 26, 27, 28, 29, 30. Her gün önemli. Maraton metaforuna geri dönersek: 40 km'de bırakan, 42 km koşmuş sayılmaz — başarısız maratoncu sayılır. 30 gündür anlamlı, 25 gün değil.\n\nBu son 5 gün senin **kalıcı kim olduğun**u inşa edeceği gün. Karakter, son 5 günde inşa edilir.",
+        "action": "Bugün son 5 günün **kararını** yaz: Hangi alışkanlıkları kalıcı tutacaksın? Hangi telefon uygulamalarını **geri YÜKLEMEYECEKSİN** (TikTok, Instagram, Reels gibi)? Bu liste seninle 30. gün sonrası taşınacak.",
+        "reflectionPrompt": "Detoks bitti diye geri yüklemeyeceğin uygulama hangisi? Niye? O uygulama olmadan ne kazanırsın?",
         "quiz": [
           {
             "q": "Final sprint?",
@@ -787,7 +787,7 @@
               "Random"
             ],
             "correct": 1,
-            "explain": "Beyin \"bitir\" sinyali ister."
+            "explain": "**En zor 5 gün.** Maraton metaforu: 35-40 km arası en çok insan bırakır. Beyin 'bittin' diye yalan söyler, son hamleyi sabote eder."
           },
           {
             "q": "Sprint çözümü?",
@@ -798,10 +798,10 @@
               "Yavaşla"
             ],
             "correct": 1,
-            "explain": "Son sprint = sürdürme."
+            "explain": "Son sprint = **sürdürme**. 30 gün kalıcılık eşiği (Lally 2010). 25'te bırakan, alışkanlığı temelden inşa etmemiş olur."
           }
         ],
-        "proTip": "Final sprint = en zor 5 gün. Beyin \"tamamlandın\" sinyali ister."
+        "proTip": "Final sprint = en zor 5 gün. Karakter son 5 günde inşa edilir, 25'te değil."
       },
       "26": {
         "title": "Sosyal Bağışıklık",
