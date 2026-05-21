@@ -185,9 +185,9 @@
       },
       "6": {
         "title": "Telefonu Yatak Odasından Çıkar",
-        "teaching": "Telefon yastığının yanında uyumak, uyku kalitesini parçalara ayırır. Mavi ışık melatonin baskılar, gece bildirimleri uyku evreni böler, sabah ilk işin scroll olur.\n\nUyumadan önce son ekran ne? Sabah uyandığında ilk ekran ne? Bunlar zihinsel sağlığını belirler. İkisi de telefon olursa, hayatın ekran-aralığında geçer.\n\nBugün fiziksel mesafe yaratıyoruz. Telefonu başka odada şarja koymak basit ama radikal bir karar.",
-        "action": "Bu gece telefonunu yatak odasının dışında, başka bir odada şarj cihazına koy. Uyandığında önce 30 dakika telefonsuz geçir.",
-        "reflectionPrompt": "Telefon yatak odasında olmayınca uykuya dalma hızın değişti mi?",
+        "teaching": "Saat gece yarısı. Yatakta yatıyorsun. 'Tek bir bakış' diyerek Instagram'ı açıyorsun. 45 dakika sonra hala uyanıksın. Yarın işe yorgun gideceksin ve 'iyi uyuyamadım' diye söyleneceksin. Ama bu uyku problemi değil — bu telefon problemi.\n\nTelefon yastığının yanında uyumak, uyku kalitesini üç ayrı yerden parçalar:\n\n**1. Mavi ışık melatonini baskılar.** Harvard Medical School çalışmaları gösteriyor: yatmadan önce 2 saat ekran kullanımı, melatonin üretimini %22 düşürüyor. Yani vücut 'uyumaya hazırım' sinyalini geç alıyor.\n**2. Gece bildirimleri uyku evrelerini böler.** Bildirim sesi gelmese bile, beyin yarı-uyanık kontrol modunda kalır. Derin uyku evresine (yenilenmenin yapıldığı evre) yeterince inilemez.\n**3. Sabah ilk işin scroll olur.** Daha gözün tam açılmadan beyin bildirim, mesaj, sosyal medya kontrolüne girer. Günü reaktif başlatırsın — kendi niyetinle değil, başkalarının ajandasıyla.\n\nUyumadan önce son ekran ne? Sabah uyandığında ilk ekran ne? Bu iki an, zihinsel sağlığını şekillendirir. İkisi de telefon olursa, hayatın **ekran-aralığında** geçer. Gün başlamadan dağılırsın, gün bitmeden de uyuyamazsın.\n\nBugün fiziksel mesafe yaratıyoruz. Telefon yatak odasında olduğu sürece, irade gücüyle 'bakmayacağım' demek yetmez — beyin alışkanlıkla uzanır. Çözüm: telefonun fiziksel olarak ulaşılamaz olması. Başka oda. Mutfak, salon, koridor — fark etmez. Yeter ki yataktan uzakta.\n\nBu küçük bir hareket gibi gözükür ama radikal bir karardır. Tek başına uyku kalitesinde %15-30 iyileşme yapar (sleep tracker'larla ölçülmüş).",
+        "action": "Bu gece telefonunu yatak odasının dışında, başka bir odada şarj cihazına koy. Uyandığında önce 30 dakika telefonsuz geçir. Alarm için klasik bir alarm saati al (₺50 civarı) veya mevcut bir saat kullan.",
+        "reflectionPrompt": "Telefon yatak odasında olmayınca uykuya dalma hızın değişti mi? Sabah ilk düşüncen neye gitti?",
         "quiz": [
           {
             "q": "Telefonu yatak odasından çıkarma etkisi?",
@@ -198,7 +198,7 @@
               "Negatif"
             ],
             "correct": 1,
-            "explain": "Yatak odasında telefon = sabah ilk uyaran."
+            "explain": "Yatak odasında telefon = sabah ilk uyaran ve uyku evrelerini bölen gece bildirimleri. Çıkarmak hem uyku kalitesini hem de günün ilk saatini geri kazandırır."
           },
           {
             "q": "Alternatif alarm?",
@@ -209,16 +209,16 @@
               "Komşu"
             ],
             "correct": 1,
-            "explain": "Klasik saat alarmı yeterli."
+            "explain": "Klasik saat alarmı yeterli — ₺50'lik bir cihaz hem alarm hem disiplin sınırı olur. Eski usul, sade, etkili."
           }
         ],
-        "proTip": "Telefonu yatak odasının dışına bir saat alarmı koy. Eski usul, etkili."
+        "proTip": "Telefonu yatak odasının dışına, bir saat alarmı koy. Eski usul, etkili — ve uyandığında ilk 30 dakika senin."
       },
       "7": {
         "title": "Sabah İlk Saat Dokunma",
-        "teaching": "Beyin uyandığında 'kortizol uyanma cevabı' modunda. İlk 30-60 dakikada algı, motivasyon ve günü planlama kapasitesi en yüksek.\n\nO saatte telefona uzanırsan, beynini diğerlerinin programına bağlıyorsun: bildirimler, e-postalar, sosyal medya feed'i — günün kontrolünü kaybetmiş oluyorsun.\n\nSabah ilk saat senindir. Onu kullanmazsan, bütün gün başkasının olur.",
-        "action": "Yarın uyandıktan sonra ilk 60 dakika telefona dokunma. Su iç, yüzünü yıka, dışarı çık ya da kahvaltı et — telefonsuz.",
-        "reflectionPrompt": "İlk saatte telefon olmadan ne hissettin? Boşluk mu, dinginlik mi?",
+        "teaching": "Uyandın. Gözlerin daha tam açık değil. Eli yastığın altına götürüyorsun, telefonu çıkarıyorsun. WhatsApp, Instagram, sonra e-posta. 'Sadece bakacağım' diyordun, 20 dakika geçti. Yataktan kalkmadın daha. Gün ekran-aralığında başladı.\n\nBeyin uyandığında **kortizol uyanma cevabı** modunda. Endokrinoloji araştırmaları net: uyandıktan sonraki ilk 30-60 dakikada kortizol pikleri yapar. Bu pikler doğal — vücudu güne hazırlar. Aynı pencerede dopamin reseptörleri çok hassastır, algı keskin, motivasyon yüksek, plan yapma kapasitesi günün en yüksek noktasında.\n\nBu 60 dakika beynin **niyet penceresi** olarak adlandırılıyor. Bu pencerede ne yaparsan, beyin onu o günkü 'önemli iş' olarak öğreniyor.\n\nO 60 dakikada telefona uzanırsan ne oluyor? Beynini başkalarının programına bağlıyorsun: bildirim algoritması, e-postada bekleyen acil işler, sosyal medya feed'inin sana gösterdiği endişe-tetikleyici içerikler... Günün ilk 'önemli iş'i = başkalarının ajandası. Sen reaktif moda geçtin. Bütün gün o reaktiflikle akıp gidecek.\n\nTim Ferriss'ten Naval Ravikant'a, Cal Newport'a kadar onlarca high-performer'ın ortak alışkanlığı: sabah ilk saat telefon yok. Çünkü ilk saatin parmak izi, günün tamamına yansıyor.\n\nSabah ilk saat senindir. Onu kullanmazsan, bütün gün başkasının olur. Bu basit cümleyi her sabah hatırla.",
+        "action": "Yarın uyandıktan sonra ilk 60 dakika telefona dokunma. Su iç, yüzünü yıka, dışarı çık ya da kahvaltı et — telefonsuz. Telefonu görmen bile gerekmez; başka odada bıraktığın için zaten yanında değil.",
+        "reflectionPrompt": "İlk saatte telefon olmadan ne hissettin? Boşluk mu, dinginlik mi? Bu boşluk sana ne söylüyor?",
         "quiz": [
           {
             "q": "Sabah 1. saat kuralı?",
@@ -229,7 +229,7 @@
               "Müzik"
             ],
             "correct": 1,
-            "explain": "İlk 60 dk = niyet penceresi."
+            "explain": "İlk 60 dakika = **niyet penceresi**. Kortizol pikinde, dopamin reseptörleri hassasken; bu pencerede beyne ne öğretirsen günün 'önemli iş'i o olur."
           },
           {
             "q": "Erken telefon etkisi?",
@@ -240,16 +240,16 @@
               "Yok"
             ],
             "correct": 1,
-            "explain": "Reaktiflikle başlanan gün."
+            "explain": "Erken telefon = beyin günü reaktif başlatır. Senin niyetin değil, bildirim ve algoritmaların ajandası günün kurulumu olur."
           }
         ],
-        "proTip": "İlk 1 saat aslan kuralı: telefon yok, internet yok, sadece sen + niyet."
+        "proTip": "İlk 1 saat aslan kuralı: telefon yok, internet yok, sadece sen + niyet. High-performer'ların ortak sırrı."
       },
       "8": {
         "title": "Grayscale Modu",
-        "teaching": "Renkler beyin için ekstra dopamin yakıtı. Kırmızı bildirim noktaları, yeşil onay tikleri, parlayan görsel içerik — hepsi bilinçaltı çekim yaratır.\n\niOS ve Android'de 'grayscale' (siyah-beyaz) modu var. Açtığında telefon aniden 'sıkıcı' görünür. Bu güçlü bir psikolojik kesinti.\n\nBu hile değil. Bilim. Brain hijack edilmiş, biz onu doğal moduna döndürüyoruz.",
-        "action": "Telefonunu grayscale moduna al. iOS: Ayarlar > Erişilebilirlik > Görüntü ve Yazı Boyutu > Renk Filtreleri > Tonlama. 24 saat böyle kullan.",
-        "reflectionPrompt": "Renk olmadan en çok hangi uygulamaya ilgini kaybettin?",
+        "teaching": "Instagram ikonunda kırmızı '12' rakamı. WhatsApp'ta yeşil noktayla beliren mesaj. TikTok'un canlı renk paletindeki feed önizlemesi. Bunlar tesadüf değil — her biri beynin görsel reseptörlerinin **dopamin tetiklenmek için** evrildiği renklerle yapılmış.\n\nRenkler beyin için ekstra dopamin yakıtıdır. Pavlov köpekleri zilden tükürdü; biz kırmızı bildirim noktalarından tükürüyoruz. Bu çok eski bir mekanizma — modern teknoloji onu sömürmek için optimize edildi.\n\niOS ve Android'de **grayscale** (siyah-beyaz) modu var. Açtığında telefon aniden 'sıkıcı' görünür. Instagram'ın o canlı renkli feed'i griye dönüşür; bir gazete sayfasına bakar gibi olursun. Beyin 'hıh, burada ödül yok' sinyali alır.\n\nTristan Harris (eski Google etik tasarımcısı) bunu meslek hayatında tavsiye eder: grayscale modu, ekran süresini ortalama %40 düşürür. UCSD'de 36 kişiyle yapılan deneyde benzer sonuç: 1 hafta grayscale = günlük telefon süresinde 50 dakika azalma. Hiçbir irade gücü, hiçbir uygulama engelleme — sadece renksiz ekran.\n\nBu hile değil. Bilim. Beynin uzun süredir hijack edilmişti, biz onu doğal moduna döndürüyoruz. Bir şeyler kayboluyor gibi hissedersin — kayıp olan algoritmik dopamin sömürüsü, sen değilsin. Üç gün sonra bunu fark edersin.",
+        "action": "Telefonunu grayscale moduna al şu an. **iOS:** Ayarlar > Erişilebilirlik > Görüntü ve Yazı Boyutu > Renk Filtreleri > Tonlama > Gri Tonlama. **Android:** Ayarlar > Dijital Wellbeing > Bedtime Mode veya Developer Options > Simulate Color Space > Monochromacy. 24 saat böyle kullan.",
+        "reflectionPrompt": "Renk olmadan en çok hangi uygulamaya ilgini kaybettin? O ilgi aslında uygulamaya mıydı, renge miydi?",
         "quiz": [
           {
             "q": "Grayscale modu nedir?",
@@ -260,7 +260,7 @@
               "Aydınlık"
             ],
             "correct": 1,
-            "explain": "Renksiz = beyin sıkıcı bulur."
+            "explain": "Grayscale = **renksiz** ekran. Beynin bildirim/uygulama renkleriyle eşleştirdiği dopamin uyarıcısını ortadan kaldırır."
           },
           {
             "q": "Etkisi?",
@@ -271,16 +271,16 @@
               "Yok"
             ],
             "correct": 1,
-            "explain": "Renksiz uygulamayı beyin reddeder."
+            "explain": "UCSD deneyi: grayscale günlük telefon süresini ortalama 50 dakika düşürür. İrade gerektirmez — beyin renksiz uygulamayı reddeder."
           }
         ],
-        "proTip": "Grayscale = renk yok. Beyin renksiz uygulamaları sıkıcı bulur, otomatik bırakır."
+        "proTip": "Grayscale = renk yok. Beyin renksiz uygulamaları sıkıcı bulur, otomatik bırakır. Ekran süresinde %40 düşüş garanti."
       },
       "9": {
         "title": "Aşırı Uyaranı Kes",
-        "teaching": "Modern dopamin sömürüsünün en güçlü hali kısa-video bağımlılığı. TikTok, Reels, Shorts — sınırsız çeşitlilik, 15 saniyelik doyum, gerçek-dışı stimülasyon. Beyni gerçek hayatın yavaş ödüllerine ilgisizleştirir.\n\nAlgoritma beynine 30 saniyede ne istediğini öğrenir, sonra durmadan o ödülü verir. 30 dakika scroll edince zaman algın bozulur, dikkat süren çöker, sonra bir kitabı 5 dakika okumak zorlaşır.\n\n30 günlük detoks bilimi net: kısa-video uygulamalarını kaldırınca dopamin baseline'ı 2-4 haftada normale döner. Dikkat süreleri uzar, can sıkıntısına tahammülün artar.",
-        "action": "Bugünden başla: 30 gün TikTok / Reels / Shorts yok. Uygulamaları telefondan kaldır. Sosyal medya zorunluysa sadece masaüstünden gir.",
-        "reflectionPrompt": "Bu kararı verirken hangi engel aklına geldi?",
+        "teaching": "Bir bardak su iç. Sıradan bir bardak su. Şimdi 30 saniye dolu bir TikTok feed scroll et: dans, komedi, şok edici haber, sevimli köpek, motivasyon mottosu, yemek, dans daha. Aynı 30 saniye. **Aynı beyin**, ama biri yüzlerce dopamin atışı, diğeri sıfır.\n\nBu modern dopamin sömürüsünün en güçlü hali: **kısa-video bağımlılığı**. TikTok, Reels, Shorts — sınırsız çeşitlilik, 15 saniyelik doyum, gerçek-dışı stimülasyon. Beyni gerçek hayatın yavaş ödüllerine **ilgisizleştirir**.\n\nMekanizma şu: algoritma beynine 30 saniyede ne istediğini öğrenir (hangi videoyu izleyip hangisinden scroll'la geçtin). Sonra durmadan o **mikro-ödülü** verir. Beyin 5 dakika içinde 'gerçek hayatın baseline'ı budur' demeye başlar. 30 dakika scroll edince zaman algın bozulur (1 saat 10 dakika gibi gelir), dikkat süren çöker, sonra bir kitabı **5 dakika** okumak zorlaşır. Çünkü kitap algoritmanın hızında ödül vermiyor — beyin sıkıldı bile.\n\nWuhan Üniversitesi'nde 2023 fMRI çalışmaları net: TikTok kullanıcılarının prefrontal korteks (uzun düşünce, plan, irade) aktivitesi non-kullanıcılara göre belirgin düşük. Dahası: hipokampus (hafıza) iletişim kaybı gösteriyor — yani izlediğin şeyleri hatırlamıyorsun bile, sadece izlerken o anlık uyaran var.\n\n30 günlük detoks bilimi açık: kısa-video uygulamalarını kaldırınca dopamin baseline'ı 2-4 haftada normale döner. Dikkat süreleri uzar. Can sıkıntısına tahammülün artar (bu çok önemli — sıkıntıya tahammül = derin iş yapabilme). Kitap okumak yine zevkli olmaya başlar.",
+        "action": "Bugünden başla: 30 gün TikTok / Reels / Shorts yok. Uygulamaları telefondan **tamamen kaldır** (sadece kapatmak yetmez — gizliyse açarsın). Sosyal medya zorunluysa sadece masaüstü tarayıcısından gir, kısa-video bölümlerine giremezsin.",
+        "reflectionPrompt": "Bu kararı verirken hangi engel aklına geldi? O engel gerçekten mi, yoksa beyin bağımlılığı koruma mekanizması mı?",
         "quiz": [
           {
             "q": "Sonsuz scroll'un dopamin etkisi?",
@@ -291,7 +291,7 @@
               "Pozitif"
             ],
             "correct": 1,
-            "explain": "Algoritma her saniye ödül verir — beyin gerçek hayatın yavaş ödüllerini değersizleştirir."
+            "explain": "Algoritma her saniye ödül verir — bu **dopamin enflasyonudur**. Beyin gerçek hayatın yavaş ödüllerini (okuma, derin sohbet, doğa) artık 'değersiz' bulur."
           },
           {
             "q": "Dikkat süresine etkisi?",
@@ -302,16 +302,16 @@
               "Artırır"
             ],
             "correct": 1,
-            "explain": "Sürekli kısa-uyaranlı içerik, uzun odaklanmayı imkansızlaştırır."
+            "explain": "Sürekli kısa-uyaranlı içerik, uzun odaklanmayı imkansızlaştırır. Wuhan Üniversitesi çalışması: TikTok kullanıcılarında prefrontal korteks aktivitesi düşük."
           }
         ],
-        "proTip": "Sonsuz scroll = dopamin enflasyonu. Gerçek odaklanmaya düşmanca etkidir."
+        "proTip": "Sonsuz scroll = dopamin enflasyonu. Gerçek odaklanmaya düşmanca etkidir. Uygulamayı sil, gizleme — sadece silinmiş olmalı."
       },
       "10": {
         "title": "10 Gün Tamamlandı — Mid-point Yansıma",
-        "teaching": "30 günlük detoksun üçte birini bitirdin. Şu ana kadar ne fark ettin?\n\nİlk hafta zor olur. İkinci hafta beyin direnir ve kandırır ('bir kere açsam ne olur?'). Üçüncü hafta yeni baseline oturur.\n\nVücut dilini değiştir. Aynaya bak. Daha mı dik duruyorsun? Gözlerin daha mı net? Bu küçük şeyler değişimin ilk işaretleri.",
-        "action": "Bugünü yansıma günü yap. 15 dakika oturup şunları yaz: (1) İlk 10 günde ne değişti? (2) En zor an hangisiydi? (3) Hangi alışkanlığı kaybetmedin?",
-        "reflectionPrompt": "İlk 10 günde fark ettiğin EN BÜYÜK değişim ne?",
+        "teaching": "Tebrikler — şu an çoğu kişinin vazgeçtiği eşikteyim. 30 günlük detoksun üçte birini bitirdin. Çoğu kişi 7. günde vazgeçer; sen 10. gündesin. Bu eşik bilinçaltında 'aslında ben kararlı bir insanım' inancını kuran ilk gerçek kanıt.\n\nŞu ana kadar ne fark ettin? Çoğu kullanıcının 10 günde yaşadığı standart bir eğri var:\n\n**1-3. gün — Şok fazı:** Phantom reaching çok güçlü, sürekli telefonu açma refleksi. 'Bu çok aptal bir karar' düşüncesi sık geliyor. Sıkıntı patlamaları.\n**4-7. gün — Direnç fazı:** Beyin yaratıcı bahaneler bulur ('bir kere baksam streak'i bozmaz', 'sadece DM kontrol edeyim', 'arkadaşıma haber verecektim'). Bu beynin **bağımlılık koruma mekanizmasıdır**. Kararla yüzleş, vazgeç.\n**8-10. gün — Kabul fazı:** Refleksler zayıflıyor. Sıkıldığında telefona uzanmıyor, bir an düşünüyor, sonra başka şey yapıyor. Bu **temel sıfırlama** başlangıcı.\n\nİkinci ve üçüncü hafta daha da netleşir: 14-20 gün arası **netlik fazı** (zihinsel dağınıklık azalır, derin uyku artar, yaratıcılık geri gelir), 21-30 gün arası **yeni baseline** (eski hayat artık uzak gelir, sıkıntı patlamaları durur, telefon 'araç' olmaya geri döner — 'arkadaş' olmaktan çıkar).\n\nVücut dilini değiştir. Aynaya bak. Daha mı dik duruyorsun? Gözlerin daha mı net? Yatışmış mı? Bu küçük şeyler değişimin ilk işaretleri — fizyolojik. Cortisol bazal seviyesi düşmeye başladığında postür, ifade, ses tonu — hepsi yumuşar.\n\nKalan 20 gün için kendine söz ver: bugünkü uyandığında olduğun kişi değil, 30. günde olacak kişi senin gerçek 'sen'in. Şimdi yarısındasın değil — eşiktesin.",
+        "action": "Bugünü yansıma günü yap. 15 dakika otur, telefonsuz, ve şunları yaz: (1) İlk 10 günde ne değişti? (2) En zor an hangisiydi ve nasıl atlattın? (3) Hangi alışkanlığı kaybetmedin ki kaybetmek istemiştin?",
+        "reflectionPrompt": "İlk 10 günde fark ettiğin EN BÜYÜK değişim ne? Bu değişim sana nasıl bir 'sen' olduğunu söylüyor?",
         "quiz": [
           {
             "q": "Mid-point amacı?",
@@ -340,9 +340,9 @@
       },
       "11": {
         "title": "Ortamı Değiştir",
-        "teaching": "İrade pili sınırlı. Davranış değişiminde irade değil, ortam belirleyici. Buzdolabında çikolata varsa yiyeceksin. Telefon yataktaysa kontrol edeceksin.\n\nFiziksel mesafe = irade tasarrufu. Görmediğini düşünmezsin. Düşünmediğini istemezsin.\n\nBugün düşman tetikleyicilerden ortamını temizliyoruz.",
-        "action": "Evine bak. 5 dopamin tetikleyicisi seç ve fiziksel olarak uzaklaştır: ekran ana ekrandaki app'ler, junk food, alkol, oyun konsolu — ne varsa.",
-        "reflectionPrompt": "Hangi tetikleyici en zor 'gözden uzak' olur diye düşündün? Niye?",
+        "teaching": "Diyet yapan biri buzdolabına çikolata dolduruyorsa, irade yokluğu değil — **mantık yokluğu**. Aynı şekilde sigara bıraktığını söyleyen biri çakmağı cebinde taşıyorsa, irade testinden geçemiyor; testten KAÇMASI gereken yere kendini koyuyor.\n\nİrade pili sınırlı. Davranış bilimi son 20 yıldır şunu net gösteriyor: **davranış değişiminde irade değil, ortam belirleyici.** Stanford'da BJ Fogg'un Tiny Habits modeli, James Clear'ın Atomic Habits kitabının ana tezi de bu. Buzdolabında çikolata varsa yiyeceksin. Telefon yastığın yanındaysa kontrol edeceksin. 'Bu sefer dirençli olacağım' diyerek geceyi geçirip sabah çikolatayı bulduğunda iradenin tükendiği o anda zaten kaybetmişsindir.\n\n**Fiziksel mesafe = irade tasarrufu.** Görmediğini düşünmezsin. Düşünmediğini istemezsin. İstemediğini de yapmazsın.\n\nDuke Üniversitesi 2014 araştırması net: günlük davranışların %43'ü **bilinçsiz alışkanlık** — düşünmeden yaparsın. Bu davranışları irade ile değiştirmeye çalışmak, bilinç-altı bir motoru bilinçli koltuktan yönetmeye çalışmak gibi. Yapmaz. Onun yerine motoru söküp başka yere koyman gerekir.\n\nBugün düşman tetikleyicilerden ortamını temizliyoruz. Telefon yatak odasından çıktı zaten (gün 6). Sosyal medya app'leri silinmişti (gün 9). Şimdi geri kalanı: oyun konsolu odanda mı? Çıkar. Junk food dolapta mı? Çöpe at — atmak israf değil, atmamak israf. Sigara/alkol görünür yerde mi? Görünmez yere koy.\n\n**Görünmezse var değil.** Bu basit kural davranış mühendisliğinin temelidir.",
+        "action": "Evine bak. **5 dopamin tetikleyicisi** seç ve fiziksel olarak uzaklaştır: ekran ana ekrandaki app'ler, junk food, alkol, oyun konsolu, atıştırmalık paketleri — ne varsa. 'Saklamak' değil, 'silmek/atmak/uzaklaştırmak'.",
+        "reflectionPrompt": "Hangi tetikleyici en zor 'gözden uzak' olur diye düşündün? Niye? Bu, o tetikleyicinin sende ne kadar güçlü olduğunun ölçüsü.",
         "quiz": [
           {
             "q": "En güçlü tetikleyici?",
@@ -353,7 +353,7 @@
               "Açlık"
             ],
             "correct": 1,
-            "explain": "Aynı ortam = aynı davranış."
+            "explain": "Davranış %43 bilinçsiz alışkanlık (Duke 2014). Aynı ortamda aynı davranış — düşünmeden tekrar eder. Ortamı değiştirmek davranışı değiştirmenin en hızlı yoludur."
           },
           {
             "q": "Çözüm?",
@@ -364,16 +364,16 @@
               "Yok"
             ],
             "correct": 1,
-            "explain": "Ortam değişimi davranış değişimi."
+            "explain": "İrade sınırlı pil. Ortam sınırsız iz. Ortam değişimi = davranış değişimi. James Clear, BJ Fogg, behavior science: hepsi tek noktada birleşiyor."
           }
         ],
-        "proTip": "Ortam = en güçlü tetikleyici. Aynı çevrede aynı davranış."
+        "proTip": "Ortam = en güçlü tetikleyici. Aynı çevrede aynı davranış. Görünmezse var değil."
       },
       "12": {
         "title": "Yeniden Sıkılmayı Kucakla",
-        "teaching": "İlk hafta sıkılmayı tanımıştın. Şimdi onu sevme zamanı. Sıkıntı, beyninin yeni bağlantılar kurması için gerekli boşluk.\n\nDopamine yetersizliği zihinsel boşluğun ortaya çıkışıdır. Bu boşlukta gerçek soruları soruyorsun: 'Hayatımda ne istiyorum?' 'Bu işten mutlu muyum?'\n\nÖnceden bu sorular telefon scroll'uyla bastırılıyordu. Şimdi yüzleşeceksin.",
-        "action": "Bugün 60 dakika sıkıntılı geçir — bilerek. Tek başına yürü, oda da otur, tavana bak. Telefonsuz, müziksiz, kitapsız.",
-        "reflectionPrompt": "Sıkıntıdayken zihninde hangi büyük soru belirdi?",
+        "teaching": "İlk hafta sıkılmayı **tanımıştın**. Şimdi onu **sevme** zamanı. Bu garip gelir — sıkılmak kim sever? Cevap: derin işin, gerçek yaratıcılığın ve içsel netliğin tohumu sıkıntıdır.\n\nBugün ilk gün — yeniden. Çünkü 12. günde beyin alıştı sandığın boşluğa yeni bir form geliyor: artık 'phantom reaching' kalktı, ama yerine zihinsel **sıkıştırma** geliyor. Hâlâ hızlı dopamin istiyorsun ama bu sefer 'sebep' bilemiyorsun. Belirgin bir sıkıntı değil, **belirsiz bir rahatsızlık**.\n\nBu rahatsızlığın adı **dopamin yetersizliği** — zihinsel boşluğun yüzeye çıkmasıdır. Bu boşlukta gerçek sorular sorulur:\n- 'Bu hayatta ne istiyorum?'\n- 'Bu işten mutlu muyum?'\n- 'Şu insanı gerçekten seviyor muyum yoksa alışkanlık mı?'\n- 'Babamla aram niye böyle?'\n\nÖnceden bu sorular telefon scroll'uyla bastırılıyordu. Reels, dizi, Twitter tartışmaları... Hepsi bu boşluğa dökülen dolgu malzemesiydi. Şimdi yüzleşeceksin.\n\nVe burası kritik: bu yüzleşmeye **dayanırsan**, hayatının en derin değişimleri başlar. İnsanlar 'sıkıldım' dediklerinde aslında 'kendimle baş başa kalmaktan korkuyorum' diyorlar. 12. gün, bu korkuya **bilinçli** olarak teslim olduğun gündür.\n\nBeyin yeni bağlantıları **boş alanda** kurar. Default Mode Network sadece uyaran-yokluğunda devreye girer. Yani sıkıldığın 60 dakika, en yaratıcı 60 dakikan olabilir — yeter ki telefona kaçma.",
+        "action": "Bugün 60 dakika sıkıntılı geçir — **bilerek**. Tek başına yürü, odada otur, tavana bak, gözlerini kapat. Telefonsuz, müziksiz, kitapsız. Sıkıntıdan kaçma — onu izle. Onun seninle ne konuşacağına bak.",
+        "reflectionPrompt": "Sıkıntıdayken zihninde hangi büyük soru belirdi? Bu soruyu kaç gündür/yıldır kaçıyordun?",
         "quiz": [
           {
             "q": "Sıkıntı = ?",
@@ -384,7 +384,7 @@
               "Yorgunluk"
             ],
             "correct": 1,
-            "explain": "Beyin boş alan istiyor."
+            "explain": "Beyin **boş alan istiyor**. Default Mode Network sadece uyaran-yokluğunda devreye girer — yaratıcı bağlantılar, çözümler ve içgörüler burada doğar."
           },
           {
             "q": "İkinci sıkıntı dalgası?",
@@ -395,16 +395,16 @@
               "Yok"
             ],
             "correct": 1,
-            "explain": "Yarıyol civarı 2. dalga."
+            "explain": "Yarıyol civarı 2. dalga gelir — phantom reaching değil ama belirsiz rahatsızlık. Beyin dopamin baseline'a oturmaya çalışıyor, yeni normali kuruyor."
           }
         ],
-        "proTip": "İkinci sıkıntı dalgası 14-17. günler arası gelir. Geçer."
+        "proTip": "İkinci sıkıntı dalgası 14-17. günler arası gelir. Geçer. Dalgayı sörfle, ondan kaçma."
       },
       "13": {
         "title": "Tek Görev Disiplini",
-        "teaching": "Multitasking efsanedir. Beyin gerçekten iki işi paralel yapamaz — hızlı geçiş yapar. Her geçişte performans %40 düşer, hata oranı artar.\n\nGerçek deep work tek görevle olur. Telefon kapalı, sekme tek, müzik (eğer dikkat dağıtıyorsa) kapalı.\n\nBu antrenman. İlk gün 25 dakika tek odak zor olur. Bir hafta sonra 90 dakika doğal gelir.",
-        "action": "Bugün 90 dakikalık tek-görev bloku yap. Bir iş seç. Telefon başka odada. Bilgisayarda sadece o iş için açık sekme. 90 dakika sadece o.",
-        "reflectionPrompt": "90 dakikada ne kadar daha çok bitirdin? Önceden 'multitask' modunda olsaydın aynı işi kaç saatte yapardın?",
+        "teaching": "Bir e-posta yazıyorsun. Aynı anda Slack mesajları geliyor, telefonun titriyor, tarayıcıda 14 sekme açık, arka planda podcast çalıyor. 'Multitasking yapıyorum' diyorsun. Aslında **hiçbir şey yapmıyorsun** — sürekli iş değiştiriyorsun.\n\n**Multitasking efsanedir.** Stanford'da Clifford Nass'ın 2009 araştırması net (ve yıllar boyu doğrulandı): beyin gerçekten iki işi paralel yapamaz. Hızlı geçiş yapar — buna **task-switching** denir. Her geçişte:\n- Performans **%40 düşer**\n- Hata oranı 2-3x artar\n- Yeni işe tam dikkati vermek 23 dakika sürer (Gloria Mark, UC Irvine)\n- Yorgunluk hızlanır (her geçiş bilinç enerjisi tüketir)\n\nİronik gerçek: kendini 'iyi multitasker' sanan insanlar testlerde **en kötü** sonuçları veriyorlar. Çünkü sürekli context-switch yapan beyin, **bireysel görevlerde de** odaklanmayı unutmuş oluyor.\n\nGerçek **deep work** tek görevle olur. Cal Newport'un Deep Work kitabının tezi: bilgi işçileri için en değerli kapasite, derin odaklanma. Ve bu kapasite kullanılmazsa **körelir** — kas gibi. Sürekli multitask yapan kişi, isteyse bile 90 dakika tek konuya odaklanamaz hale gelir.\n\nİyi haber: bu antrenmandır. İlk gün 25 dakika tek odak zor gelir. Bir hafta sonra 60 dakika doğal. Bir ay sonra 90-120 dakika 'flow' kıvamında çalışırsın.\n\n**Pomodoro tekniği** burada başlangıç: 25 dakika tek görev, 5 dakika mola. Ama detoks sürecinin 13. gününde, beyin daha temizlenmiş — direkt 60-90 dakika blokuna girebilirsin.",
+        "action": "Bugün **90 dakikalık tek-görev bloku** yap. Bir iş seç (yazı, çalışma, kod, kitap okuma — fark etmez). Telefon başka odada. Bilgisayarda sadece o iş için açık sekme. 90 dakika sadece o. Mola, dikkat dağıtma, kontrol yok.",
+        "reflectionPrompt": "90 dakikada ne kadar daha çok bitirdin? Önceden 'multitask' modunda olsaydın aynı işi kaç saatte yapardın? Verimsizliğin ölçüsünü hisset.",
         "quiz": [
           {
             "q": "Tek görev = ?",
@@ -415,7 +415,7 @@
               "Modern"
             ],
             "correct": 1,
-            "explain": "Beyin için en zor disiplin."
+            "explain": "Beyin için en zor disiplin — multitask'a alışmış zihinler için. Ama gerçek değerli iş (Cal Newport'un 'deep work'ü) sadece bu kasta yapılır."
           },
           {
             "q": "Çoklu görev verim?",
@@ -426,16 +426,16 @@
               "%200"
             ],
             "correct": 2,
-            "explain": "Çoklu görev = %40 verim kaybı."
+            "explain": "Clifford Nass (Stanford 2009): çoklu görev = **%40 verim kaybı**, hata oranı 2-3x. Sürekli yapan beyin tek-göreve dönmek için bile efor harcar."
           }
         ],
-        "proTip": "Tek görev disiplin testi. Beyin alışmamış, ama gücü buradan gelir."
+        "proTip": "Tek görev disiplin testi. Beyin alışmamış, ama gerçek değerli iş gücün buradan gelir."
       },
       "14": {
         "title": "Yapay Stimülasyonu Azalt",
-        "teaching": "Kafein, şeker, hızlı müzik, agresif video oyunları — hepsi yapay dopamin atışı. Doğal seviyenin üstünde stimülasyon yaratıyor.\n\nKısa vadede 'enerjik' hissetmen normal. Uzun vadede beyin baseline'ı yukarı çekiyor — yani normal yaşam giderek 'düz' geliyor.\n\nDetoks sırasında bu yapay araçları azaltırsan, doğal motivasyon geri gelir. Daha az enerjili görünebilirsin ama daha sürdürülebilir.",
-        "action": "Bugün kafein yarıya düşür (1 fincan kahve). Şekeri tamamen kes. Sessiz çalış. Sadece doğal enerjiyle gün geçir.",
-        "reflectionPrompt": "Yapay stimülasyon olmadan enerji seviyem ne kadardı? Ne hissettim?",
+        "teaching": "Sabah uyandın. İlk iş: kahve makinesi. Üç fincan kafein. Trafikte agresif müzik. İş yerinde sürekli mesajlar, ekranlar, sekmeler. Öğlen tatlı bir şey 'enerji için'. Akşam dizi maratonu veya video oyunu. Yatağa kadar uyaran, sonra sıfır — uyumakta zorlanıyorsun.\n\nKafein, şeker, hızlı müzik, agresif video oyunları, sürekli ekran — hepsi **yapay dopamin/adrenalin atışı**. Doğal seviyenin üstünde stimülasyon yaratıyor.\n\nKısa vadede 'enerjik' hissetmen normal. Yapay stimülasyon almışsın, vücut da yapay enerjiyle cevap veriyor. Ama Anna Lembke'in **Dopamine Nation** kitabında detaylandırdığı gibi: beyin homeostaz arar. Yukarı doğru her atış, eşit bir aşağı doğru sapma yaratır. Yani kafein peak'i = öğleden sonra çöküş. Şeker peak'i = 1 saat sonra hipoglisemi. Yoğun müzik 2 saat = sonrasında sessizliğe tahammülsüzlük.\n\nUzun vadede beyin **baseline'ı yukarı çekiyor**. Bu çok kritik bir kavram: 'normal' sürekli yükseliyor. Önceden sade kahveyle yetinen kişi, şimdi triple shot espresso istiyor. Önceden sessiz çalışan, şimdi sürekli müzik altında. Hepsi **tolerans gelişimi** — bağımlılığın bilimsel adı.\n\nVe en kötüsü: normal yaşam giderek **'düz' geliyor**. Park yürüyüşü sıkıcı. Sade yemek tatsız. Sessizce oturmak imkansız. Çünkü baseline'ın gerçek yaşamın üzerinde.\n\nDetoks sırasında bu yapay araçları azaltırsan, doğal motivasyon geri gelir. İlk 3-4 gün daha az enerjili görünürsün — çünkü beyin yapay yakıtını kesti, doğala dönüyor. Bir hafta sonra **daha sürdürülebilir** enerji, daha derin uyku, daha az anksiyete.",
+        "action": "Bugün **kafein yarıya düşür** (sabah 1 fincan kahve). **Şekeri tamamen kes** (paketlenmiş tatlı, gazoz, çikolata yok). **Sessiz çalış** (müzik yok). Sadece doğal enerjiyle gün geçir, ne hissettiğine bak.",
+        "reflectionPrompt": "Yapay stimülasyon olmadan enerji seviyem ne kadardı? Ne hissettim — eksiklik mi, sakin bir doluluk mu?",
         "quiz": [
           {
             "q": "Müzik = ?",
@@ -446,7 +446,7 @@
               "Sessizlik"
             ],
             "correct": 1,
-            "explain": "Müzik bile uyarıdır."
+            "explain": "Müzik bile **uyarıdır** — beyni belli bir frekansa kilitler. Sürekli müzik = sessizliğe tahammülsüzlük gelişir. Sessiz dakikalar düşünmenin temelidir."
           },
           {
             "q": "Sessizliğin faydası?",
@@ -457,16 +457,16 @@
               "Etkisiz"
             ],
             "correct": 1,
-            "explain": "Sessiz dakikalar derin işlem."
+            "explain": "Sessiz dakikalar = **beyin için ilaç**. Default Mode Network bu boşlukta devreye girer, derin işlem yapılır, içsel ses duyulur."
           }
         ],
-        "proTip": "Müzik bile uyarıdır. Sessiz dakikalar = beyin için ilaç."
+        "proTip": "Müzik bile uyarıdır. Sessiz dakikalar = beyin için ilaç. Dopamine Nation: baseline yükseldikçe gerçek hayat tatsızlaşır."
       },
       "15": {
         "title": "Bağ Kurmaya Geri Dön",
-        "teaching": "Detoksun amacı izolasyon değil. Yapay bağlantıları (sosyal medya, mesaj zincirleri) gerçek bağlantılarla değiştirmek.\n\n10 dakikalık derin sohbet, 10 saatlik DM'den daha besleyicidir. Dijital iletişim kalori sayısı 0 olan bir yiyecek gibi — yiyorsun ama doymuyorsun.\n\nBugün gerçek bağa dön.",
-        "action": "Bugün önemsediğin bir kişiye telefon et (mesaj değil, gerçek arama). En az 15 dakika konuş. Konu önemli değil — bağ önemli.",
-        "reflectionPrompt": "Mesajlaşmak yerine sesli konuşmak ne hissettirdi?",
+        "teaching": "Detoks sürerken bir korku oluşabilir: 'Yalnız mı kalıyorum? Arkadaşlarımı kaybediyor muyum?' WhatsApp'ı silmediğin halde, sosyal medya'dan çıkmak bile böyle bir his veriyor. Bu his değerli bir veridir: sana 'sosyal bağ' adı altında yıllardır **yapay bağ tükettiğini** gösteriyor.\n\nDetoksun amacı **izolasyon değil**. Yapay bağlantıları (sosyal medya beğenileri, mesaj zincirleri, story tepkileri) **gerçek bağlantılarla** değiştirmek.\n\nHarvard'ın 84 yıllık **Grant Study** (insanlık tarihinin en uzun süreli mutluluk çalışması) net bir sonuç verdi: hayatın geç dönemindeki mutluluk, mali durum veya başarı değil, **derin ilişkilerin kalitesi** ile en güçlü korelasyona sahip. Tek bir derin ilişki, 1000 yüzeysel ilişkiden değerli.\n\n10 dakikalık **derin sohbet** (göz teması, dinlemek, gerçek soru sormak), 10 saatlik DM'den daha besleyicidir. Sebebi nörobiyolojik: gerçek insan teması **oksitosin** salgılar (bağ kimyasalı), kortizol düşürür, vagal sinir sistemini aktive eder (sakinleşme). Mesajlaşmak bunların hiçbirini vermiyor.\n\nDijital iletişim aslında **kalori sayısı 0 olan bir yiyecek** gibi — yiyorsun ama doymuyorsun. 4 saat sosyal medya yapan kişi 'sosyal' olduğunu sanır ama yalnızlık duygusu artar (NYU 2017 çalışması). Çünkü beyin sadece **gerçek temas**ı 'doluluk' olarak okuyor.\n\nBugün gerçek bağa dön. Bir kişi, bir telefon araması, 15 dakika dikkatli dinlemek. Bu, ekrana harcadığın 4 saat'ten daha çok hayatına dolduracak.",
+        "action": "Bugün **önemsediğin bir kişiye telefon et** (mesaj değil, gerçek arama). En az 15 dakika konuş. Konu önemli değil — bağ önemli. 'Nasılsın?' yerine 'Son zamanlarda ne düşünüyorsun?' gibi gerçek bir soru sor.",
+        "reflectionPrompt": "Mesajlaşmak yerine sesli konuşmak ne hissettirdi? O sırada hangi 'içerik tüketme' dürtüsünü kaçırmadın?",
         "quiz": [
           {
             "q": "İnsan teması ekrana göre?",
@@ -477,7 +477,7 @@
               "Etkisiz"
             ],
             "correct": 1,
-            "explain": "İnsan bağı 100x değerli."
+            "explain": "İnsan bağı **100x değerli**. Oksitosin salgılar (bağ kimyasalı), kortizol düşürür. Dijital iletişim bunların hiçbirini yapmıyor — boş kalori."
           },
           {
             "q": "Yalnızlık çözümü?",
@@ -488,10 +488,10 @@
               "Müzik"
             ],
             "correct": 1,
-            "explain": "Gerçek bağ yalnızlığı çözer."
+            "explain": "Gerçek bağ yalnızlığı çözer — paradoksal olarak, daha çok sosyal medya kullanmak yalnızlığı **artırır** (NYU 2017). Çözüm offline, fiziksel veya sesli temas."
           }
         ],
-        "proTip": "İnsan teması ekran tüketiminden 100x besleyici."
+        "proTip": "İnsan teması ekran tüketiminden 100x besleyici. Harvard Grant Study: mutluluğun en güçlü göstergesi ilişki derinliği."
       },
       "16": {
         "title": "Yarıyı Geçtin — Onay",
