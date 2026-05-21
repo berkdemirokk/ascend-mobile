@@ -6,6 +6,12 @@ name: Generate Lesson Audio (Piper TTS)
 # at runtime. No server, no per-character cost — pure open-source
 # voice models hosted on GitHub.
 
+permissions:
+  # The release upload action needs write access to create the
+  # `lesson-audio-v1` tag/release and add the MP3 assets. Default
+  # workflow tokens are read-only.
+  contents: write
+
 on:
   workflow_dispatch:
     inputs:
