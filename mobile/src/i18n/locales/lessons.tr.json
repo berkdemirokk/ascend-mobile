@@ -30,9 +30,9 @@
     "dopamine-detox": {
       "1": {
         "title": "Bağımlılığın Bilimi",
-        "teaching": "Dopamin bir ödül kimyasalı değil — beklenti kimyasalı. Beyin, gelecek ödülü hayal ederken dopamin salıyor, asıl ödül geldiğinde değil.\n\nTelefon ekranını kaydırırken her video, her bildirim küçük bir dopamin atışı veriyor. Beyin bunu öğreniyor: 'Telefon = ödül var.' Sonuç: telefonu sürekli kontrol etme, sıkıldıkça telefona uzanma, gerçek hayatın 'tatsız' gelmesi.\n\nİyi haber: bu öğrenme tersine çevrilebilir. Beyin 7-30 günde yeni baseline'a oturur. Şu an başlıyorsun.",
-        "action": "Bugün telefonunu açtığın her seferinde, ekrana bakmadan 10 saniye bekle. Sadece bekle. Sonra istediğini yap.",
-        "reflectionPrompt": "Bugün telefonu kaç kez 'düşünmeden' açtığını fark ettin mi?",
+        "teaching": "Akşam yatağa giriyorsun. Telefonu açıyorsun, 'sadece 5 dakika' diyorsun. 90 dakika sonra hala Instagram'dasın. 'Niye kalkamadım?' diye soruyorsun kendine. Cevap dopaminde.\n\nDopamin bir ödül kimyasalı değil — **beklenti kimyasalı**. Beyin, bir sonraki video, bir sonraki bildirim, bir sonraki 'belki ilginç bir şey' beklerken dopamin salıyor. Ödül asla net olarak gelmediği için döngü durmuyor. Kumarhane mantığının aynısı: belki gelecek sefer.\n\nStanford'da Andrew Huberman'ın araştırmaları net: sonsuz scroll, dopamin sisteminde kokainle benzer bir baseline kaymasına yol açıyor. Sen telefonu bıraktıktan 24 saat sonra bile, beyin 'normal' hissetmek için ekran istiyor. Aslında telefon iyi hissettirmiyor — telefonsuz olmak kötü hissettiriyor. Aradaki farkı hisset.\n\nİyi haber: bu öğrenme tersine çevrilebilir. Beyin 7-30 günde yeni baseline'a oturur. İlk 3 gün zor — phantom reaching yaşarsın, durup dururken telefona uzanırsın. 4-7 gün anlam belirir. 14-30 gün arası 'eski telefon hayatım' uzak gelir. Şu an Gün 1'desin.\n\nBugünün işi devasa değil. Sadece bir mikro-pratik: her telefona uzandığında, açmadan önce 10 saniye dur. Bu 10 saniye, otomatik reflexi yavaşlatır. Beyin 'bunu gerçekten istiyor muyum?' diye sorma fırsatı bulur. Çoğu zaman cevap hayır.",
+        "action": "Bugün telefonunu açtığın her seferinde, ekrana bakmadan 10 saniye bekle. Sadece bekle. Sonra istediğini yap. Bu küçük duraklamayı en az 5 kez yap.",
+        "reflectionPrompt": "Bugün telefonu kaç kez 'düşünmeden' açtığını fark ettin? O an aslında ne arıyordun?",
         "quiz": [
           {
             "q": "Dopamin neyle salınır?",
@@ -43,7 +43,7 @@
               "Uyurken"
             ],
             "correct": 1,
-            "explain": "Dopamin beklenti kimyasalıdır — ödülün gelmesini hayal ederken salınır."
+            "explain": "Dopamin **beklenti** kimyasalıdır — ödülün gelmesini hayal ederken salınır, ödül geldiğinde değil. Bu yüzden sonsuz scroll bağımlılık yapıyor: ödül asla net olarak gelmediği için beklenti hiç bitmiyor."
           },
           {
             "q": "Beyin yeni baseline'a kaç günde oturur?",
@@ -54,16 +54,16 @@
               "60+ gün"
             ],
             "correct": 2,
-            "explain": "Bilim 7-30 günlük aralık gösteriyor."
+            "explain": "Huberman ve dopamin araştırmaları 7-30 günlük aralık gösteriyor. İlk 3 gün en zoru (phantom reaching), 14-30 gün arasında eski hayat uzak gelir."
           }
         ],
-        "proTip": "Bağımlılık hep bahane bekler — \"sadece 5 dakika\" o bahane."
+        "proTip": "Bağımlılık hep bahane bekler — \"sadece 5 dakika\" o bahanedir. 10 saniyelik duraklama, bahaneyi öldürür."
       },
       "2": {
         "title": "Bildirimleri Söndür",
-        "teaching": "Her bildirim dikkatinde bir mikro patlama yaratır. Araştırmalar: bir bildirimle dikkatin tam olarak işe geri dönmesi 23 dakika sürüyor.\n\nGünde 50 bildirim alıyorsan, gerçekte hiçbir an tam odakta değilsin. Beyin sürekli 'bir şey gelmiş mi' diye kontrol modunda.\n\nBildirimler sana hizmet etmiyor — uygulamalara hizmet ediyor. Onların büyüme metriklerine. Sen bunun maliyetini ödüyorsun.",
-        "action": "Telefonundaki TÜM uygulamaların bildirimlerini kapat. Sadece arama ve doğrudan mesaj kalsın. Bunu şu anda yap, ertelersen yapmazsın.",
-        "reflectionPrompt": "En zor kapatılan bildirim hangisiydi? Niye?",
+        "teaching": "Çalışıyorsun. Konsantrasyon iyi gidiyor. Telefon titriyor — bir bildirim. Sadece bir bakış. Tekrar ekranına dönüyorsun. Ama beyin artık eski yerinde değil. UC Irvine'da Gloria Mark'ın araştırması net: bir bildirimle dikkatin tam olarak iş'e geri dönmesi **23 dakika 15 saniye** sürüyor.\n\nGünde 50 bildirim alıyorsan basit matematik: 50 × 23 dakika = teorik olarak hiçbir zaman tam odakta değilsin. Pratikte beyin 'multitasking moduna' geçer — yani her şeye yarım dikkat verir, hiçbirine tam. Verim çöker, hata oranı artar, akşamları daha yorgun hissedersin (çünkü beyin gün boyu context-switch yapmış).\n\nBuradaki en sert gerçek: bildirimler sana hizmet etmiyor. Hizmet ettikleri uygulamalar. Instagram bildirimi sana 'arkadaşının paylaşımını' söylemiyor — Instagram'ın günlük aktif kullanıcı metriğine seni geri çekiyor. TikTok bildirimi 'eğlenceli içerik' değil, your watch time hedefi. Bildirim sistemi, en yetenekli psikoloji ve UX ekipleri tarafından senin dikkatini sömürmek için tasarlandı. Sen bunun maliyetini odaklanma kapasitenle ödüyorsun.\n\nİyi haber: bu kontrolü geri almak 5 dakikalık iş. Ayarlar → Bildirimler → her uygulama için kapatmak. Çoğu telefon zaten 'Bildirimler' filtresi sunar.\n\nKuralı sertleştirelim: bugünden itibaren sadece arama, doğrudan mesaj (WhatsApp DM, iMessage) ve takvim hatırlatıcısı bildirim verecek. Geri kalan her uygulama sessiz. Eğer Instagram'a bakmak istiyorsan, sen karar verince Instagram'ı açacaksın — Instagram seni çağırmayacak.",
+        "action": "Telefonundaki TÜM uygulamaların bildirimlerini kapat. Sadece arama ve doğrudan mesaj kalsın. Bunu şu anda yap (Ayarlar → Bildirimler → tek tek kapat). Ertelersen yapmazsın.",
+        "reflectionPrompt": "En zor kapatılan bildirim hangisiydi? Niye onu kapatmaktan korktun?",
         "quiz": [
           {
             "q": "Bir bildirimden sonra dikkat ne kadar dağılır?",
@@ -74,7 +74,7 @@
               "23 dakika"
             ],
             "correct": 3,
-            "explain": "23 dakika tam odağa dönüş süresi."
+            "explain": "Gloria Mark (UC Irvine) araştırması: 23 dakika 15 saniye. Yani günde 30 bildirim alan biri teorik olarak günün YARISINDAN fazlasını 'tam odağa geri dönmeye çalışırken' geçiriyor."
           },
           {
             "q": "Bildirimler kime hizmet eder?",
@@ -85,16 +85,16 @@
               "Hiç kimseye"
             ],
             "correct": 1,
-            "explain": "Bildirimler app'lerin growth metriklerine hizmet eder."
+            "explain": "Bildirimler app'lerin günlük aktif kullanıcı (DAU) ve oturum süresi metriklerine hizmet eder. Senin değil, onların KPI'larını besler. Sen ödediği faturayı odaklanma kapasitenle ödüyorsun."
           }
         ],
-        "proTip": "Bildirimleri kapatmak iletişimi kesmek değil — kontrolü almak."
+        "proTip": "Bildirimleri kapatmak iletişimi kesmek değil — kontrolü almak. Sen ne zaman bakacağına karar verirsin."
       },
       "3": {
         "title": "Sosyal Medya Orucu",
-        "teaching": "Sosyal medya en hızlı dopamin kaynaklarından biri. Sonsuz scroll, beklenmedik içerikler, sosyal kıyaslama — beynini optimize edilmiş bir sömürü makinesine bağlıyorsun.\n\nBugün bir denemeyi başlatıyorsun: 24 saat sosyal medya yok. Instagram, TikTok, Twitter, YouTube Shorts — hepsi.\n\nİlk birkaç saat zor olacak. Telefonunu otomatik açıp uygulamaya gideceksin. Buna 'phantom reaching' denir. Normal. Geçer.",
-        "action": "Tüm sosyal medya uygulamalarını ana ekrandan kaldır. Bir klasöre koy ve klasörün adını 'Düşmanlar' yap. Bugün 24 saat hiçbirini açma.",
-        "reflectionPrompt": "Hangi an 'Sadece bir kere bakayım' dürtüsü geldi? O an ne hissediyordun?",
+        "teaching": "Otobüsü bekliyorsun. 2 dakikan var. Telefonu çıkarıyorsun, parmak otomatik olarak Instagram ikonuna gidiyor. 'Ne yapıyorum?' diye düşünmüyorsun bile. Parmak biliyor. Bu, beynin sosyal medyayı 'fasulye' seviyesinde otomatize ettiği yer.\n\nSosyal medya en hızlı dopamin kaynaklarından biri. Üç sebepten:\n\n**1. Sonsuz scroll** — Klasik gazete biterdi, sayfa sayısı vardı. Instagram'ın sonu yok. Beyin 'işim bitti' sinyali alamıyor.\n**2. Beklenmedik içerik (variable reward)** — Skinner'ın güvercin deneyi: her tıklamada ödül gelen güvercin sıkılır; **rastgele** aralıklarla ödül gelen güvercin DAHA fazla tıklar. Senin feed'in tam bu mantıkla tasarlandı.\n**3. Sosyal kıyaslama** — Arkadaşının tatil fotoğrafı senin 'bana yeter' eşiğini düşürür. Stanford'da bir çalışma: Instagram'da 30 dakika geçiren kullanıcıların subjektif iyi-oluş skorları %18 düşüyor — sadece 30 dakikada.\n\nBugün bir denemeyi başlatıyorsun: **24 saat sosyal medya yok**. Instagram, TikTok, Twitter, YouTube Shorts, Reels — hepsi. WhatsApp ve direkt mesajlar serbest (ihtiyaç, sömürü değil).\n\nİlk 3-4 saat zor olacak. Telefonunu sebepsiz açacaksın, parmak Instagram olduğu yere gidecek. Bu **phantom reaching** — bilek-beyin refleksi. Buna kızma; gülümse ve telefonu cebine koy. Refleks 24 saatte zayıflıyor, 7 günde unutuluyor.\n\nÖnemli: Bu 'tamamen bırakma' değil. Sadece bir günlük sıfırlama. Yarın yine açabilirsin — ama bugünden sonra ilişkin daha farkındalıklı olacak.",
+        "action": "Tüm sosyal medya uygulamalarını ana ekrandan kaldır. Bir klasöre koy ve klasörün adını 'Düşmanlar' yap. Bugün 24 saat hiçbirini açma. İhtiyaç hissedersen yere yatıp 'ben telefon değilim' diye 3 kez söyle (ciddi).",
+        "reflectionPrompt": "Hangi an 'Sadece bir kere bakayım' dürtüsü geldi? O an aslında ne arıyordun — bilgi mi, kaçış mı?",
         "quiz": [
           {
             "q": "Phantom reaching nedir?",
@@ -105,7 +105,7 @@
               "Yeni bildirim"
             ],
             "correct": 1,
-            "explain": "Beyin alışkanlıkla telefona otomatik uzanır."
+            "explain": "Beyin alışkanlıkla telefona otomatik uzanır — parmak senin niyetin olmadan yola çıkar. İlk 24 saat refleks zayıflar, 7 günde büyük ölçüde söner."
           },
           {
             "q": "Sosyal medya orucu kaç saat?",
@@ -116,16 +116,16 @@
               "48 saat"
             ],
             "correct": 2,
-            "explain": "İlk denemede 24 saat yeterli — alışkanlığı kırar."
+            "explain": "İlk denemede 24 saat yeterli — bilek-beyin refleksini kırar, beyin 'normal hayat sosyal medya değildir' sinyalini alır. Çok daha uzun süreler motivasyon krizi yaratır."
           }
         ],
-        "proTip": "24 saatlik oruç çoğu için ilk gerçek dijital sessizlik."
+        "proTip": "24 saatlik oruç çoğu için ilk gerçek dijital sessizlik. Sıkılınca panik yapma — sıkılmak başarı işareti."
       },
       "4": {
         "title": "Junk İçerik Tüketimini Kes",
-        "teaching": "Junk içerik = beynine boş kalori. YouTube'da rastgele video, Reddit'te scroll, sürekli haber kontrolü, podcast'leri sadece arka planda dinlemek.\n\nFark etmediğin şey: bu içerikler seni daha aptal yapmıyor sadece — daha aksesuar yapıyor. Beynin başkalarının düşüncelerini tüketmeye alışıyor, kendi düşüncelerini üretemez hale geliyor.\n\nBugün filtreyi kuruyoruz: tükettiğin her içerik bir amaç taşımalı.",
-        "action": "Bugün hiçbir içerik tüketme. Yalnızca üret. Yazı yaz, çiz, yürüyüşe çık ve düşün, biriyle gerçek konuşma yap. Bilgi tüketmek yok bugün.",
-        "reflectionPrompt": "Bugün kaç kez 'bilgi açlığı' duydun? O açlık aslında ne için?",
+        "teaching": "Yemek için bir analoji düşün. Cips paketi açmak kolay. Kıvrak, tuzlu, doyurucu hisseder. Ama bir saat sonra hala açsın. Çünkü cips beyne 'enerji aldım' sinyalini verir ama gerçek besin vermez. Beslenme bilimi buna **boş kalori** der.\n\nJunk içerik aynı mekanizma — sadece beynin için.\n\nReddit'te 'sadece 5 dakika' diyerek bir saat geçirmek, YouTube'da rastgele video açmak, sürekli haber kontrolü, podcast'i arka planda iş yaparken dinlemek (gerçekte dinlemiyorsun, sesleniyorsun)... Bunlar beyine 'düşünüyorum / öğreniyorum' sinyali verir ama gerçekte tüketim, üretim değil.\n\nFark etmediğin şey: bu içerikler seni sadece **daha aptal** yapmıyor — **daha pasif** yapıyor. Beynin başkalarının düşüncelerini tüketmeye alışıyor, **kendi düşüncelerini üretemez** hale geliyor. Sessiz kaldığında ne düşüneceğini bilmiyorsun, çünkü iç sesin başkalarının paragrafları olmuş.\n\nNassim Taleb'in **antikütüphane** fikri ilgili: kütüphanende okuduğun kitaplar değil, okumadığın kitaplar değerlidir — çünkü okumadıkların ne kadar bilmediğini hatırlatır. Junk içerik ise tersi: okuduğunun çoğu boş, ama 'çok şey biliyorum' yanılsaması verir.\n\nBugün filtreyi kuruyoruz. Bugün **tüketim oruçu**: yalnızca üret. Aklına yeni bir bilgi sokmuyorsun, sadece var olanı işliyor ve dışarı çıkarıyorsun.",
+        "action": "Bugün hiçbir içerik tüketme. Yalnızca üret. Yazı yaz, çiz, yürüyüşe çık ve düşün, biriyle gerçek konuşma yap. Bilgi tüketmek yok bugün — sadece kendi cümlelerini kur.",
+        "reflectionPrompt": "Bugün kaç kez 'bilgi açlığı' duydun? O açlık aslında ne için — bilgi mi, kaçış mı, bir şeyle meşgul olmak mı?",
         "quiz": [
           {
             "q": "Junk içerik nedir?",
@@ -136,7 +136,7 @@
               "Eğitim videosu"
             ],
             "correct": 1,
-            "explain": "Amaçsız tüketilen içerik beyne boş kalori gibidir."
+            "explain": "Amaçsız tüketilen içerik beyne boş kalori gibidir — enerji aldın hissi verir ama gerçek besin vermez. Boşluğu doldurmaz, sadece erteler."
           },
           {
             "q": "Bugünün ana fikri?",
@@ -147,16 +147,16 @@
               "Hiçbir şey yapma"
             ],
             "correct": 0,
-            "explain": "Üretmek tüketmekten daha besleyicidir."
+            "explain": "Üretmek tüketmekten besleyicidir. Tüketim hızlıdır, üretim yorucudur — ama beyin sadece üretirken büyür, sadece tüketirken küçülür."
           }
         ],
-        "proTip": "Junk içerik = boş kalori. Üretim = besin."
+        "proTip": "Junk içerik = boş kalori. Üretim = besin. Bir gün üretim, bir hafta zihinsel tokluk."
       },
       "5": {
         "title": "Sıkılmaya İzin Ver",
-        "teaching": "Modern hayat her boş anı doldurmaya programlandı. Asansörde telefon. Tuvalette telefon. Yürürken kulaklık. Yemek yerken video.\n\nSonuç: beyin asla idle moduna geçmiyor. Yaratıcılık idle modda doğar. Çözümler idle modda gelir. Kendini tanıma idle modda olur.\n\nSıkıntı bir hastalık değil — sinyal. 'Beynim boş zaman istiyor' diyor. Onu dinle.",
-        "action": "Bugün 30 dakika hiçbir şey yapma. Telefonsuz, müziksiz, kitapsız. Sadece otur ya da yürü. Düşüncelerini gözlemle. Sıkılırsan harika, devam et.",
-        "reflectionPrompt": "30 dakikanın sonunda zihninde hangi düşünce belirdi? Önceden farkında mıydın?",
+        "teaching": "Çocukluğunu hatırla. Yağmurlu bir Pazar öğleden sonra, dışarı çıkamıyorsun, TV'de bir şey yok. 'Sıkıldım!' diye anneye yakınıyorsun. Anne 'sıkılan kafa kendine iş bulur' diyor. O öğleden sonra ya bir oyun icat ediyordun, ya bir kitabı tekrar okuyordun, ya pencereden bir saat yağmuru izliyordun. Beyin yaratıcılığa **mecbur kalıyordu**.\n\nO 'mecbur kalma' kayboldu. Modern hayat her boş anı doldurmaya programlandı. Asansörde telefon. Tuvalette telefon. Yürürken kulaklık. Yemek yerken video. Markette sırada beklerken Instagram. Trafik ışığında TikTok.\n\nSonuç: beyin asla **idle moduna** geçmiyor. Bu, neyrolojide ciddi bir mesele. Beynin 'Default Mode Network' (DMN) adlı bir devresi var — sen aktif bir şey yapmadığında devreye giren bir ağ. DMN'nin işi: anılarını işlemek, gelecek senaryoları kurmak, problemleri arka planda çözmek, yaratıcı bağlantılar kurmak. Yani **yaratıcılık, hatırlama, içsel-anlam idle modda doğar**.\n\nSürekli içerik tüketirken DMN sustuğu için: 'Boğazıma takılan o şarkıyı çıkaramıyorum', 'Niye o tartışmada ne diyeceğimi sonradan buldum', 'Yıllardır bir film izlerken ağlamadım' — hepsi aynı sebebin sonucu. Beynin işleyecek/üretecek zamanı yok.\n\nSıkıntı bir hastalık değil — **sinyal**. 'Beynim boş zaman istiyor' diyor. Onu dinle. İlk 10 dakika rahatsızdır, 15-20. dakikada beyin teslim olur ve düşünmeye başlar. 25-30. dakikada bazen şaşırtıcı bir düşünce çıkar — günlerce 'unuttuğun' bir sorunun çözümü, bir niyet, bir karar.",
+        "action": "Bugün 30 dakika hiçbir şey yapma. Telefonsuz, müziksiz, kitapsız. Sadece otur ya da sessizce yürü. Düşüncelerini gözlemle, yargılama. Sıkılırsan harika — sıkıntının tam ortasında dur, dayan, devam et.",
+        "reflectionPrompt": "30 dakikanın sonunda zihninde hangi düşünce belirdi? Önceden farkında mıydın? Bu düşünce sana ne söylüyor?",
         "quiz": [
           {
             "q": "Sıkıntının ana mesajı?",
@@ -167,7 +167,7 @@
               "Yorgunluk"
             ],
             "correct": 1,
-            "explain": "Sıkıntı, beynin boş alan istemesinin sinyalidir."
+            "explain": "Sıkıntı, beynin **boş alan istemesinin sinyalidir** — Default Mode Network devreye giremiyor demektir. Onu hastalık gibi görüp doldurmaya çalışmak, beynin yaratıcılığını kısıtlar."
           },
           {
             "q": "Yaratıcılık nerede doğar?",
@@ -178,10 +178,10 @@
               "Müzikte"
             ],
             "correct": 1,
-            "explain": "Idle mod = yaratıcılık tohumlarının çimlendiği yer."
+            "explain": "**Default Mode Network** (idle mod) yaratıcılık tohumlarının çimlendiği yer. Bağlantılar burada kurulur, problemler burada çözülür, içgörü burada gelir."
           }
         ],
-        "proTip": "Sıkıntıdan korkma — orada yaratıcılık yaşar."
+        "proTip": "Sıkıntıdan korkma — orada yaratıcılık yaşar. 30 dakika boşluk, 30 sayfa kitaptan daha verimli olabilir."
       },
       "6": {
         "title": "Telefonu Yatak Odasından Çıkar",
