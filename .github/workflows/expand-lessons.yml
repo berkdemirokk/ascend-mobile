@@ -1,0 +1,78 @@
+name: Expand Lessons (Claude API)
+
+# Bulk-expands short lesson teachings to the 4-layer format
+# (scene → science → mechanism → practice) via the Claude API.
+# Skips lessons already at >= 150 words so re-running only fills gaps.
+# Auto-commits the updated lessons.<lang>.json on success.
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      lang:
+        description: 'Language file to process'
+        type: choice
+        options: [tr, en]
+        default: tr
+      paths:
+        description: 'Path IDs (comma-separated, or "all")'
+        type: string
+        default: 'all'
+      max:
+        description: 'Max lessons to expand this run (cost cap)'
+        type: string
+        default: '999'
+      model:
+        description: 'Claude model'
+        type: choice
+        options:
+          - claude-sonnet-4-5
+          - claude-opus-4-5
+          - claude-haiku-4-5
+        default: claude-sonnet-4-5
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # We need to commit back, so the default GITHUB_TOKEN check-out is fine.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Anthropic SDK
+        working-directory: scripts
+        run: npm install
+
+      - name: Run expansion
+        working-directory: ${{ github.workspace }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          node scripts/expand-lessons.mjs \
+            --lessons "mobile/src/i18n/locales/lessons.${{ inputs.lang }}.json" \
+            --lang "${{ inputs.lang }}" \
+            --paths "${{ inputs.paths }}" \
+            --max "${{ inputs.max }}" \
+            --model "${{ inputs.model }}"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "mobile/src/i18n/locales/lessons.${{ inputs.lang }}.json"
+          if git diff --cached --quiet; then
+            echo "No changes — nothing to commit."
+            exit 0
+          fi
+          git commit -m "content(auto): expand lessons (${{ inputs.lang }}, paths=${{ inputs.paths }}, model=${{ inputs.model }})"
+          git push

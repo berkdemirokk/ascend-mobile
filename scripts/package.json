@@ -1,0 +1,9 @@
+{
+  "name": "ascend-scripts",
+  "private": true,
+  "type": "module",
+  "description": "One-off scripts for the Ascend repo (lesson expansion, audio generation, etc.). Kept separate from the mobile/ app's package.json so installing a heavyweight SDK here doesn't bloat the mobile bundle.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.1"
+  }
+}
