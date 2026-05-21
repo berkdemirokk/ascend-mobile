@@ -18,13 +18,11 @@ on:
         type: string
         default: '1-5'
       voice:
-        description: 'Piper voice model'
+        description: 'Piper voice model (only dfki is available — fahrettin/fettah were removed from rhasspy/piper-voices in late 2025)'
         type: choice
         options:
-          - tr_TR-fahrettin-medium
-          - tr_TR-fettah-medium
           - tr_TR-dfki-medium
-        default: tr_TR-fahrettin-medium
+        default: tr_TR-dfki-medium
 
 jobs:
   generate:
