@@ -259,6 +259,14 @@ export default function LessonScreen({ navigation, route }) {
     return () => clearTimeout(id);
   }, [_momentumToast, clearMomentumToast]);
 
+  // When the user navigates to a different lesson (e.g. "Sonraki Ders"
+  // chain), reset the teaching page back to 0. Without this, page 3 of
+  // lesson N would show as the first page of lesson N+1, which feels
+  // broken (the user expects to start fresh).
+  useEffect(() => {
+    setTeachingPageIdx(0);
+  }, [lessonId]);
+
   useEffect(() => {
     let target = 0.33;
     if (step === STEP.QUIZ) target = 0.66;
@@ -295,10 +303,47 @@ export default function LessonScreen({ navigation, route }) {
   const hasQuiz = quiz.length > 0;
   const currentQuestion = hasQuiz ? quiz[quizIndex] : null;
 
+  // ── Teaching page splitter ────────────────────────────────────────
+  // The audit's "5 minutes then they're gone" finding had a content
+  // sub-cause: lesson teaching was one giant scrollable wall of text
+  // (~150 words) that the user skimmed in 30 seconds. The fix is the
+  // same as the Daily Deck: split it into bite-sized cards.
+  //
+  // Lucky we don't need new content — every lesson in lessons.tr.json
+  // is already authored in the 4-layer format (sahne → bilim →
+  // mekanizma → pratik), with paragraphs separated by `\n\n`. We just
+  // honour those separators and render each paragraph as its own card.
+  // Lessons authored before the expansion (shorter, one-paragraph)
+  // gracefully collapse to a single page.
+  const teachingPages = useMemo(() => {
+    if (!teaching) return [];
+    return teaching
+      .split(/\n\n+/)
+      .map((p) => p.trim())
+      .filter((p) => p.length > 0);
+  }, [teaching]);
+  const [teachingPageIdx, setTeachingPageIdx] = useState(0);
+  const isLastTeachingPage = teachingPageIdx >= teachingPages.length - 1;
+
+  // Teaching page advance — paginates through teachingPages first,
+  // then promotes to QUIZ (or COMMIT if no quiz).
   const handleTeachingNext = () => {
     playSound('tap').catch(() => {});
+    if (!isLastTeachingPage) {
+      setTeachingPageIdx((i) => i + 1);
+      return;
+    }
     if (hasQuiz) setStep(STEP.QUIZ);
     else setStep(STEP.COMMIT);
+  };
+
+  // Optional: go back one teaching page. Only enabled past page 0.
+  // Going back from page 0 would do nothing — the back-arrow in the
+  // top bar already covers "leave lesson entirely".
+  const handleTeachingBack = () => {
+    if (teachingPageIdx <= 0) return;
+    playSound('tap').catch(() => {});
+    setTeachingPageIdx((i) => Math.max(0, i - 1));
   };
 
   const handleQuizAnswer = (idx) => {
@@ -601,60 +646,140 @@ export default function LessonScreen({ navigation, route }) {
     </View>
   );
 
-  const renderTeaching = () => (
-    <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-      <Text style={styles.stepLabel}>📖 {t('lesson.teaching', 'ÖĞRETİM')}</Text>
-      <Text style={styles.title}>{title}</Text>
+  const renderTeaching = () => {
+    // Per-page label maps to the 4-layer authoring format the
+    // content is already written in:
+    //   page 0 → "Sahne" (scene-setting paragraph)
+    //   page 1 → "Bilim" (research citation)
+    //   page 2 → "Mekanizma" (why it works)
+    //   page 3 → "Pratik" (how to apply)
+    // Lessons that have fewer paragraphs fall through to the
+    // generic ÖĞRETİM label so the UI never shows a misleading
+    // "Mekanizma" label on a page that doesn't have that content.
+    const pageLabels = [
+      `📖 ${t('lesson.teachingPage0', 'SAHNE')}`,
+      `🔬 ${t('lesson.teachingPage1', 'BİLİM')}`,
+      `⚙️ ${t('lesson.teachingPage2', 'MEKANİZMA')}`,
+      `🎯 ${t('lesson.teachingPage3', 'PRATİK')}`,
+    ];
+    const totalPages = Math.max(teachingPages.length, 1);
+    const pageLabel =
+      teachingPages.length >= 3
+        ? pageLabels[teachingPageIdx] ||
+          `📖 ${t('lesson.teaching', 'ÖĞRETİM')}`
+        : `📖 ${t('lesson.teaching', 'ÖĞRETİM')}`;
+    const currentParagraph =
+      teachingPages[teachingPageIdx] || teaching || '';
 
-      <View style={styles.heroBox}>
-        <LinearGradient
-          colors={[LT.surfaceContainerLowest, LT.surfaceContainerLowest]}
-          style={StyleSheet.absoluteFillObject}
-        />
-        <View style={styles.heroMascot}>
-          <MaterialIcons name="self-improvement" size={68} color={LT.primaryContainer} />
+    return (
+      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+        {/* Per-page step label */}
+        <View style={styles.teachingPageHeader}>
+          <Text style={styles.stepLabel}>{pageLabel}</Text>
+          {totalPages > 1 ? (
+            <Text style={styles.teachingPageCount}>
+              {teachingPageIdx + 1}/{totalPages}
+            </Text>
+          ) : null}
         </View>
-      </View>
+        {/* Title only on the first page so subsequent pages feel
+            like "next slide" not "new lesson". */}
+        {teachingPageIdx === 0 ? <Text style={styles.title}>{title}</Text> : null}
 
-      <View style={styles.teachingCard}>
-        <View style={styles.cornerAccent} />
-        <TouchableOpacity
-          onPress={handleToggleSpeak}
-          activeOpacity={0.85}
-          style={styles.speakBtn}
-          accessibilityLabel={
-            isSpeaking
-              ? t('lesson.stopAudio', 'Sesi durdur')
-              : t('lesson.playAudio', 'Sesli oku')
-          }
-        >
-          <MaterialIcons
-            name={isSpeaking ? 'stop' : 'volume-up'}
-            size={18}
-            color={LT.onPrimary}
-          />
-          <Text style={styles.speakBtnText}>
-            {isSpeaking
-              ? t('lesson.stopAudio', 'Durdur')
-              : t('lesson.playAudio', 'Sesli dinle')}
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.teachingText}>{teaching}</Text>
-      </View>
-
-      {proTip ? (
-        <View style={styles.proTipBox}>
-          <MaterialIcons name="lightbulb" size={22} color="#FDE047" />
-          <View style={{ flex: 1 }}>
-            <Text style={styles.proTipLabel}>{t('lesson.proTip', 'PRO İPUCU')}</Text>
-            <Text style={styles.proTipBody}>{proTip}</Text>
+        {/* Progress bar — thin red bar across the top of the card.
+            Visual reassurance about how many pages are left. */}
+        {totalPages > 1 ? (
+          <View style={styles.teachingProgressTrack}>
+            <View
+              style={[
+                styles.teachingProgressFill,
+                {
+                  width: `${((teachingPageIdx + 1) / totalPages) * 100}%`,
+                },
+              ]}
+            />
           </View>
-        </View>
-      ) : null}
+        ) : null}
 
-      <View style={{ height: 100 }} />
-    </ScrollView>
-  );
+        {/* Hero illustration only on page 0 to keep subsequent
+            cards content-dense and quick to scan. */}
+        {teachingPageIdx === 0 ? (
+          <View style={styles.heroBox}>
+            <LinearGradient
+              colors={[LT.surfaceContainerLowest, LT.surfaceContainerLowest]}
+              style={StyleSheet.absoluteFillObject}
+            />
+            <View style={styles.heroMascot}>
+              <MaterialIcons
+                name="self-improvement"
+                size={68}
+                color={LT.primaryContainer}
+              />
+            </View>
+          </View>
+        ) : null}
+
+        <View style={styles.teachingCard}>
+          <View style={styles.cornerAccent} />
+          <TouchableOpacity
+            onPress={handleToggleSpeak}
+            activeOpacity={0.85}
+            style={styles.speakBtn}
+            accessibilityLabel={
+              isSpeaking
+                ? t('lesson.stopAudio', 'Sesi durdur')
+                : t('lesson.playAudio', 'Sesli oku')
+            }
+          >
+            <MaterialIcons
+              name={isSpeaking ? 'stop' : 'volume-up'}
+              size={18}
+              color={LT.onPrimary}
+            />
+            <Text style={styles.speakBtnText}>
+              {isSpeaking
+                ? t('lesson.stopAudio', 'Durdur')
+                : t('lesson.playAudio', 'Sesli dinle')}
+            </Text>
+          </TouchableOpacity>
+          <Text style={styles.teachingText}>{currentParagraph}</Text>
+        </View>
+
+        {/* ProTip — only on the last teaching page so it punctuates
+            the section, not every page. */}
+        {proTip && isLastTeachingPage ? (
+          <View style={styles.proTipBox}>
+            <MaterialIcons name="lightbulb" size={22} color="#FDE047" />
+            <View style={{ flex: 1 }}>
+              <Text style={styles.proTipLabel}>{t('lesson.proTip', 'PRO İPUCU')}</Text>
+              <Text style={styles.proTipBody}>{proTip}</Text>
+            </View>
+          </View>
+        ) : null}
+
+        {/* Back link — appears past page 0. Lets the user re-read
+            a previous card without leaving the lesson. */}
+        {teachingPageIdx > 0 ? (
+          <TouchableOpacity
+            onPress={handleTeachingBack}
+            style={styles.teachingBackLink}
+            activeOpacity={0.7}
+          >
+            <MaterialIcons
+              name="arrow-back"
+              size={16}
+              color={LT.onSurfaceVariant}
+            />
+            <Text style={styles.teachingBackText}>
+              {t('lesson.previousPage', 'Önceki sayfa')}
+            </Text>
+          </TouchableOpacity>
+        ) : null}
+
+        <View style={{ height: 100 }} />
+      </ScrollView>
+    );
+  };
 
   const renderQuiz = () => {
     if (!currentQuestion) return null;
@@ -914,6 +1039,15 @@ export default function LessonScreen({ navigation, route }) {
 
   const renderBottomCTA = () => {
     if (step === STEP.TEACHING) {
+      // Label changes between mid-pages and the final page:
+      //   mid:   "Sonraki" — keeps momentum, doesn't imply commitment
+      //   final: "Quizi başlat" (if quiz) / "Anladım" (no quiz)
+      // The mid label is intentionally not "Anladım" because we don't
+      // want the user to feel like each page is a separate test.
+      const midLabel = t('lesson.nextPage', 'Sonraki');
+      const finalLabel = hasQuiz
+        ? t('lesson.startQuiz', 'Quizi başlat')
+        : t('lesson.gotIt', 'Anladım');
       return (
         <View style={styles.bottomCTAWrap}>
           <TouchableOpacity onPress={handleTeachingNext} activeOpacity={0.9} style={styles.ctaShadow}>
@@ -923,7 +1057,9 @@ export default function LessonScreen({ navigation, route }) {
               end={{ x: 1, y: 1 }}
               style={styles.ctaButton}
             >
-              <Text style={styles.ctaText}>{t('lesson.gotIt', 'Anladım')}</Text>
+              <Text style={styles.ctaText}>
+                {isLastTeachingPage ? finalLabel : midLabel}
+              </Text>
               <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} />
             </LinearGradient>
           </TouchableOpacity>
@@ -1347,6 +1483,49 @@ const styles = StyleSheet.create({
     fontSize: 12, fontWeight: '900',
     letterSpacing: 2, textTransform: 'uppercase',
     marginBottom: 8,
+  },
+  // Multi-page teaching: header row with per-page label + counter.
+  teachingPageHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  teachingPageCount: {
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.6,
+    color: LT.onSurfaceVariant,
+  },
+  // Thin progress bar across the top of the card stack — keeps the
+  // user oriented (they know how many pages remain).
+  teachingProgressTrack: {
+    height: 3,
+    borderRadius: 2,
+    backgroundColor: LT.surfaceContainer,
+    overflow: 'hidden',
+    marginBottom: 14,
+  },
+  teachingProgressFill: {
+    height: '100%',
+    backgroundColor: LT.primary,
+  },
+  // Back link to re-read a previous teaching page. Subtle —
+  // the dominant flow is forward.
+  teachingBackLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    marginTop: 8,
+  },
+  teachingBackText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: LT.onSurfaceVariant,
+    textDecorationLine: 'underline',
   },
   stepChip: {
     alignSelf: 'flex-start',
