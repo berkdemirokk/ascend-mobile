@@ -2,6 +2,7 @@ import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
 import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
 import i18n from '../i18n';
 import { navigateFromAnywhere } from '../navigation/AppNavigator';
 
@@ -235,9 +236,8 @@ export const registerPushToken = async (userId, supabase) => {
 
     // expo-notifications requires projectId for the token API since
     // SDK 49. We read it from app.json → expo.extra.eas.projectId via
-    // Constants. Without this, getExpoPushTokenAsync throws.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const Constants = require('expo-constants').default;
+    // Constants (top-level import). Without this, getExpoPushTokenAsync
+    // throws.
     const projectId =
       Constants?.expoConfig?.extra?.eas?.projectId ||
       Constants?.easConfig?.projectId ||

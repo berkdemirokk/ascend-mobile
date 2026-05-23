@@ -42,9 +42,39 @@ export default function WelcomeScreen({ navigation }) {
     try {
       const result = await signInWithApple();
       if (result?.canceled) return;
+      // Surface ANY error shape — Supabase can return `error.message`
+      // directly, or a plain string, or a generic object (we've seen
+      // "Invalid token" without .message). Apple reviewers test Apple
+      // Sign-In and a silent black-hole is a guaranteed rejection.
       if (result?.error) {
-        Alert.alert(t('common.error'), result.error.message || 'Apple Sign-In failed');
+        const errObj = result.error;
+        const msg =
+          errObj?.message ||
+          errObj?.error_description ||
+          (typeof errObj === 'string' ? errObj : null) ||
+          t('auth.appleSignInGenericError', 'Apple ile giriş başarısız oldu. Tekrar dene.');
+        Alert.alert(t('common.error', 'Hata'), msg);
+        return;
       }
+      // Defensive: even if no error, if there's no session shape, alert.
+      if (!result?.data?.session && !result?.session) {
+        Alert.alert(
+          t('common.error', 'Hata'),
+          t(
+            'auth.appleSignInGenericError',
+            'Apple ile giriş başarısız oldu. Tekrar dene.',
+          ),
+        );
+      }
+    } catch (e) {
+      Alert.alert(
+        t('common.error', 'Hata'),
+        e?.message ||
+          t(
+            'auth.appleSignInGenericError',
+            'Apple ile giriş başarısız oldu. Tekrar dene.',
+          ),
+      );
     } finally {
       setAppleLoading(false);
     }

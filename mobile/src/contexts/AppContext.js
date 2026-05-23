@@ -6,6 +6,7 @@ import {
   useCallback,
   useRef,
 } from 'react';
+import { AppState } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS, checkLevelUp } from '../config/constants';
 import { checkAchievements, checkSpecialAchievements } from '../config/achievements';
@@ -26,7 +27,7 @@ import { generateAnonUsername } from '../services/leaderboard';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
 import { getMySquad, recordSquadProgress } from '../services/squad';
-import { redeemReferralCode } from '../services/referral';
+import { redeemReferralCode, checkReferralRewards } from '../services/referral';
 import {
   cancelAllNotifications,
   scheduleStreakAtRiskReminder,
@@ -238,6 +239,7 @@ const ACTION_TYPES = {
   ADD_ASSESSMENT: 'ADD_ASSESSMENT',
   RECORD_DAILY_DECK: 'RECORD_DAILY_DECK',
   GRANT_REFERRAL_REWARD: 'GRANT_REFERRAL_REWARD',
+  RESET_FOR_USER_SWITCH: 'RESET_FOR_USER_SWITCH',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -559,6 +561,24 @@ function appReducer(state, action) {
     case ACTION_TYPES.DELETE_ACCOUNT:
       return { ...initialState, _loaded: true };
 
+    case ACTION_TYPES.RESET_FOR_USER_SWITCH:
+      // Wipe everything user-specific when the authenticated user
+      // changes (sign-out → sign-in as someone else, or guest →
+      // sign-in). Without this, user A's totalXP / pathProgress /
+      // achievements would bleed into user B's account via the
+      // merge step in the cloud-pull effect, then get pushed back
+      // to user B's row → cross-account data contamination.
+      //
+      // We preserve `onboarded` and `_loaded` so the user doesn't
+      // get bounced back into the onboarding flow. Everything else
+      // resets to initial. The next cloud-pull effect will fetch
+      // user B's actual state.
+      return {
+        ...initialState,
+        onboarded: state.onboarded,
+        _loaded: true,
+      };
+
     case ACTION_TYPES.RESET_PROGRESS:
       // Wipe lesson progress + streak + XP + level + achievements,
       // BUT keep onboarded, isPremium, hearts, profile.
@@ -607,6 +627,20 @@ function appReducer(state, action) {
 
     case ACTION_TYPES.LOSE_HEART: {
       if (state.isPremium) return state; // premium = unlimited
+      // First-24h grace period: free users in this window don't lose
+      // hearts on wrong quiz answers. We previously gated this in
+      // LessonScreen's caller, but other callers (PathScreen heart-cost
+      // checks, future heart-debits) wouldn't have inherited the gate.
+      // Moved into the reducer so the protection is universal.
+      if (state.installedAt) {
+        const installedMs = new Date(state.installedAt).getTime();
+        if (!Number.isNaN(installedMs)) {
+          const ageMs = Date.now() - installedMs;
+          if (ageMs < NEW_USER_GRACE_HOURS * 60 * 60 * 1000) {
+            return state; // grace period — no heart consumed
+          }
+        }
+      }
       const newHearts = Math.max(0, state.hearts - 1);
       const refillAt =
         newHearts < 5 && !state.heartsRefillAt
@@ -1010,6 +1044,36 @@ export function AppProvider({ children }) {
   // disk is busy. We now coalesce writes inside a 600ms window — if
   // five dispatches land back-to-back, we serialize once.
   const saveTimerRef = useRef(null);
+  // Latest state ref — read inside the AppState listener so it can
+  // force-flush the most recent value without re-creating the listener
+  // on every state change (which would also leak listeners).
+  const latestStateRef = useRef(state);
+  useEffect(() => {
+    latestStateRef.current = state;
+  }, [state]);
+
+  const flushSaveNow = useCallback(() => {
+    const cur = latestStateRef.current;
+    if (!cur || !cur._loaded) return;
+    if (saveTimerRef.current) {
+      clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = null;
+    }
+    const toSave = { ...cur };
+    delete toSave._loaded;
+    delete toSave._streakFreezeToast;
+    delete toSave._milestoneToast;
+    delete toSave._momentumToast;
+    try {
+      AsyncStorage.setItem(
+        STORAGE_KEYS.USER_STATE,
+        JSON.stringify(toSave),
+      ).catch((e) => console.error('[AppContext] Failed to save state:', e));
+    } catch (e) {
+      console.error('[AppContext] Failed to serialize state:', e);
+    }
+  }, []);
+
   useEffect(() => {
     if (!state._loaded) return;
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
@@ -1038,6 +1102,51 @@ export function AppProvider({ children }) {
     };
   }, [state]);
 
+  // App-background flush — without this, any pending debounced write
+  // is silently dropped if the OS kills the app while backgrounded.
+  // User's most recent mutation (e.g. just-completed lesson) would be
+  // lost on next launch. Fires whenever the app transitions away from
+  // 'active' so we cover both background and inactive (incoming call,
+  // notification center pull-down).
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (next) => {
+      if (next !== 'active') flushSaveNow();
+    });
+    return () => {
+      try {
+        sub.remove();
+      } catch {}
+    };
+  }, [flushSaveNow]);
+
+  // ── User switch detector ──────────────────────────────────────────────
+  // Tracks the last userId we've synced with. When it changes (sign-in,
+  // sign-out, sign-in-as-someone-else), we MUST reset in-memory state
+  // before the cloud-pull/merge runs — otherwise user A's progress
+  // bleeds into user B's account via merge, then gets pushed back to
+  // user B's row. Cross-account data contamination. P0.
+  const lastSeenUserIdRef = useRef(null);
+  // Set to true once the cloud-pull-and-merge has completed for the
+  // current userId. The cloud-push effect waits for this so it doesn't
+  // push pre-merge state to the new user's cloud row.
+  const pullCompletedRef = useRef(false);
+  useEffect(() => {
+    if (!state._loaded) return;
+    if (lastSeenUserIdRef.current === userId) return;
+    const previousUserId = lastSeenUserIdRef.current;
+    lastSeenUserIdRef.current = userId;
+    pullCompletedRef.current = false;
+    // Only reset when we're switching to a DIFFERENT real user.
+    // First-time hydration (previousUserId = null, userId = X) doesn't
+    // need a reset — we just hydrated from disk and that's already
+    // the previous-session user's state, which is fine.
+    // BUT: if previousUserId was a real id and userId is now null
+    // (sign-out) OR a different id (account switch), reset.
+    if (previousUserId !== null && previousUserId !== userId) {
+      dispatch({ type: ACTION_TYPES.RESET_FOR_USER_SWITCH });
+    }
+  }, [state._loaded, userId]);
+
   // ── Cloud pull on first sign-in ─────────────────────────────────────────
   useEffect(() => {
     if (!state._loaded || !isAuthenticated || !userId) return;
@@ -1046,7 +1155,13 @@ export function AppProvider({ children }) {
     (async () => {
       try {
         const remote = await pullState(userId);
-        if (cancelled || !remote) return;
+        if (cancelled) return;
+        if (!remote) {
+          // No remote state — still mark pull complete so the push
+          // effect can begin (and create the row for this user).
+          pullCompletedRef.current = true;
+          return;
+        }
 
         const local = { ...state };
         delete local._loaded;
@@ -1054,8 +1169,12 @@ export function AppProvider({ children }) {
         // services/cloudSync.js for the merge rules.
         const merged = mergeStates(local, remote);
         dispatch({ type: ACTION_TYPES.LOAD_STATE, payload: merged });
+        pullCompletedRef.current = true;
       } catch (e) {
         console.warn('[AppContext] Cloud pull failed:', e?.message);
+        // Open the push gate anyway after failure so the user can
+        // still sync forward eventually.
+        pullCompletedRef.current = true;
       }
     })();
 
@@ -1067,6 +1186,11 @@ export function AppProvider({ children }) {
   // ── Cloud push debounced ────────────────────────────────────────────────
   useEffect(() => {
     if (!state._loaded || !isAuthenticated || !userId) return;
+    // Don't push until the cloud-pull-and-merge for THIS userId has
+    // completed. Pushing before merge would overwrite the freshly-
+    // signed-in user's cloud row with whatever was sitting in memory
+    // (commonly a fragment of the previous user's state).
+    if (!pullCompletedRef.current) return;
     const timer = setTimeout(() => {
       const toPush = { ...state };
       delete toPush._loaded;
@@ -1095,8 +1219,20 @@ export function AppProvider({ children }) {
       if (cancelled) return;
       try {
         const isPremium = await checkPremiumStatus();
-        if (!cancelled) {
+        // null = couldn't determine (offline / RC outage). DO NOT
+        // dispatch — keep the cached / current value. Otherwise a
+        // paying user offline would be downgraded to free and hit
+        // the paywall, even though they have a valid subscription.
+        if (!cancelled && isPremium !== null) {
           dispatch({ type: ACTION_TYPES.SET_PREMIUM, payload: isPremium });
+          // Cache last-known-good so cold-start can use it before
+          // the network round-trip completes.
+          try {
+            await AsyncStorage.setItem(
+              '@ascend/cached_premium',
+              isPremium ? '1' : '0',
+            );
+          } catch {}
         }
       } catch (e) {
         console.warn('[AppContext] Premium check failed:', e?.message);
@@ -1145,6 +1281,31 @@ export function AppProvider({ children }) {
       } catch (e) {
         // Non-fatal — squad is a bonus surface, not a blocker.
         console.warn('[AppContext] squad fetch failed:', e?.message);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [state._loaded, userId]);
+
+  // ── Owner-side referral rewards (close the viral loop) ────────────────
+  // For every friend who has redeemed THIS user's code but where the
+  // owner-side reward hasn't been paid yet, grant +10 streak freezes.
+  // Fires on every auth + once at app open. The server marks the row
+  // BEFORE we dispatch so an interrupted dispatch can be re-tried
+  // safely (the marker is the source of truth, not the local count).
+  useEffect(() => {
+    if (!state._loaded || !userId) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const { granted } = await checkReferralRewards(userId);
+        if (cancelled) return;
+        for (let i = 0; i < granted; i++) {
+          dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+        }
+      } catch (e) {
+        console.warn('[AppContext] owner referral check failed:', e?.message);
       }
     })();
     return () => {
@@ -1211,7 +1372,12 @@ export function AppProvider({ children }) {
   // Progress is idempotent server-side (unique (squad,user,date) +
   // upsert), so dispatching twice for the same day is harmless. No-op
   // if the user isn't in a squad or isn't authenticated.
-  const lastMirroredCountRef = useRef(0);
+  //
+  // The ref captures (date, count) together — without the date key
+  // the count compare would skip the first lesson of a new day if
+  // yesterday's count happened to also equal today's count (e.g. one
+  // lesson yesterday, one today both look like "1" and would skip).
+  const lastMirroredRef = useRef({ date: null, count: 0 });
   useEffect(() => {
     if (!state._loaded || !userId || !state.currentSquadId) return;
     const today = (() => {
@@ -1223,8 +1389,9 @@ export function AppProvider({ children }) {
     })();
     const todayCount = (state.lessonHistory || {})[today] || 0;
     if (todayCount === 0) return;
-    if (todayCount === lastMirroredCountRef.current) return;
-    lastMirroredCountRef.current = todayCount;
+    const last = lastMirroredRef.current;
+    if (last.date === today && last.count === todayCount) return;
+    lastMirroredRef.current = { date: today, count: todayCount };
     recordSquadProgress({
       squadId: state.currentSquadId,
       userId,

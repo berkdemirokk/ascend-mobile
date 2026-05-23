@@ -9,10 +9,15 @@ import { supabase, SUPABASE_CONFIGURED } from '../services/supabase';
 import { unlinkPurchaseUser } from '../services/purchases';
 
 // Cap network calls so a slow/offline reviewer doesn't see a frozen splash.
+// Tagged result: `timedOut: true` lets the caller distinguish "no session"
+// from "couldn't determine yet" so we don't immediately bounce a real user
+// to the Welcome screen on slow networks (~5s is common on cellular).
 const withTimeout = (promise, ms) =>
   Promise.race([
-    promise,
-    new Promise((resolve) => setTimeout(() => resolve({ data: null }), ms)),
+    promise.then((value) => ({ ...value, timedOut: false })),
+    new Promise((resolve) =>
+      setTimeout(() => resolve({ data: null, timedOut: true }), ms),
+    ),
   ]);
 
 const AuthContext = createContext(null);
@@ -35,11 +40,27 @@ export function AuthProvider({ children }) {
           setLoading(false);
           return;
         }
-        const { data } = await withTimeout(supabase.auth.getSession(), 5000);
-        setSession(data?.session ?? null);
+        const result = await withTimeout(supabase.auth.getSession(), 5000);
+        setSession(result?.data?.session ?? null);
+        // If the call timed out, leave `loading` as-is so the splash
+        // keeps showing AND kick off an un-timed background re-fetch.
+        // The onAuthStateChange listener registered below will also
+        // surface any session that arrives later, so the user doesn't
+        // get bounced to Welcome and re-asked to sign in on a slow
+        // network.
+        if (result?.timedOut) {
+          supabase.auth
+            .getSession()
+            .then(({ data }) => {
+              if (data?.session) setSession(data.session);
+            })
+            .catch(() => {})
+            .finally(() => setLoading(false));
+        } else {
+          setLoading(false);
+        }
       } catch (e) {
         console.warn('[AuthContext] getSession failed:', e?.message);
-      } finally {
         setLoading(false);
       }
 
@@ -105,8 +126,16 @@ export function AuthProvider({ children }) {
     if (!SUPABASE_CONFIGURED) {
       return { error: new Error('Supabase henüz yapılandırılmadı.') };
     }
+    // Pass redirectTo so the email link deep-links back into the app
+    // (ascend:// scheme is registered in app.json). Without this the
+    // reset link lands on whatever the Supabase dashboard has set as
+    // its site URL — typically a web page the mobile user can't
+    // complete the flow from. The scheme handler is wired in App.js.
+    // If the user opens the link on a desktop, they'll still land on
+    // Supabase's web reset page and can change password there.
     const { data, error } = await supabase.auth.resetPasswordForEmail(
       email.trim().toLowerCase(),
+      { redirectTo: 'ascend://reset-password' },
     );
     return { data, error };
   }, []);

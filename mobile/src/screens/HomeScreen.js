@@ -125,9 +125,25 @@ export default function HomeScreen({ navigation }) {
   /**
    * Centralised navigate-to-lesson handler used by every Home entry
    * point. Returns true if navigation actually fired, false if we
-   * blocked it (showed the OutOfHearts modal instead).
+   * blocked it (showed the OutOfHearts modal instead, or input was
+   * stale).
+   *
+   * Hardened: a memoised LessonQueueCard / StreakLost banner / etc.
+   * may pass a pathId/lessonId that's already completed since the
+   * card was rendered. Without validation the user lands on an
+   * already-finished lesson and sees the green "✓ Tamamlandı" CTA
+   * with no clear "what next" path. We block stale dispatches here.
    */
   const attemptStartLesson = (pathId, lessonId) => {
+    if (!pathId || !lessonId) return false;
+    const completed = pathProgress?.[pathId]?.completed || [];
+    if (completed.includes(lessonId)) {
+      // The card / banner that triggered this is stale. Best UX is to
+      // simply do nothing — the user will see the path/home re-render
+      // with a fresh next-lesson CTA on the next frame, since the
+      // momentum loop already advanced.
+      return false;
+    }
     if (!isPremium && (hearts || 0) <= 0) {
       setOutOfHeartsVisible(true);
       return false;

@@ -65,9 +65,15 @@ export default function SquadScreen({ navigation }) {
   const T = useTheme();
   const styles = useThemedStyles(makeStyles);
 
+  // `loading` = initial mount only — covers the empty render → first
+  // network response gap. After first load completes, subsequent
+  // reloads (post-create / post-join / pull-to-refresh) use `busy`
+  // instead so the user keeps seeing the data they already had,
+  // not a blank spinner that flashes the whole screen.
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [squadData, setSquadData] = useState(null); // { squad, members, progressByDate }
+  const firstLoadDoneRef = useRef(false);
 
   // Local UI state for the create / join forms.
   const [createName, setCreateName] = useState('');
@@ -77,9 +83,13 @@ export default function SquadScreen({ navigation }) {
   const reload = useCallback(async () => {
     if (!userId) {
       setLoading(false);
+      firstLoadDoneRef.current = true;
       return;
     }
-    setLoading(true);
+    // Only show the full-screen spinner on the very first load. Post-
+    // create / post-join / post-leave reloads keep the existing UI on
+    // screen — much less janky than blanking the whole sheet.
+    if (!firstLoadDoneRef.current) setLoading(true);
     try {
       const data = await getMySquad(userId);
       setSquadData(data);
@@ -92,6 +102,7 @@ export default function SquadScreen({ navigation }) {
       console.warn('[SquadScreen] load failed:', e?.message);
     } finally {
       setLoading(false);
+      firstLoadDoneRef.current = true;
     }
   }, [userId, setCurrentSquad]);
 

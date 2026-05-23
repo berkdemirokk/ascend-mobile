@@ -110,17 +110,36 @@ export const unlinkPurchaseUser = async () => {
   }
 };
 
+/**
+ * @returns {Promise<boolean|null>} true = active premium, false = no
+ *   active entitlement, null = couldn't determine (offline / RC outage /
+ *   not initialized). Callers MUST handle null specially: don't dispatch
+ *   SET_PREMIUM false because the user may have a real subscription that
+ *   we just can't verify right now.
+ */
 export const checkPremiumStatus = async () => {
   try {
     const P = await ensureReady();
-    if (!P) return false;
+    if (!P) return null;
     const customerInfo = await P.getCustomerInfo();
-    return customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
+    return (
+      customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null
+    );
   } catch (e) {
     console.warn('Check premium error:', e?.message);
-    return false;
+    return null; // unknown — don't downgrade user
   }
 };
+
+/**
+ * Result shape for purchasePremium so callers can distinguish:
+ *   { status: 'unlocked', customerInfo }       — bought + entitlement live
+ *   { status: 'pending', customerInfo }        — bought but entitlement not live yet (RC lag)
+ *   { status: 'cancelled' }                    — user dismissed the system sheet
+ *   throws Error                               — actual failure (network, no packages, etc.)
+ * The old shape (boolean) silently conflated 'pending' with 'cancelled',
+ * leaving paying users with no premium unlock and no error message.
+ */
 
 const pickOffering = (offerings) => {
   if (!offerings) return null;
@@ -185,9 +204,14 @@ export const purchasePremium = async (period = 'monthly') => {
     if (!pkg) pkg = pkgs[0];
 
     const { customerInfo } = await P.purchasePackage(pkg);
-    return customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
+    const unlocked =
+      customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
+    return {
+      status: unlocked ? 'unlocked' : 'pending',
+      customerInfo,
+    };
   } catch (e) {
-    if (e.userCancelled) return false;
+    if (e.userCancelled) return { status: 'cancelled' };
     throw e;
   }
 };

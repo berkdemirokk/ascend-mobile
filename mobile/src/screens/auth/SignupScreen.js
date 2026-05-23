@@ -40,18 +40,36 @@ export default function SignupScreen({ navigation }) {
       return;
     }
     setLoading(true);
-    const { error } = await signUp({ email, password, name });
+    const { data, error } = await signUp({ email, password, name });
     setLoading(false);
     if (error) {
       Alert.alert(t('common.error'), error.message || t('auth.invalidCredentials'));
       return;
     }
+    // Supabase returns data.session when "Confirm email" is OFF in the
+    // dashboard → user is auto-signed-in, AuthContext listener will
+    // navigate. We do nothing here.
+    if (data?.session) return;
+    // Otherwise email-verification is required. Alert + send the user
+    // back to Login so they can sign in after they confirm. Without
+    // the navigation, the screen left them sitting on the signup form
+    // and they'd often re-submit, hitting "Email not confirmed" loops.
     Alert.alert(
       t('auth.signupSuccess', 'Kayıt başarılı'),
       t(
         'auth.signupSuccessBody',
         'E-postanı kontrol et ve doğrulama linkine tıkla. Sonra giriş yap.',
       ),
+      [
+        {
+          text: t('common.ok', 'Tamam'),
+          onPress: () => {
+            try {
+              navigation.replace('Login');
+            } catch {}
+          },
+        },
+      ],
     );
   };
 

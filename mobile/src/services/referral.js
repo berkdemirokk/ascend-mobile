@@ -147,3 +147,56 @@ export const getReferralStats = async (userId) => {
     return { redemptions: 0 };
   }
 };
+
+/**
+ * Check for unrewarded owner-side referral redemptions and return how
+ * many should be granted right now. Called on app open from AppContext;
+ * the caller dispatches GRANT_REFERRAL_REWARD once per unrewarded row.
+ *
+ * The viral loop's owner side was DOCUMENTED but never implemented —
+ * inviters were silently shortchanged while redeemers got their +10
+ * freezes. This function closes that gap.
+ *
+ * Returns { granted: number } — how many rewards we marked as paid out
+ * (caller should dispatch once per item). On any error or no-rows-
+ * found, returns { granted: 0 } and never throws.
+ */
+export const checkReferralRewards = async (userId) => {
+  if (!SUPABASE_CONFIGURED || !userId) return { granted: 0 };
+  try {
+    // Pull all redeemed rows owned by this user where the owner reward
+    // hasn't been marked paid yet.
+    const { data: rows, error: fetchErr } = await supabase
+      .from(TABLE)
+      .select('id')
+      .eq('owner_user_id', userId)
+      .not('redeemed_by', 'is', null)
+      .is('owner_rewarded_at', null);
+    if (fetchErr) {
+      // Most likely: the owner_rewarded_at column doesn't exist yet on
+      // older schemas. Log and bail — don't crash the app.
+      console.warn('[referral] reward check fetch error:', fetchErr.message);
+      return { granted: 0 };
+    }
+    if (!rows || rows.length === 0) return { granted: 0 };
+
+    // Mark all of them as rewarded in one round-trip. We do this BEFORE
+    // dispatching the local reward so that an interrupted dispatch can
+    // be re-run safely (the marker is the source of truth, not the
+    // local counter).
+    const nowIso = new Date().toISOString();
+    const ids = rows.map((r) => r.id);
+    const { error: updateErr } = await supabase
+      .from(TABLE)
+      .update({ owner_rewarded_at: nowIso })
+      .in('id', ids);
+    if (updateErr) {
+      console.warn('[referral] reward mark error:', updateErr.message);
+      return { granted: 0 };
+    }
+    return { granted: rows.length };
+  } catch (e) {
+    console.warn('[referral] checkReferralRewards exception:', e?.message);
+    return { granted: 0 };
+  }
+};

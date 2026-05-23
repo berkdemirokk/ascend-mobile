@@ -315,10 +315,21 @@ create table if not exists public.referrals (
   owner_user_id uuid not null references auth.users(id) on delete cascade,
   redeemed_by uuid references auth.users(id) on delete set null,
   redeemed_at timestamptz,
+  -- When the owner-side reward (10 streak freezes for the inviter) was
+  -- marked as paid out. Null until the inviter opens the app after the
+  -- redemption and AppContext.checkReferralRewards marks it done. The
+  -- column was originally missing — half the viral loop was silently
+  -- broken. We add it with a migration-safe ALTER below.
+  owner_rewarded_at timestamptz,
   created_at timestamptz default now(),
   -- one user can only redeem ONE code in their lifetime
   constraint referrals_one_redeem_per_user unique (redeemed_by)
 );
+
+-- Migration-safe column add (works on existing prod tables without
+-- recreating). Idempotent: rerunning is a no-op.
+alter table public.referrals
+  add column if not exists owner_rewarded_at timestamptz;
 create index if not exists idx_referrals_owner on public.referrals(owner_user_id);
 create index if not exists idx_referrals_code on public.referrals(code);
 
@@ -338,6 +349,18 @@ create policy "referrals: redeemer can mark redemption" on public.referrals
     redeemed_by is null and auth.uid() <> owner_user_id
   ) with check (
     auth.uid() = redeemed_by and redeemed_at is not null
+  );
+
+-- Owner-side reward marking — the inviter (owner) marks their own rows
+-- as rewarded after the local grant fires. Without this policy the
+-- checkReferralRewards UPDATE would fail under RLS and the owner-side
+-- reward would never persist. Idempotent — re-running drop+create is fine.
+drop policy if exists "referrals: owner can mark reward paid" on public.referrals;
+create policy "referrals: owner can mark reward paid" on public.referrals
+  for update using (
+    auth.uid() = owner_user_id and redeemed_by is not null
+  ) with check (
+    auth.uid() = owner_user_id
   );
 
 grant select, insert, update on public.referrals to authenticated;

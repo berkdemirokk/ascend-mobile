@@ -304,6 +304,8 @@ export default function LessonScreen({ navigation, route }) {
       celebrationScale.setValue(0);
       xpY.setValue(0);
     } catch {}
+    // Reset the post-letter run guard so next lesson can fire it once.
+    postLetterFlowRanRef.current = false;
   }, [lessonId]);
 
   useEffect(() => {
@@ -590,7 +592,16 @@ export default function LessonScreen({ navigation, route }) {
     return runPostLetterFlow();
   };
 
+  // Guard: runPostLetterFlow can be invoked from two paths —
+  //   (a) handleCelebrationContinue when no letter fires
+  //   (b) FutureLetterModal's onClose after the user dismisses
+  // If the user backgrounds the app between (a)'s decision and (b)'s
+  // dismissal, both can fire and we'd double-navigate / double-paywall.
+  // Track first run with a ref; subsequent calls become no-ops.
+  const postLetterFlowRanRef = useRef(false);
   const runPostLetterFlow = async () => {
+    if (postLetterFlowRanRef.current) return;
+    postLetterFlowRanRef.current = true;
     const totalCompleted = Object.values(pathProgress || {}).reduce(
       (s, p) => s + (p?.completed?.length || 0),
       0,

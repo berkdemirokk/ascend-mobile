@@ -66,14 +66,42 @@ export default function PaywallScreen({ navigation }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const monthlyPrice = packages.monthly?.product?.priceString || '₺149,99';
-  const yearlyPrice = packages.yearly?.product?.priceString || '₺999,99';
+  // Prices come from StoreKit via RevenueCat. NEVER fall back to TR-
+  // hardcoded strings — for non-Turkish App Store users this would
+  // show ₺ prices but actually charge in USD/EUR/etc., which Apple
+  // flags as misleading (guideline 2.3.1, common rejection).
+  // When packages are unresolved we render placeholder "—" instead.
+  const monthlyPrice = packages.monthly?.product?.priceString || '—';
+  const yearlyPrice = packages.yearly?.product?.priceString || '—';
   const yearlyPerMonth = packages.yearly?.product?.price
-    ? `₺${(packages.yearly.product.price / 12).toFixed(2)}`
-    : '₺83,33';
+    ? `${(packages.yearly.product.price / 12).toFixed(2)} ${packages.yearly.product.currencyCode || ''}`.trim()
+    : '—';
+
+  // True only when StoreKit actually delivered packages we can buy.
+  // The CTA + price displays gate on this — Apple has rejected apps
+  // for showing fake/placeholder prices on a buyable button.
+  const packagesReady = !!(packages.monthly || packages.yearly);
+
+  // Apple guideline 3.1.2(a): the same paywall screen MUST disclose
+  // trial length + the EXACT price that will be charged + billing
+  // period + auto-renewal. The text MUST be visible BEFORE purchase.
+  // Build it dynamically from the actual store-fetched price so it
+  // matches what StoreKit will charge.
+  const selectedPackage =
+    selected === 'yearly' ? packages.yearly : packages.monthly;
+  const selectedPriceStr = selectedPackage?.product?.priceString || '—';
+  const periodLabel =
+    selected === 'yearly'
+      ? t('paywall.periodYearly', 'yıllık')
+      : t('paywall.periodMonthly', 'aylık');
+  const trialDisclosure = t(
+    'paywall.trialDisclosure',
+    '7 günlük ücretsiz denemenin sonunda, iptal etmezsen {{price}} {{period}} olarak otomatik tahsil edilir. App Store hesabından istediğin zaman iptal edebilirsin.',
+    { price: selectedPriceStr, period: periodLabel },
+  );
 
   const handleSubscribe = async () => {
-    if (!packages.monthly && !packages.yearly) {
+    if (!packagesReady) {
       Alert.alert(
         t('paywall.notReadyTitle', 'Abonelikler hazır değil'),
         t(
@@ -86,12 +114,27 @@ export default function PaywallScreen({ navigation }) {
     logPaywallEvent(variant?.id || 'A', selected === 'yearly' ? 'select_yearly' : 'select_monthly');
     setIsSubscribing(true);
     try {
-      const success = await purchasePremium(selected);
-      if (success) {
+      const result = await purchasePremium(selected);
+      // New shape: { status: 'unlocked' | 'pending' | 'cancelled', ... }
+      if (result?.status === 'unlocked') {
         logPaywallEvent(variant?.id || 'A', 'purchase', { period: selected });
         setPremium(true);
         navigation.goBack();
+      } else if (result?.status === 'pending') {
+        // Charge succeeded but RevenueCat hasn't seen the entitlement
+        // yet (delivery lag). Tell the user, push them toward Restore
+        // Purchases. THIS WAS SILENTLY FAILING BEFORE — they got
+        // charged and saw nothing.
+        logPaywallEvent(variant?.id || 'A', 'purchase_pending', { period: selected });
+        Alert.alert(
+          t('paywall.pendingTitle', 'Satın alım alındı'),
+          t(
+            'paywall.pendingBody',
+            'Ödemen kabul edildi ama Premium henüz aktive olmadı. Birkaç saniye sonra Ayarlar → Satın Alımları Geri Yükle\'ye dokun.',
+          ),
+        );
       }
+      // status === 'cancelled' → user dismissed the system sheet; no alert.
     } catch (e) {
       const msg = e?.message || '';
       let body = t('common.tryAgain');
@@ -118,7 +161,22 @@ export default function PaywallScreen({ navigation }) {
       if (success) {
         setPremium(true);
         navigation.goBack();
+        return;
       }
+      // No active entitlement found OR restore failed. Apple guideline
+      // 3.1.1 requires explicit user feedback on EVERY Restore tap —
+      // success OR no-restore. The OLD code silently did nothing on
+      // false, which is a known rejection cause.
+      Alert.alert(
+        t(
+          'paywall.restoreNoneTitle',
+          'Geri yüklenecek satın alım bulunamadı',
+        ),
+        t(
+          'paywall.restoreNoneBody',
+          'Bu Apple ID ile yapılmış aktif bir abonelik yok. Yanlış hesap olabilir veya abonelik süresi dolmuş olabilir.',
+        ),
+      );
     } catch (e) {
       Alert.alert(t('common.error'), e?.message || t('common.tryAgain'));
     } finally {
@@ -311,20 +369,26 @@ export default function PaywallScreen({ navigation }) {
           </View>
         )}
 
-        {/* CTA */}
+        {/* CTA — disabled while packages are loading or unresolved so
+            the user can't tap a buy button that would error. Apple
+            also rejects paywalls where the price next to the CTA is
+            placeholder/fake. */}
         <TouchableOpacity
           onPress={handleSubscribe}
-          disabled={isSubscribing || isRestoring}
+          disabled={isSubscribing || isRestoring || loadingPackages || !packagesReady}
           activeOpacity={0.9}
           style={styles.ctaShadow}
         >
           <View
             style={[
               styles.ctaButton,
-              (isSubscribing || isRestoring) && { opacity: 0.6 },
+              (isSubscribing ||
+                isRestoring ||
+                loadingPackages ||
+                !packagesReady) && { opacity: 0.6 },
             ]}
           >
-            {isSubscribing ? (
+            {isSubscribing || loadingPackages ? (
               <ActivityIndicator color={LT.onPrimary} />
             ) : (
               <Text style={styles.ctaText}>
@@ -334,12 +398,18 @@ export default function PaywallScreen({ navigation }) {
           </View>
         </TouchableOpacity>
 
-        {/* Footer */}
+        {/* Apple-required trial disclosure (Guideline 3.1.2(a)).
+            Must state: trial length + actual price after trial +
+            billing period + auto-renewal — all on the same screen as
+            the CTA, before the user taps it. We build this from the
+            real StoreKit price so it matches what they'll be charged. */}
         <Text style={styles.footerNote}>
-          {t(
-            'paywall.autoRenew',
-            'Abonelik otomatik olarak yenilenir. İstediğin zaman ayarlardan veya App Store hesabından iptal edebilirsin.',
-          )}
+          {packagesReady
+            ? trialDisclosure
+            : t(
+                'paywall.autoRenew',
+                'Abonelik otomatik olarak yenilenir. İstediğin zaman ayarlardan veya App Store hesabından iptal edebilirsin.',
+              )}
         </Text>
 
         {/* Legal links — required by Apple Guideline 3.1.2 */}

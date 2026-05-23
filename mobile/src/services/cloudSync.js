@@ -294,6 +294,20 @@ export function mergeStates(localState, cloudPayload) {
       localState.lastLessonAtMs || 0,
       cloudPayload.lastLessonAtMs || 0,
     ),
+    // installedAt — prefer the OLDEST timestamp. Without this, a user
+    // installing on a 2nd device today gets the LOAD_STATE-fixup
+    // logic in AppContext picking today's date, then turning the
+    // first-24h grace period back on for an already-experienced user.
+    // The oldest install is the authoritative "I started using this"
+    // moment regardless of which device they're on now.
+    installedAt: (() => {
+      const l = localState.installedAt;
+      const c = cloudPayload.installedAt;
+      if (!l) return c || null;
+      if (!c) return l;
+      // ISO timestamp string compare is lexicographic-safe ascending.
+      return l <= c ? l : c;
+    })(),
   };
 }
 

@@ -16,6 +16,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useAuth } from '../../contexts/AuthContext';
+import { supabase } from '../../services/supabase';
 import { LT } from '../../config/lightTheme';
 
 export default function LoginScreen({ navigation }) {
@@ -41,7 +42,44 @@ export default function LoginScreen({ navigation }) {
     const { error } = await signIn({ email, password });
     setLoading(false);
     if (error) {
-      Alert.alert(t('common.error'), error.message || t('auth.invalidCredentials'));
+      const msg = error.message || '';
+      // Special-case "email not confirmed" — the user just needs to
+      // click the verification link, but the raw English error has no
+      // path forward. Offer a Resend button so they don't bounce off.
+      if (/not.confirmed|email_not_confirmed|email.*verify/i.test(msg)) {
+        Alert.alert(
+          t('auth.checkEmail', 'E-postanı kontrol et'),
+          t(
+            'auth.emailNotConfirmed',
+            'E-postanı doğrulamadın. Mailini kontrol et veya yeniden doğrulama maili gönder.',
+          ),
+          [
+            { text: t('common.cancel', 'İptal'), style: 'cancel' },
+            {
+              text: t(
+                'auth.resendConfirmation',
+                'Doğrulama mailini yeniden gönder',
+              ),
+              onPress: async () => {
+                try {
+                  await supabase.auth.resend({ type: 'signup', email });
+                  Alert.alert(
+                    t('common.done', 'Tamam'),
+                    t('auth.resendSent', 'Doğrulama maili yeniden gönderildi.'),
+                  );
+                } catch (e) {
+                  Alert.alert(
+                    t('common.error', 'Hata'),
+                    e?.message || t('common.tryAgain', 'Tekrar dene'),
+                  );
+                }
+              },
+            },
+          ],
+        );
+        return;
+      }
+      Alert.alert(t('common.error'), msg || t('auth.invalidCredentials'));
     }
   };
 
