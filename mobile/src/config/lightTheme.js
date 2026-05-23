@@ -1,8 +1,16 @@
-// Vivid Impact Light Theme — Stitch "Modern Kartlar" / "Klasik Monastik"
-// Bold red primary, white surfaces, Inter typography.
-// Used by redesigned screens: Path, Stats, Profile, Home.
+// Vivid Impact Theme — Stitch "Modern Kartlar" / "Klasik Monastik"
+// Bold red primary, light/dark mode aware, Inter typography.
 //
-// To roll back to dark M3 theme, swap imports back to ../config/constants -> M3.
+// The main export `LT` is STATIC and points at the light tokens — kept
+// for backward compatibility with every StyleSheet.create() call that
+// already lives in the codebase (build-time captured, won't react to
+// runtime theme switches).
+//
+// For NEW dynamic surfaces (root backgrounds, status bar tint, splash)
+// import `getThemedLT()` or use the `useDynamicLT()` hook from
+// `./theme.js`. Full dark migration is a separate sprint: this commit
+// only wires the foundation so a system-dark-mode user no longer sees
+// a white splash flash on cold start.
 
 export const LT = {
   // Surfaces (light, layered)
@@ -37,6 +45,46 @@ export const LT = {
   // Status
   error: '#BA1A1A',
   success: '#0F7B3D',
+};
+
+// Dark mode counterpart — same brand semantics, dark surfaces. Mirrors
+// `LT` key-for-key so a future runtime swap can drop these in without
+// any consumer needing to rename anything.
+export const LT_DARK = {
+  // Surfaces (dark, layered)
+  background: '#0A0A0B',
+  surface: '#0A0A0B',
+  surfaceContainerLowest: '#111114',
+  surfaceContainerLow: '#16161A',
+  surfaceContainer: '#1C1C20',
+  surfaceContainerHigh: '#232328',
+  surfaceContainerHighest: '#2B2B30',
+  surfaceVariant: '#2B2B30',
+
+  // Text on dark surfaces — high contrast, slight warm bias to soften
+  // pure-white at 3am reading.
+  onBackground: '#F2F2F0',
+  onSurface: '#F2F2F0',
+  onSurfaceVariant: '#C9B5B1',
+  outline: '#6B5450',
+  outlineVariant: '#3A2E2C',
+
+  // Brand — same vivid red but slightly desaturated for dark mode
+  // (pure red on dark vibrates uncomfortably; lowering chroma fixes).
+  primary: '#E31212',
+  primaryContainer: '#FF3D44',
+  onPrimary: '#FFFFFF',
+  onPrimaryContainer: '#FFEDED',
+
+  // Tertiary (cobalt blue accent — dark variant)
+  tertiary: '#535EFB',
+  tertiaryContainer: '#7B86FF',
+  onTertiary: '#FFFFFF',
+  onTertiaryContainer: '#EDEFFF',
+
+  // Status — same hues, slightly brighter to stand out on dark surfaces
+  error: '#FF6464',
+  success: '#3FCB70',
 };
 
 // Typography scale (Inter)

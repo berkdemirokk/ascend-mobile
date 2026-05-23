@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, useColorScheme } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -15,9 +15,16 @@ import {
   setupNotifResponseListener,
 } from './src/services/notifications';
 import { LT } from './src/config/lightTheme';
+import { getThemedLT } from './src/config/theme';
 
 export default function App() {
   const [i18nReady, setI18nReady] = useState(false);
+  // System color scheme — used to swap status bar tint + splash
+  // background so a user with system dark mode doesn't get a white
+  // flash on cold start. Full per-screen dark migration is a future
+  // sprint; this is phase 1.
+  const scheme = useColorScheme();
+  const T = getThemedLT(scheme);
 
   useEffect(() => {
     initI18n()
@@ -62,23 +69,26 @@ export default function App() {
       <View
         style={{
           flex: 1,
-          backgroundColor: LT.background,
+          backgroundColor: T.background,
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        <ActivityIndicator color={LT.primaryContainer} size="large" />
+        <ActivityIndicator color={T.primaryContainer} size="large" />
       </View>
     );
   }
 
   return (
     <ErrorBoundary>
-      <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: T.background }}>
         <SafeAreaProvider>
           <AuthProvider>
             <AppProvider>
-              <StatusBar style="dark" />
+              {/* StatusBar tint reacts to system color scheme so the
+                  clock + battery icons stay legible against whichever
+                  background the screens render. */}
+              <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
               <AppNavigator />
             </AppProvider>
           </AuthProvider>
