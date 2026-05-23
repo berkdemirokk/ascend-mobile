@@ -606,6 +606,13 @@
     "title": "🔥 {{streak}} günlük serin tehlikede",
     "body": "Bugünün dersini {{hours}} saat içinde bitir — streak'i koru."
   },
+  "streakLost": {
+    "label": "ZİNCİRİN KIRILDI",
+    "title": "{{count}} günlük zincirini kaybettin.",
+    "body": "Geri dönenler %47. Bugün başla — yarın sayı 2 olur.",
+    "bodyWithRecord": "Geri dönenler %47. Sen daha önce {{best}} gün gittin — bu kişi hala sende. Bugün başla.",
+    "cta": "YENİDEN BAŞLA"
+  },
   "moodCheckIn": {
     "label": "RUH HALİ KONTROLÜ",
     "title": "Bugün nasıl hissediyorsun?",

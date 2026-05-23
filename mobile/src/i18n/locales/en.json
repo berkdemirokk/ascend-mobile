@@ -608,6 +608,13 @@
     "title": "🔥 Your {{streak}}-day streak is at risk",
     "body": "Finish today's lesson in {{hours}}h — protect the streak."
   },
+  "streakLost": {
+    "label": "STREAK BROKEN",
+    "title": "You lost your {{count}}-day chain.",
+    "body": "47% of users come back. Start today — tomorrow it's 2.",
+    "bodyWithRecord": "47% of users come back. You once made it {{best}} days — that person is still in you. Start today.",
+    "cta": "START AGAIN"
+  },
   "moodCheckIn": {
     "label": "MOOD CHECK",
     "title": "How are you feeling today?",

@@ -163,6 +163,7 @@ const ACTION_TYPES = {
   USE_STREAK_FREEZE: 'USE_STREAK_FREEZE',
   AUTO_APPLY_STREAK_FREEZE: 'AUTO_APPLY_STREAK_FREEZE',
   CLEAR_STREAK_FREEZE_TOAST: 'CLEAR_STREAK_FREEZE_TOAST',
+  CLEAR_STREAK_LOST_INFO: 'CLEAR_STREAK_LOST_INFO',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -297,6 +298,13 @@ function appReducer(state, action) {
     case ACTION_TYPES.CLEAR_STREAK_FREEZE_TOAST:
       return { ...state, _streakFreezeToast: null };
 
+    case ACTION_TYPES.CLEAR_STREAK_LOST_INFO:
+      // Dismiss the post-loss empathy banner. Called from HomeScreen
+      // when the user taps the close (×) on the banner, OR implicitly
+      // after they complete a fresh lesson (so it doesn't keep showing
+      // forever after they've moved on).
+      return { ...state, _streakLostInfo: null };
+
     case ACTION_TYPES.START_VACATION: {
       // payload = { days } — clamps 1..7
       const days = Math.max(1, Math.min(7, action.payload?.days || 7));
@@ -414,6 +422,7 @@ function appReducer(state, action) {
         lessonHistory: {},
         unlockedAchievements: [],
         pathProgress: {},
+        _streakLostInfo: null, // banner shouldn't survive an explicit reset
       };
 
     case ACTION_TYPES.REFRESH_TODAY: {
@@ -509,12 +518,33 @@ function appReducer(state, action) {
       const newTotalXP = state.totalXP + finalXp;
       const newLevel = checkLevelUp(newTotalXP, state.level);
 
-      // Streak update — completing a lesson counts as today's action
+      // Streak update — completing a lesson counts as today's action.
+      // If the last completion was NOT yesterday (and not today), the
+      // streak resets to 1. When that happens AND the user had a real
+      // streak going (>= 3 days), we stash the old value in
+      // `_streakLostInfo` so HomeScreen can show an empathy banner
+      // instead of just silently showing "STREAK: 1" — the textbook
+      // "streak loss" churn moment that Duolingo's Streak Repair UX
+      // was built to soften. Cleared by CLEAR_STREAK_LOST_INFO.
       let newStreak = state.currentStreak;
       let newLastDate = state.lastCompletedDate;
+      let streakLostInfo = state._streakLostInfo || null;
       if (state.lastCompletedDate !== today) {
         const yesterday = getYesterdayDateString();
-        newStreak = state.lastCompletedDate === yesterday ? state.currentStreak + 1 : 1;
+        if (state.lastCompletedDate === yesterday) {
+          newStreak = state.currentStreak + 1;
+        } else {
+          // Reset path. Only record a "loss" event if the prior streak
+          // was meaningful — losing a 1-day streak isn't worth narrating.
+          if ((state.currentStreak || 0) >= 3) {
+            streakLostInfo = {
+              lost: state.currentStreak,
+              previousLongest: state.longestStreak || 0,
+              ts: Date.now(),
+            };
+          }
+          newStreak = 1;
+        }
         newLastDate = today;
       }
 
@@ -563,6 +593,15 @@ function appReducer(state, action) {
         currentStreak: newStreak,
         longestStreak: Math.max(state.longestStreak || 0, newStreak),
         lastCompletedDate: newLastDate,
+        // If a streak loss happened in THIS reducer run, we just set it
+        // above. If the user is completing the NEXT lesson after seeing
+        // the banner (i.e. coming back from a previous loss), the loss
+        // record from before is no longer needed — clear it so the
+        // banner doesn't keep showing while they're already rebuilding.
+        _streakLostInfo:
+          streakLostInfo !== state._streakLostInfo
+            ? streakLostInfo // just set by this dispatch
+            : null, // existing loss being cleared by a fresh completion
         lessonHistory: {
           ...(state.lessonHistory || {}),
           [today]: ((state.lessonHistory || {})[today] || 0) + 1,
@@ -685,6 +724,9 @@ export function AppProvider({ children }) {
     delete toSave._loaded;
     delete toSave._streakFreezeToast;
     delete toSave._milestoneToast;
+    // _streakLostInfo IS persisted: we want the empathy banner to
+    // survive an app restart so a user who closes the app right after
+    // losing their streak still sees it on the next open.
     AsyncStorage.setItem(STORAGE_KEYS.USER_STATE, JSON.stringify(toSave)).catch(
       (e) => console.error('[AppContext] Failed to save state:', e),
     );
@@ -786,6 +828,10 @@ export function AppProvider({ children }) {
 
   const clearStreakFreezeToast = useCallback(() => {
     dispatch({ type: ACTION_TYPES.CLEAR_STREAK_FREEZE_TOAST });
+  }, []);
+
+  const clearStreakLostInfo = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.CLEAR_STREAK_LOST_INFO });
   }, []);
 
   const startVacation = useCallback((days = 7) => {
@@ -961,6 +1007,7 @@ export function AppProvider({ children }) {
     setPremium,
     useStreakFreezeAction,
     clearStreakFreezeToast,
+    clearStreakLostInfo,
     startVacation,
     endVacation,
     completeDailyChallenge,

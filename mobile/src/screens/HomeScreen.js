@@ -31,6 +31,7 @@ import LessonQueueCard from '../components/LessonQueueCard';
 import DailyMysteryBox from '../components/DailyMysteryBox';
 import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
 import StreakRiskBanner from '../components/StreakRiskBanner';
+import StreakLostBanner from '../components/StreakLostBanner';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
 import DailyPlanCard from '../components/DailyPlanCard';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
@@ -67,8 +68,10 @@ export default function HomeScreen({ navigation }) {
     todayCompleted,
     lessonHistory,
     _streakFreezeToast,
+    _streakLostInfo,
     streakFreezes,
     clearStreakFreezeToast,
+    clearStreakLostInfo,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
     dailyMysteryBoxOpenedAt,
@@ -387,6 +390,24 @@ export default function HomeScreen({ navigation }) {
             </Text>
           </View>
         </TouchableOpacity>
+
+        {/* Empathy banner shown the first time the user opens Home
+            after losing a real streak (>=3 days). Persists across app
+            restarts; dismissed by tapping × or by starting a fresh
+            lesson. The cold "STREAK: 1" reset moment is the textbook
+            churn trigger in habit apps — this softens it. */}
+        {_streakLostInfo ? (
+          <StreakLostBanner
+            info={_streakLostInfo}
+            onRestart={() => {
+              clearStreakLostInfo();
+              if (currentLesson) {
+                attemptStartLesson(currentLesson.pathId, currentLesson.id);
+              }
+            }}
+            onDismiss={clearStreakLostInfo}
+          />
+        ) : null}
 
         {/* Habit chain — last 7 days */}
         <View style={styles.chainRow}>
