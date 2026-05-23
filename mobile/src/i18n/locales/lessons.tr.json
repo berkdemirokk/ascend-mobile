@@ -4996,10 +4996,10 @@
       },
       "11": {
         "title": "Günlük Squat",
-        "teaching": "Squat = tüm vücut hareketi. Kuadriseps, glutes, kor, denge. 50 yaşında zorlanmadan oturup kalkmak istiyorsan, 30'da squat yap. Eklem dostu, ekipmansız, etkili.",
-        "action": "Bugün 30 squat yap. Set bölersen 3x10. Form > sayı.",
-        "reflectionPrompt": "Squat formuna dikkat etmek nasıldı?",
-        "proTip": "Kalçayı geriye it, dizler ayak parmağı hizasını geçmesin. Aynaya bak ya da videoya çek.",
+        "teaching": "Sandalyeden zorla kalkıyorsun, **'eh yaş ilerliyor'** diyorsun. Aslında: **50 yaşındaysan** ve squat yapmıyorsan, **80'inde tuvalete yardımsız gidemezsin**. Bu **biyolojik tahmin**.\n\nSquat = **tüm vücut hareketi**. Kuadriseps, glutes, kor, hamstring, denge, mobilite. Tek hareket = bütün alt vücut sağlığı.\n\nBJSM çalışması: **30 saniye Sit-to-Stand testi** mortalite tahmin gücü daha yüksek **VO2 max'tan**. Yani 50 yaşındaki adam squat yapamıyorsa = 80'inde olmama riski yüksek.\n\nAyrıca:\n- **Kemik yoğunluğu** (osteoporoz önleme — özellikle kadın)\n- **Diz sağlığı** (zayıf bacak = diz **stres**)\n- **Sırt sağlığı** (zayıf glutes = sırt kompansasyon)\n- **Denge** (yaşlı düşmesi #1 ölüm sebebi 65+)\n\n**Doğru form**:\n- Ayaklar omuz hizası, hafif dışa\n- **Kalçayı geriye it** (sandalyeye otururken gibi)\n- Dizler **ayak parmağı hizasını geçmesin**\n- Sırt **düz** (bel kambur değil)\n- Göğüs **yukarı**\n- İniş: kalça **diz hizasının altı** (full depth)\n\n30+ yaş kişi → **günde 30 squat**. Eklem dostu, ekipmansız, etkili. 3 ay sonra: 'zorlanma' kelimesi unutulur.",
+        "action": "Bugün **30 squat** yap. Set bölersen **3x10**. **Form > sayı**.",
+        "reflectionPrompt": "Squat **formuna dikkat etmek** nasıldı? Hangi bölge en zayıf hissedildi?",
+        "proTip": "**Kalçayı geriye it**, dizler ayak parmağı hizasını geçmesin. **Aynaya bak** veya **videoya çek**.",
         "quiz": [
           {
             "q": "Squat formu?",
@@ -5027,10 +5027,10 @@
       },
       "12": {
         "title": "Plank Disiplini",
-        "teaching": "Kor güçsüzse her hareket sızdırır. Plank = pasif kor antrenmanı. 60 saniye plank = 100 sit-up'tan etkili. Sırt ağrısının %80'i zayıf kor.",
-        "action": "Bugün 30 saniye plank yap. Yarın 35, ertesi gün 40. 60'a ulaşana dek artır.",
-        "reflectionPrompt": "Plank tutmaya çalışırken zihninde ne oldu?",
-        "proTip": "Nefes verme. Yanlış: nefes tut. Doğru: yavaş nefes ver, kor aktif kalır.",
+        "teaching": "Sırt ağrın var. Doktora gittin: 'kor güçsüz'. Fizyoterapist aynı şeyi dedi. **Sırt ağrısının %80'i** kas dengesizliği, çoğu zaman = **zayıf kor**.\n\nKor = sadece **abs** değil. Kor = **derin abdominal + bel kasları + diyafram + pelvik taban**. Bir **silindir** gibi gövdeyi destekler. Zayıf kor = silindir gevşek = sırt **kompansasyon** yapar = ağrı.\n\nDr. Stuart McGill (Waterloo Üniversitesi, dünya bel ağrısı otoritesi): 'Sit-up = bel için **tehlikeli** (omurga fleksiyonu tekrarlanır). Plank = **güvenli + etkili**. **60 saniye plank** = 100 sit-up'tan **fonksiyonel olarak değerli**.'\n\nMekanizma: plank = **izometrik kasılma** = kor **bütün olarak** çalışır. Sit-up = **rektus abdominis** (yüzeysel) — derin stabilizasyon kasları zayıf kalır.\n\n**Progresyon**:\n- 1. gün: 30 sn\n- 1. hafta: 45 sn\n- 2. hafta: 60 sn\n- 1. ay: 90 sn\n- 3. ay: 2-3 dakika\n\nNefes kritik: **nefes tutmayın**. Yanlış: efforla nefes durur. Doğru: **yavaş nefes ver**, kor **aktif** kalır.\n\nForm: vücut **düz çizgi** (kalça yukarı veya aşağı olmamalı). Aynaya bak veya partnerden kontrol iste.",
+        "action": "Bugün **30 saniye plank** yap. Yarın 35, ertesi gün 40. **60 saniyeye ulaşana** dek artır.",
+        "reflectionPrompt": "Plank tutmaya çalışırken **zihninde ne oldu**? Hangi bölge en zayıf?",
+        "proTip": "**Nefes verme** — yanlış nefes tut. **Doğru**: yavaş nefes ver, kor aktif kalır.",
         "quiz": [
           {
             "q": "Plank başlangıç?",
@@ -5058,10 +5058,10 @@
       },
       "13": {
         "title": "Kardiyo Bölgeleri",
-        "teaching": "Tüm kardiyo aynı değil. Zone 2 (orta yoğunluk, konuşabildiğin tempoda) = mitokondri çoğalması, yağ yakımı, dayanıklılık. Zone 5 (sprint) = anlık güç. Çoğu insan zone 3-4'te takılır — etkisiz orta bölge.",
-        "action": "Bugün 30 dakika zone 2 kardiyo yap. Yürüyüş tempolu / hafif jog. Konuşabildiğin yoğunluk.",
-        "reflectionPrompt": "Zone 2 ne kadar yavaş geldi?",
-        "proTip": "Apple Watch ya da Garmin'de zone monitor var. Yoksa: konuşabiliyorsan zone 2.",
+        "teaching": "Koşmaya çıktın. 'Çok yorgun', 'kondisyon kötü' diyorsun, 30 dakika sonra **bitik**siz. Asıl sorun: **çok hızlı koştun** — Zone 3-4 (orta-yüksek yoğunluk). Bu **etkisiz orta bölge**.\n\n**Heart Rate Zones** (5 bölge sistemi):\n- **Zone 1**: %50-60 max kalp atışı — çok kolay (yürüyüş)\n- **Zone 2**: %60-70 — **konuşabildiğin tempo** (orta yoğunluk)\n- **Zone 3**: %70-80 — zorlanma başladı\n- **Zone 4**: %80-90 — zor (laktat eşiği)\n- **Zone 5**: %90-100 — maksimum (sprint)\n\nDr. Iñigo San-Millán (Colorado Üniversitesi, **Tour de France bilim danışmanı**): 'Elite atletler **zamanlarının %80'ini Zone 2'de** geçirir. %20 Zone 4-5. Zone 3 = **black hole** — hem yorucu hem etkisiz.'\n\n**Zone 2 faydası**:\n- **Mitokondri çoğalması** (hücresel enerji üretimi)\n- **Yağ yakımı** zirvesi (Zone 2 = primary fuel = fat)\n- **Dayanıklılık** zemininde\n- **Toparlanma** hızlı (ertesi gün enerjik)\n\nÇoğu insan Zone 3-4'te koşar: çok yorgun olur ama mitokondri **az gelişir**, yağ yerine **glikoz** yakar (limited supply).\n\nKritik test: **konuşabiliyorsan Zone 2**. Cümle yarıda kesilirse Zone 3+. **Hafta 3 kez × 30 dakika Zone 2** = 6 ay sonra **dayanıklılık 2x**.",
+        "action": "Bugün **30 dakika Zone 2 kardiyo** yap. **Konuşabildiğin yoğunluk** — yürüyüş tempolu / hafif jog.",
+        "reflectionPrompt": "**Zone 2** ne kadar **yavaş** geldi? 'Daha hızlı gideyim' dürtüsü kaç kez geldi?",
+        "proTip": "**Apple Watch / Garmin** = zone monitor. Yoksa: **konuşabiliyorsan = Zone 2**.",
         "quiz": [
           {
             "q": "Zone 2 ne demek?",
@@ -5089,10 +5089,10 @@
       },
       "14": {
         "title": "Mobilite Çalışması",
-        "teaching": "Esneklik ≠ mobilite. Esneklik pasif uzanma. Mobilite kontrollü hareket aralığı. 30+ yaşta her gün omuz/kalça/ayak bilek mobilitesi yapmazsan, 50'de hareket kısıtlanır.",
-        "action": "Bugün 5 dakika mobilite yap. Kol daireleri, kalça açılışı, ayak bileği rotasyonu.",
-        "reflectionPrompt": "Hangi eklem en kısıtlı geldi?",
-        "proTip": "Sabah duştan sonra yap. Kaslar ısınmış, mobilite optimum.",
+        "teaching": "Sabah yataktan kalkıyorsun → **omuz çıtırdıyor**. Pantolon giyerken **eğilmek zor**. Çoraplar **sıkıntılı**. Ama daha 35'sin. Sebep: **mobilite kaybı**.\n\n**Esneklik ≠ mobilite**. Karıştırılır:\n- **Esneklik** = pasif uzanma. Yardımla ne kadar uzanırsın? (Stretching test)\n- **Mobilite** = **aktif + kontrollü** hareket aralığı. Kendiliğinden ne kadar hareket edebilirsin?\n\nKelly Starrett (**Becoming a Supple Leopard**, mobilite pioneer): 'Modern hayatın **#1 fiziksel hatası** = mobilite ihmal. 30+ yaşta günlük omuz/kalça/ayak bileği mobilitesi yapmazsan, 50'de hareket **kısıtlanır** — ve geri dönüş yıllar sürer.'\n\n**Kritik 3 eklem**:\n1. **Omuz** — gün boyu öne kambur = kapsül daralır\n2. **Kalça** — 8 saat oturma = kalça fleksörleri kısalır\n3. **Ayak bileği** — esnek olmalı (squat, koşu için kritik)\n\nMekanizma: eklem **kıkırdağı** hareketle beslenir (sinovial sıvı pompalama). Hareketsiz eklem = beslenme kesilir = kıkırdak **incelir** = osteoartrit.\n\n**5 dakika günlük** = uzun vade büyük fark:\n- Kol daireleri (her yön 10)\n- Kalça açılışı (90/90 stretch, butterfly)\n- Ayak bileği rotasyonu + kalkma-inme\n- Boyun + üst sırt rotasyonu\n\nSabah duş sonrası **optimum** — kaslar ısınmış, kapsül yumuşamış.",
+        "action": "Bugün **5 dakika mobilite** yap. Omuz, kalça, ayak bileği. Yumuşak hareketler.",
+        "reflectionPrompt": "Hangi eklem **en kısıtlı** geldi? Sürpriz oldu mu?",
+        "proTip": "**Sabah duştan sonra** yap. Kaslar ısınmış = mobilite optimum + sakatlık riski sıfır.",
         "quiz": [
           {
             "q": "Mobilite vs esneklik?",
@@ -5120,10 +5120,10 @@
       },
       "15": {
         "title": "Öğün Zamanlaması",
-        "teaching": "Ne yediğin önemli, ama ne zaman yediğin de. Geç gece yemek = uyku kalitesi düşüşü, sindirim yavaşlığı. Son öğün yatmadan 3 saat önce. 19:00 yatma 22:00 = ideal.",
-        "action": "Bugün son öğünü 19:00'dan sonraya bırakma.",
-        "reflectionPrompt": "Erken son öğün uykuna nasıl etki etti?",
-        "proTip": "Erken yiyorsan akşam atıştırma riski düşer. Aç yatma — ağzın doluyken yatma arasını bul.",
+        "teaching": "Akşam 22:00 yemek yedin, 23:30 yattın. **'Niye uyuyamadım?'**. Çünkü beden **sindirim modunda**, uyku modu değil. Geç yemek = uyku kalitesi **dramatik düşüş** + sabah yorgun + kilo alma riski.\n\nSatchin Panda (Salk Institute) — kronobiyolog: 'Ne yediğin kadar **ne zaman yediğin** önemli. Beden sirkadiyen — sindirim sistemi **gündüz** çalışır, **gece** dinlenir.'\n\nKlinik kanıt:\n- **Geç yemek** → uyku kalitesi **%30 düşüş**\n- **Kalori aynı**, geç yiyen kişiler **%50 daha fazla** kilo alır (Garaulet 2013)\n- **GERD** (reflü), sindirim sorunları artar\n- **HGH (büyüme hormonu)** uyku başında pikine ulaşır — geç yemek bunu **engeller** = toparlanma az\n\nMekanizma: yemek = **insülin spike** = melatonin **bastırılır**. Beden 'gündüz' moduna geçer. Yatış sırasında bu çatışma = yüzeysel uyku.\n\n**Kural**: son öğün **yatmadan 3 saat önce**. 22:00 yatış → **19:00 son öğün**.\n\n3 saat sırasında:\n- Mide boşalır\n- İnsülin baseline'a düşer\n- Glikoz stabilize olur\n- Yatış parasempatik dominant\n\n**Yan etki**: erken yemek = akşam atıştırma riski **düşer** (kavurma şişerse atıştırma akıllılığı zayıflar). 'Aç yatmak' diye korkma — 3 saat boşluk **açlık değil**, **sindirim tamamlanması**.",
+        "action": "Bugün **son öğünü 19:00'dan sonraya bırakma**.",
+        "reflectionPrompt": "Erken son öğün **uykuna nasıl etki etti**? Daha derin mi uyudun?",
+        "proTip": "**Erken yiyorsan** akşam atıştırma riski düşer. Aç yatma — 3 saat boşluk **sindirim**, açlık değil.",
         "quiz": [
           {
             "q": "Son öğün yatma arası?",
@@ -5151,10 +5151,10 @@
       },
       "16": {
         "title": "Şekersiz Gün",
-        "teaching": "Şeker = bağımlılık molekülü. Beyin ödül merkezini hijack eder. 1 günlük şekersiz challenge: meyveden gelen doğal şeker hariç. Çikolata, kek, gazlı içecek, paketli ürün yok.",
-        "action": "Bugün hiç işlenmiş şeker tüketme.",
-        "reflectionPrompt": "Şekersiz günde hangi anda en çok özledin?",
-        "proTip": "İlk 3 gün zor, 4. günden sonra özlem yumuşar. 14. günde tatlı seni rahatsız etmeye başlar.",
+        "teaching": "Ders 4'te 1 günlük şekersizle başladın. **Bugün tekrar**, ama bu sefer **derin bilinçle**.\n\nNicole Avena (Princeton 2008) çalışması: ratlarda **şeker = kokain'den daha bağımlılık yapıcı**. Beyin **ödül merkezini hijack** eder — dopamin spike + tolerans + craving + withdrawal. Klasik bağımlılık paterni.\n\nRobert Lustig: 'İşlenmiş şeker = **toksik**. Karaciğer alkol gibi metabolize eder. Kalori değil — **endokrin disruptor**.'\n\nİstatistik: ortalama Amerikalı **22 çay kaşığı** şeker/gün (88 gram). WHO önerisi: **6 çay kaşığı altı** (25g). **3-4 kat fazla**.\n\n**1 günlük şekersiz challenge**:\n- ✅ Doğal meyve (lif insülini yumuşatır)\n- ❌ Çikolata\n- ❌ Kek, kurabiye\n- ❌ Gazlı içecek (Coca, Fanta, hatta 'diet')\n- ❌ Paketli atıştırmalık\n- ❌ Hazır soslar (ketçap, BBQ — gizli şeker)\n- ❌ Süt ürünleri tatlandırıcı (yoğurt-meyveli)\n\nMekanizma: 1 gün şekersiz = **insülin baseline'ı düşer** = enerji **kararlı**. **Yağ yakımı** başlar (insülin yüksek = yağ yakımı engellenir).\n\nİlk 3 gün **zor** (kafa ağrısı, sinirlilik = withdrawal). 4. gün yumuşar. 14. günde tatlı **rahatsız** etmeye başlar (reseptör resensitizasyonu).",
+        "action": "Bugün **hiç işlenmiş şeker** tüketme. Doğal meyve OK.",
+        "reflectionPrompt": "Şekersiz günde **hangi anda en çok özledin**? Hangi tetikleyici geldi?",
+        "proTip": "İlk 3 gün **zor**, 4. günden sonra özlem yumuşar. **14. günde tatlı seni rahatsız** etmeye başlar.",
         "quiz": [
           {
             "q": "Şekersiz challenge süresi?",
@@ -5182,10 +5182,10 @@
       },
       "17": {
         "title": "Alkol Farkındalığı",
-        "teaching": "Alkol = beden için stres + uyku kalitesi düşüşü + protein sentezi engeli. 1 kadeh = 3 gün toparlanma. \"Sosyal\" alkol bile uzun vadede zehir. Disiplinli insan haftada 0-2 kadeh.",
-        "action": "Bugün alkol tüketme. Eğer alışkansan, \"alkolsüz pazartesi\" diye başla.",
-        "reflectionPrompt": "Alkolsüz akşam nasıl geçti? Uyku kalitesi farkı?",
-        "proTip": "Sosyal ortamda \"soda + lime\" iste. Görüntüsü kokteyl, etkisi 0.",
+        "teaching": "Cuma akşam **2 bira** içtin. **'Sadece 2 biraydı'** diyorsun. Cumartesi sabah yorgun. Pazar günü hala 'çekik' hissi. Pazartesi nihayet **normal**. **3 gün kaybettin**. Bu **biyolojik gerçek**.\n\nGeçen 10 yılda alkol bilimi **devrim** geçirdi:\n- **Lancet (2018)**: 'Sağlıklı alkol miktarı = **sıfır**.' Önceki 'kırmızı şarap iyidir' tezleri **çürütüldü**.\n- **George Koob** (NIAAA başkanı): 'Alkol = **Class 1 carcinogen** (kanserojen)' — tütün, asbest, plütonyum ile aynı kategoride.\n- **Andrew Huberman** (Stanford): 'Düzenli **haftada 2+ kadeh** = beyin **hacim kaybı** (özellikle prefrontal kortex).'\n\nMekanizma:\n- **Uyku**: REM **%30 azalır** — toparlanma yok\n- **Protein sentezi**: 24 saat **engellenir** — kas onarımı yok\n- **Kortizol**: 12-24 saat yüksek kalır — stres\n- **Mikrobiyom**: 3-7 gün bozulur — sindirim, immün, ruh hali\n- **Testosteron**: %30 düşer geçici\n- **HGH**: %70 düşer (özellikle yatma öncesi alkol)\n\n**1 kadeh = 3 gün toparlanma** (mikrobiyom). **'Sosyal alkol'** mit — biyolojik etki **doza orantılı**.\n\n**Disiplinli kişi: haftada 0-2 kadeh max**. Tercihen **0** veya **özel günler**.\n\nSosyal ortamda 'soda + lime + buz' iste — görüntü kokteyl, etki **sıfır**.",
+        "action": "Bugün **alkol tüketme**. Düzenli içiyorsan: **'Alkolsüz pazartesi'** ile başla.",
+        "reflectionPrompt": "Alkolsüz akşam nasıl geçti? **Uyku kalitesi farkı** belirgin miydi?",
+        "proTip": "Sosyal ortamda **'soda + lime + buz'** iste. Görüntü kokteyl, etki **sıfır**.",
         "quiz": [
           {
             "q": "1 kadeh alkol toparlanma?",
@@ -5213,10 +5213,10 @@
       },
       "18": {
         "title": "Bağırsak Sağlığı",
-        "teaching": "Bağırsak = \"ikinci beyin.\" Bağırsak florası bozuk = depresyon, yorgunluk, bağışıklık zayıflığı. Çözüm: fermente gıda (yoğurt, kefir, lahana turşusu) + lif (yeşillik, baklagil) + işlenmiş yiyecek azaltma.",
-        "action": "Bugün 1 fermente gıda + 1 yeşillik öğünü yap.",
-        "reflectionPrompt": "Bağırsak sağlığını ne kadar düşünüyordun?",
-        "proTip": "Sabah 1 yemek kaşığı kefir. 1 hafta sonra fark hissedilir.",
+        "teaching": "Depresyon, yorgunluk, sık hasta olma, alerjı — bunlardan herhangi biriyse, **bağırsak floranı düşün**. Eski model: 'beden = ayrı sistemler, bağırsak sadece sindirim.' Yeni model: **'gut-brain axis'** — bağırsak = **ikinci beyin**.\n\nDr. Emeran Mayer (UCLA, **The Mind-Gut Connection**): 'Bağırsak duvarında **500 milyon nöron** var (omurilikten daha çok). Bağırsak florası → vagus siniri → beyin. Serotonin %95'i bağırsakta üretilir.'\n\nKlinik kanıt:\n- **Depresyon** = bağırsak florası **disbiyoz** (Sudo et al., Foster et al.)\n- **Otoimmün hastalıklar** = bağırsak geçirgenliği (leaky gut)\n- **Obezite** = bağırsak bakteri profili farklı\n- **Demans riski** = bağırsak inflamasyon korelasyonu\n\n**Çözüm 3 prensip**:\n1. **Fermente gıda** (probiyotik): yoğurt, kefir, lahana turşusu, kombucha, miso\n2. **Lif** (prebiyotik — iyi bakteri yemeği): yeşillik, baklagil, tam tahıl, meyve\n3. **İşlenmiş gıda azalt** (emülgatör, koruyucu = florayı öldürür)\n\nMekanizma: çeşitli bakteri = sağlıklı flora. Tek tip = zayıf flora. **Çeşitlilik = sağlık**.\n\n**Sabah 1 yemek kaşığı kefir** = 1 hafta sonra **fark hissedilir** (uyku, ruh hali, sindirim, enerji).\n\n**Hızlı test**: kabızlık var mı? Şişkinlik? Gaz fazla? Bunlar **bağırsak alarmları**.",
+        "action": "Bugün **1 fermente gıda + 1 yeşillik öğünü** yap.",
+        "reflectionPrompt": "Bağırsak sağlığını **ne kadar düşünüyordun**? Belirti var mı şu an?",
+        "proTip": "**Sabah 1 yemek kaşığı kefir**. **1 hafta sonra** fark hissedilir — uyku, ruh hali, sindirim.",
         "quiz": [
           {
             "q": "Bağırsak = ?",
@@ -5244,10 +5244,10 @@
       },
       "19": {
         "title": "Güneş Maruziyeti",
-        "teaching": "D vitamini eksikliği = halk sağlığı krizi. Çoğu insan kronik düşük. Çözüm: günde 15-20 dk doğrudan güneş (kol/yüz). Krem yokken. Sabah/öğle güneşi en güçlü.",
-        "action": "Bugün 15 dakika doğrudan güneş al. Krem yok, açık alan.",
-        "reflectionPrompt": "Güneş maruziyeti ruh halini nasıl etkiledi?",
-        "proTip": "Öğle yemeğini dışarıda ye. 30 dakika güneş + sosyal değer.",
+        "teaching": "Sürekli yorgun, **'mevsimsel depresyon'** dedin. Kemikler ağrıyor, bağışıklık zayıf, ruh hali düşük. Çoğu zaman **görmezden gelinen sebep**: **D vitamini eksikliği**. \n\nMichael Holick (Boston University, D vitamini uzmanı): 'D vitamini eksikliği = **halk sağlığı krizi**. Dünya nüfusunun **%50'sinden fazlası** yetersiz. Modern hayatın **gizli salgını**.'\n\nNiye? Çünkü:\n- 8 saat **ofiste** (güneş yok)\n- Dışarı çıkıyorsan **krem** (UV bloğu = D vitamini sentezi sıfır)\n- Trafikteyim → arabada **cam** (UV-B geçmez)\n- Dökültü beslenme — D vitamini gıdadan **çok az** (somon, yumurta sarısı, mantar)\n\n**Sonuç**: kronik düşük D vitamini = düşük serotonin, zayıf kemik, kötü bağışıklık, depresyon riski %50 artar.\n\nÇözüm **basit ama radikal**: günde **15-20 dakika doğrudan güneş** (kol + yüz). **Krem yok**. **Cam yok**. Açık alan.\n\nSabah/öğle güneşi en güçlü (UV-B yoğun). Türkiye gibi orta enlemde **Mayıs-Eylül** ideal. Kış aylarında **takviye** gerek.\n\nMekanizma: cilt UV-B → kolesterol → **D3 sentezi** → karaciğer-böbrek → aktif D vitamini → 200+ genetik fonksiyon.\n\n**Cilt kanseri riski?** Aşırıya kaçma yasak (yanma asla), ama **15-20 dakika** = optimum risk/fayda.",
+        "action": "Bugün **15 dakika doğrudan güneş** al. **Krem yok**, **açık alan** (kol + yüz).",
+        "reflectionPrompt": "Güneş maruziyeti **ruh halini** nasıl etkiledi? Enerji, motivasyon?",
+        "proTip": "**Öğle yemeğini dışarıda ye**. 30 dakika güneş + sosyal değer + aktif öğle.",
         "quiz": [
           {
             "q": "D vitamini için süre?",
@@ -5275,10 +5275,10 @@
       },
       "20": {
         "title": "Yatmadan Esneme",
-        "teaching": "Sırt-bel-bacak gerginliği = uyku kalitesi düşüşü. Yatmadan 5 dk esneme = parasempatik aktivasyon, kas gevşemesi, daha derin uyku. Yoga gerekmez, basit hareketler.",
-        "action": "Bu gece yatmadan 5 dk esneme yap. 3 hareket: öne eğil, butterfly, omuz açılışı.",
-        "reflectionPrompt": "Esnemeli akşamla esnememiş akşam farkı?",
-        "proTip": "Yataktayken yap. Yer doşeği gerekmez. Sırtüstü, bacaklar yukarı duvara.",
+        "teaching": "Yatağa girdin → sırt **gergin**, bel **sıkı**, bacaklar **rahatsız**. Saatlerce dönüyorsun, **uyuyamıyorsun**. Beden 'gerilimli', beyin **adapte** olamıyor. Çoğu zaman ihmal edilen çözüm: **yatmadan 5 dakika esneme**.\n\nDr. Anita Shelgikar (Michigan Üniversitesi, uyku tıbbı): 'Yatmadan önce **hafif esneme** = parasempatik aktivasyon = uyku kalitesi **%30 artar**. Yoga gerek değil — **basit hareketler** yeter.'\n\nMekanizma: gerilmiş kas → vücut sürekli 'tehdit' sinyali → kortizol yüksek → uyku kalitesi düşer. Esneme = kas gevşeme = parasempatik dominant = **'safe to sleep'** sinyali.\n\n**5 dakika 3 hareket** yeter:\n\n1. **Öne eğilme** (forward fold) — 1 dk\n   - Otur, bacakları öne uzat, gövdeyi öne eğ\n   - Hamstring + bel + omurga\n\n2. **Butterfly stretch** — 1 dk\n   - Otur, ayak tabanlarını birleştir\n   - Dizleri yere doğru bastır\n   - Kalça açılışı\n\n3. **Omuz + boyun açılışı** — 2 dk\n   - Kollar yukarı, sağ-sol esnetme\n   - Boyun rotasyonu\n   - Üst sırt ve omuz açılışı\n\n+ son 1 dk: **derin nefes** (4 sn al / 6 sn ver)\n\n**Yataktayken yap** — yer döşeği gerek değil:\n- Sırtüstü, bacaklar yukarı **duvara** (legs up the wall — yoga 'restorative')\n- 3-5 dk = mucize. Lenf akışı, parasempatik max.",
+        "action": "Bu gece **yatmadan 5 dk esneme** yap. 3 hareket: öne eğil, butterfly, omuz.",
+        "reflectionPrompt": "**Esnemeli** akşamla **esnememiş** akşam farkı? Uykuya dalış süresi değişti mi?",
+        "proTip": "**Yataktayken** yap. Yer döşeği gerek değil. **Sırtüstü, bacaklar duvara** = mucize hareket.",
         "quiz": [
           {
             "q": "Yatmadan önce esneme?",
@@ -5306,10 +5306,10 @@
       },
       "21": {
         "title": "Oturuş Postürü",
-        "teaching": "Günün 8 saati oturuyorsan, postürün her şeyi etkiler. Doğru oturuş: ayaklar yerde, dizler 90°, kalça en yüksek nokta, omuzlar geride. Yanlış: kambur, çapraz bacak, sandalye ucu.",
-        "action": "Bugün her saat 30 saniye postür kontrolü yap. Saatte 1 kez 30 sn ayağa kalk.",
-        "reflectionPrompt": "Postür farkındalığın gün boyu nasıl değişti?",
-        "proTip": "Bel yastığı kullan. 5 TL'lik yastık, 5.000 TL'lik kiropraktör masrafını önler.",
+        "teaching": "Akşam **kambur** kalkıyorsun masandan. Boyun ağrı, bel sızlama, omuzlar **öne kapanmış**. Bu, **8 saatlik kötü postürün** sonucu. Aynı sahne yarın da, **bir yıl sonra** = kronik ağrı.\n\nDr. Kenneth Hansraj (NY Spine Surgery): boyun her **2.5 cm öne** eğildiğinde omurgada **ekstra 5 kg yük**. Telefon bakarken (15-30°) = **18-27 kg ekstra**. Bunu **günde saatlerce** yapıyorsun.\n\n**Doğru oturuş**:\n- **Ayaklar yerde** (sallanmasın)\n- **Dizler 90°** (kalça hizasında veya hafif altında)\n- **Kalça** sandalyenin en derin noktasında\n- **Sırt destekli** (bel yastığı varsa daha iyi)\n- **Omuzlar geride** ve **gevşek** (yukarı çekme)\n- **Boyun nötr** (ekran göz hizasında)\n- **Kollar** masada veya destekli, omuz düşük\n\n**Yanlış**:\n- Kambur (yuvarlak omuz)\n- Çapraz bacak (pelvis döner = bel **dengesiz**)\n- Sandalye ucunda (destek yok)\n- Telefonla aşağıya bakma\n\nMekanizma: kötü postür = kas dengesizliği. Bazı kaslar **kısalır** (göğüs, kalça fleksörü), bazıları **uzar** (sırt, glutes). Vücut **adapte** olur ama **fonksiyon kaybı** ile.\n\n**Saat başı 30 sn ayağa kalk** + **postür kontrolü**. Apple Watch / Garmin = otomatik hatırlatıcı. Yoksa: telefon timer.\n\n**Bel yastığı**: ₺50-200. Bir kiropraktör seansı = ₺500-1500. Yatırım net.",
+        "action": "Bugün **her saat 30 saniye postür kontrolü**. Saatte 1 kez **30 sn ayağa kalk**.",
+        "reflectionPrompt": "Postür farkındalığın **gün boyu** nasıl değişti? Hangi an en kötüydü?",
+        "proTip": "**Bel yastığı** kullan. ₺50'lik yastık, ₺5000'lik kiropraktör masrafını önler.",
         "quiz": [
           {
             "q": "Doğru oturuş?",
@@ -5337,10 +5337,10 @@
       },
       "22": {
         "title": "Uyku Hijyeni",
-        "teaching": "Uyku ilaç değil — günlük tasarımdır. 8 koşul: 1) sabit saat, 2) karanlık, 3) sessiz, 4) serin (18°C), 5) telefonsuz, 6) son öğün 3h önce, 7) kafein 14:00'dan sonra yok, 8) alkol minimum.",
-        "action": "Bugün 8 koşulu kontrol et. Hangisi bozuk?",
-        "reflectionPrompt": "En kolay düzelteceğin koşul hangisi?",
-        "proTip": "8 koşulu yatak başı kâğıda yaz. Her gece tikle. 30 günde sistem oturur.",
+        "teaching": "Doktora gittin: 'Uyuyamıyorum.' Reçete: **uyku ilacı**. 1 ay sonra hala uyuyamıyor + ilaç bağımlılığı + sabah berbat. **Yanlış yaklaşım**.\n\nMatthew Walker: 'Uyku **ilaç değil** — **günlük tasarımdır**. İlaç sadece **sedasyon** verir (bayılma), gerçek uyku (REM + N3) gelmez. Çözüm: **uyku hijyeni**.'\n\n**Uyku hijyeni = 8 koşul**:\n\n1. **Sabit yatış-kalkış saati** (±15 dk)\n2. **Tam karanlık** (perde, post-it ile LED kapat)\n3. **Sessiz** (kulak tıkacı, beyaz gürültü)\n4. **Serin** (18-20°C)\n5. **Telefonsuz** (yatak odasında değil)\n6. **Son öğün 3+ saat önce** (Ders 15)\n7. **Kafein 14:00'dan sonra yok** (yarı ömür 5-6 saat — 14:00 kahve gece yarısına etki eder)\n8. **Alkol minimum** (Ders 17 — REM bozucu)\n\nHer biri **%10-20 fark**. Hepsi birlikte = **2x kalite**.\n\nMekanizma: SCN (sirkadiyen saat) → melatonin → uyku derinliği → toparlanma. Her koşul SCN'i destekler veya bozar.\n\nKritik bilgi: **'eskiden iyi uyurum'** mit. Beden yaşlandıkça uyku **doğal kötüleşir** — ama hijyenle **30 yaş gencin uykusu** mümkün.\n\n**Pratik**: 8 koşulu kâğıda yaz, yatak başı koy. Her gece tikle. **30 günde sistem oturur** → manuel kontrol gerek değil.",
+        "action": "Bugün **8 koşulu kontrol et**. Hangisi **bozuk**? Listele.",
+        "reflectionPrompt": "**En kolay düzelteceğin** koşul hangisi? Bugün başlat.",
+        "proTip": "**8 koşulu yatak başı kâğıda yaz**. Her gece tikle. 30 günde sistem oturur.",
         "quiz": [
           {
             "q": "Optimum oda sıcaklığı?",
@@ -5368,10 +5368,10 @@
       },
       "23": {
         "title": "Plato Kırma",
-        "teaching": "Antrenmanda 4-6 hafta sonra ilerleme durur — plato. Beden adapte olur. Kırmak için: 1) ağırlık artır, 2) tekrar artır, 3) dinlenme süresini değiştir, 4) hareket çeşitliliği. Tek değişken yeter.",
-        "action": "Bugün antrenmanında 1 değişken değiştir (sayı, ağırlık, tempo, hareket).",
-        "reflectionPrompt": "Hangi değişkeni değiştirdin? Beden tepkisi?",
-        "proTip": "6 hafta sonra plato — 7. hafta yeniden değiştir. Beden adapte oldukça sen de adapte ol.",
+        "teaching": "5 hafta düzenli antrenman, hızlı ilerleme, motivasyon yüksek. **6. hafta**: aynı kilolar zorlanır, push-up sayısı **durdu**, kas **büyümüyor**. **Plato**. Çoğu insan tam bu noktada bırakır.\n\nBilim: **adaptasyon**. Beden **konfor zonuna** alıştı. Aynı uyaran = aynı tepki. **Yeni uyaran** = yeni adaptasyon.\n\n**Plato kırma stratejileri** (sadece **1** değiştir, hepsi değil — değişken aşırı = sakatlık):\n\n1. **Ağırlık artır** (progressive overload — en güçlü):\n   - Push-up zor → diz üstü → düz → dizli plus → bir kol\n   - Squat → goblet squat → bulgaria split → tek bacak\n\n2. **Tekrar artır**:\n   - 10 → 12 → 15 (8 ile mevcut ağırlığı kaldıramazsan ağırlığı düşür)\n\n3. **Dinlenme süresini değiştir**:\n   - 60 sn → 90 sn (güç için)\n   - 60 sn → 30 sn (dayanıklılık için)\n\n4. **Tempo değiştir**:\n   - 3 saniye düş, 1 sn dur, 1 saniye kalk (TUT — time under tension)\n\n5. **Hareket çeşitliliği**:\n   - Klasik squat → bulgaria split squat\n   - Standart push-up → diamond push-up\n\n**Tek değişken yeter** — hepsini birden değiştirme.\n\n**Döngü**: 4-6 hafta belirli rutin → 1 hafta deload (kolay) → yeni rutin (değişken farklı). Bu **periyodizasyon** = elite atlet stratejisi.\n\nMekanizma: yeni uyaran = yeni nöral patika + yeni kas fibri = yeni adaptasyon. Beden adapte oldukça **sen de adapte ol**.",
+        "action": "Bugün antrenmanında **1 değişken değiştir** (sayı, ağırlık, tempo, hareket).",
+        "reflectionPrompt": "Hangi değişkeni değiştirdin? **Beden tepkisi** nasıldı?",
+        "proTip": "**6 hafta sonra plato** = 7. hafta yeniden değiştir. Beden adapte oldukça **sen de adapte ol**.",
         "quiz": [
           {
             "q": "Plato kaç hafta sonra?",
@@ -5399,10 +5399,10 @@
       },
       "24": {
         "title": "Nefes Kontrolü",
-        "teaching": "Nefes = otonom sinir sisteminin uzaktan kumandası. Hızlı nefes = stres. Yavaş nefes = sakinlik. Burundan al, nefesi 1.5x kadar uzun ver. 5 dk pratik = anlık sakinlik.",
-        "action": "Bugün stresli anda 1 dakika 4 sn al / 6 sn ver tekniğini uygula.",
-        "reflectionPrompt": "Nefes pratiği stresini ne kadar değiştirdi?",
-        "proTip": "Burnundan nefes al. Ağızdan nefes alma alışkanlığı = uyku apnesi riski + diş çürüğü.",
+        "teaching": "Stresli bir an: kalp atışı hızlı, eller titrek, kafa karışık. **'Sakin ol'** der iç sesin — ama beden **dinlemiyor**. Çünkü beden **otomatik** çalışır. Tek istisna: **nefes**.\n\n**Nefes = otonom sinir sisteminin uzaktan kumandası**. Diğer her şey (kalp, sindirim, hormon) **otomatik**, sadece nefes **bilinçli + otomatik**. Bu **kapı**.\n\nAndrew Huberman (Stanford nöroscientist): 'Nefes paterni → vagus siniri → kalp ritmi + hormonlar + zihin durumu. **Tek 1-2 dakikalık nefes pratiği** = anlık sinir sistemi reset.'\n\n**Temel kural**: nefes verişi nefes alıştan **uzun** olursa → parasempatik (sakinlik) dominant. Tersi olursa → sempatik (uyanıklık, stres).\n\n**Pratik formüller**:\n- **4-6 yöntemi** (sakinlik): 4 sn al / 6 sn ver — herhangi an\n- **4-7-8** (uyku öncesi, Andrew Weil): 4 sn al / 7 sn tut / 8 sn ver\n- **Box breathing** (Navy Seals): 4 sn al / 4 tut / 4 ver / 4 tut\n- **Physiological sigh** (Huberman): 2 hızlı al / 1 uzun ver — anlık stres düşürme\n\nMekanizma: yavaş nefes ver → diyafram → vagus siniri → kalp atışı yavaş → kortizol düşük → **sakin** beyin.\n\n**Burundan nefes al** kritik. Ağızdan nefes = filtre yok + nemlendirme yok + sürekli ağız kuru + diş çürüğü riski + uyku apnesi riski. Burun = doğal filtre + ısıtıcı + nemlendirici.\n\n**Stresli ana** = 1 dakika 4-6 = anlık fark.",
+        "action": "Bugün **stresli anda** 1 dakika **4 sn al / 6 sn ver** uygula.",
+        "reflectionPrompt": "Nefes pratiği **stresini ne kadar değiştirdi**? Anlık mı yoksa kalıcı mı?",
+        "proTip": "**Burundan nefes al**. Ağızdan nefes alma = uyku apnesi + diş çürüğü + sürekli ağız kuru.",
         "quiz": [
           {
             "q": "Nefes ritmi sakinlik?",
@@ -5430,10 +5430,10 @@
       },
       "25": {
         "title": "Toparlanma Protokolleri",
-        "teaching": "Antrenman küçük yıkım — toparlanma onarım. Kötü toparlanma = sürekli yorgun. İyi toparlanma araçları: 1) uyku 7-9 saat, 2) protein, 3) hidrasyon, 4) yürüyüş, 5) sıcak/soğuk kontrast.",
-        "action": "Bugün toparlanmanın 5 koşulundan en az 4'ünü uygula.",
-        "reflectionPrompt": "Hangi toparlanma aracı en çok fark yarattı?",
-        "proTip": "Antrenman sonrası soğuk duş = enflamasyon azaltır. Sıcak banyo = kas gevşemesi.",
+        "teaching": "Pazartesi sert antrenman. Salı **kasların ağrıyor**. Çarşamba **hala ağrı**. Bir hafta sonra **motivasyonsuz**. Sebep: **toparlanma yok**.\n\n**Antrenman = küçük yıkım. Toparlanma = onarım.** Kas, antrenmanda değil — **dinlenmede büyür**. Kötü toparlanma = ilerleme **sıfır**, yaralanma riski yüksek, kronik yorgunluk.\n\nDr. Andy Galpin (Cal State Fullerton, performance scientist): 'Profesyonel atletler **antrenmandan çok toparlanmaya** önem verir. Çünkü antrenmanı kim yapar? Herkes. Toparlanmayı doğru yapan? **Şampiyon olan**.'\n\n**5 toparlanma aracı** (önem sırasıyla):\n\n1. **Uyku 7-9 saat** — en güçlü. HGH (büyüme hormonu) bu sürede salgılanır, kas onarımı zirvesinde.\n\n2. **Protein** — günde **1.6g/kg** (antrenman günleri). Aminoasit = kas yapı taşı.\n\n3. **Hidrasyon** — 3L günde. Su = hücresel taşıma + atık temizleme.\n\n4. **Aktif toparlanma** (yürüyüş) — kan dolaşımı = atık temizlenir + besinler ulaşır. Tam dinlenme = az verimli.\n\n5. **Sıcak/soğuk kontrast** — soğuk duş antrenman sonrası = enflamasyon düşer. Sıcak banyo = kas gevşeme. İkisi alternatifli = lenf pompası.\n\n**Pratik**: hafta 5/2 = 5 gün antrenman + 2 gün **aktif toparlanma** (yürüyüş, esneme, hafif mobilite). Tam dinlenme **yanlış strateji** — beden 'unutur'.\n\nMekanizma: toparlanma = parasempatik dominant + protein sentezi + glikojen yenileme + inflammation çözünmesi.",
+        "action": "Bugün **toparlanmanın 5 koşulundan en az 4'ünü** uygula.",
+        "reflectionPrompt": "Hangi toparlanma aracı **en çok fark yarattı**? Hangi öncelik en yüksek hissedildi?",
+        "proTip": "**Antrenman sonrası soğuk duş** = enflamasyon azaltır. **Sıcak banyo** = kas gevşemesi.",
         "quiz": [
           {
             "q": "Toparlanma araçları?",
