@@ -200,6 +200,8 @@
     "nextPage": "Next",
     "previousPage": "Previous page",
     "startQuiz": "Start quiz",
+    "depthContext": "CONTEXT",
+    "depthApply": "HOW TO APPLY",
     "proTip": "PRO TIP",
     "quiz": "Quiz",
     "quizHint": "Pick the answer you think is correct.",

@@ -908,6 +908,51 @@ export default function LessonScreen({ navigation, route }) {
               </Text>
             </View>
             <Text style={styles.explainText}>{currentQuestion.explain}</Text>
+
+            {/* DEPTH PASS — the audit's "quiz asks but doesn't teach"
+                finding. After the short `explain` we add two
+                AUTOMATIC depth surfaces, derived from existing lesson
+                content (no new authoring required for the 250-lesson
+                library):
+
+                1. KONTEKST — first sentence of the Bilim paragraph
+                   (teachingPages[1]), which holds the research
+                   citation. Reminds the user WHY this answer matters
+                   beyond the local quiz, anchoring it to the lesson's
+                   evidence base.
+
+                2. NASIL UYGULA — proTip (existing field). The user
+                   already saw it on the last teaching page; surfacing
+                   it again right after they engaged with the quiz
+                   creates spaced repetition for free.
+
+                Both surfaces are conditional — empty content means
+                the section just doesn't render, no awkward labels. */}
+            {teachingPages[1] ? (
+              <View style={styles.quizDepthSection}>
+                <Text style={styles.quizDepthHeader}>
+                  📚 {t('lesson.depthContext', 'KONUYA BAĞLAM')}
+                </Text>
+                <Text style={styles.quizDepthBody}>
+                  {(() => {
+                    const sci = teachingPages[1] || '';
+                    const firstSentence = sci
+                      .split(/(?<=[.!?])\s+/)
+                      .filter((s) => s.length > 20)[0];
+                    return firstSentence || sci.slice(0, 200);
+                  })()}
+                </Text>
+              </View>
+            ) : null}
+
+            {proTip ? (
+              <View style={styles.quizDepthSection}>
+                <Text style={styles.quizDepthHeader}>
+                  💡 {t('lesson.depthApply', 'NASIL UYGULA')}
+                </Text>
+                <Text style={styles.quizDepthBody}>{proTip}</Text>
+              </View>
+            ) : null}
           </View>
         )}
 
@@ -1806,6 +1851,30 @@ const styles = StyleSheet.create({
   explainText: {
     color: LT.onSurface,
     fontSize: 15, lineHeight: 22, fontWeight: '500',
+  },
+  // Depth sections appended below the short `explain` after a quiz
+  // answer. The HEADER row is a small label ("KONUYA BAĞLAM" /
+  // "NASIL UYGULA"); BODY is the content snippet. Visually muted so
+  // the primary `explain` remains the headline, but available for
+  // users who want to go deeper.
+  quizDepthSection: {
+    marginTop: 14,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0,0,0,0.06)',
+  },
+  quizDepthHeader: {
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+    color: LT.onSurfaceVariant,
+    marginBottom: 6,
+  },
+  quizDepthBody: {
+    fontSize: 13,
+    color: LT.onSurface,
+    lineHeight: 19,
+    fontWeight: '500',
   },
 
   commitMascotWrap: { alignItems: 'center', marginBottom: 24 },
