@@ -403,165 +403,16 @@ export default function HomeScreen({ navigation }) {
           ))}
         </View>
 
-        {/* Weekend Premium offer — only Sat/Sun, nudges high-intent users */}
-        {isWeekendOffer && !isPremium ? (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Paywall')}
-            activeOpacity={0.85}
-            style={styles.weekendOffer}
-          >
-            <View style={styles.weekendOfferBadge}>
-              <Text style={styles.weekendOfferBadgeText}>
-                {t('home.weekendDeal', 'HAFTA SONU')}
-              </Text>
-            </View>
-            <Text style={styles.weekendOfferText}>
-              {t(
-                'home.weekendOfferBody',
-                'Premium ile streak donduruculari, sınırsız kalp, reklamsız.',
-              )}
-            </Text>
-            <MaterialIcons name="arrow-forward" size={18} color={LT.onPrimary} />
-          </TouchableOpacity>
-        ) : null}
+        {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            PRIMARY ACTION ZONE — fold-above-the-fold content. The CTA
+            used to be card #13 (out of ~18) on this screen; UX audit
+            flagged it as the single biggest decision-fatigue source.
+            Now: Greeting → Streak → Chain → CTA → Risk/Boost/Queue.
+            Everything below the "BUGÜNÜN EKSTRALARI" divider is
+            secondary and intentionally pushed past the first scroll.
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
 
-        {/* Daily Mystery Challenge */}
-        {dailyChallenge ? (
-          <TouchableOpacity
-            onPress={dailyChallengeDone ? undefined : () => completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)}
-            activeOpacity={dailyChallengeDone ? 1 : 0.85}
-            style={[
-              styles.challengeCard,
-              dailyChallengeDone && styles.challengeCardDone,
-            ]}
-          >
-            <View style={styles.challengeIconBox}>
-              <Text style={styles.challengeIcon}>{dailyChallenge.icon}</Text>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.challengeLabel}>
-                {dailyChallengeDone
-                  ? t('home.challengeDone', 'BUGÜNÜN BONUSU TAMAMLANDI')
-                  : t('home.challengeLabel', 'BUGÜNÜN BONUSU · +25 XP')}
-              </Text>
-              <Text style={styles.challengeTitle}>
-                {t(dailyChallenge.titleKey, dailyChallenge.titleFallback)}
-              </Text>
-              <Text style={styles.challengeBody} numberOfLines={2}>
-                {t(dailyChallenge.bodyKey, dailyChallenge.bodyFallback)}
-              </Text>
-            </View>
-            {dailyChallengeDone ? (
-              <MaterialIcons name="check-circle" size={26} color={LT.primaryContainer} />
-            ) : (
-              <MaterialIcons name="bolt" size={22} color={LT.primary} />
-            )}
-          </TouchableOpacity>
-        ) : null}
-
-        {/* Weekend Boost Banner — only renders Sat/Sun. Premium: gold
-            "active" celebration banner. Free: pink upsell CTA → paywall.
-            Premium becomes a QUALITATIVE difference, not just no-ads. */}
-        <WeekendBoostBanner
-          isPremium={isPremium}
-          onUpgradeTap={() => navigation.navigate('Paywall')}
-        />
-
-        {/* Streak Risk Banner — loss-aversion prompt shown ONLY when
-            (a) user has a streak >= 2, (b) today is not yet done,
-            (c) it's 18:00+, (d) not on vacation. Drives 30-40% of
-            evening sessions in habit apps. */}
-        <StreakRiskBanner
-          currentStreak={currentStreak}
-          todayCompleted={todayCompleted}
-          onVacation={!!vacationUntil && vacationUntil >= todayDateStr}
-          onTapStart={() => {
-            if (currentLesson) {
-              attemptStartLesson(currentLesson.pathId, currentLesson.id);
-            }
-          }}
-        />
-
-        {/* Daily Plan — Premium "smart coach" picks 3 lessons for the
-            user based on their signals. Free users see an upsell teaser. */}
-        <DailyPlanCard
-          plan={dailyPlan}
-          isPremium={isPremium}
-          onStartLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
-          }
-          onUpgradeTap={() => navigation.navigate('Paywall')}
-        />
-
-        {/* Reflection Insight — makes the silent reflectionSignals analyzer
-            VISIBLE to the user. Shows up only after they've written ≥3
-            reflections AND there's a dominant category. "The app read me"
-            is the strongest single trust hook for any journaling product
-            (see Stoic's AI Mentor surface). Tap routes to the Reflections
-            screen so they can re-read what they wrote. */}
-        {reflectionInsight && (
-          <TouchableOpacity
-            activeOpacity={0.85}
-            onPress={() => navigation.navigate('Reflections')}
-            style={styles.insightCard}
-          >
-            <View style={styles.insightHeader}>
-              <MaterialIcons
-                name="auto-stories"
-                size={18}
-                color={LT.primaryContainer}
-              />
-              <Text style={styles.insightLabel}>
-                {t('home.insightLabel', 'YANSIMALARIN BANA NE SÖYLEDİ')}
-              </Text>
-            </View>
-            <Text style={styles.insightBody}>
-              {t('home.insightBody', {
-                count: reflectionInsight.count,
-                total: reflectionInsight.totalReflections,
-                category: t(
-                  `home.insightCat.${reflectionInsight.category}`,
-                  reflectionInsight.category,
-                ),
-                defaultValue:
-                  '{{total}} yansımana baktım. En çok {{category}} konusunu yazıyorsun ({{count}} kez geçti). Bu sana bir şey söylüyor.',
-              })}
-            </Text>
-          </TouchableOpacity>
-        )}
-
-        {/* Lesson Queue — surfaces the next uncompleted lesson so users
-            can one-tap into their next session. Removes decision fatigue
-            (which is the #1 churn cause for habit apps per Duolingo data). */}
-        <LessonQueueCard
-          activePathId={activePathId}
-          pathProgress={pathProgress}
-          onPressLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
-          }
-        />
-
-        {/* Daily Mystery Box — variable-reward retention mechanic. One
-            open per calendar day, random reward (XP, streak freeze, or
-            rare bonus). Variable rewards are the most-addictive
-            reinforcement pattern in behavioral psychology — the
-            casino/social-media loop. Big retention lever. */}
-        <DailyMysteryBox
-          alreadyOpenedToday={mysteryBoxOpenedToday}
-          lastReward={dailyMysteryBoxLastReward}
-          onOpen={openMysteryBox}
-        />
-
-        {/* Daily Mood Check-in — refreshes the mood personalization
-            signal each calendar day so the daily challenge adapts to
-            how the user actually feels today, not their one-time
-            onboarding answer. Collapses to a pill once picked. */}
-        <DailyMoodCheckIn
-          todayMood={moodPickedToday}
-          onPick={setDailyMood}
-        />
-
-        {/* Today's CTA Card */}
+        {/* Today's CTA Card — moved up from card #13 to card #4 */}
         <View style={styles.ctaCard}>
           <View style={styles.ctaCardHeader}>
             <Text style={styles.ctaCardLabel}>
@@ -627,6 +478,160 @@ export default function HomeScreen({ navigation }) {
             </TouchableOpacity>
           )}
         </View>
+
+        {/* Streak Risk Banner — loss-aversion prompt shown ONLY when
+            (a) user has a streak >= 2, (b) today is not yet done,
+            (c) it's 18:00+, (d) not on vacation. Self-gated, so it's
+            safe to keep high on the screen — invisible most of the day. */}
+        <StreakRiskBanner
+          currentStreak={currentStreak}
+          todayCompleted={todayCompleted}
+          onVacation={!!vacationUntil && vacationUntil >= todayDateStr}
+          onTapStart={() => {
+            if (currentLesson) {
+              attemptStartLesson(currentLesson.pathId, currentLesson.id);
+            }
+          }}
+        />
+
+        {/* Lesson Queue — direct path-progress surface; tapping a card
+            opens the lesson in one tap. Right under the CTA so users
+            who want to skip ahead can, without scrolling past extras. */}
+        <LessonQueueCard
+          activePathId={activePathId}
+          pathProgress={pathProgress}
+          onPressLesson={(pathId, lessonId) =>
+            attemptStartLesson(pathId, lessonId)
+          }
+        />
+
+        {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            EXTRAS ZONE — secondary, mostly-optional engagement bait.
+            Lives below the fold by design. Skipping any of these has
+            zero impact on the core habit loop.
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <Text style={styles.extrasHeader}>
+          {t('home.extrasHeader', 'BUGÜNÜN EKSTRALARI')}
+        </Text>
+
+        {/* Daily Mystery Challenge */}
+        {dailyChallenge ? (
+          <TouchableOpacity
+            onPress={dailyChallengeDone ? undefined : () => completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)}
+            activeOpacity={dailyChallengeDone ? 1 : 0.85}
+            style={[
+              styles.challengeCard,
+              dailyChallengeDone && styles.challengeCardDone,
+            ]}
+          >
+            <View style={styles.challengeIconBox}>
+              <Text style={styles.challengeIcon}>{dailyChallenge.icon}</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.challengeLabel}>
+                {dailyChallengeDone
+                  ? t('home.challengeDone', 'BUGÜNÜN BONUSU TAMAMLANDI')
+                  : t('home.challengeLabel', 'BUGÜNÜN BONUSU · +25 XP')}
+              </Text>
+              <Text style={styles.challengeTitle}>
+                {t(dailyChallenge.titleKey, dailyChallenge.titleFallback)}
+              </Text>
+              <Text style={styles.challengeBody} numberOfLines={2}>
+                {t(dailyChallenge.bodyKey, dailyChallenge.bodyFallback)}
+              </Text>
+            </View>
+            {dailyChallengeDone ? (
+              <MaterialIcons name="check-circle" size={26} color={LT.primaryContainer} />
+            ) : (
+              <MaterialIcons name="bolt" size={22} color={LT.primary} />
+            )}
+          </TouchableOpacity>
+        ) : null}
+
+        {/* Daily Plan — Premium "smart coach" picks 3 lessons for the
+            user based on their signals. Free users see an upsell teaser. */}
+        <DailyPlanCard
+          plan={dailyPlan}
+          isPremium={isPremium}
+          onStartLesson={(pathId, lessonId) =>
+            attemptStartLesson(pathId, lessonId)
+          }
+          onUpgradeTap={() => navigation.navigate('Paywall')}
+        />
+
+        {/* Reflection Insight — only renders after ≥3 reflections AND a
+            dominant category exists. "The app read me" trust hook. */}
+        {reflectionInsight && (
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={() => navigation.navigate('Reflections')}
+            style={styles.insightCard}
+          >
+            <View style={styles.insightHeader}>
+              <MaterialIcons
+                name="auto-stories"
+                size={18}
+                color={LT.primaryContainer}
+              />
+              <Text style={styles.insightLabel}>
+                {t('home.insightLabel', 'YANSIMALARIN BANA NE SÖYLEDİ')}
+              </Text>
+            </View>
+            <Text style={styles.insightBody}>
+              {t('home.insightBody', {
+                count: reflectionInsight.count,
+                total: reflectionInsight.totalReflections,
+                category: t(
+                  `home.insightCat.${reflectionInsight.category}`,
+                  reflectionInsight.category,
+                ),
+                defaultValue:
+                  '{{total}} yansımana baktım. En çok {{category}} konusunu yazıyorsun ({{count}} kez geçti). Bu sana bir şey söylüyor.',
+              })}
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {/* Daily Mystery Box — variable-reward retention mechanic. */}
+        <DailyMysteryBox
+          alreadyOpenedToday={mysteryBoxOpenedToday}
+          lastReward={dailyMysteryBoxLastReward}
+          onOpen={openMysteryBox}
+        />
+
+        {/* Daily Mood Check-in — refreshes mood signal each calendar day. */}
+        <DailyMoodCheckIn
+          todayMood={moodPickedToday}
+          onPick={setDailyMood}
+        />
+
+        {/* Weekend Boost Banner — only renders Sat/Sun. Self-gated. */}
+        <WeekendBoostBanner
+          isPremium={isPremium}
+          onUpgradeTap={() => navigation.navigate('Paywall')}
+        />
+
+        {/* Weekend Premium offer — only Sat/Sun, free users only. */}
+        {isWeekendOffer && !isPremium ? (
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Paywall')}
+            activeOpacity={0.85}
+            style={styles.weekendOffer}
+          >
+            <View style={styles.weekendOfferBadge}>
+              <Text style={styles.weekendOfferBadgeText}>
+                {t('home.weekendDeal', 'HAFTA SONU')}
+              </Text>
+            </View>
+            <Text style={styles.weekendOfferText}>
+              {t(
+                'home.weekendOfferBody',
+                'Premium ile streak donduruculari, sınırsız kalp, reklamsız.',
+              )}
+            </Text>
+            <MaterialIcons name="arrow-forward" size={18} color={LT.onPrimary} />
+          </TouchableOpacity>
+        ) : null}
 
         {/* Quick Stats Strip */}
         <View style={styles.statsStrip}>
@@ -977,6 +982,19 @@ const styles = StyleSheet.create({
     backgroundColor: LT.surfaceContainer,
     shadowOpacity: 0,
     elevation: 0,
+  },
+  // Divider label between the primary action zone (Streak/CTA/Queue)
+  // and the optional engagement extras. Visual breath + signals to the
+  // user that what's below is "more stuff, take it or leave it" — not
+  // another required action.
+  extrasHeader: {
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.6,
+    color: LT.onSurfaceVariant,
+    marginTop: 24,
+    marginBottom: 8,
+    paddingHorizontal: 4,
   },
   challengeIconBox: {
     width: 44,
