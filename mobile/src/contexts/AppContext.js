@@ -23,6 +23,7 @@ import {
   scheduleStreakAtRiskReminder,
   scheduleComebackReminder,
   cancelComebackReminder,
+  scheduleEveningInsight,
 } from '../services/notifications';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
@@ -836,6 +837,18 @@ export function AppProvider({ children }) {
     state.currentStreak,
     state.vacationUntil,
   ]);
+
+  // Evening Insight push — schedules a 21:30 "you placed in top X%"
+  // notification for users who actually worked today. Re-runs every
+  // time todaySessionLessons changes so the message scales with the
+  // latest count (1 lesson → bottom tier, 3+ → top tier). Cancels
+  // itself when lessonsToday goes back to 0 (next-day reset).
+  useEffect(() => {
+    if (!state._loaded) return;
+    scheduleEveningInsight({
+      lessonsToday: state.todaySessionLessons || 0,
+    }).catch(() => {});
+  }, [state._loaded, state.todaySessionLessons]);
 
   useEffect(() => {
     if (!state._loaded) return;
