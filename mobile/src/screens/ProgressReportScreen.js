@@ -8,7 +8,8 @@
 // baseline-only users who don't have a post yet, this screen
 // shouldn't be reachable.
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import * as Haptics from 'expo-haptics';
 import {
   View,
   Text,
@@ -21,6 +22,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LT } from '../config/lightTheme';
+import ConfettiBurst from '../components/ConfettiBurst';
 import { useApp } from '../contexts/AppContext';
 import {
   ASSESSMENT_DIMENSIONS,
@@ -107,6 +109,17 @@ export default function ProgressReportScreen({ navigation }) {
     ),
   );
 
+  // Fire the celebration haptic on mount for positive deltas only.
+  // Mirrors the visual confetti gate in the hero block.
+  useEffect(() => {
+    if (delta.totalDelta > 0) {
+      Haptics.notificationAsync(
+        Haptics.NotificationFeedbackType.Success,
+      ).catch(() => {});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleShare = async () => {
     try {
       // Share message now leads with the OBJECTIVE metric (lessons
@@ -133,8 +146,15 @@ export default function ProgressReportScreen({ navigation }) {
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}
       >
-        {/* Hero — the headline number */}
+        {/* Hero — the headline number. Positive delta fires a success
+            haptic + confetti burst on mount, turning the moment into
+            a celebration. Zero or negative deltas get no fanfare —
+            the user's not in a celebration mood and confetti there
+            would feel tone-deaf. */}
         <View style={styles.hero}>
+          {delta.totalDelta > 0 ? (
+            <ConfettiBurst trigger={delta.totalDelta} />
+          ) : null}
           <Text style={styles.heroEyebrow}>
             {t('progressReport.eyebrow', '30 GÜN SONRA')}
           </Text>

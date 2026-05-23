@@ -21,6 +21,7 @@ import { useApp } from '../contexts/AppContext';
 import { getPathById, getLessonById, getQuizForLesson } from '../data/paths';
 import { showInterstitial, shouldShowAd } from '../services/ads';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
+import ConfettiBurst from '../components/ConfettiBurst';
 import PathMilestoneScene, {
   detectPathSceneStage,
 } from '../components/PathMilestoneScene';
@@ -1278,6 +1279,15 @@ export default function LessonScreen({ navigation, route }) {
 
         {showCelebration && (
           <View style={styles.celebration}>
+            {/* Confetti burst overlays the entire celebration screen.
+                Fires once per `showCelebration` true→false→true cycle
+                (key = lessonId so chained lessons each get their own
+                fresh burst, not a single shared instance). The 22
+                particle pure-native animation is cheap even on older
+                devices. Closes the audit's 'celebration moment is
+                visually flat' finding. */}
+            <ConfettiBurst trigger={lessonId} />
+
             {/* Top bar with title */}
             <View style={styles.celebrationTopBar}>
               <View style={{ width: 40 }} />

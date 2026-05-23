@@ -39,9 +39,11 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
+import * as Haptics from 'expo-haptics';
 import { LT } from '../config/lightTheme';
 import { useApp } from '../contexts/AppContext';
 import { getTodaysDeck } from '../data/dailyDecks';
+import ConfettiBurst from '../components/ConfettiBurst';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const TOTAL_CARDS = 6;
@@ -72,6 +74,10 @@ export default function DailyDeckScreen({ navigation }) {
   }
 
   const advance = () => {
+    // Light selection haptic on each card tap — gives the user a
+    // subtle confirmation that the tap registered before the fade
+    // animation completes. Cheap dopamine for fast scanning users.
+    Haptics.selectionAsync().catch(() => {});
     // Fade out current card, swap index, fade back in. 220 ms is
     // fast enough to feel snappy but slow enough that the eye
     // registers a transition (vs. just popping).
@@ -92,6 +98,12 @@ export default function DailyDeckScreen({ navigation }) {
   };
 
   const finishDeck = () => {
+    // Success haptic on deck completion — matches the visual confetti
+    // burst on the Done card. The tactile + visual combo is what makes
+    // celebration moments feel earned vs. perfunctory.
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(
+      () => {},
+    );
     try {
       recordDailyDeckCompleted({
         deckId: deck.id,
@@ -298,8 +310,14 @@ function ActionCard({ action, committed, onCommit, t }) {
 }
 
 function DoneCard({ onShare, onFinish, t }) {
+  // useRef + state-y trigger ensures confetti fires the moment the
+  // DoneCard mounts (i.e. user lands on card 6). React tip:
+  // ConfettiBurst replays when `trigger` changes; we use Date.now()
+  // captured at mount so it changes once and only once.
+  const burstTrigger = React.useRef(Date.now()).current;
   return (
     <View style={styles.cardContent}>
+      <ConfettiBurst trigger={burstTrigger} compact />
       <View style={styles.doneIcon}>
         <MaterialIcons name="check-circle" size={56} color={LT.primary} />
       </View>
