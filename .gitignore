@@ -14,3 +14,7 @@ mobile/credentials/
 # Local env (never commit)
 **/.env.local
 .env.local
+
+# Broadcast push secret — never commit
+broadcast-secret.local
+.broadcast-secret
