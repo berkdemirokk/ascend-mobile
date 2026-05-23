@@ -16,11 +16,15 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import { useApp } from '../contexts/AppContext';
 import { PATHS } from '../data/paths';
-import { LT, LT_RADIUS } from '../config/lightTheme';
+import { LT_RADIUS } from '../config/lightTheme';
+import { useTheme, useThemedStyles } from '../config/theme';
 
 export default function ReflectionsScreen({ navigation }) {
   const { t } = useTranslation();
   const { pathProgress } = useApp();
+  // Dark-mode-aware theme + styles. See `src/config/theme.js`.
+  const T = useTheme();
+  const styles = useThemedStyles(makeStyles);
 
   const sections = useMemo(() => {
     const out = [];
@@ -90,7 +94,7 @@ export default function ReflectionsScreen({ navigation }) {
             onPress={() => navigation.goBack()}
             style={styles.backBtn}
           >
-            <MaterialIcons name="arrow-back" size={22} color={LT.onSurface} />
+            <MaterialIcons name="arrow-back" size={22} color={T.onSurface} />
           </TouchableOpacity>
           <Text style={styles.title}>
             {t('reflections.title', 'Yansımalarım')}
@@ -101,7 +105,7 @@ export default function ReflectionsScreen({ navigation }) {
         {sections.length === 0 ? (
           <View style={styles.empty}>
             <View style={styles.emptyIconWrap}>
-              <MaterialIcons name="auto-stories" size={48} color={LT.outline} />
+              <MaterialIcons name="auto-stories" size={48} color={T.outline} />
             </View>
             <Text style={styles.emptyTitle}>
               {t('reflections.emptyTitle', 'Henüz yansıma yok')}
@@ -152,7 +156,7 @@ export default function ReflectionsScreen({ navigation }) {
                   <MaterialIcons
                     name="star"
                     size={14}
-                    color={LT.primaryContainer}
+                    color={T.primaryContainer}
                   />
                   <Text style={styles.featuredLabel}>
                     {t('reflections.featuredLabel', 'EN DERİN YAZIN')}
@@ -221,8 +225,9 @@ export default function ReflectionsScreen({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: LT.background },
+// Theme-aware stylesheet factory. See `src/config/theme.js`.
+const makeStyles = (T) => StyleSheet.create({
+  safeArea: { flex: 1, backgroundColor: T.background },
   container: { flex: 1 },
 
   topBar: {
@@ -232,8 +237,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: LT.outlineVariant,
-    backgroundColor: LT.surface,
+    borderBottomColor: T.outlineVariant,
+    backgroundColor: T.surface,
   },
   backBtn: {
     width: 40,
@@ -242,7 +247,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: LT.onSurface,
+    color: T.onSurface,
     fontSize: 18,
     fontWeight: '900',
     letterSpacing: 2,
@@ -254,12 +259,12 @@ const styles = StyleSheet.create({
   // Investment-feedback surface: the user sees the archive grow.
   statsHero: {
     flexDirection: 'row',
-    backgroundColor: LT.surfaceContainerLow,
+    backgroundColor: T.surfaceContainerLow,
     borderRadius: LT_RADIUS.lg,
     paddingVertical: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
   },
   statsHeroCell: {
     flex: 1,
@@ -267,25 +272,25 @@ const styles = StyleSheet.create({
   },
   statsHeroDivider: {
     width: 1,
-    backgroundColor: LT.outlineVariant,
+    backgroundColor: T.outlineVariant,
     marginVertical: 8,
   },
   statsHeroValue: {
     fontSize: 24,
     fontWeight: '900',
-    color: LT.onSurface,
+    color: T.onSurface,
     marginBottom: 4,
   },
   statsHeroLabel: {
     fontSize: 10,
     fontWeight: '800',
     letterSpacing: 1.4,
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
   },
   // Featured (longest) reflection card. Slightly emphasized border
   // to draw the eye — this is the user's heaviest piece of writing.
   featuredCard: {
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: LT_RADIUS.lg,
     padding: 14,
     marginBottom: 20,
@@ -302,22 +307,22 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '900',
     letterSpacing: 1.4,
-    color: LT.primaryContainer,
+    color: T.primaryContainer,
   },
   featuredSub: {
     fontSize: 11,
     fontWeight: '600',
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
     marginBottom: 8,
   },
   featuredText: {
     fontSize: 14,
     fontStyle: 'italic',
-    color: LT.onSurface,
+    color: T.onSurface,
     lineHeight: 20,
   },
   subtitle: {
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
     fontSize: 13,
     lineHeight: 18,
     marginBottom: 24,
@@ -340,7 +345,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   sectionTitle: {
-    color: LT.onSurface,
+    color: T.onSurface,
     fontSize: 12,
     fontWeight: '900',
     letterSpacing: 2,
@@ -348,23 +353,23 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sectionCount: {
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
     fontSize: 11,
     fontWeight: '800',
-    backgroundColor: LT.surfaceContainer,
+    backgroundColor: T.surfaceContainer,
     paddingHorizontal: 10,
     paddingVertical: 3,
     borderRadius: LT_RADIUS.pill,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     minWidth: 28,
     textAlign: 'center',
   },
 
   card: {
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     borderRadius: LT_RADIUS.lg,
     padding: 14,
     marginBottom: 10,
@@ -376,7 +381,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   cardLessonNum: {
-    color: LT.primaryContainer,
+    color: T.primaryContainer,
     fontSize: 10,
     fontWeight: '900',
     letterSpacing: 1.5,
@@ -388,13 +393,13 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   cardLessonTitle: {
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
     fontSize: 12,
     fontWeight: '600',
     flex: 1,
   },
   cardText: {
-    color: LT.onSurface,
+    color: T.onSurface,
     fontSize: 14,
     lineHeight: 20,
     fontStyle: 'italic',
@@ -410,22 +415,22 @@ const styles = StyleSheet.create({
     width: 96,
     height: 96,
     borderRadius: 48,
-    backgroundColor: LT.surfaceContainer,
+    backgroundColor: T.surfaceContainer,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 20,
   },
   emptyTitle: {
-    color: LT.onSurface,
+    color: T.onSurface,
     fontSize: 20,
     fontWeight: '900',
     marginBottom: 8,
     letterSpacing: -0.3,
   },
   emptyBody: {
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
     fontSize: 13,
     textAlign: 'center',
     lineHeight: 19,

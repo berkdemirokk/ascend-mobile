@@ -39,12 +39,16 @@ import AchievementDetailModal from '../components/AchievementDetailModal';
 import StreakShareCard from '../components/StreakShareCard';
 import { captureAndShare } from '../services/streakShare';
 import LightTopAppBar from '../components/LightTopAppBar';
-import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
+import { LT_SPACING, LT_RADIUS } from '../config/lightTheme';
+import { useTheme, useThemedStyles } from '../config/theme';
 
 export default function ProfileScreen({ navigation }) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const appState = useApp();
+  // Dark-mode-aware theme + styles. See `src/config/theme.js`.
+  const T = useTheme();
+  const styles = useThemedStyles(makeStyles);
   const {
     totalXP,
     level,
@@ -158,7 +162,7 @@ export default function ProfileScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
+      <StatusBar barStyle="dark-content" backgroundColor={T.background} />
 
       <LightTopAppBar
         onAvatarPress={() => navigation.navigate('Settings')}
@@ -175,7 +179,7 @@ export default function ProfileScreen({ navigation }) {
             <MaterialIcons
               name="ios-share"
               size={20}
-              color={sharing ? LT.outline : LT.primaryContainer}
+              color={sharing ? T.outline : T.primaryContainer}
             />
           </TouchableOpacity>
         }
@@ -193,7 +197,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="self-improvement"
                 size={48}
-                color={LT.primaryContainer}
+                color={T.primaryContainer}
               />
             </View>
           </View>
@@ -217,7 +221,7 @@ export default function ProfileScreen({ navigation }) {
           />
           <StatCard
             icon="local-fire-department"
-            iconColor={LT.primaryContainer}
+            iconColor={T.primaryContainer}
             label={t('profile.currentStreak', 'MEVCUT SERİ')}
             value={`${currentStreak}`}
             unit={t('common.days', 'Gün')}
@@ -267,7 +271,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="trending-up"
                 size={12}
-                color={LT.primaryContainer}
+                color={T.primaryContainer}
               />
               <Text style={styles.nextRankText}>
                 {t('profile.nextRank', 'SONRAKİ RÜTBE')}:{' '}
@@ -291,7 +295,7 @@ export default function ProfileScreen({ navigation }) {
                 activeOpacity={0.7}
                 style={styles.publicShareBtn}
               >
-                <MaterialIcons name="ios-share" size={14} color={LT.primary} />
+                <MaterialIcons name="ios-share" size={14} color={T.primary} />
                 <Text style={styles.publicShareText}>
                   {t('profile.publicShareCta', 'PROFİLİ PAYLAŞ')}
                 </Text>
@@ -368,7 +372,7 @@ export default function ProfileScreen({ navigation }) {
                   <MaterialIcons
                     name={p.materialIcon}
                     size={16}
-                    color={LT.onSurfaceVariant}
+                    color={T.onSurfaceVariant}
                   />
                   <Text style={styles.masteryName} numberOfLines={1}>
                     {t(`paths.${p.id}.shortTitle`, p.title)}
@@ -402,7 +406,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="chevron-right"
                 size={16}
-                color={LT.primaryContainer}
+                color={T.primaryContainer}
               />
             </TouchableOpacity>
           </View>
@@ -438,7 +442,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="auto-stories"
                 size={20}
-                color={LT.primaryContainer}
+                color={T.primaryContainer}
               />
             </View>
             <View style={{ flex: 1 }}>
@@ -455,7 +459,7 @@ export default function ProfileScreen({ navigation }) {
             <MaterialIcons
               name="chevron-right"
               size={22}
-              color={LT.outline}
+              color={T.outline}
             />
           </TouchableOpacity>
         </View>
@@ -508,6 +512,7 @@ export default function ProfileScreen({ navigation }) {
 // ─── Subcomponents ────────────────────────────────────────────────────────────
 
 function CircularProgress({ size = 132, percent = 0 }) {
+  const T = useTheme();
   const stroke = 4;
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -522,7 +527,7 @@ function CircularProgress({ size = 132, percent = 0 }) {
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        stroke={LT.outlineVariant}
+        stroke={T.outlineVariant}
         strokeWidth={stroke}
         fill="transparent"
       />
@@ -530,7 +535,7 @@ function CircularProgress({ size = 132, percent = 0 }) {
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        stroke={LT.primaryContainer}
+        stroke={T.primaryContainer}
         strokeWidth={stroke}
         fill="transparent"
         strokeDasharray={`${circumference} ${circumference}`}
@@ -544,13 +549,15 @@ function CircularProgress({ size = 132, percent = 0 }) {
 }
 
 function StatCard({ icon, iconColor, label, value, unit, accent }) {
+  const T = useTheme();
+  const styles = useThemedStyles(makeStyles);
   return (
     <View style={[styles.statCard, accent && styles.statCardAccent]}>
       <View style={styles.statCardHeader}>
         <MaterialIcons
           name={icon}
           size={16}
-          color={iconColor || LT.onSurfaceVariant}
+          color={iconColor || T.onSurfaceVariant}
         />
         <Text style={styles.statCardLabel}>{label}</Text>
       </View>
@@ -579,6 +586,8 @@ const ACHIEVEMENT_ICONS = {
 
 function AchievementCard({ id, locked, onPress }) {
   const { t } = useTranslation();
+  const T = useTheme();
+  const styles = useThemedStyles(makeStyles);
   const ach = ACHIEVEMENTS.find((a) => a.id === id);
   if (!ach) return null;
   const iconName = ACHIEVEMENT_ICONS[id] || 'emoji-events';
@@ -597,7 +606,7 @@ function AchievementCard({ id, locked, onPress }) {
         <MaterialIcons
           name={locked ? 'lock' : iconName}
           size={28}
-          color={locked ? LT.outline : LT.primaryContainer}
+          color={locked ? T.outline : T.primaryContainer}
         />
       </View>
       <Text
@@ -612,10 +621,11 @@ function AchievementCard({ id, locked, onPress }) {
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
-const styles = StyleSheet.create({
+// Theme-aware stylesheet factory. See `src/config/theme.js`.
+const makeStyles = (T) => StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: LT.background,
+    backgroundColor: T.background,
   },
   scrollContent: {
     paddingBottom: 32,
@@ -653,26 +663,26 @@ const styles = StyleSheet.create({
     width: 116,
     height: 116,
     borderRadius: 58,
-    backgroundColor: LT.surfaceContainerLow,
+    backgroundColor: T.surfaceContainerLow,
     borderWidth: 2,
-    borderColor: LT.surfaceContainerLowest,
+    borderColor: T.surfaceContainerLowest,
     alignItems: 'center',
     justifyContent: 'center',
   },
   rankBadge: {
-    backgroundColor: LT.primaryContainer,
+    backgroundColor: T.primaryContainer,
     paddingHorizontal: 14,
     paddingVertical: 5,
     borderRadius: LT_RADIUS.pill,
     marginBottom: 12,
-    shadowColor: LT.primaryContainer,
+    shadowColor: T.primaryContainer,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.25,
     shadowRadius: 6,
     elevation: 3,
   },
   rankBadgeText: {
-    color: LT.onPrimary,
+    color: T.onPrimary,
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 2,
@@ -681,14 +691,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
     letterSpacing: -0.6,
-    color: LT.onSurface,
+    color: T.onSurface,
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 2,
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
   },
 
   // Stats grid (2x2)
@@ -701,10 +711,10 @@ const styles = StyleSheet.create({
   },
   statCard: {
     width: '48%',
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: LT_RADIUS.lg,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     padding: 14,
     minHeight: 104,
   },
@@ -722,7 +732,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '900',
     letterSpacing: 1.5,
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
   },
   statCardBody: {
     flexDirection: 'row',
@@ -733,26 +743,26 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
     letterSpacing: -0.8,
-    color: LT.onSurface,
+    color: T.onSurface,
   },
   statCardValueAccent: {
-    color: LT.primaryContainer,
+    color: T.primaryContainer,
   },
   statCardUnit: {
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 0.5,
-    color: LT.outline,
+    color: T.outline,
     textTransform: 'uppercase',
   },
 
   // Level progress
   levelCard: {
     marginHorizontal: LT_SPACING.containerMargin,
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     padding: 18,
     marginBottom: 14,
   },
@@ -766,13 +776,13 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 2,
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
   },
   levelTitle: {
     fontSize: 18,
     fontWeight: '900',
     letterSpacing: -0.4,
-    color: LT.onSurface,
+    color: T.onSurface,
     marginTop: 2,
   },
   levelXP: {
@@ -781,25 +791,25 @@ const styles = StyleSheet.create({
   levelXPNum: {
     fontSize: 18,
     fontWeight: '900',
-    color: LT.primaryContainer,
+    color: T.primaryContainer,
     letterSpacing: -0.4,
   },
   levelXPMax: {
     fontSize: 12,
     fontWeight: '700',
-    color: LT.outline,
+    color: T.outline,
   },
   progressTrack: {
     width: '100%',
     height: 8,
     borderRadius: 4,
-    backgroundColor: LT.surfaceContainer,
+    backgroundColor: T.surfaceContainer,
     overflow: 'hidden',
     marginTop: 6,
   },
   progressFill: {
     height: '100%',
-    backgroundColor: LT.primaryContainer,
+    backgroundColor: T.primaryContainer,
     borderRadius: 4,
   },
   nextRankPill: {
@@ -819,10 +829,10 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: '800',
     letterSpacing: 1,
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
   },
   nextRankValue: {
-    color: LT.primaryContainer,
+    color: T.primaryContainer,
     fontWeight: '900',
   },
 
@@ -830,10 +840,10 @@ const styles = StyleSheet.create({
   badgesSection: {
     marginHorizontal: LT_SPACING.containerMargin,
     marginBottom: 16,
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     padding: 16,
   },
   badgesHeader: {
@@ -849,14 +859,14 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   publicShareText: {
-    color: LT.primary,
+    color: T.primary,
     fontSize: 10,
     fontWeight: '900',
     letterSpacing: 1.2,
   },
   badgesIntro: {
     fontSize: 12,
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
     fontWeight: '500',
     marginBottom: 12,
     marginTop: 4,
@@ -873,7 +883,7 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    backgroundColor: LT.surfaceContainer,
+    backgroundColor: T.surfaceContainer,
     borderRadius: 999,
     borderWidth: 1,
     borderColor: 'rgba(227, 18, 18, 0.22)',
@@ -882,7 +892,7 @@ const styles = StyleSheet.create({
   badgeTitle: {
     fontSize: 13,
     fontWeight: '900',
-    color: LT.onSurface,
+    color: T.onSurface,
     letterSpacing: -0.2,
   },
 
@@ -931,10 +941,10 @@ const styles = StyleSheet.create({
     marginHorizontal: LT_SPACING.containerMargin,
     marginBottom: 18,
     padding: 16,
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
   },
   masteryRow: {
     marginTop: 12,
@@ -947,12 +957,12 @@ const styles = StyleSheet.create({
   },
   masteryName: {
     flex: 1,
-    color: LT.onSurface,
+    color: T.onSurface,
     fontSize: 13,
     fontWeight: '700',
   },
   masteryPct: {
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
     fontSize: 12,
     fontWeight: '800',
     minWidth: 36,
@@ -960,17 +970,17 @@ const styles = StyleSheet.create({
   },
   masteryTrack: {
     height: 6,
-    backgroundColor: LT.outlineVariant,
+    backgroundColor: T.outlineVariant,
     borderRadius: 3,
     overflow: 'hidden',
   },
   masteryFill: {
     height: '100%',
-    backgroundColor: LT.primary,
+    backgroundColor: T.primary,
     borderRadius: 3,
   },
   masteryFillDone: {
-    backgroundColor: LT.success || '#10B981',
+    backgroundColor: T.success || '#10B981',
   },
   achievementsSection: {
     marginBottom: 14,
@@ -986,7 +996,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '900',
     letterSpacing: 2,
-    color: LT.onSurface,
+    color: T.onSurface,
   },
   seeAll: {
     flexDirection: 'row',
@@ -997,7 +1007,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 1.5,
-    color: LT.primaryContainer,
+    color: T.primaryContainer,
   },
   achievementsRow: {
     paddingHorizontal: LT_SPACING.containerMargin,
@@ -1005,16 +1015,16 @@ const styles = StyleSheet.create({
   },
   achCard: {
     width: 110,
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: LT_RADIUS.lg,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     padding: 12,
     alignItems: 'center',
     minHeight: 110,
   },
   achCardLocked: {
-    backgroundColor: LT.surfaceContainerLow,
+    backgroundColor: T.surfaceContainerLow,
     opacity: 0.7,
   },
   achIconBox: {
@@ -1029,28 +1039,28 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   achIconBoxLocked: {
-    backgroundColor: LT.surfaceContainer,
-    borderColor: LT.outlineVariant,
+    backgroundColor: T.surfaceContainer,
+    borderColor: T.outlineVariant,
   },
   achTitle: {
     fontSize: 11,
     fontWeight: '800',
-    color: LT.onSurface,
+    color: T.onSurface,
     textAlign: 'center',
     letterSpacing: -0.1,
   },
   achTitleLocked: {
-    color: LT.outline,
+    color: T.outline,
   },
 
   // Calendar
   calendarWrap: {
     marginHorizontal: LT_SPACING.containerMargin,
     marginBottom: 14,
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     padding: 18,
   },
 
@@ -1062,10 +1072,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 14,
-    backgroundColor: LT.surfaceContainerLowest,
+    backgroundColor: T.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: LT.outlineVariant,
+    borderColor: T.outlineVariant,
     padding: 16,
   },
   linkIconBox: {
@@ -1079,12 +1089,12 @@ const styles = StyleSheet.create({
   linkTitle: {
     fontSize: 14,
     fontWeight: '800',
-    color: LT.onSurface,
+    color: T.onSurface,
     marginBottom: 2,
   },
   linkSubtitle: {
     fontSize: 12,
     fontWeight: '500',
-    color: LT.onSurfaceVariant,
+    color: T.onSurfaceVariant,
   },
 });
