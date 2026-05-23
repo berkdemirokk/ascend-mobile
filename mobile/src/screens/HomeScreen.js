@@ -871,8 +871,14 @@ export default function HomeScreen({ navigation }) {
           {t('home.extrasHeader', 'BUGÜNÜN EKSTRALARI')}
         </Text>
 
-        {/* Daily Mystery Challenge */}
-        {dailyChallenge ? (
+        {/* Daily Mystery Challenge — surfaces ONLY when today's deck
+            isn't done yet OR is already complete; if user is mid-deck
+            we hide this to avoid two "bugünün şeyi" surfaces competing
+            for the same morning tap. Audit finding: Daily Deck and
+            Daily Challenge were the same "today's thing" slot,
+            splitting user attention. Now Challenge is the secondary
+            extra — a bonus, not a parallel main quest. */}
+        {dailyChallenge && lastDailyDeckCompletedDate === todayDateStr ? (
           <TouchableOpacity
             onPress={dailyChallengeDone ? undefined : () => completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)}
             activeOpacity={dailyChallengeDone ? 1 : 0.85}

@@ -940,20 +940,40 @@ export function AppProvider({ children }) {
     }).catch(() => {});
   }, [state._loaded, state.lastCompletedDate]);
 
-  // ── Save state to AsyncStorage on every change ─────────────────────────
+  // ── Save state to AsyncStorage (debounced) ────────────────────────
+  // Audit finding: every dispatch triggered a full state serialize +
+  // disk write. A single lesson with quiz + reflection could fire
+  // 10+ writes in <30s; on the 60-second REFRESH_TODAY interval,
+  // that adds up to constant flash wear plus latency spikes when the
+  // disk is busy. We now coalesce writes inside a 600ms window — if
+  // five dispatches land back-to-back, we serialize once.
+  const saveTimerRef = useRef(null);
   useEffect(() => {
     if (!state._loaded) return;
-    const toSave = { ...state };
-    delete toSave._loaded;
-    delete toSave._streakFreezeToast;
-    delete toSave._milestoneToast;
-    delete toSave._momentumToast;
-    // _streakLostInfo IS persisted: we want the empathy banner to
-    // survive an app restart so a user who closes the app right after
-    // losing their streak still sees it on the next open.
-    AsyncStorage.setItem(STORAGE_KEYS.USER_STATE, JSON.stringify(toSave)).catch(
-      (e) => console.error('[AppContext] Failed to save state:', e),
-    );
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      const toSave = { ...state };
+      delete toSave._loaded;
+      delete toSave._streakFreezeToast;
+      delete toSave._milestoneToast;
+      delete toSave._momentumToast;
+      // _streakLostInfo IS persisted: we want the empathy banner to
+      // survive an app restart so a user who closes the app right
+      // after losing their streak still sees it on the next open.
+      try {
+        AsyncStorage.setItem(
+          STORAGE_KEYS.USER_STATE,
+          JSON.stringify(toSave),
+        ).catch((e) =>
+          console.error('[AppContext] Failed to save state:', e),
+        );
+      } catch (e) {
+        console.error('[AppContext] Failed to serialize state:', e);
+      }
+    }, 600);
+    return () => {
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    };
   }, [state]);
 
   // ── Cloud pull on first sign-in ─────────────────────────────────────────
