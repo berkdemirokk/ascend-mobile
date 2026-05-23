@@ -5926,10 +5926,10 @@
       },
       "41": {
         "title": "Güç Disiplini",
-        "teaching": "Push-up + squat + plank yetmez. Hafta 3 gün ağırlık antrenmanı = kas + kemik + hormon. Ev = direnç bandı + kettlebell. Spor salonu = optimum.",
-        "action": "Bugün 30 dk ağırlık antrenmanı yap.",
-        "reflectionPrompt": "Ağırlıkla bedenin nasıl tepki verdi?",
-        "proTip": "5x5 sistemi: 5 hareket × 5 set × 5 tekrar. Basit + güçlü.",
+        "teaching": "Push-up, squat, plank — vücut ağırlığı egzersizleri. **Başlangıç için harika**. Ama 3-6 ay sonra **plato** gelir. Çünkü vücut ağırlığı **sabit** = progresyon zor.\n\n**Güç antrenmanı (resistance training) ile ağırlık** = sonraki seviye. Kanıtlı faydalar:\n\n- **Kas hipertrofisi** zirvesi (vücut ağırlığı 2-3 katı etki)\n- **Kemik yoğunluğu** artar (osteoporoz önleme, özellikle kadın)\n- **Hormonlar** optimum: testosteron, HGH, IGF-1\n- **İnsülin hassasiyeti** keskinleşir (diyabet önleme)\n- **Postür dik** (omurga çevresi güçlü kaslar)\n- **Mental sağlık** (depresyon riski %30 düşüş — Gordon JAMA 2018)\n\nMark Rippetoe (**Starting Strength**): 'Compound moves > izolasyon. 5 temel hareket:'\n\n1. **Squat** (alt vücut)\n2. **Deadlift** (alt + sırt)\n3. **Bench press** (göğüs + tricep)\n4. **Overhead press** (omuz)\n5. **Pull-up / Row** (sırt + bicep)\n\n**5x5 sistemi** (klasik, etkili): 5 hareket × **5 set × 5 tekrar**. Ağır ağırlık (8 ile zorlanırsın), tam dinlenme (90 sn-2 dk).\n\n**Hafta 3 gün × 30-45 dk** = 6 ay sonra **dramatic** dönüşüm.\n\n**Ev seçenekleri**: direnç bandı (₺50-200), kettlebell (₺200-500), adjustable dumbbell (₺500-2000). **Spor salonu** = optimum (her ağırlık + ekipman) — ₺200-500/ay.\n\nİlk 3 ay: yavaş ilerleme, form öncelik. Sakatlık = aylar kayıp.",
+        "action": "Bugün **30 dk ağırlık antrenmanı** yap. Kompleks hareket, ağır ağırlık.",
+        "reflectionPrompt": "Ağırlıkla bedenin **nasıl tepki verdi**? Vücut ağırlığından farklı mıydı?",
+        "proTip": "**5x5 sistemi**: 5 hareket × 5 set × 5 tekrar. **Basit + güçlü** — 50 yıllık standart.",
         "quiz": [
           {
             "q": "5x5 sistem?",
@@ -5957,10 +5957,10 @@
       },
       "42": {
         "title": "Postür Mastery",
-        "teaching": "2 dk postür hatırlatıcısı yetmez — sürekli farkındalık. Saat başı + her oturuş + her telefon. Postür = solunum + kortizol + kas dengesi.",
-        "action": "Bugün her saat başı 1 dk postür kontrolü.",
-        "reflectionPrompt": "Akşam sırt ağrısı azaldı mı?",
-        "proTip": "Telefonu göz hizasında. Boyun bükümü = günde 30 dk ekstra ağrı.",
+        "teaching": "Ders 21'de postür temellerini öğrendin. Şimdi **mastery**: postür **sürekli farkındalık** seviyesi. Saat başı hatırlatıcı **yetmez** — her oturuş, her telefon, her yürüyüş.\n\nDr. Amy Cuddy (Harvard, **'power posing'** araştırmacısı): 'Postür sadece **görünüş** değil — **biyokimya**.'\n\nKlinik kanıt:\n- **Dik postür 2 dakika** = testosteron **%20 artar**, kortizol **%25 düşer**\n- **Kambur postür 2 dakika** = tam tersi (Cuddy 2010)\n- **Kambur**: solunum kapasitesi **%30 düşer** (akciğer sıkışır)\n- **Boyun öne**: omurga ekstra yük (Hansraj — Ders 21)\n- **Kapalı omuz**: kalp + akciğer **tam genişlemez**\n\nMekanizma: postür → solunum → kortizol → kas dengesi → ruh hali → karar verme. Hepsi bağlı.\n\n**Mastery seviyesi günlük kontrol noktaları**:\n\n1. **Sabah uyanış** — yataktan kalkış postürü\n2. **Diş fırçalama** — ayna kontrolü\n3. **Bilgisayar başı** — saat başı 30 sn\n4. **Telefon kullanımı** — göz hizası, omuz geri\n5. **Yürüyüş** — dik, baş yukarı\n6. **Toplantı** — ayakta, sırtık dik\n7. **Yemek** — omuz geri\n8. **Yatış** — düzgün yatak pozisyonu\n\n**Telefon kullanımı = en büyük postür düşmanı**. **'Text neck'** modern hastalığı. Çözüm: **telefonu göz hizasında** tut, başını eğme. Hareket gözünle değil **telefonla**.\n\n30 gün bilinçli pratik → postür **default** olur, otomatik dik.",
+        "action": "Bugün **her saat başı 1 dk postür kontrolü**. Bilgisayar, telefon, yürüyüş.",
+        "reflectionPrompt": "Akşam **sırt ağrısı azaldı** mı? Hangi pozisyonda en kötüydün?",
+        "proTip": "**Telefonu göz hizasında** tut. **Boyun bükümü** = günde 30 dk ekstra ağrı + uzun vade omurga hasarı.",
         "quiz": [
           {
             "q": "Postür kontrolü ne sıklıkta?",
@@ -5988,10 +5988,10 @@
       },
       "43": {
         "title": "Uyku Sınırı",
-        "teaching": "Az uyu, sınırlı uyu = derin uyku zenginleşir. 7 saat hedefli yat. 9 saat erteleme. Uykusuzluk = beden alarm.",
-        "action": "Bugün 7 saat tam uyumayı dene.",
-        "reflectionPrompt": "7 saat 8 saatle aynı hissetti mi?",
-        "proTip": "7 saat tam = 8 saat parçalı'dan iyi.",
+        "teaching": "**'Daha çok uyku = daha iyi'** sanıyorsun. 10 saat uyudun → **berbat hissedildi**. Garip ama bilim açık: **çok uyku = optimum altı**. Sweet spot var.\n\nNational Sleep Foundation + Walker araştırmaları:\n- **6 saat altı**: çok az = bilişsel kayıp + immün zayıflık\n- **7-9 saat**: optimum (yetişkin)\n- **9 saat üstü**: çok = depresyon riski + kardiyovasküler risk\n\n**Düşünce hatası**: 'kötü uyudum, bu gece 10 saat uyuyup telafi ederim.' Bu çalışmaz. **Uyku borcu** sadece 1-2 saat **tolere edilir**, fazlası tamir edilmez.\n\nBunun yerine: **7 saat TAM uyku** = 8 saat parçalı uykudan **iyi**. Yani **kaliteyi optimize et**, niceliği değil.\n\n'Sınırlı uyku' tekniği (CBT-I — insomnia tedavisi):\n- Yatakta sadece **uyumak için** kal (uyanıksan kalk)\n- **Sabah sabit saat** kalk (uyku borcu olsa bile)\n- Bu **uyku basıncını** yükseltir = ertesi gece **derin uyu**\n- **N3 evresi** zenginleşir = beden onarımı zirvesinde\n\nMekanizma: adenozin (yorgunluk molekülü) gün boyu birikir → akşam uyku ister. Az uyku = yüksek adenozin = ertesi gece derin uyku.\n\n**Pazar uyandırma protokolü**: hafta sonu 'telafi' yerine **aynı saat** kalk. Sirkadiyen ritm bozulmaz.\n\nKritik: uykusuzluk **sürekli** ise = **alarm**. Doktora git.",
+        "action": "Bugün **7 saat tam uyumayı** dene. 23:00 yat → 06:00 kalk.",
+        "reflectionPrompt": "7 saat 8 saatle **aynı hissetti** mi? Ya da **daha mı net**?",
+        "proTip": "**7 saat tam** = 8 saat parçalı'dan iyi. Kaliteyi optimize et, niceliği değil.",
         "quiz": [
           {
             "q": "Hedef uyku?",
@@ -6019,10 +6019,10 @@
       },
       "44": {
         "title": "Direnç Antrenman Planı",
-        "teaching": "Pazartesi: göğüs+omuz. Çarşamba: bacak. Cuma: sırt+kol. 3 gün × 30 dk = haftalık optimum. Cumartesi-pazar: aktif dinlenme.",
-        "action": "Bugün 3 günlük antrenman planı yaz.",
-        "reflectionPrompt": "Plan motivasyonu artırdı mı?",
-        "proTip": "Antrenman uygulaması: Strong (iOS) = ücretsiz tracking.",
+        "teaching": "Salon'a gidiyorsun, **bir gün göğüs**, bir gün bacak, **random hareketler**. İlerleme **yavaş**, motivasyon zayıflar. Sebep: **plan yok**.\n\nMike Mentzer (efsanevi vücut geliştirici, **'Heavy Duty'**): 'Her büyük atletin **plan**ı var. Random antrenman = random sonuç. Sistematik plan = predictable sonuç.'\n\n**3-gün split** (klasik, etkili, sürdürülebilir):\n\n**Pazartesi — Push (göğüs + omuz + tricep)**\n- Bench press (5x5)\n- Overhead press (3x8)\n- Incline dumbbell (3x10)\n- Lateral raises (3x12)\n- Tricep extension (3x10)\n\n**Çarşamba — Pull (sırt + bicep)**\n- Deadlift (5x5)\n- Pull-up (3xmax)\n- Row (3x10)\n- Bicep curl (3x10)\n- Face pull (3x12)\n\n**Cuma — Legs (bacak + kor)**\n- Squat (5x5)\n- Romanian deadlift (3x8)\n- Lunge (3x10 each)\n- Calf raise (3x15)\n- Plank (3x60 sn)\n\n**Salı, Perşembe, Cumartesi**: aktif dinlenme (yürüyüş, mobilite, Zone 2 kardiyo 30 dk).\n\n**Pazar**: tam dinlenme veya yoga.\n\n**3 gün × 30-45 dk = haftalık optimum**. Daha çok ≠ daha iyi. Recovery şart.\n\n**Tracking app**: **Strong** (iOS, ücretsiz). Her seans kaydet — kilo, set, tekrar. Görsel ilerleme = motivasyon.\n\n**Progressive overload**: her hafta + **2.5 kg** veya + 1 tekrar. **Beden adapte oldukça sen de adapte ol**.",
+        "action": "Bugün **3 günlük antrenman planı yaz**. Push-Pull-Legs split.",
+        "reflectionPrompt": "Plan **motivasyonu artırdı** mı? Net hedef hissi var mı?",
+        "proTip": "**Strong (iOS)** = ücretsiz tracking. Her seans kaydet → ilerleme net.",
         "quiz": [
           {
             "q": "Plan yapısı?",
@@ -6050,10 +6050,10 @@
       },
       "45": {
         "title": "Recovery Mastery",
-        "teaching": "Antrenman = yıkım. Recovery = inşa. Az recovery = ilerleme yok. Foam roller + 8 saat uyku + protein + masaj. Cumartesi yoga, pazar dinlenme.",
-        "action": "Bugün 30 dk dedicated recovery.",
-        "reflectionPrompt": "Recovery sonrası enerji?",
-        "proTip": "Theragun veya foam roller = haftada 3 kez.",
+        "teaching": "Ders 25'te recovery'nin temellerini öğrendin. **Bu ders mastery seviyesi**.\n\nKalvin Park (sport scientist): 'Elite atletler antrenmandan **2x daha çok** recovery'ye odaklanır. Çünkü antrenman = stres = yıkım. **Adaptasyon recovery'de** olur. Az recovery = ilerleme **sıfır** + sakatlık.'\n\n**Recovery mastery 6 araç**:\n\n1. **Uyku 8 saat optimum** (Ders 5, 22, 34)\n   - N3 zenginliği için 22:00 yat\n   - Tam karanlık + serin oda\n\n2. **Protein** — 1.6-2.2g/kg antrenman günleri\n   - Hemen sonra: 30g (kas sentezi penceresi)\n   - Akşam: kazein (yavaş emilim, gece onarım)\n\n3. **Foam roller** — haftada 3 kez × 10 dk\n   - Yapışıklık çözer (fasya)\n   - Kan akışı arttırır\n   - DOMS (kas ağrısı) azalır\n\n4. **Theragun / massage gun** — alternatifi\n   - Derin doku masajı 5 dk\n   - Eklemleri direkt evite (sadece kas)\n\n5. **Aktif toparlanma** (Ders 25)\n   - Yürüyüş, hafif yoga, mobilite\n\n6. **Sıcak / soğuk kontrast** (Ders 38)\n   - Sauna 15 dk + buz banyosu 1 dk × 3 tur\n   - Lenf pompası\n\n**Haftalık recovery yapısı**:\n- Cumartesi: yoga + foam roller\n- Pazar: tam dinlenme + uzun yürüyüş\n\n**30 dakika dedicated recovery** = ertesi gün antrenmanda **%30 daha güçlü**. Yatırım büyük getiri.\n\nMasaj profesyonel: ayda 1 kez = bilim destekler. ₺300-500/seans. Yatırım vs salon üyeliği = aynı tier.",
+        "action": "Bugün **30 dk dedicated recovery**. Foam roller + esneme + yürüyüş.",
+        "reflectionPrompt": "Recovery sonrası **enerji**? Yarınki antrenman için motivasyon?",
+        "proTip": "**Theragun veya foam roller** = haftada 3 kez. Yapışıklık çözer, DOMS azalır.",
         "quiz": [
           {
             "q": "Recovery şart mı?",
@@ -6081,10 +6081,10 @@
       },
       "46": {
         "title": "Atletik Kimlik",
-        "teaching": "\"Spor yapıyorum\" = davranış. \"Atletim\" = kimlik. Sürdürülebilir disiplin kimlik gerektirir. 30 günde \"atlet kimliği\"ne dönüşür.",
-        "action": "Bugün kendine atlet kimliği koy.",
-        "reflectionPrompt": "Atlet kimliği davranışını nasıl değiştirdi?",
-        "proTip": "Aynaya bak: \"Ben atletim. Bedenime saygı duyuyorum.\"",
+        "teaching": "Birisi sordu: 'Ne yapıyorsun?' Cevap: '**Çalışıyorum, spor yapmaya da çalışıyorum**.' Bu cümle = kimliğin **spor yapmayan biri**, sadece deneyen.\n\nCevap olarak: 'Ben **atletim**. Mühendislik de yapıyorum.' = farklı kimlik. **Atlet** olmak birinci, mühendis ikincil.\n\nDers 28'de beden kimliği temellerini öğrendin. Bu **mastery seviyesi**: **atletik kimlik**.\n\nJames Clear: 'Sürdürülebilir disiplin **kimlik** gerektirir. Davranış sadece **'yapıyorum'** — kimlik **'buyum'**.'\n\n**Atletik kimliğin somut göstergeleri**:\n- Kıyafet: spor giysi + günlük (yarısı atletik)\n- Sosyal medya: spor hesaplarını takip\n- Konuşma: 'antrenmanım vardı', 'PR kırdım'\n- Beslenme: protein ve mikro besinleri konuşur\n- Recovery: uyku ve dinlenme öncelikli\n- Sosyal: spor arkadaşları, spor kulüpleri\n- Hedef: yarış, marathon, PR gibi atletik hedefler\n\n**Karşıt 'hayatta kalan'** kimliği:\n- Kıyafet: günlük + spor 'opsiyonel'\n- Spor 'haftada sıkışınca'\n- Beslenme 'önemli ama esnek'\n- Recovery 'lüks'\n- Sosyal: spor arkadaşı yok\n\nMekanizma: kimlik = öncelik filtresi. Atletik kimlik = spora dair her şey **otomatik** önceliklidir. Çatışmada (spor mu sosyal mı?) spor seçilir.\n\n**30 günde dönüşüm**: günlük aynaya bakarak söyle, davran, paylaş. Beyin tekrara inanır.",
+        "action": "Bugün kendine **atlet kimliği koy**. Aynaya söyle, davran, paylaş.",
+        "reflectionPrompt": "Atlet kimliği **davranışını** nasıl değiştirdi? Hangi karar otomatik değişti?",
+        "proTip": "**Aynaya bak**: 'Ben atletim. Bedenime saygı duyuyorum.' Her sabah, yüksek sesle.",
         "quiz": [
           {
             "q": "Davranış mı kimlik mi?",
@@ -6112,10 +6112,10 @@
       },
       "47": {
         "title": "Antrenman Sıklığı",
-        "teaching": "Hafta 3 = başlangıç. Hafta 4 = optimum. Hafta 5+ = aşırı, recovery düşer. 3-4 hafta + 1 dinlenme haftası döngüsü = uzun vade.",
-        "action": "Bugün haftalık antrenman planını gözden geçir, 4 günü geç değil.",
-        "reflectionPrompt": "Recovery zamanın yeterli mi?",
-        "proTip": "Her 4 hafta 1 deload (kolay) hafta. Uzun vade ilerleme.",
+        "teaching": "Haftada **6 gün** antrenman yapıyorsun, **'daha çok = daha iyi'** sanıyorsun. 4. hafta: yorgun, ağrılı, motivasyonsuz. 5. hafta: hasta. **Overtraining sendromu**.\n\nDr. Andy Galpin (Cal State Fullerton): 'Antrenman sıklığı **daha çok değil, daha akıllı** olmalı. Optimum sıklık + **deload haftaları** = uzun vade ilerleme.'\n\n**Optimum sıklık** (hedef + tecrübeye göre):\n\n- **Başlangıç (0-6 ay)**: Hafta 3 gün direnç + 2-3 kardiyo\n- **Orta (6 ay-2 yıl)**: Hafta 4-5 gün karışık\n- **İleri (2+ yıl)**: Hafta 4-6 gün spesifik split\n\n**Hafta 5+ direnç** = recovery düşer (çoğu kişi için). **5+ gün** sadece **deneyimli atletler** için.\n\n**Periyodizasyon**: 4 hafta antrenman + **1 hafta deload** (kolay) döngü.\n\n**Deload haftası nasıl**:\n- Ağırlık **%50** azalt\n- Set sayısı **yarıya** indir\n- Tempo yavaş\n- Hareket sayısı az\n- Daha çok mobilite + esneme\n\nMekanizma: 4 hafta yıkım birikir → CNS (merkezi sinir sistemi) yorgun. Deload = CNS toparlanır = sonraki blokta **yeni PR**'lar gelir.\n\nElite atletler (powerlifter, olympic lifter) bu döngüyü **kutsal** sayar. Yıllık ilerlemenin sırrı: deload haftaları.\n\n**Belirtiler overtraining**: kalp atış istirahatte yükselir, uyku kötüleşir, performans düşer, sürekli yorgun, motivasyonsuz, sık hastalık. Bu belirtiler varsa = **1 hafta tam dinlen**.",
+        "action": "Bugün **haftalık antrenman planını gözden geçir**. **4 günü geçme** (başlangıç-orta).",
+        "reflectionPrompt": "Recovery zamanın **yeterli** mi? Overtraining belirtileri var mı?",
+        "proTip": "**Her 4 hafta 1 deload** (kolay) hafta. Uzun vade ilerleme = recovery döngüleri.",
         "quiz": [
           {
             "q": "Optimum hafta?",
@@ -6143,10 +6143,10 @@
       },
       "48": {
         "title": "Final Sprint",
-        "teaching": "Son 3 gün. 50 günde beden zayıftan dirençliye. Bu sprint = kimlik mührü. Yarın bedeninin patronu sensin.",
-        "action": "Bugün son sprintin niyetini yaz.",
-        "reflectionPrompt": "En değişen fiziksel alışkanlık?",
-        "proTip": "Ayna fotoğraf çek. 50 gün önceki ile karşılaştır.",
+        "teaching": "**Son 3 gün.** 47 ders arkanda. Beden **dramatik dönüştü**: hareket otomatik, soğuk dostuk, uyku zengin, postür dik, beslenme bilinçli, recovery sistematik.\n\nBu noktada beden 'bitti zaten' der, beyin 'son 3 günü atlasan bir şey olmaz' fısıldar. Bu **direnç** — Pressfield kavramı (zaten silent-morning ve mind-discipline'da öğrendin).\n\nİstatistik: spor salonu üyelerinin **%80'i Şubat'ta** gitmez. Yeni yıl kararları **12 günde** çöker. Sen **son %5'in içinde**. Şimdi **lock-in zamanı**.\n\nNeden 50 önemli? Beyin için **'tamamlanmış'** etiket. 47'de duran 'neredeyse' der. 50'de duran '**başardım**' der. Aralarındaki fark = **kimlik mührü**.\n\n**Son 3 gün** = atletik kimliğin **nöral olarak** kaydedilmesi. Bu noktadan sonra geri dönmek 'bilinçli çaba' gerektirir = dönmezsin.\n\n**Niyet yaz**: 'Niye sürdürmek istiyorum?' 3 cümle.\n\nÖrnek:\n- 'Bedenime saygı duyuyorum, bu bana sayısız enerji veriyor.'\n- '50'sinde dimdik durmak istiyorum, şimdi yatırım yapıyorum.'\n- 'Atletik kimlik bana **iç güveni** veriyor, bunu kaybetmek istemiyorum.'\n\nMekanizma: niyet = PFC odaklı motivasyon. Yazılı niyet = görsel hatırlatma = sürekli pekiştirme.",
+        "action": "Bugün **son sprintin niyetini yaz**. 3 cümle: niye sürdürmek istiyorum?",
+        "reflectionPrompt": "En değişen **fiziksel alışkanlık** hangisi? Hangisi en kalıcı?",
+        "proTip": "**Ayna fotoğraf çek**. 50 gün önceki fotoğrafla **karşılaştır** — somut kanıt.",
         "quiz": [
           {
             "q": "Final sprint?",
@@ -6174,10 +6174,10 @@
       },
       "49": {
         "title": "49 Gün İçinde",
-        "teaching": "49 günde beden başkası. Hareket otomatik, soğuk dost, uyku zengin, postür dik. Yeni baseline. 10 değişiklik listele.",
-        "action": "Bugün 49 günde değişen 10 fiziksel alışkanlığı yaz.",
-        "reflectionPrompt": "En unutulmaz fiziksel değişim?",
-        "proTip": "Önce-sonra fotoğraf. Hatırlatma sıkıntı anında.",
+        "teaching": "**49 gün.** Yarın 50. 49 günde **bedenin başkası** oldu. Tek tek listeleme şaşırtıcı:\n\n**49 günde belgelenmiş fiziksel değişimler**:\n- **Hareket otomatik** — Spor 'yapmak zorunda' değil, **istek**\n- **Soğuk dost** — duş bitiminde otomatik soğuk\n- **Uyku zengin** — N3 + REM optimum\n- **Postür dik** — kambur 'yanlış' geliyor artık\n- **Hidrasyon** — 3L doğal\n- **Protein bilinçli** — her öğünde 30g\n- **Şeker yok** — tatlı 'fazla' geliyor\n- **Mobilite günlük** — eklemler **30 yaş gencin** gibi\n- **NEAT yüksek** — gün boyu hareketli\n- **Recovery sistematik** — antrenmandan ayrı zaman ayrılıyor\n\n10 değişiklik = **abartı değil** — bu **gerçek**. Her birinin **somut etkisi** var: daha çok enerji, daha az ağrı, daha iyi uyku, daha keskin zihin.\n\nLally araştırması: 49 gün düzenli pratik = **basal ganglia otomatizasyonu**. Beyin yeni patikayı 'default' olarak tanıyor. Geri dönmek **bilinçli çaba** gerek.\n\nBu liste senin **kanıt arşivin**. Gelecekte 'ben yapamam' sesi geldiğinde bak: '**49 günde 10 fiziksel alışkanlık değiştirdim — bunu da yaparım**.'\n\n**Önce-sonra fotoğraf**: 50 gün önceki + bugünkü. Bunu **sıkıntı anında** gör — kanıt motivasyon.",
+        "action": "Bugün **49 günde değişen 10 fiziksel alışkanlığı yaz**. Spesifik, somut.",
+        "reflectionPrompt": "**En unutulmaz fiziksel değişim** hangisi? Bunu birine anlatsa, en çok hangisi şaşırtırdı?",
+        "proTip": "**Önce-sonra fotoğraf**. **Sıkıntı anında hatırlatma** — kanıt görmek = motivasyon.",
         "quiz": [
           {
             "q": "Yeni baseline?",
@@ -6205,10 +6205,10 @@
       },
       "50": {
         "title": "Master Tamamlandı",
-        "teaching": "50 gün. Bedenin disiplinin = kimlikin. Hareket, uyku, beslenme, soğuk, mobilite — hepsi otomatik. Bedenin patronu sen.",
-        "action": "Bugün aynaya bak. Yeni Sen'i selamla.",
-        "reflectionPrompt": "50 gün önceki sen şimdi olmak ister miydi?",
-        "proTip": "7 gün dinlen, sonra money veya başka path.",
+        "teaching": "**50 gün.** Çoğu insan bedenini **şans + genler + yaş**'a bırakır. Senin bedenin = **disiplinin** = **kimliğin**. Hareket, uyku, beslenme, soğuk, sıcak, mobilite, recovery — hepsi otomatik.\n\n**Bedenin patronu sen.**\n\nÇoğu insan **5 günde** vazgeçer (yeni yıl kararları istatistiği). %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\n**Yeni Sen kim?**\n- **Atlet** — kimlik nöral olarak yerleşti\n- **Hareket isteği** — eskiden yapamadığın şimdi vazgeçilmez\n- **Soğuk dost** — sıcak duş 'gevşeklik' gibi\n- **Uyku savunucusu** — geç yatma 'aptalca' geliyor\n- **Beslenme bilinçli** — şeker 'tatsız'\n- **Recovery sistematik** — antrenmandan ayrı zaman\n- **Postür dik** — kambur 'yanlış'\n- **Hidrasyon otomatik** — şişe sürekli yanında\n\n**Disiplin = yeni biyoloji.** Bedenin hücresel düzeyde değişti: mitochondria, miyofibril, bağırsak florası, hormon profili, sinir sistemi tonu. Bu yeni baseline.\n\nDiploma yok. Sertifika yok. Sadece **ayna**. 50 gün önceki sen → bugünkü sen. **Tanıyor musun**?\n\n50 gün = bağımlılık kırılma noktası (eski hareketsizlik, kötü beslenme). 90 gün = kalıcı. 1 yıl = kimlik.\n\n**Bir başka path başlat**. 7 gün dinlen, sonra **Money Discipline** veya **Mind Discipline**. Disiplin **bulaşıcı** — bedeni disipline eden zihni ve parayı kolayca disipline eder.",
+        "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır.",
+        "reflectionPrompt": "50 gün önceki sen şimdi olmak **ister miydi**? Bu sorunun cevabı ne söylüyor?",
+        "proTip": "**7 gün dinlen**, sonra Money veya Mind Discipline. Disiplin **bulaşıcı** — bir alandan diğerine taşınır.",
         "quiz": [
           {
             "q": "Bedenin patronu?",
