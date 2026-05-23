@@ -61,6 +61,7 @@ export default function SettingsScreen({ navigation }) {
     anonUsername,
     currentStreak,
     userProfile,
+    activePathId,
   } = useApp();
 
   const vacationActive = (() => {
@@ -331,6 +332,7 @@ export default function SettingsScreen({ navigation }) {
                 userProfile.archetype,
               )
             : '',
+          activePathId,
         });
       } catch (e) {
         console.warn('schedule daily reminder failed:', e?.message);

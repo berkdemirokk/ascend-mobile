@@ -215,10 +215,24 @@ export const requestNotificationPermissions = async () => {
  * @param {number} [opts.currentStreak=0]  caller's current streak (from
  *   useApp().currentStreak), used to pick the right copy.
  */
+// Path-optimal reminder hour. Each discipline path has a natural
+// "best time of day to engage" — pushing the silent-morning user at
+// 9 PM is a waste, pushing the body-discipline user at 7 AM ditto.
+// Times tuned for TR habits (most users wake 7-8, work 9-18,
+// dinner 19-20, sleep 23-24).
+const PATH_OPTIMAL_HOUR = {
+  'silent-morning': 7, // wake-and-do — earliest slot
+  'mind-discipline': 9, // settle-into-work-then-focus
+  'money-discipline': 10, // weekday: post-morning-rush; weekend: brunch budget
+  'body-discipline': 18, // post-work, pre-dinner: gym window
+  'dopamine-detox': 20, // evening phone-detox prime time
+};
+
 export const scheduleDailyReminder = async ({
   currentStreak = 0,
   userName = '',
   archetypeName = '',
+  activePathId = null,
 } = {}) => {
   // Replace any previously scheduled copy of the same reminder so we don't
   // pile up duplicates every app launch.
@@ -317,7 +331,11 @@ export const scheduleDailyReminder = async ({
     },
     trigger: {
       type: SchedulableTriggerInputTypes.DAILY ?? 'daily',
-      hour: 9,
+      // Path-optimal hour — defaults to 9 AM if no path or path not
+      // in the map. Audit finding: 'one-size-fits-all 9 AM push wastes
+      // the most precious slot for users whose path peaks earlier
+      // (silent-morning) or later (dopamine-detox)'.
+      hour: PATH_OPTIMAL_HOUR[activePathId] ?? 9,
       minute: 0,
     },
   });

@@ -180,6 +180,9 @@ export default function OnboardingScreen({ navigation }) {
               getArchetypeById(selectedArchetype).nameKey,
               getArchetypeById(selectedArchetype).nameFallback,
             ),
+            // Path-optimal hour — silent-morning users get 7 AM,
+            // dopamine-detox users get 8 PM, etc.
+            activePathId: selectedPath,
           }).catch(() => {});
           scheduleWeeklyRecap().catch(() => {});
           // D1 + D3 first-week hooks — these are the only outside-app
