@@ -6238,9 +6238,9 @@
     "money-discipline": {
       "1": {
         "title": "Görünmez Harcama Tehlikesi",
-        "teaching": "En tehlikeli harcamalar görünmez olanlar: aboneliğe giren, otomatik çekilen, küçük olan ama biriken.\n\nHerkesin 5–15 unutulmuş aboneliği var. Yıllık binlerce TL kayıp. Hiç fark edilmeden.\n\nBugün görünmezi görünür yapacağız.",
-        "action": "Banka hesap özetinden son 3 ayı geç. Her abonelik/tekrarlanan ödemeyi listele. Kullanmadıklarını şu an iptal et.",
-        "reflectionPrompt": "Kaç abonelik bulundun? Yıllık ne kadar paraydı?",
+        "teaching": "Banka hesap özetini açtın. 'Ne harcadım bu ay?' Büyük şeyler net: kira, market, fatura. Ama **küçük olan, otomatik çekilen, aboneliğe giren** — bunları hatırlayamıyorsun. **Yılda binlerce TL** sessizce gidiyor.\n\nWest Monroe Partners araştırması: ortalama insan **aylık ₺800-1500** unutulmuş aboneliğe öder. Yıllık **₺10-18 bin**. Bu **görünmez harcama** — kart bilanço'sunda gizli, kafada gizli.\n\nÖrnek liste (çoğu kişi):\n- Netflix (kullanmıyor, başkası kullanıyor)\n- Spotify Family (yarısı eski arkadaş)\n- Adobe Creative (1 yıl açmadın)\n- iCloud ekstra storage\n- Gym (3 ay önceki)\n- Online kurs (hiç açmadın)\n- Premium news\n- App-içi abonelikler (forgotten)\n\nMekanizma: 'küçük harcamalar = harcamalar' beyni filtre dışı. **Recurring billing** = endüstri tasarımı — sen unut, onlar gel.\n\nDan Ariely (**Predictably Irrational**): 'Otomatik harcamalar = irrational behavior tetikleyici. Görmeme = onaylama.'\n\n**Çözüm**: son 3 ay hesap özetini **tek tek** geç. Her recurring → kullanıyor musun? **Hayırsa iptal et şu an**.",
+        "action": "**Banka hesap özetinden son 3 ayı** geç. Her abonelik/tekrarlanan ödemeyi **listele**. Kullanmadıklarını **şu an iptal et**.",
+        "reflectionPrompt": "Kaç abonelik bulundun? **Yıllık ne kadar para**ydı?",
         "quiz": [
           {
             "q": "En tehlikeli harcama tipi?",
@@ -6269,9 +6269,9 @@
       },
       "2": {
         "title": "Bütçe = Özgürlük",
-        "teaching": "Çoğu kişi bütçe kelimesinden kısıtlama anlar. Ama gerçekte bütçe = özgürlük.\n\nBilmediğin şeyi kontrol edemezsin. Ne kazandığını ve ne harcadığını net bilmek = paranı yönetmek.\n\n50/30/20 kuralı: gelirinin %50si zorunlu, %30u istediklerin, %20si tasarruf/yatırım. Sadelik var.",
-        "action": "Bugün bir tablo aç. Aylık gelirini yaz. 50/30/20 kategorilerine böl. Gerçek harcamalarını karşılaştır.",
-        "reflectionPrompt": "Hangi kategori sınırı aştı?",
+        "teaching": "**'Bütçe'** kelimesi → kafanda **kısıtlama, sıkıntı, kemer sıkma**. 'Ben bütçe sevmem, esnek yaşarım' dersin. Ay sonu: **'Ne oldu paraya?'**. Sürekli aynı sahne.\n\nReality: **bütçe = özgürlük**. Bilmediğin şeyi kontrol edemezsin. Ne kazandığını + ne harcadığını **net bilmek** = paranı **yönetmek**.\n\nSenator Elizabeth Warren (Bütçe **50/30/20 kuralının** popülerleştiricisi):\n- **%50 zorunlu** (kira, fatura, market, ulaşım)\n- **%30 istek** (eğlence, dışarıda yemek, hobi, lüks)\n- **%20 tasarruf/yatırım** (emergency fund, yatırım, borç ödemesi)\n\nBasit. Esnek. **Sürdürülebilir**. Karmaşık bütçe app'leri yerine bu **3 kategori** yeter.\n\nMekanizma: net çerçeve → karar yorgunluğu sıfır → bilinçli harcama otomatik. 'Bu lüks mü zorunlu mu?' sorusu **bir kez** yanıtlanır.\n\nÖrnek: 50K aylık gelir → 25K zorunlu / 15K istek / 10K tasarruf.\n\n**Gerçek harcamaları karşılaştır**. Sürpriz olur — çoğu kişi 'istek' kategorisinde **%50+** yer. Sebep bilince yok.\n\n**İlk 1 ay sıkı uygula**, sonra esnetebilirsin. İlk ay temel oturmazsa esneklik anlamsız.",
+        "action": "Bugün bir tablo aç. **Aylık gelirini yaz**. **50/30/20** kategorilerine böl. **Gerçek harcamalarını** karşılaştır.",
+        "reflectionPrompt": "**Hangi kategori sınırı aştı**? Sürpriz oldu mu?",
         "quiz": [
           {
             "q": "50/30/20 kuralı nedir?",
@@ -6300,9 +6300,9 @@
       },
       "3": {
         "title": "24-Saat Bekleme Kuralı",
-        "teaching": "Anlık satın alma dürtüsü = dopamin, gerçek ihtiyaç değil. 24 saat bekledikten sonra %80inin gerekli olmadığını fark edersin.\n\nKural: 100 TL üstü her satın alma, sepete koy ama 24 saat bekle. Hala istiyor musun? Al. Unuttuysan, unutman gereken bir şeydi.\n\nBu basit kural yıllık binlerce TL kurtarır.",
-        "action": "Bugünden başlayarak 100 TL üstü her satın almayı 24 saat ertele. Bir bekleme listesi tut.",
-        "reflectionPrompt": "Bugün ertelediğin neydi? 24 saat sonra hala istedin mi?",
+        "teaching": "Instagram'da reklam → '**Bu telefonu almalıyım**'. 5 dakika sonra: **Trendyol sepetinde**. 2 dakika sonra: **ödendi**. Ertesi gün: 'Niye almıştım bunu?' Klasik **anlık satın alma**.\n\nNörobilim: anlık satın alma = **dopamin spike** (yenilik tetikleyici), gerçek ihtiyaç **değil**. Beyin 'iste, al' diyor. 24 saat sonra: **dopamin baseline'a döner**, gerçeklik görünür.\n\nGeorge Loewenstein (Carnegie Mellon, **'hot-cold empathy gap'**): 'Sıcak hâl' (an, dürtü) → 'soğuk hâl' (rasyonel, sonradan). Sıcak hâlde verilen kararların **%80'i** soğuk hâlde **pişman**lık.\n\n**24-saat kuralı**: ₺100 üstü her satın alma → **sepete koy, 24 saat bekle**.\n- **Hala istiyorsan**: al (gerçek ihtiyaç)\n- **Unuttuysan**: zaten unutman gereken bir şeydi\n- **'Belki almasam'** dersen: zaten alma\n\nMekanizma: 24 saat = **PFC re-engage**. Dopamin tepkisi söner, **uzun vade düşünce** devreye girer. 'Bu bana 30 yıl getirir mi?' sorusu otomatik.\n\nÇoğu bekleme = **iptal**. Bu kural **yıllık binlerce TL** kurtarır.\n\nİleri seviye: **₺1000 üstü = 1 hafta bekle**. **₺10K üstü = 1 ay bekle**.",
+        "action": "Bugünden başlayarak **₺100 üstü her satın almayı 24 saat ertele**. **Bekleme listesi** tut.",
+        "reflectionPrompt": "Bugün ertelediğin neydi? 24 saat sonra **hala istedin** mi?",
         "quiz": [
           {
             "q": "24-saat kuralı kaç TL üstüne uygulanır?",
@@ -6331,9 +6331,9 @@
       },
       "4": {
         "title": "Yemek Maliyeti Görünümü",
-        "teaching": "Dışarıda yemek vs evde pişirmek 5–10x maliyet farkı yaratır. Çoğu kişi bunu görmüyor çünkü küçük harcamalar.\n\n200 TL bir öğün × günde 3 öğün × ayda 30 = 18,000 TL/ay. Aynı yemekleri evde 60 TL ye yapabilirsin.\n\nDışarıda yemek tatil deneyimi olmalı, günlük rutin değil.",
-        "action": "Bugün 1 öğünü evde pişir. Maliyetini hesapla, dışarıda aynı yemeğin maliyetiyle karşılaştır.",
-        "reflectionPrompt": "Evde pişirmek ne kadar tasarruf etti? Tatlı miydi?",
+        "teaching": "Öğle yemeği için **dışarıda 200 TL** ödedin. Çorba + ana yemek + içecek. Tabağa baktın: ev yemeği gibi sıradan tavuk + pilav. **Aynı yemek evde**: tavuk ₺30, pilav ₺10, içecek ₺5 = **₺45**. Fark: **4.5x**.\n\nMatematik **dramatic**:\n- 200 TL × 1 öğün × **30 gün** = ₺6,000/ay\n- Üç öğün dışarı × 30 gün = ₺18,000/ay\n- Evde aynı yemekler: ₺3-6,000/ay\n- **Yıllık fark**: ₺150,000+\n\nBu **mortgage ödemesi mertebesinde**. Çoğu kişi 'evim olamıyor' der ama dışarıda yemeğe bütün bir ev parası harcar.\n\nMekanizma: dışarı yemek = **convenience + sosyal + dopamin** kombinasyonu. Beyin bu paketi 'değerli' sanır. Ama matematik **acımasız**.\n\nMichael Pollan (**The Omnivore's Dilemma**): 'Evde pişirmek = sağlık + para + ailen + beceri. Tek aktivite, dört kazanç.'\n\nKarmaşık olmak zorunda değil. **4 hareket**: doğra, kavur, baharatla, ye. 15-20 dakika. Restoran 45 dk + ulaşım = aynı süre.\n\n**Dışarıda yemek = tatil deneyimi olmalı, günlük rutin değil**. Haftada 1-2 dışarı = sosyal + zevk. Her gün dışarı = finansal yıkım.",
+        "action": "Bugün **1 öğünü evde pişir**. Maliyetini hesapla, **dışarıda aynı yemeğin maliyetiyle** karşılaştır.",
+        "reflectionPrompt": "Evde pişirmek **ne kadar tasarruf etti**? Tat değişti mi?",
         "quiz": [
           {
             "q": "Ev pişirme vs dışarı maliyet farkı?",
@@ -6362,9 +6362,9 @@
       },
       "5": {
         "title": "Acil Durum Fonu",
-        "teaching": "Mali stres → kötü kararlar. Yatırımları erken sat, kredi al, ucuz işlere razı ol. Hepsi pahalı hatalar.\n\nAcil durum fonu = 3 aylık zorunlu giderlerin. İşsizlik, sağlık, beklenmedik durum için.\n\nBu fon olmadan finansal disiplin yapay. Gerçek temel bu.",
-        "action": "Bugün ayrı bir hesap aç (faizli mevduat OK). Maaşının %10unu o hesaba transfer et. Bu fon büyüyene kadar dokunma.",
-        "reflectionPrompt": "%10 transfer hangi alandan kesilecek?",
+        "teaching": "İşten kovuldun. Beklenmiyordu. Mortgage var, çocuk okul, eşin de iş arıyor. **Para yok birikim**. Panik. Yanlış kararlar: kötü iş kabul, yatırımları zararına sat, yüksek faizli kredi. **3 ay içinde** mali olarak **çök**tün.\n\nBu sahne **çoğu insanın gerçeği**. Sebep: **acil durum fonu yok**.\n\nMali stres → **kötü kararlar**. Senedhil Mullainathan (Princeton, **Scarcity**): 'Stres altında IQ 13 puan düşer. Yokluk = bilişsel kapasite çöker.'\n\n**Acil durum fonu = 3-6 aylık zorunlu giderlerin**. Kira + fatura + market + ulaşım + minimum sağlık + minimum borç. Kaba hesap: aylık ₺15K zorunlu × **3 ay = ₺45K**.\n\nNiye 3 ay?\n- **İşsizlik ortalama** 2-4 ay\n- **Sağlık problemi** geçici çözüm 3 ay\n- **Aile krizi** geçici buffer\n- **Beklenmedik** araba/ev tamiri\n\nBu fon **dokunulmaz**. Yatırım değil — **buffer**. Faizli mevduat veya yüksek getirili para piyasası fonu OK (likit + biraz faiz).\n\nMekanizma: acil fon = **psikolojik güvenlik** = **uzun vade düşünme** mümkün olur. Acil fon yoksa = her küçük dalga panik = kötü kararlar.\n\n**Bu fon olmadan finansal disiplin yapay**. Gerçek temel bu.\n\n**Pratik**: ayrı banka, ayrı kart, **gözden uzak**. 'Aşağı yukarı görünür' = harcanır.",
+        "action": "Bugün **ayrı bir hesap aç** (farklı banka). **Maaşının %10'unu** o hesaba transfer et. Bu fon **büyüyene kadar dokunma**.",
+        "reflectionPrompt": "%10 transfer **hangi alandan** kesilecek? Hangi 'istek' iptal olacak?",
         "quiz": [
           {
             "q": "Acil durum fonu kaç aylık olmalı?",
@@ -6393,10 +6393,10 @@
       },
       "6": {
         "title": "Net Servet Tarama",
-        "teaching": "Çoğu insan kendi servetini bilmez. Net servet = varlık (nakit, yatırım, gayrimenkul) - borç (kredi, kart, kredi kartı). Bu sayı senin gerçek finansal hayatın. Yıl sonu vs yıl başı: artıyor mu, azalıyor mu?",
-        "action": "Bugün net servetini hesapla. Excel'e yaz, fotoğrafını çek.",
-        "reflectionPrompt": "Net servetin beklediğinden ne kadar farklı çıktı?",
-        "proTip": "Aylık net servet takibi yap. Yıllık değişim = gerçek gelişimin göstergesi.",
+        "teaching": "Birisi sordu: '**Ne kadar zenginsiniz**?' Cevap vermek **zor** çünkü hiç hesaplamadın. Aslında **çoğu insan** kendi servetini bilmez. Bu = **göz bağlı uçmak**.\n\n**Net servet formülü** (basit ama güçlü):\n\n**Net Servet = Varlık - Borç**\n\n**Varlık**:\n- Nakit (banka hesapları)\n- Yatırımlar (hisse, fon, kripto, altın)\n- Gayrimenkul (ev değeri, arazi)\n- Araba (gerçek değer, alış değer değil)\n- Değerli eşyalar (saat, mücevher)\n- İşletme payı\n\n**Borç**:\n- Mortgage kalan\n- Kredi kartı borcu\n- Bireysel kredi\n- Araba kredisi\n- Borçlar (özel kişilere)\n\nÖrnek: 500K ev + 100K yatırım + 50K nakit + 100K araba = **750K varlık**. 300K mortgage + 50K kredi = **350K borç**. **Net servet = 400K**.\n\nMekanizma: net servet = **gerçek finansal hayatın**. Maaş tek başına yanıltıcı (yüksek maaş + yüksek harcama = düşük net servet). Net servet = **birikmiş değer**.\n\nThomas Stanley (**The Millionaire Next Door**): 'Gerçek milyonerler **maaş değil, net servet** ile ölçülür. Çoğu \"zengin görünen\" düşük net servete sahip — borçla yaşıyor.'\n\n**Aylık takip** = kişisel skor kartı. Yıl başı ↔ yıl sonu fark = **gerçek finansal büyümeni** gösterir.",
+        "action": "Bugün **net servetini hesapla**. Excel'e yaz, fotoğrafını çek.",
+        "reflectionPrompt": "Net servetin **beklediğinden ne kadar farklı** çıktı? Sürpriz yön?",
+        "proTip": "**Aylık net servet takibi** yap. **Yıllık değişim = gerçek gelişiminin göstergesi**.",
         "quiz": [
           {
             "q": "Net servet hesaplaması?",
@@ -6424,10 +6424,10 @@
       },
       "7": {
         "title": "Abonelik Denetimi",
-        "teaching": "Ortalama insan farkında olmadan 7-12 abonelik öder: streaming, app, gym, dergi, premium servis. 1 yılda 5.000-15.000 TL. %50'sini sen kullanmıyorsun. İptal et.",
-        "action": "Bugün son 3 ayın kart ekstresini incele. Tüm abonelikleri listele.",
-        "reflectionPrompt": "Şaşırtan kaç tane \"uyuyan\" abonelik buldun?",
-        "proTip": "Truebill, Bobby gibi uygulamalar otomatik bulup iptal eder.",
+        "teaching": "Ders 1'de görünmez harcama tehlikesini tanıdın. Bu **derin tarama**: **abonelik denetimi**.\n\nİstatistik (West Monroe Partners 2021): ortalama yetişkin **7-12 aktif abonelik** öder. **%69'u** ödeme miktarını **abartıyor sanıyor** ama gerçek **daha çok**.\n\n**Tipik abonelikler** (her kategoriden):\n- **Streaming**: Netflix, Spotify, Disney+, Amazon Prime, BluTV (3-6 farklı)\n- **App**: Notion, Adobe, iCloud storage, ChatGPT, password manager (5-10)\n- **Gym/sağlık**: salon, online fitness, meditation app, beslenme tracker\n- **Dergi/news**: BBC, Bloomberg, Medium, Substack\n- **Premium servis**: iyzico+, getir+, restoran kulübü\n- **Profesyonel**: LinkedIn Premium, Canva Pro, Notion Plus\n\n**Yıllık tutar**: ortalama ₺5,000-15,000.\n\n**%50'sini gerçekten kullanmıyorsun**. Niçin? Çünkü:\n- 'Şimdi iptal edersem yine ihtiyacım olur' korku\n- Endüstri tasarımı: iptal süreci **zor**\n- 'Bu kadar mı ki' küçük gibi gelir\n- 'Lüks değil, gerek' rasyonelize ederiz\n\nMekanizma: **sunk cost fallacy** + **status quo bias**. Beyin 'iptal' kararını **risk** olarak görür, sürdürme **rahat**.\n\n**Eylem**: son 3 ay kart ekstresi. **Tek tek** geç. 4 kategori:\n1. **Aktif kullanıyorum** → tut\n2. **Bazen kullanıyorum** → 1 ay dene iptal\n3. **Hiç kullanmıyorum** → iptal **şu an**\n4. **Unutmuştum** → iptal + suçluluk yok",
+        "action": "Bugün **son 3 ayın kart ekstresini** incele. **Tüm abonelikleri listele**.",
+        "reflectionPrompt": "Şaşırtan **kaç tane 'uyuyan' abonelik** buldun?",
+        "proTip": "**Truebill, Bobby** gibi uygulamalar otomatik bulup iptal eder. Türkiye için manuel inceleme yeter.",
         "quiz": [
           {
             "q": "Ortalama abonelik sayısı?",
@@ -6455,10 +6455,10 @@
       },
       "8": {
         "title": "Latte Faktörü",
-        "teaching": "Günde 50 TL kahve = ayda 1.500 TL = yılda 18.000 TL = 30 yılda 540.000 TL (faiz hariç). Yatırırsan: ~1.5 milyon TL. Küçük günlük \"lüksler\" emekliliğini yiyor.",
-        "action": "Bugün otomatik küçük harcamalarını listele. Toplam aylık?",
-        "reflectionPrompt": "Hangi \"küçük\" harcama aslında büyüktü?",
-        "proTip": "Hepsini kesme — 1'ini değiştir. Etki büyük olur.",
+        "teaching": "Sabah Starbucks: 50 TL. **'Sadece bir kahve'**. Akşam: 'çok yorgunum, eve yemek söyleyelim' → 250 TL Yemeksepeti. Hafta sonu sinema → 200 TL. Bu küçük harcamalar **fark edilmiyor** ama matematik **brutal**.\n\nDavid Bach (**The Automatic Millionaire**, 'Latte Factor' kavramı):\n- Günde 50 TL kahve\n- × 30 gün = 1,500 TL/ay\n- × 12 ay = 18,000 TL/yıl\n- × 30 yıl = **540,000 TL** (faiz hariç)\n- × **bileşik faiz %10/yıl yatırırsan**: **~1,500,000 TL** (1.5 milyon)\n\nBir kahve **emekliliğinin yarısı**. Çoğu kişi için 'küçük lüksler' = emekliliğin yokluğu.\n\nMekanizma: küçük günlük harcamalar = **hedonik adaptasyon**. Beyin 'normal' kabul eder, **görmez**. Ama bileşik faiz **acımasız** matematiktir.\n\nKritik **nüans**: **hepsini kesme**. Kahve seviyorsan, hayatın küçük zevki — sıkı kesme = sürdürülemez. **1 lüksü değiştir**:\n- Starbucks → ev kahvesi (ekstra: tat daha iyi makinesi al)\n- Yemeksepeti → meal prep pazar\n- Sinema → arkadaş evi + Netflix\n\n**1 değişiklik × 30 yıl × bileşik = hayat değiştiren para**.\n\nWarren Buffett: 'Bileşik faiz dünyanın 8. harikası. Anlayanlar **kazanır**, anlamayanlar **öder**.'",
+        "action": "Bugün **otomatik küçük harcamalarını listele**. Toplam aylık?\nBileşik faiz hesaplayıcı = 30 yıl sonrası gör.",
+        "reflectionPrompt": "Hangi 'küçük' harcama **aslında büyüktü**? 30 yıl etkisi şaşırttı mı?",
+        "proTip": "**Hepsini kesme — 1'ini değiştir**. Sürdürülebilir değişim > sıkı kemer sıkma.",
         "quiz": [
           {
             "q": "50 TL/gün × 30 yıl?",
@@ -6486,10 +6486,10 @@
       },
       "9": {
         "title": "Tek Hesap Stratejisi",
-        "teaching": "Çok hesap = kafa karışıklığı. 1 ana hesap (gelir + günlük), 1 tasarruf hesabı (yatırılmaz), 1 yatırım hesabı (uzun vade). Kart sayısı: 1 günlük, 1 yedek. Daha fazla = karışıklık.",
-        "action": "Bugün tüm hesaplarını listele. Gerekmeyen 1'i kapat.",
-        "reflectionPrompt": "Hesap sadeliği sana hangi mental yer açtı?",
-        "proTip": "Birden fazla bankada gereksiz hesap = giriş şifresi yorgunluğu + yıllık ücret katmanları.",
+        "teaching": "Cüzdanını açtın: **8 kart**. Telefonda **5 banka uygulaması**. Her birinin **farklı şifresi**, farklı yıllık ücreti, farklı özellikleri. **Tam karmaşa**. Para nerede? Belirsiz. Hangi karta hangisi? Karışık.\n\n**Çoklu hesap = kafa karışıklığı** = karar yorgunluğu = kötü finansal kararlar.\n\nRamit Sethi (**I Will Teach You To Be Rich**) — minimum sistem:\n- **1 ana hesap** (gelir + günlük harcama)\n- **1 tasarruf hesabı** (acil fon, ayrı banka)\n- **1 yatırım hesabı** (uzun vade)\n\n**Toplam: 3 hesap**. Daha fazla = aldatıcı **'çeşitlilik'**.\n\n**Kart**: 1 günlük + 1 yedek (yurt dışı, acil). Toplam **2 kart**. Daha fazla = yıllık ücret + karar yorgunluğu + güvenlik riski.\n\nMekanizma: tek sistem → **tek dashboard** → tek tarama → tek karar. Karmaşık sistem → tarama maliyeti yüksek → 'sonra bakarım' → asla bakmaz.\n\nNassim Taleb (**Antifragile**): 'Karmaşıklık = fragilite. Sadelik = sağlamlık.'\n\n**Gereksiz hesabın işaretleri**:\n- 6 aydır kullanmadın\n- Yıllık ücret ödedin ama avantajı net değil\n- Hangi kart'a hangi avantaj hatırlamıyorsun\n- Promosyon için açıldı, sonra unutuldu\n- Aynı bankada **birden fazla** hesap\n\n**Eylem**: tüm hesapları listele → **net olmayan 1'i kapat**.",
+        "action": "Bugün **tüm hesaplarını listele**. Gerekmeyen **1'i kapat**.",
+        "reflectionPrompt": "Hesap sadeliği **mental yer** açtı mı? Hangi 'çatışma' azaldı?",
+        "proTip": "Birden fazla bankada gereksiz hesap = **şifre yorgunluğu + yıllık ücret katmanları**.",
         "quiz": [
           {
             "q": "Optimum hesap sayısı?",
@@ -6517,10 +6517,10 @@
       },
       "10": {
         "title": "Otomatik Tasarruf",
-        "teaching": "İrade gücüne güvenme. Otomasyona güven. Maaş geldiğinde önce %20 otomatik tasarruf hesabına geçsin. Sen kalanını yaşa. Görmediğin para = harcamadığın para.",
-        "action": "Bugün maaşının %20'sini otomatik transfer ayarla.",
-        "reflectionPrompt": "Otomatik kesintinin hayatına etkisi nasıl olur?",
-        "proTip": "Tasarruf hesabını başka bankada aç. Aynı bankada = \"kolayca al\" tehlikesi.",
+        "teaching": "Aysonu: 'Bu ay tasarruf edemedim.' **Her ay aynı**. Niyet var, yapamıyorsun. Çünkü **irade gücüne güveniyorsun** — irade tükenir.\n\n**Çözüm: irade değil, otomasyon**. Charles Duhigg (**The Power of Habit**): 'En güçlü davranış sistemleri **iradeyi by-pass eder** — karar an'ı **otomatikleştirir**.'\n\n**Otomatik tasarruf**:\n- Maaş geldiğinde **önce %20 otomatik** tasarruf hesabına geçsin\n- Sen **kalan %80'i** yaşa\n- **Görmediğin para = harcamadığın para**\n\nSir John Templeton (efsanevi yatırımcı): 'Erken kariyerimden beri **maaşımın %50'sini** otomatik yatırıma koydum. Geri kalanı yaşadım. 80 yaşında milyarder oldum. Sırrı: **otomasyon + zaman**.'\n\n**Niye işliyor**: para banka hesabına **hiç görünmeden** transfer olur. Beyin 'bu para benim' olarak kayıt etmez. Geriye kalan %80'le yaşamayı **otomatik adapte** olur (hedonik adaptasyon **tersi yönde** çalışır).\n\nMatematik:\n- 20K aylık × %20 = **4K/ay tasarruf**\n- × 12 ay = **48K/yıl**\n- × 30 yıl × bileşik %8 = **5.4 milyon TL**\n\nİrade 'belki tasarruf' = sıfır. Otomasyon 'kesin tasarruf' = milyon.\n\n**Tasarruf hesabı = farklı banka**. Aynı banka = 'kolayca al' tehlikesi. Friksiyon önemli.",
+        "action": "Bugün **maaşının %20'sini otomatik transfer** ayarla. Maaş günü, ayın 1'i, sabit.",
+        "reflectionPrompt": "Otomatik kesintinin **hayatına etkisi** nasıl olur? Korktuğun kadar zor mu?",
+        "proTip": "Tasarruf hesabını **başka bankada** aç. Aynı bankada = 'kolayca al' tehlikesi.",
         "quiz": [
           {
             "q": "Otomatik tasarruf %?",
@@ -6548,10 +6548,10 @@
       },
       "11": {
         "title": "Önce Kendine Öde",
-        "teaching": "Çoğu insan: önce harcar, kalanı tasarruf. Bu sıralama yanlış. Doğrusu: önce kendine öde (tasarruf/yatırım), kalanı harcamaya. Tek değişiklik = 10 yıl içinde milyonluk fark.",
-        "action": "Bugün geliri alır almaz önce tasarrufa, sonra harcamalara dağıt.",
-        "reflectionPrompt": "Sıralama değişikliği zihninde hangi cümleyi değiştirdi?",
-        "proTip": "Maaş gününde \"kendi maaşını öde\" — kendine ilk fatura.",
+        "teaching": "Maaş aldın. **Sırayla**: kira → elektrik → market → benzin → eğlence → ... → 'kaldıysa **tasarruf**'. **Kalmadı**. Her ay aynı sahne.\n\nSorun: **yanlış sıralama**. Önce başkalarına ödüyorsun (ev sahibi, elektrik şirketi, market), **kalanı sen alıyorsun** — ki çoğu zaman kalmıyor.\n\n**Doğru sıralama**: **'Önce kendine öde'** prensibi (Pay Yourself First — George S. Clason, **The Richest Man in Babylon** 1926).\n\n**Yeni sıralama**:\n1. **Önce kendine öde** (tasarruf + yatırım — %20)\n2. **Sonra zorunlu** (kira, fatura, market — %50)\n3. **Kalanı istek** (eğlence, hobi, lüks — %30)\n\nFark: sen 'son sırada' değil, **birinci öncelik**.\n\nNiye işliyor:\n- Tasarruf **sabit** = otomatik 'kazanılır'\n- Harcama **kalanla** = adapte olur\n- Stres az = hedef belirli\n\n**Tek değişiklik = 10 yıl içinde milyonluk fark**.\n\nMekanizma: **psikolojik öncelik** + **otomatik sistem** (Ders 10). 'Kendine ilk fatura' kes — kendine **vermek bir hak**, yıl sonu hesap değil.\n\nClason: 'Ne kadar kazanırsan kazan, **en az %10'u kendine ödememezsen** her zaman fakir kalırsın. %10 kuralı **evrensel**.'",
+        "action": "Bugün **geliri alır almaz**: önce tasarrufa, sonra harcamalara dağıt.",
+        "reflectionPrompt": "Sıralama değişikliği **zihninde** hangi cümleyi değiştirdi?",
+        "proTip": "Maaş gününde **'kendi maaşını öde'** — kendine **ilk fatura**, kalan başkalarına.",
         "quiz": [
           {
             "q": "Önce ne öde?",
@@ -6579,10 +6579,10 @@
       },
       "12": {
         "title": "Borç Çığ Yöntemi",
-        "teaching": "Birkaç borcun varsa: en yüksek faizli borca odaklan, diğerlerine minimum öde. En yüksek faizli bitince → bir sonrakine. Buna \"çığ\" denir. Matematiksel olarak en hızlı bitirir.",
-        "action": "Bugün tüm borçlarını faiz oranına göre listele. Çığ planı yap.",
-        "reflectionPrompt": "En yüksek faizli borcunu görmek nasıl hissettirdi?",
-        "proTip": "Snowball metodu (küçükten büyüğe) psikolojik. Avalanche (yüksek faize) matematiksel. İkisi de işler — 1'ini seç.",
+        "teaching": "**4 borcun var**: kredi kartı (%45), tüketici kredisi (%30), ihtiyaç kredisi (%20), arkadaş borcu (%0). Her birine **eşit ödeme** yapıyorsun. Ama bu **matematiksel olarak en kötü** strateji.\n\n**Borç çığı (Debt Avalanche)** = **en yüksek faizli borca odaklan**, diğerlerine sadece **minimum öde**. En yüksek bitince → sıradakine. Devam.\n\nMatematik:\n- Kredi kartı %45 = ayda %3.75 faiz birikiyor\n- İhtiyaç kredisi %20 = ayda %1.67 faiz\n- Aynı miktar ödeme → kart **3x daha hızlı** azalır\n\nNiye 'çığ'? Çünkü en yüksek faizli bittiğinde → onun ödemesi sonraki borca **katlanır**. Her bitiş = daha hızlı sonraki bitiş. Çığ etkisi.\n\nAlternatif: **Snowball** (Dave Ramsey). Küçük borçtan büyüğe ödeme. Matematiksel olarak **yavaş** ama psikolojik **güçlü** (sık 'zafer' = motivasyon).\n\n- **Avalanche** = matematik kazanır (toplam faiz az)\n- **Snowball** = psikoloji kazanır (motivasyon yüksek)\n\nKendine sor: matematik mi motivasyon mu daha çok ihtiyacın? **İkisi de işler** — sadece **birini seç**, ikilemde kalma.\n\nMekanizma: tek odaklı sistem > paralel ödeme. Paralel = her borç yavaş azalır → motivasyon kaybı + toplam daha pahalı.\n\n**Eylem**: tüm borçları listele → faiz oranı + bakiye + minimum ödeme. Sırala. Plan yap.",
+        "action": "Bugün **tüm borçlarını faiz oranına göre listele**. **Çığ planı** yap.",
+        "reflectionPrompt": "**En yüksek faizli** borcunu görmek nasıl hissettirdi? Şaşırdın mı?",
+        "proTip": "**Snowball** (küçükten büyüğe) psikolojik. **Avalanche** (yüksek faize) matematiksel. **İkisi de işler — 1'ini seç**.",
         "quiz": [
           {
             "q": "Çığ yöntemi nedir?",
@@ -6610,10 +6610,10 @@
       },
       "13": {
         "title": "Kredi Kartı Disiplini",
-        "teaching": "Kredi kartı = enstrüman. Kötü kullanılırsa kelepçe, iyi kullanılırsa kaldıraç. Kural: 1) Sadece zaten alınacak şeylere, 2) Tam miktarda öde, 3) Faiz ödeme. Yapamazsan kart kapat.",
-        "action": "Bugün kredi kartı bakiyenle harcamalarını eşleştir. Açık var mı?",
-        "reflectionPrompt": "Kart kullanımın disiplinli mi yoksa sömürüye mi açık?",
-        "proTip": "Kredi kartını yanına alma — sadece bilinçli alışveriş için. Cüzdanda taşımayan harcamayı %15 azaltır.",
+        "teaching": "Kredi kartı 'kötü' mi? **Hayır, enstrüman**. Kötü kullanılırsa **kelepçe**, iyi kullanılırsa **kaldıraç**. Fark: **disiplin**.\n\nABD istatistik: kredi kartı borcunu **tam ödemeyen** ailelerin ortalama faiz ödemesi yıllık **₺25,000+**. Yani **30 yılda 750,000 TL** sadece faize — hayat sigortası kıymetinden fazla.\n\n**Karşıt**: tam ödeyen + mile/puan/cashback kullananlar yıllık **₺5,000-15,000 kazanır** (uçak bileti, otel, indirim).\n\n**Aynı kart**, **farklı kullanıcı**, **farklı sonuç**: zenginlik vs yoksulluk.\n\n**Disiplin kuralları**:\n\n1. **Sadece zaten alacağın şeylere kullan** — kart 'fazla harcatma' aracı değil\n2. **Tam miktarda öde** her ay (min ödeme = tuzak)\n3. **Asla faiz ödeme** — faiz başlarsa = sen kaybediyorsun\n4. **Yapamazsan kart kapat** — disiplinsiz kart = kelepçe\n\nMekanizma: kredi kartı = **friksiyonsuz harcama**. Beyin nakit gibi 'acı' hissetmez. Nakit araştırma: kart kullanıcıları **%12-18 daha çok** harcar (aynı alımda) — McKinsey.\n\nDun & Bradstreet araştırması: 'Kart cüzdanda taşımayan kişiler **harcamayı %15 azaltır**.' Friksiyon = bilinç.\n\nKart **araç**. Disiplin **mecburi**. İkisi olmazsa = kelepçe.",
+        "action": "Bugün **kredi kartı bakiyeni** harcamalarınla **eşleştir**. Açık var mı?",
+        "reflectionPrompt": "Kart kullanımın **disiplinli** mi yoksa **sömürüye açık** mı?",
+        "proTip": "Kredi kartını **yanına alma** — sadece bilinçli alışveriş için. Cüzdanda taşımamak **%15 az harcama**.",
         "quiz": [
           {
             "q": "Kredi kartı kuralı?",
@@ -6641,10 +6641,10 @@
       },
       "14": {
         "title": "Tutumlu Sevinç",
-        "teaching": "Tutumluluk ≠ yoksulluk. Sürdürülemez tutumluluk = kısa süreli. Tutumlu sevinç: ucuza yapabildiğin keyifleri keşfet. Park yürüyüşü, ev yemeği, kütüphane kitabı, ev konseri. Pahalı = keyifli değildir.",
-        "action": "Bugün 0 TL'lik 1 büyük keyif yap.",
-        "reflectionPrompt": "Para harcamadan en keyifli neyi yaptın?",
-        "proTip": "Listele: 0 TL aktiviteler, 50 TL altı, 100 TL altı. 30 alternatif görmek = harcama refleksini kırar.",
+        "teaching": "'Tutumluluk' kelimesi → kafanda **yoksulluk, sıkıntı, mahrumiyet**. Bütün sevinçlerin **paralı** olmak zorunda gibi geliyor. Aslında bu **endüstri tasarımı** — tüketmen için sevincini paraya bağlamış.\n\nMr. Money Mustache (Peter Adeney): 'Yüksek harcama = yüksek sevinç, **mit**. Bilim: hedonik adaptasyon — pahalı şeyler **kısa süreli** mutluluk verir, sonra baseline'a döner. Düşük maliyetli **deneyimler** = uzun süreli mutluluk.'\n\n**Tutumlu sevinç = ucuza yapabildiğin keyifleri keşfet**. Bunlar **gerçek deneyim**, status değil.\n\n**0 TL aktiviteler**:\n- Park yürüyüşü\n- Plaj / orman / dağ yürüyüşü\n- Eski arkadaşla telefon konuşması\n- Eve gel yemek hazırla + dizi\n- Kütüphane kitabı + ev kahvesi\n- Müze (çoğu pazar günleri ücretsiz)\n- Açık hava spor (parkta basket, koşu)\n- YouTube'da konser/film\n- Aile / arkadaş ev sohbeti\n- Yıldız izleme (şehir dışı sessiz yer)\n\n**50 TL altı**:\n- Sinema (matinee)\n- Ev konseri arkadaşlarla\n- Eski plak çalar + müzik\n- Bisiklet turu\n- Picnic\n\nMekanizma: pahalı şeyler **'sevinç olduğu sanılan'** alışkanlık. Beyin alternatif görmediği için 'normal' sanır. **30 alternatif liste** = harcama refleksi **kırılır**.\n\nKarşıt deney: bir hafta sadece **0-50 TL** sevinçlerle yaşa. Anlarsın: çoğu pahalı sevinç **status sembolü**, gerçek sevinç değil.",
+        "action": "Bugün **0 TL'lik 1 büyük keyif** yap.",
+        "reflectionPrompt": "Para harcamadan **en keyifli neyi** yaptın? Şaşırttı mı?",
+        "proTip": "**Listele**: 0 TL aktiviteler, 50 TL altı, 100 TL altı. **30 alternatif görmek = harcama refleksini kırar**.",
         "quiz": [
           {
             "q": "Frugality ≠ ?",
@@ -6672,10 +6672,10 @@
       },
       "15": {
         "title": "Bir Kez Kalite Al",
-        "teaching": "Ucuz × 5 = pahalı. Pahalı × 1 = pahalı görünür ama daha ucuz. 200 TL'lik 5 yılda biten ayakkabı vs 1.000 TL'lik 20 yıl giyilen ayakkabı. Hesapla, kaliteyi seç.",
-        "action": "Bugün bozulmaya yakın 1 ürünü daha kaliteli alternatife terfi et.",
-        "reflectionPrompt": "Kaliteli alternatif uzun vadede ne kadar tasarruf eder?",
-        "proTip": "Buy-it-for-life (BIFL) topluluklarına bak. Reddit'te sınırsız öneri.",
+        "teaching": "**200 TL ayakkabı** aldın. 1 yıl sonra: parçalandı. Yeni aldın → 200 TL. 5 yıl sonra: **toplam 1,000 TL** harcadın, **5 ayakkabı** kullandın.\n\nAlternatif: **1,000 TL kaliteli ayakkabı**. **20 yıl** giyilir. Aynı süre içinde **fark = 0** kişi yine 5x ödedi.\n\nMatematik karşılaştırma:\n- Ucuz × 5 yıl = **1,000 TL** + 5 kez **alışveriş zamanı + stres**\n- Pahalı × 1 = **1,000 TL** + 1 kez alışveriş + 20 yıl rahat\n\n**Aynı para**, **20x rahat**.\n\nTerry Pratchett (**'Boots theory of socioeconomic unfairness'**, **Discworld**): 'Zenginler ucuza kullanır çünkü kaliteli alır, fakirler pahalıya kullanır çünkü ucuz alır.'\n\nBu **paradoks**: tasarruf eden kişi (ucuz alarak) uzun vade **daha çok harcar**. Yatırım yapan kişi (kalite alarak) uzun vade **daha az harcar**.\n\n**Hangi kategorilerde 'bir kez kalite al' önemli**:\n- Ayakkabı, palto, takım\n- Çamaşır makinesi, fırın, buzdolabı\n- Yatak (uyku 8 saat × 30 yıl = ömrün 1/3)\n- Çalışma sandalyesi (8 saat günlük)\n- Telefon, bilgisayar (üretkenlik aracı)\n- Mutfak aletleri (tencere, bıçak)\n\n**Tam tersine ucuz tut**: moda (1 yıl sonra eskir), tek seferlik kullanım, hızlı değişen teknoloji.\n\n**Buy It For Life (BIFL)** Reddit subreddit = 1 milyon kullanıcı, hayat boyu ürün önerileri.",
+        "action": "Bugün **bozulmaya yakın 1 ürünü** daha kaliteli alternatife terfi et.",
+        "reflectionPrompt": "Kaliteli alternatif **uzun vadede ne kadar tasarruf** eder?",
+        "proTip": "**Buy-it-for-life (BIFL)** Reddit topluluğuna bak. Sınırsız öneri.",
         "quiz": [
           {
             "q": "Ucuz × 5 = ?",
