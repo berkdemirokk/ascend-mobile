@@ -35,6 +35,7 @@ import LessonQueueCard from '../components/LessonQueueCard';
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import StreakLostBanner from '../components/StreakLostBanner';
 import PledgeModal from '../components/PledgeModal';
+import Skeleton from '../components/Skeleton';
 import { getArchetypeById } from '../data/archetypes';
 import { POST_ASSESSMENT_INTERVAL_DAYS } from '../data/assessment';
 // WeekendBoostBanner + DailyPlanCard removed in the same Home pass.
@@ -67,7 +68,9 @@ import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function HomeScreen({ navigation }) {
   const { t } = useTranslation();
+  // Hydration gate — see comment near the skeleton render below.
   const {
+    _loaded,
     pathProgress,
     activePathId,
     isPremium,
@@ -394,6 +397,46 @@ export default function HomeScreen({ navigation }) {
     metaName ||
     (emailLocal ? capitalize(emailLocal) : t('home.greetingName', 'Disiplinci'));
   const greeting = getGreeting(t);
+
+  // Hydration gate — surface a skeleton during the brief window between
+  // AppContext mount and AsyncStorage hydration. Without this a
+  // returning user briefly sees default-zero numbers (streak 0, level
+  // 1) before their real state snaps in. The skeleton renders the
+  // same shapes (greeting block + streak hero + chain + CTA) so the
+  // reveal feels like content snapping in, not screen rebuilding.
+  if (!_loaded) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={{ paddingHorizontal: 20, paddingTop: 16 }}>
+          {/* Greeting block */}
+          <Skeleton width={120} height={14} style={{ marginBottom: 8 }} />
+          <Skeleton width={180} height={28} style={{ marginBottom: 14 }} />
+          {/* Streak hero */}
+          <Skeleton
+            width="100%"
+            height={120}
+            borderRadius={20}
+            style={{ marginBottom: 16 }}
+          />
+          {/* Habit chain */}
+          <View style={{ flexDirection: 'row', gap: 8, marginBottom: 16 }}>
+            {Array.from({ length: 7 }, (_, i) => (
+              <Skeleton key={i} width={28} height={28} borderRadius={14} />
+            ))}
+          </View>
+          {/* Daily Deck CTA */}
+          <Skeleton
+            width="100%"
+            height={68}
+            borderRadius={16}
+            style={{ marginBottom: 12 }}
+          />
+          {/* Today's CTA card */}
+          <Skeleton width="100%" height={140} borderRadius={20} />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>
