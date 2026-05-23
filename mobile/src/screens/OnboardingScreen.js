@@ -170,9 +170,16 @@ export default function OnboardingScreen({ navigation }) {
           // will pick the "begin monk mode" variant (not the streak-
           // formatted one). Pass explicitly to keep the API contract
           // clean and obvious.
+          // Pass archetype name so the push title rotation can
+          // surface "Sessiz Savaşçı, bugün başla" — turning the
+          // onboarding archetype choice into a daily echo.
           scheduleDailyReminder({
             currentStreak: 0,
             userName: answers.name || '',
+            archetypeName: t(
+              getArchetypeById(selectedArchetype).nameKey,
+              getArchetypeById(selectedArchetype).nameFallback,
+            ),
           }).catch(() => {});
           scheduleWeeklyRecap().catch(() => {});
           // D1 + D3 first-week hooks — these are the only outside-app

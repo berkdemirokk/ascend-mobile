@@ -19,9 +19,20 @@
 //     Siyavuşgil) — the localization the competitive audit
 //     flagged as missing. Built in from day one.
 
+// Archetype affinity: each deck declares which identity archetypes
+// it resonates with most. When the user has an archetype set, the
+// daily picker biases toward decks tagged with their archetype
+// (~70% probability on matching days). This makes the archetype
+// onboarding choice CONSEQUENTIAL — the same content surface
+// reshapes around who the user said they're becoming, instead of
+// just being a decorative chip on Home.
+//
+// archetypes: undefined → universal (eligible for any user)
+// archetypes: ['zen-master', ...] → preferred for those archetypes
 export const DAILY_DECKS = [
   {
     id: 'aurelius-control',
+    archetypes: ['zen-master', 'silent-warrior'],
     author: 'Marcus Aurelius',
     authorMeta: 'Roma İmparatoru, Stoacı (MS 121-180)',
     quote:
@@ -35,6 +46,7 @@ export const DAILY_DECKS = [
   },
   {
     id: 'epictetus-impulse',
+    archetypes: ['iron-disciplined', 'silent-warrior'],
     author: 'Epiktetos',
     authorMeta: 'Roma köle-filozof (MS 50-135)',
     quote:
@@ -48,6 +60,7 @@ export const DAILY_DECKS = [
   },
   {
     id: 'seneca-time',
+    archetypes: ['iron-disciplined', 'zen-master'],
     author: 'Seneca',
     authorMeta: 'Roma devlet adamı, filozof (MÖ 4 - MS 65)',
     quote:
@@ -61,6 +74,7 @@ export const DAILY_DECKS = [
   },
   {
     id: 'naval-leverage',
+    archetypes: ['iron-disciplined'],
     author: 'Naval Ravikant',
     authorMeta: 'Silicon Valley girişimci & düşünür',
     quote:
@@ -83,6 +97,7 @@ export const DAILY_DECKS = [
   // section relies on the rest of the international (sourced) pool.
   {
     id: 'clear-identity',
+    archetypes: ['iron-disciplined', 'silent-warrior'],
     author: 'James Clear',
     authorMeta: '"Atomic Habits" yazarı',
     quote:
@@ -96,6 +111,7 @@ export const DAILY_DECKS = [
   },
   {
     id: 'newport-depth',
+    archetypes: ['silent-warrior', 'zen-master'],
     author: 'Cal Newport',
     authorMeta: 'Georgetown CS profesörü, "Deep Work" yazarı',
     quote:
@@ -109,6 +125,7 @@ export const DAILY_DECKS = [
   },
   {
     id: 'aurelius-time',
+    archetypes: ['zen-master'],
     author: 'Marcus Aurelius',
     authorMeta: 'Roma İmparatoru, Stoacı',
     quote:
@@ -122,6 +139,7 @@ export const DAILY_DECKS = [
   },
   {
     id: 'seneca-friends',
+    archetypes: ['silent-warrior'],
     author: 'Seneca',
     authorMeta: 'Roma filozofu',
     quote:
@@ -136,6 +154,7 @@ export const DAILY_DECKS = [
   // (See note above about removed TR-author decks.)
   {
     id: 'epictetus-pain',
+    archetypes: ['zen-master', 'silent-warrior'],
     author: 'Epiktetos',
     authorMeta: 'Stoacı, eski köle',
     quote:
@@ -149,6 +168,7 @@ export const DAILY_DECKS = [
   },
   {
     id: 'naval-compound',
+    archetypes: ['iron-disciplined'],
     author: 'Naval Ravikant',
     authorMeta: 'Yatırımcı, düşünür',
     quote:
@@ -164,16 +184,42 @@ export const DAILY_DECKS = [
 ];
 
 /**
- * Pick today's deck deterministically by day-of-year. Same user sees
- * the same deck for the whole day; rotates next day. With 15 decks
- * in the rotation, a daily user sees no repeat for ~2 weeks.
+ * Pick today's deck. Same user sees the same deck all day, rotates
+ * next day (day-of-year deterministic).
+ *
+ * When an archetypeId is provided, we build a biased pool: decks
+ * tagged with that archetype appear 3 times in the rotation, untagged
+ * decks once. This makes the archetype onboarding choice
+ * CONSEQUENTIAL — a Zen Master user gets contemplative quotes more
+ * often than the Iron Disciplined user, who gets execution-focused
+ * ones. Without an archetype we fall back to the flat rotation.
+ *
+ * Why 3:1 not pure filter:
+ *   - A pure filter on 10 decks with ~3 matching means a 3-day
+ *     repeat cycle (terrible).
+ *   - 3:1 weighting still surfaces matching decks ~3x more often but
+ *     keeps universal quotes in the mix, so a Zen user still
+ *     occasionally sees the Iron Disciplined Naval quote — which is
+ *     valuable. Identity doesn't mean tunnel vision.
  */
-export const getTodaysDeck = () => {
+export const getTodaysDeck = (archetypeId = null) => {
   if (!DAILY_DECKS.length) return null;
   const now = new Date();
   const yearStart = new Date(now.getFullYear(), 0, 0);
   const dayOfYear = Math.floor((now - yearStart) / (24 * 60 * 60 * 1000));
-  return DAILY_DECKS[dayOfYear % DAILY_DECKS.length];
+
+  if (!archetypeId) {
+    return DAILY_DECKS[dayOfYear % DAILY_DECKS.length];
+  }
+
+  // Weighted pool: matching decks ×3, others ×1.
+  const pool = [];
+  for (const d of DAILY_DECKS) {
+    const matches = (d.archetypes || []).includes(archetypeId);
+    const weight = matches ? 3 : 1;
+    for (let i = 0; i < weight; i++) pool.push(d);
+  }
+  return pool[dayOfYear % pool.length];
 };
 
 export const getDeckById = (id) =>

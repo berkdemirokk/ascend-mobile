@@ -53,6 +53,7 @@ export default function SettingsScreen({ navigation }) {
     endVacation,
     anonUsername,
     currentStreak,
+    userProfile,
   } = useApp();
 
   const vacationActive = (() => {
@@ -210,7 +211,26 @@ export default function SettingsScreen({ navigation }) {
         return;
       }
       try {
-        await scheduleDailyReminder({ currentStreak });
+        // Same archetype prefix rotation as the onboarding-time
+        // schedule call. Settings-toggle path was missing this, so
+        // users who turned notifications off + back on lost the
+        // archetype echo until next onboarding reschedule.
+        await scheduleDailyReminder({
+          currentStreak,
+          userName: userProfile?.name || '',
+          archetypeName: userProfile?.archetype
+            ? t(
+                `archetypes.${
+                  userProfile.archetype === 'zen-master'
+                    ? 'zenMaster'
+                    : userProfile.archetype === 'silent-warrior'
+                      ? 'silentWarrior'
+                      : 'ironDisciplined'
+                }.name`,
+                userProfile.archetype,
+              )
+            : '',
+        });
       } catch (e) {
         console.warn('schedule daily reminder failed:', e?.message);
       }

@@ -218,6 +218,7 @@ export const requestNotificationPermissions = async () => {
 export const scheduleDailyReminder = async ({
   currentStreak = 0,
   userName = '',
+  archetypeName = '',
 } = {}) => {
   // Replace any previously scheduled copy of the same reminder so we don't
   // pile up duplicates every app launch.
@@ -260,13 +261,39 @@ export const scheduleDailyReminder = async ({
       ...interpolations,
     },
   );
-  // When the user has a name, prefix the title with it for 1 in 3 pushes
-  // (modulus on variantIdx) — over-personalisation feels creepy, under-
-  // personalisation defeats the point. Once-every-three is the sweet spot.
-  const title =
-    trimmedName && variantIdx % 3 === 0
-      ? `${trimmedName}, ${rawTitle.charAt(0).toLowerCase()}${rawTitle.slice(1)}`
-      : rawTitle;
+  // Three-way personalisation rotation by variantIdx % 3:
+  //   0 → archetype prefix ("Sessiz Savaşçı, bugün başla")
+  //   1 → name prefix ("Berk, bugün başla")
+  //   2 → generic (no prefix)
+  // Either prefix collapses to the next slot's behaviour if the
+  // corresponding string is empty — so an archetype-less user just
+  // sees name/generic alternation, exactly the old behaviour.
+  // This makes the archetype choice STICK in the daily reminder
+  // surface — every third push reminds the user who they said
+  // they're becoming, free retention reinforcement.
+  const trimmedArchetype = (archetypeName || '').trim();
+  const slot = variantIdx % 3;
+  let title;
+  if (slot === 0 && trimmedArchetype) {
+    title = `${trimmedArchetype}, ${rawTitle
+      .charAt(0)
+      .toLowerCase()}${rawTitle.slice(1)}`;
+  } else if (slot === 1 && trimmedName) {
+    title = `${trimmedName}, ${rawTitle
+      .charAt(0)
+      .toLowerCase()}${rawTitle.slice(1)}`;
+  } else if (trimmedName) {
+    // Fall back to name when archetype is empty but name exists,
+    // mirroring the old once-every-three rhythm.
+    title =
+      variantIdx % 3 === 0
+        ? `${trimmedName}, ${rawTitle
+            .charAt(0)
+            .toLowerCase()}${rawTitle.slice(1)}`
+        : rawTitle;
+  } else {
+    title = rawTitle;
+  }
 
   const body = i18n.t(
     `notifications.${prefix}${variantIdx}Body`,

@@ -48,8 +48,11 @@ const TOTAL_CARDS = 6;
 
 export default function DailyDeckScreen({ navigation }) {
   const { t } = useTranslation();
-  const { recordDailyDeckCompleted } = useApp();
-  const deck = getTodaysDeck();
+  const { recordDailyDeckCompleted, userProfile } = useApp();
+  // Pass the user's archetype so getTodaysDeck biases toward
+  // resonant quotes. Falls through to flat rotation when archetype
+  // is missing (legacy users from before the onboarding step).
+  const deck = getTodaysDeck(userProfile?.archetype || null);
 
   const [cardIdx, setCardIdx] = useState(0);
   const [response, setResponse] = useState('');
