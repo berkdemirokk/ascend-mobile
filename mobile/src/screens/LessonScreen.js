@@ -19,7 +19,7 @@ import * as Haptics from 'expo-haptics';
 
 import { useApp } from '../contexts/AppContext';
 import { getPathById, getLessonById, getQuizForLesson } from '../data/paths';
-import { showInterstitial, shouldShowAd, requestTrackingPermissionIfNeeded } from '../services/ads';
+import { showInterstitial, shouldShowAd } from '../services/ads';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import PathMilestoneScene, {
   detectPathSceneStage,
@@ -425,26 +425,26 @@ export default function LessonScreen({ navigation, route }) {
       0,
     ) + 1; // +1 for the lesson just finished
 
-    // ATT prompt — only after user has experienced the app (1st lesson).
-    // Apple guideline: don't ask for tracking before user understands app.
+    // First-lesson side effects: activate the user (cancel "are you
+    // coming back?" pushes scheduled at onboarding) but DO NOT prompt
+    // for tracking here — `requestTrackingPermissionIfNeeded` already
+    // ran at onboarding's end (OnboardingScreen.js) and the iOS ATT
+    // API only ever shows the system sheet once anyway. Re-calling it
+    // here just added another async tick to the post-celebration
+    // sequence for zero user-facing benefit.
     if (totalCompleted === 1) {
-      requestTrackingPermissionIfNeeded().catch(() => {});
-      // First-week D1/D3 hooks were "did you forget to come back?" pushes
-      // scheduled at onboarding. Now that the user finished their first
-      // lesson they're activated — cancel the hooks so we don't nag.
       cancelFirstWeekHooks().catch(() => {});
     }
 
-    // Store review prompt — gated to >= 3 lessons, >= 2 streak, 24h since last.
+    // Store review prompt — gated to >= 3 lessons, >= 2 streak, 24h
+    // since last. No-op on lesson #1, so it's free to call.
     requestReviewIfAppropriate({
       lessonsCompleted: totalCompleted,
       streak: currentStreak + 1,
     }).catch(() => {});
 
-    // Peak-emotional-moment paywall: after the 3rd lesson, the user has
-    // felt the streak forming and is most likely to convert. One-shot
-    // (tracked in AsyncStorage so we don't keep nagging). Free users only;
-    // premium users skip directly to the next step.
+    // Peak-emotional-moment paywall — fires exactly at lesson #3 for
+    // free users (POST_LESSON_PAYWALL_TRIGGER_COUNT). One-shot.
     const shouldShowPostLessonPaywall = await maybeTriggerPostLessonPaywall({
       lessonsCompleted: totalCompleted,
       isPremium,
@@ -456,8 +456,13 @@ export default function LessonScreen({ navigation, route }) {
       return;
     }
 
-    // Show interstitial ad before exiting (frequency-capped)
-    if (!isPremium && shouldShowAd(false)) {
+    // Interstitial ad before exit. Suppressed for the first 3 lessons
+    // even if `shouldShowAd` says yes: a brand-new user who just
+    // finished their FIRST discipline lesson and immediately gets an
+    // ad in the face is the textbook D1 churn moment. Let them feel
+    // the win first; revenue can wait two more sessions.
+    const NO_AD_GRACE_LESSONS = 3;
+    if (!isPremium && totalCompleted > NO_AD_GRACE_LESSONS && shouldShowAd(false)) {
       try { await showInterstitial(); } catch {}
     }
     navigation.goBack();
