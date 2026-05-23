@@ -14,7 +14,12 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { showRewarded, isAdsReady, isRewardedReady } from '../services/ads';
+import {
+  showRewarded,
+  isAdsReady,
+  isRewardedReady,
+  loadRewarded,
+} from '../services/ads';
 import LiveCountdown from './LiveCountdown';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
@@ -45,25 +50,60 @@ export default function OutOfHeartsModal({
     return () => clearInterval(id);
   }, [visible]);
 
+  // Try to show a rewarded ad. If one isn't loaded yet, trigger a
+  // load and poll for up to ~6 seconds before giving up. The old
+  // version bailed instantly with "ad not ready", which felt broken
+  // — users would tap, see an alert, and assume the feature was
+  // dead. Now we make a real attempt before showing the failure
+  // alert, and the spinner tells the user we're working on it.
   const handleWatchAd = async () => {
     if (watching) return;
     setWatching(true);
     try {
-      const earned = await showRewarded();
-      if (earned) {
-        onRefill?.();
-        onClose?.();
+      // Fast path — ad is already cached.
+      if (isRewardedReady()) {
+        const earned = await showRewarded();
+        if (earned) {
+          onRefill?.();
+          onClose?.();
+          return;
+        }
       } else {
-        // Ad failed to show or user closed early. New AdMob accounts often
-        // serve no fill — make this visible so the tap doesn't feel broken.
-        Alert.alert(
-          t('hearts.adNotReadyTitle', 'Reklam hazır değil'),
-          t(
-            'hearts.adNotReadyBody',
-            'Şu an gösterilebilecek bir reklam yok. Birazdan tekrar dene ya da Premium\'a geçerek reklamsız + sınırsız kalp al.',
-          ),
-        );
+        // Slow path — kick off a load and poll. AdMob usually
+        // serves a fresh ad in 1-3s on production traffic. We give
+        // up to ~6s with a 400ms poll interval.
+        try {
+          loadRewarded().catch(() => {});
+        } catch {}
+        const startedAt = Date.now();
+        // eslint-disable-next-line no-constant-condition
+        while (true) {
+          if (isRewardedReady()) break;
+          if (Date.now() - startedAt > 6000) break;
+          // eslint-disable-next-line no-await-in-loop
+          await new Promise((r) => setTimeout(r, 400));
+        }
+        if (isRewardedReady()) {
+          const earned = await showRewarded();
+          if (earned) {
+            onRefill?.();
+            onClose?.();
+            return;
+          }
+        }
       }
+      // Still no ad after the wait, or the user dismissed early —
+      // make the failure visible so the tap doesn't feel like a
+      // dead button. Wording differs from the old copy: it tells
+      // the user the ad will be ready shortly, instead of vaguely
+      // saying "ad not ready".
+      Alert.alert(
+        t('hearts.adNotReadyTitle', 'Reklam yüklenemedi'),
+        t(
+          'hearts.adNotReadyBody',
+          'Şu an reklam servisinden cevap gelmedi. Bir kaç saniye sonra tekrar dene veya Premium\'a geçerek reklamsız + sınırsız kalp al.',
+        ),
+      );
     } catch {}
     setWatching(false);
   };
@@ -122,33 +162,42 @@ export default function OutOfHeartsModal({
             </View>
           ) : null}
 
-          {/* Watch ad CTA — only render when an ad is actually loaded so we
-              don't show a button that silently fails on tap. */}
-          {rewardedReady ? (
-            <TouchableOpacity
-              onPress={handleWatchAd}
-              disabled={watching}
-              activeOpacity={0.85}
-              style={styles.watchAdBtn}
-            >
-              <View style={styles.watchAdContent}>
-                {watching ? (
-                  <ActivityIndicator color={LT.onSurface} />
-                ) : (
-                  <>
-                    <MaterialIcons
-                      name="play-circle"
-                      size={20}
-                      color={LT.onSurface}
-                    />
-                    <Text style={styles.watchAdText}>
-                      {t('hearts.watchAd', 'REKLAM İZLE, +1 KALP KAZAN')}
-                    </Text>
-                  </>
-                )}
-              </View>
-            </TouchableOpacity>
-          ) : null}
+          {/* Watch ad CTA — ALWAYS rendered now. The old code only
+              showed this button when isRewardedReady() returned true,
+              which meant a brand-new user (or any user where AdMob
+              hadn't loaded a fill yet) saw ONLY the Premium button.
+              They reported "reklam izle çıkmıyo" — exactly the bug.
+              We now always show the button; handleWatchAd does the
+              load-and-poll work, and falls back to a clear error
+              alert if no ad becomes available within 6 seconds. */}
+          <TouchableOpacity
+            onPress={handleWatchAd}
+            disabled={watching}
+            activeOpacity={0.85}
+            style={[styles.watchAdBtn, watching && { opacity: 0.7 }]}
+          >
+            <View style={styles.watchAdContent}>
+              {watching ? (
+                <>
+                  <ActivityIndicator color={LT.onSurface} size="small" />
+                  <Text style={styles.watchAdText}>
+                    {t('hearts.adLoading', 'REKLAM YÜKLENİYOR...')}
+                  </Text>
+                </>
+              ) : (
+                <>
+                  <MaterialIcons
+                    name="play-circle"
+                    size={20}
+                    color={LT.onSurface}
+                  />
+                  <Text style={styles.watchAdText}>
+                    {t('hearts.watchAd', 'REKLAM İZLE, +1 KALP KAZAN')}
+                  </Text>
+                </>
+              )}
+            </View>
+          </TouchableOpacity>
 
           {/* Premium CTA — primary red */}
           <TouchableOpacity

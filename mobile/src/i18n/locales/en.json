@@ -685,10 +685,11 @@
     "outTitle": "Out of Hearts",
     "outSubtitle": "You need a heart to continue. Watch an ad to earn 1 heart or go Premium for unlimited.",
     "refillIn": "Auto refill in {{mins}}",
-    "watchAd": "WATCH AD, EARN +1 HEART",
+    "watchAd": "WATCH AD, REFILL HEARTS",
+    "adLoading": "LOADING AD...",
     "goPremium": "GO PREMIUM — UNLIMITED HEARTS",
-    "adNotReadyTitle": "Ad not ready",
-    "adNotReadyBody": "No ad is available right now. Try again in a moment, or go Premium for ad-free + unlimited hearts."
+    "adNotReadyTitle": "Ad failed to load",
+    "adNotReadyBody": "No ad came back from the network. Try again in a few seconds or go Premium for ad-free + unlimited hearts."
   },
   "_achievements_dup": {
     "_comment": "Duplicate block — merged into the canonical achievements block above. Renamed so the merged version wins. Kept for diff history.",

@@ -677,12 +677,13 @@
   },
   "hearts": {
     "outTitle": "Kalpler Bitti",
-    "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyerek 1 kalp kazan veya Premium'a geç.",
+    "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyerek kalplerini doldur veya Premium'a geç.",
     "refillIn": "Yenilenme: {{mins}}",
-    "watchAd": "REKLAM İZLE, +1 KALP KAZAN",
+    "watchAd": "REKLAM İZLE, KALPLERİ DOLDUR",
+    "adLoading": "REKLAM YÜKLENİYOR...",
     "goPremium": "PREMIUM İLE SINIRSIZ KALPLER",
-    "adNotReadyTitle": "Reklam hazır değil",
-    "adNotReadyBody": "Şu an gösterilebilecek bir reklam yok. Birazdan tekrar dene ya da Premium'a geçerek reklamsız + sınırsız kalp al."
+    "adNotReadyTitle": "Reklam yüklenemedi",
+    "adNotReadyBody": "Şu an reklam servisinden cevap gelmedi. Bir kaç saniye sonra tekrar dene veya Premium'a geçerek reklamsız + sınırsız kalp al."
   },
   "_achievements_dup": {
     "_comment": "Duplicate block — merged into canonical achievements block above. Renamed to break key collision.",
