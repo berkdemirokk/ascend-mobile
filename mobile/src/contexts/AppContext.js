@@ -246,6 +246,7 @@ const ACTION_TYPES = {
   SET_ACTIVE_PATH: 'SET_ACTIVE_PATH',
   LOSE_HEART: 'LOSE_HEART',
   REFILL_HEARTS: 'REFILL_HEARTS',
+  GAIN_HEART: 'GAIN_HEART',
   RESET_AD_COUNTER: 'RESET_AD_COUNTER',
   RESET_PROGRESS: 'RESET_PROGRESS',
   ENSURE_ANON_USERNAME: 'ENSURE_ANON_USERNAME',
@@ -650,7 +651,22 @@ function appReducer(state, action) {
     }
 
     case ACTION_TYPES.REFILL_HEARTS:
+      // Full refill — used by the time-based auto-refill (heartsRefillAt
+      // expires) and explicit "all back" UX (none currently). The OutOfHearts
+      // rewarded-ad path is NOT this — that uses GAIN_HEART below to add
+      // exactly +1, matching the CTA text "+1 KALP KAZAN".
       return { ...state, hearts: 5, heartsRefillAt: null };
+
+    case ACTION_TYPES.GAIN_HEART: {
+      // Add exactly one heart. Used by the rewarded-ad reward flow so
+      // the user gets what the button promised (+1), not a full top-up
+      // back to 5 (which made the heart system feel meaningless — one
+      // ad = unlimited hearts back). Cap at 5; if we now have 5, clear
+      // the refill timer (no more refills pending).
+      const newHearts = Math.min(5, (state.hearts || 0) + 1);
+      const refillAt = newHearts >= 5 ? null : state.heartsRefillAt;
+      return { ...state, hearts: newHearts, heartsRefillAt: refillAt };
+    }
 
     case ACTION_TYPES.RESET_AD_COUNTER:
       return { ...state, actionsSinceLastAd: 0 };
@@ -1624,6 +1640,10 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.REFILL_HEARTS });
   }, []);
 
+  const gainHeart = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.GAIN_HEART });
+  }, []);
+
   const resetAdCounter = useCallback(() => {
     dispatch({ type: ACTION_TYPES.RESET_AD_COUNTER });
   }, []);
@@ -1697,6 +1717,7 @@ export function AppProvider({ children }) {
     completePathLesson,
     loseHeart,
     refillHearts,
+    gainHeart,
     resetAdCounter,
     resetProgress,
   };

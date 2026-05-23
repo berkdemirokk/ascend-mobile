@@ -65,7 +65,7 @@ export default function LessonScreen({ navigation, route }) {
     hearts,
     heartsRefillAt,
     loseHeart,
-    refillHearts,
+    gainHeart,
     isInGracePeriod,
     grantBonusXP,
     userProfile,
@@ -1324,7 +1324,8 @@ export default function LessonScreen({ navigation, route }) {
             navigation.goBack();
           }}
           onRefill={() => {
-            refillHearts();
+            // +1 kalp, full refill değil — CTA "+1 KALP KAZAN" ile uyumlu.
+            gainHeart();
             setOutOfHeartsVisible(false);
           }}
           onPaywall={() => {

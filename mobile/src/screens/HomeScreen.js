@@ -103,7 +103,7 @@ export default function HomeScreen({ navigation }) {
     vacationUntil,
     hearts,
     heartsRefillAt,
-    refillHearts,
+    gainHeart,
   } = useApp();
 
   // Day-bucket booleans for the per-day cards. Stable across re-renders
@@ -1130,7 +1130,10 @@ export default function HomeScreen({ navigation }) {
         refillAt={heartsRefillAt}
         onClose={() => setOutOfHeartsVisible(false)}
         onRefill={() => {
-          refillHearts();
+          // +1 kalp (CTA "+1 KALP KAZAN" ile uyumlu) — refillHearts
+          // tüm 5'i geri veriyordu, bu da reklam izlemeyi anlamsız
+          // (1 reklam = sınırsız can) yapıyordu.
+          gainHeart();
           setOutOfHeartsVisible(false);
         }}
         onPaywall={() => {

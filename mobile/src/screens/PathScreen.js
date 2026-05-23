@@ -47,7 +47,7 @@ export default function PathScreen({ navigation }) {
     currentStreak,
     hearts,
     heartsRefillAt,
-    refillHearts,
+    gainHeart,
   } = useApp();
 
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
@@ -279,7 +279,8 @@ export default function PathScreen({ navigation }) {
         visible={outOfHeartsVisible}
         onClose={() => setOutOfHeartsVisible(false)}
         onRefill={() => {
-          refillHearts();
+          // +1 kalp, full refill değil — CTA "+1 KALP KAZAN" ile uyumlu.
+          gainHeart();
           setOutOfHeartsVisible(false);
         }}
         // Without this, the "PREMIUM İLE SINIRSIZ KALPLER" button
