@@ -5461,10 +5461,10 @@
       },
       "26": {
         "title": "Haftalık Antrenman",
-        "teaching": "Düzensiz antrenman = düzensiz sonuç. Haftalık plan: 3 gün direnç + 2 gün kardiyo + 2 gün dinlen. 7 günlük yapı = 12 hafta sonra dönüşüm.",
-        "action": "Bu hafta için 7 günlük antrenman planı yaz. Her gün ne, ne kadar.",
-        "reflectionPrompt": "Plan yapmadan haftan nasıl geçerdi?",
-        "proTip": "Pazar akşamı plan yap. Pazartesi otomatik başlasın.",
+        "teaching": "Pazartesi koştun, Salı atlandı, Çarşamba ağırlık, Perşembe hiç, Cuma yorgun. **Düzensiz**. Sonuç da düzensiz — ne kas, ne dayanıklılık, ne motivasyon.\n\nMike Israetel (PhD, sport scientist): 'Antrenman = **dozaj**, ilaç gibi. Tutarlı doz = sonuç. Atlanmış doz = etki **sıfır**, hatta negatif.'\n\nUluslararası strength and conditioning standardı:\n- **3 gün direnç antrenmanı** (hafta)\n- **2 gün kardiyo** (Zone 2)\n- **2 gün aktif dinlenme** (yürüyüş, esneme)\n\nÖrnek plan:\n- **Pazartesi**: Üst vücut direnç (push-up + pull-up + row)\n- **Salı**: Zone 2 kardiyo 30 dk\n- **Çarşamba**: Alt vücut direnç (squat + lunge + glute bridge)\n- **Perşembe**: Yürüyüş + mobilite\n- **Cuma**: Full body direnç (compound moves)\n- **Cumartesi**: Zone 2 kardiyo 45 dk\n- **Pazar**: Aktif dinlenme (uzun yürüyüş, yoga)\n\n**7 günlük yapı** = 12 hafta sonra **dönüşüm** (görünür kas, dayanıklılık, postür).\n\nMekanizma: **rotasyon** = farklı kas grupları her gün dinlenir (super-compensation). **Frekans** = nöral patikalar pekişir. **Çeşitlilik** = adaptasyon önlenir (plato yok).\n\n**Pazar akşamı plan yap**. Pazartesi sabah **karar yok** — sadece **uygulama**. Karar yorgunluğu sıfır.",
+        "action": "Bu hafta için **7 günlük antrenman planı yaz**. Her gün ne, ne kadar.",
+        "reflectionPrompt": "Plan **yapmadan** haftan nasıl geçerdi? Hangi gün atlardın?",
+        "proTip": "**Pazar akşamı plan yap**. Pazartesi otomatik başlasın — karar yok, sadece uygulama.",
         "quiz": [
           {
             "q": "Optimum haftalık?",
@@ -5492,10 +5492,10 @@
       },
       "27": {
         "title": "Uyku Apnesi Farkındalığı",
-        "teaching": "%25 erkek uyku apnesi taşır — çoğu farkında değil. Belirtiler: gündüz aşırı uyku, horlama, sabah baş ağrısı, gece sık uyanma. Tedavi edilmeyen uyku apnesi = kalp hastalığı + diabet riski.",
-        "action": "Bugün partnerinden gece horlamanı dinlemesini iste. Aşırı uykulu mu? Sabah baş ağrılı mı?",
-        "reflectionPrompt": "Uyku apnesi olabileceğine dair hangi belirti taşıyorsun?",
-        "proTip": "Şüphe varsa uyku doktoruna git. Polisomnografi tek gece, hayat kurtarır.",
+        "teaching": "8 saat uyudun ama berbat uyandın. Bütün gün **uykulu**. Eşin söyledi: 'horluyorsun, hatta nefes duruyor bazen.' Bu **uyku apnesi** olabilir — **dünyanın en yaygın teşhis edilmemiş** sağlık sorunu.\n\nİstatistik: **erkeklerin %25'i**, kadınların %9'u **uyku apnesi taşır**. Çoğu kişi **farkında değil**. Çünkü uyku sırasında oluyor — sadece **ertesi gün belirtileri** görülür.\n\n**Belirtiler**:\n- Gündüz aşırı uyku (toplantıda uyuklamak)\n- **Yüksek horlama** + nefes duraklamaları\n- Sabah **baş ağrısı**\n- Gece sık uyanma (idrar, terleme)\n- Konsantrasyon güçlüğü\n- Yüksek tansiyon\n- Cinsel istek azalması\n\nDr. Christian Guilleminault (Stanford uyku merkezi kurucu): 'Tedavi edilmeyen uyku apnesi = **kalp hastalığı + diyabet + felç** riski **2-4x**. Ortalama 10 yıl ömür kaybı.'\n\nMekanizma: uyku sırasında **havayolu çöker** → kandaki oksijen düşer → beyin alarm → mikro-uyanma. Bu **saatte 5-30+** olabilir, sen **farkında değilsin**, ama uyku **parçalanmış** = onarım yok.\n\nRiskli grup: **kilo fazlası, erkek, 40+, kalın boyun, küçük çene**.\n\n**Polisomnografi** = uyku merkezinde 1 gece test. **₺2-5 bin**, **hayat kurtarır**. CPAP cihazı (gerek olursa) — gece nefesi destekler, sabah **yeni doğmuş** uyanırsın.\n\nŞüphe varsa **mutlaka doktor**.",
+        "action": "Bugün **partnerinden gece horlamanı dinlemesini iste**. Aşırı uykulu mu? Sabah baş ağrılı mı?",
+        "reflectionPrompt": "Uyku apnesi olabileceğine dair **hangi belirti** taşıyorsun?",
+        "proTip": "**Şüphe varsa uyku doktoruna git**. Polisomnografi tek gece, **hayat kurtarır**.",
         "quiz": [
           {
             "q": "Uyku apnesi taşıyan erkek %?",
@@ -5523,10 +5523,10 @@
       },
       "28": {
         "title": "Disiplin Kimliği",
-        "teaching": "\"Sağlıklıyım\" demek değil — \"sağlıklı yaşayan biriyim\" demek. Kimlik > davranış. Sigara içen biriydim, içmiyorum şu an = geri dönüş. İçici değilim = kalıcı.",
-        "action": "Bugün kendine 1 yeni beden kimliği etiketi yapıştır.",
-        "reflectionPrompt": "Hangi kimliği seçtin? Kanıtın ne?",
-        "proTip": "Kimliği yüksek sesle her sabah söyle. Beyin tekrara inanır.",
+        "teaching": "Birisi sigara teklif etti. **'Hayır, sigara içmiyorum'** dedin. 6 ay sonra stresli bir gece, **bir tane** içtin. **'Bir kerelik'** dedin. 3 hafta sonra: paket satın aldın. Çünkü kimlikte söyledin: **'içmiyorum'** = '**şu an** içmiyorum'.\n\n**'Sigara içen biri değilim'** = farklı cümle. Bu kişi **fiziksel olarak** içemez — kimlikle çelişir. Beyin **uyum** ister (cognitive consistency).\n\nJames Clear (Atomic Habits): 'Davranış değişimi ≠ kalıcı. **Kimlik değişimi** = kalıcı. \"Spor yapıyorum\" geçici. \"Atletim\" kalıcı.'\n\nBeden disiplini için **kimlik etiketleri**:\n- 'Ben **atletim**.'\n- 'Ben **sağlıklı yaşayan biri**yim.'\n- 'Ben **bedenime saygı duyan biri**yim.'\n- 'Ben **erken yatıp erken kalkan biri**yim.'\n- 'Ben **alkol içmeyen biri**yim.'\n- 'Ben **şekersiz biri**yim.'\n\nFormül: **'Ben ___'** (şimdiki zaman, isim — 'olucam' değil).\n\nMekanizma: kimlik = self-concept. Beyin self-concept tutarlılığı ister (Festinger — cognitive dissonance). 'Atletim' diyen kişi spora gitmezse → **disonans** = otomatik düzeltme.\n\nKritik: kimliği **küçük somut kanıtlarla** destekle. 'Ben atletim çünkü her gün hareket ediyorum' > 'Ben dünya çapında atletim'.\n\n**Aynaya bak, yüksek sesle her sabah söyle**. 30 gün = nöral kayıt.",
+        "action": "Bugün kendine **1 yeni beden kimliği etiketi** yapıştır. 'Ben ___' formülü.",
+        "reflectionPrompt": "Hangi kimliği seçtin? **Kanıtın** ne — bugün yaptığın hangi şey bu kimliği destekliyor?",
+        "proTip": "Kimliği **aynaya** + **yüksek sesle** + **her sabah** söyle. Beyin tekrara inanır.",
         "quiz": [
           {
             "q": "\"Sigara içmiyorum\" vs \"İçici değilim\"?",
@@ -5554,10 +5554,10 @@
       },
       "29": {
         "title": "Final Sprint",
-        "teaching": "29 gün boyunca beden disiplini pratik ettin. Yarın \"tamamladın.\" Ama beden yarınla bitmiyor. Final test: bu 30 günde işe yarayan en güçlü 1 alışkanlığı seç. 100 gün daha.",
-        "action": "Bugün 30 günün en güçlü 1 beden disiplinini seç. Hangisi?",
-        "reflectionPrompt": "Niye bu disiplini seçtin? Hangi sonucu verdi?",
-        "proTip": "O 1 disiplini takvime \"non-negotiable\" olarak işaretle. Pazartesi-pazar her gün.",
+        "teaching": "**29 gün arkanda.** Bedeninle ilgili **çok** yeni şey öğrendin: hareket, soğuk, uyku, beslenme, mobilite, nefes, toparlanma. Yarın 'tamamladım' diyeceksin. Ama **gerçek test bugün başlıyor**.\n\nÇoğu insan bu 30 günü 'tamamlar', sonra **eski hayata döner**. 90 gün sonra: hiçbir kazanım kalmamış, salon üyeliği iptal, eski beslenme. Sebep: **kalıcılaştırma kararı** vermedi.\n\nİstatistik: spor salonu üyeleri **%80'i Şubat'ta gitmez**. Yeni yıl kararları 12 günde çöker. Çünkü 'başlatma'yı yapan çok, **'sürdürme'**yi yapan az.\n\n**Final test**: bu 30 günde **en somut sonuç** veren **1 alışkanlığı** seç. **100 gün daha yap**.\n\nNeden 1? Çünkü:\n- 5 alışkanlık = enerji bölünür → hiç sürdürülemez\n- 1 alışkanlık = laser focus → kalıcı\n- 1 alışkanlık kalıcılaşınca = 2.'ye geç\n\nKriterler:\n- **Somut sonuç** verdi mi? (uyku, enerji, postür, mood?)\n- **Sürdürülebilir** mi? (günlük yapabilir misin yıllarca?)\n- **Diğerlerini destekliyor** mu? (uyku diğer her şeyi etkiler)\n\nMekanizma: 30 gün = patika başlangıcı. **+100 gün** = patika kalınlaşması = **130 gün** = beyin 'default' kayıt. Geri dönmek bilinçli çaba gerekir.\n\n**Takvime 'non-negotiable' olarak işaretle**. Pazartesi-Pazar **her gün**. Esneklik yok. Bu seviye taahhüt = kimlik dönüşümü.",
+        "action": "Bugün 30 günün **en güçlü 1 beden disiplinini** seç. Hangisi?",
+        "reflectionPrompt": "**Niye bu** disiplini seçtin? Hangi somut sonucu verdi?",
+        "proTip": "O 1 disiplini takvime **'non-negotiable'** olarak işaretle. Pazartesi-Pazar **her gün**.",
         "quiz": [
           {
             "q": "Final disiplin testi?",
@@ -5585,10 +5585,10 @@
       },
       "30": {
         "title": "Tamamlandı — Yeni Beden",
-        "teaching": "30 gün önce beden zayıf, dağınık, uyusuzdun. Şimdi: hareket, uyku, beslenme yapılı. Beden değişti — sen değiştin çünkü. Bu sabah aynaya bak: yeni bir beden, yeni bir kimlik.",
-        "action": "Bugün 30 günün özetini yaz: 3 öğrendiğim, 3 sürdüreceğim, 3 unutmayacağım.",
-        "reflectionPrompt": "Yeni bedenle hangi büyük şeyi yapacaksın?",
-        "proTip": "Bir sonraki yola geçmeden 3 gün dinlen. Beden tutarlılıkla şekillenir.",
+        "teaching": "**30 gün önce kimdin?** Zayıf, dağınık, uykusuz, susuz, hareketsiz, kambur. **Bugün kimsin?** Hareketli, uykulu, hidrasyonlu, dik, soğuk-dostu, daha güçlü.\n\nBu **aynı beden değil**. Hücresel düzeyde değişti:\n- Mitochondria sayısı **arttı** (Zone 2 kardiyo)\n- Kas fiber yoğunluğu **arttı** (direnç antrenmanı)\n- Bağırsak florası **çeşitlenmesi** (fermente + lif)\n- D vitamini seviyesi **yükseldi** (güneş)\n- İnsülin hassasiyeti **iyileşti** (şeker kesimi)\n- Kortizol baseline **düştü** (uyku + soğuk + nefes)\n- BDNF **arttı** (hareket → beyin değişimi)\n\nBu **abartı değil** — 30 günlük tutarlı pratik = ölçülebilir biyolojik değişim.\n\n**30 gün önce reaktif**: 'rahatsız hissediyorum, ne yapsam?' Şimdi **proaktif**: 'her gün protokolüm var, beden taze'.\n\nLally araştırması: 30 gün = nöral patika kuruldu, davranış otomatikleşmeye başladı. Devam = kalıcı.\n\n**Bu sabah aynaya bak**. 30 gün öncesinin sen → bugünkü seni görseydi ne hisseder? Şaşırır mı? Gurur mu? Bunu **yaz** — gelecekte zor anlarda silahın olur.\n\n**Bir sonraki yola** 3 gün dinlendikten sonra başla. Money Discipline (finans) veya Silent Morning (sabah ritüeli). **Disiplin bulaşıcı** — bedeni disipline eden zihni ve parayı da kolayca disipline eder.",
+        "action": "Bugün 30 günün özetini yaz: **3 öğrendiğim, 3 sürdüreceğim, 3 unutmayacağım**.",
+        "reflectionPrompt": "Yeni bedenle hangi **büyük şeyi** yapacaksın? Hangi hayal artık erişilebilir?",
+        "proTip": "Bir sonraki yola geçmeden **3 gün dinlen**. Beden tutarlılıkla şekillenir — acele = gerileme.",
         "quiz": [
           {
             "q": "Geçişten sonra dinlenme?",
@@ -5616,10 +5616,10 @@
       },
       "31": {
         "title": "Vagus Sinir",
-        "teaching": "Vagus = beyin-bağırsak otobanı. Tıkalıysa: stres, sindirim sorunu, depresyon. Açma: derin nefes, soğuk, mırıldama, gargara. Günde 5 dakika = sistem reset.",
-        "action": "Bugün 5 dakika gargara veya mırıldama yap.",
-        "reflectionPrompt": "Vagus pratiği nasıl hissettirdi?",
-        "proTip": "Soğuk yüz suyu = vagus stimülasyonu en hızlı.",
+        "teaching": "Stres, sindirim sorunu, depresyon, inflamasyon — bunlar **bağlı** problemler. Ortak payda: **vagus siniri**. Beyinden bağırsağa uzanan **en uzun kranyal sinir**, otonom sinir sisteminin **ana otobanı**.\n\nDr. Stephen Porges (Polyvagal Theory): 'Vagus = beden-zihin köprüsü. **Vagus tonu yüksek** = stres yönetimi iyi, sindirim sağlam, sosyal bağ güçlü. Vagus tonu **düşük** = anksiyete, IBS, izolasyon.'\n\nHRV (kalp ritmi değişkenliği) = vagus tonu göstergesi. Yüksek HRV = sağlık göstergesi (Apple Watch ölçer).\n\n**Vagus aktivasyon teknikleri**:\n\n1. **Derin yavaş nefes** — 4 sn al / 8 sn ver (en güçlü)\n2. **Soğuk maruziyet** — yüz soğuk su, soğuk duş\n3. **Mırıldama / hum** — m-m-m sesi (frekans = vagus titreşim)\n4. **Gargara** — sert gargara = vagus uçları stimüle\n5. **Meditasyon** — uzun pratik = vagus tonu artar\n6. **Yoga** — özellikle ujjayi nefesi\n7. **Sosyal bağ** — kahkaha, sarılma, gerçek bağ\n\nMekanizma: vagus → parasempatik dominant → kalp sakin → kortizol düşük → inflamasyon azalır → ruh hali stabil.\n\n**Günde 5 dakika** = sistem reset. Aşırı şey gerek değil, **tutarlılık** önemli.",
+        "action": "Bugün **5 dakika gargara veya mırıldama** yap. m-m-m sesi 30 saniye, tekrar.",
+        "reflectionPrompt": "Vagus pratiği **nasıl hissettirdi**? Anlık sakinlik geldi mi?",
+        "proTip": "**Soğuk yüz suyu** = vagus stimülasyonu **en hızlı** + kolay. Sabah yıkanırken zaten yapıyorsun.",
         "quiz": [
           {
             "q": "Vagus ne bağlar?",
@@ -5647,10 +5647,10 @@
       },
       "32": {
         "title": "NEAT Farkındalığı",
-        "teaching": "NEAT = non-exercise activity thermogenesis. Yürüyüş, ayakta durma, kıpırdama. Yüksek NEAT = günde 500-800 kcal yakıt. Spor olmadan da forma girersin.",
-        "action": "Bugün 5 saat ayakta durmayı dene (oturma yerine).",
-        "reflectionPrompt": "NEAT günün enerjisini değiştirdi mi?",
-        "proTip": "Telefon çağrısında ayakta dur. Toplantıyı yürüyerek yap.",
+        "teaching": "Spora gitmiyorsun ama **40 yaşında kuzeninin** karını gör — fit, enerjik, kilo problem yok. Sebep: **NEAT** (Non-Exercise Activity Thermogenesis). Egzersiz dışı yakıtlar.\n\nDr. James Levine (Mayo Clinic, NEAT araştırmaları): 'NEAT = günlük tüm hareket — yürüyüş, ayakta durma, kıpırdama, dolaşma, ev işi, merdiven. **Yüksek NEAT kişiler 500-800 kcal/gün** ekstra yakar — **spor yapmadan** forma girer.'\n\nKarşılaştır:\n- **Düşük NEAT kişi**: ofis → araba → koltuk → yatak. Günde ~200 kcal NEAT.\n- **Yüksek NEAT kişi**: ayakta toplantı, merdiven, yürüme, dolaşma. Günde ~800-1500 kcal NEAT.\n- **Fark**: 600-1000 kcal/gün × 365 = **27-45 kg yıllık fark** (matematiksel olarak).\n\nBu yüzden 'çok yiyorum ama kilo almıyorum' diyen kişiler genelde **yüksek NEAT**. 'Az yiyorum ama kilo alıyorum' diyenler **düşük NEAT** (oturarak yaşam).\n\nMekanizma: NEAT = sürekli düşük yoğunlukta metabolik aktivite = mitochondria sürekli çalışıyor = yağ yakımı sürekli.\n\n**Pratik NEAT artırma**:\n- **Ayakta toplantı** (Steve Jobs style)\n- **Yürüyüş toplantısı** (telefon konuşması)\n- **Asansör yerine merdiven**\n- **Park 2 sokak ötede**\n- **Standing desk** veya ara sıra ayakta çalışma\n- **Telefon çağrıları ayakta**\n- **5 saat ayakta** günde (oturma yerine 5 saati ayakta)\n\nSpor + NEAT = **maksimum metabolik sağlık**.",
+        "action": "Bugün **5 saat ayakta dur** (oturma yerine). Ayakta çalış, toplantı, dolaş.",
+        "reflectionPrompt": "NEAT **günün enerjisini değiştirdi** mi? Akşam farklı mı hissettin?",
+        "proTip": "**Telefon çağrısında ayakta dur**. **Toplantıyı yürüyerek yap**. Küçük değişiklikler = büyük etki.",
         "quiz": [
           {
             "q": "NEAT açılım?",
@@ -5678,10 +5678,10 @@
       },
       "33": {
         "title": "Güneş Maruziyeti v2",
-        "teaching": "Sabah ilk güneş = melatonin baskılar, ucb sefalin yükseltir. Gün ortası güneş = D vitamini. Akşam güneş = sirkadiyen reset. 3 maruziyet = ideal.",
-        "action": "Bugün sabah + öğle + akşam 5'er dakika güneş al.",
-        "reflectionPrompt": "Hangi maruziyet en güçlü hissettirdi?",
-        "proTip": "Çıplak ayakla = grounding bonus.",
+        "teaching": "Ders 19'da D vitamini için güneşi tanıttık. **Bu ders ileri seviye**: günün **3 farklı zamanında** farklı amaçlar için güneş.\n\nAndrew Huberman (Stanford) — sirkadiyen ışık protokolü:\n\n**1. Sabah ilk güneş** (uyandıktan 30-60 dk içinde, 5-10 dk):\n- **Melatonin baskılar** = uyanıklık\n- **Kortizol piki destekler** = enerji\n- **Sirkadiyen saat 'gündüz' kayıt** = akşam doğal uyku\n- **Dopamin** baseline yükseltir\n\n**2. Gün ortası güneş** (11:00-15:00, 15-20 dk):\n- **D vitamini sentezi** zirvesi (UV-B en güçlü)\n- **Serotonin** üretimi\n- **Bağışıklık** desteği\n\n**3. Akşam güneş** (gün batımı, 5-10 dk):\n- **Sirkadiyen reset** — beden 'akşam' algılar\n- **Melatonin üretimi başlamasını destekler**\n- **Pürüzsüz uyku** hazırlığı\n\n**3 maruziyet = ideal**. Modern hayatta 'güneş = kötü' propagandası çok güçlü — krem, gözlük, kapalı yer. Sonuç: insanlar **kronik D düşük** + **sirkadiyen bozuk** + **depresyon**.\n\nMekanizma: göz retinaya çarpan ışık → SCN (suprakiazmatik çekirdek) → ana sirkadiyen sinyal. Sabah ışığı = 'gün başla', akşam ışığı = 'gün bitiyor'. Pencereden bakmak yetmez — **doğrudan ışık** gerek (cam UV-B'yi engeller).\n\n**Çıplak ayakla** = ek bonus (grounding araştırmaları — Earth potansiyeli, anti-inflammatory).",
+        "action": "Bugün **sabah + öğle + akşam 5'er dakika** güneş al. Doğrudan, camsız.",
+        "reflectionPrompt": "Hangi maruziyet **en güçlü** hissettirdi? Enerji, ruh hali, hangi?",
+        "proTip": "**Çıplak ayakla** = grounding bonus. Yere temas = inflammasyon düşer, parasempatik dominant.",
         "quiz": [
           {
             "q": "Sabah güneşi etkisi?",
@@ -5709,10 +5709,10 @@
       },
       "34": {
         "title": "Uyku Mimarisi",
-        "teaching": "Uyku = REM + N1 + N2 + N3. N3 (derin uyku) = beden onarımı, REM = zihin onarımı. Geç uyumak N3'ü çalar. Erken yatmak = derin uyku zenginliği.",
-        "action": "Bugün 22:00'da yat. N3 dolu olsun.",
-        "reflectionPrompt": "Sabah enerjisi farklı mı?",
-        "proTip": "İlk 3 saat N3 zengin. 22-01 = en kıymetli uyku.",
+        "teaching": "8 saat uyudun — **ama hangi tip uyku**? Modern uyku bilimi: tüm uyku **eşit değil**. 4 evre var, **fonksiyonu farklı**.\n\nNathaniel Kleitman (1953) → Matthew Walker — uyku mimarisi:\n\n- **N1 (geçiş)**: 5-10 dk, hafif uyku, kolay uyanırsın\n- **N2 (orta uyku)**: %50 toplam uyku, bellek konsolidasyonu başlar\n- **N3 (derin uyku, slow-wave)**: 90-110 dk toplam, **beden onarımı**, HGH zirvesi, immün güçlenmesi\n- **REM (rüya)**: 90-120 dk toplam, **zihin onarımı**, duygusal işleme, yaratıcılık, hafıza\n\n**N3 = ilk 3 saatte zengin** (22:00-01:00). Geç uyumak = **N3 kayıp**. Bu yüzden 'geç yatma uyku borçlandırır' bilimsel.\n\n**REM = sabah saatlerinde zengin** (04:00-07:00). Erken kalkma = REM kayıp. Yetersiz REM = duygusal düzensizlik, hafıza zayıf, kreatif düşünce zayıf.\n\n**İdeal**: 22:00 yat → 06:00 kalk = 8 saat = N3 + REM **dolu**.\n\n23:30 yat → 06:00 kalk = 6.5 saat ama **N3 kayıp** (en kritik evre kaçırıldı).\n\nMekanizma: glymphatic sistem = beynin atık temizleme sistemi. N3'te aktif. Yetersiz N3 = atık birikir = Alzheimer riski + bilişsel düşüş.\n\n**'Az uyku göstergesidir' mit**. Bilim: tüm 'az uyuyorum, iyiyim' diyenlerde **objektif test** = bilişsel performans düşük (ama subjektif fark etmiyor — bu en tehlikeli).",
+        "action": "Bugün **22:00'da yat**. N3 dolu olsun.",
+        "reflectionPrompt": "Sabah **enerjisi farklı** mı? Net berraklık geldi mi?",
+        "proTip": "**İlk 3 saat N3 zengin**. **22:00-01:00 = en kıymetli uyku**. Geç uyumak = N3 çalmak.",
         "quiz": [
           {
             "q": "Derin uyku evresi?",
@@ -5740,10 +5740,10 @@
       },
       "35": {
         "title": "Mobilite 15 Dakika",
-        "teaching": "5 dk yetmedi — 15 dk mobilite günde fark yapar. Omuz, kalça, ayak bileği, sırt, boyun. Her gün küçük açıklık = uzun vade büyük fark.",
-        "action": "Bugün 15 dakika tüm vücut mobilite yap.",
-        "reflectionPrompt": "Hangi eklem hissedilir açıldı?",
-        "proTip": "YouTube \"15 min mobility\" + 7 gün tekrar.",
+        "teaching": "Ders 14'te 5 dk mobilite ile başladın. Şimdi **15 dakika**. Bu **fark yaratan eşik**. Çünkü mobilite kompleks: tek tek eklemler değil, **bütün vücut sistem**.\n\nFunctional Range Conditioning (FRC) — Dr. Andreo Spina: 'Mobilite = **eklem kapsülü sağlığı + nöral kontrol + kas uzanma**. 5 dk = sürdürme; 15 dk = **gelişme**.'\n\n**Kritik 5 eklem** (15 dk her birine 3 dk):\n\n1. **Omuz** (3 dk)\n   - Kol daireleri (her yön 10)\n   - Wall slides\n   - Doorway stretch (göğüs açılışı)\n\n2. **Kalça** (3 dk)\n   - 90/90 stretch\n   - Pigeon pose (her bacak 60 sn)\n   - Hip flexor stretch\n\n3. **Ayak bileği** (3 dk)\n   - Knee to wall (ayak bileği dorsiflexion)\n   - Calf raises (heel)\n   - Tek ayak denge\n\n4. **Sırt** (3 dk)\n   - Cat-cow\n   - Thread the needle\n   - Spinal twist\n\n5. **Boyun** (3 dk)\n   - Chin tucks\n   - Boyun rotasyonu (4 yön)\n   - Üst trapez stretch\n\nMekanizma: her gün küçük açıklık = **kapsül sağlığı + sinovial sıvı akışı + nöral kontrol**. 30 gün sonra: hareket aralığı **belirgin** artar. 1 yıl sonra: 50 yaşında **30 yaş hareket aralığı**.\n\nYouTube **'15 min mobility'** rehberli videolar var. İlk hafta video ile, sonra **ezberle**.",
+        "action": "Bugün **15 dakika tüm vücut mobilite** yap. 5 eklem × 3 dk.",
+        "reflectionPrompt": "Hangi eklem **hissedilir açıldı**? Hangisi en kısıtlı kalmış?",
+        "proTip": "YouTube **'15 min mobility'** + **7 gün tekrar**. Sonra ezberle, video gerek değil.",
         "quiz": [
           {
             "q": "Mobilite yeni süre?",
@@ -5771,10 +5771,10 @@
       },
       "36": {
         "title": "Günlük Yürüme Mastery",
-        "teaching": "10K adım iyi. 12K adım çok daha iyi. 15K = elite. Hareket en doğal ilaç. Kıvrılarak değil, dik + tempolu yürü.",
-        "action": "Bugün 12K adımı vur.",
-        "reflectionPrompt": "12K'da uyku farklı mı?",
-        "proTip": "Toplantıyı yürüyerek yap. Adım sayını 2x.",
+        "teaching": "10K adım = **iyi**. Ders 8'de öğrendin. Şimdi seviyeyi yükselt: **12K-15K**. Bu **elite zona**. Çünkü bilim sürekli evrim:\n\nLancet (2023) güncel meta-analiz:\n- 7K adım → mortalite %50 düşer\n- 10K → %52\n- **12K** → %58 (en yüksek azalma)\n- 15K+ → ek fayda küçük ama var\n\n**Hareket = en doğal ilaç**. Patent yok, yan etki yok, ücretsiz. Aspirin'den 100x güçlü etki, doğal yoldan.\n\n12K = günde **8-10 km** = **90 dakika** dağıtık yürüme. Mümkün mü?\n\nGünlük hayata gizleme:\n- Sabah 30 dk yürüyüş = 4K\n- Öğle 15 dk yürüyüş = 2K\n- Akşam 30 dk yürüyüş = 4K\n- + gün içi hareket (ofis, ev, alışveriş) = 2K\n- **Toplam: 12K**\n\n**Yürüyüş şekli kritik**:\n- **Dik** (göğüs açık, omuz geri)\n- **Tempolu** (140-160 adım/dk)\n- **Kollar serbest** salınsın\n- **Burun nefesi** (Ders 24)\n- **Telefon yok** (DMN aktif — yaratıcılık + dinlenme)\n\nKıvrılarak yürümek = düşük etki + postür kötüleşir. Dik tempolu yürüyüş = **kardiyovasküler + metabolik + nöral** fayda.\n\nToplantıyı yürüyerek yap = Adım sayını **2x**. Steve Jobs, Mark Zuckerberg, Aaron Sorkin — hepsi.",
+        "action": "Bugün **12K adımı vur**. Dik, tempolu, telefonsuz mümkünse.",
+        "reflectionPrompt": "12K'da **uyku farklı** mı? Akşam yorgunluğu mu yoksa **canlılık** mı?",
+        "proTip": "**Toplantıyı yürüyerek yap**. Adım sayını **2x**. Steve Jobs tarzı.",
         "quiz": [
           {
             "q": "Optimum adım?",
@@ -5802,10 +5802,10 @@
       },
       "37": {
         "title": "Soğuk Mastery",
-        "teaching": "Soğuk duş 2 dk geçtin. Şimdi: ice bath. 1-3 dk, 5-10°C. Norepinefrin %500, depresyon %29 düşer, bağışıklık 10x. Eğitim sonrası = hızlı recovery.",
-        "action": "Bugün ice bath dene (kova soğuk su + buz).",
-        "reflectionPrompt": "Sıcaklık kontrolü hissettiğin baskın duygu?",
-        "proTip": "İlk 30 sn nefesle, sonra rahatla.",
+        "teaching": "Soğuk duşa 30 sn → 1 dk → 2 dk **geçtin**. Şimdi en yüksek seviye: **ice bath / cold plunge**. **1-3 dakika, 5-10°C su**. Bu **biyohacker / elite atlet** seviyesi.\n\nSusanna Søberg (Kopenhag, soğuk araştırmaları otoritesi) protokol: **haftada toplam 11 dakika** 10-15°C su = optimum kahverengi yağ aktivasyonu + metabolik adaptasyon.\n\nBilim çarpıcı:\n- **Norepinefrin %500 artar** (anti-depresan etkisi)\n- **Dopamin %250 artar** (4 saatlik motivasyon)\n- **Depresyon riski %29 düşer**\n- **Bağışıklık 10x güçlenir**\n- **Mitochondria biyogenez** = uzun ömür\n- **Brown fat aktivasyonu** = metabolizma artar\n- **Antrenman sonrası inflammasyon** çözer = hızlı recovery\n\nMekanizma: extreme soğuk = beden 'tehlike' algılar, **hormetic adaptasyon** başlar. Adaptasyonun yan etkisi = güçlenmiş tüm sistemler.\n\n**Pratik ice bath**: kova **soğuk su + buz** (10 kg buz). Beden tamamen daldırma (boyun üstü). 1-3 dk.\n\n**Profesyonel cold plunge** (₺5-50 bin) — yatırım büyük ama kullanım ömrü uzun. Veya banyo soğuk su + buz = yine etkili.\n\nKritik:\n- **İlk 30 sn**: nefes kontrolü. Şok refleksi nefes tutmak ister — tersini yap (yavaş derin nefes).\n- **30 sn sonrası**: rahatla. Beden adapte oldu.\n- **Çıkışta**: kendiliğinden ısın (havlu yok, beden brown fat aktive ederek ısınır = ekstra fayda).",
+        "action": "Bugün **ice bath dene** (kova + soğuk su + 10 kg buz). 1 dakika hedefi.",
+        "reflectionPrompt": "Sıcaklık kontrolünde hissettiğin **baskın duygu**? Korku, güç, ne?",
+        "proTip": "İlk 30 sn **nefesle**, sonra **rahatla**. Beden adapte oldu — irade ile katlanma.",
         "quiz": [
           {
             "q": "Ice bath süre?",
@@ -5833,10 +5833,10 @@
       },
       "38": {
         "title": "Sıcak Terapi",
-        "teaching": "Sauna 20 dk × 4 hafta = kalp hastalığı %40 düşük (Finland study). Sıcak şok proteini = vücut onarımı. Yoksa: sıcak duş 10 dk + soğuk bitiriş.",
-        "action": "Bugün sıcak duş 10 dk + 30 sn soğuk.",
-        "reflectionPrompt": "Sıcak-soğuk kontrast nasıldı?",
-        "proTip": "Sauna bulamazsan: sıcak banyo 40°C, 15 dk.",
+        "teaching": "Soğuk öğrendin (Ders 37). **Sıcak** = madalyonun diğer yüzü. **Sauna** sadece relaks değil — kanıtlı **anti-aging**.\n\n**Finland Sauna Study** (Laukkanen, JAMA 2015, 2,300 erkek, 20 yıl takip):\n- **Sauna haftada 4-7 kez** = kalp hastalığı **%50 düşüş**\n- **Tüm sebeplerden ölüm** %40 düşüş\n- **Demans riski** %66 düşüş\n- **Yüksek tansiyon** kontrolü\n\nBu sigara bırakmaktan **daha güçlü etki**. Sauna = sigara karşıt aşı.\n\nMekanizma: **Heat Shock Proteins (HSP)** = sıcak şok = hücresel onarım proteinleri aktive olur. Hasarlı proteinleri tamir eder, hücre temizliği yapar. Aynı zamanda kalp **aerobik egzersiz benzeri** çalışır — kalp hızı 100-150'ye çıkar.\n\n**Optimum protokol** (Laukkanen):\n- **Sıcaklık**: 80-100°C\n- **Süre**: 20 dakika (tek seans)\n- **Sıklık**: haftada 4 kez minimum\n\nSauna **yoksa alternatif**:\n- **Sıcak banyo 40°C, 15 dk** = sauna'nın %70 etkisi\n- **Sıcak duş 10 dk** = orta etki\n- **Yoga sıcak** (Bikram) = sauna + hareket\n\n**Sıcak-soğuk kontrast** = mucize. Sauna 15 dk → buz banyosu 1 dk → tekrar. Kan damarları **pompa gibi** çalışır (vasodilatasyon-vasokonstriksiyon). Lenf akışı artar, anti-inflammasyon zirvesinde.\n\nGünlük en basit: **sıcak duş 10 dk + soğuk 30 sn bitiriş**.",
+        "action": "Bugün **sıcak duş 10 dk + 30 sn soğuk**. Kontrast bitiriş.",
+        "reflectionPrompt": "Sıcak-soğuk kontrast nasıldı? Hangi daha **etkili** hissedildi?",
+        "proTip": "Sauna bulamazsan: **sıcak banyo 40°C, 15 dk**. Sauna'nın %70 etkisi.",
         "quiz": [
           {
             "q": "Sauna kaç dakika?",
@@ -5864,10 +5864,10 @@
       },
       "39": {
         "title": "Bilinçli Yeme",
-        "teaching": "20 dakika kuralı: beyin tokluk sinyalini 20 dk sonra alır. 20 dakikadan az yeme = aşırı yeme. Çatal yere koy, çiğne, yut, dur.",
-        "action": "Bugün her öğünü 20 dk'ya yay.",
-        "reflectionPrompt": "Yavaş yemek doygunluğu değiştirdi mi?",
-        "proTip": "Lokmayı 30 kez çiğne. Sindirim 2x kolaylaşır.",
+        "teaching": "Akşam yemeği 10 dakikada bitti. Telefonla TV izleyerek yedin. Hala **aç hissediyorsun**, atıştırmaya başlıyorsun. Ama beden **gerçekten yeterli aldı** — sinyal **henüz gelmedi**.\n\n**20 dakika kuralı**: beyin tokluk sinyalini **mide doluluk + hormonlardan** sonra alır. Bu sinyalin **PFC'ye ulaşması ~20 dakika** sürer. **20 dakikadan az yeme** = sinyalden önce bitirmiş = **aşırı yeme** garanti.\n\nDoktor Ülke Tepe (gut-brain araştırmacısı): 'Bilinçli yeme = leptin, ghrelin, CCK, PYY hormon sinyallerini **dinleme**. Hızlı yeme = bu sinyalleri **bastırma**.'\n\n**Bilinçli yeme protokolü**:\n\n1. **Telefon yok** masada (Ders 26 — telefonsuz bölge)\n2. **TV kapalı**\n3. **Çatal yere koy** her lokma arasında\n4. **Tam çiğne** — **30 kez** (Horace Fletcher tekniği, 1900'ler)\n5. **Tadı al** — duyusal odak\n6. **20 dakikaya yay** öğünü\n7. **Tokluk %80'de dur** (Hara Hachi Bu — Okinawa felsefesi)\n\nFaydalar:\n- **%20-30 daha az** kalori yer (otomatik kilo kontrolü)\n- **Sindirim 2x kolaylaşır** (çiğneme = enzim aktif)\n- **Şişkinlik, gaz azalır**\n- **Yemekten zevk** artar (paradoks)\n- **Tokluk uzun sürer**\n\nMekanizma: ağızda çiğneme = amilaz enzimi (karbonhidrat) + sinyal bağırsağa = sindirim hazırlığı. Hızlı yutma = sindirim sistemi **şok** = inflammasyon.",
+        "action": "Bugün **her öğünü 20 dk'ya yay**. Çatal yere koy, çiğne, dinle.",
+        "reflectionPrompt": "Yavaş yemek **doygunluğu değiştirdi** mi? Ne kadar az yedin?",
+        "proTip": "**Lokmayı 30 kez çiğne**. Sindirim 2x kolaylaşır, tokluk hızlı gelir.",
         "quiz": [
           {
             "q": "20-dakika kuralı?",
@@ -5895,10 +5895,10 @@
       },
       "40": {
         "title": "Hidrasyon 3L",
-        "teaching": "2L yeterli değil = optimum. 3L = elit hidrasyon. Beden %72 su. 3L = bilişsel performans %30 artar. İdrar açık sarı = doğru.",
-        "action": "Bugün 3L su iç. Kapsayan 1L sabah, 1L öğleden önce, 1L öğleden sonra.",
-        "reflectionPrompt": "3L'de zihinsel netlik?",
-        "proTip": "1L şişe + günde 3 kez doldur. Sayma yok.",
+        "teaching": "Ders 7'de **2L** standardını öğrendin. Şimdi **ileri seviye**: 3L = **elite hidrasyon**.\n\nÇoğu kişi 2L bile içemez, 3L = abartı sanılır. Ama bilim: optimum hidrasyon **kilo + aktivite + iklim** ile değişir.\n\n**Formül** (Mayo Clinic):\n- **Erkek**: günde **3.7 litre** (su + içecek + yemek)\n- **Kadın**: 2.7 litre\n- **+Egzersiz**: her 30 dk için **+500 ml**\n- **+Sıcak iklim**: %25 daha fazla\n\nYani 80 kg erkek, 1 saat antrenman yapan, yaz = **4.5L+**.\n\n**3L = düşük tahmin**. Ama '2L yeterli' propagandasına karşı **upgrade**.\n\n**3L = optimum + elite**:\n- **Bilişsel performans %30 artar** (Lieberman — Tufts)\n- **Eklem kayganlığı** zirvesi\n- **Cilt görünümü** mükemmel\n- **Atık temizlenmesi** maksimum\n- **Açlık ile susuzluk karışıklığı** sıfır (gerçek açlık)\n\n**Dağılım**:\n- 1L sabah (uyanış → öğle)\n- 1L öğleden önce-sonra\n- 1L öğleden sonra-akşam\n\nİdrar rengi kontrolü:\n- **Şeffaf**: aşırı hidrasyon (azalt)\n- **Açık sarı**: ideal\n- **Sarı**: yetersiz\n- **Koyu sarı**: tehlikeli dehidrasyon\n\n**1L şişe + günde 3 kez doldur** = sayma yok, otomatik 3L.\n\nElektrolit: 3L su × günler = mineral kaybı. **Tuz** (bir tutam), magnesium, potasyum (muz, avokado) ekle.",
+        "action": "Bugün **3L su iç**. 1L sabah, 1L öğleden önce-sonra, 1L öğleden sonra.",
+        "reflectionPrompt": "3L'de **zihinsel netlik** nasıldı? Cilt, eklem farkı?",
+        "proTip": "**1L şişe + günde 3 kez doldur**. Sayma yok. Görsel + erişilebilir = otomatik.",
         "quiz": [
           {
             "q": "Optimum hidrasyon?",
