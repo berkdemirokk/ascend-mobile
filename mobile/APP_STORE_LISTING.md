@@ -12,8 +12,12 @@ Türkçe / English versiyonlarına yapıştır.
 
 ## Subtitle (max 30 chars)
 
-- **TR:** `Disiplin. Odak. Tekrar.`
-- **EN:** `Discipline. Focus. Repeat.`
+- **TR:** `5 dk/gün · 30 günde dönüş` (24 chars — value prop + time + outcome)
+- **EN:** `5 min/day · 30-day transform` (28 chars)
+
+> Old subtitle "Disiplin. Odak. Tekrar." was poetic but vague. New
+> subtitle answers the user's "what does this app DO for me" in one
+> read: small time commitment + concrete promise on the 30-day mark.
 
 ---
 
@@ -69,7 +73,6 @@ Her yol 50 ders. Her ders 5 dakika. Toplam 250 ders.
 • Seviyeler — XP toplayarak Beginner → Master → Legendary
 • Rütbeler — Yol bitirdikçe açılan rütbeler
 • Başarımlar — 30+ farklı başarım
-• Anonim liderlik tablosu — En uzun seri kazanır, gerçek isim paylaşılmaz
 
 🎧 SESLİ DİNLE
 
@@ -136,7 +139,6 @@ Each path is 50 lessons. Each lesson takes 5 minutes. 250 lessons total.
 • Levels — Beginner → Master → Legendary via XP
 • Ranks — Earn ranks as you complete paths
 • Achievements — 30+ achievements to unlock
-• Anonymous leaderboard — Longest streaks win, real names never shared
 
 🎧 LISTEN ON THE GO
 
@@ -189,6 +191,36 @@ discipline,habit,monk,stoic,detox,focus,streak,morning,routine,mindful,journal
 
 ## What's New in This Version (max 4000 chars per locale)
 
+### v1.0.30 (TR) — Latest
+
+```
+🎯 Kimlik Arketipleri — Zen Müderris, Sessiz Savaşçı, Demir Disiplinli. Seçimin tüm akışı şekillendirir.
+🃏 Günlük Kart Destesi — Her sabah 3 dakikalık stoik ritüel. Aurelius, Newport, Naval, Munger.
+📊 30 Gün Ölçüm — Başlangıç + post-assessment, gerçek puan farkı. Paylaşılabilir.
+🔥 Momentum Loop — Üst üste ders yaparsan +25/+50/+75/+100 bonus XP.
+💌 Geleceğin Senden Mektup — Nadir bir an. Bir derste rastgele gelir.
+🛡️ Streak Onarım — Reklam izle, zincirini geri kazan.
+🌙 Akşam Özetin — Günün sonunda gerçek ölçüm.
+📖 Çok Sayfalı Ders — Her ders 4 katman (sahne / bilim / mekanizma / pratik).
+🧠 Quiz Derinliği — Her cevabın altında konuya bağlam + nasıl uygula.
+🐛 Performans, sync ve ses oynatma düzeltmeleri.
+```
+
+### v1.0.30 (EN) — Latest
+
+```
+🎯 Identity Archetypes — Zen Master, Silent Warrior, Iron Disciplined. Your choice shapes the whole experience.
+🃏 Daily Card Deck — Stoic 3-minute morning ritual. Aurelius, Newport, Naval, Munger.
+📊 30-Day Measurement — Baseline + post-assessment, real score delta. Shareable.
+🔥 Momentum Loop — Stack lessons in a session: +25/+50/+75/+100 bonus XP.
+💌 Letter from Future Self — A rare moment. Appears at random.
+🛡️ Streak Repair — Watch ad, restore your streak.
+🌙 Evening Summary — Real measurement at day's end.
+📖 Multi-Page Lesson — Each lesson now 4 layers (scene / science / mechanism / practice).
+🧠 Quiz Depth — Context + how-to-apply under every answer.
+🐛 Performance, sync, and audio fixes.
+```
+
 ### v1.0.10 (TR)
 
 ```
@@ -196,7 +228,6 @@ discipline,habit,monk,stoic,detox,focus,streak,morning,routine,mindful,journal
 🛡️ Streak Onarım Jetonu — Bir gün kaçırırsan, jeton seriyi korur
 🎧 Sesli ders — Her dersi tek tıkla dinle (yürürken, banyoda)
 📊 Haftalık özet — Son 7 günün tek bakışta
-🏆 Anonim liderlik tablosu — En uzun seri kazanır
 🐛 Daha hızlı, daha kararlı, daha sessiz hatalar
 ```
 
@@ -207,7 +238,6 @@ discipline,habit,monk,stoic,detox,focus,streak,morning,routine,mindful,journal
 🛡️ Streak Repair Token — Miss a day, a token saves your streak
 🎧 Audio lessons — Tap to listen on the go (walking, shower)
 📊 Weekly recap — Your last 7 days at a glance
-🏆 Anonymous leaderboard — Longest streaks win
 🐛 Faster, more stable, quieter errors
 ```
 
