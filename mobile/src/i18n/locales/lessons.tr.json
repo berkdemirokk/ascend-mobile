@@ -4064,10 +4064,10 @@
       },
       "31": {
         "title": "Ultradian Ritm",
-        "teaching": "Beyin 90-120 dakika döngülerle çalışır. Bu ritmin sonunda dikkat düşer. Çözüm: 90 dakika derin iş + 20 dakika gerçek mola. Pomodoro'nun büyük abi versiyonu.",
-        "action": "Bugün 90-20 ritmiyle çalış.",
-        "reflectionPrompt": "90 dakika sonu ne hissettin?",
-        "proTip": "Mola tam mola: telefon yok, ekran yok. Pencere bak, su iç.",
+        "teaching": "2 saat çalıştın, **dikkat dağılmaya** başladı. 3 saat: hata yapmaya başladın. 4 saat: gerçekten hiçbir şey üretmiyorsun, sadece **otururuyorsun**. Bu **biyolojik gerçek**. Beyin sürekli odak yapacak şekilde **tasarlanmamış**.\n\nNathaniel Kleitman (1953, uyku bilimi kurucusu) — **'Basic Rest-Activity Cycle' (BRAC)** keşfi: insan uyanıkken de **90-120 dakikalık döngüler** yaşar. Her döngü sonunda **doğal yorgunluk** + dikkat çöker.\n\nPeretz Lavie (Technion Israel) doğruladı: yüksek performans atletleri, yaratıcı yazarlar, profesyonel müzisyenler hepsi **90 dakika sprint + 15-20 dakika tam mola** yapar. Anders Ericsson (10,000 saat araştırması): elite performans = **'deliberate practice + recovery'** — recovery olmadan practice yapamazsın.\n\n**Format**: 90 dk derin iş + 20 dk **gerçek mola**. Pomodoro'nun (25/5) **büyük abi** versiyonu — daha derin work için uygun.\n\nMekanizma: 90 dk = beyin **glikoz tüketimi** + **adenozin birikimi** zirvesi. 20 dk = **glikoz yenileme** + **adenozin temizlenme**. Sonraki sprint **taze**.\n\nKritik: **mola = tam mola**. Telefon yok, ekran yok. Pencere bak, su iç, yürü. Telefonla mola = mola değil — sadece **farklı tip çalışma**.",
+        "action": "Bugün **90-20 ritmiyle** çalış. 1 sprint dene → sonucu gözle.",
+        "reflectionPrompt": "90 dakika sonu ne hissettin? 2. sprintte verim **eski** mi yoksa **eşit** mi?",
+        "proTip": "**Mola tam mola**: telefon yok, ekran yok. Pencere bak, su iç, esne. **Beyin reset** = sonraki sprint taze.",
         "quiz": [
           {
             "q": "Ultradian döngü süresi?",
@@ -4095,10 +4095,10 @@
       },
       "32": {
         "title": "Default Mode Network",
-        "teaching": "Beyin \"boş\" zaman = DMN aktif. Bu mod yaratıcılık + öz farkındalık üretir. Sürekli stimulasyon = DMN kapalı = boş yaratıcılık. Ekransız 30 dk şart.",
-        "action": "Bugün 30 dakika hiç ekran kullanma.",
-        "reflectionPrompt": "Ekransız zihninde ne belirdi?",
-        "proTip": "Yürüyüş + ekransız = DMN max. Gözlem yap.",
+        "teaching": "Duş alırken aklına geldi: o problemin **çözümü**. Yürüyüşte: o iyi fikir. Yatağa yatarken: o **derin içgörü**. Hiç **çalışırken** gelmedi. Sebep: çalışırken **DMN kapalı**.\n\nMarcus Raichle (Washington Üniversitesi 2001) — **Default Mode Network (DMN)** keşfi: beyin '**hiçbir şey yapmazken**' aktif olan ağ. Bu ağ:\n- **Yaratıcılık** üretir (uzak fikirleri birleştirir)\n- **Öz-farkındalık** sağlar (kim olduğunu işler)\n- **Anlam üretir** (deneyimleri hikayeye bağlar)\n- **Geleceği planlar** (mental simulasyon)\n\nProblem: **sürekli stimulasyon** (telefon, podcast, müzik, video) = **DMN bastırılır**. Beyin görev modunda kalır = yaratıcılık **kuruyor**.\n\nKalina Christoff (UBC 2009): DMN aktivasyonu **yaratıcı içgörü** ile direkt korelasyon. 'Aha!' anları DMN zirvesinde olur.\n\nMekanizma: DMN = **arka plan işleme**. Çözümler, fikirler, içgörüler bilinçaltında pişer. Bilinç meşgulse pişiremez. **Boş zaman = DMN inkübasyonu** = yaratıcılık üretimi.\n\n**Ekransız 30 dakika şart**. Modern hayatın **en eksik** parçası. Sıkıntı (Ders 18), yürüyüş (Ders 24), stillness (silent-morning Ders 32) — hepsi DMN'i besler.",
+        "action": "Bugün **30 dakika hiç ekran kullanma**. Telefon, bilgisayar, TV — hiçbiri. Yürü, otur, düşün.",
+        "reflectionPrompt": "Ekransız zihninde **ne belirdi**? Beklemediğin bir düşünce, fikir, içgörü?",
+        "proTip": "**Yürüyüş + ekransız** = DMN max. En verimli kombinasyon. Cep telefonu evde.",
         "quiz": [
           {
             "q": "DMN aktif olur?",
@@ -4126,10 +4126,10 @@
       },
       "33": {
         "title": "Zihinsel Modeller",
-        "teaching": "Charlie Munger: \"100 mental modelini öğren, dünyayı çözersin.\" Birinci ilkeler, fırsat maliyeti, ikinci derece etkileri. Her hafta 1 yeni model öğren.",
-        "action": "Bugün 1 zihinsel model araştır.",
-        "reflectionPrompt": "Hangi modeli seçtin?",
-        "proTip": "Farnam Street blog = 100'lerce mental model.",
+        "teaching": "Karmaşık bir problem önünde duruyorsun. Beyin **dağılıyor** — nereden başlayacağını bilmiyorsun. Diğer yandan **Charlie Munger** (Warren Buffett'ın ortağı, **multidisipliner deha**) aynı problemi 30 saniyede çözüyor. **Fark**: o **mental modellere** sahip.\n\nMunger (Poor Charlie's Almanack): '**100 mental modeli** öğren, dünyayı çözersin. Tek alanda uzman = **çekiç tutan adam, her şeyi çivi görür**. Multidisipliner = her duruma uygun **araç** seçer.'\n\n**Mental model = düşünme aracı**. Örnekler:\n- **Birinci ilkeler** (fizikten başla) — Musk\n- **Fırsat maliyeti** (her seçim = başka bir seçimden vazgeçme)\n- **İkinci derece etkileri** (eylem → sonuç → sonucun sonucu)\n- **Inversion** (tersini düşün)\n- **Bayes Theorem** (yeni veri = inanç güncelleme)\n- **Sistem 1 vs Sistem 2** (Kahneman) — hızlı vs yavaş düşünme\n- **Pareto 80/20** (az neden çoğu etki)\n- **Compounding** (küçük + zaman = büyük)\n\nMekanizma: model = **bilişsel kısayol**. Her durumda sıfırdan düşünmek yerine, **tanıdık modeli uygula** — hızlı, doğru karar.\n\nHaftada **1 yeni model** öğren. **52 yıl × 52 model = bir ömür uzman zihin**.\n\nFarnam Street (Shane Parrish blog) — en iyi kaynak, **100+ model**.",
+        "action": "Bugün **1 zihinsel model araştır**. Tanımla, örnek bul, kendi hayatında uygula.",
+        "reflectionPrompt": "Hangi modeli seçtin? Hangi problemde uygulayabilirsin?",
+        "proTip": "**Farnam Street blog** (fs.blog) = 100'lerce mental model. Munger ve Buffett kaynak.",
         "quiz": [
           {
             "q": "Mental model kaynak?",
@@ -4157,10 +4157,10 @@
       },
       "34": {
         "title": "Birinci İlkeler Düşüncesi",
-        "teaching": "Elon Musk: \"varsayımlardan değil, fizikten başla.\" Her problem için: temel gerçekler ne? Genel kabul edilenleri sorgula. Roket fiyatları %90 düştü çünkü Musk böyle düşündü.",
-        "action": "Bugün bir varsayımı sorgula. \"Niye böyle?\"",
-        "reflectionPrompt": "Hangi varsayım çürüdü?",
-        "proTip": "\"Niye?\" 5 kez üst üste sor. Köke iner.",
+        "teaching": "Elon Musk SpaceX kurdu. 'Bu **imkansız**' dedi herkes — çünkü roket **65 milyon dolar**. Musk sordu: 'Roket **fiziksel olarak** neyden yapılır?' Cevap: alüminyum, titanyum, bakır, karbon fiber. **Ham madde maliyeti**: $250.000. **%99.6 fark** nerede? **Marka, marj, gelenek, korku**.\n\nSpaceX şimdi roket fiyatlarını **%90 düşürdü**. Sebep: **birinci ilkeler düşüncesi**.\n\nAristoteles → Descartes → Musk: 'Genel kabul edilen şeyleri **sorgula**. **Fiziksel temele** in. Oradan **yukarı doğru** inşa et.'\n\n**Analoji ile düşünme** (çoğu insan): 'Başkaları nasıl yapıyor, ben de öyle yapayım.' Sonuç: incremental ilerleme, bazen geriye gidiş.\n\n**Birinci ilkelerle düşünme**: 'Temel gerçekler ne? Bu temelden ne yapabilirim?' Sonuç: **breakthrough**.\n\nUygulama: 'Niye?' sor. Cevabı al. Tekrar 'Niye?' sor. **5 kez üst üste** = köke inersin. Toyota '**5 Whys**' tekniği — kalite mühendisliği temeli.\n\nÖrnek:\n- Maaşım düşük → Niye? → Patron az veriyor → Niye? → Bütçe yok → Niye? → Şirket az kazanıyor → Niye? → Pazarlama zayıf → Niye? → Strateji yok → **Çözüm: strateji konuşması**, maaş protesto değil.\n\nMekanizma: PFC + analitik düşünme. **Otomatik kabul** kırılır = yeni çözümler görünür.",
+        "action": "Bugün **bir varsayımı sorgula**. 'Niye böyle?' Cevabı al, tekrar sor. **5 kez** üst üste.",
+        "reflectionPrompt": "Hangi varsayım **çürüdü**? Yeni perspektif ne oldu?",
+        "proTip": "**'Niye?' 5 kez üst üste sor**. Her seferinde **bir alt katmana** iner. Köke = gerçek sebep.",
         "quiz": [
           {
             "q": "Birinci ilkeler kim?",
@@ -4188,10 +4188,10 @@
       },
       "35": {
         "title": "Katedral Etkisi",
-        "teaching": "Yüksek tavanlı odalar yaratıcı düşünce, alçak tavanlı odalar detay düşünce yaratır. Mekan = zihin durumu. Yaratıcı iş için yüksek tavanlı kafede çalış.",
-        "action": "Bugün yüksek tavanlı bir mekanda 1 saat çalış.",
-        "reflectionPrompt": "Mekan zihnini nasıl değiştirdi?",
-        "proTip": "Park, kütüphane, müze cafe = yaratıcı yer.",
+        "teaching": "Apple'in **Norman Foster** tasarımı genel merkezi: tavanlar **çok yüksek**. Google'ın 'kreatif düşünce odaları': **3-4 metre tavan**. Eski katedraller: **20+ metre**. Tesadüf değil — **bilim**.\n\nJoan Meyers-Levy (Minnesota Üniversitesi 2007): 'Cathedral Effect' — tavan yüksekliği zihinsel performansı **etkiler**:\n- **Yüksek tavan** (3+ metre) → **soyut, yaratıcı, geniş** düşünce\n- **Alçak tavan** (2-2.5 metre) → **somut, detaylı, dar** düşünce\n\nEvolutionary perspektif: yüksek alanlar = **güvenli, açık ufuk**. Beyin 'tehlike yok' der, kaynakları **yaratıcılığa** kanalize eder. Alçak alanlar = 'sıkışmış' sinyali → korumacı, detay odaklı düşünce.\n\nMekanizma: **environment → cognition**. Beyin sürekli mekanı 'okur' ve düşünce tarzını ayarlar.\n\nPratik uygulama:\n- **Yaratıcı iş** (yazı, beyin fırtınası, strateji) → **yüksek tavanlı yer** (kafede pencere kenarı, kütüphane, müze, park)\n- **Detay iş** (hesap, kod, edit) → **alçak/sıkışık yer** (ev ofisi, küçük cubicle)\n\nKahve dükkanı verimliliği = sadece kafein değil, **tavan + sosyal varlık + arka plan ses (Coffitivity araştırması — 70 dB ideal)**.",
+        "action": "Bugün **yüksek tavanlı bir mekanda 1 saat çalış**. Kafe, kütüphane, müze.",
+        "reflectionPrompt": "Mekan zihnini nasıl değiştirdi? Düşünce **genişledi** mi yoksa **daraldı** mı?",
+        "proTip": "**Park, kütüphane, müze cafe** = yaratıcı yer. Tavan yüksekliği + doğal ışık = optimum.",
         "quiz": [
           {
             "q": "Yüksek tavan etkisi?",
@@ -4219,10 +4219,10 @@
       },
       "36": {
         "title": "Tek Görev Mastery",
-        "teaching": "Multitasking myth — tek görev tek başarı. Notification yok, sekme tek, müzik instrümental. 90 dakika tam single-task = haftalık iş.",
-        "action": "Bugün 90 dakika tam single-task.",
-        "reflectionPrompt": "Verim ne kadar arttı?",
-        "proTip": "\"Do not disturb\" mode = telefon + Mac. Önemsiz çağrı geçmez.",
+        "teaching": "Ders 1'de tek odak ile tanıştın (25 dk). Ders 6'da single-task disiplini (1 saat). Ders 14'te deep work 90 dakika. Bugün **mastery seviyesi**: 90 dakika **tam single-task** — bildirim sıfır, sekme tek, müzik **instrümental** (vokal yok).\n\nMihaly Csikszentmihalyi (**Flow**, kitap 1990): 'Flow = beceri × zorluk dengesinde, **tek odak** ile, kesintisiz. Bu hâl insan bilincinin **en iyi anı** — yaratıcılık, performans, mutluluk zirvesi.'\n\n**Flow state şartları**:\n1. **Net hedef** (90 dk içinde X biteceğim)\n2. **Anlık geri bildirim** (ilerleme görünür)\n3. **Beceri-zorluk dengesi** (kolay = sıkıntı, zor = stres)\n4. **Kesintisiz odak** (single-task)\n\n90 dakika tam single-task + flow = **haftalık çalışmaya eşdeğer çıktı**. Bu **abartı değil** — performans araştırmalarında defalarca ölçüldü.\n\nMekanizma: flow = **noradrenalin + dopamin + endorfin + anandamid + serotonin** kokteyli. Beyin doping hâlinde. Performance amplifikasyonu **500%'ye kadar** (DARPA çalışması — Jamie Wheal, Steven Kotler).\n\nKritik: vokalli müzik **dikkat kapasitesi** kullanır. Brain üzerinde dil işleme = yazma görevi ile çakışır. **Instrümental** (klasik, lo-fi, ambient) = nötr.\n\nDND mode = **telefon + bilgisayar + Mac/PC** hepsi. Önemli çağrı 'favorites' geçer, gerisi engellenir.",
+        "action": "Bugün **90 dakika tam single-task**. DND mode. Tek sekme. Instrümental veya sessiz.",
+        "reflectionPrompt": "Verim ne kadar arttı? **Flow state**'e girdin mi — zaman akıp gitti mi?",
+        "proTip": "**'Do Not Disturb' mode** = telefon **+ Mac**. Önemli kişiler 'favorites' geçer, gerisi engellenir.",
         "quiz": [
           {
             "q": "Single-task süresi?",
@@ -4250,10 +4250,10 @@
       },
       "37": {
         "title": "Dikkat Kalıntısı",
-        "teaching": "Sophie Leroy: bir görevden diğerine geçince beyin %33 ilk görevde kalır. Bu \"attention residue.\" Çözüm: tam bitir, sonra geç. Yarım bırakma.",
-        "action": "Bugün her görevi tam bitir, sonra geç.",
-        "reflectionPrompt": "Tam bitirme zihninde ne yaptı?",
-        "proTip": "Geçişler arası 30 saniye derin nefes = residue temizler.",
+        "teaching": "Toplantıdan çıktın, masaya oturdun, başka bir göreve geçtin. Ama **kafan hala toplantıda**: 'Niye o cümle dedi?', 'O kararı doğru mu verdik?', 'Pazartesi takip etmeliyim.' Yeni göreve **%33'ünle** giriyorsun.\n\nSophie Leroy (Minnesota Üniversitesi 2009) — **'Attention Residue'** kavramı: bir görevden diğerine geçtiğinde dikkatin **%33'ü** önceki görevde kalır. Bu kalıntı **5-30 dakika** sürer. Yani: hızlı görev geçişi = sürekli **eksik dikkat**.\n\nUygulama: çoğu insan **'çoklu görev çevikliği'** sanıyor. Aslında: **kalıntı yığını**. Her geçiş bir öncekinin %33'ünü yeniye taşıyor. 5 geçiş sonra → mevcut görevde gerçek dikkat **%50 altı**.\n\nÇözüm: **tam bitir, sonra geç**. Bir görevi 'yarım bırak, sonra dön' = en kötü senaryo. Çünkü geri döndüğünde:\n1. Önceki bağlamı **yeniden kurmak** zorundasın (5-15 dk kayıp)\n2. Diğer göreve geçtiğinde **kalıntı** taşıyorsun\n3. Toplam: 2x verim kaybı\n\nMekanizma: PFC **task-set switching** = nöral 'context loading'. Yarım bırakma = context **belirsiz** = LSD beyne dağılır.\n\n**Geçişler arası 30 saniye derin nefes** = vagus aktivasyonu = residue **temizlenir**. Mini reset.",
+        "action": "Bugün **her görevi tam bitir, sonra geç**. Yarım bırakma. Görev araları **30 sn nefes**.",
+        "reflectionPrompt": "Tam bitirme zihninde ne yaptı? **Bağlam değiştirmek** kolay mı oldu?",
+        "proTip": "**Geçişler arası 30 saniye derin nefes** = residue temizler. Vagus aktivasyonu = nöral reset.",
         "quiz": [
           {
             "q": "Attention residue?",
@@ -4281,10 +4281,10 @@
       },
       "38": {
         "title": "4 Saatlik İş Günü",
-        "teaching": "Tim Ferriss: \"8 saat iş = 4 saat boşaltma.\" Çoğu beyin 4 saat derin iş üretir. 5. saat = düşük getiri. 4 saat odakla, geri kalan: spor, sosyal, dinlenme.",
-        "action": "Bugün 4 saat tam odakla çalış. Sonra dur.",
-        "reflectionPrompt": "4 saat sonu ne hissettin?",
-        "proTip": "Saatleri 09-13 ya da 10-14 yap. Beyin sabah daha keskin.",
+        "teaching": "Klasik 9-5 çalışma günü = **8 saat**. Bu sayının kaynağı: **fabrika döneminin** Henry Ford 1914 modeli. Yani **demir + montaj çizgisi** için tasarlandı, **bilgi işi** için değil.\n\nTim Ferriss (**The 4-Hour Workweek**): '**8 saat iş = 4 saat boşaltma**. Çoğu beyin **4 saat gerçek derin iş** üretir. 5. saat = düşük getiri. 6. saat = negatif getiri (hata, kötü karar).'\n\nDoğrulayan araştırmalar:\n- **K. Anders Ericsson** (deliberate practice): elite performans yapanlar günde **maksimum 4-5 saat** odaklı pratik. Fazlası kalite düşer.\n- **Microsoft Japan 2019**: 4 günlük iş haftası denemesi → **verim %40 arttı**.\n- **Iceland 2015-2019**: 2,500 kişi 4 günlük iş haftası → 'verim aynı veya **artmış**'.\n\nMekanizma: PFC **glikoz tüketici**. 4 saat sonra glikoz düşer = karar kalitesi düşer. 8 saat = yorgun beynin **kötü iş**.\n\n**4 saat odakla, geri kalan**: spor, sosyal, dinlenme, **DMN aktivitesi** (yaratıcılık inkübasyonu).\n\nDikkat: '4 saat **gerçek odak**', kahve molası dahil değil. 4 saat = **deep work + deliberate practice**. 8 saat office'te 'çalışmak' = aldatıcı, çoğu yüzeysel.\n\nKritik: saatleri **09-13** veya **10-14** yap. **Sabah beyin keskin** — kortizol piki + PFC zirvesi.",
+        "action": "Bugün **4 saat tam odakla** çalış. **Sonra dur**. Aktivite değiştir.",
+        "reflectionPrompt": "4 saat sonu ne hissettin? Üretilen iş **8 saatlik kadar** mı yoksa **daha çok** mu?",
+        "proTip": "Saatleri **09-13** ya da **10-14** yap. **Beyin sabah daha keskin** — kortizol + PFC zirvesi.",
         "quiz": [
           {
             "q": "4-hour workday kim?",
@@ -4312,10 +4312,10 @@
       },
       "39": {
         "title": "Sıkıntı Toleransı",
-        "teaching": "Dijital nesil sıkıntıyı kaldıramaz — anında telefona uzanır. Sıkıntıya tolerans = zihin gücü. Günde 30 dakika sıkıntıya izin ver.",
-        "action": "Bugün 30 dakika sıkıntı pratik et.",
-        "reflectionPrompt": "Sıkıntı sonrası zihinsel netlik?",
-        "proTip": "Tuvalette telefon kullanma. 5 dakika başlangıç.",
+        "teaching": "Asansörde 30 saniye bekliyorsun. **Otomatik**: telefon. Sırada 2 dakika. **Telefon**. Hatta tuvalette. **Telefon**. Eskiden bu **boş anlar**dı — beyin nefes alırdı. Şimdi **sürekli stimulasyon**.\n\nMicrosoft araştırması (2015): ortalama insan dikkat süresi **2000'de 12 saniye**, **2013'te 8 saniye**. Goldfish'in attention span'i **9 saniye** — yani daha **iyi** dikkat. Bu **abartı değil**.\n\nDijital nesil **sıkıntıyı kaldıramıyor**. Anlık dürtü → anlık tatmin → **dopamin kalibrasyonu bozuldu**. Sıkıntı = beyin için 'açık alan' isteği — modern insan bu **alarmı susturuyor** sürekli.\n\nSıkıntı toleransı = **zihin gücü**. Çünkü:\n- **Kreatif düşünce** sıkıntıdan doğar (Ders 18)\n- **Derin iş** sıkıntı toleransı gerektirir\n- **Meditasyon** = sıkıntıyı dönüştürme pratiği\n- **Stres yönetimi** = rahatsızlığa dayanıklılık\n\nGünde **30 dakika** sıkıntıya **izin ver**. Telefon yok, ekran yok, hiç stimulasyon yok. Sadece bekle, otur, var ol.\n\nMekanizma: sıkıntı = **anterior cingulate cortex (ACC)** aktivasyonu — sinyal: 'değişim isteği'. Sıkıntı toleransı = **ACC kontrol** = duygusal düzenleme master seviyesi.\n\nBaşlangıç: **tuvalette telefon kullanma**. 5 dakika başlangıç. **Sade gerçek** — beyin reset.",
+        "action": "Bugün **30 dakika sıkıntı pratik** et. Telefonsuz, ekransız, stimulasyonsuz.",
+        "reflectionPrompt": "Sıkıntı sonrası **zihinsel netlik**? Yaratıcı bir düşünce belirdi mi?",
+        "proTip": "**Tuvalette telefon kullanma**. **5 dakika başlangıç** — beyin için kutsal boş alan.",
         "quiz": [
           {
             "q": "Sıkıntı toleransı?",
@@ -4343,10 +4343,10 @@
       },
       "40": {
         "title": "Bilişsel Çıkış",
-        "teaching": "Beyin yorulduğunda \"ısrar etme.\" Doğru çıkış noktasını tanı: yürüyüş, duş, yemek. 15 dakika çıkış = saatlerin verimi.",
-        "action": "Bugün takıldığında çıkış al, 15 dk sonra geri dön.",
-        "reflectionPrompt": "Çıkış nasıl yardımcı oldu?",
-        "proTip": "Çıkışta düşünme — sadece beden hareketi. Beyin arka planda çözer.",
+        "teaching": "Problemi 2 saattir çözmeye çalışıyorsun. **Stuck'sın**. Ekrana bakıyorsun, satırları okuyorsun, hiç ilerleme yok. **'Israr et'** sesi söylüyor. Ama bu **yanlış strateji**. Beyin yorgun — istediği **çıkış**, daha fazla effort değil.\n\nKlasik araştırma (Gestalt psikolojisi, Wolfgang Köhler 1925): problem çözme = **'inkübasyon dönemi'** gerektirir. Aktif çalışma → mola → bilinçaltı işler → 'aha!' anı.\n\nGraham Wallas (**The Art of Thought**, 1926) — yaratıcı düşünce 4 evre:\n1. **Preparation** (aktif çalışma)\n2. **Incubation** (mola, alt-bilinçte pişirme)\n3. **Illumination** (aha!)\n4. **Verification** (doğrulama)\n\n3. evre **molasız olmaz**.\n\n**Doğru çıkış noktası**:\n- **Yürüyüş** (15 dk) — bilateral stimulasyon, DMN aktif\n- **Duş** (10 dk) — su ses + ısı = relaxation response\n- **Yemek molası** (20 dk) — glikoz yenileme\n- **Kestirme** (20 dk, NSDR — Huberman) — beyin sıfırlama\n- **Sosyal sohbet** (10 dk, ama iş hakkında değil)\n\nMekanizma: aktif çalışma = **task-positive network**. Mola = **DMN aktif** = farklı düşünce ağları erişilebilir.\n\nKritik: **çıkışta düşünme**. Sadece beden hareketi veya pasif aktivite. Düşünmek = aynı task-positive network = çözüm gelmez.\n\n15 dakika çıkış = sonraki saatlerin verimi **3x** artar.",
+        "action": "Bugün **takıldığında çıkış al**. 15 dakika yürüyüş, duş, veya yemek. **Sonra geri dön**.",
+        "reflectionPrompt": "Çıkış nasıl yardımcı oldu? Çözüm geldi mi, **hangi anda**?",
+        "proTip": "**Çıkışta düşünme** — sadece beden hareketi. **Beyin arka planda çözer**. İnkübasyon dönemi.",
         "quiz": [
           {
             "q": "Off-ramp süresi?",
