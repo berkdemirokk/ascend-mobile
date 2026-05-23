@@ -682,6 +682,15 @@
     "label": "KENDİNDEN BİR MEKTUP",
     "cta": "OKUDUM"
   },
+  "pledge": {
+    "label": "TAAHHÜT",
+    "title": "{{path}} yoluna ne için söz veriyorsun?",
+    "thisPath": "Bu yola",
+    "help": "Tek cümle. Kimseyi bilgilendirmiyoruz — sadece sen göreceksin. Yine de yazmak fark yaratır.",
+    "placeholder": "Örnek: Bu yolu 30 gün boyunca her gün yapacağım çünkü kendime sözüm var.",
+    "submit": "SÖZÜMÜ VERDİM",
+    "skip": "Şimdilik geç"
+  },
   "archetypes": {
     "zenMaster": {
       "name": "Zen Müderris",

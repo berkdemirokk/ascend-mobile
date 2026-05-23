@@ -52,6 +52,11 @@ const initialState = {
   // Streak Repair bookkeeping (rewarded-ad "undo the broken streak").
   streakRepairsUsed: 0,
 
+  // Per-path commitment-device pledges. Behavioural-econ research:
+  // a written, self-authored sentence raises adherence ~30% even if
+  // the user never re-reads it. Shape: { [pathId]: 'sentence' }.
+  pathPledges: {},
+
   // Streak calendar — { 'YYYY-MM-DD': count of lessons that day }
   lessonHistory: {},
 
@@ -172,6 +177,7 @@ const ACTION_TYPES = {
   CLEAR_STREAK_LOST_INFO: 'CLEAR_STREAK_LOST_INFO',
   RESTORE_STREAK_FROM_REPAIR: 'RESTORE_STREAK_FROM_REPAIR',
   RECORD_FUTURE_LETTER_SHOWN: 'RECORD_FUTURE_LETTER_SHOWN',
+  SET_PATH_PLEDGE: 'SET_PATH_PLEDGE',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -319,6 +325,24 @@ function appReducer(state, action) {
       // logic in futureLetter.shouldShowLetter can enforce a 7-day
       // minimum gap between letters — keeps the surface feeling rare.
       return { ...state, lastLetterShownAt: Date.now() };
+
+    case ACTION_TYPES.SET_PATH_PLEDGE: {
+      // Self-authored sentence the user writes when committing to a
+      // path. Stored per-pathId so a user with multiple paths can
+      // have a separate pledge for each. Empty/whitespace-only
+      // strings collapse to undefined so HomeScreen can use a simple
+      // `if (pledge)` check.
+      const { pathId, pledge } = action.payload || {};
+      if (!pathId) return state;
+      const cleaned = (pledge || '').trim();
+      return {
+        ...state,
+        pathPledges: {
+          ...(state.pathPledges || {}),
+          [pathId]: cleaned || undefined,
+        },
+      };
+    }
 
     case ACTION_TYPES.RESTORE_STREAK_FROM_REPAIR: {
       // Streak Repair flow: user watched a rewarded ad (verified by
@@ -885,6 +909,13 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.RECORD_FUTURE_LETTER_SHOWN });
   }, []);
 
+  const setPathPledge = useCallback((pathId, pledge) => {
+    dispatch({
+      type: ACTION_TYPES.SET_PATH_PLEDGE,
+      payload: { pathId, pledge },
+    });
+  }, []);
+
   const startVacation = useCallback((days = 7) => {
     dispatch({ type: ACTION_TYPES.START_VACATION, payload: { days } });
   }, []);
@@ -1061,6 +1092,7 @@ export function AppProvider({ children }) {
     clearStreakLostInfo,
     restoreStreakFromRepair,
     recordFutureLetterShown,
+    setPathPledge,
     startVacation,
     endVacation,
     completeDailyChallenge,

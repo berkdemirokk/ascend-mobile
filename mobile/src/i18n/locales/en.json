@@ -684,6 +684,15 @@
     "label": "A LETTER TO YOURSELF",
     "cta": "READ"
   },
+  "pledge": {
+    "label": "COMMITMENT",
+    "title": "What do you commit to on the {{path}} path?",
+    "thisPath": "this",
+    "help": "One sentence. We're not telling anyone — only you will see this. Writing it still makes a difference.",
+    "placeholder": "Example: I will walk this path every day for 30 days because I gave myself my word.",
+    "submit": "I COMMIT",
+    "skip": "Skip for now"
+  },
   "archetypes": {
     "zenMaster": {
       "name": "Zen Master",

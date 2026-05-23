@@ -32,6 +32,7 @@ import DailyMysteryBox from '../components/DailyMysteryBox';
 import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import StreakLostBanner from '../components/StreakLostBanner';
+import PledgeModal from '../components/PledgeModal';
 import { getArchetypeById } from '../data/archetypes';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
 import DailyPlanCard from '../components/DailyPlanCard';
@@ -75,6 +76,8 @@ export default function HomeScreen({ navigation }) {
     clearStreakFreezeToast,
     clearStreakLostInfo,
     restoreStreakFromRepair,
+    pathPledges,
+    setPathPledge,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
     dailyMysteryBoxOpenedAt,
@@ -299,6 +302,25 @@ export default function HomeScreen({ navigation }) {
   // lesson screen doesn't re-trigger the route. Hearts gate also applies —
   // a returning user with 0 hearts shouldn't be auto-bounced into a lesson
   // they can't make progress on; they should see Home first and decide.
+  // Commitment-device pledge modal. Shown the first time Home renders
+  // for a user whose active path doesn't yet have a pledge. We keep
+  // a per-app-session "asked" flag so a user who taps Skip isn't
+  // re-pestered on the same cold start, but the modal will return on
+  // the next launch until they either write something or the path
+  // changes. The pledge itself persists via pathPledges in AppContext.
+  const [pledgeModalVisible, setPledgeModalVisible] = useState(false);
+  const pledgeAskedRef = useRef(false);
+  useEffect(() => {
+    if (pledgeAskedRef.current) return;
+    if (!activePathId) return;
+    if (pathPledges?.[activePathId]) return; // already pledged
+    // Wait a heartbeat so the modal slides in AFTER Home's first paint,
+    // not during it (avoids a "screen flashed for a frame" feel).
+    pledgeAskedRef.current = true;
+    const id = setTimeout(() => setPledgeModalVisible(true), 600);
+    return () => clearTimeout(id);
+  }, [activePathId, pathPledges]);
+
   const autoRoutedRef = useRef(false);
   useEffect(() => {
     if (autoRoutedRef.current) return;
@@ -306,6 +328,9 @@ export default function HomeScreen({ navigation }) {
     if (!currentLesson) return;
     if ((currentStreak || 0) < 3) return;
     if (!isPremium && (hearts || 0) <= 0) return;
+    // Don't auto-route into a lesson while the pledge modal is up —
+    // pledge takes priority on the very first session.
+    if (pledgeModalVisible) return;
     autoRoutedRef.current = true;
     // Tiny delay so the home screen's first frame paints — avoids a jarring
     // jump that looks like a glitch.
@@ -371,6 +396,15 @@ export default function HomeScreen({ navigation }) {
                 )}
               </Text>
             </View>
+          ) : null}
+          {/* Active pledge — when the user has committed a sentence
+              to this path, surface it as a quiet quote under their
+              name. Commitment-device research: even just re-reading
+              your own written promise reactivates the adherence loop. */}
+          {pathPledges?.[activePathId] ? (
+            <Text style={styles.pledgeQuote} numberOfLines={2}>
+              "{pathPledges[activePathId]}"
+            </Text>
           ) : null}
           <Text style={styles.greetingSubtitle}>
             {t(
@@ -782,6 +816,20 @@ export default function HomeScreen({ navigation }) {
         currentStreak={currentStreak}
       />
 
+      {/* Commitment-Device pledge — first Home open per active path.
+          Persisted in pathPledges (synced via cloudSync). Re-opens on
+          subsequent cold starts if the user dismissed without writing,
+          until they either commit or change paths. */}
+      <PledgeModal
+        visible={pledgeModalVisible}
+        pathTitle={t(`paths.${activePathId}.title`, activePathId)}
+        onSubmit={(text) => {
+          setPathPledge(activePathId, text);
+          setPledgeModalVisible(false);
+        }}
+        onSkip={() => setPledgeModalVisible(false)}
+      />
+
       {/* OutOfHearts gate — fires when a free user with 0 hearts tries
           to start a lesson from any Home entry point (today CTA, lesson
           queue card, 3+ streak auto-route). Routes them to watch a
@@ -906,6 +954,18 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: LT.onSurfaceVariant,
     letterSpacing: 0.3,
+  },
+  // The user's own commitment sentence echoed back under their name.
+  // Italic + softer color to feel like a quote, not a heading.
+  pledgeQuote: {
+    fontSize: 13,
+    fontStyle: 'italic',
+    color: LT.onSurfaceVariant,
+    lineHeight: 18,
+    marginBottom: 8,
+    paddingLeft: 8,
+    borderLeftWidth: 2,
+    borderLeftColor: LT.outlineVariant,
   },
 
   // Streak Hero card
