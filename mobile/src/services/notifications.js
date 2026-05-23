@@ -1,6 +1,7 @@
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
 import { Platform } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from '../i18n';
 import { navigateFromAnywhere } from '../navigation/AppNavigator';
 
@@ -32,21 +33,83 @@ const D1_HOOK_ID = 'ascend-d1-hook';
 const D3_HOOK_ID = 'ascend-d3-hook';
 
 // Pool size for the rotating daily reminder copy. Variants live in i18n
-// (notifications.dailyV0Title ... dailyV{N-1}Title) so they can be localised.
-const DAILY_START_VARIANTS = 4;   // for users with no streak yet
-const DAILY_PROGRESS_VARIANTS = 6; // for users with an active streak
+// (notifications.dailyStart{N}Title/Body and notifications.dailyProgress
+// {N}Title/Body). Bumped from 4/6 → 20/20 after the retention audit
+// flagged push muting as a D14 risk: a user who saw the same 4 starting
+// messages for two weeks stopped reading them.
+const DAILY_START_VARIANTS = 20;   // for users with no streak yet
+const DAILY_PROGRESS_VARIANTS = 20; // for users with an active streak
+
+// AsyncStorage key holding the last few variant indices we've already
+// shown, per pool. We exclude these from the random pick so a user
+// never sees the same line two days in a row, and rarely sees the
+// same line twice within a week. The blacklist is intentionally
+// small (7) — much larger would force unnatural-feeling rotation.
+const RECENT_VARIANT_BLACKLIST_KEY = '@ascend/recent_variants_v1';
+const BLACKLIST_LENGTH = 7;
 
 /**
- * Pick today's daily-reminder variant deterministically by day-of-year.
- * Re-runs of scheduleDailyReminder on the same day get the same copy
- * (idempotent); the next day rotates. Used to break the
- * one-message-every-morning monotony that was killing first-week engagement.
+ * Read the recent-variants blacklist from AsyncStorage. Returns
+ * `{ start: [], progress: [] }` on any error or first call.
  */
-const pickDailyVariantIndex = (variantCount) => {
-  const now = new Date();
-  const yearStart = new Date(now.getFullYear(), 0, 0);
-  const dayOfYear = Math.floor((now - yearStart) / (1000 * 60 * 60 * 24));
-  return dayOfYear % Math.max(1, variantCount);
+const readRecentVariants = async () => {
+  try {
+    const raw = await AsyncStorage.getItem(RECENT_VARIANT_BLACKLIST_KEY);
+    if (!raw) return { start: [], progress: [] };
+    const parsed = JSON.parse(raw);
+    return {
+      start: Array.isArray(parsed?.start) ? parsed.start : [],
+      progress: Array.isArray(parsed?.progress) ? parsed.progress : [],
+    };
+  } catch {
+    return { start: [], progress: [] };
+  }
+};
+
+/**
+ * Push a chosen variant index onto the recent-list for its pool and
+ * trim to BLACKLIST_LENGTH. Best-effort — silent on error.
+ */
+const recordVariantSeen = async (pool, idx) => {
+  try {
+    const recent = await readRecentVariants();
+    const list = [idx, ...(recent[pool] || []).filter((v) => v !== idx)].slice(
+      0,
+      BLACKLIST_LENGTH,
+    );
+    await AsyncStorage.setItem(
+      RECENT_VARIANT_BLACKLIST_KEY,
+      JSON.stringify({ ...recent, [pool]: list }),
+    );
+  } catch {
+    // no-op
+  }
+};
+
+/**
+ * Pick today's variant index. Tries to avoid the last BLACKLIST_LENGTH
+ * indices the user has already seen in this pool. Falls back to the
+ * old day-of-year deterministic pick if blacklist read fails — same
+ * behaviour as before the upgrade.
+ */
+const pickDailyVariantIndex = async (variantCount, pool) => {
+  const recent = await readRecentVariants();
+  const blacklist = new Set(recent[pool] || []);
+  const candidates = [];
+  for (let i = 0; i < variantCount; i++) {
+    if (!blacklist.has(i)) candidates.push(i);
+  }
+  // If everything is blacklisted (variantCount <= BLACKLIST_LENGTH on a
+  // very small pool — shouldn't happen with 20 vs 7, but defensive),
+  // fall back to the deterministic legacy pick so we never crash.
+  if (candidates.length === 0) {
+    const now = new Date();
+    const yearStart = new Date(now.getFullYear(), 0, 0);
+    const dayOfYear = Math.floor((now - yearStart) / (1000 * 60 * 60 * 24));
+    return dayOfYear % Math.max(1, variantCount);
+  }
+  // Random pick from the un-blacklisted candidates.
+  return candidates[Math.floor(Math.random() * candidates.length)];
 };
 
 // Category IDs — pre-registered with the system so notifications can
@@ -169,7 +232,12 @@ export const scheduleDailyReminder = async ({
   // i18n drop still works).
   const hasStreak = (currentStreak || 0) > 0;
   const variantCount = hasStreak ? DAILY_PROGRESS_VARIANTS : DAILY_START_VARIANTS;
-  const variantIdx = pickDailyVariantIndex(variantCount);
+  const pool = hasStreak ? 'progress' : 'start';
+  const variantIdx = await pickDailyVariantIndex(variantCount, pool);
+  // Record this pick so tomorrow's pick can avoid it. Fire-and-forget;
+  // a failed write just means the next pick might repeat — annoying
+  // but never fatal.
+  recordVariantSeen(pool, variantIdx).catch(() => {});
   const prefix = hasStreak ? 'dailyProgress' : 'dailyStart';
   const fallbackTitleKey = hasStreak
     ? 'notifications.reminderTitleProgress'
