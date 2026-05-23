@@ -21,8 +21,7 @@ import Constants from 'expo-constants';
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
 import { LEGAL } from '../config/constants';
-import { LT_RADIUS } from '../config/lightTheme';
-import { useTheme, useThemedStyles } from '../config/theme';
+import { LT, LT_RADIUS } from '../config/lightTheme';
 import { setLanguage, getCurrentLanguage, SUPPORTED_LANGUAGES } from '../i18n';
 import {
   requestNotificationPermissions,
@@ -50,9 +49,6 @@ const SOUNDS_MUTED_KEY = '@ascend/sounds_muted_v1';
 
 export default function SettingsScreen({ navigation }) {
   const { t } = useTranslation();
-  // Dark-mode-aware theme + styles. See `src/config/theme.js`.
-  const T = useTheme();
-  const styles = useThemedStyles(makeStyles);
   const {
     isPremium,
     deleteAccount,
@@ -457,14 +453,14 @@ export default function SettingsScreen({ navigation }) {
             onPress={() => navigation.goBack()}
             style={styles.headerBack}
           >
-            <MaterialIcons name="arrow-back" size={22} color={T.onSurfaceVariant} />
+            <MaterialIcons name="arrow-back" size={22} color={LT.onSurfaceVariant} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>
             {t('settings.title', 'Ayarlar')}
           </Text>
           {isPremium ? (
             <View style={styles.premiumBadge}>
-              <MaterialIcons name="auto-awesome" size={14} color={T.onPrimary} />
+              <MaterialIcons name="auto-awesome" size={14} color={LT.onPrimary} />
               <Text style={styles.premiumBadgeText}>PREMIUM</Text>
             </View>
           ) : (
@@ -524,8 +520,8 @@ export default function SettingsScreen({ navigation }) {
               <Switch
                 value={notificationsEnabled}
                 onValueChange={toggleNotifications}
-                trackColor={{ false: T.outlineVariant, true: T.primaryContainer }}
-                thumbColor={T.surfaceContainerLowest}
+                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
+                thumbColor={LT.surfaceContainerLowest}
               />
             </View>
 
@@ -543,8 +539,8 @@ export default function SettingsScreen({ navigation }) {
               <Switch
                 value={soundsEnabled}
                 onValueChange={toggleSounds}
-                trackColor={{ false: T.outlineVariant, true: T.primaryContainer }}
-                thumbColor={T.surfaceContainerLowest}
+                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
+                thumbColor={LT.surfaceContainerLowest}
               />
             </View>
 
@@ -562,8 +558,8 @@ export default function SettingsScreen({ navigation }) {
               <Switch
                 value={hapticsEnabled}
                 onValueChange={toggleHaptics}
-                trackColor={{ false: T.outlineVariant, true: T.primaryContainer }}
-                thumbColor={T.surfaceContainerLowest}
+                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
+                thumbColor={LT.surfaceContainerLowest}
               />
             </View>
           </Section>
@@ -579,7 +575,7 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="card-giftcard"
                   size={22}
-                  color={T.primary}
+                  color={LT.primary}
                 />
                 <View>
                   <Text style={styles.rowLabel}>
@@ -609,7 +605,7 @@ export default function SettingsScreen({ navigation }) {
               <MaterialIcons
                 name="chevron-right"
                 size={18}
-                color={T.onSurfaceVariant}
+                color={LT.onSurfaceVariant}
               />
             </TouchableOpacity>
 
@@ -627,7 +623,7 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="redeem"
                   size={22}
-                  color={T.primary}
+                  color={LT.primary}
                 />
                 <View>
                   <Text style={styles.rowLabel}>
@@ -644,7 +640,7 @@ export default function SettingsScreen({ navigation }) {
               <MaterialIcons
                 name="chevron-right"
                 size={18}
-                color={T.onSurfaceVariant}
+                color={LT.onSurfaceVariant}
               />
             </TouchableOpacity>
 
@@ -657,7 +653,7 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="groups"
                   size={22}
-                  color={T.primaryContainer}
+                  color={LT.primaryContainer}
                 />
                 <View>
                   <Text style={styles.rowLabel}>
@@ -674,7 +670,7 @@ export default function SettingsScreen({ navigation }) {
               <MaterialIcons
                 name="chevron-right"
                 size={18}
-                color={T.onSurfaceVariant}
+                color={LT.onSurfaceVariant}
               />
             </TouchableOpacity>
 
@@ -687,7 +683,7 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="workspace-premium"
                   size={22}
-                  color={T.primaryContainer}
+                  color={LT.primaryContainer}
                 />
                 <Text style={styles.rowLabel}>
                   {t('settings.premiumStatus', 'Premium Durumu')}
@@ -697,7 +693,7 @@ export default function SettingsScreen({ navigation }) {
                 <Text
                   style={[
                     styles.rowValue,
-                    { color: isPremium ? T.primaryContainer : T.onSurfaceVariant },
+                    { color: isPremium ? LT.primaryContainer : LT.onSurfaceVariant },
                   ]}
                 >
                   {isPremium
@@ -707,14 +703,14 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="chevron-right"
                   size={18}
-                  color={T.onSurfaceVariant}
+                  color={LT.onSurfaceVariant}
                 />
               </View>
             </TouchableOpacity>
 
             <View style={[styles.row, styles.rowBorder]}>
               <View style={styles.rowLeft}>
-                <MaterialIcons name="ac-unit" size={22} color={T.primaryContainer} />
+                <MaterialIcons name="ac-unit" size={22} color={LT.primaryContainer} />
                 <View>
                   <Text style={styles.rowLabel}>
                     {t('settings.streakRepair', 'Streak Onarım Jetonu')}
@@ -728,7 +724,7 @@ export default function SettingsScreen({ navigation }) {
                 </View>
               </View>
               <View style={styles.rowRight}>
-                <Text style={[styles.rowValue, { color: T.primaryContainer }]}>
+                <Text style={[styles.rowValue, { color: LT.primaryContainer }]}>
                   {streakFreezes ?? 0}
                 </Text>
               </View>
@@ -743,7 +739,7 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name={vacationActive ? 'beach-access' : 'flight-takeoff'}
                   size={22}
-                  color={vacationActive ? T.primary : T.onSurfaceVariant}
+                  color={vacationActive ? LT.primary : LT.onSurfaceVariant}
                 />
                 <View>
                   <Text style={styles.rowLabel}>
@@ -765,7 +761,7 @@ export default function SettingsScreen({ navigation }) {
                 <Text
                   style={[
                     styles.rowValue,
-                    { color: vacationActive ? T.primary : T.onSurfaceVariant },
+                    { color: vacationActive ? LT.primary : LT.onSurfaceVariant },
                   ]}
                 >
                   {vacationActive
@@ -783,12 +779,12 @@ export default function SettingsScreen({ navigation }) {
             >
               <View style={styles.rowLeft}>
                 {restoring ? (
-                  <ActivityIndicator size="small" color={T.primaryContainer} />
+                  <ActivityIndicator size="small" color={LT.primaryContainer} />
                 ) : (
                   <MaterialIcons
                     name="restore"
                     size={22}
-                    color={T.onSurfaceVariant}
+                    color={LT.onSurfaceVariant}
                   />
                 )}
                 <Text style={styles.rowLabel}>
@@ -806,7 +802,7 @@ export default function SettingsScreen({ navigation }) {
                 style={[styles.row, styles.rowBorder]}
               >
                 <View style={styles.rowLeft}>
-                  <MaterialIcons name="logout" size={22} color={T.onSurfaceVariant} />
+                  <MaterialIcons name="logout" size={22} color={LT.onSurfaceVariant} />
                   <Text style={styles.rowLabel}>
                     {t('settings.logout', 'Çıkış Yap')}
                   </Text>
@@ -826,7 +822,7 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="refresh"
                   size={22}
-                  color={T.onPrimary}
+                  color={LT.onPrimary}
                 />
                 <Text style={[styles.rowLabel, styles.dangerLabel]}>
                   {t('settings.resetProgress', 'İlerlemeyi Sıfırla')}
@@ -843,53 +839,55 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="delete-forever"
                   size={22}
-                  color={T.error}
+                  color={LT.error}
                 />
-                <Text style={[styles.rowLabel, { color: T.error }]}>
+                <Text style={[styles.rowLabel, { color: LT.error }]}>
                   {t('settings.deleteAccount', 'Hesabı Sil')}
                 </Text>
               </View>
             </TouchableOpacity>
           </Section>
 
-          {/* Debug / Diagnostics — hidden in plain sight at the bottom
-              of the list. Used by the user (and us, when reports come
-              in) to understand why ads aren't appearing. The most
-              common cause for a brand-new AdMob account is "no-fill"
-              — AdMob has no inventory yet. The debug panel exposes
-              the exact error codes so the user can see this and
-              avoid filing "ads broken" tickets that aren't bugs. */}
-          <Section title={t('settings.debug', 'TEŞHİS (DEBUG)')}>
-            <TouchableOpacity
-              onPress={() => setAdDebugOpen(true)}
-              activeOpacity={0.7}
-              style={styles.row}
-            >
-              <View style={styles.rowLeft}>
-                <MaterialIcons
-                  name="bug-report"
-                  size={22}
-                  color={T.onSurfaceVariant}
-                />
-                <View>
-                  <Text style={styles.rowLabel}>
-                    {t('settings.adDebug', 'Reklam Tanı')}
-                  </Text>
-                  <Text style={styles.rowSub}>
-                    {t(
-                      'settings.adDebugSub',
-                      'Reklam yüklenme durumu + son hatalar + ad unit ID\'leri',
-                    )}
-                  </Text>
+          {/* Debug / Diagnostics — DEV-ONLY. The previous build shipped
+              this row to production users, which surfaced internal
+              tooling and confused them ("Reklam Tanı niye burada?").
+              Gated on __DEV__ now so it only appears in development /
+              Expo Go builds, not TestFlight or App Store. The Modal
+              import + state stay so we can flip it back in a tester
+              build by changing this one gate. */}
+          {__DEV__ ? (
+            <Section title={t('settings.debug', 'TEŞHİS (DEBUG)')}>
+              <TouchableOpacity
+                onPress={() => setAdDebugOpen(true)}
+                activeOpacity={0.7}
+                style={styles.row}
+              >
+                <View style={styles.rowLeft}>
+                  <MaterialIcons
+                    name="bug-report"
+                    size={22}
+                    color={LT.onSurfaceVariant}
+                  />
+                  <View>
+                    <Text style={styles.rowLabel}>
+                      {t('settings.adDebug', 'Reklam Tanı')}
+                    </Text>
+                    <Text style={styles.rowSub}>
+                      {t(
+                        'settings.adDebugSub',
+                        'Reklam yüklenme durumu + son hatalar + ad unit ID\'leri',
+                      )}
+                    </Text>
+                  </View>
                 </View>
-              </View>
-              <MaterialIcons
-                name="chevron-right"
-                size={18}
-                color={T.onSurfaceVariant}
-              />
-            </TouchableOpacity>
-          </Section>
+                <MaterialIcons
+                  name="chevron-right"
+                  size={18}
+                  color={LT.onSurfaceVariant}
+                />
+              </TouchableOpacity>
+            </Section>
+          ) : null}
 
           {/* Legal */}
           <Section title={t('settings.legal', 'YASAL (LEGAL)')}>
@@ -901,7 +899,7 @@ export default function SettingsScreen({ navigation }) {
               <Text style={styles.rowLabel}>
                 {t('settings.privacyPolicy', 'Gizlilik Politikası')}
               </Text>
-              <MaterialIcons name="open-in-new" size={18} color={T.onSurfaceVariant} />
+              <MaterialIcons name="open-in-new" size={18} color={LT.onSurfaceVariant} />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => Linking.openURL(LEGAL.TERMS_URL)}
@@ -911,7 +909,7 @@ export default function SettingsScreen({ navigation }) {
               <Text style={styles.rowLabel}>
                 {t('settings.termsOfService', 'Kullanım Koşulları')}
               </Text>
-              <MaterialIcons name="open-in-new" size={18} color={T.onSurfaceVariant} />
+              <MaterialIcons name="open-in-new" size={18} color={LT.onSurfaceVariant} />
             </TouchableOpacity>
             <View style={styles.row}>
               <Text style={styles.rowLabel}>
@@ -925,7 +923,7 @@ export default function SettingsScreen({ navigation }) {
 
           {/* Footer mascot */}
           <View style={styles.footer}>
-            <MaterialIcons name="self-improvement" size={56} color={T.primaryContainer} />
+            <MaterialIcons name="self-improvement" size={56} color={LT.primaryContainer} />
             <Text style={styles.footerText}>
               MONK MODE • DIGITAL STOICISM
             </Text>
@@ -945,10 +943,6 @@ export default function SettingsScreen({ navigation }) {
 }
 
 function Section({ title, children }) {
-  // Sub-component lives outside the main hook scope, so it grabs its
-  // own themed styles. Cheap — the makeStyles factory runs once per
-  // section render but produces a stable shape.
-  const styles = useThemedStyles(makeStyles);
   return (
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>{title}</Text>
@@ -958,23 +952,23 @@ function Section({ title, children }) {
 }
 
 // Theme-aware stylesheet factory. See `src/config/theme.js`.
-const makeStyles = (T) => StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: T.background },
-  container: { flex: 1, backgroundColor: T.background },
+const styles = StyleSheet.create({
+  safeArea: { flex: 1, backgroundColor: LT.background },
+  container: { flex: 1, backgroundColor: LT.background },
 
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 14,
-    backgroundColor: T.surfaceContainer,
+    backgroundColor: LT.surfaceContainer,
     borderBottomWidth: 1,
-    borderBottomColor: T.outlineVariant,
+    borderBottomColor: LT.outlineVariant,
   },
   headerBack: { width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
   headerTitle: {
     flex: 1,
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 20,
     fontWeight: '800',
     letterSpacing: -0.4,
@@ -986,13 +980,13 @@ const makeStyles = (T) => StyleSheet.create({
     gap: 4,
     paddingHorizontal: 10,
     paddingVertical: 4,
-    backgroundColor: T.primaryContainer,
+    backgroundColor: LT.primaryContainer,
     borderRadius: LT_RADIUS.pill,
     borderWidth: 1,
-    borderColor: T.primary,
+    borderColor: LT.primary,
   },
   premiumBadgeText: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontSize: 10,
     fontWeight: '900',
     letterSpacing: 1.5,
@@ -1002,7 +996,7 @@ const makeStyles = (T) => StyleSheet.create({
 
   section: { marginTop: 16 },
   sectionTitle: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 1.5,
@@ -1011,12 +1005,12 @@ const makeStyles = (T) => StyleSheet.create({
     textTransform: 'uppercase',
   },
   sectionCard: {
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     marginHorizontal: 20,
     borderRadius: LT_RADIUS.lg,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
   },
 
   row: {
@@ -1028,7 +1022,7 @@ const makeStyles = (T) => StyleSheet.create({
   },
   rowBorder: {
     borderBottomWidth: 1,
-    borderBottomColor: T.outlineVariant,
+    borderBottomColor: LT.outlineVariant,
   },
   rowLeft: {
     flexDirection: 'row',
@@ -1042,18 +1036,18 @@ const makeStyles = (T) => StyleSheet.create({
     gap: 4,
   },
   rowLabel: {
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 15,
     fontWeight: '600',
   },
   rowSub: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 12,
     fontWeight: '500',
     marginTop: 2,
   },
   rowValue: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 13,
     fontWeight: '600',
   },
@@ -1067,7 +1061,7 @@ const makeStyles = (T) => StyleSheet.create({
     backgroundColor: '#EF4444',
   },
   dangerLabel: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontWeight: '700',
   },
 
@@ -1077,16 +1071,16 @@ const makeStyles = (T) => StyleSheet.create({
     height: 22,
     borderRadius: 11,
     borderWidth: 2,
-    borderColor: T.outline,
+    borderColor: LT.outline,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  radioActive: { borderColor: T.primaryContainer },
+  radioActive: { borderColor: LT.primaryContainer },
   radioDot: {
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: T.primaryContainer,
+    backgroundColor: LT.primaryContainer,
   },
 
   footer: {
@@ -1096,7 +1090,7 @@ const makeStyles = (T) => StyleSheet.create({
     gap: 8,
   },
   footerText: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 2,

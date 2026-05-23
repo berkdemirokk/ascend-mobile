@@ -971,13 +971,13 @@
     "subtitle": "{{count}} lessons in last 8 weeks",
     "less": "LESS",
     "more": "MORE",
-    "sun": "S",
-    "mon": "M",
-    "tue": "T",
-    "wed": "W",
-    "thu": "T",
-    "fri": "F",
-    "sat": "S"
+    "sun": "Sun",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat"
   },
   "reflections": {
     "title": "My Reflections",

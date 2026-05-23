@@ -39,27 +39,29 @@ import AchievementDetailModal from '../components/AchievementDetailModal';
 import StreakShareCard from '../components/StreakShareCard';
 import { captureAndShare } from '../services/streakShare';
 import LightTopAppBar from '../components/LightTopAppBar';
-import { LT_SPACING, LT_RADIUS } from '../config/lightTheme';
-import { useTheme, useThemedStyles } from '../config/theme';
+import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function ProfileScreen({ navigation }) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const appState = useApp();
-  // Dark-mode-aware theme + styles. See `src/config/theme.js`.
-  const T = useTheme();
-  const styles = useThemedStyles(makeStyles);
+  // ALL fields defaulted — without defaults, the very first render
+  // after sign-out (or any state-reset transition) can leave fields
+  // undefined, and `totalXP.toLocaleString()` later in the file throws
+  // "Cannot read property 'toLocaleString' of undefined". The
+  // ErrorBoundary then renders a dark fallback and the user perceives
+  // the Profile screen as "siyah / bozuldu" (the recent user report).
   const {
-    totalXP,
-    level,
-    currentStreak,
-    longestStreak,
-    pathProgress,
-    unlockedAchievements,
-    lessonHistory,
-    anonUsername,
-    isPremium,
-  } = appState;
+    totalXP = 0,
+    level = 1,
+    currentStreak = 0,
+    longestStreak = 0,
+    pathProgress = {},
+    unlockedAchievements = [],
+    lessonHistory = {},
+    anonUsername = null,
+    isPremium = false,
+  } = appState || {};
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [sharing, setSharing] = useState(false);
   const [reportVisible, setReportVisible] = useState(false);
@@ -162,7 +164,7 @@ export default function ProfileScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" backgroundColor={T.background} />
+      <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
 
       <LightTopAppBar
         onAvatarPress={() => navigation.navigate('Settings')}
@@ -179,7 +181,7 @@ export default function ProfileScreen({ navigation }) {
             <MaterialIcons
               name="ios-share"
               size={20}
-              color={sharing ? T.outline : T.primaryContainer}
+              color={sharing ? LT.outline : LT.primaryContainer}
             />
           </TouchableOpacity>
         }
@@ -197,7 +199,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="self-improvement"
                 size={48}
-                color={T.primaryContainer}
+                color={LT.primaryContainer}
               />
             </View>
           </View>
@@ -221,7 +223,7 @@ export default function ProfileScreen({ navigation }) {
           />
           <StatCard
             icon="local-fire-department"
-            iconColor={T.primaryContainer}
+            iconColor={LT.primaryContainer}
             label={t('profile.currentStreak', 'MEVCUT SERİ')}
             value={`${currentStreak}`}
             unit={t('common.days', 'Gün')}
@@ -271,7 +273,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="trending-up"
                 size={12}
-                color={T.primaryContainer}
+                color={LT.primaryContainer}
               />
               <Text style={styles.nextRankText}>
                 {t('profile.nextRank', 'SONRAKİ RÜTBE')}:{' '}
@@ -295,7 +297,7 @@ export default function ProfileScreen({ navigation }) {
                 activeOpacity={0.7}
                 style={styles.publicShareBtn}
               >
-                <MaterialIcons name="ios-share" size={14} color={T.primary} />
+                <MaterialIcons name="ios-share" size={14} color={LT.primary} />
                 <Text style={styles.publicShareText}>
                   {t('profile.publicShareCta', 'PROFİLİ PAYLAŞ')}
                 </Text>
@@ -372,7 +374,7 @@ export default function ProfileScreen({ navigation }) {
                   <MaterialIcons
                     name={p.materialIcon}
                     size={16}
-                    color={T.onSurfaceVariant}
+                    color={LT.onSurfaceVariant}
                   />
                   <Text style={styles.masteryName} numberOfLines={1}>
                     {t(`paths.${p.id}.shortTitle`, p.title)}
@@ -406,7 +408,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="chevron-right"
                 size={16}
-                color={T.primaryContainer}
+                color={LT.primaryContainer}
               />
             </TouchableOpacity>
           </View>
@@ -415,9 +417,9 @@ export default function ProfileScreen({ navigation }) {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.achievementsRow}
           >
-            {recentAchievements.map((a, i) => (
+            {recentAchievements.map((a) => (
               <AchievementCard
-                key={i}
+                key={`${a.id}-${a.locked ? 'lock' : 'unlock'}`}
                 id={a.id}
                 locked={a.locked}
                 onPress={() => setSelectedAchievement(a)}
@@ -442,7 +444,7 @@ export default function ProfileScreen({ navigation }) {
               <MaterialIcons
                 name="auto-stories"
                 size={20}
-                color={T.primaryContainer}
+                color={LT.primaryContainer}
               />
             </View>
             <View style={{ flex: 1 }}>
@@ -459,7 +461,7 @@ export default function ProfileScreen({ navigation }) {
             <MaterialIcons
               name="chevron-right"
               size={22}
-              color={T.outline}
+              color={LT.outline}
             />
           </TouchableOpacity>
         </View>
@@ -512,7 +514,6 @@ export default function ProfileScreen({ navigation }) {
 // ─── Subcomponents ────────────────────────────────────────────────────────────
 
 function CircularProgress({ size = 132, percent = 0 }) {
-  const T = useTheme();
   const stroke = 4;
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -527,7 +528,7 @@ function CircularProgress({ size = 132, percent = 0 }) {
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        stroke={T.outlineVariant}
+        stroke={LT.outlineVariant}
         strokeWidth={stroke}
         fill="transparent"
       />
@@ -535,7 +536,7 @@ function CircularProgress({ size = 132, percent = 0 }) {
         cx={size / 2}
         cy={size / 2}
         r={radius}
-        stroke={T.primaryContainer}
+        stroke={LT.primaryContainer}
         strokeWidth={stroke}
         fill="transparent"
         strokeDasharray={`${circumference} ${circumference}`}
@@ -549,15 +550,13 @@ function CircularProgress({ size = 132, percent = 0 }) {
 }
 
 function StatCard({ icon, iconColor, label, value, unit, accent }) {
-  const T = useTheme();
-  const styles = useThemedStyles(makeStyles);
   return (
     <View style={[styles.statCard, accent && styles.statCardAccent]}>
       <View style={styles.statCardHeader}>
         <MaterialIcons
           name={icon}
           size={16}
-          color={iconColor || T.onSurfaceVariant}
+          color={iconColor || LT.onSurfaceVariant}
         />
         <Text style={styles.statCardLabel}>{label}</Text>
       </View>
@@ -586,8 +585,6 @@ const ACHIEVEMENT_ICONS = {
 
 function AchievementCard({ id, locked, onPress }) {
   const { t } = useTranslation();
-  const T = useTheme();
-  const styles = useThemedStyles(makeStyles);
   const ach = ACHIEVEMENTS.find((a) => a.id === id);
   if (!ach) return null;
   const iconName = ACHIEVEMENT_ICONS[id] || 'emoji-events';
@@ -606,7 +603,7 @@ function AchievementCard({ id, locked, onPress }) {
         <MaterialIcons
           name={locked ? 'lock' : iconName}
           size={28}
-          color={locked ? T.outline : T.primaryContainer}
+          color={locked ? LT.outline : LT.primaryContainer}
         />
       </View>
       <Text
@@ -622,10 +619,10 @@ function AchievementCard({ id, locked, onPress }) {
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 // Theme-aware stylesheet factory. See `src/config/theme.js`.
-const makeStyles = (T) => StyleSheet.create({
+const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: T.background,
+    backgroundColor: LT.background,
   },
   scrollContent: {
     paddingBottom: 32,
@@ -663,26 +660,26 @@ const makeStyles = (T) => StyleSheet.create({
     width: 116,
     height: 116,
     borderRadius: 58,
-    backgroundColor: T.surfaceContainerLow,
+    backgroundColor: LT.surfaceContainerLow,
     borderWidth: 2,
-    borderColor: T.surfaceContainerLowest,
+    borderColor: LT.surfaceContainerLowest,
     alignItems: 'center',
     justifyContent: 'center',
   },
   rankBadge: {
-    backgroundColor: T.primaryContainer,
+    backgroundColor: LT.primaryContainer,
     paddingHorizontal: 14,
     paddingVertical: 5,
     borderRadius: LT_RADIUS.pill,
     marginBottom: 12,
-    shadowColor: T.primaryContainer,
+    shadowColor: LT.primaryContainer,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.25,
     shadowRadius: 6,
     elevation: 3,
   },
   rankBadgeText: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 2,
@@ -691,14 +688,14 @@ const makeStyles = (T) => StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
     letterSpacing: -0.6,
-    color: T.onSurface,
+    color: LT.onSurface,
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 2,
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
   },
 
   // Stats grid (2x2)
@@ -711,10 +708,10 @@ const makeStyles = (T) => StyleSheet.create({
   },
   statCard: {
     width: '48%',
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.lg,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
     padding: 14,
     minHeight: 104,
   },
@@ -732,7 +729,7 @@ const makeStyles = (T) => StyleSheet.create({
     fontSize: 10,
     fontWeight: '900',
     letterSpacing: 1.5,
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
   },
   statCardBody: {
     flexDirection: 'row',
@@ -743,26 +740,26 @@ const makeStyles = (T) => StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
     letterSpacing: -0.8,
-    color: T.onSurface,
+    color: LT.onSurface,
   },
   statCardValueAccent: {
-    color: T.primaryContainer,
+    color: LT.primaryContainer,
   },
   statCardUnit: {
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 0.5,
-    color: T.outline,
+    color: LT.outline,
     textTransform: 'uppercase',
   },
 
   // Level progress
   levelCard: {
     marginHorizontal: LT_SPACING.containerMargin,
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
     padding: 18,
     marginBottom: 14,
   },
@@ -776,13 +773,13 @@ const makeStyles = (T) => StyleSheet.create({
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 2,
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
   },
   levelTitle: {
     fontSize: 18,
     fontWeight: '900',
     letterSpacing: -0.4,
-    color: T.onSurface,
+    color: LT.onSurface,
     marginTop: 2,
   },
   levelXP: {
@@ -791,25 +788,25 @@ const makeStyles = (T) => StyleSheet.create({
   levelXPNum: {
     fontSize: 18,
     fontWeight: '900',
-    color: T.primaryContainer,
+    color: LT.primaryContainer,
     letterSpacing: -0.4,
   },
   levelXPMax: {
     fontSize: 12,
     fontWeight: '700',
-    color: T.outline,
+    color: LT.outline,
   },
   progressTrack: {
     width: '100%',
     height: 8,
     borderRadius: 4,
-    backgroundColor: T.surfaceContainer,
+    backgroundColor: LT.surfaceContainer,
     overflow: 'hidden',
     marginTop: 6,
   },
   progressFill: {
     height: '100%',
-    backgroundColor: T.primaryContainer,
+    backgroundColor: LT.primaryContainer,
     borderRadius: 4,
   },
   nextRankPill: {
@@ -829,10 +826,10 @@ const makeStyles = (T) => StyleSheet.create({
     fontSize: 10,
     fontWeight: '800',
     letterSpacing: 1,
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
   },
   nextRankValue: {
-    color: T.primaryContainer,
+    color: LT.primaryContainer,
     fontWeight: '900',
   },
 
@@ -840,10 +837,10 @@ const makeStyles = (T) => StyleSheet.create({
   badgesSection: {
     marginHorizontal: LT_SPACING.containerMargin,
     marginBottom: 16,
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
     padding: 16,
   },
   badgesHeader: {
@@ -859,14 +856,14 @@ const makeStyles = (T) => StyleSheet.create({
     paddingVertical: 4,
   },
   publicShareText: {
-    color: T.primary,
+    color: LT.primary,
     fontSize: 10,
     fontWeight: '900',
     letterSpacing: 1.2,
   },
   badgesIntro: {
     fontSize: 12,
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontWeight: '500',
     marginBottom: 12,
     marginTop: 4,
@@ -883,7 +880,7 @@ const makeStyles = (T) => StyleSheet.create({
     gap: 6,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    backgroundColor: T.surfaceContainer,
+    backgroundColor: LT.surfaceContainer,
     borderRadius: 999,
     borderWidth: 1,
     borderColor: 'rgba(227, 18, 18, 0.22)',
@@ -892,7 +889,7 @@ const makeStyles = (T) => StyleSheet.create({
   badgeTitle: {
     fontSize: 13,
     fontWeight: '900',
-    color: T.onSurface,
+    color: LT.onSurface,
     letterSpacing: -0.2,
   },
 
@@ -941,10 +938,10 @@ const makeStyles = (T) => StyleSheet.create({
     marginHorizontal: LT_SPACING.containerMargin,
     marginBottom: 18,
     padding: 16,
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
   },
   masteryRow: {
     marginTop: 12,
@@ -957,12 +954,12 @@ const makeStyles = (T) => StyleSheet.create({
   },
   masteryName: {
     flex: 1,
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 13,
     fontWeight: '700',
   },
   masteryPct: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 12,
     fontWeight: '800',
     minWidth: 36,
@@ -970,17 +967,17 @@ const makeStyles = (T) => StyleSheet.create({
   },
   masteryTrack: {
     height: 6,
-    backgroundColor: T.outlineVariant,
+    backgroundColor: LT.outlineVariant,
     borderRadius: 3,
     overflow: 'hidden',
   },
   masteryFill: {
     height: '100%',
-    backgroundColor: T.primary,
+    backgroundColor: LT.primary,
     borderRadius: 3,
   },
   masteryFillDone: {
-    backgroundColor: T.success || '#10B981',
+    backgroundColor: LT.success || '#10B981',
   },
   achievementsSection: {
     marginBottom: 14,
@@ -996,7 +993,7 @@ const makeStyles = (T) => StyleSheet.create({
     fontSize: 12,
     fontWeight: '900',
     letterSpacing: 2,
-    color: T.onSurface,
+    color: LT.onSurface,
   },
   seeAll: {
     flexDirection: 'row',
@@ -1007,7 +1004,7 @@ const makeStyles = (T) => StyleSheet.create({
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 1.5,
-    color: T.primaryContainer,
+    color: LT.primaryContainer,
   },
   achievementsRow: {
     paddingHorizontal: LT_SPACING.containerMargin,
@@ -1015,16 +1012,16 @@ const makeStyles = (T) => StyleSheet.create({
   },
   achCard: {
     width: 110,
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.lg,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
     padding: 12,
     alignItems: 'center',
     minHeight: 110,
   },
   achCardLocked: {
-    backgroundColor: T.surfaceContainerLow,
+    backgroundColor: LT.surfaceContainerLow,
     opacity: 0.7,
   },
   achIconBox: {
@@ -1039,28 +1036,28 @@ const makeStyles = (T) => StyleSheet.create({
     marginBottom: 8,
   },
   achIconBoxLocked: {
-    backgroundColor: T.surfaceContainer,
-    borderColor: T.outlineVariant,
+    backgroundColor: LT.surfaceContainer,
+    borderColor: LT.outlineVariant,
   },
   achTitle: {
     fontSize: 11,
     fontWeight: '800',
-    color: T.onSurface,
+    color: LT.onSurface,
     textAlign: 'center',
     letterSpacing: -0.1,
   },
   achTitleLocked: {
-    color: T.outline,
+    color: LT.outline,
   },
 
   // Calendar
   calendarWrap: {
     marginHorizontal: LT_SPACING.containerMargin,
     marginBottom: 14,
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
     padding: 18,
   },
 
@@ -1072,10 +1069,10 @@ const makeStyles = (T) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 14,
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
     padding: 16,
   },
   linkIconBox: {
@@ -1089,12 +1086,12 @@ const makeStyles = (T) => StyleSheet.create({
   linkTitle: {
     fontSize: 14,
     fontWeight: '800',
-    color: T.onSurface,
+    color: LT.onSurface,
     marginBottom: 2,
   },
   linkSubtitle: {
     fontSize: 12,
     fontWeight: '500',
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
   },
 });

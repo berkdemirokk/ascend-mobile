@@ -965,13 +965,13 @@
     "subtitle": "{{count}} ders son 8 hafta",
     "less": "AZ",
     "more": "ÇOK",
-    "sun": "P",
-    "mon": "P",
-    "tue": "S",
-    "wed": "Ç",
-    "thu": "P",
-    "fri": "C",
-    "sat": "C"
+    "sun": "Paz",
+    "mon": "Pzt",
+    "tue": "Sal",
+    "wed": "Çar",
+    "thu": "Per",
+    "fri": "Cum",
+    "sat": "Cmt"
   },
   "reflections": {
     "title": "Yansımalarım",

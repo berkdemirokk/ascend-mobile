@@ -35,8 +35,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
-import { LT_RADIUS } from '../config/lightTheme';
-import { useTheme, useThemedStyles } from '../config/theme';
+import { LT, LT_RADIUS } from '../config/lightTheme';
 import {
   createSquad,
   joinSquadByCode,
@@ -59,11 +58,7 @@ export default function SquadScreen({ navigation }) {
   const { anonUsername, setCurrentSquad } = useApp();
   const userId = user?.id || null;
 
-  // Dark-mode-aware theme + styles. See `src/config/theme.js` for the
   // migration recipe; SquadScreen is one of the screens migrated in the
-  // Phase 2 dark-mode push.
-  const T = useTheme();
-  const styles = useThemedStyles(makeStyles);
 
   // `loading` = initial mount only — covers the empty render → first
   // network response gap. After first load completes, subsequent
@@ -291,7 +286,7 @@ export default function SquadScreen({ navigation }) {
         <StatusBar barStyle="dark-content" />
         <Header navigation={navigation} t={t} T={T} styles={styles} />
         <View style={styles.center}>
-          <ActivityIndicator color={T.primaryContainer} size="large" />
+          <ActivityIndicator color={LT.primaryContainer} size="large" />
         </View>
       </SafeAreaView>
     );
@@ -303,7 +298,7 @@ export default function SquadScreen({ navigation }) {
         <StatusBar barStyle="dark-content" />
         <Header navigation={navigation} t={t} T={T} styles={styles} />
         <View style={styles.center}>
-          <MaterialIcons name="lock" size={48} color={T.onSurfaceVariant} />
+          <MaterialIcons name="lock" size={48} color={LT.onSurfaceVariant} />
           <Text style={styles.lockTitle}>
             {t('squad.authRequiredTitle', 'Giriş gerekli')}
           </Text>
@@ -341,7 +336,7 @@ export default function SquadScreen({ navigation }) {
             </Text>
             <Text style={styles.heroName}>{squadData.squad.name}</Text>
             <View style={styles.codePill}>
-              <MaterialIcons name="vpn-key" size={14} color={T.onPrimary} />
+              <MaterialIcons name="vpn-key" size={14} color={LT.onPrimary} />
               <Text style={styles.codePillText}>{squadData.squad.code}</Text>
             </View>
           </View>
@@ -366,7 +361,7 @@ export default function SquadScreen({ navigation }) {
                     <MaterialIcons
                       name="check"
                       size={12}
-                      color={T.onPrimary}
+                      color={LT.onPrimary}
                     />
                   )}
                 </View>
@@ -423,7 +418,7 @@ export default function SquadScreen({ navigation }) {
                     <MaterialIcons
                       name="self-improvement"
                       size={18}
-                      color={T.primaryContainer}
+                      color={LT.primaryContainer}
                     />
                   </View>
                   <View style={{ flex: 1 }}>
@@ -440,7 +435,7 @@ export default function SquadScreen({ navigation }) {
                   <MaterialIcons
                     name={doneToday ? 'check-circle' : 'radio-button-unchecked'}
                     size={22}
-                    color={doneToday ? T.success : T.outline}
+                    color={doneToday ? LT.success : LT.outline}
                   />
                 </View>
               );
@@ -453,7 +448,7 @@ export default function SquadScreen({ navigation }) {
             activeOpacity={0.7}
             style={styles.primaryBtn}
           >
-            <MaterialIcons name="share" size={20} color={T.onPrimary} />
+            <MaterialIcons name="share" size={20} color={LT.onPrimary} />
             <Text style={styles.primaryBtnText}>
               {t('squad.invite', 'Arkadaş davet et')}
             </Text>
@@ -491,7 +486,7 @@ export default function SquadScreen({ navigation }) {
           <MaterialIcons
             name="groups"
             size={42}
-            color={T.primaryContainer}
+            color={LT.primaryContainer}
           />
           <Text style={styles.introTitle}>
             {t('squad.introTitle', 'Halka — 2-5 kişilik sessiz disiplin grubu')}
@@ -516,7 +511,7 @@ export default function SquadScreen({ navigation }) {
               'squad.namePlaceholder',
               'Halka adı (örn. "Sabah Brigadi")',
             )}
-            placeholderTextColor={T.onSurfaceVariant}
+            placeholderTextColor={LT.onSurfaceVariant}
             maxLength={40}
             style={styles.input}
             editable={!busy}
@@ -528,10 +523,10 @@ export default function SquadScreen({ navigation }) {
             style={[styles.primaryBtn, busy && styles.btnDisabled]}
           >
             {busy ? (
-              <ActivityIndicator color={T.onPrimary} />
+              <ActivityIndicator color={LT.onPrimary} />
             ) : (
               <>
-                <MaterialIcons name="add" size={20} color={T.onPrimary} />
+                <MaterialIcons name="add" size={20} color={LT.onPrimary} />
                 <Text style={styles.primaryBtnText}>
                   {t('squad.createBtn', 'Halka oluştur')}
                 </Text>
@@ -555,7 +550,7 @@ export default function SquadScreen({ navigation }) {
             value={joinCode}
             onChangeText={(v) => setJoinCode(v.toUpperCase())}
             placeholder="SQD-AB12"
-            placeholderTextColor={T.onSurfaceVariant}
+            placeholderTextColor={LT.onSurfaceVariant}
             maxLength={10}
             autoCapitalize="characters"
             autoCorrect={false}
@@ -569,13 +564,13 @@ export default function SquadScreen({ navigation }) {
             style={[styles.secondaryBtn, busy && styles.btnDisabled]}
           >
             {busy ? (
-              <ActivityIndicator color={T.primary} />
+              <ActivityIndicator color={LT.primary} />
             ) : (
               <>
                 <MaterialIcons
                   name="login"
                   size={20}
-                  color={T.primary}
+                  color={LT.primary}
                 />
                 <Text style={styles.secondaryBtnText}>
                   {t('squad.joinBtn', 'Katıl')}
@@ -603,7 +598,7 @@ function Header({ navigation, t, T, styles }) {
         <MaterialIcons
           name="arrow-back"
           size={22}
-          color={T.onSurfaceVariant}
+          color={LT.onSurfaceVariant}
         />
       </TouchableOpacity>
       <Text style={styles.headerTitle}>
@@ -643,8 +638,8 @@ function mapErr(t, code) {
 // ─── Styles ──────────────────────────────────────────────────────────
 
 // Theme-aware stylesheet factory. See `src/config/theme.js`.
-const makeStyles = (T) => StyleSheet.create({
-  safe: { flex: 1, backgroundColor: T.background },
+const styles = StyleSheet.create({
+  safe: { flex: 1, backgroundColor: LT.background },
   center: {
     flex: 1,
     alignItems: 'center',
@@ -657,9 +652,9 @@ const makeStyles = (T) => StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 14,
-    backgroundColor: T.surfaceContainer,
+    backgroundColor: LT.surfaceContainer,
     borderBottomWidth: 1,
-    borderBottomColor: T.outlineVariant,
+    borderBottomColor: LT.outlineVariant,
   },
   headerBack: {
     width: 36,
@@ -669,7 +664,7 @@ const makeStyles = (T) => StyleSheet.create({
   },
   headerTitle: {
     flex: 1,
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 20,
     fontWeight: '800',
     letterSpacing: -0.4,
@@ -680,7 +675,7 @@ const makeStyles = (T) => StyleSheet.create({
 
   // Hero card with collective streak
   heroCard: {
-    backgroundColor: T.primary,
+    backgroundColor: LT.primary,
     borderRadius: LT_RADIUS.xl,
     padding: 28,
     alignItems: 'center',
@@ -692,7 +687,7 @@ const makeStyles = (T) => StyleSheet.create({
     elevation: 6,
   },
   heroLabel: {
-    color: T.onPrimaryContainer,
+    color: LT.onPrimaryContainer,
     fontSize: 11,
     letterSpacing: 2,
     fontWeight: '700',
@@ -700,21 +695,21 @@ const makeStyles = (T) => StyleSheet.create({
     marginBottom: 4,
   },
   heroNumber: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontSize: 80,
     fontWeight: '900',
     letterSpacing: -2,
     lineHeight: 84,
   },
   heroDays: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontSize: 14,
     fontWeight: '600',
     opacity: 0.85,
     marginTop: -4,
   },
   heroName: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontSize: 18,
     fontWeight: '700',
     marginTop: 16,
@@ -730,7 +725,7 @@ const makeStyles = (T) => StyleSheet.create({
     gap: 6,
   },
   codePillText: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontSize: 13,
     fontWeight: '700',
     letterSpacing: 1,
@@ -738,15 +733,15 @@ const makeStyles = (T) => StyleSheet.create({
 
   // Generic card
   card: {
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     padding: 20,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
   },
   cardTitle: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 11,
     letterSpacing: 2,
     fontWeight: '700',
@@ -763,28 +758,28 @@ const makeStyles = (T) => StyleSheet.create({
     width: 18,
     height: 18,
     borderRadius: 4,
-    backgroundColor: T.surfaceContainer,
+    backgroundColor: LT.surfaceContainer,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
     alignItems: 'center',
     justifyContent: 'center',
   },
   chainCellAll: {
-    backgroundColor: T.primaryContainer,
-    borderColor: T.primaryContainer,
+    backgroundColor: LT.primaryContainer,
+    borderColor: LT.primaryContainer,
   },
   chainCellMe: {
     // I did mine, group didn't — show a small filled dot so user
     // sees their own effort acknowledged even when chain breaks.
-    backgroundColor: T.outline,
-    borderColor: T.outline,
+    backgroundColor: LT.outline,
+    borderColor: LT.outline,
   },
   chainCellToday: {
     borderWidth: 2,
-    borderColor: T.primary,
+    borderColor: LT.primary,
   },
   chainLegend: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 11,
     lineHeight: 16,
   },
@@ -795,14 +790,14 @@ const makeStyles = (T) => StyleSheet.create({
     alignItems: 'center',
   },
   todayBig: {
-    color: T.primary,
+    color: LT.primary,
     fontSize: 42,
     fontWeight: '900',
     letterSpacing: -1,
     minWidth: 80,
   },
   todayLabel: {
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 20,
@@ -816,40 +811,40 @@ const makeStyles = (T) => StyleSheet.create({
   },
   memberRowBorder: {
     borderBottomWidth: 1,
-    borderBottomColor: T.outlineVariant,
+    borderBottomColor: LT.outlineVariant,
   },
   memberAvatar: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: T.surfaceContainer,
+    backgroundColor: LT.surfaceContainer,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
   },
   memberName: {
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 15,
     fontWeight: '700',
   },
   memberSub: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 12,
     marginTop: 2,
   },
 
   // Intro card (no-squad state)
   introCard: {
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.xl,
     padding: 24,
     alignItems: 'center',
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
   },
   introTitle: {
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 18,
     fontWeight: '800',
     textAlign: 'center',
@@ -857,7 +852,7 @@ const makeStyles = (T) => StyleSheet.create({
     letterSpacing: -0.3,
   },
   introBody: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 14,
     lineHeight: 22,
     textAlign: 'center',
@@ -866,15 +861,15 @@ const makeStyles = (T) => StyleSheet.create({
 
   // Form
   input: {
-    backgroundColor: T.surfaceContainer,
+    backgroundColor: LT.surfaceContainer,
     borderRadius: LT_RADIUS.lg,
     paddingHorizontal: 14,
     paddingVertical: 12,
     fontSize: 15,
-    color: T.onSurface,
+    color: LT.onSurface,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: T.outlineVariant,
+    borderColor: LT.outlineVariant,
   },
   codeInput: {
     fontSize: 18,
@@ -888,14 +883,14 @@ const makeStyles = (T) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: T.primary,
+    backgroundColor: LT.primary,
     borderRadius: LT_RADIUS.lg,
     paddingVertical: 14,
     marginTop: 4,
     gap: 8,
   },
   primaryBtnText: {
-    color: T.onPrimary,
+    color: LT.onPrimary,
     fontSize: 15,
     fontWeight: '800',
     letterSpacing: 0.3,
@@ -904,16 +899,16 @@ const makeStyles = (T) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: T.surfaceContainerLowest,
+    backgroundColor: LT.surfaceContainerLowest,
     borderRadius: LT_RADIUS.lg,
     paddingVertical: 14,
     marginTop: 4,
     gap: 8,
     borderWidth: 1.5,
-    borderColor: T.primary,
+    borderColor: LT.primary,
   },
   secondaryBtnText: {
-    color: T.primary,
+    color: LT.primary,
     fontSize: 15,
     fontWeight: '800',
     letterSpacing: 0.3,
@@ -924,13 +919,13 @@ const makeStyles = (T) => StyleSheet.create({
     marginTop: 8,
   },
   dangerBtnText: {
-    color: T.error,
+    color: LT.error,
     fontSize: 14,
     fontWeight: '600',
   },
   btnDisabled: { opacity: 0.5 },
   helpText: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 12,
     lineHeight: 18,
     marginTop: 10,
@@ -938,13 +933,13 @@ const makeStyles = (T) => StyleSheet.create({
 
   // Lock state
   lockTitle: {
-    color: T.onSurface,
+    color: LT.onSurface,
     fontSize: 18,
     fontWeight: '700',
     marginTop: 16,
   },
   lockBody: {
-    color: T.onSurfaceVariant,
+    color: LT.onSurfaceVariant,
     fontSize: 14,
     textAlign: 'center',
     marginTop: 8,

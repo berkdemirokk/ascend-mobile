@@ -32,8 +32,9 @@ export default function StreakCalendar({ lessonHistory = {} }) {
   // Build grid: rows = days of week, cols = weeks (oldest left, newest right)
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  // Find Sunday of current week
-  const dayOfWeek = today.getDay(); // 0 = Sunday
+  // Find MONDAY of current week (Turkish week starts on Monday).
+  // ISO weekday: Mon=0, Sun=6 via the `(getDay() + 6) % 7` trick.
+  const dayOfWeek = (today.getDay() + 6) % 7;
   const startOfThisWeek = new Date(today);
   startOfThisWeek.setDate(today.getDate() - dayOfWeek);
 
@@ -52,15 +53,17 @@ export default function StreakCalendar({ lessonHistory = {} }) {
     grid.push(row);
   }
 
-  // Day labels (shortened)
+  // Day labels — 2-letter to disambiguate Pazar / Pazartesi / Perşembe
+  // (all start with "P" in Turkish). Monday-first to match `dayOfWeek`
+  // calculation above.
   const dayLabels = [
-    t('calendar.sun', 'P'),
-    t('calendar.mon', 'P'),
-    t('calendar.tue', 'S'),
-    t('calendar.wed', 'Ç'),
-    t('calendar.thu', 'P'),
-    t('calendar.fri', 'C'),
-    t('calendar.sat', 'C'),
+    t('calendar.mon', 'Pzt'),
+    t('calendar.tue', 'Sal'),
+    t('calendar.wed', 'Çar'),
+    t('calendar.thu', 'Per'),
+    t('calendar.fri', 'Cum'),
+    t('calendar.sat', 'Cmt'),
+    t('calendar.sun', 'Paz'),
   ];
 
   // Total lessons in period

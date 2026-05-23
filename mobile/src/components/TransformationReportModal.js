@@ -121,11 +121,11 @@ export default function TransformationReportModal({
                   />
                 ) : null}
 
-                {report.topReflectionTopics.length > 0 ? (
+                {(report.topReflectionTopics || []).length > 0 ? (
                   <InsightCard
                     icon="psychology"
                     title={t('transform.topicsTitle', 'What you reflect on most')}
-                    body={report.topReflectionTopics
+                    body={(report.topReflectionTopics || [])
                       .map((c) => t(`transform.topic_${c}`, c))
                       .join(' · ')}
                   />
@@ -142,11 +142,11 @@ export default function TransformationReportModal({
                   />
                 ) : null}
 
-                {report.pathStats.length > 0 ? (
+                {(report.pathStats || []).length > 0 ? (
                   <InsightCard
                     icon="trail"
                     title={t('transform.pathsTitle', 'Where you walked')}
-                    body={report.pathStats
+                    body={(report.pathStats || [])
                       .map((p) => {
                         const path = PATHS.find((x) => x.id === p.pathId);
                         const name = t(`paths.${p.pathId}.shortTitle`, path?.shortTitle || p.pathId);
