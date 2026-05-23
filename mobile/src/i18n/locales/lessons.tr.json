@@ -3134,9 +3134,9 @@
     "mind-discipline": {
       "1": {
         "title": "Tek Odak Kuralı",
-        "teaching": "Beyin tek görev yapacak şekilde evrimleşmiş. Multitasking bir illüzyon — beyin sadece hızlı geçiş yapar, performans her geçişte düşer.\n\nDeep work tek odak demektir. Tek pencere, tek ses, tek niyet. Bu antrenman gerektirir — ilk gün 25 dakika zor, bir hafta sonra 90 dakika doğal.\n\nZihinsel kas. Geliştirilebilir. Bugün başlıyorsun.",
-        "action": "Bugün 25 dakika tek görev bloku yap (Pomodoro). Telefon başka odada. Bilgisayarda sadece o iş için açık sekme.",
-        "reflectionPrompt": "25 dakika sonra zihnin yorgun mu, daha mı net?",
+        "teaching": "Saat 14:00. 3 sekme açık (Slack, Gmail, Twitter), tarayıcıda 12 tab var, telefonda WhatsApp titreyip duruyor, Spotify çalıyor, kulağına eşin bir şey diyor. Sen 'çalışıyorum' diyorsun. **Aslında hiç bir şey yapmıyorsun.**\n\nMultitasking **bir illüzyon**. Beyin paralel çalışmaz — **hızlı geçiş** yapar. Stanford Üniversitesi (Clifford Nass): heavy multitasker'lar her testte tek-görevcilere göre **daha yavaş, daha hatalı, daha geç**. Daha kötüsü: bu kişiler **kendilerini daha iyi sanır**.\n\nHer görev geçişi = **'context switching cost'**. Beyin önceki görevi 'kapatıp' yenisini 'açar'. Bu cost ortalama **%40 verim kaybı** (American Psychological Association meta-analizi).\n\nMekanizma: prefrontal kortex'te **task-set reconfiguration** denilen süreç. Her geçiş 0.5-2 saniye + nöral 'yapışkanlık' (attention residue — sonraki ders). 8 saatte 100 geçiş = saatlerce verim kaybı.\n\n**Deep work = tek odak.** Tek pencere, tek ses, tek niyet. Zihinsel kas — geliştirilebilir. İlk gün 25 dk zor, 1 hafta sonra 90 dk doğal.",
+        "action": "Bugün **25 dakika tek görev bloku** yap (Pomodoro). Telefon başka odada. Tek sekme. Sayacı görünür.",
+        "reflectionPrompt": "25 dakika sonra zihnin yorgun mu, daha mı net? Geçiş yapmadığında ne fark ettin?",
         "quiz": [
           {
             "q": "Multitasking efsanesi nedir?",
@@ -3165,9 +3165,9 @@
       },
       "2": {
         "title": "Distraction Kill List",
-        "teaching": "Dikkat dağıtıcılar görünmeyen düşmanlar. Her gün isimlerini listele: hangi uygulamalar, hangi kişiler, hangi düşünceler dikkatini bölüyor?\n\nListele = farkına var. Farkına vardığın şey gücünü kaybeder.\n\nBugün listene bakacak ve her dikkat dağıtıcı için bir savunma kuracaksın.",
-        "action": "5 dakikada bir liste yap: Bugün dikkatini bölen 5 şey ne? Her biri için bir savunma yaz.",
-        "reflectionPrompt": "Listenin en şaşırtıcı maddesi hangisiydi?",
+        "teaching": "'Bugün niye verimsizdim?' Akşam soruyorsun. Yanıt vermek zor — çünkü dikkatini **kim çaldı** somut değil. **Görünmeyen düşmanlar** günü bitirdi.\n\nNir Eyal (**Indistractable**): 'Distraction = isim koymadığın her şey. İsim koyduğun anda **görünür**, görünür hale geldiği anda **dövebilirsin**.'\n\n**Distraction Kill List = tanı + savunma.** Günde 1 kez kâğıt al, son 24 saatte dikkatini bölen **5 şeyi** yaz. Uygulama, kişi, düşünce — fark etmez. Her biri için **1 savunma** kur.\n\nÖrnek:\n- 'Instagram → ana ekrandan kaldırdım'\n- 'WhatsApp grupları → sessize aldım'\n- 'X kişinin mesajları → cevap saatlerini sınırladım'\n- 'Iş kaygısı → akşam 30 dk düşünce zamanı'\n\nMekanizma: **meta-bilinç** (kendi davranışına dışarıdan bakmak) prefrontal kortex aktivasyonu = otomatik dürtü zayıflar. **İsim koyma + savunma kurma = davranışsal alarm** sistemi.\n\nMarcus Aurelius: 'Düşmanını tanı, savaşı kazanma şansın var. Tanımadığın düşman kazandığın savaşta bile seni öldürür.'",
+        "action": "**5 dakika** liste yap: bugün dikkatini bölen **5 şey** ne? Her biri için **1 somut savunma** yaz.",
+        "reflectionPrompt": "Listenin en şaşırtıcı maddesi hangisiydi? Hiç tahmin etmediğin biri ortaya çıktı mı?",
         "quiz": [
           {
             "q": "Distraction Kill List nedir?",
@@ -3196,8 +3196,8 @@
       },
       "3": {
         "title": "Deep Work Bloku",
-        "teaching": "Cal Newport: deep work = deep value. Yüzeysel iş kolayca yapılır, kolayca taklit edilir, az değer üretir. Derin iş zor, nadir, çok değerli.\n\nGünde 90 dakika gerçek deep work, 8 saatlik sığ işten 10x daha değerli sonuç verir.\n\nBu seviyeye ulaşmak için kademeli antrenman gerekir.",
-        "action": "Bugün 90 dakikalık tek görev bloku yap (Pomodoro değil — 90 dakika kesintisiz).",
+        "teaching": "Modern bilgi ekonomisinde **kıt kaynak nedir**? Bilgi değil — internet bedava. Zaman değil — herkeste eşit. **Derin odak**. Dünya nüfusunun **belki %5'i** günde 90 dk kesintisiz odaklanabilir. Bu kişiler ekonominin **kazananları**.\n\nCal Newport (**Deep Work**, Georgetown CS professor): 'Deep work = deep value. Yüzeysel iş kolay, taklit edilebilir, az değerli. Derin iş zor, nadir, **piyasada en yüksek getiri**.'\n\nMatematik: 90 dakika **gerçek deep work** > 8 saat çoklu-görev (dağınık). Çünkü deep work'te **şu üç şey** olur:\n1. **Anlama derinliği** — 'aha' anları gelir\n2. **Otomatikleşme** — beyin paterni öğrenir, sonraki sefer hızlanır\n3. **Beceri inşa** — miyelin kılıfı kalınlaşır (Maguire 2000)\n\nMekanizma: deep work = **PFC (prefrontal cortex) + DMN sinerjisi**. Hem analitik (PFC) hem yaratıcı (DMN) ağlar devrede. Distraction = PFC kesilir, DMN bastırılır = sadece reaktif beyin (limbik sistem).\n\nKademeli antrenman gerek: 25 → 45 → 60 → 90 dakika. 2-4 hafta.",
+        "action": "Bugün **90 dakikalık tek görev bloku** yap. Pomodoro değil — **kesintisiz 90 dk**. Telefon başka oda.",
         "reflectionPrompt": "90 dakikadan sonra bitirdiğin iş, sığ modunda kaç saatte biterdi?",
         "quiz": [
           {
@@ -3227,9 +3227,9 @@
       },
       "4": {
         "title": "Sabah Kuralı: Önemli İlk",
-        "teaching": "Sabah istem gücün en yüksek. Akşam tükenmiş. Önemli işi sabaha al.\n\nSabah ilk 90 dakika = günün altın penceresi. Bu pencerede sığ iş yapmak (e-posta, WhatsApp) suç.\n\nÖncelik kuralı: günün en zorlu, en derin işi → ilk yapılır. Diğer her şey bekleyebilir.",
-        "action": "Yarın gününün en zor işini sabah 9–10:30 arasında yap. E-posta hayır. WhatsApp hayır. Sadece o iş.",
-        "reflectionPrompt": "Sabah ilk 90 dk derin işle başladığında, gün geri kalanı nasıl gitti?",
+        "teaching": "9'da işe geldin. 'Bir email kontrol edeyim.' 10:30 olmuş — hala emailde. 11'de toplantı. Öğle yemeği. 14:00 — 'şimdi başlayayım.' Yorgun. Telefon. 16:00 — '15:00'ye randevum var.' 18:00 — eve gidiyorsun, gerçek iş **hiç başlamadı**.\n\nBrian Tracy (**Eat That Frog**): 'Mark Twain — eğer sabah ilk işin canlı kurbağa yemekse, gün boyu sana daha kötü bir şey olmaz.' **En zor işi ilk yap.**\n\nRoy Baumeister (Florida State) — ego depletion: irade kası **gün boyu zayıflar**. Sabah 100/100, akşam 30/100. Önemli işe akşam başlamak = **boş tankta yarış**.\n\nMekanizma: kortizol piki (CAR — Cortisol Awakening Response) sabah ilk 30-60 dakika. Bu pik = doğal odak. Bunu **email yazmak**, WhatsApp cevaplamak için harcamak = en değerli yakıtı çöpe atmak.\n\n**Sabah ilk 90 dk = altın pencere.** Burada sığ iş yapmak suç. Email, mesaj, sosyal medya = öğleden sonra.\n\n**Kural**: günün en zorlu işi → ilk yap. Geri kalanı bekleyebilir.",
+        "action": "Yarın **gününün en zor işini** sabah 9–10:30 arasında yap. Email yok. WhatsApp yok. **Sadece o iş**.",
+        "reflectionPrompt": "Sabah ilk 90 dk derin işle başladığında, gün geri kalanı nasıl gitti? Akşam yorgun muydun, dolu muydun?",
         "quiz": [
           {
             "q": "Sabah 90 dk altın penceresi neden?",
@@ -3258,9 +3258,9 @@
       },
       "5": {
         "title": "Telefon Aralık Kuralı",
-        "teaching": "Telefonun sürekli açık olması = sürekli kesinti. Çalıştığın 8 saatte 50 kez bakıyorsan, 50 mikro-kesinti yaşıyor demektir.\n\nTelefon aralık kuralı: günde 2–3 belirlenmiş zaman dışında telefonu kapalı tut. Diğer zamanlar uçak modu.\n\nİlk hafta zor olur. İkinci hafta normalleşir.",
-        "action": "Bugün telefon aralık kuralını dene: 12:00, 17:00 ve 20:00 15 dakikalık kontrol. Diğer her zaman uçak modu.",
-        "reflectionPrompt": "Uçak modunda kaç kez telefon istedi? Hangi anda?",
+        "teaching": "Ortalama insan **günde 96 kez** telefon kontrol eder (Asurion 2019). Her **10 dakikada 1**. Çalışırken her kontrol = beyin bağlamını **yeniden inşa** etmek zorunda.\n\nGloria Mark (UC Irvine) çalışması: bir kesintiden sonra **tam odağa dönmek 23 dakika 15 saniye**. Yani günde 50 kontrol = teorik olarak **19 saat** odak kaybı (paralel sayılırsa). Pratikte: hiç derin işe girilemiyor.\n\n**Telefon aralık kuralı**: günde **2-3 belirlenmiş zaman** dışında telefon **uçak modu**. Örnek: 12:00, 17:00, 20:00 — her birinde 15 dakika 'toplu kontrol'. Diğer 23 saatte 15 dakika = **erişilemez**.\n\nMekanizma: telefon = sürekli **dopamin spike beklentisi**. Beyin 'bir şey gelmiş olabilir' der, kortizol salgılar. Kapalı telefon = beklenti kapalı = sinir sistemi sakin.\n\nİlk hafta zor olur — **fantom titreşim** hissi (Brendan O'Neill çalışmaları: %89 telefon kullanıcısı yaşar). 2. hafta beyin adapte olur.\n\nAcil olan **arar**. WhatsApp 'çok acil' = muhtemelen değil.",
+        "action": "Bugün **telefon aralık kuralını** dene: 12:00, 17:00, 20:00 = 15 dk kontrol. **Diğer her zaman uçak modu**.",
+        "reflectionPrompt": "Uçak modunda **kaç kez** telefon istedi? Hangi anda en güçlü dürtü geldi?",
         "quiz": [
           {
             "q": "Telefon aralık kuralı nedir?",
@@ -3289,10 +3289,10 @@
       },
       "6": {
         "title": "Tek Görev Disiplini",
-        "teaching": "Multitasking efsanesi: yüksek IQ'lu insanlar daha iyi çoklu görev yapar. Yanlış. Multitasker'ların IQ'su 10 puan düşer (Stanford). Tek seferde tek iş = derin işlem. Aynı 1 saatte 2x verim, 5x kalite.",
-        "action": "Bugün önemli işini tek seferde yap. Sekme kapat, telefon kapat, müzik kapat.",
-        "reflectionPrompt": "Çoklu görevden tek göreve geçtiğinde verimliliğindeki fark neydi?",
-        "proTip": "Çoklu sekme açma alışkanlığı varsa Cmd+W (Mac) ya da Ctrl+W (Windows) ile sırasıyla kapat.",
+        "teaching": "'Ama ben **iyi** multitasker'ım.' Kendin söyledin, arkadaşların söyler, CV'nde 'multitasking' beceri olarak yazıyor. **Hepsi yanlış.**\n\nClifford Nass (Stanford, 2009) — kapanış cümlesi: 'Multitasker'lar hiçbir şeyde iyi değil. Onları test ettik — odak, hafıza, görev geçişi. Hepsinde **daha kötü**. Üzerine: çalışmamıza katılan multitasker'lar **şaşırdı**, kendilerini iyi sanıyordu.'\n\nUniversity of London çalışması: e-posta + çalışma multitasking yapan kişilerin IQ'su test sırasında **10 puan düştü** — uykusuzluğun veya marihuana'nın etkisinden daha kötü.\n\n**Tek seferde tek iş** = derin işleme. Aynı 1 saatte:\n- **2x verim** (kantite)\n- **5x kalite** (anlama derinliği)\n- **Daha az yorgunluk** (geçiş enerjisi yok)\n\nMekanizma: PFC'de **task-set** tek olduğunda — tüm kaynak oraya gider. İki task-set = sürekli **inhibitory control** kullanımı = nöral yorgunluk.\n\nKritik: tek görev ≠ yavaş. Tek görev = **hızlı + kaliteli**. Multitask = **yavaş + hatalı**.",
+        "action": "Bugün önemli işini **tek seferde** yap. Sekme kapat, telefon kapat, müzik kapat.",
+        "reflectionPrompt": "Çoklu görevden tek göreve geçtiğinde verimliliğindeki fark neydi? Sonuç **kalitesi** nasıldı?",
+        "proTip": "Çoklu sekme açma alışkanlığı varsa **Cmd+W** (Mac) / **Ctrl+W** (Windows) ile sırasıyla kapat. Refleks olsun.",
         "quiz": [
           {
             "q": "Multitasker IQ ne kadar düşer?",
@@ -3320,10 +3320,10 @@
       },
       "7": {
         "title": "Bildirim Detoksu",
-        "teaching": "Telefon günde ortalama 80 bildirim verir. Her biri 23 dakika odak kaybı. Toplam = günde 2 saat odak yok. Çözüm: hepsini kapat. Acil olanlar zaten arar. Geri kalan zaten gereksizdi.",
-        "action": "Bugün tüm bildirimleri kapat (Apple/Google haritalar dahil). Sadece doğrudan telefon araması/SMS açık.",
-        "reflectionPrompt": "Bildirimsiz ilk gün nasıl hissettin? Eksik mi tam mı?",
-        "proTip": "Önce sosyal medya, sonra alışveriş, sonra uygulama bildirimleri. 3 dakika ayır.",
+        "teaching": "Sabah uyandın. Kilit ekranında **47 bildirim**. Her biri kendi rengiyle çağırıyor: WhatsApp yeşil, Instagram pembe, Twitter mavi. Daha gözünü tam açmadan **47 mikro-tetikleyici** beyni 'pres' etti. Kortizol patladı.\n\nGloria Mark (UC Irvine) + Adrian Ward (UT Austin) araştırmaları:\n- Ortalama telefon **günde 80-150 bildirim** atar\n- Her bildirim = **23 dakika 15 saniye** odağa dönüş\n- 'Görmesem de etkilenmez' yanlış — telefonun sadece **masada görünmesi** kognitif kapasiteyi **%10 azaltır** (Brain Drain study)\n\nMekanizma: bildirim = **dopamin tahmin spike + kortizol stress**. Beyin **'ne gelmiş?'** sorusunu otomatik üretir. Görmesen de cevap aramaya çalışır.\n\n**Çözüm: tüm bildirimleri kapat.** Sadece **doğrudan arama** + SMS açık. WhatsApp, Instagram, Twitter, gmail, news, e-ticaret, oyun — **hepsi sessiz**.\n\nAcil olan **arar**. WhatsApp 'çok acil' mesajı atan kişi acil değil. Email 'urgent' yazan kişi muhtemelen değil.\n\nİlk gün eksik hissedersin. 1 hafta sonra: hayatın geri geldi.",
+        "action": "Bugün **tüm bildirimleri kapat** (Apple/Google haritalar dahil). Sadece arama + SMS açık.",
+        "reflectionPrompt": "Bildirimsiz ilk gün nasıl hissettin? Eksik mi, **tam** mı?",
+        "proTip": "Önce **sosyal medya**, sonra alışveriş, sonra uygulama bildirimleri. 3 dakika ayır → hayatın değişir.",
         "quiz": [
           {
             "q": "Bir bildirim odak kaybı?",
@@ -3351,10 +3351,10 @@
       },
       "8": {
         "title": "Pomodoro Tekniği",
-        "teaching": "25 dakika odak + 5 dakika mola = 1 pomodoro. 4 pomodoro sonra 30 dk uzun mola. Beyin sürekli odak yapamaz; ritim olunca yapar. Bu basit teknik 1992'den beri test edildi.",
-        "action": "Bugün 1 pomodoro ile çalış: 25 dk odak, 5 dk mola. Sayacı görünür yere koy.",
-        "reflectionPrompt": "25 dakika sonunda yapmak istediklerinin ne kadarını bitirdin?",
-        "proTip": "Mola süresinde telefon yok. Pencereye bak, su iç, esne. Mola = beyin reset.",
+        "teaching": "'Tüm gün odaklanmam lazım' diyen kişi → 2 saat sonra zihinsel duvarda. Beyin **sürekli odak yapamaz**. Sprinter da 100 metreyi koşar, 10 km maraton tempoda gitmez. Beyin de aynı.\n\nFrancesco Cirillo (1987) — mutfak domates şeklinde zamanlayıcı (İtalyanca: pomodoro) kullanarak kişisel deney yaptı. Sonuç: **25 dakika odak + 5 dakika mola** = optimum. 4 pomodoro sonra **30 dakika uzun mola**. 1992'de yayımlandı, milyonlarca kişi pratikte.\n\nBilim: **basal ganglia + striatum** ritim seven yapılar. 25 dakika = pratiklikten geçmiş bir 'sprint birimi'. Çok kısa (10 dk) = momentum kuramaz. Çok uzun (60 dk) = beyin yorgun düşer.\n\nMekanizma: 25 dk = **çalışma belleği kapasitesi** sınırı. Sonrasında **interferans** başlar (yeni bilgi öncesini siler). 5 dk mola = **konsolidasyon** (yeni bilgi uzun belleğe taşınır).\n\nKritik: **mola gerçek olmalı**. Telefon değil — pencere, su, esnetme. Mola sırasında scroll yapan kişi → beyin **resetlenmedi** = yorgunluk birikir.",
+        "action": "Bugün **1 pomodoro** ile çalış: **25 dk odak + 5 dk mola**. Sayacı görünür yere koy.",
+        "reflectionPrompt": "25 dakika sonunda yapmak istediklerinin **ne kadarını** bitirdin? Beklediğinden çok mu az mı?",
+        "proTip": "Mola süresinde **telefon yok**. Pencereye bak, su iç, esne. Mola = **beyin reset** — telefon = beyin yorgunluk.",
         "quiz": [
           {
             "q": "1 pomodoro nedir?",
@@ -3382,10 +3382,10 @@
       },
       "9": {
         "title": "Time Blocking",
-        "teaching": "Yapılacaklar listesi naive. Her madde \"en az 15 dakika\" — 10 madde = 2.5 saat. Time blocking gerçekçi: takvime saat veriyorsun. 10:00-11:30 derin iş. 11:30-12:00 e-posta. Saatler kararlar verir, sen değil.",
-        "action": "Bugün için takvime 3 zaman bloku koy. Her bloğa 1 görev.",
-        "reflectionPrompt": "Time blocking olmadan günün nasıl geçerdi?",
-        "proTip": "İlk hafta beklenenden 2x süre koy. Doğru tahmin yapmak öğrenilen bir beceridir.",
+        "teaching": "Sabah listeyi yazdın: '10 madde, hepsini bitiririm.' Akşam: **3 maddesi** bitti, 7 'yarın' diye işaretlendi. Bu sürekli oluyor. Sebep: **liste fantezi**, **takvim gerçek**.\n\nYapılacaklar listesi: her madde 'en az 15 dakika'. 10 madde × ortalama 30 dk = **5 saat**. 8 saatlik gün için **çok**. Ama liste bunu söylemez. **Yalan söyler.**\n\nCal Newport: 'Time blocking — günde her dakikayı bir göreve **atamak**. Takvim 8 saat ise 8 saat planla — fazlası fantezi.'\n\nFormül: takvime **saat ver, görev değil**.\n- 09:00-10:30 → Deep work: rapor\n- 10:30-11:00 → Email\n- 11:00-12:00 → Toplantı X\n- 12:00-13:00 → Öğle + yürüyüş\n- 13:00-14:30 → Deep work: kod\n- 14:30-15:00 → Mola\n- 15:00-17:00 → Shallow: planlama\n\nMekanizma: **decision fatigue** önlenir — 'şimdi ne yapayım?' sorusu yok. **Saat söyler**. Beyin **execution moduna** geçer.\n\n**İlk hafta tahmin yanlış olur** — beklenenden 2x sürer. Bu **normal**. Doğru tahmin = öğrenilen beceri.",
+        "action": "Bugün için takvime **3 zaman bloku** koy. Her bloğa **1 görev** + tahmini süre.",
+        "reflectionPrompt": "Time blocking olmadan günün nasıl geçerdi? Hangi blok beklenenden uzun sürdü?",
+        "proTip": "**İlk hafta** beklenenden **2x süre** koy. Doğru tahmin = öğrenilen beceri — 3-4 hafta sonra keskinleşir.",
         "quiz": [
           {
             "q": "Time blocking nedir?",
@@ -3413,10 +3413,10 @@
       },
       "10": {
         "title": "Enerji Yönetimi",
-        "teaching": "Zaman değil, enerji yönetimi. 24 saat herkeste eşit. Ama yüksek enerjili 4 saat > düşük enerjili 12 saat. Sabah 9-12: derin iş. Öğle: shallow. Akşam: rutin. Enerji eğrini bil, ona göre çalış.",
-        "action": "Bugün enerji eğrini gözle. Sabah-öğle-akşam 1-10 arası puan ver.",
-        "reflectionPrompt": "En yüksek enerji saatin hangisiydi? Hangi işi yapıyordun?",
-        "proTip": "Enerji eğrini 1 hafta gözle. Pattern net olur, çalışma planını ona göre yap.",
+        "teaching": "Akşam 21:00. Sabahtan beri **yorgunsun** ama önemli bir raporu hala bitiremedin. 'Şimdi yapayım, hızlı biter' diyorsun. **3 saat sonunda** rapor yarım, üstüne **kötü yazılmış**. Sabah 9-11 arası yapsaydın **45 dakikada bitirirdin**. Sebep: **enerji yönetimi yok**.\n\nTony Schwartz (Energy Project): 'Zaman değil, **enerji** yönetimi. 24 saat herkeste eşit. Ama **enerji** kişisel, döngüsel, **yönetilebilir**.'\n\nUltradian döngüler + sirkadiyen ritim = enerji eğrisi:\n- **9:00-12:00** → zirve (PFC + kortizol)\n- **12:00-14:00** → öğle çukuru (sindirim)\n- **14:00-17:00** → ikinci dalga (ama daha düşük)\n- **17:00-21:00** → düşüş (yorgunluk birikir)\n- **21:00+** → çöküş (uyku hazırlığı)\n\nMekanizma: kortizol, adenozin, melatonin = **otomatik döngü**. Bu döngüye uygun çalışmak = **enerji + iş** sinerjisi. Karşı çalışmak = **savaş**.\n\nKritik: enerji eğrisi **kişisel**. 7 gün gözle, pattern net olur. Bazıları sabah 5, bazıları öğleden sonra zirve. **Senin pattern'in** ne?",
+        "action": "Bugün **enerji eğrini gözle**. Sabah, öğle, akşam → **1-10 puan**. Hangi işi yapıyordun da yaz.",
+        "reflectionPrompt": "En yüksek enerji saatin hangisiydi? O saatte hangi işi yapıyordun?",
+        "proTip": "**7 gün** gözle. Pattern net olur. **Yüksek enerji saatleri = derin iş**, düşük = shallow. Karşı koymak yorgunluk.",
         "quiz": [
           {
             "q": "Zaman vs enerji?",
@@ -3444,10 +3444,10 @@
       },
       "11": {
         "title": "Karar Yorgunluğu",
-        "teaching": "Beyin günde ~35.000 karar verir. Her karar willpower yer. Steve Jobs hep aynı kıyafet, Obama hep aynı renk takım — karar yorgunluğunu azaltmak için. Sen de gereksiz kararları otomatikleştir.",
-        "action": "Bugün 3 kararı otomatikleştir. Yarın ne giyeceksin? Kahvaltıda ne? Akşam ne yapacaksın?",
-        "reflectionPrompt": "Otomatikleşince zihninde ne kadar yer açıldı?",
-        "proTip": "Pazar günü hafta için karar ver. Pazartesi - cuma kararsız değilsin.",
+        "teaching": "Saat 17:00. 'Akşam yemekte ne yiyelim?' eşin soruyor. Cevap veremiyorsun. Çünkü bütün gün **karar verdin** — hangi mailı önce, hangi toplantıya katılmalı, hangi öncelik. Beyin **karar tankı boş**.\n\nBarack Obama (Vanity Fair röportajı): 'Ben sadece gri ya da mavi takım giyiyorum. Çünkü çok fazla karar verişe ihtiyacım var — yemek ve giyim kararları **otomatikleşmeli**.'\n\nSteve Jobs: aynı siyah turtleneck + Levi's 501. Mark Zuckerberg: aynı gri t-shirt. Bunlar **moda zayıflığı değil — strateji**.\n\nRoy Baumeister (Florida State): beyin günde **~35.000 karar** verir. Her karar **glikoz + irade** yer. Akşam tükenmiş = **kötü karar** zamanı. Şehirdeki tahmin/duruşma araştırması: yargıçların sabah duruşmalardaki olumlu kararı **%65**, akşam **%10**'a düşer.\n\nMekanizma: PFC **glukoz hassas**. Karar yorgunluğu = **PFC enerjisiz** = limbik sistem (duygusal, impulsif) **devralır**. Akşam impulsif alışveriş, kötü yemek seçimi, scroll sebep budur.\n\n**Çözüm: gereksizi otomatikleştir** — kıyafet, kahvaltı, sabah rutini.",
+        "action": "Bugün **3 kararı otomatikleştir**. Yarın ne giyeceksin? Kahvaltıda ne? Akşam ne yapacaksın? **Yaz, sabit kıl**.",
+        "reflectionPrompt": "Otomatikleşince zihninde ne kadar yer açıldı? Hangi önemli karara enerji kaldı?",
+        "proTip": "**Pazar günü hafta için** karar ver. Pazartesi-Cuma kararsız değilsin — sadece **execute** edersin.",
         "quiz": [
           {
             "q": "Günde karar sayısı?",
@@ -3475,10 +3475,10 @@
       },
       "12": {
         "title": "Inbox Sıfır",
-        "teaching": "E-posta gelen kutusu = başkasının önceliğinin senin önceliğine üstün gelmesi. Inbox 0 disiplini: gün sonu her e-postayı işle (yanıtla, arşivle, sil, planla). Birikim yok.",
-        "action": "Bugün inbox'ını sıfırla. Eski 100 e-postayı zorlama, son 24 saatlik yeter.",
-        "reflectionPrompt": "Inbox 0 hissi nasıldı? Daha berrak mı?",
-        "proTip": "Inbox'ı günde 2x kontrol et: 11:00 ve 17:00. Asla 09:00'dan önce.",
+        "teaching": "Inbox'ı açtın: **2,847 okunmamış mesaj**. Her gün 50-100 yeni gelir. **Hiçbiri okunmuyor**. Önemli olanı bulmak için scroll yapıyorsun. Asla bulamıyorsun. Inbox = **stres üretici**.\n\nMerlin Mann (**'Inbox Zero'** kavramı yaratıcısı): 'Inbox 0 ≠ 0 mesaj. = sıfır **dikkat gerektiren** mesaj. Her mesaj **işlendi** — yanıt, arşiv, sil, veya planla.'\n\n**4D kuralı** (David Allen GTD'den):\n- **Do** (2 dakika altı → hemen yap)\n- **Delegate** (başkasına gider → atayıp ilet)\n- **Defer** (sonra ele alınacak → planla + arşivle)\n- **Delete** (gereksiz → sil)\n\nMekanizma: e-posta gelen kutusu = **başkasının önceliğinin senin önceliğine üstün gelmesi**. Senin günü senin kuracak — Inbox başkalarının önceliklerini sana **dayatır**. Birikim = **sürekli stres** (görmesen de var).\n\nKritik kural: **Inbox'ı sabah ilk açma**. Sabah altın penceren — başkalarına ait değil. **11:00 ve 17:00** günde 2x. Bu saatler dışında **kapalı**.\n\nİlk gün son 24 saatlik mesajları işle. Eski 2,000 mesaj? **'Select all → Archive'**. Önemli olansa zaten geri gelir.",
+        "action": "Bugün **inbox'ını sıfırla**. Eski 100'ü zorlama, son 24 saatlik yeter. 4D kuralı uygula.",
+        "reflectionPrompt": "Inbox 0 hissi nasıldı? Daha **berrak** mı? Kayıp hissi mi yoksa **özgürlük** mü?",
+        "proTip": "Inbox'ı günde **2x kontrol et**: 11:00 ve 17:00. **Asla 09:00'dan önce** — sabah saatlerin senindir.",
         "quiz": [
           {
             "q": "Inbox 0 amacı?",
@@ -3506,10 +3506,10 @@
       },
       "13": {
         "title": "Toplantı Hijyeni",
-        "teaching": "Çoğu toplantı = e-posta olabilirdi. Toplantı kuralı: 1) Net agenda var mı? 2) Sen olmadan olmaz mı? 3) 30 dk'yı geçer mi? 3'üne hayırsa: gitme. Saat = pahalı para birimi.",
-        "action": "Bugün takvimindeki bir toplantıyı sorgula. Net agendası yoksa iptal et.",
-        "reflectionPrompt": "En son hangi toplantı tam zaman kaybıydı? Niye katıldın?",
-        "proTip": "Standing meeting yapılırsa 50% daha kısa sürer. Çoğu toplantıda ayakta dur.",
+        "teaching": "Bu hafta **6 saatlik toplantı** vardı. Çıktın, hatırla: kaç tanesinden **somut bir çıktı** geldi? Çoğu kez: 1 tane. Belki 2. Geri kalan 4 saat = **e-posta olabilirdi**.\n\nJason Fried (**Basecamp**): 'Toplantı = lüks. Beden + zaman + odak — hepsi tüketilir. Bedeli yüksek, çıktısı belirsiz.'\n\nHarvard Business Review: ortalama orta düzey yönetici **haftada 23 saat** toplantıda. Senior yönetici **35 saat**. **'Toplantı tükenmişliği'** modern profesyonel hastalığı.\n\n**3 sorulu filtre** (her toplantı çağrısı için):\n1. **Net agenda var mı?** Yoksa = belirsiz konuşma = zaman kaybı\n2. **Sen olmadan olmaz mı?** Çoğu kez: olur. **Notları sonra oku**.\n3. **30 dk'yı geçer mi?** Geçerse = çoğu insanın dikkat süresi aşıldı\n\n3'üne **hayır** ise → **gitme**. Yumuşak red: 'Bu toplantıya değer katamayacağım, ama notları okuyacağım.'\n\nStanding meeting (ayakta toplantı): Allen Bluedorn (Missouri Üniversitesi) araştırması: %34 daha kısa, **aynı karar kalitesi**. Ayakta = beden 'çabuk bitir' sinyali.",
+        "action": "Bugün **takvimindeki bir toplantıyı** sorgula. Net agendası yoksa **iptal et** veya nazikçe çık.",
+        "reflectionPrompt": "En son hangi toplantı **tam zaman kaybıydı**? Niye katıldın — alışkanlık mı, korku mu?",
+        "proTip": "**Standing meeting** = %50 kısa. Çoğu toplantıda **ayakta dur** — beden 'bitir' sinyali otomatik.",
         "quiz": [
           {
             "q": "Toplantı kuralı?",
@@ -3537,10 +3537,10 @@
       },
       "14": {
         "title": "Deep Work 90 Dakika",
-        "teaching": "Cal Newport: derin iş = ekonominin en değerli becerisi. 90 dakika kesintisiz odak = 8 saat çoklu görev. İlk 1 hafta zorlanırsın, beyin alışmamış. 30 gün sonra hayatın kontrol mekanizması olur.",
-        "action": "Bugün 1 deep work bloğu yap: 90 dakika, telefon başka odada, sekme kapalı.",
-        "reflectionPrompt": "90 dakika sonu enerjini ne durumda hissettin?",
-        "proTip": "Deep work öncesi su iç, tuvalet git, yiyecek hazırla. Hiç ayağa kalkma.",
+        "teaching": "**90 dakika.** Tek görev. Hiç kesinti. Telefon başka oda. Sekme bir tane. Müzik yok (veya enstrümantal). Bu **modern hayatın en değerli 90 dakikası**.\n\nCal Newport (**Deep Work**, kitap 2016 best-seller): 'Derin iş = ekonominin **en değerli becerisi**, **en nadir bulunan** aynı zamanda. Bu paradoks = onu yapabilenlere **muazzam getiri**.'\n\nMatematik: 90 dk derin iş > 8 saat çoklu görev. Çünkü:\n- **Flow state'e** girersin (Csikszentmihalyi) — verim 5x\n- **Bağlam** kurulur, hiç kopmaz\n- **Kalite** keskindir, hata az\n- **Yeniden başlama maliyeti** sıfır\n\nMekanizma: derin iş = **PFC + posterior parietal cortex** aktif birlikte. Dikkat ağı kararlı = miyelin kalınlaşması (deBellis vd, 2008 — uzun pratik = beyaz madde değişimi).\n\nİlk hafta **zor**. Beyin **alışmamış** — 25 dakikada protestoya başlar. 'Su iç', 'tuvalet', 'bir bakayım' — hepsi **direnç sesleri**. Geçer.\n\n**30 gün sonra**: 90 dk doğal. Sonra 120, sonra 180. **Kapasite genişler**. Carl Jung günde 8 saat deep work yapardı. Pratik = beceri.",
+        "action": "Bugün **1 deep work bloğu** yap: 90 dakika, telefon başka odada, **sekme kapalı**.",
+        "reflectionPrompt": "90 dakika sonu enerjini ne durumda hissettin? Yorgun mu, **canlı** mı?",
+        "proTip": "Deep work öncesi **su iç, tuvalet git, yiyecek hazırla**. 90 dk içinde **hiç ayağa kalkma**.",
         "quiz": [
           {
             "q": "Deep work bloğu süresi?",
@@ -3568,10 +3568,10 @@
       },
       "15": {
         "title": "Yakalama Sistemi",
-        "teaching": "Aklına gelen her fikri yazılı yakala. David Allen \"GTD\" tekniği: yakalanmamış fikir zihinde dolaşır, dikkatini çalar. Notes app, defter, kâğıt — fark etmez. Yakala = serbest bırak.",
-        "action": "Bugün her fikri/görevi yakaladığın 1 yer belirle. 24 saat aktif tut.",
-        "reflectionPrompt": "24 saatte kaç fikir yakaladın? Beklediğinden çok mu az mı?",
-        "proTip": "Akşam yakaladığın listeyi 5 dk gözden geçir. Acil olanları ertesi güne planla.",
+        "teaching": "Önemli bir iş yaparken aklına geldi: 'Annene ara, doğum günü.' 'Bu hesap için fatura kes.' '1000 lira gönder.' Yapmadın. Gece yatağa girdiğinde **3 saat uyuyamadın**. Beyin **listede tut**uyor, dikkatin çalıyor.\n\nDavid Allen (**Getting Things Done** — GTD): 'Yakalanmamış her şey **açık döngü**. Açık döngü = mental RAM tüketimi. Beyin bunu **bilinçaltında** hatırlatır — sürekli, döngüsel, yorucu.'\n\nÇözüm: **yakalama sistemi**. Aklına gelen her fikri **hemen, yazılı**, bir yere kayıt et. Apple Notes, Notion, defter — **fark etmez**. Sistem **basit + erişilebilir + sürekli açık** olsun.\n\n**Bloomeyer Effect / Zeigarnik Etkisi** (Bluma Zeigarnik 1927): yarım kalan görevler tamamlanmış görevlerden **%90 daha çok hatırlanır**. Beyin tamamlamayı **takıntılı** ister. Yazmak = beyne 'tamamlandı' sinyali = serbest bırakır.\n\nMekanizma: yakalama = **prefrontal cortex'in iş yükünü** azaltır. PFC sadece **işleme**, **depolama** değil. Beyin = işleyici (CPU), defter = depo (HDD).\n\nKritik kural: **tek yer**. 3 yere yazarsan = kaybolur. 1 yer = sistem.",
+        "action": "Bugün **her fikri/görevi yakaladığın 1 yer** belirle. 24 saat aktif tut, her aklına geleni yaz.",
+        "reflectionPrompt": "24 saatte **kaç fikir** yakaladın? Beklediğinden çok mu, az mı?",
+        "proTip": "**Akşam** yakaladığın listeyi 5 dk gözden geçir. Acil olanları **ertesi güne planla**, geri kalanı **arşivle**.",
         "quiz": [
           {
             "q": "GTD tekniği kim?",
