@@ -7168,10 +7168,10 @@
       },
       "31": {
         "title": "Bileşik Faiz",
-        "teaching": "Einstein: \"dünyanın 8. harikası.\" 100 TL × %10/yıl × 30 yıl = 1,750 TL. Kaynağı 30 yıl bekleten 17x katlar. Erken başla, küçük başla.",
-        "action": "Bugün bileşik faiz hesaplayıcısı kullan, 30 yıl sonrasını gör.",
-        "reflectionPrompt": "Bugün küçük tasarruf 30 yılda ne olur?",
-        "proTip": "compoundinterestcalculator.net = ücretsiz hesaplama.",
+        "teaching": "Albert Einstein: '**Bileşik faiz dünyanın 8. harikası**. Anlayanlar kazanır, anlamayanlar öder.' Matematik basit ama etki **şaşırtıcı**.\n\n**Basit faiz** (sadece anaparaya):\n- 100 TL × %10 × 30 yıl = 100 + (10 × 30) = **400 TL**\n\n**Bileşik faiz** (anapara + biriken faize de):\n- 100 TL × (1.10)^30 = 100 × 17.45 = **1,745 TL**\n\n**Aynı oran, aynı zaman, 4x fark**. Sebep: faizin de faizi alınıyor.\n\nDaha çarpıcı örnek (uzun vade):\n- 1,000 TL × %10 × 40 yıl = **45,259 TL**\n- 1,000 TL × %10 × 50 yıl = **117,391 TL**\n\nSon 10 yıl: **72,000 TL ekstra** — ana paranın 72 katı.\n\nBu **'late acceleration'** = bileşik faizin sırrı. **Zamanın gücü exponansiyel**.\n\nWarren Buffett servetini 99 öyle inşa etti — **70+ yıl bileşik**. 'Erken başla' onun mantra'sı.\n\nMatematik kuralı: **Rule of 72**. Para 2 katına çıkma süresi = 72 ÷ faiz oranı.\n- %10 yıllık = 7.2 yılda 2 kat\n- %7 yıllık = 10.3 yılda 2 kat\n- %4 yıllık = 18 yılda 2 kat\n\nMekanizma: birim zamandan kazanç **küçük**, biriken zamandan kazanç **devasa**. 'Sabırlı olmak' = matematiksel kazanç.\n\n**Erken başla, küçük başla**. 25'inde 1,000 TL yatırılan = 65'inde 45,259 TL. 35'inde başlayan: aynı para = 17,449 TL. **10 yıl gecikme = %60+ kayıp**.",
+        "action": "Bugün **bileşik faiz hesaplayıcısı** kullan, **30 yıl sonrasını** gör.",
+        "reflectionPrompt": "Bugün küçük tasarruf **30 yılda ne olur**? Şaşırttı mı?",
+        "proTip": "**compoundinterestcalculator.net** = ücretsiz hesaplama. 5 dakika denemekle anlayacağın acılı gerçek.",
         "quiz": [
           {
             "q": "Bileşik faiz kim \"8. harika\"?",
@@ -7199,10 +7199,10 @@
       },
       "32": {
         "title": "Servet Kimliği",
-        "teaching": "\"Kazanıyorum\" davranış. \"Servet sahibiyim\" kimlik. Zenginler farklı düşünür: harcamadan önce yatırır, kira değil sahip olur, vakit yatırım. Kimliği değiştir.",
-        "action": "Bugün \"servet sahibi\" kimliği koy.",
-        "reflectionPrompt": "Yeni kimlikle hangi karar değişti?",
-        "proTip": "Aynaya: \"Ben servet inşa ediyorum.\" Günlük tekrar.",
+        "teaching": "'**Ne iş yapıyorsun?**' Cevap: 'Mühendis, 30K kazanıyorum.' Bu cümle = kimliğin **maaşlı çalışan**. Maaş = davranış.\n\nAlternatif: '**Ben servet inşa ediyorum**, ana işim mühendislik.' = kimlik = **servet inşaatçısı**. Mühendislik **araç**.\n\nBu **küçük dilbilgisi farkı** = uzun vade **dramatic** finansal sonuç.\n\nT. Harv Eker: '**Düşük serveti olan kişi** ile **yüksek serveti olan kişi** arasındaki fark = davranış değil, **zihniyet**. Aynı maaş, aynı şehir — biri zengin oluyor, diğeri fakir kalıyor. Fark **kimlik**.'\n\n**Zenginler farklı düşünür** (Eker, Stanley, Hill — milyoner araştırmaları):\n\n- **Harcamadan önce yatırır** (önce kendine öde)\n- **Kira değil sahip olur** (varlık üretir)\n- **Vakit = yatırım** (öğrenme, network, beceri)\n- **Pasif gelir hedefler** (gelir akımları)\n- **Risk yönetir** (sigorta, çeşitlenme)\n- **Uzun vade düşünür** (10-30 yıl planlar)\n- **Para konuşur** (tabu yok)\n\n**Fakir zihniyet**:\n- Önce harcar, kalanı 'tasarruf'\n- Sürekli kira ödüyor\n- Vakit eğlence için\n- Sadece maaş\n- Risk almak veya hiç değil\n- Aylık plan max\n- Para tabu\n\nBunlar **kimlik kayması** ile değişir, davranış değişikliği değil.\n\n**Pratik**: 'Ben **servet inşa ediyorum**.' Aynaya, günlük tekrar. 30 gün = nöral kayıt.",
+        "action": "Bugün **'servet sahibi' kimliği** koy.",
+        "reflectionPrompt": "Yeni kimlikle **hangi karar** değişti? Hangi 'fakir' alışkanlık fark edildi?",
+        "proTip": "Aynaya: **'Ben servet inşa ediyorum.'** Günlük tekrar. 30 gün = nöral kayıt.",
         "quiz": [
           {
             "q": "Davranış mı kimlik mi?",
@@ -7230,10 +7230,10 @@
       },
       "33": {
         "title": "Bir Kez Al, Pişman Ol",
-        "teaching": "Ucuz × 5 = pahalı. Ayakkabı 200 TL × 5 yıl = 1,000 TL. Ayakkabı 1,000 TL × 20 yıl = 1,000 TL. Aynı bütçe, 4x kalite. Toplam yaşam maliyeti.",
-        "action": "Bugün uzun vade kullanılacak 1 ürünü kaliteli al.",
-        "reflectionPrompt": "Kalite uzun vade nasıl tasarruf eder?",
-        "proTip": "Buy It For Life subreddit = hayat boyu ürün önerileri.",
+        "teaching": "Ders 15'te 'Bir Kez Kalite Al' temellerini öğrendin. **Bu ders mastery seviyesi**: **TCO (Total Cost of Ownership)** — toplam yaşam maliyeti.\n\nUcuz şey görünür maliyetten **çok daha pahalıdır**. Çünkü:\n- **Sık değiştirme** (alışveriş zamanı + stres)\n- **Düşük performans** (üretkenlik kaybı, ek maliyet)\n- **Bozulma masrafı** (tamir, parça)\n- **Stres** (sürekli bir şey bozuluyor)\n- **Çevresel** (atık, israf)\n\nÖrnek: **çamaşır makinesi**\n- **Ucuz 5K TL** × 7 yıl + tamirler 2K = **7K, 7 yıl**\n- **Pahalı 15K TL** × 20 yıl + bakım 1K = **16K, 20 yıl**\n- Yıllık TCO: 1K (ucuz) vs 800 TL (pahalı) → **pahalı %20 daha ucuz/yıl**\n\n**TCO hesaplaması formülü**:\n```\nTCO = (Satın alma + Sürdürme + Tamir) ÷ Beklenen kullanım yılı\n```\n\nKategorize:\n- **Yüksek frekans kullanım**: yatak, sandalye, mutfak aletleri → **kalite şart**\n- **Düşük frekans**: özel etkinlik kıyafeti, parti aksesuarı → ucuz OK\n- **Moda**: 1-2 yıl eskir → ucuz\n- **Klasik**: 20+ yıl giyilir → pahalı + kalite\n\nMekanizma: ucuz **kısa süreli dopamin** (anlık tasarruf), pahalı **uzun süreli memnuniyet** (sürekli kaliteli kullanım).\n\n**Buy It For Life (BIFL)** Reddit subreddit: 1M+ kişi, hayat boyu ürün önerileri. Marka, model, niye önerildiği detaylı.",
+        "action": "Bugün **uzun vade kullanılacak 1 ürünü** kaliteli al. TCO hesapla.",
+        "reflectionPrompt": "Kalite **uzun vade nasıl tasarruf** eder? Hangi ürün için en net?",
+        "proTip": "**Buy It For Life subreddit** = hayat boyu ürün önerileri. Araştırma değer.",
         "quiz": [
           {
             "q": "Ucuz × 5 = ?",
@@ -7261,10 +7261,10 @@
       },
       "34": {
         "title": "Gelir Akımları",
-        "teaching": "1 gelir = 1 risk. 7 zengin tipinde ortalama 7 gelir akımı (Tom Corley araştırma): maaş + freelance + yatırım temettü + kira + dijital + mentörlük + telif. 3-4'ü hedef.",
-        "action": "Bugün 1 ek gelir akımı planı yaz.",
-        "reflectionPrompt": "Hangisi en kolay başlatılır?",
-        "proTip": "Dijital ürün (e-kitap, kurs) = en yüksek marjin.",
+        "teaching": "Ders 17'de **çoklu gelir** kavramını öğrendin. Bu **mastery seviyesi**: **7 gelir akımı modeli**.\n\nThomas Corley (**Rich Habits**, 5 yıl 233 milyoner araştırması): 'Self-made milyonerlerin **ortalama 7 farklı gelir akımı** vardır. Tek gelir = tek nokta arıza = ortalama servet maximum.'\n\n**7 klasik gelir tipi**:\n\n1. **Earned income** (maaş, mesai) — ana iş\n2. **Profit income** (işletme karı) — sahibi olduğun iş\n3. **Interest income** (faiz) — banka mevduat, tahvil\n4. **Dividend income** (temettü) — hisse senedi\n5. **Rental income** (kira) — emlak\n6. **Capital gains** (sermaye kazancı) — varlık satışı (hisse, emlak)\n7. **Royalty income** (telif) — kitap, müzik, patent, online kurs\n\nÇoğu insan **sadece #1** (maaş). Bu tek nokta. İşten çıkarılma, hastalık, sektör krizi = gelir sıfır.\n\n**Milyoner profili**:\n- Maaş (#1)\n- Yatırım temettü (#4)\n- Kira (#5)\n- Online kurs / e-kitap (#7)\n- Freelance (#1 ek)\n- Mentörlük (#1 ek)\n- Hisse kazancı (#6)\n= 7 akım\n\n**3-4 hedef** sade kişi için. Hedef ayda **3-5K ekstra** her bir akımdan.\n\n**En yüksek marjin: dijital ürün**:\n- E-kitap: %95+ marj\n- Online kurs: %85+ marj\n- SaaS / app: %70-90 marj\n- Kira: %30-50 marj\n- Freelance: zaman bağımlı, %100 zaman\n\nMekanizma: çoklu gelir = **risk dağılımı + opsiyon değeri**. Bir akım büyürse → exponansiyel. Hepsi sabit kalsa = pasif gelir tabanı.",
+        "action": "Bugün **1 ek gelir akımı planı** yaz. Hangi 7 tipinden?",
+        "reflectionPrompt": "Hangisi **en kolay başlatılır** senin durumun için?",
+        "proTip": "**Dijital ürün (e-kitap, kurs)** = en yüksek marj + ölçeklenir + pasif.",
         "quiz": [
           {
             "q": "Optimum gelir akımı?",
@@ -7292,10 +7292,10 @@
       },
       "35": {
         "title": "Vergi Optimizasyonu",
-        "teaching": "Vergi en büyük yıllık harcaman. %25-40 gelir gider. Optimize et: emeklilik fonu, eğitim indirim, sağlık katkısı, bağış. 2 saat öğrenme = yılda binlerce.",
-        "action": "Bugün hangi vergi indirimlerini kullanmıyorsun araştır.",
-        "reflectionPrompt": "En büyük kayıp hangisi?",
-        "proTip": "CPA (mali müşavir) 1 saatlik = 5K TL. Yıllık 50K kazanır.",
+        "teaching": "Ders 22'de vergi farkındalığını öğrendin. **Bu ders aktif optimizasyon**.\n\nVergi = **gelirin %25-40'ı**. Maaş 30K = vergi 7.5-12K. Yılda 90-144K. **30 yıl ortalama** = 3-5 milyon TL.\n\nBu para **kaybedilmiş zaman + ömür**. Hiç **fayda olmuyor**.\n\nGerçekten? Yasal olarak **azaltmak mümkün**. Çoğu insan **uzmanlık yok** ve fazla öder.\n\n**Türkiye'de aktif vergi optimizasyonu**:\n\n1. **BES (Bireysel Emeklilik)** — yıllık prim ödediğin için **%25 devlet katkısı**. Aynı zamanda vergi indirim. Çift kazanç.\n\n2. **Hayat sigortası primi** — vergi indirimi (limitli ama gerçek)\n\n3. **Şahıs şirketi** kur (serbest çalışıyorsan) — gider yazabilirsin: ev kira (iş için %), ulaşım, telefon, bilgisayar, eğitim, vs. **Vergi tabanı düşer**.\n\n4. **Eğitim indirim** — kendin, eş, çocuk için eğitim masrafları\n\n5. **Sağlık** — özel poliçe primi, tedavi, hatta tıbbi cihaz\n\n6. **Bağış** — resmi vakıflara bağış, vergi indirim\n\n7. **Konut kira beyanı** — gider olarak gösterilebilir\n\n8. **Kâr şirket** kur — gelirini **dağıtmadan yatırıma** yönlendir. Şahıs vergisi düşer.\n\n**Yatırım vergi**:\n- Stopaj kesintisi var (banka faizi, temettü)\n- Uzun vade yatırım (1+ yıl) hisse senedi → vergisiz\n- BIST endeks fonu uzun tutarsa avantajlı\n\nMekanizma: vergi yasası **karmaşık tasarım**. Çoğu insan complicate'ten kaçınır. Optimum strateji = **mali müşavir** + **kendi öğren** kombinasyonu.\n\n**Mali müşavir 1 saatlik = ₺5K**. Yıllık kazandırır **₺50K**. 10x ROI.",
+        "action": "Bugün hangi **vergi indirimlerini kullanmıyorsun** araştır.",
+        "reflectionPrompt": "**En büyük kayıp** hangisi?",
+        "proTip": "**CPA (mali müşavir) 1 saatlik = ₺5K**. Yıllık 50K kazandırır. **10x ROI yatırım**.",
         "quiz": [
           {
             "q": "Vergi büyüklüğü?",
@@ -7323,10 +7323,10 @@
       },
       "36": {
         "title": "Sigorta Mastery",
-        "teaching": "Sigorta sıkıcı ama hayat kurtarır. Olmazsa olmaz: sağlık, hayat (aile varsa), iş kaybı, mesleki sorumluluk. Olmaması: araba kasko, sandalye, telefon ekran.",
-        "action": "Bugün sigortalarını gözden geçir. Eksik veya fazla?",
-        "reflectionPrompt": "Hangi sigorta öncelik?",
-        "proTip": "Yılda 1 karşılaştır. Aynı koruma %30 daha ucuz olabilir.",
+        "teaching": "Ders 23'te sigorta disiplini temellerini öğrendin. **Bu ders mastery seviyesi**: **kritik 4 sigorta** + iyi pratik.\n\n**Olmazsa olmaz 4 sigorta**:\n\n1. **Sağlık (özel poliçe)** — devlet hastanesi yetersiz, özel hastane tedavi **₺50K-500K**. Yıllık prim ₺3-15K. **ROI net**.\n\n2. **Hayat sigortası** (aile varsa) — beklenmedik ölüm = ailen finansal **enkaz**. 30 yaş, 1M koruma = ayda **₺200-500**. **Aile bekası**.\n\n3. **İş kaybı / işsizlik sigortası** — beklenmedik işsizlik = 6+ ay gelir kaybı. Sigorta = bridge buffer. Genelde devlet (İŞKUR) yetersiz, özel ek koruma.\n\n4. **Mesleki sorumluluk** (serbest meslek: doktor, mimar, avukat, danışman) — hata yapma riski yüksek = koruma şart.\n\n**Olmaması olmazsa olmaz** (kâr tuzakları):\n- **Araba kasko** (eski araba için) — yenisi için trafik+kasko yeter\n- **Sandalye sigortası** (saçma — kendi ev koşulu)\n- **Telefon ekran sigortası** (kapak al, dikkat et)\n- **Uzatılmış garanti** (üretici garantisi yeter, ek %50 maliyet sıçraması)\n\nNassim Taleb (**Antifragile**): 'Sigorta = **tail risk** (kuyruk risk) yönetimi. Düşük olasılık × yüksek etki = sigorta mantıklı. Yüksek olasılık × düşük etki = sigorta kâr tuzağı.'\n\n**Yıllık karşılaştırma kritik**:\n- Sigorta şirketleri sadakatten faydalanır (otomatik prim artırır)\n- Aynı koruma rakipte **%30 daha ucuz** olabilir\n- Karşılaştırma siteleri: SigortaTeklifAl, Sigortam.net\n- Her yıl prim ödemesi öncesi karşılaştır, geç\n\nMekanizma: sigorta = **felaket buffer**, **birikim değil**. Olmayacak diye düşünmek = ön kabul. Olursa = finansal yıkım.",
+        "action": "Bugün **sigortalarını gözden geçir**. **Eksik veya fazla**?",
+        "reflectionPrompt": "Hangi sigorta **öncelik**? Hangi var olan aslında **gereksiz**?",
+        "proTip": "**Yılda 1 karşılaştır**. Aynı koruma **%30 daha ucuz** olabilir.",
         "quiz": [
           {
             "q": "Olmazsa olmaz sigorta?",
@@ -7354,10 +7354,10 @@
       },
       "37": {
         "title": "Yatırım Çeşitlenmesi",
-        "teaching": "Tek yumurta 1 sepete = risk. Yatırım: %60 hisse, %20 tahvil, %10 emlak, %10 nakit. Çeşitlenme = az risk + uzun vade kazanç.",
-        "action": "Bugün yatırımlarını analiz et. Çeşitli mi?",
-        "reflectionPrompt": "Hangi sınıf eksik?",
-        "proTip": "Ray Dalio \"All Weather Portfolio\" = ücretsiz şablon.",
+        "teaching": "Tüm paranı **Bitcoin'e** koydun. **'2025'te 200K dolar olacak, kesin.'** 3 ay sonra: -%50. **Hayatın krizinde**. Tek varlık = **tek nokta arıza**.\n\nBu sahne 2022'de **milyonlarca** kişi yaşadı. Klasik **konsantrasyon riski**.\n\nHarry Markowitz (Nobel Prize 1990, Modern Portfolio Theory): 'Tek **'free lunch'** finansta = **çeşitlenme**. Aynı beklenen getiri, daha az risk.'\n\n**Klasik çeşitlenme** (dengeli yatırımcı):\n- **%60 hisse** (büyüme — endeks fonları)\n- **%20 tahvil** (istikrar — devlet ya da yüksek dereceli)\n- **%10 emlak** (REIT veya direkt)\n- **%10 nakit** (acil + fırsat bekleme)\n\n**Yaşa göre ayarlama**:\n- **20-30 yaş**: %80-90 hisse (uzun ufuk, yüksek risk OK)\n- **40-50 yaş**: %60-70 hisse, daha çok tahvil\n- **60+**: %30-50 hisse, çoğu tahvil + nakit\n\n**Ray Dalio'nun 'All Weather Portfolio'** (Bridgewater Associates kurucusu):\n- %30 hisse\n- %40 uzun vade tahvil\n- %15 orta vade tahvil\n- %7.5 altın\n- %7.5 emtia\n\nBu portföy **her ekonomik döngüde** (enflasyon, deflasyon, büyüme, durgunluk) iyi performans gösterir.\n\nMekanizma: farklı varlık sınıfları **farklı kriz**lerde tepki verir. Hisse düşer → tahvil çıkar (genelde). Enflasyon → altın korur. Çeşitli = riskten korunma + uzun vade kazanç.\n\nKripto var mı? **%5-10 max** (Ders 39). Yüksek risk = küçük pozisyon.",
+        "action": "Bugün **yatırımlarını analiz et**. Çeşitli mi yoksa **konsantre** mi?",
+        "reflectionPrompt": "Hangi varlık sınıfı **eksik**? Hangisi **aşırı**?",
+        "proTip": "**Ray Dalio 'All Weather Portfolio'** = ücretsiz şablon. 5 varlık sınıfı, her dönemde işler.",
         "quiz": [
           {
             "q": "Çeşitlenme avantajı?",
@@ -7385,10 +7385,10 @@
       },
       "38": {
         "title": "Emlak Farkındalığı",
-        "teaching": "Emlak = kira yerine sahip olmak + kira gelir + değer artışı. Türkiye'de 25 yıl ortalama yıllık %12 değer artışı. 3 evi olan = pasif gelir.",
-        "action": "Bugün ev satın alma vs kira karşılaştırma yap.",
-        "reflectionPrompt": "5 yıl sonra hangi seçenek daha karlı?",
-        "proTip": "İlk evi 30 yaş öncesi al. Bileşik kazanç.",
+        "teaching": "**10 yıldır kira ödüyorsun**. Aylık ₺15K × 12 × 10 = **1.8 milyon TL** — başkasının cebine. Bu para senin **evinin peşinatı + tasarrufu** olabilirdi.\n\n**Emlak = 3 boyutlu yatırım**:\n1. **Kira yerine sahip** — kira ödemiyorsun, kendi cebine birikim\n2. **Kira geliri** (ek ev varsa) — pasif gelir\n3. **Değer artışı** — uzun vade sermaye kazancı\n\n**Türkiye 25 yıl ortalama emlak performansı**: yıllık **%12 değer artışı** (TUİK + emlak istatistikleri). Bileşik etki çarpıcı.\n\nMatematik:\n- 500K ev × 12% × 25 yıl = **8.5 milyon TL** (sadece değer artışı)\n- + 25 yıl kira ödememek = ekstra ₺3-5M tasarruf\n- = **~12-13 milyon TL net pozisyon**\n\nKira **alternatif**: aynı 25 yıl sonra sıfır (kira ödedin, varlığın yok).\n\n**Kira vs Sahip karşılaştırması** (1 ev için 25 yıl):\n- **Kira**: ₺15K × 12 × 25 + enflasyon = **~9 milyon harcanmış**\n- **Sahip**: mortgage (500K) + ödemeler + bakım = **~6 milyon harcanmış** + 8.5M varlık = **net +2.5M** \n\nFark: **11.5 milyon TL** karar.\n\n**Kritik nüans**:\n- **30 yaş öncesi al** — bileşik kazanç maksimum\n- **Kendi oturduğun ev = emlak değil yaşam aracı** — değer artışı bonus\n- **Yatırım emlağı** = farklı strateji (kira getiri + değer artışı bilinçli)\n- **Konum > her şey** — kötü konum = kötü emlak\n\n3+ evi olan kişi = pasif gelir tabanı + emeklilik finansman. Robert Kiyosaki (**Rich Dad Poor Dad**) felsefesi.\n\nMekanizma: emlak = **enflasyona karşı doğal koruma** + **bileşik değer artışı** + **leverage** (mortgage kredisi ile büyük varlık kontrolü).",
+        "action": "Bugün **ev satın alma vs kira** karşılaştırma yap.",
+        "reflectionPrompt": "**5 yıl sonra hangi seçenek daha karlı** senin durumun için?",
+        "proTip": "**İlk evi 30 yaş öncesi al**. Bileşik kazanç maksimum.",
         "quiz": [
           {
             "q": "Türkiye 25 yıl emlak ortalaması?",
@@ -7416,10 +7416,10 @@
       },
       "39": {
         "title": "Kripto Farkındalığı",
-        "teaching": "Kripto = volatil ama uzun vade saklamada potansiyel. Bitcoin 2010 = 0.05 USD, 2024 = 70K USD. Risk: %5-10 portföyün max. DCA = aylık küçük al.",
-        "action": "Bugün kripto araştır, %2 portföyle başla (eğer dene).",
-        "reflectionPrompt": "Risk hissi nasıl?",
-        "proTip": "Coldwallet kullan, exchange'da bırakma.",
+        "teaching": "**Bitcoin 2010**: 0.05 dolar. **Bitcoin 2024**: 70,000 dolar. **Çarpan: 1,400,000x**. 1 dolarlık alım = 1.4 milyon dolar. Bu **olağanüstü** ve **eşi benzeri yok** finans tarihinde.\n\nAma aynı zamanda **çok volatil**:\n- 2017 ATH: 20K → 2018 düşüş: 3K (-%85)\n- 2021 ATH: 69K → 2022 düşüş: 15K (-%78)\n- 2024 ATH: 73K → daha sonra?\n\nKripto = **yüksek risk, yüksek potansiyel**. **Spekülasyon ≠ yatırım**, çoğu zaman.\n\n**Razanablı kripto yaklaşımı**:\n\n1. **Portföy %5-10 max** — kayıp kabul edebileceğin miktar\n2. **DCA (Dollar Cost Averaging)** — aylık küçük al (zamanlama hatasını öner)\n3. **Sadece Bitcoin + Ethereum** (riskli kişi için diğerleri de) — alt coin'ler **scam riski** yüksek\n4. **Cold wallet** sakla — Ledger, Trezor (Exchange'de bırakma — FTX/Mt.Gox dersleri)\n5. **'Get rich quick' beklemiyorsun** — uzun vade (5-10 yıl) düşün\n\nMichael Saylor (MicroStrategy CEO, Bitcoin maximalist) vs Warren Buffett (Bitcoin skeptic) — uzmanlar **anlaşamaz**. Bu sembol: kripto belirsiz.\n\n**Türkiye için**: KKM faiz politikası, TL değer kaybı = kripto **enflasyon koruması** olabilir. Ama **regülasyon riski** var (yasaklanabilir).\n\nMekanizma: kripto = **asymmetric bet** — küçük yatırım, büyük potansiyel kazanç veya tam kayıp. Nassim Taleb terminolojisi: **'Black Swan upside'** + downside sınırlı (sadece koyduğun para).\n\n**Eylem**: araştır, anlama, küçük başla. **Hiç anlamadan büyük yatırma**.\n\nKritik: **Exchange'de para bırakma**. 2022 FTX iflası, milyonlarca kişi parasını kaybetti. **Cold wallet** = offline saklama.",
+        "action": "Bugün **kripto araştır**, **%2 portföyle başla** (denemek istersen).",
+        "reflectionPrompt": "**Risk hissi** nasıl? Volatilite kabul edilebilir mi?",
+        "proTip": "**Cold wallet** (Ledger, Trezor) kullan. **Exchange'da bırakma** — FTX dersi.",
         "quiz": [
           {
             "q": "Kripto portföy max?",
@@ -7447,10 +7447,10 @@
       },
       "40": {
         "title": "Miras Planlaması",
-        "teaching": "Vasiyetname yok = devlet servet dağıtır. Aile = vasiyet zorunlu. Hayat sigortası + vasiyet + güvenli kasa. 30+ yaş için olmazsa olmaz.",
-        "action": "Bugün basit vasiyet yaz. Notere onaylat.",
-        "reflectionPrompt": "Aile bilgilendirildi mi?",
-        "proTip": "Notere noter ücretsiz, vasiyet 200-500 TL.",
+        "teaching": "Aniden ölürsen — beklenmedik kaza, sağlık problemi — ailen ne olur? **Vasiyetname yoksa**: devlet **kanuni mirasçılık** sistemine göre dağıtır. Eş + çocuklar belirli oranda. **Karmaşık**, **uzun süren**, çoğu zaman **istemediğin şekilde**.\n\nÖrnek: vasiyet yok, eş ve 2 çocuk → eş %25, çocuklar **%75'i paylaşır**. Ev satılabilir, varlık dağılabilir. Eşinin **rahat yaşama** garantisi yok.\n\n**Aile = vasiyet zorunlu**. 30+ yaş için **olmazsa olmaz**.\n\n**Miras planlaması 3 ayak**:\n\n1. **Vasiyet (vasiyetname)** — kimin neyi alacağı detaylı\n   - Notere yazılı 200-500 TL\n   - Resmi süreç, tartışma riski az\n   - Değişebilir (yeni durum, yeni vasiyet)\n\n2. **Hayat sigortası** — likit nakit hızlı erişim\n   - Vasiyet sürecinden bağımsız\n   - Aileye hemen para (yaşam standardı korunur)\n\n3. **Güvenli kasa / belge düzeni** — tüm belgeler **bulunabilir** durumda\n   - Tapu, banka hesapları, sigorta poliçeleri, dijital şifreler\n   - Eş/güvenilir kişi yerini biliyor\n\n**Modern eklemeler**:\n- **Dijital miras** — şifreler, cryptokeys, sosyal medya hesapları\n- **Çocuk vasi** — küçük çocuklar varsa kim bakacak\n- **Sağlık vasiyeti** — bilinçsiz durumdaysa tedavi tercihleri\n\nMekanizma: vasiyet = **belirsizlik = çatışma**. Net vasiyet = aile uyumlu kalır. Vasiyet yok = aile yıllarca mahkemede + ilişki bozulur.\n\nKritik: **kimseye sürpriz olmasın**. Aile bilgilendirilsin — 'siz öldüğünde ne olacak' tabusu kırılsın.",
+        "action": "Bugün **basit vasiyet yaz**. Notere onaylat (₺200-500).",
+        "reflectionPrompt": "**Aile bilgilendirildi** mi? Belgeler bulunabilir mi?",
+        "proTip": "**Notere noter ücreti küçük**, vasiyet ₺200-500. Yıllar süren aile çatışmasından **ucuz**.",
         "quiz": [
           {
             "q": "Vasiyetname yoksa?",
