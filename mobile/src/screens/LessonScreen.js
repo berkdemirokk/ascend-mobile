@@ -71,6 +71,7 @@ export default function LessonScreen({ navigation, route }) {
     userProfile,
     lastLetterShownAt,
     recordFutureLetterShown,
+    baselineAssessment,
     todaySessionLessons,
     _momentumToast,
     clearMomentumToast,
@@ -555,6 +556,21 @@ export default function LessonScreen({ navigation, route }) {
     // sequence for zero user-facing benefit.
     if (totalCompleted === 1) {
       cancelFirstWeekHooks().catch(() => {});
+      // BASELINE ASSESSMENT prompt — moved out of onboarding (D0 churn
+      // fix). The user has now felt one full lesson and the 'measure
+      // my starting point so we can show how far you came in 30 days'
+      // framing has real weight. Only show if no baseline exists yet
+      // (returning users from older versions might already have one).
+      if (!baselineAssessment) {
+        // Defer a tick so the celebration animation finishes before
+        // we hard-replace the screen — feels less like a hijack.
+        setTimeout(() => {
+          try {
+            navigation.replace('Assessment', { mode: 'baseline' });
+          } catch {}
+        }, 250);
+        return;
+      }
     }
 
     // Store review prompt — gated to >= 3 lessons, >= 2 streak, 24h

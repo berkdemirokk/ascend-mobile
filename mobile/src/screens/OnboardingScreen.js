@@ -60,7 +60,14 @@ import { useAuth } from '../contexts/AuthContext';
 // engaged — they've just committed to a path + archetype. The
 // upsell still fires after; assessment is non-blocking (skippable
 // via the AssessmentScreen) so it doesn't add a hard gate.
-const STEPS = ['personalize', 'pickPath', 'archetype', 'assessment', 'upsell'];
+// Onboarding step order — Assessment was here, was moved out.
+// Reason (UX audit): forcing a 5-question subjective slider exercise
+// BEFORE the user has experienced a single lesson hits a 30%+ D0
+// drop because the user hasn't built any reason to invest the
+// minute it takes. The assessment now runs RIGHT AFTER the first
+// lesson's celebration, when the user has felt the loop click and
+// the 'measure my starting point' framing actually makes sense.
+const STEPS = ['personalize', 'pickPath', 'archetype', 'upsell'];
 
 // Map a chosen goal to the path that best fits it. Used to pre-select on the
 // next step so the personalization actually affects what the user sees first.
@@ -78,7 +85,6 @@ export default function OnboardingScreen({ navigation }) {
     completeOnboarding,
     setUserProfile,
     setActivePath,
-    setBaselineAssessment,
     isPremium,
   } = useApp();
   const { user } = useAuth();
@@ -228,9 +234,9 @@ export default function OnboardingScreen({ navigation }) {
     } else if (step === 'pickPath') {
       setStep('archetype');
     } else if (step === 'archetype') {
-      setStep('assessment');
-    } else if (step === 'assessment') {
-      // Skip upsell for premium users — they've already converted.
+      // Assessment removed from onboarding (D0 churn fix). The
+      // baseline is now captured post-first-lesson, where the user
+      // has just felt the loop click. Skip upsell for premium users.
       if (isPremium) {
         finishOnboarding();
       } else {
@@ -298,11 +304,6 @@ export default function OnboardingScreen({ navigation }) {
             selectedArchetype={selectedArchetype}
             onSelect={setSelectedArchetype}
           />
-        ) : step === 'assessment' ? (
-          <BaselineAssessmentStep
-            t={t}
-            onSave={(scores) => setBaselineAssessment(scores)}
-          />
         ) : (
           <UpsellStep t={t} onSubscribe={handleUpsellSubscribe} />
         )}
@@ -338,9 +339,7 @@ export default function OnboardingScreen({ navigation }) {
                     ? t('onboarding.startPath', 'Bu yolu başlat')
                     : step === 'archetype'
                       ? t('onboarding.continueArchetype', 'Bu benim')
-                      : step === 'assessment'
-                        ? t('onboarding.continueAssessment', 'Başlangıcı kaydet')
-                        : t('onboarding.skipUpsell', 'Şimdilik Atla')}
+                      : t('onboarding.skipUpsell', 'Şimdilik Atla')}
               </Text>
               <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} style={{ marginLeft: 6 }} />
             </View>
@@ -354,9 +353,7 @@ export default function OnboardingScreen({ navigation }) {
                 ? t('onboarding.captionPickPath', 'YOLUNU SEÇ')
                 : step === 'archetype'
                   ? t('onboarding.captionArchetype', '30 GÜN SONRA NE OLACAKSIN')
-                  : step === 'assessment'
-                    ? t('onboarding.captionAssessment', 'BAŞLANGIÇ NOKTAN ÖLÇÜLÜYOR')
-                    : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
+                  : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
           </Text>
         </Animated2.View>
       </View>

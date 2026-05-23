@@ -43,7 +43,7 @@ export default function AssessmentScreen({ route, navigation }) {
   // when the screen was restored from background, silently no-op'ing
   // the entire post-assessment save. Now we read addAssessment from
   // the context directly so there's no serialization layer.
-  const { addAssessment } = useApp();
+  const { addAssessment, setBaselineAssessment } = useApp();
   const mode = route?.params?.mode || 'baseline';
   const [scores, setScores] = useState(defaultScores());
   // Track whether the user actually touched the sliders, so we can
@@ -73,15 +73,13 @@ export default function AssessmentScreen({ route, navigation }) {
         return;
       }
     }
-    // Baseline mode: handled by the onboarding flow (it reads
-    // baselineAssessment from context after the user advances).
-    // Onboarding registers its own BaselineAssessmentStep separately;
-    // this screen only runs for ad-hoc baseline opens.
+    // Baseline mode: the assessment was moved out of onboarding (D0
+    // churn fix) and now runs right after the user finishes their
+    // FIRST lesson — when the 'measure my starting point' framing
+    // actually lands. Direct call to setBaselineAssessment writes the
+    // canonical baseline; no need to call addAssessment.
     try {
-      // Use addAssessment for both — the reducer is the source of
-      // truth, and onboarding's setBaselineAssessment runs at flow
-      // completion. Saving here is harmless redundancy.
-      addAssessment(scores);
+      setBaselineAssessment(scores);
     } catch {}
     navigation.goBack();
   };
