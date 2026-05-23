@@ -35,7 +35,6 @@ import {
   getReferralStats,
   codeFromUserId,
 } from '../services/referral';
-import { useAuth } from '../contexts/AuthContext';
 import { setMuted, isMuted } from '../services/sounds';
 import {
   getHapticsEnabled,
@@ -632,6 +631,36 @@ export default function SettingsScreen({ navigation }) {
                     {t(
                       'settings.redeemInviteSub',
                       'Bir arkadaşının kodun varsa, 10 streak donduru kazan',
+                    )}
+                  </Text>
+                </View>
+              </View>
+              <MaterialIcons
+                name="chevron-right"
+                size={18}
+                color={LT.onSurfaceVariant}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Squad')}
+              activeOpacity={0.7}
+              style={[styles.row, styles.rowBorder]}
+            >
+              <View style={styles.rowLeft}>
+                <MaterialIcons
+                  name="groups"
+                  size={22}
+                  color={LT.primaryContainer}
+                />
+                <View>
+                  <Text style={styles.rowLabel}>
+                    {t('settings.squad', 'Halka (Squad)')}
+                  </Text>
+                  <Text style={styles.rowSub}>
+                    {t(
+                      'settings.squadSub',
+                      '2-5 kişilik özel disiplin grubu, kollektif streak',
                     )}
                   </Text>
                 </View>

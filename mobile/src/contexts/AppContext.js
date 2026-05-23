@@ -1,4 +1,11 @@
-import { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS, checkLevelUp } from '../config/constants';
 import { checkAchievements, checkSpecialAchievements } from '../config/achievements';
@@ -18,6 +25,7 @@ import { pullState, pushState, mergeStates } from '../services/cloudSync';
 import { generateAnonUsername } from '../services/leaderboard';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
+import { getMySquad, recordSquadProgress } from '../services/squad';
 import {
   cancelAllNotifications,
   scheduleStreakAtRiskReminder,
@@ -159,6 +167,15 @@ const initialState = {
   // trigger confetti animation once per milestone.
   _milestoneToast: null,
 
+  // ── Squad (B2) ─────────────────────────────────────────────────────
+  // The 2-5 person collective accountability ring. We cache the squad
+  // id locally so the COMPLETE_PATH_LESSON side-effect knows where to
+  // upsert today's progress without an extra round-trip. Refreshed by
+  // SquadScreen on every mount (in case user joined from another device
+  // or got kicked). Cleared on leave / sign-out / account delete.
+  currentSquadId: null,
+  currentSquadName: null,
+
   // Internal
   _loaded: false,
 };
@@ -236,6 +253,7 @@ const ACTION_TYPES = {
   GRANT_BONUS_XP: 'GRANT_BONUS_XP',
   GRANT_DAILY_LOGIN: 'GRANT_DAILY_LOGIN',
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
+  SET_CURRENT_SQUAD: 'SET_CURRENT_SQUAD',
 };
 
 function appReducer(state, action) {
@@ -506,6 +524,28 @@ function appReducer(state, action) {
 
     case ACTION_TYPES.CLEAR_MILESTONE_TOAST:
       return { ...state, _milestoneToast: null };
+
+    case ACTION_TYPES.SET_CURRENT_SQUAD: {
+      const { id, name } = action.payload || {};
+      return {
+        ...state,
+        currentSquadId: id || null,
+        currentSquadName: name || null,
+      };
+    }
+
+    case ACTION_TYPES.GRANT_REFERRAL_REWARD: {
+      // Redeemer + referrer both get +10 streak-freeze tokens when a
+      // referral code is successfully redeemed. This was declared in
+      // ACTION_TYPES + exposed as a dispatcher but the case was missing
+      // — so SettingsScreen.handleRedeemCode and OnboardingScreen's
+      // attemptReferralRedemption were silently no-op'ing the reward.
+      // Capped at 50 to avoid runaway accumulation from any future
+      // server-side referral airdrops.
+      const current = state.streakFreezes || 0;
+      const next = Math.min(50, current + 10);
+      return { ...state, streakFreezes: next };
+    }
 
     case ACTION_TYPES.ENSURE_ANON_USERNAME: {
       // Generate once, then sticky. cloudSync will replicate the chosen
@@ -1054,6 +1094,79 @@ export function AppProvider({ children }) {
     return () => clearInterval(interval);
   }, []);
 
+  // ── Squad: fetch on auth, clear on sign-out ─────────────────────────────
+  // Side-effect-only; SquadScreen does the same lookup on mount so the
+  // user can always pull-to-refresh by re-opening the screen. We do
+  // this here so the FIRST lesson of a session correctly mirrors to the
+  // squad without needing the user to visit SquadScreen first.
+  useEffect(() => {
+    if (!state._loaded) return;
+    if (!userId) {
+      // Sign-out / guest mode → drop the cached squad so the lesson
+      // completion handler doesn't try to post to a stale squad.
+      if (state.currentSquadId) {
+        dispatch({ type: ACTION_TYPES.SET_CURRENT_SQUAD, payload: null });
+      }
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      try {
+        const data = await getMySquad(userId);
+        if (cancelled) return;
+        dispatch({
+          type: ACTION_TYPES.SET_CURRENT_SQUAD,
+          payload: {
+            id: data?.squad?.id || null,
+            name: data?.squad?.name || null,
+          },
+        });
+      } catch (e) {
+        // Non-fatal — squad is a bonus surface, not a blocker.
+        console.warn('[AppContext] squad fetch failed:', e?.message);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [state._loaded, userId]);
+
+  // ── Squad: mirror lesson completion to server ──────────────────────────
+  // When the user finishes any lesson today, we upsert a row into
+  // squad_member_progress so the collective streak math has a record.
+  // The watcher fires on `lessonHistory[today]` changes; recordSquad-
+  // Progress is idempotent server-side (unique (squad,user,date) +
+  // upsert), so dispatching twice for the same day is harmless. No-op
+  // if the user isn't in a squad or isn't authenticated.
+  const lastMirroredCountRef = useRef(0);
+  useEffect(() => {
+    if (!state._loaded || !userId || !state.currentSquadId) return;
+    const today = (() => {
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${dd}`;
+    })();
+    const todayCount = (state.lessonHistory || {})[today] || 0;
+    if (todayCount === 0) return;
+    if (todayCount === lastMirroredCountRef.current) return;
+    lastMirroredCountRef.current = todayCount;
+    recordSquadProgress({
+      squadId: state.currentSquadId,
+      userId,
+      date: today,
+      lessonsCount: todayCount,
+    }).catch((e) =>
+      console.warn('[AppContext] squad progress mirror failed:', e?.message),
+    );
+  }, [
+    state._loaded,
+    userId,
+    state.currentSquadId,
+    state.lessonHistory,
+  ]);
+
   // ── Action creators ─────────────────────────────────────────────────────
   const completeOnboarding = useCallback(() => {
     dispatch({ type: ACTION_TYPES.COMPLETE_ONBOARDING });
@@ -1175,6 +1288,22 @@ export function AppProvider({ children }) {
 
   const clearMilestoneToast = useCallback(() => {
     dispatch({ type: ACTION_TYPES.CLEAR_MILESTONE_TOAST });
+  }, []);
+
+  /**
+   * Cache the user's current squad locally. Called by SquadScreen
+   * after a load / create / join / leave so the lesson-complete
+   * side-effect knows which squad to post progress to. Pass `null`
+   * to clear (used on leave or by the auth-sync effect below).
+   */
+  const setCurrentSquad = useCallback((squad) => {
+    dispatch({
+      type: ACTION_TYPES.SET_CURRENT_SQUAD,
+      payload: {
+        id: squad?.id || null,
+        name: squad?.name || null,
+      },
+    });
   }, []);
 
   const deleteAccount = useCallback(async () => {
@@ -1306,6 +1435,7 @@ export function AppProvider({ children }) {
     setDailyMood,
     grantBonusXP,
     clearMilestoneToast,
+    setCurrentSquad,
     deleteAccount,
     setActivePath,
     completePathLesson,

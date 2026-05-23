@@ -343,6 +343,116 @@ create policy "referrals: redeemer can mark redemption" on public.referrals
 grant select, insert, update on public.referrals to authenticated;
 
 -- ──────────────────────────────────────────────────────────────────────────────
+-- squads — small private accountability rings (2–5 monks per squad)
+--
+-- The audit's biggest retention-lift recommendation was "add some social
+-- presence". A LEADERBOARD contradicts Monk Mode's brand (external
+-- comparison vs intrinsic discipline). A SQUAD is the opposite: a tiny
+-- private group where everyone is silently expected to do their daily
+-- lesson, and one member missing means the COLLECTIVE chain breaks.
+-- Loss-aversion + light social commitment + no shaming.
+--
+-- Schema:
+--   squads:                 the group itself (name + invite code + owner)
+--   squad_members:          n-to-n join (one user can be in many squads)
+--   squad_member_progress:  per-user daily lesson completion within the
+--                           squad context — derived from analytics_events
+--                           by the client, mirrored here so we don't have
+--                           to compute on every read.
+--
+-- Collective-streak rule: a squad day counts only if EVERY active member
+-- completed >=1 lesson that day. Computed client-side from
+-- squad_member_progress; we keep the raw rows here, not a denormalised
+-- counter, so a missed day is recoverable if a member later confirms
+-- they did the lesson offline.
+-- ──────────────────────────────────────────────────────────────────────────────
+create table if not exists public.squads (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  code text not null unique, -- short invite code, e.g. SQD-AB12
+  owner_user_id uuid not null references auth.users(id) on delete cascade,
+  created_at timestamptz default now()
+);
+create index if not exists idx_squads_code on public.squads(code);
+create index if not exists idx_squads_owner on public.squads(owner_user_id);
+
+create table if not exists public.squad_members (
+  id uuid primary key default gen_random_uuid(),
+  squad_id uuid not null references public.squads(id) on delete cascade,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  anon_display_name text not null, -- copies user's anon_username at join time
+  joined_at timestamptz default now(),
+  -- one user can be in a given squad only once
+  constraint squad_members_unique unique (squad_id, user_id)
+);
+create index if not exists idx_squad_members_squad on public.squad_members(squad_id);
+create index if not exists idx_squad_members_user on public.squad_members(user_id);
+
+create table if not exists public.squad_member_progress (
+  id uuid primary key default gen_random_uuid(),
+  squad_id uuid not null references public.squads(id) on delete cascade,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  date date not null, -- YYYY-MM-DD
+  lessons_count integer not null default 1, -- how many lessons that day
+  created_at timestamptz default now(),
+  -- one row per (squad, user, day)
+  constraint squad_progress_unique unique (squad_id, user_id, date)
+);
+create index if not exists idx_squad_progress_squad_date
+  on public.squad_member_progress(squad_id, date);
+
+-- RLS — squads + members readable by members; progress readable by
+-- members of the same squad; writes constrained to the caller's own
+-- rows.
+alter table public.squads enable row level security;
+alter table public.squad_members enable row level security;
+alter table public.squad_member_progress enable row level security;
+
+-- Squads: any authenticated user can read a squad by code (so invite
+-- links work for non-members about to join). Insert by anyone (creator).
+-- Update / delete only by owner.
+create policy "squads: read all" on public.squads
+  for select using (true);
+create policy "squads: any user can create" on public.squads
+  for insert with check (auth.uid() = owner_user_id);
+create policy "squads: owner can update" on public.squads
+  for update using (auth.uid() = owner_user_id);
+create policy "squads: owner can delete" on public.squads
+  for delete using (auth.uid() = owner_user_id);
+
+-- Members: anyone authenticated can read (so collective streak can be
+-- computed by joining); insert by self (joining); delete by self
+-- (leaving) OR by squad owner (kicking).
+create policy "members: read all authenticated" on public.squad_members
+  for select using (auth.role() = 'authenticated');
+create policy "members: self join" on public.squad_members
+  for insert with check (auth.uid() = user_id);
+create policy "members: self or owner can leave/kick" on public.squad_members
+  for delete using (
+    auth.uid() = user_id
+    or auth.uid() in (
+      select owner_user_id from public.squads where id = squad_id
+    )
+  );
+
+-- Progress: members of a squad can read each other's progress. Self
+-- can insert / update own row.
+create policy "progress: members read" on public.squad_member_progress
+  for select using (
+    auth.uid() in (
+      select user_id from public.squad_members where squad_id = squad_member_progress.squad_id
+    )
+  );
+create policy "progress: self insert" on public.squad_member_progress
+  for insert with check (auth.uid() = user_id);
+create policy "progress: self update" on public.squad_member_progress
+  for update using (auth.uid() = user_id);
+
+grant select, insert, update, delete on public.squads to authenticated;
+grant select, insert, delete on public.squad_members to authenticated;
+grant select, insert, update on public.squad_member_progress to authenticated;
+
+-- ──────────────────────────────────────────────────────────────────────────────
 -- Auth settings you still need to check in the Supabase dashboard:
 --   Authentication → Providers → Email: enable "Confirm email" if you want
 --     e-mail verification. The app handles both confirmed and unconfirmed
