@@ -4686,9 +4686,9 @@
     "body-discipline": {
       "1": {
         "title": "Hareket Eşiği",
-        "teaching": "Modern hayat hareketsiz. 8 saat oturma kafanı kaplayan bulanıklığın ana sebebi. Kan akışı yavaşlıyor, beyin az oksijen alıyor, motivasyon düşüyor.\n\nÇözüm karmaşık değil: günde 30 dakika hareket. Yürüyüş, basit egzersiz, koşu — fark etmez. Önemli olan kan akışını arttırmak.\n\nGyme ihtiyaç yok. Bedeninle başla.",
-        "action": "Bugün 30 dakika tempolu yürüyüş yap. Sıkışık zaman varsa öğle aralağında 10 dk, akşam 20 dk böl.",
-        "reflectionPrompt": "Yürüyüş sonrası zihinsel berraklık hissettin mi?",
+        "teaching": "8 saat iş, 1 saat trafik, 3 saat ekran. Toplam: günde **12 saat oturma**. Kafa **sürekli bulanık**, motivasyon yerde, akşam 'tükenmişim' diyorsun ama hiç ter dökmedin. Bu **modern hayatın gizli krizi**.\n\nDr. James Levine (Mayo Clinic, 2014): '**Oturmak yeni sigara**.' Günde 6+ saat oturma = sigara içen kadar **mortalite riski**. Kan akışı yavaşlar, beyin **az oksijen** alır, mitokondri aktivitesi düşer.\n\nLevine ekibi Lancet meta-analizi (2016, 1 milyon kişi): günde **60-75 dakika orta yoğunluk hareket**, 8 saat oturmayı **nötrler**. Daha az hareket → oturma zararı **silinmez**.\n\nMekanizma: kas elektromiyografik sessizlik (oturmada) = **lipoprotein lipaz** aktivitesi düşer = trigliserit birikir = metabolik sendrom. Hareket = enzim **yeniden aktif**.\n\nÇözüm **karmaşık değil**: günde **30 dk hareket**. Yürüyüş, basit egzersiz, koşu — fark etmez. **Kan akışı + nefes hızı** artsın yeter.\n\nSalon gerek değil. Bedeninle başla. Tempolu yürüyüş = en düşük bariyer, en yüksek getiri.",
+        "action": "Bugün **30 dakika tempolu yürüyüş** yap. Sıkışıksa: öğle aralık 10 dk + akşam 20 dk böl.",
+        "reflectionPrompt": "Yürüyüş sonrası **zihinsel berraklık** hissettin mi? Akşam enerjin farklı mıydı?",
         "quiz": [
           {
             "q": "Modern hayatın en büyük fiziksel sorunu?",
@@ -4717,9 +4717,9 @@
       },
       "2": {
         "title": "Soğuk Duş Protokolü",
-        "teaching": "Soğuk şok = sempatik sinir sistemi aktivasyonu = adrenalin + dopamin = berrak zihin.\n\nWim Hof bilimi: soğuk maruziyet bağışıklık sistemini güçlendiriyor, depresyon belirtilerini azaltıyor, motivasyonu arttırıyor.\n\nİlk gün dayanılmaz. 7. gün rutine girer. 30. gün özlersin.",
-        "action": "Bugün duşun sonunda 30 saniye soğuk suyla bitir. Sıcaktan soğuğa geçiş — mücadele et.",
-        "reflectionPrompt": "Soğuk duştan sonra ilk dakikada ne hissettin?",
+        "teaching": "Duş başlığını çevirdin → sıcak. **Otomatik**. Hayatın boyunca sıcak duşa alıştın. Ama bedenin **acı tatmak** istemiyor diye 'gerek değil' diyor. Bilim **tersini** söylüyor.\n\nWim Hof + Radboud University araştırmaları (Kox et al., PNAS 2014):\n- Soğuk maruziyet **norepinefrini %200-500 artırır** (odak, anti-depresan)\n- **Dopamin %250 artar** (motivasyon, 4 saat sürer)\n- **Bağışıklık T-hücre** güçlenir (Kox kanıtladı: bilinçli bağışıklık modülasyonu)\n- **Depresyon riski %29 düşer**\n\nMekanizma: soğuk şok = **sempatik sinir sistemi aktivasyonu** = adrenalin + dopamin patlaması = **berrak zihin**. Bu sadece anlık değil — düzenli pratik = baseline kortizol stabilizasyonu.\n\nSusanna Søberg (Kopenhag): haftada **toplam 11 dakika 10°C** = optimum metabolik adaptasyon.\n\n**İlk gün dayanılmaz.** 7. gün rutine girer. 30. gün **özlersin** — sıcak duş 'gevşeklik' gibi gelir.\n\nKritik: nefes kontrolü. Şok = nefes tutma refleksi. Tersini yap: **derin yavaş nefes**. Beden 'tehdit değil' bilgisi alır.",
+        "action": "Bugün duşun sonunda **30 saniye soğuk** ile bitir. Sıcaktan soğuğa geçiş — **mücadele et**.",
+        "reflectionPrompt": "Soğuk duştan sonra **ilk dakikada ne hissettin**? Zihinsel netlik, enerji, ne?",
         "quiz": [
           {
             "q": "Soğuk şok hangi sistemi aktif eder?",
@@ -4748,9 +4748,9 @@
       },
       "3": {
         "title": "Beslenmenin Temeli: Protein",
-        "teaching": "Beden proteinden inşa olur. Yetersiz protein = düşük enerji, düşük doku onarımı, düşük doygunluk.\n\nKural: vücut ağırlığının her kilogramı için 1g protein. 70 kg kişi için 70g/gün.\n\nKaynak: et, balık, yumurta, baklagiller, süt ürünleri. Atıştırmalık değil — öğün.",
-        "action": "Bugün her öğüne protein kaynağı ekle. Akşam toplam protein gramını hesapla.",
-        "reflectionPrompt": "Yeterli protein aldığında enerjin nasıldı?",
+        "teaching": "Sabah simit + çay. Öğlen kebap dürüm. Akşam makarna. Toplam **protein 30 gram**. Yetersiz. Yorgun, açsın **iki saat sonra**, kas erimekte. Çünkü beden **proteinden inşa** olur — yetersiz protein = inşaat malzemesi yok.\n\nDonald Layman (Illinois Üniversitesi) — protein araştırmaları **30 yıllık**. Klinik kanıt:\n- Yetersiz protein → kas kaybı (sarkopeni), düşük enerji, düşük doku onarımı, düşük doygunluk\n- **Vücut ağırlığının her kilogramı için 1g protein** = optimum (yaşlı veya sporcu 1.6g/kg)\n- 70 kg kişi → **70g/gün minimum**\n\nMatematik:\n- Yumurta (2): 12g\n- Tavuk göğsü 100g: 30g\n- Yoğurt 200g: 12g\n- Mercimek çorbası: 8g\n- Bademler 30g: 6g\n- **Toplam: 68g** — bu 1 günün ortalama\n\nMekanizma: protein = aminoasit kaynağı. Kas, enzim, nörotransmitter, antikor — hepsi aminoasitten. Eksik = sistem **eksik çalışır**.\n\nKaynak: et, balık, yumurta, baklagiller, süt ürünleri. **Atıştırmalık değil** — her öğüne ana parça.\n\nKritik: **her öğüne 20-30g**. Bir öğünde 100g almak = beden 30g kullanır, kalan **boşa** gider. Eşit dağıt.",
+        "action": "Bugün **her öğüne protein kaynağı** ekle. Akşam toplam protein gramını hesapla.",
+        "reflectionPrompt": "Yeterli protein aldığında **enerjin** nasıldı? Tokluk süresi farklı mıydı?",
         "quiz": [
           {
             "q": "Günlük protein kuralı?",
@@ -4779,9 +4779,9 @@
       },
       "4": {
         "title": "Şeker Kesme",
-        "teaching": "İşlenmiş şeker dopamin sömürüsünün en eski formu. Kan şekeri yükselir, çakılır, krash yaşarsın. Yorgunluk → daha şeker → döngü.\n\n7 günlük şeker kesme: net berraklaşma, kararlı enerji, uyku kalitesi artışı, kilo kaybı.\n\nBağımlılık 7 günde kırılır. Ondan sonra şeker tatsızlaşır.",
-        "action": "Bugün hiç işlenmiş şeker yeme. Tatlılar, gazlı içecekler, paketli atıştırmalıklar — hiçbiri. Doğal meyve OK.",
-        "reflectionPrompt": "Öğleden sonra şeker krizi hissettin mi? Ne yaptın?",
+        "teaching": "Saat 15:00, **enerji çöktü**. Refleks: bisküvi, çikolata, gazlı içecek. 20 dakika **iyiyim**, sonra **daha kötü**. 17:00'de tekrar şeker. Akşam: yorgun, sinirli. Şeker = **dopamin sömürüsünün en eski formu**.\n\nLustig (UCSF, **'Sugar: The Bitter Truth'**): işlenmiş şeker = **etanol gibi metabolize**. Kalp, karaciğer, beyin için **toksik**. Endüstri 100 yıldır 'enerji kaynağı' olarak sattı — yalan.\n\nMekanizma:\n1. Şeker → kan şekeri **yükselir** (10 dakikada)\n2. Pankreas **insülin bombası**\n3. Kan şekeri **çakılır** (rebound hipoglisemi)\n4. Beyin 'enerji yok' der → **daha çok şeker** ister\n5. **Döngü** = bağımlılık\n\nDopamin spike + tolerans = reseptörler **azalır** = daha çok şeker gerek = aynı kayganlık. Tipik bağımlılık paterni.\n\n7 günlük şeker kesme = **bağımlılık kırılır**:\n- 1-3. gün: berbat (kafa ağrısı, yorgun, sinirli)\n- 4-7. gün: yumuşar\n- 14. gün: tatlı bir şey **fazla tatlı** geliyor (reseptör resensitize)\n- 30. gün: özlem yok\n\n**Doğal meyve** OK (lif insülin spike'ı yumuşatır).",
+        "action": "Bugün **hiç işlenmiş şeker yeme**. Tatlı, gazlı içecek, paketli atıştırmalık — hiçbiri. Meyve OK.",
+        "reflectionPrompt": "Öğleden sonra **şeker krizi** hissettin mi? Ne yaptın — su mu, meyve mi, dirençli mi?",
         "quiz": [
           {
             "q": "İşlenmiş şekerin etkisi?",
@@ -4810,9 +4810,9 @@
       },
       "5": {
         "title": "Uyku Sertliği",
-        "teaching": "Uyku kalitesi tüm disiplinin temeli. Kötü uyumuş bir adam disiplinsizlik için optimize edilmiş. Karar verme zayıflar, irade pili düşük.\n\nUyku sertliği: 7-8 saat, 22:00 önce yatış, karanlık oda, serin sıcaklık (18-20°C).\n\nBu pazarlık edilmez. Hayatının her başka tarafı buna bağlı.",
-        "action": "Bugün uyku odanı sertleştir: perdeleri kapat, sıcaklığı 19°C ye al, telefon dışarıda. 22:30 yatış.",
-        "reflectionPrompt": "Sert uyku ortamında uykuya dalış süresinde değişim oldu mu?",
+        "teaching": "Dün gece **5 saat** uyudun. Bugün: kararlar kötü, sabırsız, atıştırma çok, spor atlandı. Sebep **'yorgun olmak değil'** — beyin **disiplinsizlik için optimize edilmiş**.\n\nMatthew Walker (UC Berkeley, **Why We Sleep**): 'Uyku **tüm disiplinin temeli**. Kötü uyku = irade %30 düşer, dürtü kontrolü zayıflar, kortizol yüksek kalır. **Çözüm 'daha çok kahve' değil — daha iyi uyku**.'\n\n**Uyku sertliği = 4 koşul** (pazarlık edilmez):\n1. **7-8 saat** (genç 9, yaşlı 7)\n2. **22:00 öncesi yatış** (melatonin penceresi)\n3. **Karanlık oda** (tüm ışıklar, perdeler tam)\n4. **Serin sıcaklık 18-20°C** (kor sıcaklık düşmeli = derin uyku)\n\nWalker araştırmaları: bu 4 koşulun **her biri** uyku kalitesini **%15-25** artırır. Hepsi birlikte = **2x fark**.\n\nMekanizma: melatonin = **karanlıkta** salgılanır (öğleden sonra yükselmeye başlar). Işık (özellikle mavi) → suprakiazmatik çekirdek → 'gündüz' algısı → melatonin **basılır**. Sıcaklık → kor ısı 1-2°C düşmeli = NREM Stage 3 (derin uyku) için şart.\n\nDisiplin = uyku üzerine kurulur. Az uyu → her diğer disiplin **çökmüş** zaten.",
+        "action": "Bugün uyku odanı **sertleştir**: perdeler tam, **19°C**, telefon dışarıda. **22:30 yatış**.",
+        "reflectionPrompt": "**Sert uyku ortamında** uykuya dalış süresinde değişim oldu mu? Sabah enerjin?",
         "quiz": [
           {
             "q": "Disiplinin temeli?",
@@ -4841,10 +4841,10 @@
       },
       "6": {
         "title": "Yatma Saati: 22:00",
-        "teaching": "Sirkadiyen ritm sabit yatış saatiyle güçlenir. 22:00 = melatonin doğal zirvesi. Hafta içi-sonu fark etmez. Yatış saati esnek olunca uyku kalitesi %40 düşer (Matthew Walker araştırması).",
-        "action": "Bugün gece 22:00'da yatakta ol. Telefon başka odada.",
-        "reflectionPrompt": "22:00'da yatağa geçmek dünden ne kadar farklı?",
-        "proTip": "21:00'dan sonra mavi ışık filtre + sarı renk gece lambası. Beden saat 22'ye hazırlanır.",
+        "teaching": "Hafta içi 23:00 yat, hafta sonu 02:00. **Pazartesi** berbat — beden 'jet lag' yaşıyor. 'Sosyal jet lag' (Till Roenneberg, kronobiyolog terimi): farklı yatma saatleri = sürekli **iç saatler bozuk**. Sigara gibi kanıtlı mortalite riski.\n\nMatthew Walker araştırmaları: yatış saati **±15 dakika** içinde olursa = sirkadiyen ritm **keskin** = uyku kalitesi optimum. **±2 saat farklı** olursa = uyku kalitesi **%40 düşer**.\n\n**22:00 = melatonin doğal zirvesi.** Pineal bez bu saatte salgıyı artırır — eğer **ışık + ekran yoksa**. Bu pencerede yatış = beden **doğal akışla** uyur. 23:00 sonrası = melatonin penceresi **kaçırılır**, kortizol yeniden yükselir ('second wind'), uyumak zorlaşır.\n\nMekanizma: SCN (suprakiazmatik çekirdek) = ana saat. Her gün aynı saatte yatış = SCN sinyali **isabetli**. Esneklik = sinyal **bulanık** = beden hangi saatte uyacağını bilemez.\n\n**Hafta içi-sonu fark etmez.** 'Cumartesi geç yatayım, telafi yaparım' = mit. Telafi yok — sadece bozulma.\n\n21:00'dan sonra: mavi ışık filtre + sarı gece lambası + ekran kapatma. Beden 22:00'a hazırlanır.",
+        "action": "Bugün gece **22:00'da yatakta ol**. Telefon başka odada.",
+        "reflectionPrompt": "**22:00'da** yatağa geçmek dünden ne kadar farklı? Uykuya dalmak ne kadar sürdü?",
+        "proTip": "**21:00'dan sonra mavi ışık filtre + sarı gece lambası**. Beden 22:00'a hazırlanır.",
         "quiz": [
           {
             "q": "Optimum yatış saati?",
@@ -4872,10 +4872,10 @@
       },
       "7": {
         "title": "Hidrasyon: 2 Litre",
-        "teaching": "Vücudun %60'ı su. %2 dehidratasyon = bilişsel performansta %20 düşüş. Çoğu insan kronik dehidre. Çözüm: 2 litre = ~8 bardak. Sabah, öğleden önce, öğleden sonra 0.5L'lik bloklar.",
-        "action": "Bugün 2 litre su iç. 1L sabah, 1L öğleden sonra. Şişe görünür yere koy.",
-        "reflectionPrompt": "Bedeninde tam hidrasyonun farkını ne zaman hissettin?",
-        "proTip": "Sabah ilk içecek su. Hidrasyon kahveden 90 dk önce başlar.",
+        "teaching": "Saat 15:00, kafan ağır, odaklanamıyorsun. **'Kahve içmem lazım'** diyorsun. Ama gerçek sebep: bugün **3 bardak su içtin**. Kronik dehidre **çoğu insan**.\n\nVücudun **%60'ı su**. Beyin **%75 su**. **%2 dehidratasyon** = bilişsel performans **%20 düşer** (Lieberman, Tufts Üniversitesi). Bu **'bir bardak su iç'** mertebesinde.\n\nBu kadar basit ama **göz ardı edilen** fark:\n- Yorgunluk %50 artar\n- Konsantrasyon zorlaşır\n- Açlık sinyali (susuzlukla karışır) güçlenir → fazla yemek\n- Cilt kötü\n- Baş ağrısı sık\n- Eklem rahatsızlığı\n\nÇözüm **basit**: günde **2 litre = ~8 bardak**. Bölüm:\n- **1 litre sabah** (uyandıktan öğleye kadar)\n- **1 litre öğleden sonra** (öğle-akşam)\n\nMekanizma: dehidre beyin = **nöron hacmi küçülür** (geçici) = elektrik sinyali yavaşlar. Hidrasyon = beyin **normal hacim** = optimum işleme.\n\nKritik: **sabah ilk içecek su** (uykuda 6-8 saat dehidre kaldın). Kahve **90 dakika sonra**. Kahve hidrasyonu **engellemez** ama su yerine geçmez.\n\nŞişe görünür yere koy = **environment design** = otomatik içme.",
+        "action": "Bugün **2 litre su iç**. 1L sabah, 1L öğleden sonra. Şişe görünür yere koy.",
+        "reflectionPrompt": "Bedeninde **tam hidrasyonun** farkını ne zaman hissettin? Enerji, odak, hangisi?",
+        "proTip": "**Sabah ilk içecek su**. Hidrasyon **kahveden 90 dk önce** başlar — kahve hidrasyonu desteklemez.",
         "quiz": [
           {
             "q": "Optimum günlük su?",
@@ -4903,10 +4903,10 @@
       },
       "8": {
         "title": "Günde 10.000 Adım",
-        "teaching": "Adım sayma modaymış gibi görünür ama bilim katı: günde 7-10K adım = %30 daha düşük ölüm riski (Lancet 2023). Sürekli oturma kanserle eş tehlikeli. Hareket = ilaç.",
-        "action": "Bugün 10.000 adıma ulaş. Telefonda sayar var.",
-        "reflectionPrompt": "10K adıma ulaşmak gününü nasıl yapılandırdı?",
-        "proTip": "Toplantıyı yürüyerek yap. Telefonla konuşurken yürü. Asansör yerine merdiven.",
+        "teaching": "'**10.000 adım**' Apple Watch satışı için **moda** sanılıyor. Aslında **1964 Tokyo Olimpiyatları**: Japon firma Yamasa Toki bir pedometre çıkardı, ismi **'manpo-kei'** ('10.000 adım sayar'). Pazarlama. Ama bilim sonradan **doğruladı**.\n\n**Lancet (2023) meta-analizi** (47 çalışma, ~227,000 kişi):\n- **4,000 adım/gün** → ölüm riski **azalmaya başlar**\n- **7,500 adım/gün** → %47 düşüş\n- **10,000 adım** → %52 düşüş\n- **15,000+ adım** → ek fayda küçük\n\nBu **tüm sebeplerden ölüm** (all-cause mortality). Kanser, kalp, demans — hepsi.\n\nSürekli oturma = **kanserle eş tehlikeli** (Levine — Mayo Clinic). Hareket = **ilaç** — patent yok, ücretsiz, yan etki sıfır.\n\nMekanizma: yürüme = **lenf akışı + lipoprotein lipaz aktivasyonu + BDNF + endorfin + insülin hassasiyeti**. Her sistem güçlenir.\n\nGünlük hayata yığma:\n- **Toplantıyı yürüyerek** yap (Steve Jobs tarzı)\n- **Telefonla konuşurken** dolaş\n- **Asansör yerine merdiven**\n- **1 km mesafe** → yürüyüş, taksi değil\n- **Parkı 2 sokak öteye** park et\n\nApple Health / Google Fit = otomatik sayar.",
+        "action": "Bugün **10.000 adıma ulaş**. Telefonda sayar var. Mahalle turu, merdiven, dolaşma.",
+        "reflectionPrompt": "10K adıma ulaşmak **gününü nasıl yapılandırdı**? Akşam farklı mı hissettin?",
+        "proTip": "**Toplantıyı yürüyerek** yap. **Telefonla konuşurken yürü**. **Asansör yerine merdiven**.",
         "quiz": [
           {
             "q": "Günlük adım hedefi?",
@@ -4934,10 +4934,10 @@
       },
       "9": {
         "title": "Direnç Antrenmanına Giriş",
-        "teaching": "Kardiyo iyi, ama direnç antrenmanı (ağırlık, vücut ağırlığı) %30 daha çok ömür ekler. Kas = ikinci kalp. 30+ yaşta kas kaybı her yıl %1 — antrenmansız 50'sinde dimdik durmazsın.",
-        "action": "Bugün 3 temel hareketi 3 set yap: squat, push-up, plank. 10 tekrar each.",
-        "reflectionPrompt": "Direnç antrenmanı sonrası enerjin nasıldı?",
-        "proTip": "Hafta 3 gün yeterli. Pazartesi-çarşamba-cuma 20 dakika ev egzersizi.",
+        "teaching": "Sadece **kardiyo** yapıyorsun — koşu, bisiklet, yürüyüş. **Yeterli sanıyorsun**. Ama **30+** yaşındaysan **kas kaybı** (sarkopeni) başladı: yıllık **%1**. 50'sinde **%20 kas kaybetmiş** olacaksın — eklem ağrısı, denge sorunu, dimdik duramazlık.\n\nBritish Journal of Sports Medicine (Saeidifard et al., 2019, **80,000 kişi**): direnç antrenmanı = **%30 daha çok ömür** (kardiyodan ayrı + ek katkı). Hem kardiyo + direnç = **maksimum mortalite düşüşü**.\n\nKas = **ikinci kalp**. Çünkü:\n- **Glukoz deposu** (insülin hassasiyeti)\n- **Endokrin organ** (myokine salgılar — anti-inflammatory)\n- **Metabolik motor** (her kilo kas = +10 kalori/gün dinlenmede)\n- **Yapı destekleyici** (omurga, eklem)\n\nMekanizma: direnç antrenmanı = mikro yıkım → tamir → kas büyüme (hipertrofi) + kemik yoğunluğu artışı. mTOR yolağı + IGF-1 + testosteron yükselişi.\n\n**3 temel hareket**: squat (alt vücut), push-up (üst vücut iter), pull-up veya row (üst vücut çeker). + plank (kor).\n\n**Hafta 3 gün yeterli**. Pazartesi-Çarşamba-Cuma **20 dakika** ev egzersizi. **Salon gerek değil** — vücut ağırlığı yeter ilk 3-6 ay.",
+        "action": "Bugün **3 temel hareketi 3 set** yap: **squat, push-up, plank**. 10 tekrar her biri.",
+        "reflectionPrompt": "Direnç antrenmanı sonrası **enerjin** nasıldı? Kardiyoyla farklı mıydı?",
+        "proTip": "**Hafta 3 gün yeterli**. Pazartesi-Çarşamba-Cuma 20 dk ev egzersizi. Salon gerek değil.",
         "quiz": [
           {
             "q": "Direnç antrenmanı ömür?",
@@ -4965,10 +4965,10 @@
       },
       "10": {
         "title": "Günlük Push-Up",
-        "teaching": "Tek hareket = ömrün artar. Çinli araştırma: 40+ erkekler 40'tan fazla push-up yapabilenlerin kalp hastalığı riski %96 daha düşük. Bedel: 5 dakika.",
-        "action": "Bugün 20 push-up yap. Tek serisinde değilse bile, gün sonu toplam 20.",
-        "reflectionPrompt": "Push-up sayını günlük artırmak ne kadar zor?",
-        "proTip": "Diş fırçaladıktan sonra 5 push-up. Dişle yığma = 100 günde 500 push-up.",
+        "teaching": "Tek bir hareket, **çok büyük etki**. Push-up: göğüs + omuz + triceps + kor + dengeleyici kaslar. Ekipmansız, her yerde, 30 saniye.\n\n**Justin Yang et al. (Harvard, JAMA Network Open 2019)**, 1,104 erkek itfaiyeci, 10 yıl takip: **40+ push-up yapabilen** kişilerin kalp hastalığı riski **%96 daha düşük** (10'dan az yapabilenlere göre). Bu **olağanüstü bir korelasyon** — sigara bırakmaktan daha güçlü.\n\nNeden push-up bu kadar tahmin edici? Çünkü push-up = **fonksiyonel güç + dayanıklılık + kor istikrar** birleşimi. Tek harekette **bütün sağlık göstergesi**.\n\n**Bedel: 5 dakika**. Hatta dağıtsan: sabah 5, öğle 5, akşam 10 = 20.\n\nKritik: form > sayı. Yanlış form = sakatlık + boşa enerji.\n- Eller omuz hizası altı, parmaklar düz\n- Vücut **düz çizgi** (kalça sarkmasın)\n- Dirsek **45° açı** (yana açma)\n- Aşağı: göğüs yere yaklaşsın (5 cm)\n- Yukarı: dirsek **kilitlenmesin**\n\n**Habit stack**: diş fırçaladıktan sonra 5 push-up. **100 günde 500 push-up** birikir. Yıllık 1,800 — bedel **sıfır**.\n\nİlk hafta zor. 2. hafta otomatik. 1. ay = kas net görünür.",
+        "action": "Bugün **20 push-up** yap. Tek seri değilse, gün sonu toplam 20.",
+        "reflectionPrompt": "Push-up sayını **günlük artırmak** ne kadar zor? Form nasıl?",
+        "proTip": "**Diş fırçaladıktan sonra 5 push-up**. Habit stack = 100 günde **500 push-up** birikir.",
         "quiz": [
           {
             "q": "Push-up sayısı kalp riski?",
