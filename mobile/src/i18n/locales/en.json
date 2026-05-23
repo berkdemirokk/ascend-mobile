@@ -50,6 +50,10 @@
     "captionPersonalize": "BUILDING YOUR PLAN",
     "captionPickPath": "PICK YOUR PATH",
     "captionUpsell": "GO PREMIUM",
+    "captionArchetype": "WHO YOU'RE BECOMING",
+    "continueArchetype": "That's me",
+    "archetypeTitle": "Who will you be in 30 days?",
+    "archetypeSubtitle": "Pick one. For the next 30 days, you'll act as this person.",
     "personalizeIntro": "A few quick questions for your personal plan",
     "qName": "What should we call you?",
     "namePlaceholder": "Your name (optional)",
@@ -615,6 +619,23 @@
     "bodyWithRecord": "47% of users come back. You once made it {{best}} days — that person is still in you. Start today.",
     "cta": "START AGAIN",
     "repairCta": "WATCH AD → RESTORE YOUR STREAK"
+  },
+  "archetypes": {
+    "zenMaster": {
+      "name": "Zen Master",
+      "tag": "Silence. Inner focus. Minimal motion.",
+      "desc": "You don't rush. You grow in silence. Simple rituals, sustained."
+    },
+    "silentWarrior": {
+      "name": "Silent Warrior",
+      "tag": "Cool head. Decisive. Walks alone.",
+      "desc": "You act instead of promising. The one who doesn't tire, who stays standing."
+    },
+    "ironDisciplined": {
+      "name": "Iron Disciplined",
+      "tag": "Hard targets. Tracking. Boundless willpower.",
+      "desc": "You measure with numbers. Difficulty energizes you. You finish 100 days in 100 days."
+    }
   },
   "moodCheckIn": {
     "label": "MOOD CHECK",

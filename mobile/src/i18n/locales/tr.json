@@ -50,6 +50,10 @@
     "captionPersonalize": "KİŞİSEL PLAN OLUŞTURULUYOR",
     "captionPickPath": "YOLUNU SEÇ",
     "captionUpsell": "PREMIUM İLE TAMAM",
+    "captionArchetype": "30 GÜN SONRA NE OLACAKSIN",
+    "continueArchetype": "Bu benim",
+    "archetypeTitle": "30 gün sonra hangisi olacaksın?",
+    "archetypeSubtitle": "Bir tane seç. Sonraki 30 gün boyunca bu kişi olarak hareket edeceksin.",
     "personalizeIntro": "Sana özel plan için birkaç hızlı soru",
     "qName": "Sana nasıl seslenelim?",
     "namePlaceholder": "Adın (opsiyonel)",
@@ -613,6 +617,23 @@
     "bodyWithRecord": "Geri dönenler %47. Sen daha önce {{best}} gün gittin — bu kişi hala sende. Bugün başla.",
     "cta": "YENİDEN BAŞLA",
     "repairCta": "REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN"
+  },
+  "archetypes": {
+    "zenMaster": {
+      "name": "Zen Müderris",
+      "tag": "Sessizlik. İç odak. Sade hareket.",
+      "desc": "Acele etmiyorsun. Sessizlikte güçleniyorsun. Sade rutinlere bağlısın."
+    },
+    "silentWarrior": {
+      "name": "Sessiz Savaşçı",
+      "tag": "Soğukkanlı. Kararlı. Tek başına gider.",
+      "desc": "Söz vermek yerine yapıyorsun. Yorgun düşmeyen, dik duran sen."
+    },
+    "ironDisciplined": {
+      "name": "Demir Disiplinli",
+      "tag": "Sert hedef. Takip. Sınır tanımayan irade.",
+      "desc": "Sayılarla ölçüyorsun. Zorluk seni canlandırıyor. 100 günü 100 günde bitirirsin."
+    }
   },
   "moodCheckIn": {
     "label": "RUH HALİ KONTROLÜ",

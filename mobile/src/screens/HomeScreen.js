@@ -32,6 +32,7 @@ import DailyMysteryBox from '../components/DailyMysteryBox';
 import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import StreakLostBanner from '../components/StreakLostBanner';
+import { getArchetypeById } from '../data/archetypes';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
 import DailyPlanCard from '../components/DailyPlanCard';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
@@ -352,6 +353,25 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.greetingBlock}>
           <Text style={styles.greetingLabel}>{greeting}</Text>
           <Text style={styles.greetingName}>{username}</Text>
+          {/* Archetype chip — the identity badge the user picked at
+              onboarding. Surfacing it here makes the onboarding choice
+              consequential: every Home open re-reads who they're
+              becoming, which is the core identity-based-habits loop. */}
+          {userProfile?.archetype ? (
+            <View style={styles.archetypeChip}>
+              <MaterialIcons
+                name={getArchetypeById(userProfile.archetype).icon}
+                size={12}
+                color={getArchetypeById(userProfile.archetype).accent}
+              />
+              <Text style={styles.archetypeChipText}>
+                {t(
+                  getArchetypeById(userProfile.archetype).nameKey,
+                  getArchetypeById(userProfile.archetype).nameFallback,
+                )}
+              </Text>
+            </View>
+          ) : null}
           <Text style={styles.greetingSubtitle}>
             {t(
               'home.subtitle',
@@ -867,6 +887,25 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: LT.onSurfaceVariant,
     lineHeight: 20,
+  },
+  // Identity badge — small pill between name and subtitle. Keep it
+  // subdued: it's an echo of the user's onboarding choice, not a status.
+  archetypeChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: 4,
+    backgroundColor: LT.surfaceContainer,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 10,
+    marginBottom: 8,
+  },
+  archetypeChipText: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: LT.onSurfaceVariant,
+    letterSpacing: 0.3,
   },
 
   // Streak Hero card

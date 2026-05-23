@@ -23,6 +23,7 @@ import { useApp } from '../contexts/AppContext';
 import { COLORS } from '../config/constants';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
+import { ARCHETYPES, DEFAULT_ARCHETYPE_ID, getArchetypeById } from '../data/archetypes';
 import { setLanguage, getCurrentLanguage, SUPPORTED_LANGUAGES } from '../i18n';
 import {
   requestNotificationPermissions,
@@ -39,7 +40,17 @@ import {
 import { track } from '../services/analytics';
 import { useAuth } from '../contexts/AuthContext';
 
-const STEPS = ['welcome', 'personalize', 'pickPath', 'upsell'];
+// Onboarding flow. UX audit findings (May 2026):
+//   - The original 'welcome' step was a static splash card that
+//     added one extra tap to time-to-first-lesson without surfacing
+//     any new information. Removed.
+//   - The new 'archetype' step asks "who are you becoming?" — the
+//     single strongest retention lever in identity-based habit
+//     design (Clear, Atomic Habits ch.2). Choice is echoed back on
+//     Home + notifications.
+//   - Total taps to land in lesson #1: 3 (personalize → pickPath →
+//     archetype) + optional upsell. Was: 4 mandatory + upsell.
+const STEPS = ['personalize', 'pickPath', 'archetype', 'upsell'];
 
 // Map a chosen goal to the path that best fits it. Used to pre-select on the
 // next step so the personalization actually affects what the user sees first.
@@ -55,8 +66,11 @@ export default function OnboardingScreen({ navigation }) {
   const { t } = useTranslation();
   const { completeOnboarding, setUserProfile, setActivePath, isPremium } = useApp();
   const { user } = useAuth();
-  const [step, setStep] = useState('welcome');
+  const [step, setStep] = useState('personalize');
   const [selectedPath, setSelectedPath] = useState('dopamine-detox');
+  const [selectedArchetype, setSelectedArchetype] = useState(
+    DEFAULT_ARCHETYPE_ID,
+  );
   // `name` lives inside answers so it stays in userProfile.answers and
   // syncs to the cloud alongside goal/time/mood. Empty string by default
   // (skippable) — the app falls back to "Sen" wherever name is null/empty.
@@ -79,6 +93,7 @@ export default function OnboardingScreen({ navigation }) {
       // keeps it for cloudSync compatibility.
       name: (answers.name || '').trim() || null,
       goals: answers.goal ? [answers.goal] : ['discipline'],
+      archetype: selectedArchetype, // identity-based framing surface
       answers,
     });
     setActivePath(selectedPath);
@@ -92,12 +107,32 @@ export default function OnboardingScreen({ navigation }) {
       userId: user?.id,
       props: {
         path: selectedPath,
+        archetype: selectedArchetype,
         goal: answers.goal,
         time: answers.time,
         mood: answers.mood,
         isPremium: !!isPremium,
       },
     });
+
+    // Land DIRECTLY in lesson #1 instead of dumping the user onto
+    // HomeScreen's 14-card scroll. Audit finding: new users on Home
+    // bounced before tapping the CTA — TTV (time-to-first-value) was
+    // measured at ~90s instead of the target ~15s. Replacing the
+    // navigation stack with the lesson route means back-button from
+    // the lesson goes to Home, not back into onboarding.
+    const firstLesson = `${selectedPath}-1`;
+    setTimeout(() => {
+      try {
+        navigation?.replace?.('Lesson', {
+          pathId: selectedPath,
+          lessonId: firstLesson,
+        });
+      } catch {
+        // If navigation isn't available for any reason, the existing
+        // root navigator will land them on Home — same as before.
+      }
+    }, 250);
 
     // Sequenced post-onboarding flow (Apple-compliant ordering):
     //   1. Notification permission (5.1.1 — ask at meaningful moment)
@@ -162,12 +197,12 @@ export default function OnboardingScreen({ navigation }) {
       buttonScale.value = withSpring(1);
     });
 
-    if (step === 'welcome') {
-      setStep('personalize');
-    } else if (step === 'personalize') {
+    if (step === 'personalize') {
       setStep('pickPath');
     } else if (step === 'pickPath') {
-      // Skip upsell for premium users
+      setStep('archetype');
+    } else if (step === 'archetype') {
+      // Skip upsell for premium users — they've already converted.
       if (isPremium) {
         finishOnboarding();
       } else {
@@ -188,6 +223,7 @@ export default function OnboardingScreen({ navigation }) {
       // keeps it for cloudSync compatibility.
       name: (answers.name || '').trim() || null,
       goals: answers.goal ? [answers.goal] : ['discipline'],
+      archetype: selectedArchetype,
       answers,
     });
     setActivePath(selectedPath);
@@ -220,15 +256,19 @@ export default function OnboardingScreen({ navigation }) {
         {/* Hero ambient glow */}
         <View style={styles.heroGlow} pointerEvents="none" />
 
-        {step === 'welcome' ? (
-          <WelcomeStep t={t} />
-        ) : step === 'personalize' ? (
+        {step === 'personalize' ? (
           <PersonalizeStep t={t} answers={answers} onAnswer={handleAnswer} />
         ) : step === 'pickPath' ? (
           <PickPathStep
             t={t}
             selectedPath={selectedPath}
             onSelect={setSelectedPath}
+          />
+        ) : step === 'archetype' ? (
+          <ArchetypeStep
+            t={t}
+            selectedArchetype={selectedArchetype}
+            onSelect={setSelectedArchetype}
           />
         ) : (
           <UpsellStep t={t} onSubscribe={handleUpsellSubscribe} />
@@ -259,12 +299,12 @@ export default function OnboardingScreen({ navigation }) {
           >
             <View style={[styles.primaryButton, !canAdvance && styles.primaryButtonDisabled]}>
               <Text style={styles.primaryButtonText}>
-                {step === 'welcome'
-                  ? t('onboarding.cta', 'Başla')
-                  : step === 'personalize'
-                    ? t('onboarding.continuePersonalize', 'Devam et')
-                    : step === 'pickPath'
-                      ? t('onboarding.startPath', 'Bu yolu başlat')
+                {step === 'personalize'
+                  ? t('onboarding.continuePersonalize', 'Devam et')
+                  : step === 'pickPath'
+                    ? t('onboarding.startPath', 'Bu yolu başlat')
+                    : step === 'archetype'
+                      ? t('onboarding.continueArchetype', 'Bu benim')
                       : t('onboarding.skipUpsell', 'Şimdilik Atla')}
               </Text>
               <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} style={{ marginLeft: 6 }} />
@@ -273,12 +313,12 @@ export default function OnboardingScreen({ navigation }) {
 
           {/* Caption */}
           <Text style={styles.caption}>
-            {step === 'welcome'
-              ? t('onboarding.captionWelcome', 'STRATEJİK ODAKLANMA BAŞLATILIYOR')
-              : step === 'personalize'
-                ? t('onboarding.captionPersonalize', 'KİŞİSEL PLAN OLUŞTURULUYOR')
-                : step === 'pickPath'
-                  ? t('onboarding.captionPickPath', 'YOLUNU SEÇ')
+            {step === 'personalize'
+              ? t('onboarding.captionPersonalize', 'KİŞİSEL PLAN OLUŞTURULUYOR')
+              : step === 'pickPath'
+                ? t('onboarding.captionPickPath', 'YOLUNU SEÇ')
+                : step === 'archetype'
+                  ? t('onboarding.captionArchetype', '30 GÜN SONRA NE OLACAKSIN')
                   : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
           </Text>
         </Animated2.View>
@@ -616,6 +656,85 @@ function UpsellFeature({ icon, color, title }) {
   );
 }
 
+// Identity Archetype picker. Shown after the user picks a path. Three
+// vertical cards because we want each option to feel substantial enough
+// to be a real identity claim, not a quiz answer. The chosen archetype
+// is surfaced back on HomeScreen and in re-engagement notifications,
+// making the onboarding choice consequential (not theatre).
+function ArchetypeStep({ t, selectedArchetype, onSelect }) {
+  return (
+    <View style={styles.archetypeContent}>
+      <Text style={styles.pickTitle}>
+        {t(
+          'onboarding.archetypeTitle',
+          '30 gün sonra hangisi olacaksın?',
+        )}
+      </Text>
+      <Text style={styles.pickSubtitle}>
+        {t(
+          'onboarding.archetypeSubtitle',
+          'Bir tane seç. Sonraki 30 gün boyunca bu kişi olarak hareket edeceksin.',
+        )}
+      </Text>
+      <ScrollView
+        contentContainerStyle={styles.archetypeList}
+        showsVerticalScrollIndicator={false}
+      >
+        {ARCHETYPES.map((a) => {
+          const isSelected = selectedArchetype === a.id;
+          return (
+            <TouchableOpacity
+              key={a.id}
+              onPress={() => onSelect(a.id)}
+              activeOpacity={0.85}
+              style={[
+                styles.archetypeCard,
+                {
+                  borderColor: isSelected ? a.accent : LT.outlineVariant,
+                  borderWidth: isSelected ? 2 : 1,
+                  shadowOpacity: isSelected ? 0.15 : 0.04,
+                },
+              ]}
+            >
+              <View
+                style={[
+                  styles.archetypeIconBox,
+                  { backgroundColor: isSelected ? a.accent : LT.surfaceContainer },
+                ]}
+              >
+                <MaterialIcons
+                  name={a.icon}
+                  size={28}
+                  color={isSelected ? '#fff' : LT.onSurfaceVariant}
+                />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.archetypeName}>
+                  {t(a.nameKey, a.nameFallback)}
+                </Text>
+                <Text style={styles.archetypeTag}>
+                  {t(a.tagKey, a.tagFallback)}
+                </Text>
+                <Text style={styles.archetypeDesc}>
+                  {t(a.descKey, a.descFallback)}
+                </Text>
+              </View>
+              {isSelected ? (
+                <MaterialIcons
+                  name="check-circle"
+                  size={22}
+                  color={a.accent}
+                  style={styles.archetypeCheck}
+                />
+              ) : null}
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+    </View>
+  );
+}
+
 function PickPathStep({ t, selectedPath, onSelect }) {
   return (
     <View style={styles.pickPathContent}>
@@ -814,6 +933,54 @@ const styles = StyleSheet.create({
 
   // Pick path step
   pickPathContent: { flex: 1, paddingTop: 40 },
+
+  // Archetype step — identity-based framing
+  archetypeContent: { flex: 1, paddingTop: 40 },
+  archetypeList: {
+    paddingHorizontal: 16,
+    paddingBottom: 24,
+    gap: 12,
+  },
+  archetypeCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: LT.surfaceContainerLowest,
+    borderRadius: 16,
+    padding: 14,
+    gap: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  archetypeIconBox: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  archetypeName: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: LT.onSurface,
+    marginBottom: 2,
+  },
+  archetypeTag: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: LT.primary,
+    marginBottom: 4,
+    letterSpacing: 0.3,
+  },
+  archetypeDesc: {
+    fontSize: 12,
+    color: LT.onSurfaceVariant,
+    lineHeight: 16,
+  },
+  archetypeCheck: {
+    marginLeft: 4,
+  },
 
   // Upsell step
   upsellContent: {
