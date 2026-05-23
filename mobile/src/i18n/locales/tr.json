@@ -507,6 +507,15 @@
     "authRequiredTitle": "Giriş gerekli",
     "authRequiredBody": "Halka kurmak için hesabın olmalı. Önce giriş yap."
   },
+  "whatsNew": {
+    "v1_0_32": {
+      "title": "Yeni özellikler geldi 🎉",
+      "squad": "Halka (Squad) — 2-5 kişilik özel disiplin grubu kur, kollektif streak tutun.",
+      "dark": "Karanlık mod — Sistem temasını otomatik takip eder. Geceleri daha rahat.",
+      "referral": "Davet sistemi — Arkadaşına kodu gönder, ikiniz de 10 streak dondurma jetonu kazanın.",
+      "cta": "Anladım, halkamı kurmaya başlayayım"
+    }
+  },
   "paywall": {
     "title": "Tam Monk Mode",
     "subtitle": "İlk 7 gün ücretsiz",

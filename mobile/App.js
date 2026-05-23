@@ -16,6 +16,8 @@ import {
 } from './src/services/notifications';
 import { LT } from './src/config/lightTheme';
 import { getThemedLT } from './src/config/theme';
+import { useWhatsNew } from './src/hooks/useWhatsNew';
+import WhatsNewModal from './src/components/WhatsNewModal';
 
 export default function App() {
   const [i18nReady, setI18nReady] = useState(false);
@@ -90,10 +92,25 @@ export default function App() {
                   background the screens render. */}
               <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
               <AppNavigator />
+              {/* Post-update "Yenilikler" modal. The hook silently
+                  no-ops for first-time installs (so it doesn't
+                  interrupt onboarding) and for versions that don't
+                  have an entry in WHATS_NEW. */}
+              <PostUpdateWhatsNew />
             </AppProvider>
           </AuthProvider>
         </SafeAreaProvider>
       </GestureHandlerRootView>
     </ErrorBoundary>
+  );
+}
+
+// Thin wrapper that calls the hook + renders the modal. Kept outside
+// the App component body so the hook lives below AppProvider and can
+// use AsyncStorage state that's already hydrated.
+function PostUpdateWhatsNew() {
+  const { visible, version, dismiss } = useWhatsNew();
+  return (
+    <WhatsNewModal visible={visible} version={version} onDismiss={dismiss} />
   );
 }

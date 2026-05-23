@@ -205,6 +205,75 @@ export const requestNotificationPermissions = async () => {
 };
 
 /**
+ * Register the device's Expo push token in the `public.push_tokens`
+ * table so the broadcast-push Edge Function can target this user from
+ * the server. Idempotent + fire-and-forget — if anything fails, the
+ * app still works, the user just won't get server-initiated pushes.
+ *
+ * No-op when:
+ *   - Running in a simulator (Device.isDevice is false)
+ *   - Notification permissions aren't granted
+ *   - No authenticated user yet (caller passes userId === null)
+ *
+ * Caller: AppContext effect after sign-in. Safe to call multiple
+ * times — the upsert keys on user_id (primary key in push_tokens),
+ * so the latest device's token always wins (a user with two devices
+ * gets push on the most-recently-active one — acceptable tradeoff
+ * for v1 to keep the schema simple).
+ *
+ * @param {string|null} userId Authenticated user id, or null to no-op.
+ * @param {object} supabase   Supabase client (passed in to avoid an
+ *                            import cycle between services/).
+ * @returns {Promise<string|null>} The registered token, or null on no-op/error.
+ */
+export const registerPushToken = async (userId, supabase) => {
+  if (!userId || !supabase) return null;
+  if (!Device.isDevice) return null;
+  try {
+    const { status } = await Notifications.getPermissionsAsync();
+    if (status !== 'granted') return null;
+
+    // expo-notifications requires projectId for the token API since
+    // SDK 49. We read it from app.json → expo.extra.eas.projectId via
+    // Constants. Without this, getExpoPushTokenAsync throws.
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const Constants = require('expo-constants').default;
+    const projectId =
+      Constants?.expoConfig?.extra?.eas?.projectId ||
+      Constants?.easConfig?.projectId ||
+      null;
+    if (!projectId) {
+      console.warn('[notifications] No projectId — cannot fetch push token');
+      return null;
+    }
+
+    const tokenResp = await Notifications.getExpoPushTokenAsync({ projectId });
+    const expoToken = tokenResp?.data;
+    if (!expoToken) return null;
+
+    const { error } = await supabase
+      .from('push_tokens')
+      .upsert(
+        {
+          user_id: userId,
+          expo_token: expoToken,
+          platform: Platform.OS,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'user_id' },
+      );
+    if (error) {
+      console.warn('[notifications] push token upsert failed:', error.message);
+      return null;
+    }
+    return expoToken;
+  } catch (e) {
+    console.warn('[notifications] registerPushToken exception:', e?.message);
+    return null;
+  }
+};
+
+/**
  * Schedule a 9 AM daily reminder. Branches title/body on whether the user
  * has an active streak: "Begin monk mode" for first-day users vs.
  * "{n} days — discipline" for users carrying a streak. The previous

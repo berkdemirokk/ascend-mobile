@@ -32,6 +32,7 @@ import {
   scheduleComebackReminder,
   cancelComebackReminder,
   scheduleEveningInsight,
+  registerPushToken,
 } from '../services/notifications';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
@@ -1130,6 +1131,28 @@ export function AppProvider({ children }) {
       cancelled = true;
     };
   }, [state._loaded, userId]);
+
+  // ── Push token registration ────────────────────────────────────────────
+  // Once the user is signed in AND has at least one lesson completed
+  // (proxy for "they accepted notifications during onboarding"), upsert
+  // their Expo push token to public.push_tokens so the broadcast-push
+  // Edge Function can target them. registerPushToken is internally a
+  // no-op if permissions weren't granted, so it's safe to call eagerly.
+  // We piggy-back on totalLessonsCompleted ticking up rather than
+  // running on every auth render — that gives the push permission
+  // dialog a chance to resolve first.
+  useEffect(() => {
+    if (!state._loaded || !userId) return;
+    const completedCount = Object.values(state.pathProgress || {}).reduce(
+      (s, p) => s + (p?.completed?.length || 0),
+      0,
+    );
+    if (completedCount < 1) return;
+    registerPushToken(userId, supabase).catch(() => {});
+    // Re-runs whenever the user finishes another lesson, which doubles
+    // as a cheap "refresh stale tokens weekly" mechanism since active
+    // users complete lessons regularly.
+  }, [state._loaded, userId, state.pathProgress]);
 
   // ── Squad: mirror lesson completion to server ──────────────────────────
   // When the user finishes any lesson today, we upsert a row into

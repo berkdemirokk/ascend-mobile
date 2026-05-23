@@ -513,6 +513,15 @@
     "authRequiredTitle": "Sign in required",
     "authRequiredBody": "You need an account to create a squad. Sign in first."
   },
+  "whatsNew": {
+    "v1_0_32": {
+      "title": "New features are live 🎉",
+      "squad": "Squad — Create a 2-5 person private discipline group and keep a collective streak together.",
+      "dark": "Dark mode — Automatically follows system theme. Easier on the eyes at night.",
+      "referral": "Referral — Send a friend your code; both of you earn 10 streak-freeze tokens.",
+      "cta": "Got it, let me create my squad"
+    }
+  },
   "paywall": {
     "title": "Full Monk Mode",
     "subtitle": "First 7 days free",

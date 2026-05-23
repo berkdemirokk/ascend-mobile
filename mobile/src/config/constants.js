@@ -86,6 +86,12 @@ export const STORAGE_KEYS = {
   USER_STATE: '@ascend/user_state_v1',
   ONBOARDED: '@ascend/onboarded_v1',
   AD_COUNTER: '@ascend/ad_counter_v1',
+  // Last app version the user actually saw the "Yenilikler" modal for.
+  // When `Constants.expoConfig.version` doesn't match, we show the
+  // modal once and update this. New installs get the current version
+  // written WITHOUT showing the modal — first-time users are already
+  // in the onboarding flow, the welcome modal would be noise.
+  LAST_SEEN_VERSION: '@ascend/last_seen_version_v1',
 };
 
 // RevenueCat config. The iOS public API key used to live as a plain
