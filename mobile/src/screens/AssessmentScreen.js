@@ -27,6 +27,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
 import { LT } from '../config/lightTheme';
+import { useApp } from '../contexts/AppContext';
 import {
   ASSESSMENT_DIMENSIONS,
   ASSESSMENT_MAX_PER_DIM,
@@ -35,16 +36,53 @@ import {
 
 export default function AssessmentScreen({ route, navigation }) {
   const { t } = useTranslation();
-  const mode = route?.params?.mode || 'baseline'; // 'baseline' | 'post'
-  const onSubmit = route?.params?.onSubmit; // (scores) => void
+  // mode: 'baseline' (no callback wanted — onboarding handles it) or
+  // 'post' (we write to AppContext via addAssessment + replace into
+  // ProgressReport). The old design passed `onSubmit` via route.params
+  // which React Navigation serialises — function refs got stripped
+  // when the screen was restored from background, silently no-op'ing
+  // the entire post-assessment save. Now we read addAssessment from
+  // the context directly so there's no serialization layer.
+  const { addAssessment } = useApp();
+  const mode = route?.params?.mode || 'baseline';
   const [scores, setScores] = useState(defaultScores());
+  // Track whether the user actually touched the sliders, so we can
+  // distinguish a "tapped through with all-5 defaults" submit from
+  // a real assessment. Defaults-only is still saved (so baseline isn't
+  // lost), but Telemetry can later see how many users engaged for real.
+  const [touchedAny, setTouchedAny] = useState(false);
 
   const setScore = (dimId, value) => {
     setScores((prev) => ({ ...prev, [dimId]: value }));
+    if (!touchedAny) setTouchedAny(true);
   };
 
   const handleSubmit = () => {
-    if (onSubmit) onSubmit(scores);
+    if (mode === 'post') {
+      // Write through to AppContext + push the user into the report.
+      // `navigation.replace` (not navigate) so back-button from the
+      // report goes Home, not back into the now-stale assessment.
+      try {
+        addAssessment(scores);
+      } catch {}
+      try {
+        navigation.replace('ProgressReport');
+        return;
+      } catch {
+        navigation.goBack();
+        return;
+      }
+    }
+    // Baseline mode: handled by the onboarding flow (it reads
+    // baselineAssessment from context after the user advances).
+    // Onboarding registers its own BaselineAssessmentStep separately;
+    // this screen only runs for ad-hoc baseline opens.
+    try {
+      // Use addAssessment for both — the reducer is the source of
+      // truth, and onboarding's setBaselineAssessment runs at flow
+      // completion. Saving here is harmless redundancy.
+      addAssessment(scores);
+    } catch {}
     navigation.goBack();
   };
 

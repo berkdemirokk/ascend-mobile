@@ -72,45 +72,15 @@ export const DAILY_DECKS = [
     microQuestion: 'Bugün yaptığın hangi 1 iş %80 değerli?',
     microAction: 'Yarın o işe gün başında 90 dakika ayır.',
   },
-  {
-    id: 'meric-discipline',
-    author: 'Cemil Meriç',
-    authorMeta: 'Türk düşünür, yazar (1916-1987)',
-    quote:
-      'İnsan ya kendini yetiştirir, ya başkalarının elinde yetişir. İki seçenek var, üçüncüsü yok.',
-    context:
-      'Meriç 38 yaşında görme yetisini kaybetti. Sonraki 30 yıl boyunca eşi ve kızlarına dikte ettirerek 22 kitap yazdı. "Bu Ülke", "Mağaradakiler" — Türk düşünce hayatının temel metinleri.',
-    application:
-      'Bugün okuduğun, dinlediğin, izlediğin şeyleri sen mi seçtin, algoritma mı seçti? Birinci durum yetişmek; ikincisi yetiştirilmek.',
-    microQuestion: 'Son okuduğun kitabı kim sana önerdi?',
-    microAction: 'Bu hafta seçtiğin 1 kitabı listene ekle. Algoritmasız.',
-  },
-  {
-    id: 'cuceloglu-promise',
-    author: 'Doğan Cüceloğlu',
-    authorMeta: 'Türk psikolog, yazar (1938-2021)',
-    quote:
-      'Kendine verdiğin sözü tutarsan kendine güvenirsin. Tutamazsan kendinden saklanırsın.',
-    context:
-      '"İçimizdeki Çocuk" ve "Mış Gibi Yaşamlar" — Türk insanının kendine yabancılaşmasının ana metinleri. 60 yıl psikolog olarak çalıştı.',
-    application:
-      'Bu hafta kendine 1 küçük söz ver — sabah 7\'de kalkmak, gece sigara yok, tek bir şey. Tutarsan 1 puan kendine güven hesabına. Tutmazsan -1.',
-    microQuestion: 'Kendine son verdiğin söz neydi, tuttun mu?',
-    microAction: 'Bu hafta için tek, küçük, ölçülebilir bir söz yaz.',
-  },
-  {
-    id: 'siyavusgil-effort',
-    author: 'Sabri Esat Siyavuşgil',
-    authorMeta: 'Türk şair, çevirmen (1907-1968)',
-    quote:
-      'Büyük işler küçük bir günde başlar. O gün bugün olabilir, yarın da olabilir. Erteleyenler hep bekler.',
-    context:
-      'Siyavuşgil "Karaköy Köprüsü" şiiriyle bilinir ama asıl iş Stendhal\'i Türkçeye kazandırmasıydı. 700 sayfalık çeviriyi 2 yıl boyunca her gün 3 sayfa olarak yaptı.',
-    application:
-      'Büyük projeyi düşünme. "Bugün 3 sayfa" veya "Bugün 1 paragraf" veya "Bugün 10 dakika" — küçük ama her gün. 2 yıl sonra Stendhal Türkçe.',
-    microQuestion: 'Yıllardır ertelediğin "büyük şey" ne?',
-    microAction: 'O şeyin bugünkü en küçük versiyonu nedir? 10 dakika ona ayır.',
-  },
+  // AUDIT NOTE: Three TR-author decks (Cemil Meriç, Doğan Cüceloğlu,
+  // Sabri Esat Siyavuşgil) were removed in this commit. The quoted
+  // text could not be sourced to a verifiable book + page reference;
+  // attaching a real author's name to an LLM-paraphrased line is
+  // exactly the "fake authority" risk the reality-check agent flagged
+  // (Turkish literature readers spot inaccurate attribution fast).
+  // Re-add only when each quote has a citation that survives a
+  // bookstore-spot-check. In the meantime, "Sürünme — Türk yazar"
+  // section relies on the rest of the international (sourced) pool.
   {
     id: 'clear-identity',
     author: 'James Clear',
@@ -163,19 +133,7 @@ export const DAILY_DECKS = [
     microQuestion: 'Listede en çok seninle vakit geçiren kim?',
     microAction: 'O kişiyle bir sonraki buluşmadan önce: ne öğrenmek istiyorsun?',
   },
-  {
-    id: 'meric-reading',
-    author: 'Cemil Meriç',
-    authorMeta: 'Türk düşünür',
-    quote:
-      'Okumak, başkalarının düşüncesini geçirmek değil — kendi düşünceni keşfetmek için bir merdivendir.',
-    context:
-      'Meriç kör olduktan sonra kızı Ümit ona her gün 6 saat kitap okuduk. Bu okumalardan "Umrandan Uygarlığa", "Sosyoloji Notları" çıktı.',
-    application:
-      'Bugün okuduğun şeyi pasif yutma. "Bu bana ne öğretiyor?" "Bana ne yaptırıyor?" sorularıyla durdur, devam et.',
-    microQuestion: 'Son okuduğun şey sana ne yaptırdı?',
-    microAction: 'Bugün okurken 1 cümlede dur, kenara yaz.',
-  },
+  // (See note above about removed TR-author decks.)
   {
     id: 'epictetus-pain',
     author: 'Epiktetos',
@@ -202,19 +160,7 @@ export const DAILY_DECKS = [
     microQuestion: 'Hangi alana son 1 yılda sabit yatırım yaptın?',
     microAction: 'Yapmadığın 1 alan seç. Bugün 10 dakika ona ayır.',
   },
-  {
-    id: 'cuceloglu-mask',
-    author: 'Doğan Cüceloğlu',
-    authorMeta: 'Türk psikolog',
-    quote:
-      '"Mış gibi yaşam" — başkalarının seni nasıl görmesini istiyorsan öyle davranmak. Bunu uzun sürdüren kendi hayatını yaşayamaz.',
-    context:
-      '"Mış Gibi Yaşamlar" kitabı 1 milyon+ sattı. Çünkü Türk toplumunda fenomen — "el ne der" baskısı altında geçen hayatlar.',
-    application:
-      'Bugün yaptığın hangi şey "el ne der" için? Hangi şey gerçekten istediğin için? Birini bul, bugün yapma.',
-    microQuestion: 'En son ne zaman "mış gibi" yaptın? Niye?',
-    microAction: 'Bugün 1 küçük şeyi tam istediğin gibi yap — başkalarının görüşü kıytırık olsun.',
-  },
+  // (See note above about removed TR-author decks.)
 ];
 
 /**

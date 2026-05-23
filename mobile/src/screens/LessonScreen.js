@@ -279,6 +279,48 @@ export default function LessonScreen({ navigation, route }) {
     }).start();
   }, [step, stepProgress]);
 
+  // NOTE: All hooks below MUST run unconditionally on every render —
+  // React's Rules of Hooks. The early `if (!path || !lesson) return`
+  // guard used to live HERE (between hooks) which caused a
+  // hook-count mismatch on the rare-but-possible "lesson missing"
+  // path. Now we compute everything first (using safe fallbacks when
+  // lesson is null), then short-circuit-render the error state at
+  // the bottom. State hook count stays constant.
+  const i18nBase = lesson ? `lessons.${pathId}.${lesson.order}` : '';
+  const title = lesson
+    ? t(`${i18nBase}.title`, `${lesson.order}`)
+    : '';
+  const teaching = lesson ? t(`${i18nBase}.teaching`, '') : '';
+  const action = lesson ? t(`${i18nBase}.action`, '') : '';
+  const reflectionPrompt = lesson
+    ? t(`${i18nBase}.reflectionPrompt`, '')
+    : '';
+  const proTipKey = lesson ? `${i18nBase}.proTip` : '';
+  const proTipRaw = lesson ? t(proTipKey, '') : '';
+  const proTip =
+    proTipRaw && proTipRaw !== proTipKey ? proTipRaw : '';
+  const hasQuiz = quiz.length > 0;
+  const currentQuestion = hasQuiz ? quiz[quizIndex] : null;
+
+  // ── Teaching page splitter ────────────────────────────────────────
+  // Every lesson in lessons.tr.json is authored in the 4-layer
+  // format (sahne → bilim → mekanizma → pratik) with paragraphs
+  // separated by `\n\n`. We split on those separators so each
+  // paragraph renders as its own card. Lessons authored before the
+  // expansion (shorter, one-paragraph) gracefully collapse to a
+  // single page. Always safe — empty teaching → empty array.
+  const teachingPages = useMemo(() => {
+    if (!teaching) return [];
+    return teaching
+      .split(/\n\n+/)
+      .map((p) => p.trim())
+      .filter((p) => p.length > 0);
+  }, [teaching]);
+  const [teachingPageIdx, setTeachingPageIdx] = useState(0);
+  const isLastTeachingPage =
+    teachingPageIdx >= Math.max(0, teachingPages.length - 1);
+
+  // ── Error early-return AFTER all hooks have run ──
   if (!path || !lesson) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -291,39 +333,6 @@ export default function LessonScreen({ navigation, route }) {
       </SafeAreaView>
     );
   }
-
-  const i18nBase = `lessons.${pathId}.${lesson.order}`;
-  const title = t(`${i18nBase}.title`, `${lesson.order}`);
-  const teaching = t(`${i18nBase}.teaching`, '');
-  const action = t(`${i18nBase}.action`, '');
-  const reflectionPrompt = t(`${i18nBase}.reflectionPrompt`, '');
-  const proTipKey = `${i18nBase}.proTip`;
-  const proTipRaw = t(proTipKey, '');
-  const proTip = proTipRaw && proTipRaw !== proTipKey ? proTipRaw : '';
-  const hasQuiz = quiz.length > 0;
-  const currentQuestion = hasQuiz ? quiz[quizIndex] : null;
-
-  // ── Teaching page splitter ────────────────────────────────────────
-  // The audit's "5 minutes then they're gone" finding had a content
-  // sub-cause: lesson teaching was one giant scrollable wall of text
-  // (~150 words) that the user skimmed in 30 seconds. The fix is the
-  // same as the Daily Deck: split it into bite-sized cards.
-  //
-  // Lucky we don't need new content — every lesson in lessons.tr.json
-  // is already authored in the 4-layer format (sahne → bilim →
-  // mekanizma → pratik), with paragraphs separated by `\n\n`. We just
-  // honour those separators and render each paragraph as its own card.
-  // Lessons authored before the expansion (shorter, one-paragraph)
-  // gracefully collapse to a single page.
-  const teachingPages = useMemo(() => {
-    if (!teaching) return [];
-    return teaching
-      .split(/\n\n+/)
-      .map((p) => p.trim())
-      .filter((p) => p.length > 0);
-  }, [teaching]);
-  const [teachingPageIdx, setTeachingPageIdx] = useState(0);
-  const isLastTeachingPage = teachingPageIdx >= teachingPages.length - 1;
 
   // Teaching page advance — paginates through teachingPages first,
   // then promotes to QUIZ (or COMMIT if no quiz).

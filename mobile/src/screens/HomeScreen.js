@@ -83,7 +83,6 @@ export default function HomeScreen({ navigation }) {
     lastLessonAtMs,
     baselineAssessment,
     latestAssessment,
-    addAssessment,
     lastDailyDeckCompletedDate,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
@@ -615,17 +614,7 @@ export default function HomeScreen({ navigation }) {
             <TouchableOpacity
               activeOpacity={0.85}
               onPress={() =>
-                navigation.navigate('Assessment', {
-                  mode: 'post',
-                  onSubmit: (scores) => {
-                    addAssessment(scores);
-                    // Slight delay so the Assessment modal animates out
-                    // before the Report modal animates in.
-                    setTimeout(() => {
-                      navigation.navigate('ProgressReport');
-                    }, 350);
-                  },
-                })
+                navigation.navigate('Assessment', { mode: 'post' })
               }
               style={styles.reassessCard}
             >

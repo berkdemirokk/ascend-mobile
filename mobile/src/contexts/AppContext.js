@@ -1272,6 +1272,7 @@ export function AppProvider({ children }) {
     clearMomentumToast,
     setBaselineAssessment,
     addAssessment,
+    recordDailyDeckCompleted,
     startVacation,
     endVacation,
     completeDailyChallenge,

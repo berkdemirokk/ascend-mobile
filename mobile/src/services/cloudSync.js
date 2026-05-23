@@ -28,6 +28,13 @@ const SYNCED_KEYS = [
   'latestAssessment',
   'dailyDeckHistory',
   'lastDailyDeckCompletedDate',
+  // Added after audit found these were being pushed without merge,
+  // causing multi-device drift (letter cooldown wrong, repair count
+  // reset, momentum session phantom on second device).
+  'streakRepairsUsed',
+  'lastLetterShownAt',
+  'todaySessionLessons',
+  'lastLessonAtMs',
 ];
 
 export function pickSyncableState(state) {
@@ -123,6 +130,40 @@ function mergeLessonHistory(local = {}, cloud = {}) {
   return out;
 }
 
+// Merge two per-path-pledge maps. Newer pledge per pathId wins. No
+// timestamp on individual pledges so we use cloud-side when both have
+// a value (cloud is typically the most recent push from any device).
+function mergePathPledges(local = {}, cloud = {}) {
+  const out = {};
+  const ids = new Set([...Object.keys(local || {}), ...Object.keys(cloud || {})]);
+  for (const id of ids) {
+    out[id] = cloud[id] || local[id] || undefined;
+  }
+  return out;
+}
+
+// Concatenate two append-only history arrays (assessments, decks),
+// dedupe by timestamp, keep newest 60. Both inputs may be undefined.
+function mergeTimeOrderedHistory(local = [], cloud = [], keep = 60) {
+  const seen = new Set();
+  const all = [...(local || []), ...(cloud || [])]
+    .filter((e) => e && e.ts)
+    .filter((e) => {
+      if (seen.has(e.ts)) return false;
+      seen.add(e.ts);
+      return true;
+    })
+    .sort((a, b) => a.ts - b.ts);
+  return all.slice(-keep);
+}
+
+// Pick whichever side has the bigger timestamp (or string date).
+function maxValue(a, b) {
+  if (a == null) return b ?? null;
+  if (b == null) return a;
+  return a >= b ? a : b;
+}
+
 function pickNewer(localDate, cloudDate) {
   return (cloudDate || '') > (localDate || '') ? 'cloud' : 'local';
 }
@@ -183,6 +224,76 @@ export function mergeStates(localState, cloudPayload) {
     // sides have a value, the local one wins so users don't get re-handled
     // when they install on a second device that hadn't generated yet.
     anonUsername: localState.anonUsername || cloudPayload.anonUsername || null,
+    // ── Added in the post-audit merge expansion ─────────────────────────
+    // Without these, the merged payload would silently drop any new
+    // state fields, wiping device-B's pledges/assessments/decks on
+    // every sign-in. We previously lost ~9 fields this way.
+    vacationUntil: maxValue(localState.vacationUntil, cloudPayload.vacationUntil),
+    dailyChallengeCompletedAt: maxValue(
+      localState.dailyChallengeCompletedAt,
+      cloudPayload.dailyChallengeCompletedAt,
+    ),
+    dailyLoginGrantedAt: maxValue(
+      localState.dailyLoginGrantedAt,
+      cloudPayload.dailyLoginGrantedAt,
+    ),
+    pathPledges: mergePathPledges(localState.pathPledges, cloudPayload.pathPledges),
+    // Baseline assessment is one-shot — keep the EARLIEST one seen on
+    // either side. The user's first install established their starting
+    // point; we never overwrite it.
+    baselineAssessment: (() => {
+      const l = localState.baselineAssessment;
+      const c = cloudPayload.baselineAssessment;
+      if (!l) return c || null;
+      if (!c) return l;
+      return (l.ts || 0) <= (c.ts || 0) ? l : c;
+    })(),
+    assessmentHistory: mergeTimeOrderedHistory(
+      localState.assessmentHistory,
+      cloudPayload.assessmentHistory,
+      12,
+    ),
+    // latestAssessment is derived from history but we still merge in
+    // case one side has only this denormalised pointer.
+    latestAssessment: (() => {
+      const merged = mergeTimeOrderedHistory(
+        localState.assessmentHistory,
+        cloudPayload.assessmentHistory,
+        12,
+      );
+      if (merged.length > 0) return merged[merged.length - 1];
+      return (
+        newerSide.latestAssessment ||
+        localState.latestAssessment ||
+        cloudPayload.latestAssessment ||
+        null
+      );
+    })(),
+    dailyDeckHistory: mergeTimeOrderedHistory(
+      localState.dailyDeckHistory,
+      cloudPayload.dailyDeckHistory,
+      60,
+    ),
+    lastDailyDeckCompletedDate: maxValue(
+      localState.lastDailyDeckCompletedDate,
+      cloudPayload.lastDailyDeckCompletedDate,
+    ),
+    // Counter fields — keep the bigger number.
+    streakRepairsUsed: Math.max(
+      localState.streakRepairsUsed || 0,
+      cloudPayload.streakRepairsUsed || 0,
+    ),
+    lastLetterShownAt: Math.max(
+      localState.lastLetterShownAt || 0,
+      cloudPayload.lastLetterShownAt || 0,
+    ),
+    // Momentum window — newer side wins. Stale value from old cloud
+    // doesn't matter because reducer guard checks SESSION_TIMEOUT_MS.
+    todaySessionLessons: newerSide.todaySessionLessons || 0,
+    lastLessonAtMs: Math.max(
+      localState.lastLessonAtMs || 0,
+      cloudPayload.lastLessonAtMs || 0,
+    ),
   };
 }
 
