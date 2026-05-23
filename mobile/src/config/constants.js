@@ -88,8 +88,20 @@ export const STORAGE_KEYS = {
   AD_COUNTER: '@ascend/ad_counter_v1',
 };
 
+// RevenueCat config. The iOS public API key used to live as a plain
+// string here, which meant it was readable in `git log -p` forever even
+// if the file were later edited. We now read it from `app.json` →
+// `expo.extra.revenueCatIosKey` (resolved via `Constants.expoConfig`)
+// so the value can be supplied at build-time from EAS Secrets without
+// touching source. The fallback string is kept ONLY so existing local
+// builds don't break the moment this commit lands — rotate the key in
+// the RevenueCat dashboard and remove the fallback as a follow-up.
+import Constants from 'expo-constants';
+
+const extra = Constants?.expoConfig?.extra ?? {};
+
 export const REVENUECAT_CONFIG = {
-  API_KEY_IOS: 'appl_GdTXEiIwMXBaFuHLGjwBhzlrruB',
+  API_KEY_IOS: extra.revenueCatIosKey || 'appl_GdTXEiIwMXBaFuHLGjwBhzlrruB',
   ENTITLEMENT_ID: 'premium',
   OFFERING_ID: 'default',
   // Match App Store Connect product IDs (verified via ASC API)

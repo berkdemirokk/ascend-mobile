@@ -194,11 +194,19 @@ export default function LessonScreen({ navigation, route }) {
   // modal tick down to zero on its own each second. The old local
   // `now` state + every-30s setInterval was redundant.
 
+  const alreadyCompleted = pathProgress?.[pathId]?.completed?.includes(lessonId);
+
   // Mount-time hearts guard: if a free user lands on a Lesson with 0
   // hearts (e.g. tapped Home "next lesson" card, deep-linked from
   // notification), bounce them out IMMEDIATELY with the OutOfHearts
   // modal. Skipped during the new-user grace period because hearts
   // aren't being consumed there anyway.
+  //
+  // NOTE: `alreadyCompleted` is declared *above* this effect on purpose —
+  // it used to be declared below, creating a TDZ ordering risk where the
+  // mount-time read of `alreadyCompleted` happened before its `const`
+  // binding was initialized. Refactor-safe order: derive value first,
+  // then reference it from the effect.
   useEffect(() => {
     if (alreadyCompleted) return; // re-visiting a finished lesson is OK
     if (isInGracePeriod) return; // grace period — hearts not enforced
@@ -213,8 +221,6 @@ export default function LessonScreen({ navigation, route }) {
   const celebrationScale = useRef(new Animated.Value(0)).current;
   const xpY = useRef(new Animated.Value(0)).current;
   const stepProgress = useRef(new Animated.Value(0.33)).current;
-
-  const alreadyCompleted = pathProgress?.[pathId]?.completed?.includes(lessonId);
 
   useEffect(() => {
     let target = 0.33;
