@@ -46,6 +46,12 @@ const initialState = {
   longestStreak: 0,
   lastCompletedDate: null,
 
+  // Variable-reward "Letter from Future Self" surface — last ms
+  // timestamp it was shown so we can enforce the 7-day cooldown.
+  lastLetterShownAt: 0,
+  // Streak Repair bookkeeping (rewarded-ad "undo the broken streak").
+  streakRepairsUsed: 0,
+
   // Streak calendar — { 'YYYY-MM-DD': count of lessons that day }
   lessonHistory: {},
 
@@ -165,6 +171,7 @@ const ACTION_TYPES = {
   CLEAR_STREAK_FREEZE_TOAST: 'CLEAR_STREAK_FREEZE_TOAST',
   CLEAR_STREAK_LOST_INFO: 'CLEAR_STREAK_LOST_INFO',
   RESTORE_STREAK_FROM_REPAIR: 'RESTORE_STREAK_FROM_REPAIR',
+  RECORD_FUTURE_LETTER_SHOWN: 'RECORD_FUTURE_LETTER_SHOWN',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -305,6 +312,13 @@ function appReducer(state, action) {
       // after they complete a fresh lesson (so it doesn't keep showing
       // forever after they've moved on).
       return { ...state, _streakLostInfo: null };
+
+    case ACTION_TYPES.RECORD_FUTURE_LETTER_SHOWN:
+      // Bookkeeping for the "Letter from Future Self" variable-reward
+      // surface. We track the last shown timestamp so the cooldown
+      // logic in futureLetter.shouldShowLetter can enforce a 7-day
+      // minimum gap between letters — keeps the surface feeling rare.
+      return { ...state, lastLetterShownAt: Date.now() };
 
     case ACTION_TYPES.RESTORE_STREAK_FROM_REPAIR: {
       // Streak Repair flow: user watched a rewarded ad (verified by
@@ -867,6 +881,10 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.RESTORE_STREAK_FROM_REPAIR });
   }, []);
 
+  const recordFutureLetterShown = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.RECORD_FUTURE_LETTER_SHOWN });
+  }, []);
+
   const startVacation = useCallback((days = 7) => {
     dispatch({ type: ACTION_TYPES.START_VACATION, payload: { days } });
   }, []);
@@ -1042,6 +1060,7 @@ export function AppProvider({ children }) {
     clearStreakFreezeToast,
     clearStreakLostInfo,
     restoreStreakFromRepair,
+    recordFutureLetterShown,
     startVacation,
     endVacation,
     completeDailyChallenge,

@@ -678,6 +678,10 @@
     "cta": "YENİDEN BAŞLA",
     "repairCta": "REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN"
   },
+  "futureLetter": {
+    "label": "KENDİNDEN BİR MEKTUP",
+    "cta": "OKUDUM"
+  },
   "archetypes": {
     "zenMaster": {
       "name": "Zen Müderris",

@@ -38,6 +38,8 @@ import { requestReviewIfAppropriate } from '../services/review';
 import { cancelFirstWeekHooks } from '../services/notifications';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
+import { shouldShowLetter, getLetterFor } from '../services/futureLetter';
+import FutureLetterModal from '../components/FutureLetterModal';
 import { track } from '../services/analytics';
 import { useAuth } from '../contexts/AuthContext';
 import { LT, LT_RADIUS } from '../config/lightTheme';
@@ -65,6 +67,9 @@ export default function LessonScreen({ navigation, route }) {
     refillHearts,
     isInGracePeriod,
     grantBonusXP,
+    userProfile,
+    lastLetterShownAt,
+    recordFutureLetterShown,
   } = useApp();
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
@@ -105,6 +110,12 @@ export default function LessonScreen({ navigation, route }) {
   // the user wrote a reflection. Surfaces on celebration screen as
   // "a sage responds to your words". Empathy/voice-of-the-app hook.
   const [mirrorQuote, setMirrorQuote] = useState(null);
+  // "Letter from Future Self" — variable-reward surface that fires on
+  // a small percentage of completions, gated by a 7-day cooldown.
+  // Populated by handleCelebrationContinue right before exit, blocks
+  // the normal post-lesson sequence until dismissed.
+  const [letterModalVisible, setLetterModalVisible] = useState(false);
+  const [currentLetter, setCurrentLetter] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
@@ -419,7 +430,36 @@ export default function LessonScreen({ navigation, route }) {
     // No auto-dismiss — user picks "Yola Dön" or "Sonraki Ders" from celebration
   };
 
+  // Wrapper for the celebration's "continue" button. Decides whether
+  // the rare Letter from Future Self fires for this completion. If it
+  // does, we show the modal and DEFER the rest of the post-lesson
+  // sequence (ATT, paywall, ad, goBack) until the user dismisses the
+  // letter — otherwise the letter would compete with a paywall or ad
+  // for the user's attention at the worst possible moment.
   const handleCelebrationContinue = async () => {
+    const totalCompleted = Object.values(pathProgress || {}).reduce(
+      (s, p) => s + (p?.completed?.length || 0),
+      0,
+    ) + 1;
+
+    if (
+      shouldShowLetter({
+        lastLetterShownAt: lastLetterShownAt || 0,
+        lessonsCompleted: totalCompleted,
+      })
+    ) {
+      const letter = getLetterFor(userProfile?.archetype);
+      setCurrentLetter(letter);
+      setLetterModalVisible(true);
+      recordFutureLetterShown();
+      // Bail out here. The modal's onClose calls runPostLetterFlow()
+      // which is the original post-lesson sequence.
+      return;
+    }
+    return runPostLetterFlow();
+  };
+
+  const runPostLetterFlow = async () => {
     const totalCompleted = Object.values(pathProgress || {}).reduce(
       (s, p) => s + (p?.completed?.length || 0),
       0,
@@ -997,6 +1037,26 @@ export default function LessonScreen({ navigation, route }) {
           onPaywall={() => {
             setOutOfHeartsVisible(false);
             navigation.navigate('Paywall');
+          }}
+        />
+
+        {/* Letter from Future Self — variable-reward surface. Renders
+            after lesson completion in ~5% of cases (gated by cooldown
+            in shouldShowLetter). Blocks the rest of the post-lesson
+            sequence until dismissed; on close we continue into the
+            normal flow (ATT/review/paywall/ad/goBack). */}
+        <FutureLetterModal
+          visible={letterModalVisible}
+          letter={currentLetter}
+          onClose={() => {
+            setLetterModalVisible(false);
+            // Defer the rest of the post-lesson sequence until the
+            // modal animation has dismissed, so the user sees a clean
+            // hand-off rather than a paywall sliding in over the
+            // letter as it fades.
+            setTimeout(() => {
+              runPostLetterFlow().catch(() => {});
+            }, 220);
           }}
         />
 

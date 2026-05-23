@@ -680,6 +680,10 @@
     "cta": "START AGAIN",
     "repairCta": "WATCH AD → RESTORE YOUR STREAK"
   },
+  "futureLetter": {
+    "label": "A LETTER TO YOURSELF",
+    "cta": "READ"
+  },
   "archetypes": {
     "zenMaster": {
       "name": "Zen Master",
