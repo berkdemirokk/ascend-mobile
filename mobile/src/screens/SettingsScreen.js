@@ -869,7 +869,7 @@ export default function SettingsScreen({ navigation }) {
                 <MaterialIcons
                   name="bug-report"
                   size={22}
-                  color={LT.onSurfaceVariant}
+                  color={T.onSurfaceVariant}
                 />
                 <View>
                   <Text style={styles.rowLabel}>
@@ -886,7 +886,7 @@ export default function SettingsScreen({ navigation }) {
               <MaterialIcons
                 name="chevron-right"
                 size={18}
-                color={LT.onSurfaceVariant}
+                color={T.onSurfaceVariant}
               />
             </TouchableOpacity>
           </Section>

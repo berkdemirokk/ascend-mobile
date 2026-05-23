@@ -73,12 +73,29 @@ export default class ErrorBoundary extends React.Component {
             <Text style={styles.loopWarn}>{i18n.t('error.loopWarn')}</Text>
           ) : null}
 
-          {__DEV__ && this.state.error?.message ? (
+          {/* Always show the error message — even in TestFlight/release.
+              Without this, the user just sees "something went wrong" and
+              can't tell us what crashed. Apple allows debug info in the
+              fallback UI, and the cost of a 4-line gray box is tiny
+              compared to the value of getting a real bug report. */}
+          {this.state.error?.message ? (
             <View style={styles.devBox}>
               <Text style={styles.devLabel}>{i18n.t('error.devLabel')}</Text>
-              <Text style={styles.devText}>
+              <Text style={styles.devText} selectable>
                 {String(this.state.error?.message)}
               </Text>
+              {this.state.info?.componentStack ? (
+                <Text
+                  style={[styles.devText, { marginTop: 8, opacity: 0.7 }]}
+                  numberOfLines={6}
+                  selectable
+                >
+                  {String(this.state.info.componentStack)
+                    .split('\n')
+                    .slice(0, 6)
+                    .join('\n')}
+                </Text>
+              ) : null}
             </View>
           ) : null}
 
