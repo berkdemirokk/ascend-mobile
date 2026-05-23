@@ -165,6 +165,49 @@ export default function HomeScreen({ navigation }) {
     };
   }, [pathProgress]);
 
+  // Past-reflection memory card. Picks one reflection from history
+  // and resurfaces it as "you wrote this 12 lessons ago — here's
+  // what you said". The investment-feedback loop: the user sees
+  // their OWN words come back as evidence that what they put into
+  // this app actually exists somewhere, isn't disappearing. Without
+  // this surface, written reflections feel like notes thrown into a
+  // void; with it, they feel like an archive being built. Picks
+  // deterministically (date-bucketed) so the same memory shows for
+  // the whole day instead of flickering between renders. Threshold:
+  // need at least 5 total reflections so this never resurrects the
+  // most recent one (would feel weird).
+  const pastReflectionMemory = useMemo(() => {
+    if (!pathProgress) return null;
+    const all = [];
+    for (const pid of Object.keys(pathProgress)) {
+      const reflections = pathProgress[pid]?.reflections || {};
+      for (const lessonId of Object.keys(reflections)) {
+        const text = reflections[lessonId];
+        if (text && text.trim().length >= 20) {
+          all.push({ pathId: pid, lessonId, text: text.trim() });
+        }
+      }
+    }
+    if (all.length < 5) return null;
+    // Skip the 2 most recent (assumed sort: lesson order ascending).
+    // We want to pull from the "archive", not yesterday's reflection.
+    const candidates = all.slice(0, Math.max(1, all.length - 2));
+    // Day-bucketed deterministic pick so the same memory persists
+    // through a session and rotates next day.
+    const dayBucket = Math.floor(Date.now() / (24 * 60 * 60 * 1000));
+    const picked = candidates[dayBucket % candidates.length];
+    const lessonOrder = parseInt(
+      picked.lessonId.split('-').pop(),
+      10,
+    );
+    return {
+      pathId: picked.pathId,
+      lessonOrder,
+      text: picked.text,
+      totalCount: all.length,
+    };
+  }, [pathProgress]);
+
   // Daily Plan — 3 lessons curated for the user today based on their
   // active path + reflection-derived focus + onboarding goal. Premium-
   // only feature; free users see a teaser/upsell version.
@@ -678,6 +721,49 @@ export default function HomeScreen({ navigation }) {
           );
         })()}
 
+        {/* Past Reflection Memory — investment-feedback surface. After
+            the user has ≥5 reflections, this card resurfaces an old
+            one as "you wrote this — remember?". Builds the sense of
+            an archive being built, makes the writing feel like
+            something that persists rather than evaporates. Tap →
+            Reflections screen. */}
+        {pastReflectionMemory ? (
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={() => navigation.navigate('Reflections')}
+            style={styles.memoryCard}
+          >
+            <View style={styles.memoryHeader}>
+              <MaterialIcons
+                name="history-edu"
+                size={16}
+                color={LT.primaryContainer}
+              />
+              <Text style={styles.memoryLabel}>
+                {t(
+                  'home.memoryLabel',
+                  'SENİN SÖZLERİN · {{total}} YANSIMA',
+                  { total: pastReflectionMemory.totalCount },
+                )}
+              </Text>
+            </View>
+            <Text style={styles.memorySub} numberOfLines={1}>
+              {t(
+                `paths.${pastReflectionMemory.pathId}.title`,
+                pastReflectionMemory.pathId,
+              )}{' '}
+              · {t('path.lessonLabel', 'Ders')}{' '}
+              {pastReflectionMemory.lessonOrder}
+            </Text>
+            <Text style={styles.memoryText} numberOfLines={3}>
+              "{pastReflectionMemory.text}"
+            </Text>
+            <Text style={styles.memoryFooter}>
+              {t('home.memoryFooter', 'Tüm yansımalarına bak →')}
+            </Text>
+          </TouchableOpacity>
+        ) : null}
+
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             EXTRAS ZONE — secondary, mostly-optional engagement bait.
             Lives below the fold by design. Skipping any of these has
@@ -1086,6 +1172,49 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: LT.onSurfaceVariant,
     lineHeight: 18,
+  },
+  // Memory card — "Senin sözlerin" investment-feedback surface.
+  // Card uses primaryContainer border so it feels warmer than the
+  // neutral extras below, signalling "this is YOUR content" not
+  // "another upsell".
+  memoryCard: {
+    backgroundColor: LT.surfaceContainerLowest,
+    borderRadius: 16,
+    padding: 16,
+    marginVertical: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(220, 38, 38, 0.20)',
+  },
+  memoryHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 4,
+  },
+  memoryLabel: {
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+    color: LT.primaryContainer,
+  },
+  memorySub: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: LT.onSurfaceVariant,
+    marginBottom: 8,
+  },
+  memoryText: {
+    fontSize: 14,
+    fontStyle: 'italic',
+    color: LT.onSurface,
+    lineHeight: 20,
+    marginBottom: 10,
+  },
+  memoryFooter: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: LT.primary,
+    letterSpacing: 0.4,
   },
   // The user's own commitment sentence echoed back under their name.
   // Italic + softer color to feel like a quote, not a heading.

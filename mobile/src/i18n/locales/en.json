@@ -155,6 +155,8 @@
     "eveningInsightBody1": "Most people did 0 today. You did 1 — that puts you in the top 10%.",
     "eveningInsightBody2": "Most people did 0 today. You did 2 — top 5% of disciplined.",
     "eveningInsightBodyHigh": "Most people did 0 today. You did 3+ — top 2% of disciplined.",
+    "memoryLabel": "YOUR WORDS · {{total}} REFLECTIONS",
+    "memoryFooter": "See all your reflections →",
     "allDone": "Every path walked. 🎉",
     "allDoneSub": "Pick another. Revisit one. The work doesn't stop.",
     "ctaGenericSub": "Five minutes. The smallest unit of becoming.",
@@ -815,7 +817,10 @@
     "title": "My Reflections",
     "subtitle": "Thoughts you wrote on past lessons. Look back, remember your journey.",
     "emptyTitle": "No reflections yet",
-    "emptyBody": "As you complete lessons, your reflections will collect here."
+    "emptyBody": "As you complete lessons, your reflections will collect here.",
+    "statCount": "REFLECTIONS",
+    "statWords": "WORDS",
+    "featuredLabel": "YOUR DEEPEST"
   },
   "level": {
     "1": "Beginner",
