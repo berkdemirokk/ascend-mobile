@@ -41,6 +41,7 @@ import {
   initAds,
   loadInterstitial,
   loadRewarded,
+  showRewarded,
   isAdsReady,
 } from '../services/ads';
 import {
@@ -72,6 +73,7 @@ export default function HomeScreen({ navigation }) {
     streakFreezes,
     clearStreakFreezeToast,
     clearStreakLostInfo,
+    restoreStreakFromRepair,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
     dailyMysteryBoxOpenedAt,
@@ -395,14 +397,36 @@ export default function HomeScreen({ navigation }) {
             after losing a real streak (>=3 days). Persists across app
             restarts; dismissed by tapping × or by starting a fresh
             lesson. The cold "STREAK: 1" reset moment is the textbook
-            churn trigger in habit apps — this softens it. */}
+            churn trigger in habit apps — this softens it.
+
+            Streak Repair: if the rewarded-ad SDK is loaded we surface
+            a secondary CTA that, on EARNED_REWARD, dispatches
+            RESTORE_STREAK_FROM_REPAIR to put the lost streak back.
+            Free users only — premium users would already have
+            streakFreezes to absorb the miss; offering them a rewarded
+            ad would be a worse experience than what their plan promises. */}
         {_streakLostInfo ? (
           <StreakLostBanner
             info={_streakLostInfo}
+            repairAvailable={!isPremium && isAdsReady()}
             onRestart={() => {
               clearStreakLostInfo();
               if (currentLesson) {
                 attemptStartLesson(currentLesson.pathId, currentLesson.id);
+              }
+            }}
+            onRepair={async () => {
+              try {
+                const earned = await showRewarded();
+                if (earned) {
+                  restoreStreakFromRepair();
+                  // Reload a fresh rewarded ad for the next eligible
+                  // moment (other surfaces or another lost-streak event).
+                  loadRewarded().catch(() => {});
+                }
+              } catch {
+                // Ad failure is silent — the regular "Yeniden Başla"
+                // CTA still works; user hasn't lost any option.
               }
             }}
             onDismiss={clearStreakLostInfo}

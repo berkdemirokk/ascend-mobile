@@ -26,7 +26,13 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { LT } from '../config/lightTheme';
 
-export default function StreakLostBanner({ info, onRestart, onDismiss }) {
+export default function StreakLostBanner({
+  info,
+  onRestart,
+  onDismiss,
+  onRepair,
+  repairAvailable, // false = ad SDK not ready; hide the repair CTA
+}) {
   const { t } = useTranslation();
   if (!info || !info.lost) return null;
 
@@ -70,6 +76,26 @@ export default function StreakLostBanner({ info, onRestart, onDismiss }) {
               'Geri dönenler %47. Bugün başla — yarın sayı 2 olur.',
             )}
       </Text>
+
+      {/* Streak Repair — only shown when the rewarded-ad SDK is loaded
+          (`repairAvailable`). Tapping fires the ad; on EARNED_REWARD
+          the parent dispatches RESTORE_STREAK_FROM_REPAIR which puts
+          the lost streak back as if yesterday had been completed. */}
+      {repairAvailable ? (
+        <TouchableOpacity
+          style={styles.repairCta}
+          onPress={onRepair}
+          activeOpacity={0.85}
+        >
+          <MaterialIcons name="restore" size={16} color={LT.primary} />
+          <Text style={styles.repairCtaText}>
+            {t(
+              'streakLost.repairCta',
+              'REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN',
+            )}
+          </Text>
+        </TouchableOpacity>
+      ) : null}
 
       <TouchableOpacity
         style={styles.cta}
@@ -137,5 +163,28 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0.6,
     color: LT.onPrimary,
+  },
+  // Secondary, lower-emphasis CTA. Outlined (not filled) on purpose:
+  // the primary action is still "start a fresh lesson"; the repair
+  // is the harder, ad-gated option for users who *really* don't want
+  // to lose the count.
+  repairCta: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: LT.primary,
+    borderRadius: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    marginBottom: 8,
+  },
+  repairCtaText: {
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 0.6,
+    color: LT.primary,
   },
 });

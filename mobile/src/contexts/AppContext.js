@@ -164,6 +164,7 @@ const ACTION_TYPES = {
   AUTO_APPLY_STREAK_FREEZE: 'AUTO_APPLY_STREAK_FREEZE',
   CLEAR_STREAK_FREEZE_TOAST: 'CLEAR_STREAK_FREEZE_TOAST',
   CLEAR_STREAK_LOST_INFO: 'CLEAR_STREAK_LOST_INFO',
+  RESTORE_STREAK_FROM_REPAIR: 'RESTORE_STREAK_FROM_REPAIR',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -304,6 +305,34 @@ function appReducer(state, action) {
       // after they complete a fresh lesson (so it doesn't keep showing
       // forever after they've moved on).
       return { ...state, _streakLostInfo: null };
+
+    case ACTION_TYPES.RESTORE_STREAK_FROM_REPAIR: {
+      // Streak Repair flow: user watched a rewarded ad (verified by
+      // the caller — we don't show the ad here). Restores the lost
+      // streak by:
+      //   1. Setting currentStreak back to the value we stashed in
+      //      _streakLostInfo.lost
+      //   2. Setting lastCompletedDate to YESTERDAY so today's next
+      //      lesson naturally extends the streak by +1 — no parallel
+      //      "completed today" lie.
+      //   3. Clearing the empathy banner.
+      // Bookkeeping: increment streakRepairsUsed so we can offer a
+      // gentler limit for premium users later (e.g. 1 free/month) and
+      // for analytics on how often this flow actually fires.
+      if (!state._streakLostInfo || !state._streakLostInfo.lost) return state;
+      const restoredCount = state._streakLostInfo.lost;
+      const yesterday = getYesterdayDateString();
+      return {
+        ...state,
+        currentStreak: restoredCount,
+        longestStreak: Math.max(state.longestStreak || 0, restoredCount),
+        lastCompletedDate: yesterday,
+        _streakLostInfo: null,
+        streakRepairsUsed: (state.streakRepairsUsed || 0) + 1,
+        // One-shot toast so the UI can confirm visually the restore worked.
+        _streakRepairToast: { restored: restoredCount, ts: Date.now() },
+      };
+    }
 
     case ACTION_TYPES.START_VACATION: {
       // payload = { days } — clamps 1..7
@@ -834,6 +863,10 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.CLEAR_STREAK_LOST_INFO });
   }, []);
 
+  const restoreStreakFromRepair = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.RESTORE_STREAK_FROM_REPAIR });
+  }, []);
+
   const startVacation = useCallback((days = 7) => {
     dispatch({ type: ACTION_TYPES.START_VACATION, payload: { days } });
   }, []);
@@ -1008,6 +1041,7 @@ export function AppProvider({ children }) {
     useStreakFreezeAction,
     clearStreakFreezeToast,
     clearStreakLostInfo,
+    restoreStreakFromRepair,
     startVacation,
     endVacation,
     completeDailyChallenge,

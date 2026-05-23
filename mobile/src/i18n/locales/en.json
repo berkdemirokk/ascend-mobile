@@ -613,7 +613,8 @@
     "title": "You lost your {{count}}-day chain.",
     "body": "47% of users come back. Start today — tomorrow it's 2.",
     "bodyWithRecord": "47% of users come back. You once made it {{best}} days — that person is still in you. Start today.",
-    "cta": "START AGAIN"
+    "cta": "START AGAIN",
+    "repairCta": "WATCH AD → RESTORE YOUR STREAK"
   },
   "moodCheckIn": {
     "label": "MOOD CHECK",
