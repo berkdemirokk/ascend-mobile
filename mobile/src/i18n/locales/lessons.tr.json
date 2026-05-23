@@ -4374,10 +4374,10 @@
       },
       "41": {
         "title": "Karar Çerçeveleri",
-        "teaching": "Her gün ~35,000 karar = irade gücü tükenir. Çerçeve = pre-decision. \"Hafta içi alkol içmem.\" Karar yok — uygula.",
-        "action": "Bugün 3 karar çerçevesi yaz, 30 gün uygula.",
-        "reflectionPrompt": "Hangi alanlar çerçeve istedi?",
-        "proTip": "Çerçeveleri yazılı tut. Hafıza güvenilmez.",
+        "teaching": "Akşam arkadaşlarla beraberin. 'İçelim mi?' soruldu. Kısa karar gerek — düşünmek, tartışmak, yorulmak. Her hafta aynı sahne, her hafta **karar yorgunluğu**, çoğu zaman **kötü seçim**.\n\nÇözüm: **pre-decision** (önceden karar). 'Hafta içi alkol içmem.' Karar **artık yok** — sadece **uygula**. **Sıfır müzakere**, sıfır irade tüketimi.\n\nDuke Üniversitesi (Wendy Wood) araştırması: günlük davranışın **%45'i** otomatik (alışkanlık). Geri kalan %55 'karar' diye etiketlediğimiz şey. Pre-decision = %55'in çoğunu da otomatikleştirir.\n\nDaniel Kahneman (**Thinking Fast and Slow**): Sistem 1 (hızlı, otomatik) ve Sistem 2 (yavaş, analitik). **Pre-decision = Sistem 1'e yetki vermek**. İyi karar = bir kez Sistem 2 ile düşünüldü, sonrası **otomatik uygulama**.\n\nÖrnek çerçeveler:\n- 'Hafta içi alkol içmem.'\n- 'Sosyal medyaya 19:00'dan sonra girmem.'\n- 'Yatma 23:00 sonrası asla.'\n- 'Her satın alımdan önce 24 saat bekle (>500 TL için).'\n- 'Sabah ilk 1 saat email yok.'\n\nMekanizma: çerçeve = **kural temelli karar**. İrade gerek değil — sadece **kural tanıma**. Karar yorgunluğu **sıfır**.\n\nÇerçevelere **yazılı kal**. Hafıza güvenilmez. Görünür yer.",
+        "action": "Bugün **3 karar çerçevesi yaz**. **30 gün uygula**. Yazılı, görünür yer.",
+        "reflectionPrompt": "Hangi alanlar **çerçeve istedi**? En çok karar yorgunluğu nerede yaşıyordun?",
+        "proTip": "**Çerçeveleri yazılı tut**. Hafıza güvenilmez. Cüzdana, telefon kilit ekranına, banyo aynasına.",
         "quiz": [
           {
             "q": "Çerçeve nedir?",
@@ -4405,10 +4405,10 @@
       },
       "42": {
         "title": "80/20 Zihin",
-        "teaching": "Pareto: %20 iş %80 sonuç. Bugün yaptığın 10 işten en kritik 2'sini bul, geri kalanı kes. 80/20 her hafta uygulanır.",
-        "action": "Bugün 10 görevden 2'sini seç, kalanı erteleı veya delege et.",
-        "reflectionPrompt": "Hangi 2 işti kritik?",
-        "proTip": "Cuma akşamı haftaya 80/20 yap. Pazartesi keskin başla.",
+        "teaching": "Bugün **10 görev** bitirdin. Akşam: 'Üretken bir gündü' diyorsun. Ama içeride bakarsan: o 10 görevden **2'si** asıl değer üretti, **8'i** zaman dolduran. Bu **Pareto Prensibi** — çoğu insanın hayatının tasarımı.\n\nVilfredo Pareto (İtalyan ekonomist, 1896): İtalya'da **%20 nüfus %80 toprağa** sahip. Daha sonra Joseph Juran fark etti: bu **evrensel desen**:\n- **%20 müşteri = %80 gelir**\n- **%20 ürün = %80 satış**\n- **%20 sebep = %80 sonuç**\n- **%20 iş = %80 değer**\n\nBu **abartı değil, matematiksel desen**. Tim Ferriss (**The 4-Hour Workweek**): 'Hangi %20'yi yapıyorum bilmiyorsam, gün boyu %80'i yapıyorum demektir.'\n\n**Pratik 80/20**:\n1. Bugünkü 10 görevi listele\n2. 'Bu görev yapılmasaydı **ciddi sonuç ne olur**?' sor\n3. Cevap 'önemli' olan **2-3 görev** = senin %20'in\n4. Geri kalan **erteleı, delege et, sil**\n\nMekanizma: 80/20 = **odak filtresi**. PFC kaynağını **en yüksek getiriye** kanalize eder. **Çoklu görev verim kaybı** yerine **tek görev verim çarpanı**.\n\nKritik: 80/20 = **haftalık ritüel**. Cuma akşam 30 dk: önümüzdeki haftanın %20'sini belirle. **Pazartesi keskin başla**.",
+        "action": "Bugün **10 görevden 2'sini seç**. **Kalanı ertele veya delege et**.",
+        "reflectionPrompt": "Hangi 2 işti **kritik**? Diğer 8'in çoğu **aldatıcı meşguliyet** miydi?",
+        "proTip": "**Cuma akşamı haftaya 80/20 yap**. Pazartesi keskin başla — saat 9:00'da net %20'yi biliyorsun.",
         "quiz": [
           {
             "q": "Pareto 80/20?",
@@ -4436,10 +4436,10 @@
       },
       "43": {
         "title": "Tersine Düşünme",
-        "teaching": "Munger: \"ne yapmamamı bilirsem, ne yapmamı zaten biliyorum.\" Hedefe ulaşmak yerine, başarısızlığı önlemek üzerine kur. Tersini düşün.",
-        "action": "Bugün hedef için 5 başarısızlık nedeni yaz.",
-        "reflectionPrompt": "En riskli neden hangisi?",
-        "proTip": "Premortem yöntemi: \"1 yıl sonra başarısız oldum, neden?\"",
+        "teaching": "Hedefin: '1 yılda **fit ol**.' Pozitif yaklaşım: 'Spor yapacağım, sağlıklı yiyeceğim, motive olacağım.' Genel, soyut, **eylemsiz**. Tersini düşün: 'Niye **başarısız** olabilirim?' Listele:\n- Salonu çok uzakta bırakırsam — gitmem\n- Akşam ağır yersem — uyuyamam\n- Hafta sonu içersem — pazartesi mahvolur\n- 6:00 alarmı ile yatmazsam — kalkamam\n\n**Şimdi somut**. Tersini önle = hedef otomatik gelir.\n\nCharlie Munger: '**Ne yapmamamı bilirsem**, ne yapmamı zaten biliyorum.' Bu **inversion** (tersine düşünme) — Munger'ın temel mental model'i.\n\nCarl Jacobi (19. yüzyıl matematikçisi): '**Invert, always invert**' — problemi tersinden yaklaş.\n\nGary Klein (psikolog) — **'premortem'** tekniği: projeye başlamadan önce 'Bu proje 1 yıl sonra başarısız oldu, **neden**?' diye sor. Sonra **olası başarısızlık sebepleri** listele. Her birine **önlem** kur.\n\nGenelde yaratıcı düşünce 'nasıl başarırım?' sorar. **Tersine düşünme** 'nasıl başarısız olurum?' sorar — ve **daha güçlü** içgörü verir, çünkü:\n1. **Risk önceden** görünür\n2. **Önlem** somut kurulur\n3. **Optimisitik yanılgı** kırılır\n\nMekanizma: tersine düşünme = **negative space** keşfi. Heykeltıraş gibi: 'mermerden ne çıkar?' yerine 'mermerden ne **çıkartılır**?' sorar.",
+        "action": "Bugün hedef için **5 başarısızlık nedeni yaz**. Her birine **bir önlem** kur.",
+        "reflectionPrompt": "**En riskli neden** hangisi? Önlem yeterli mi yoksa **daha** mı güçlü olmalı?",
+        "proTip": "**Premortem yöntemi**: '1 yıl sonra başarısız oldum, neden?' Bu soru olası tuzakları **şimdiden** açığa çıkarır.",
         "quiz": [
           {
             "q": "Inversion?",
@@ -4467,10 +4467,10 @@
       },
       "44": {
         "title": "Zihinsel Çıkartma",
-        "teaching": "Stoa tekniği: bir şey kaybetseydim ne olurdu? Mental subtraction = şükran kasını çalıştırır. Sahip olduklarını yeniden değerli görmek.",
-        "action": "Bugün sahip olduğun 1 şeyi kaybetmeyi mental olarak yaşa.",
-        "reflectionPrompt": "Hangi varlık daha değerli geldi?",
-        "proTip": "Akşam 1 dakika: bugün gerçekleşen 3 iyiliği görselleştir.",
+        "teaching": "Eve geldin. Eşin, çocuklar, sıcak yemek, rahat yatak. Hepsi **otomatik** geliyor — fark etmiyorsun. Beyin **hedonik adaptasyona** uğramış (bkz: Brickman-Campbell 1971). Sahip olduğun her şey **normal hâle gelmiş**, değerini kaybetmiş.\n\nMarcus Aurelius (Roma imparatoru, Stoacı): '**Sahip olmadığın şeylerin** sahip olduğun şeyleri görkemini perdelemesine **izin verme**. Daha çok düşün — sahip olmasaydın **ne kadar ararsın**.'\n\n**Mental subtraction = stoik pratik**. Tim Ferriss popülerleştirdi: 'Bir şey kaybetseydim **ne olurdu**? Bu egzersiz şükran kasını çalıştırır.'\n\nUygulama:\n- Eşim olmasaydı? Yalnızlık, eve geliş hissi...\n- Sağlığım olmasaydı? Yatakta sürekli, plan yapma yok...\n- Evim olmasaydı? Kira korkusu, güvensizlik...\n- Ailem olmasaydı? Bayramlar boş, çağrı yapacak kimse yok...\n\nNörobiyolojik: hedonik adaptasyon = **prefrontal cortex** olumlu uyaranı 'baseline' olarak kayıt eder, **dikkat çekmez** olur. Mental subtraction = **dikkati yeniden çevirir** = ödül algısı geri geliyor.\n\nUC Davis (Emmons & McCullough 2003): 10 hafta günlük şükran pratiği = depresyon **%50 düşüş**, uyku kalitesi artışı, **immün sistem güçlenmesi**.\n\nPratik: **akşam 1 dakika** = bugün gerçekleşen 3 iyiliği **detaylı görselleştir**. Süre yeterli, etki güçlü.",
+        "action": "Bugün **sahip olduğun 1 şeyi kaybetmeyi mental olarak yaşa**. Detaylı, duygusal.",
+        "reflectionPrompt": "Hangi varlık **daha değerli** geldi? Hangi şükransızlığın farkına vardın?",
+        "proTip": "**Akşam 1 dakika** = bugün gerçekleşen **3 iyiliği görselleştir**. Görsel + duygu = nöral pekiştirme.",
         "quiz": [
           {
             "q": "Mental subtraction?",
@@ -4498,10 +4498,10 @@
       },
       "45": {
         "title": "Günlük Mind Map",
-        "teaching": "Mind map = beynin doğal yapısı. Lineer not yerine merkez + dallar. Karmaşık fikri 30 saniyede tutarlı kıl.",
-        "action": "Bugün 1 problemi mind map ile çöz.",
-        "reflectionPrompt": "Mind map sezgini güçlendirdi mi?",
-        "proTip": "Boş kâğıt + renkli kalem. Telefonun mind map app yorucu.",
+        "teaching": "Önünde **karmaşık bir problem**. Yazmaya başladın — lineer notlar, paragraflar, alt başlıklar. 30 dakika sonra **3 sayfa** — ama hala net değil, çünkü beyin **lineer çalışmıyor**.\n\nTony Buzan (1970'lerde **mind mapping** kavramını formalize etti): 'Beynin doğal yapısı = **dallı, dağınık, çok yönlü**. Lineer not bu yapıya **karşı**. Mind map = beyinle **uyum**.'\n\n**Mind map formatı**:\n- **Merkez**: ana fikir (kâğıdın ortasında, daire)\n- **Ana dallar**: alt konular (merkeze bağlı, kalın)\n- **İnce dallar**: detaylar (alt dallara bağlı)\n- **Renkler**: kategori ayrımı\n- **Görsel sembol**: bellek pekiştirme\n\nFaydalar:\n- Karmaşık fikri **30 saniyede gör**\n- Yeni bağlantılar **otomatik** belirir\n- Hafıza pekiştirme **%30+** artar (klasik nöt vs)\n\nMekanizma: mind map = **bilateral cortex aktivasyon**. Sol hemisfer (lineer, dil) **+** sağ hemisfer (görsel, mekansal) birlikte çalışır. Lineer not sadece sol hemisferi kullanır.\n\nLeonardo da Vinci defterleri: aslında **erken mind map'ler**. Diagramlar, çizimler, yazılar birleşik.\n\nKritik: **boş kâğıt + renkli kalem**. Mind map app (XMind, MindMeister) **çok yorucu** ilk başta — kâğıt direkt, sezgisel, hızlı.",
+        "action": "Bugün **1 problemi mind map ile çöz**. Boş kağıt, renkli kalem. Merkez + dallar.",
+        "reflectionPrompt": "Mind map **sezgini güçlendirdi** mi? Yeni bağlantı belirdi mi?",
+        "proTip": "**Boş kâğıt + renkli kalem**. Mind map app = **yorucu**, kağıt = pürüzsüz akış.",
         "quiz": [
           {
             "q": "Mind map yapısı?",
@@ -4529,10 +4529,10 @@
       },
       "46": {
         "title": "Hafıza Sarayı",
-        "teaching": "Antik teknik: hatırlamak istediğin şeyi tanıdık bir mekana yerleştir. Çocukluk evi = saraydı. 5 odaya 5 fikir = 1 hafta hatırlanır.",
-        "action": "Bugün 5 fikri hafıza sarayına yerleştir.",
-        "reflectionPrompt": "Yarın hatırlayacak mısın?",
-        "proTip": "Komik + abartılı görseller en kalıcı.",
+        "teaching": "Bir liste hatırlaman gerek: 10 öğe. Lineer tekrar yaparsın → 3 öğe hatırlarsın, 7 unutursun. Ama eğer **görsel + mekan** kullanırsan, **10/10 hatırlarsın**, bir hafta sonra bile. Bu **Method of Loci** — antik Yunan'dan beri pratik.\n\nMÖ 477'de **Simonides of Ceos** keşfetti (yıkılan binanın altındaki cesetleri kim olduklarını **mekanları hatırlayarak** belirledi). Cicero, Quintilian yayımladı. **2500 yıl** dünya hafıza şampiyonları kullanıyor.\n\nModern bilim: Eleanor Maguire (University College London 2003) **fMRI çalışması**: dünya hafıza şampiyonlarının beyni 'normal' — ama **hippokampus mekansal bölge** aşırı kullanılıyor. **Teknik fark**, gen değil.\n\n**Format**:\n1. **Tanıdık mekan** seç (çocukluk evi, iş yolu, mağaza)\n2. Hatırlamak istediğin **fikri görselleştir** (komik, abartılı, çarpıcı)\n3. **Mekanın belirli noktasına yerleştir** (giriş kapısı, koridor, salon)\n4. Hatırlamak için **mekanda dolaş** zihinsel olarak\n\nÖrnek (alışveriş listesi):\n- Süt → giriş kapısında 2 metre boyunda **süt şişesi**\n- Ekmek → koridorda **ekmek halısı**\n- Yumurta → salonda kanepe üzerinde **devasa yumurta**\n\nMekanizma: hippokampus = mekansal bellek. Beyin mekanları **otomatik** kaydeder. Mekan + fikir = bağlantı = uzun süre hafıza.\n\nKritik: **komik + abartılı** = hatırlama gücü 5x.",
+        "action": "Bugün **5 fikri hafıza sarayına yerleştir**. Tanıdık ev. Komik görseller.",
+        "reflectionPrompt": "Yarın **hatırlayacak mısın**? Görseller ne kadar canlı?",
+        "proTip": "**Komik + abartılı görseller** en kalıcı. Sıradan görsel = unutulur. **Acayip** = kalıcı.",
         "quiz": [
           {
             "q": "Hafıza sarayı?",
@@ -4560,10 +4560,10 @@
       },
       "47": {
         "title": "Aralıklı Tekrarlama",
-        "teaching": "Spaced repetition = optimum öğrenme. 1 gün, 3 gün, 7 gün, 14 gün, 30 gün. Bu aralıklarla tekrar = uzun vade hafıza. Anki app altın standart.",
-        "action": "Bugün son 7 günde öğrendiğini kısa tekrar et.",
-        "reflectionPrompt": "Hangi öğrenme zaten unutulmuştu?",
-        "proTip": "Anki 5 dk = günlük tekrar yeterli.",
+        "teaching": "Geçen ay bir kitap okudun. Bugün biri içeriğini sordu — **%80'ini unutmuşsun**. Hermann Ebbinghaus'un (1885 — Almanya) keşfettiği **'unutma eğrisi'**: yeni bilgi **24 saatte %70 unutulur**. Hiç tekrar yoksa: **1 hafta sonra %95 gitti**.\n\nÇözüm: **spaced repetition** (aralıklı tekrar). Yeni bilgi şu aralıklarla tekrar:\n- **1 gün** sonra\n- **3 gün** sonra\n- **7 gün** sonra\n- **14 gün** sonra\n- **30 gün** sonra\n\nHer tekrar **unutma eğrisini sıfırlar** ve **daha uzun süreli** hâle getirir. 30. gün sonrası → kalıcı bellek (semantic memory).\n\nMekanizma: bellek **hipokampus** (kısa) → **neokorteks** (uzun) yolculuğu. Aralıklı tekrar = bu yolculuğu **kolaylaştırır**. Cramming (tıkıştırma) ise hipokampusta **tıkanma** = aktarım başarısız.\n\nPiotr Wozniak (Polonyalı bilim insanı, SuperMemo kurucusu) algoritma geliştirdi → 'her hatırlamanın **doğru anda** olması'. **Anki** (ücretsiz, 2006'dan beri) bu algoritmaya dayanır — dünya çapında medical school, dil öğrenme, sınavlara hazırlık standardı.\n\nGünlük: **5-10 dakika Anki** = **yıllarca öğrenme + kalıcı bellek**. Cramming 3 saat = 1 hafta sonra %95 unutulmuş.\n\nKritik kural: **active recall** > passive review. Yani 'okuma' değil, **kendine sor + cevap üret**.",
+        "action": "Bugün **son 7 günde öğrendiğini kısa tekrar et**. Yazılı veya sözlü.",
+        "reflectionPrompt": "Hangi öğrenme **zaten unutulmuştu**? Şaşırdın mı bu kayba?",
+        "proTip": "**Anki** (ücretsiz app) = günde **5 dk tekrar** = yıllık uzmanlaşma. Dünya çapında en iyi öğrenme aracı.",
         "quiz": [
           {
             "q": "Spaced repetition aralıkları?",
@@ -4591,10 +4591,10 @@
       },
       "48": {
         "title": "Final Sprint",
-        "teaching": "Son 3 gün. 50 günde zihin disiplinin sıfırdan master'a. Bu sprint = lock-in. Yarın özünü değiştirdin.",
-        "action": "Bugün son sprintin niyetini yaz.",
-        "reflectionPrompt": "En değişen zihinsel alışkanlık hangisi?",
-        "proTip": "Niyeti pano yap, 30 gün ulaşılan yere as.",
+        "teaching": "**Son 3 gün.** 47 ders arkanda — sıfırdan **master**'a. Şimdi en kritik an: **final sprint**. Bu noktada beden 'bitti zaten' der, 'son birkaç günü atlasan ne olur?' fısıldar. Bu **direnç** — Pressfield kavramı.\n\nSteven Pressfield (**The War of Art**): '_The Resistance_ başarıya yaklaştığında **en güçlü** saldırıyı yapar.' Sebep: kimliğin **dönüşüm noktasında**. Eski kimlik 'son anda' geri çekmek ister.\n\nMaratoncuların **%20'si 35-40 km arası bırakır**. Sen 47/50'desin — fiziksel olarak bitirme garantisi var, ama beyin 'gevşeme' sinyali atıyor. **Tehlikeli yatıştırma**.\n\nNiye 50 önemli? Beyin için **'tamamlanmış'** etiket. 47'de duran 'neredeyse' der. 50'de duran **'başardım'** der. Aradaki **3 günlük fark** = **kimlik farkı**.\n\n**Son 3 gün lock-in**. Kimlik **nöral olarak** kaydediliyor. Bu noktadan sonra geri dönmek 'irade' gerektirir.\n\n**Niyet yaz**: 'Niye sürdürmek istiyorum?' 3 cümle. Bu niyet **son 3 günün yakıtı**. Yaz, görünür yere koy, telefon kilit ekranı, banyo aynası.\n\nMekanizma: niyet = **PFC odaklı motivasyon**. Yazılı niyet = **görsel hatırlatma** = sürekli pekiştirme.",
+        "action": "Bugün **son sprintin niyetini yaz**. 3 cümle: niye sürdürmek istiyorum?",
+        "reflectionPrompt": "En değişen zihinsel alışkanlık hangisi? Hangi yenisi **kalıcı** olacak?",
+        "proTip": "**Niyeti pano yap**, 30 gün ulaşılan yere as. Görünür hatırlatma = direnç kırıcı.",
         "quiz": [
           {
             "q": "Final sprint?",
@@ -4622,10 +4622,10 @@
       },
       "49": {
         "title": "49 Gün İçinde",
-        "teaching": "49 günde tek odak, derin iş, 80/20, mental modeller artık otomatik. Yeni baseline = master beyin. 10 değişiklik listele.",
-        "action": "Bugün 49 günde değişen 10 zihinsel alışkanlığı yaz.",
-        "reflectionPrompt": "En unutulmaz değişim?",
-        "proTip": "Listeyi tek bir A4'e yaz. Çalışma masasına as.",
+        "teaching": "**49 gün.** Yarın 50. 49 günde nelerin değiştiğini tek tek yazmak şaşırtıcı olur — çünkü değişimi **gündelik yaşadın**, ama **toplu bakınca** büyüklüğü görünür.\n\n**49 günde belgelenmiş zihinsel değişimler**:\n- **Tek odak** artık doğal — multitask refleksi kırıldı\n- **Derin iş 90 dk** yapılabilir — eskiden 25 dk zordu\n- **Telefon disiplini** — saat başı kontrol gitti\n- **'Hayır'** rahat çıkıyor — sınır var, suçluluk az\n- **Sıkıntıyı tolere** edebiliyorsun — boş anlarda telefon refleksi yok\n- **80/20 düşünce** — günlük öncelik net\n- **Pre-decision çerçeveleri** — karar yorgunluğu az\n- **Time blocking** — her gün takvim ile başlıyor\n- **Brain dump + not sistemi** — açık döngüler kapalı\n- **Mental modeller** — birkaç tane artık günlük araç\n\n10 değişiklik **abartı değil** — bu **gerçek**. Her birinin **somut etkisi** var: daha az stres, daha çok üretim, daha derin düşünce.\n\nLally araştırması: 49 gün düzenli pratik = **basal ganglia otomatizasyonu**. Beyin yeni patikayı 'default' olarak tanıyor.\n\nBu liste senin **kanıt arşivin**. Gelecekte 'ben yapamam' sesi geldiğinde bak: '**49 günde 10 zihinsel alışkanlık değiştirdim — bunu da yaparım**.'",
+        "action": "Bugün **49 günde değişen 10 zihinsel alışkanlığı yaz**. Detaylı, somut.",
+        "reflectionPrompt": "**En unutulmaz değişim** hangisi? Hangi 'eski sen' alışkanlığını **en az özlüyor**sun?",
+        "proTip": "Listeyi **tek bir A4'e yaz**. **Çalışma masasına** as. Her gün gör = pekiştirme.",
         "quiz": [
           {
             "q": "Yeni baseline?",
@@ -4653,10 +4653,10 @@
       },
       "50": {
         "title": "Master Tamamlandı",
-        "teaching": "50 gün. Çoğu insanın zihni dağıtık. Senin ki master. Sıkıntı dostun, derin iş dilin, mental modeller silahların. Disiplin = yeni IQ.",
-        "action": "Bugün aynaya bak. Yeni Sen'i selamla.",
-        "reflectionPrompt": "50 gün önceki sen şimdi olmak ister miydi?",
-        "proTip": "7 gün dinlen, sonra body veya money discipline.",
+        "teaching": "**50 gün.** Çoğu insanın zihni **dağıtık**: 47 bildirim, 12 sekme, 8 yarım iş, sürekli tekrar 'şimdi ne yapayım?' Senin zihnin = **master**. Düzenli, odaklı, niyetli.\n\nÇoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\n**Yeni Sen kim?**\n- **Sıkıntı dostun** — eski tetikleyici şimdi yaratıcılık zamanı\n- **Derin iş dilin** — 90 dakika doğal\n- **Mental modeller silahların** — her durumda doğru araç\n- **Time blocking ritmin** — gün senin\n- **Pre-decision çerçeveleri** — karar otomatik\n- **80/20 lensin** — çoğu zaman %20'yi yapıyorsun\n- **'Hayır'** sınır kelimen — öncelik korunmuş\n- **Brain dump + yakalama sistemi** — beyin işleyici, depo değil\n\n**Disiplin = yeni IQ.** Eski 'zeka' = doğal yetenek. Yeni IQ = **disiplin × bilim × tutarlılık**.\n\nDiploma yok. Sertifika yok. Sadece **ayna**. 50 gün önceki sen → bugünkü sen. **Tanıyor musun**?\n\n50 gün = nöral patika kalıcı. 90 gün = otomatik. 1 yıl = kimlik. Şu noktada **karar senin**: kalıcı yap, yumuşak iniş, veya yeni bir path.\n\n**Bir başka path başlat**. 7 gün dinlen — beyin pekiştirme. Sonra **Body Discipline** (beden) veya **Money Discipline** (finans). Disiplin **bulaşıcı**.",
+        "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır.",
+        "reflectionPrompt": "50 gün önceki sen şimdi **olmak ister** miydi? Bu sorunun cevabı ne söylüyor?",
+        "proTip": "**7 gün dinlen**, sonra Body veya Money Discipline. Disiplin **bulaşıcı** — bir alandan diğerine kolayca taşınır.",
         "quiz": [
           {
             "q": "Disiplin = ?",
