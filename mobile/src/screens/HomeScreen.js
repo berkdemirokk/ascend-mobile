@@ -28,17 +28,24 @@ import LightTopAppBar from '../components/LightTopAppBar';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 import LessonQueueCard from '../components/LessonQueueCard';
-import DailyMysteryBox from '../components/DailyMysteryBox';
-import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
+// DailyMysteryBox + DailyMoodCheckIn removed in the Home agresif
+// sadeleştirme pass. Daily Deck now covers the variable-reward slot
+// (and is content-rich, not just an XP roll), and the mood signal
+// was only ever feeding DailyPlanCard (also removed) — dead loop.
 import StreakRiskBanner from '../components/StreakRiskBanner';
 import StreakLostBanner from '../components/StreakLostBanner';
 import PledgeModal from '../components/PledgeModal';
 import { getArchetypeById } from '../data/archetypes';
 import { POST_ASSESSMENT_INTERVAL_DAYS } from '../data/assessment';
-import WeekendBoostBanner from '../components/WeekendBoostBanner';
-import DailyPlanCard from '../components/DailyPlanCard';
+// WeekendBoostBanner + DailyPlanCard removed in the same Home pass.
+// WeekendBoost duplicated the Weekend Offer below it (two cards
+// fighting for the same Sat/Sun premium pitch); DailyPlanCard's
+// "smart picks" never paid for the visual real estate it took —
+// LessonQueueCard above it already shows the next lesson chain.
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
-import { generateDailyPlan } from '../services/dailyPlanGenerator';
+// generateDailyPlan import removed alongside DailyPlanCard. The
+// generator file still exists for now but has no consumers; safe to
+// delete in a follow-up cleanup pass.
 import {
   requestTrackingPermissionIfNeeded,
   initAds,
@@ -86,12 +93,10 @@ export default function HomeScreen({ navigation }) {
     lastDailyDeckCompletedDate,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
-    dailyMysteryBoxOpenedAt,
-    dailyMysteryBoxLastReward,
-    openMysteryBox,
-    dailyMoodCheckInDate,
-    dailyMoodCheckInValue,
-    setDailyMood,
+    // dailyMysteryBox* / dailyMoodCheckIn* / openMysteryBox / setDailyMood
+    // pulled out alongside the cards. State still lives in AppContext
+    // (so existing users' last-opened-date isn't broken on upgrade)
+    // but Home no longer consumes any of it.
     vacationUntil,
     hearts,
     heartsRefillAt,
@@ -104,10 +109,7 @@ export default function HomeScreen({ navigation }) {
     const d = new Date();
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   })();
-  const mysteryBoxOpenedToday = dailyMysteryBoxOpenedAt === todayDateStr;
-  const moodPickedToday = dailyMoodCheckInDate === todayDateStr
-    ? dailyMoodCheckInValue
-    : null;
+  // mysteryBoxOpenedToday / moodPickedToday derived state removed.
 
   // OutOfHearts gating — Home has three entry points into a lesson
   // (today CTA button, lesson queue card, 3+ streak auto-route). Without
@@ -215,32 +217,16 @@ export default function HomeScreen({ navigation }) {
   // Daily Plan — 3 lessons curated for the user today based on their
   // active path + reflection-derived focus + onboarding goal. Premium-
   // only feature; free users see a teaser/upsell version.
-  const dailyPlan = useMemo(() => {
-    if (!isPremium) return null;
-    return generateDailyPlan({
-      pathProgress,
-      activePathId,
-      goal: userProfile?.answers?.goal || null,
-      reflectionDominant,
-      mood: moodPickedToday || userProfile?.answers?.mood || null,
-    });
-  }, [isPremium, pathProgress, activePathId, userProfile, reflectionDominant, moodPickedToday]);
+  // dailyPlan memo removed alongside the DailyPlanCard. The "smart
+  // picks" surface never paid for the visual real estate it took —
+  // LessonQueueCard already shows the next lesson in the path.
 
-  // Personalised daily challenge — uses the user's mood + goal signals
-  // AND reflection-derived dominant category to bias toward challenges
-  // that match their actual state. Signal priority (most specific wins):
-  //   1. Today's mood check-in (lived state today)
-  //   2. Onboarding mood (stated baseline)
-  //   3. Reflection-derived goal (lived behavior over time)
-  //   4. Onboarding goal (stated baseline)
+  // Personalised daily challenge — uses the user's onboarding goal +
+  // reflection-derived dominant category to bias toward challenges
+  // matching their actual state. Mood-check signal removed in the
+  // Home agresif sadeleştirme pass (DailyMoodCheckIn card is gone).
   const dailyChallenge = useMemo(() => {
-    const moodSignal = moodPickedToday || userProfile?.answers?.mood || null;
     const goalSignal = userProfile?.answers?.goal || null;
-    // Map reflection dominant category back into a goal-like signal so
-    // getDailyChallenge can keep using its existing GOAL_CATEGORY_PREFS
-    // table. detox/body/mind/money each correspond 1:1 to an onboarding
-    // goal. (social has no goal equivalent; we just leave the original
-    // goal in that case.)
     const reflectionAsGoal = {
       detox: 'discipline',
       body: 'fitness',
@@ -248,10 +234,10 @@ export default function HomeScreen({ navigation }) {
       money: 'money',
     }[reflectionDominant];
     return getDailyChallenge(todayStr, {
-      mood: moodSignal,
+      mood: userProfile?.answers?.mood || null,
       goal: reflectionAsGoal || goalSignal,
     });
-  }, [todayStr, userProfile, reflectionDominant, moodPickedToday]);
+  }, [todayStr, userProfile, reflectionDominant]);
   const dailyChallengeDone = dailyChallengeCompletedAt === todayStr;
 
   // Habit chain: last 7 days as a row of dots — filled = lesson done that
@@ -911,17 +897,6 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         ) : null}
 
-        {/* Daily Plan — Premium "smart coach" picks 3 lessons for the
-            user based on their signals. Free users see an upsell teaser. */}
-        <DailyPlanCard
-          plan={dailyPlan}
-          isPremium={isPremium}
-          onStartLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
-          }
-          onUpgradeTap={() => navigation.navigate('Paywall')}
-        />
-
         {/* Reflection Insight — only renders after ≥3 reflections AND a
             dominant category exists. "The app read me" trust hook. */}
         {reflectionInsight && (
@@ -954,25 +929,6 @@ export default function HomeScreen({ navigation }) {
             </Text>
           </TouchableOpacity>
         )}
-
-        {/* Daily Mystery Box — variable-reward retention mechanic. */}
-        <DailyMysteryBox
-          alreadyOpenedToday={mysteryBoxOpenedToday}
-          lastReward={dailyMysteryBoxLastReward}
-          onOpen={openMysteryBox}
-        />
-
-        {/* Daily Mood Check-in — refreshes mood signal each calendar day. */}
-        <DailyMoodCheckIn
-          todayMood={moodPickedToday}
-          onPick={setDailyMood}
-        />
-
-        {/* Weekend Boost Banner — only renders Sat/Sun. Self-gated. */}
-        <WeekendBoostBanner
-          isPremium={isPremium}
-          onUpgradeTap={() => navigation.navigate('Paywall')}
-        />
 
         {/* Weekend Premium offer — only Sat/Sun, free users only. */}
         {isWeekendOffer && !isPremium ? (
