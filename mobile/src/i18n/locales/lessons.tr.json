@@ -2047,10 +2047,10 @@
       },
       "16": {
         "title": "Soğuk Duş Tanışması",
-        "teaching": "Soğuk duş = disiplinin fiziksel kanıtı. Akıl \"yapma\" derken yaparsan beyin yeniden eğitilir. 30 saniyeden başla. Norepinefrin patlar, depresyon riskini %29 düşürür (Wim Hof araştırması).",
-        "action": "Bugün duşun son 30 saniyesinde suyu mümkün olduğunca soğuk yap.",
-        "reflectionPrompt": "Soğuk akmaya başlayınca aklında ilk düşünce ne oldu?",
-        "proTip": "Nefesi tutma. Tam tersine: derin nefes al, kontrollü ver. Şok tepkisi otomatiktir, nefesle yumuşatılır.",
+        "teaching": "Duş başlığını çevirdin, su henüz ılık. El otomatik kırmızı tarafa kayar — \"biraz daha sıcak\" der. Hiç soğuk denemedin çünkü beynin \"gereksiz acı\" etiketi yapıştırdı. Ama disiplin tam **burada**: beden 'yapma' derken yaptığın yer.\n\n**Soğuk duş = disiplinin fiziksel kanıtı.** Akıl 'yapma' derken yaptığında beyin yeniden eğitilir. Wim Hof (Radboud University araştırmaları): soğuk maruziyet **norepinefrini %200-500 artırır**, depresyon riskini **%29 düşürür**, bağışıklık T-hücre üretimini güçlendirir.\n\nMekanizma: Soğuk şok = sempatik sistem aktivasyonu. Vücut 'tehdit' algılar, ama tehdit gerçek değil — beyin bunu öğrenir. **Stres tolerans penceresi genişler.** Bir dahaki sefer iş yerinde stresli toplantıda — 'soğuk duştan kötü değil bu' der beyin. Sıradan stresörler küçülür.\n\n30 saniye başlangıç. Nefes kontrolü kritik: nefes tutma değil, **derin yavaş nefes**. Şok refleksi nefesi kesmek ister — sen tersini yap.",
+        "action": "Bugün duşun **son 30 saniyesinde** suyu mümkün olduğunca soğuk yap. Nefes kontrolünü unutma.",
+        "reflectionPrompt": "Soğuk akmaya başlayınca aklında ilk düşünce ne oldu? O ses 'kaç' mı dedi, 'dur' mu? Nefesini değiştirince o ses ne oldu?",
+        "proTip": "Nefesi **tutma**. Tam tersine: derin nefes al, kontrollü ver. Şok tepkisi otomatiktir, nefesle yumuşatılır.",
         "quiz": [
           {
             "q": "Soğuk duş başlangıç süresi?",
@@ -2078,10 +2078,10 @@
       },
       "17": {
         "title": "Yer Egzersizi: 5 Dakika",
-        "teaching": "Spor salonu opsiyonel, beden egzersizi zorunlu. 5 dakika = 25 squat + 15 push-up + 30 saniye plank. Ev içinde, ekipmansız. Tutarlılık > yoğunluk. Her gün 5dk > haftada 1 saat.",
-        "action": "Bugün 5 dakika yer egzersizi yap. Sayılar küçük olsun, devamı önemli.",
-        "reflectionPrompt": "En zorlandığın hareket hangisiydi? Neden?",
-        "proTip": "Diş fırçaladıktan hemen sonra yap. \"Diş + spor\" zinciri otomatikleşir.",
+        "teaching": "\"Salon üyeliğim var ama 3 ayda bir gidiyorum.\" Tanıdık geliyor mu? Çoğu insanın spor planı **mükemmel sistemden** çöker — uzak salon, özel kıyafet, 1 saat planlama. Sonuç: hiç. Ama 5 dakika **şu anda yatak başında** mümkün.\n\n**Spor salonu opsiyonel, beden egzersizi zorunlu.** 5 dakika ev içi = 25 squat + 15 push-up + 30 saniye plank. Ekipmansız. Yer yeterli: 1 metrekare.\n\nMarcus Filly, John Berardi, ve fonksiyonel hareket araştırmaları: günde **5 dakika tutarlı** > haftada 1 saat dağınık. Çünkü beyin **frekansa** plastisite verir, süreye değil. Her gün küçük tekrar = miyelin kılıfı kalınlaşır, hareket otomatikleşir.\n\nMekanizma: sabah egzersizi BDNF (beyin türevli nörotrofik faktör) salgılar — odak ve hafıza için bütün gün yakıt. Kortizol piki ile birleşince enerji **kaskad** olur.\n\nTutarlılık > yoğunluk. Bugün 5 dakika yapan kişi, 365 gün sonra **30 saat egzersiz** birikmiş olur — haftada 1 saat 'iyi niyetli' kişiden çok daha önde.",
+        "action": "Bugün **5 dakika** yer egzersizi yap. 20 squat + 10 push-up + 30 sn plank. Sayılar küçük olsun, **devamı** önemli.",
+        "reflectionPrompt": "En zorlandığın hareket hangisiydi? Neden — kas mı, nefes mi, motivasyon mu?",
+        "proTip": "Diş fırçaladıktan hemen sonra yap. \"Diş + spor\" **zinciri** otomatikleşir (habit stacking — James Clear).",
         "quiz": [
           {
             "q": "Ev egzersizi süresi?",
@@ -2109,10 +2109,10 @@
       },
       "18": {
         "title": "12'ye Kadar Aç (Intermittent Fasting)",
-        "teaching": "Sabah kahvaltı = \"günün en önemli öğünü\" mitos. Çoğu disiplinli insan 12-16 saat aç durur. Kahvaltı geç olunca insülin düşer, enerji stabil, kafa daha berrak. Kahve ve su serbest.",
-        "action": "Bugün kahvaltıyı saat 12'ye kadar geciktir. Sadece su, çay, kara kahve.",
-        "reflectionPrompt": "Açken zihinsel performansın nasıldı? Beklediğinden farklı mı?",
-        "proTip": "İlk 3 gün zor olabilir. 4. günden sonra vücut adapte olur, açlık sinyali yumuşar.",
+        "teaching": "Çocukluğundan beri duydun: 'kahvaltı günün en önemli öğünü.' Annen söyledi, öğretmen söyledi, reklamlar söyledi. **Ama o slogan 1944'te Kellogg's reklam kampanyasından geldi** — bilim değil, mısır gevreği satışı.\n\nBugün uzun ömür araştırmaları (Valter Longo, Satchin Panda — Salk Institute) tersini söylüyor: **12-16 saat açlık** = insülin hassasiyeti artar, otofaji (hücresel temizlik) tetiklenir, **mental berraklık keskinleşir**.\n\nMekanizma: yemek yiyince insülin yükselir, beyin **digestion moduna** geçer (parasempatik). Aç kalınca insülin düşer, **norepinefrin yükselir** — odak hormonu. Tarihsel atalarımız avlanmaya aç çıkardı; tok beyin sloth. Aç beyin keskin.\n\nFaz başlangıcı zor: ilk 3 gün ghrelin (açlık hormonu) protesto eder. **4. günden sonra adapte olur** — açlık dalgaları yumuşar, hatta zevkli bir 'temizlik' hissi gelir.\n\nKahve ve su serbest. Kalorisiz sıvılar insülini tetiklemez. Süt, meyve suyu, diet kola — yasak (insülin spike).",
+        "action": "Bugün kahvaltıyı **saat 12'ye kadar geciktir**. Sadece su, çay, kara kahve. Açlığı izle, kovalama.",
+        "reflectionPrompt": "Açken zihinsel performansın nasıldı? Beklediğinden farklı mı — daha mı net, daha mı dalgın?",
+        "proTip": "İlk 3 gün zor olabilir. 4. günden sonra vücut adapte olur, açlık sinyali yumuşar. Vazgeçme — adaptasyon penceresi 72 saat.",
         "quiz": [
           {
             "q": "Intermittent fasting saat aralığı?",
@@ -2140,10 +2140,10 @@
       },
       "19": {
         "title": "Sabah 10 Sayfa Oku",
-        "teaching": "Sosyal medya ile başlayan gün = başkasının fikriyle dolu kafa. Kitap ile başlayan gün = derin düşünceyle dolu kafa. 10 sayfa × 365 gün = yılda 12 kitap. Ortalama insan yılda 0 kitap okur.",
-        "action": "Bugün sabah 10 sayfa kitap oku (kâğıt veya e-kitap, sosyal medyasız cihaz).",
-        "reflectionPrompt": "Okumadan sosyal medyaya gitseydin günün nasıl başlardı?",
-        "proTip": "Kitabı yatak kenarında tut, telefonu başka odada. Önce hangisi gözünün önünde, onu açarsın.",
+        "teaching": "Sabah uyandın. İlk 10 dakikada gözüne ne girdi? Çoğu insan için: Twitter rant'i, Instagram body comparison, WhatsApp grup drama, haber paniği. **Kafan başkasının fikriyle dolu.** Daha günün niyetini kurmadan beyin zaten yorgun.\n\nAlternatif: aynı 10 dakika, **10 sayfa kitap**. Çıktı çok farklı.\n\nMatematik: **10 sayfa × 365 gün = ~12 kitap/yıl.** Ortalama Amerikalı yılda 1, Türk yılda **0** kitap okur (TÜİK 2022). 10 yılda **120 kitap** — bir uzmanlık kütüphanesi. Naval Ravikant: 'Okumak yatırımdır; bileşik faiz çalışır.'\n\nMekanizma: kitap okumak **derin dikkat ağını** (Default Mode Network + Executive Function birlikte) aktive eder. Sosyal medya tam tersi — **rastgele uyaran** ile dopamin spike. Sabah hangisini eğitirsen gün boyu beyin onu tercih eder.\n\nKağıt veya **sosyal medyasız** e-okuyucu (Kindle, Kobo). Telefondaki Kindle = tehlike, çünkü bildirim 2 dakikada gelir.\n\nKonu fark etmez: kurgu, biyografi, felsefe, iş. Sadece **oku**.",
+        "action": "Bugün sabah **10 sayfa** kitap oku — kağıt veya sosyal medyasız e-okuyucu. Telefon başka oda.",
+        "reflectionPrompt": "Okumadan sosyal medyaya gitseydin günün nasıl başlardı? Şimdi hangi düşünceyle başladın?",
+        "proTip": "Kitabı **yatak kenarında** tut, telefonu başka odada. Hangisi gözünün önünde, onu açarsın — environment beats willpower.",
         "quiz": [
           {
             "q": "10 sayfa × 365 gün = ?",
@@ -2171,10 +2171,10 @@
       },
       "20": {
         "title": "Günlük: 5 Dakika",
-        "teaching": "Düşünceler kafanın içinde dolaşır, gerçek olur. Yazıya dökünce dışarı çıkar, gerçeklik kaybolur. Sabah 5 dakika beyin boşaltma = günün geri kalanı daha temiz. Yargılama, yaz.",
-        "action": "Bugün 5 dakika önüne ne gelirse yaz. Düzeltme, sansür yok.",
-        "reflectionPrompt": "Yazdıkların arasında en şaşırtıcı olan hangisiydi?",
-        "proTip": "\"3 sayfa boş yaz\" (Julia Cameron tekniği) — sabah sayfaları (morning pages) 30 yıl test edilmiş.",
+        "teaching": "Kafanın içinde bir düşünce var. 'Bu projeyi mahvedeceğim.' Onu **düşündükçe büyür**. 2 saat sonra panik, 4 saat sonra erteleme, 8 saat sonra yatak içinde dönüş. Bir tek **ham düşünce** bütün gününü çaldı.\n\nÇözüm: düşünceyi **kafadan çıkar, kâğıda al**. Sözcüklere dökülen düşünce küçülür, yönetilebilir olur, çoğu zaman da **saçma görünür**.\n\nJames Pennebaker (Texas Üniversitesi) — **expressive writing** araştırmaları: günde 15-20 dakika yazma, anksiyeteyi **%30 düşürür**, bağışıklığı güçlendirir, hatta yara iyileşmesini hızlandırır. Sebep: yazma = duyguları **prefrontal kortekste** işleme, amigdalanın dominansını kırma.\n\nJulia Cameron'un **'morning pages'** tekniği (The Artist's Way, 30 yıldır pratik edilen): her sabah **3 sayfa el yazısı, ne gelirse**, durmadan yaz. Sansür yok, düzeltme yok, dilbilgisi yok. Beyin boşaltma.\n\n5 dakika versiyonu: tam sayfa zorlu — 5 dakika sayfa boyutunu serbest bırak. Sadece **timer kur, yaz**.",
+        "action": "Bugün **5 dakika** önüne ne gelirse yaz. Düzeltme, sansür yok. El yazısı tercih (klavye değil).",
+        "reflectionPrompt": "Yazdıkların arasında en şaşırtıcı olan hangisiydi? Kafanda olduğunu bile bilmediğin bir düşünce ortaya çıktı mı?",
+        "proTip": "**'3 sayfa boş yaz'** (Julia Cameron) — sabah sayfaları 30 yıl pratiği. Klavye değil **kalem**: ağır işlem = derin işleme.",
         "quiz": [
           {
             "q": "Sabah günlük kuralı?",
@@ -2202,10 +2202,10 @@
       },
       "21": {
         "title": "10 Dakika Yürüyüş",
-        "teaching": "Yürüyüş = beyin için en doğal terapi. Hipokampus büyür, BDNF artar, depresyon riski %47 düşer. Sabah yürüyüşü güneş ışığıyla birleşince çift etki. Müziksiz, telefonsuz, sadece adım.",
-        "action": "Bugün 10 dakika yürüyüşe çık. Mahallenin etrafında bir tur.",
-        "reflectionPrompt": "Yürürken aklına gelen en temiz düşünce neydi?",
-        "proTip": "Stuck hissedersen düşünmeyi bırak yürü. Çoğu yaratıcı çözüm yürürken gelir (Steve Jobs, Darwin, Nietzsche tekniği).",
+        "teaching": "Bir problemi 2 saattir çözmeye çalışıyorsun. Ekrana bak, satırları oku, kahve iç, tekrar oku — kalp atışı yükseliyor, çözüm gelmiyor. Kalktın, sokak turu attın. **6. dakikada** çözüm aniden geldi. Tanıdık mı?\n\nNietzsche: 'Bütün gerçekten büyük düşünceler yürürken doğar.' Darwin'in 'sandwalk'u, Steve Jobs'un meeting walk'ları, Aristoteles'in 'peripatetik' okulu — hepsi aynı sezgi.\n\nBilim: yürüme, hippokampus hacmini **%2 büyütür** (Erickson et al., PNAS), BDNF salgısını artırır, depresyon riskini **%47 düşürür** (JAMA Psychiatry 2022, 200.000 kişi). Sabah yürüyüş + sabah güneş ışığı = **çift etki**: sirkadiyen reset + endorfin + odak.\n\nMekanizma: yürüme sırasında **bilateral stimulasyon** (sol-sağ-sol-sağ) — DMN ile Executive Network arasında köprü kurar. Bu yüzden 'yürürken aklıma geldi' deneyimi: beyin **yatay bağlantı** yapar.\n\n**Müziksiz, telefonsuz, sadece adım.** Müzik DMN'i bloklar — yaratıcı içgörü engellenir. Sadece beden + nefes + dünya.",
+        "action": "Bugün **10 dakika yürüyüş** yap. Müziksiz, podcastsiz, telefonsuz. Mahalle turu yeter.",
+        "reflectionPrompt": "Yürürken aklına gelen en temiz düşünce neydi? Hangi problem aniden çözüldü?",
+        "proTip": "Stuck hissedersen **düşünmeyi bırak, yürü**. Çoğu yaratıcı çözüm yürürken gelir (Steve Jobs, Darwin, Nietzsche tekniği).",
         "quiz": [
           {
             "q": "Yürüyüş depresyon riskini ne kadar düşürür?",
@@ -2233,10 +2233,10 @@
       },
       "22": {
         "title": "Müzik mi Sessizlik mi?",
-        "teaching": "Müzik motivasyon verir ama beyne yer kaplar. Sessizlik düşünce yer açar. Sabah müzik dinleyenler genelde başkasının duygusunu yaşar. Sabah sessizlik = kendi duygunla yüzleş.",
-        "action": "Bugün sabah ilk 1 saat sessizlikte geçir. Müzik, podcast, video yok.",
-        "reflectionPrompt": "Sessizlik rahatsız etti mi? Hangi anda?",
-        "proTip": "Trafikteyken bile dene. Müzik yerine pencere camını aç, sokak sesini dinle.",
+        "teaching": "Spotify alarmınla açılıyor. Diş fırçalarken podcast. Kahvaltıda haber. İşe gidişte motivasyonel playlist. Daha öğlen olmadı, kulağın **8 farklı sesin akışında** kaldı. Beyin hepsini işlemek için yorgun düştü zaten.\n\n'Müzik motive eder' doğru ama eksik. Sabah müzik = **başkasının duygusunu yaşa**: şarkıcının kederi, çaldığı bant'in heyecanı. Senin duygunu **hiç** dinlemedin.\n\nLuciano Bernardi (Pavia Üniversitesi, 2006) araştırması: müzik dinleyen kişilerde **kortizol stabilize değil oynak** çıkıyor — uyaranlar arası beyin sıfırlanamıyor. Tersine **2 dakikalık sessizlik** müzik sonrası kortizoli stabilize ediyor, parasempatik aktivasyonu güçlendiriyor.\n\nMekanizma: Default Mode Network (DMN) — yaratıcılık, içsel hikaye, anlam ağı. Sessizlikte aktif, müzikte susar. Sabah müzik = DMN bütün gün eksik çalışır — **düşünüyorsun ama derin değil**.\n\nSessizlik rahatsızlığı normaldir, hatta **gösterge**: ne kadar rahatsızsan o kadar bağımlısın seslere. Geçer.",
+        "action": "Bugün sabah ilk **1 saat sessizlikte** geçir. Müzik, podcast, video yok. Sadece sesin doğal hali.",
+        "reflectionPrompt": "Sessizlik rahatsız etti mi? Hangi anda — uyandığında, kahve içerken, sıkıldığında?",
+        "proTip": "Trafikteyken bile dene. Müzik yerine **pencere camını aç**, sokak sesini dinle — dünya zaten dolu sesli.",
         "quiz": [
           {
             "q": "Sabah müziği etkisi?",
@@ -2264,10 +2264,10 @@
       },
       "23": {
         "title": "Saat 9'a Kadar Telefonsuz",
-        "teaching": "Sabahın altın 90 dakikası = istem gücü zirvesi. O 90 dakikayı telefonla harcamak = günün kalitesini satmak. 9'a kadar telefonsuz olan insan, 9-12 arası 3x verimli olur.",
-        "action": "Bugün saat 9'a kadar telefonu açma (alarm hariç). Acil ise eşin/aile arar zaten.",
-        "reflectionPrompt": "9'a kadar geçen sürede beklediğin gibi mi geçti?",
-        "proTip": "Uçak modunda bırak, 9'da aç. Bildirimleri toplu görmek 1 saat boyunca tek tek görmekten daha az emek.",
+        "teaching": "Uyandın. Saate baktın: 6:30. Telefonu açtın 'sadece saate bakmak için'. 38 bildirim. 'Bir göz atayım' dedin. **Saat şimdi 8:20.** Hiç bir şey yapmadın, sadece kaydırdın. Sabahın altın penceresi **silindi**.\n\nRoy Baumeister (Florida State) — istem gücü araştırmaları: **kortizol piki + uyku sonrası tazelik** = sabah ilk 90 dakika **istem gücü zirvesi**. Bu pencerede yaptığın iş, akşam yorgun beyin için **3-4x verimli**.\n\nBu pencereyi telefonla harcamak = **günün en değerli sermayesini satmak**. Karşılığında? Başkasının pazarlama mesajları, dostlarının kahvaltı fotoğrafları, dünyanın haberleri.\n\nMekanizma: bildirim = dopamin spike + kortizol patlaması (anksiyete). Sabah önce dopamin/kortizol baseline'ını **yapay yükseltirsen**, doğal akış bozulur — gün ortasında 'yorgun' bunun sebebi.\n\nGerçek acil olan **arar**, yazmaz. WhatsApp'a 'çok acil' mesajı atan kişi muhtemelen değildir.",
+        "action": "Bugün saat **9'a kadar telefonu açma** (alarm hariç). Uçak modu kal, 9'da aç.",
+        "reflectionPrompt": "9'a kadar geçen sürede beklediğin gibi mi geçti? Eksik mi hissettin, yoksa **özgür** mü?",
+        "proTip": "Uçak modunda bırak, 9'da aç. Bildirimleri **toplu görmek** 1 saat boyunca tek tek görmekten daha az enerji.",
         "quiz": [
           {
             "q": "Sabah istem gücü zirvesi?",
@@ -2295,10 +2295,10 @@
       },
       "24": {
         "title": "Kahvaltı Stratejisi",
-        "teaching": "Kahvaltı yerseniz: yüksek protein, düşük şeker. 30g protein = 4 saatlik tokluk + odak. Ekmek-bal-çay = 1 saat sonra çökme. Yumurta-avokado-yeşillik = öğleye kadar net kafa.",
-        "action": "Bugün protein bazlı kahvaltı yap (yumurta, peynir, baklagil). Şekersiz.",
-        "reflectionPrompt": "Bu kahvaltıdan sonra öğle saatlerine kadar enerjin nasıldı?",
-        "proTip": "Akşamdan kahvaltıyı hazırla. Sabah karar vermek = istem gücü kaybı.",
+        "teaching": "Klasik Türk kahvaltısı: ekmek, beyaz peynir, **bal**, **reçel**, çay (3 küp şeker). Hissettiğin doygunluk **45 dakika**. Sonra: kafa karışık, halsizlik, atıştırma isteği. Tanıdık geliyor mu? Sebep: **insülin tsunamisi**.\n\nGlikoz yüksek + insülin keskin = beyin yakıt tankı boş hissi (rebound hypoglycemia). Bunun adı **post-prandial dip**. Önlem: **protein**.\n\nDonald Layman (Illinois Üniversitesi) çalışmaları: **30 gram protein** sabah = 4 saat tokluk + odak. Yumurta (2 adet = 12g), peynir (50g = 12g), yulaf+badem ekleme = kolay 30g.\n\nMekanizma: protein insülin spike yapmaz, glukagon ve **CCK** (kolesistokinin) salgılar — tokluk hormonu. Tirozin aminoasidi → **dopamin** sentezi → odak.\n\nİdeal kahvaltı: yumurta + avokado + yeşillik + biraz peynir. Klasik 'sağlıklı' başlangıç (smoothie, oat-bowl with fruits, granola) = şeker yüklü.\n\nKahvaltı yiyeceksen **proteinle yapım**. Aç kalacaksan (Ders 18) kalori sıfır.",
+        "action": "Bugün **protein bazlı** kahvaltı yap. Yumurta, peynir, baklagil. **Şekersiz**.",
+        "reflectionPrompt": "Bu kahvaltıdan sonra öğle saatlerine kadar enerjin nasıldı? Eski kahvaltıdan farklı mıydı?",
+        "proTip": "**Akşamdan kahvaltıyı hazırla**. Sabah karar vermek = istem gücü kaybı (decision fatigue).",
         "quiz": [
           {
             "q": "En iyi sabah kahvaltısı?",
@@ -2326,10 +2326,10 @@
       },
       "25": {
         "title": "Pazar Reseti",
-        "teaching": "Hafta içi rutin, pazar ise reset. Pazar sabahı = haftalık review + niyet. Geçen haftada ne işe yaradı, ne yaramadı? Önümüzdeki hafta hangi 1 disipline odaklanacaksın? 30 dakika yeter.",
-        "action": "Bu pazar 30 dakika haftalık review yap. Yazılı, somut.",
-        "reflectionPrompt": "Geçen haftanın en güçlü ve en zayıf günü hangisiydi? Fark ne?",
-        "proTip": "Pazar gece değil, pazar sabah yap. Yorgun review yüzeysel olur.",
+        "teaching": "Pazartesi sabah. Telefonu açtın, 'haftaya nasıl başlayacağım?' kafan boş. Aynı kaos: anlık ne çıkarsa onu yap. Cuma akşamı olduğunda haftanın **bir özeti yok**, sadece yorgunluk var.\n\nDisiplinli insanların gizli silahı: **pazar reseti**. Hafta içi yapan, pazar **bakan**. 30 dakika kâğıt + kalem.\n\n3 kritik soru:\n1. **Bu hafta ne işe yaradı?** (somut örnek) — Pekiştir\n2. **Ne yaramadı?** (somut neden) — Çıkar\n3. **Önümüzdeki hafta 1 disiplin** — Odak\n\nPeter Drucker (yönetim babası): 'What gets measured gets managed.' David Allen (GTD): 'Weekly Review = sistemin **bel kemiği**.' Tek karar değil, **karar verme yapısı** kur.\n\nMekanizma: prefrontal kortex hafta boyu **mikro karar** yorgunluğu yaşar. Pazar reseti = bu mikro kararları **tek makro karara** sıkıştırır. Yan yan'da: meta-bilinç + sistematik düşünme.\n\nPazar **sabah** önemli — gece yorgunlukta yapılan review yüzeysel olur. Beyin berrak, geçmiş net, gelecek planlanabilir.",
+        "action": "Bu pazar **30 dakika** haftalık review yap. Yazılı, somut. 3 soru: işe yaradı / yaramadı / haftaya 1 odak.",
+        "reflectionPrompt": "Geçen haftanın en güçlü ve en zayıf günü hangisiydi? Aralarındaki fark ne — ne yaptın güçlü günde?",
+        "proTip": "Pazar **gece değil, sabah** yap. Yorgun review yüzeysel olur. Sabah berrak = sistematik düşünme.",
         "quiz": [
           {
             "q": "Pazar reseti süresi?",
@@ -2357,10 +2357,10 @@
       },
       "26": {
         "title": "Rutin Yığma (Habit Stacking)",
-        "teaching": "Yeni alışkanlık tek başına zayıf — mevcut alışkanlığa bağlanırsa güçlü. James Clear tekniği: \"Diş fırçaladıktan sonra ___\" (1 push-up, 1 dakika nefes, 3 şükran). Eski + yeni = daha güçlü zincir.",
-        "action": "Bugün mevcut bir alışkanlığa yeni bir mikro alışkanlık ekle.",
-        "reflectionPrompt": "Hangi mevcut alışkanlığa hangi yenisini bağladın?",
-        "proTip": "Yığını yazılı yap. \"Sabah dişimi fırçaladıktan sonra 5 push-up\" şeklinde.",
+        "teaching": "Yeni alışkanlık başlatmak istedin: meditasyon. İlk gün yaptın, 2. gün **unuttun**, 3. gün hatırladın ama uygun zaman yoktu, 7. gün artık 'unuttuğunu' bile fark etmiyorsun. Klasik **alışkanlık başlangıç ölümü**.\n\nProblem: yeni alışkanlık **tetiklenmiyor**. Beyinde **cue** yok. Hatırlama tek başına yetmez — somut bir **anchor** lazım.\n\nBJ Fogg (Stanford) → James Clear (Atomic Habits) formülü: **'X'ten sonra Y yapacağım.'** X = mevcut zaten olan eylem. Y = yeni alışkanlık. Örnek: 'Diş fırçaladıktan sonra 5 push-up.' 'Kahveyi koyduktan sonra 3 derin nefes.' 'Telefonu yatağa koyduktan sonra 1 günlük cümle.'\n\nMekanizma: mevcut alışkanlık zaten **nöral patika** içinde sağlam. Yeni alışkanlığı bu patikaya **eklersen**, beyin onu mevcut bir parça gibi görür. Tetikleme **otomatik** — irade gerek değil.\n\nKritik: yeni alışkanlık **küçük olmalı** (1-3 dakika max). Yığın büyürse beyin direnir.",
+        "action": "Bugün **mevcut bir alışkanlığa** yeni bir mikro alışkanlık (1-3 dk) ekle. Yazılı formüle dök.",
+        "reflectionPrompt": "Hangi mevcut alışkanlığa hangi yenisini bağladın? Otomatik gelir mi sanıyorsun?",
+        "proTip": "Yığını **yazılı** yap. 'X yaptıktan sonra Y yapacağım' formülü. Bantla aynaya — 7 gün hatırlatma.",
         "quiz": [
           {
             "q": "Habit stacking kim?",
@@ -2388,10 +2388,10 @@
       },
       "27": {
         "title": "100-Gün Testi",
-        "teaching": "İlk 30 gün: zorlanırsın. 30-60: alışırsın. 60-100: sen olur. 100 gün sonunda dönüş yok. Sabah rutini = 100 gün sonra \"hep böyle yapıyordum\" denilir. İşte bu noktaya gel.",
-        "action": "Bugün 100 günlük taahhüdünü yaz. Hangi 1 sabah disiplinini 100 gün sürdüreceksin?",
-        "reflectionPrompt": "100 gün sonrası \"yeni sen\" kim? Ne yapıyor?",
-        "proTip": "Takvime her gün sonrası tik koy. Görsel zincir = 21 gün sonra kırmak fiziksel acı verir.",
+        "teaching": "30 günlük programı bitirdin. Mutluluk, gurur — sonra: 'Şimdi ne?' 35. gün rutinden saptın, 40. gün eskiye döndün. **30 gün kalıcı değil.** Beyin yeniden eski patikasını seçti çünkü 'biraz daha tutsaydım' demedi.\n\nDavranış değişimi araştırmaları (Phillippa Lally, UCL — Health Psychology 2010): alışkanlık otomatikleşmesi ortalama **66 gün**, kritik vaka **100 gün**. 30 gün **yeterli değil** — başlangıç sadece.\n\n**100 günün üç fazı**:\n- 1-30: **zorlanma** (irade, hatırlatma, direnç)\n- 30-60: **alışma** (otomatik gelmeye başlar, ama kayıp da kolay)\n- 60-100: **sen olur** (kimlik, 'ben böyle yaparım' der)\n\n100. gün sonunda **dönüş zor** — beyin yeni patikayı 'normal' olarak kayıt etti. Geriye dönmek artık 'bilinçli çaba' gerekir.\n\nMekanizma: miyelin kılıfı kalınlaşması, dopamin reseptör reorganizasyonu, basal ganglia otomatizasyonu — hepsi 100 günde tamamlanır.\n\nSeç: hangi **1 sabah disiplini** 100 gün taahhüt? Çoklu seçim = hiç. Tek seçim = kalıcı.",
+        "action": "Bugün **100 günlük taahhüdünü yaz**. Hangi **1** sabah disiplinini 100 gün sürdüreceksin? Yaz, imzala, görünür yere koy.",
+        "reflectionPrompt": "100 gün sonrası 'yeni sen' kim? Ne yapıyor, nasıl konuşuyor, nasıl giyiniyor?",
+        "proTip": "Takvime her gün sonrası **tik koy**. Görsel zincir = 21 gün sonra kırmak fiziksel acı verir (don't break the chain — Seinfeld tekniği).",
         "quiz": [
           {
             "q": "100 gün sonrası ne olur?",
@@ -2419,10 +2419,10 @@
       },
       "28": {
         "title": "Kimlik Kayması",
-        "teaching": "\"Spor yapan biriyim\" demek \"spor yapmaya çalışıyorum\"dan 10x daha güçlüdür. Disiplin = davranış değil, kimlik. \"Ben sabahın insanıyım\" — bunu söyleyen kişi otomatik erken kalkar.",
-        "action": "Bugün kendine 1 yeni kimlik etiketi yapıştır. \"Ben ___ yapan biriyim.\"",
-        "reflectionPrompt": "Hangi kimliği seçtin? Hangi kanıtla destekleyeceksin?",
-        "proTip": "Kimliği günde 3 kez tekrar et. Beyin tekrara inanır, gerçeğe değil.",
+        "teaching": "Bir arkadaşın 'spor yap' dedi. 'Yapmaya çalışıyorum' diye yanıtladın. Bu cümle **gizli bir itiraf**: 'Spor yapan biri **değilim**, ama olmaya çalışıyorum.' Beyin bu mesajı kayıt eder — sen aslında sporcu **değilsin**, sadece **deneyen**sin.\n\nJames Clear (Atomic Habits) ve Carol Dweck (mindset araştırmaları): davranış değişimi **kimlik değişimi** olduğunda kalıcı. **'Yapıyorum'** zayıf, **'Ben buyum'** güçlü.\n\nFark:\n- 'Sigara bırakmaya çalışıyorum' → bağımlı, deneyen\n- 'Sigara içmiyorum' → eski içici, deneyen\n- 'Sigara içen biri değilim' → kimlik değişti, kalıcı\n\nMekanizma: beyin **kendi-kavram tutarlılığı** ister (Festinger — cognitive dissonance). 'Ben sabahın insanıyım' diyen kişi 9'da kalkarsa **disconnect** hisseder, otomatik düzeltir. Kimlik = davranışın **çıpa**sı.\n\nKritik: kimlik etiketi **zaten yapıyor olduğun** küçük kanıtlara dayanmalı. 'Ben dünya çapında sporcuyum' = boş. 'Ben her gün 5 dk hareket eden biriyim' = somut + sürdürülebilir.",
+        "action": "Bugün kendine **1 yeni kimlik etiketi** yapıştır. **'Ben ___ yapan biriyim.'** Yaz, görünür yer.",
+        "reflectionPrompt": "Hangi kimliği seçtin? Hangi 3 küçük kanıtla destekleyeceksin?",
+        "proTip": "Kimliği **günde 3 kez** tekrar et. Beyin tekrara inanır, gerçeğe değil. 30 gün = otomatik.",
         "quiz": [
           {
             "q": "\"Yapan biriyim\" vs \"yapmaya çalışıyorum\" gücü?",
@@ -2450,10 +2450,10 @@
       },
       "29": {
         "title": "Final Sprint Günü",
-        "teaching": "29. gün = son sprint günü. Yarın \"tamamladın.\" Ama bugün şu önemli: bu 30 günü yapanın kim olduğunu hatırla. Geçmişine bakma — sonucu hatırla. Yapacağın bir sonraki şey: sürdür.",
-        "action": "Bugün son 30 gündeki en güçlü 3 anını yaz. Bunlar artık senin kanıtın.",
-        "reflectionPrompt": "En zor an hangisiydi? Onu nasıl aştın?",
-        "proTip": "Bu 3 maddeyi telefon kilit ekranına koy. Geri dönüş anında bakacaksın.",
+        "teaching": "**29 gün arkanda.** Sabah rutinin değişti, beden alıştı, beyin daha berrak. Bugün — yarın 'bitti' demeden önce — son sprint günü. Garip bir şey hissedebilirsin: **direnç**. Beden 'bitti zaten' der, son bir günü atlamak ister.\n\nMaratoncuların **%20'si son 5 km'de bırakır**. Sen 29/30'dasın — fiziksel olarak bitirmek için bütün karın hazır. Ama beyin son sprintte 'gevşeme' sinyali atar — tehlikeli an.\n\nSteven Pressfield (**The War of Art**): **'_The Resistance_** en güçlü saldırısını başarıya yaklaştığında yapar.' Yani direnç son sprintte en sert. Bu **kanıt**, bitirmeye yakın olduğun.\n\nBugünün işi geçmişe bakmak değil — **kanıt toplamak**. 30 günü yapan kim? Sen. Ne yaptın? Yaz: somut, ölçülebilir. 'Sabah 6'da kalktım 25 gün üst üste.' 'Soğuk duş 22 gün.' 'Kahvaltı protein 28 gün.'\n\nBu **kanıt listesi**, ileride 'ben yapamam' sesi geldiğinde **silahın** olur. Beyin geçmiş kanıtla şimdiyi tahmin eder — kanıt güçlü = kimlik sağlam.",
+        "action": "Bugün son 30 gündeki **en güçlü 3 anını** yaz. Spesifik, somut. Bunlar artık senin **kanıtın**.",
+        "reflectionPrompt": "En zor an hangisiydi? Onu nasıl aştın — ne yaptın, hangi düşünce kararı verdirdi?",
+        "proTip": "Bu 3 maddeyi **telefon kilit ekranına** koy. Geri dönüş anında ('ben yapamam') bakacaksın.",
         "quiz": [
           {
             "q": "Final günde ne yap?",
@@ -2481,10 +2481,10 @@
       },
       "30": {
         "title": "Tamamlandı — Yeni Sabah",
-        "teaching": "30 gün önce sabahların kaotikti. Şimdi sistematik. 30 gün önce reaktiftin. Şimdi proaktif. Sen değiştin — sabahların değişti çünkü. Bu sabah sıradan değil. Bu sabah kanıt: yapabilirsin.",
-        "action": "Bugün 30 gün boyunca işe yarayan 3 disiplini yaz. Bunlar yeni baselin.",
-        "reflectionPrompt": "En çok hangi disiplini sürdüreceksin? Neden?",
-        "proTip": "Bir sonraki yola geçmeden 3 gün dinlen. Tutarlılık = kalıcılık. Aceleci geçiş = gerileme.",
+        "teaching": "**30 gün önce sabahların kaotikti.** Telefon, snooze, paniğe başlangıç. Şimdi: **sistematik**. Su, yüz, pencere, sessizlik, hareket, niyet — bütün bir mimari.\n\n30 gün önce **reaktiftin**: bildirim çekiyor → tepki, mesaj çekiyor → cevap, beklenti çekiyor → koş. Şimdi **proaktif**: ben günü kuruyorum, gün beni değil.\n\nSen değiştin — sabahların değişti çünkü. Sebep-sonuç tersinden de doğru: sabahların değişti, sen değiştin. Phillippa Lally araştırmaları: davranışın günlük yapıldığı 4. haftadan sonra **kimlik kaymaya** başlar. Beyin 'ben buyum' demeye geçer.\n\nBugün **sıradan bir gün değil**. Bugün **kanıt**: ben yapabilirim. Bu cümle gelecekte zor anlarda **silah** olur. 'Hatırla, 30 günü yaptın. Bunu da yaparsın.'\n\nYeni baseline: hangi 3 disiplin **kalıcı** olacak? Tek tek seç, **yazılı taahhüt**. Bu liste 3 ay sonra sana yol haritası.\n\n**Bir sonraki path**: silent-morning devam (31-50) veya 7 gün dinlen, sonra Mind/Body/Money. Disiplin **bulaşıcı** — bir alanda öğrendiğin diğerine taşınır.",
+        "action": "Bugün 30 gün boyunca işe yarayan **3 disiplini yaz**. Bunlar **yeni baseline**.",
+        "reflectionPrompt": "En çok hangi disiplini sürdüreceksin? Neden — hangi somut fayda gördün?",
+        "proTip": "Bir sonraki yola geçmeden **3 gün dinlen**. Tutarlılık = kalıcılık. Aceleci geçiş = gerileme.",
         "quiz": [
           {
             "q": "30 gün sonra fark?",
