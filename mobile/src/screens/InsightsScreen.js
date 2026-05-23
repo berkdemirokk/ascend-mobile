@@ -268,33 +268,6 @@ export default function InsightsScreen({ navigation }) {
           </View>
         </View>
 
-        {/* Leaderboard CTA */}
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Leaderboard')}
-          activeOpacity={0.85}
-          style={styles.leaderboardCta}
-        >
-          <View style={styles.leaderboardIconWrap}>
-            <MaterialIcons
-              name="emoji-events"
-              size={22}
-              color={LT.primaryContainer}
-            />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.leaderboardTitle}>
-              {t('insights.leaderboardTitle', 'Liderlik Tablosu')}
-            </Text>
-            <Text style={styles.leaderboardSub}>
-              {t(
-                'insights.leaderboardSub',
-                'Anonim. En uzun seriler kazanır.',
-              )}
-            </Text>
-          </View>
-          <MaterialIcons name="chevron-right" size={20} color={LT.onSurfaceVariant} />
-        </TouchableOpacity>
-
         {/* Records */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>

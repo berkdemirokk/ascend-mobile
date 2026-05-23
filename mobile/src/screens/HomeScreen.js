@@ -27,7 +27,6 @@ import {
 import LightTopAppBar from '../components/LightTopAppBar';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
-import DailyQuoteCard from '../components/DailyQuoteCard';
 import LessonQueueCard from '../components/LessonQueueCard';
 import DailyMysteryBox from '../components/DailyMysteryBox';
 import DailyMoodCheckIn from '../components/DailyMoodCheckIn';
@@ -561,11 +560,6 @@ export default function HomeScreen({ navigation }) {
           todayMood={moodPickedToday}
           onPick={setDailyMood}
         />
-
-        {/* Daily Stoic / discipline quote — fresh per calendar day, same
-            for all devices. Anchor of the "morning routine" of opening
-            the app: novelty + value before asking for any action. */}
-        <DailyQuoteCard />
 
         {/* Today's CTA Card */}
         <View style={styles.ctaCard}>

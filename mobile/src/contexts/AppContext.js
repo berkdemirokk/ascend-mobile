@@ -10,10 +10,12 @@ import {
 import { getRank } from '../config/ranks';
 import { getPathById } from '../data/paths';
 import { pullState, pushState, mergeStates } from '../services/cloudSync';
-import {
-  pushLeaderboardEntry,
-  generateAnonUsername,
-} from '../services/leaderboard';
+// `generateAnonUsername` is kept for future social/squad features that
+// will reuse the existing anon handle. The public leaderboard surface
+// (screen + push-on-streak-change) was removed because a global ranking
+// contradicts the "Monk Mode" framing of solo, intrinsic discipline —
+// external comparison was making the product fight itself.
+import { generateAnonUsername } from '../services/leaderboard';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
 import {
@@ -675,26 +677,6 @@ export function AppProvider({ children }) {
       lastCompletedDate: state.lastCompletedDate,
     }).catch(() => {});
   }, [state._loaded, state.lastCompletedDate]);
-
-  // ── Push streak to public leaderboard whenever it changes ────────────────
-  useEffect(() => {
-    if (!state._loaded || !isAuthenticated || !userId) return;
-    if (!state.anonUsername) return;
-    pushLeaderboardEntry(userId, {
-      anonUsername: state.anonUsername,
-      currentStreak: state.currentStreak || 0,
-      longestStreak: state.longestStreak || 0,
-      totalXP: state.totalXP || 0,
-    }).catch(() => {});
-  }, [
-    state._loaded,
-    isAuthenticated,
-    userId,
-    state.anonUsername,
-    state.currentStreak,
-    state.longestStreak,
-    state.totalXP,
-  ]);
 
   // ── Save state to AsyncStorage on every change ─────────────────────────
   useEffect(() => {
