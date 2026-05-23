@@ -34,6 +34,7 @@ import StreakRiskBanner from '../components/StreakRiskBanner';
 import StreakLostBanner from '../components/StreakLostBanner';
 import PledgeModal from '../components/PledgeModal';
 import { getArchetypeById } from '../data/archetypes';
+import { POST_ASSESSMENT_INTERVAL_DAYS } from '../data/assessment';
 import WeekendBoostBanner from '../components/WeekendBoostBanner';
 import DailyPlanCard from '../components/DailyPlanCard';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
@@ -80,6 +81,9 @@ export default function HomeScreen({ navigation }) {
     setPathPledge,
     todaySessionLessons,
     lastLessonAtMs,
+    baselineAssessment,
+    latestAssessment,
+    addAssessment,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
     dailyMysteryBoxOpenedAt,
@@ -546,6 +550,62 @@ export default function HomeScreen({ navigation }) {
             />
           ))}
         </View>
+
+        {/* Re-assessment due — fires 30 days after baseline (or 30
+            days after the latest assessment, whichever is later).
+            This is the payoff surface for the whole Outcome
+            Assessment system: the user sees "30 gün doldu, ölç" CTA,
+            taps, fills the 1-minute form, then lands in the
+            ProgressReport with their delta. */}
+        {(() => {
+          if (!baselineAssessment?.ts) return null;
+          const lastTs = latestAssessment?.ts || baselineAssessment.ts;
+          const daysSince = (Date.now() - lastTs) / (24 * 60 * 60 * 1000);
+          if (daysSince < POST_ASSESSMENT_INTERVAL_DAYS) return null;
+          return (
+            <TouchableOpacity
+              activeOpacity={0.85}
+              onPress={() =>
+                navigation.navigate('Assessment', {
+                  mode: 'post',
+                  onSubmit: (scores) => {
+                    addAssessment(scores);
+                    // Slight delay so the Assessment modal animates out
+                    // before the Report modal animates in.
+                    setTimeout(() => {
+                      navigation.navigate('ProgressReport');
+                    }, 350);
+                  },
+                })
+              }
+              style={styles.reassessCard}
+            >
+              <View style={styles.reassessIconBox}>
+                <MaterialIcons
+                  name="insights"
+                  size={20}
+                  color={LT.onPrimary}
+                />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.reassessLabel}>
+                  {t('home.reassessLabel', '30 GÜN DOLDU')}
+                </Text>
+                <Text style={styles.reassessTitle}>
+                  {t(
+                    'home.reassessTitle',
+                    'Tekrar ölç, ne kadar ilerlediğini gör',
+                  )}
+                </Text>
+              </View>
+              <MaterialIcons
+                name="arrow-forward"
+                size={20}
+                color={LT.onPrimary}
+              />
+            </TouchableOpacity>
+          );
+        })()}
 
         {/* Today's session chip — shows the count of lessons completed
             within the current 30-min momentum window. The audit's
@@ -1119,6 +1179,44 @@ const styles = StyleSheet.create({
   // and the primary CTA. Subdued red to read as a status pill, not
   // a CTA — it celebrates progress without pulling focus from the
   // actual "next lesson" button below it.
+  // 30-day re-assessment CTA — full-width primary-colored card.
+  // Bold by design: this is the highest-leverage retention moment
+  // we have (the "look how far you've come" payoff), so it visually
+  // outranks everything except the active CTA.
+  reassessCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    backgroundColor: LT.primary,
+    borderRadius: 16,
+    padding: 14,
+    marginTop: 12,
+    shadowColor: LT.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 12,
+    elevation: 5,
+  },
+  reassessIconBox: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.18)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  reassessLabel: {
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+    color: 'rgba(255,255,255,0.85)',
+    marginBottom: 2,
+  },
+  reassessTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: LT.onPrimary,
+  },
   sessionChip: {
     flexDirection: 'row',
     alignItems: 'center',

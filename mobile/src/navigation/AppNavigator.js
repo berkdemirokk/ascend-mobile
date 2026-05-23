@@ -41,6 +41,8 @@ import PathScreen from '../screens/PathScreen';
 import ReflectionsScreen from '../screens/ReflectionsScreen';
 import InsightsScreen from '../screens/InsightsScreen';
 import LessonSearchScreen from '../screens/LessonSearchScreen';
+import AssessmentScreen from '../screens/AssessmentScreen';
+import ProgressReportScreen from '../screens/ProgressReportScreen';
 import WelcomeScreen from '../screens/auth/WelcomeScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
@@ -228,6 +230,22 @@ export default function AppNavigator() {
         <Stack.Screen
           name="LessonSearch"
           component={LessonSearchScreen}
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="Assessment"
+          component={AssessmentScreen}
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="ProgressReport"
+          component={ProgressReportScreen}
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',

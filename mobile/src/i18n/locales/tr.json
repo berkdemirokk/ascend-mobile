@@ -157,6 +157,8 @@
     "eveningInsightBodyHigh": "Çoğu insan bugün hiç ders yapmadı. Sen 3+ yaptın — disiplinli %2nin içindesin.",
     "memoryLabel": "SENİN SÖZLERİN · {{total}} YANSIMA",
     "memoryFooter": "Tüm yansımalarına bak →",
+    "reassessLabel": "30 GÜN DOLDU",
+    "reassessTitle": "Tekrar ölç, ne kadar ilerlediğini gör",
     "allDone": "Tüm yollar yürüdü. 🎉",
     "allDoneSub": "Yenisini seç. Birini tekrar yürü. İş bitmez.",
     "ctaGenericSub": "Beş dakika. Olmanın en küçük birimi.",
@@ -698,6 +700,39 @@
   "futureLetter": {
     "label": "KENDİNDEN BİR MEKTUP",
     "cta": "OKUDUM"
+  },
+  "assessment": {
+    "eyebrowBaseline": "BAŞLANGIÇ DEĞERLENDİRMESİ",
+    "eyebrowPost": "30 GÜN SONRA — TEKRAR ÖLÇ",
+    "titleBaseline": "Şu an neredesin? Daha sonra bunu karşılaştıracağız.",
+    "titlePost": "Bir ay önce şuradaydın. Bugün nerede olduğunu söyle.",
+    "help": "Hızlı ol — 1 dakika. Cevaplara bakıp seni yargılamayacağız; sadece kendinle karşılaştırmak için kaydediyoruz.",
+    "submitBaseline": "BAŞLANGICI KAYDET",
+    "submitPost": "KARŞILAŞTIRMAYI GÖR",
+    "skipPost": "Yarın yaparım",
+    "labelDiscipline": "Disiplin",
+    "labelFocus": "Odak",
+    "labelBody": "Beden",
+    "labelMind": "Zihin",
+    "labelFreedom": "Bağımsızlık",
+    "qDiscipline": "Bir hafta önce verdiğin sözü ne kadar tutuyorsun? (1: hiç — 10: tam)",
+    "qFocus": "Bir işe başlayınca kaç dakika kesintisiz odaklanabiliyorsun? (1: <5dk — 10: 90+ dk)",
+    "qBody": "Bedenini bugün nasıl hissediyorsun? Enerji + form. (1: bitkin — 10: zinde)",
+    "qMind": "Sabahları zihnen ne kadar berraksın? (1: dağınık — 10: net)",
+    "qFreedom": "Anlık dürtülere karşı kendini ne kadar özgür hissediyorsun? (1: tetiklenince yapıyorum — 10: ben karar veriyorum)"
+  },
+  "progressReport": {
+    "eyebrow": "30 GÜN SONRA",
+    "points": "PUAN",
+    "narrativeBig": "{{delta}} puanlık bir sıçrama 30 günde sıradan değil. Yüksek artış olduğun alanı koru; düşük olanı önümüzdeki 30 gün hedefin yap.",
+    "narrativeSmall": "Pozitif yöndesin. Küçük ilerleme — sabit pratikle 90 günde fark katlanır.",
+    "narrativeFlat": "Aynı yerdesin. Sabit kalmak da bir başarı, ama önümüzdeki 30 gün için tek alana odaklan — orada artışı zorla.",
+    "narrativeDown": "Düştün — kötü değil, dürüst. Çoğu insan kendine yalan söyler. Hangi alanda en çok düştüğünü gör, oradan yeniden başla.",
+    "share": "PAYLAŞ",
+    "shareYou": "Ben",
+    "shareMsg": "{{name}} · 30 günde {{delta}} puan ilerledim. Disiplin {{before}} → {{after}}. Ascend: Monk Mode ile.",
+    "dismiss": "Tamam",
+    "notReady": "Henüz karşılaştıracak veri yok. 30 gün dolduğunda gelirsin."
   },
   "pledge": {
     "label": "TAAHHÜT",

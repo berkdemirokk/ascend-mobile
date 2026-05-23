@@ -24,6 +24,11 @@ import { COLORS } from '../config/constants';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
 import { ARCHETYPES, DEFAULT_ARCHETYPE_ID, getArchetypeById } from '../data/archetypes';
+import {
+  ASSESSMENT_DIMENSIONS,
+  ASSESSMENT_MAX_PER_DIM,
+  defaultScores,
+} from '../data/assessment';
 import { setLanguage, getCurrentLanguage, SUPPORTED_LANGUAGES } from '../i18n';
 import {
   requestNotificationPermissions,
@@ -50,7 +55,12 @@ import { useAuth } from '../contexts/AuthContext';
 //     Home + notifications.
 //   - Total taps to land in lesson #1: 3 (personalize → pickPath →
 //     archetype) + optional upsell. Was: 4 mandatory + upsell.
-const STEPS = ['personalize', 'pickPath', 'archetype', 'upsell'];
+// Adding the 'assessment' step at the end (just before upsell) means
+// we get the user's baseline numbers AT the moment they're most
+// engaged — they've just committed to a path + archetype. The
+// upsell still fires after; assessment is non-blocking (skippable
+// via the AssessmentScreen) so it doesn't add a hard gate.
+const STEPS = ['personalize', 'pickPath', 'archetype', 'assessment', 'upsell'];
 
 // Map a chosen goal to the path that best fits it. Used to pre-select on the
 // next step so the personalization actually affects what the user sees first.
@@ -64,7 +74,13 @@ const GOAL_TO_PATH = {
 
 export default function OnboardingScreen({ navigation }) {
   const { t } = useTranslation();
-  const { completeOnboarding, setUserProfile, setActivePath, isPremium } = useApp();
+  const {
+    completeOnboarding,
+    setUserProfile,
+    setActivePath,
+    setBaselineAssessment,
+    isPremium,
+  } = useApp();
   const { user } = useAuth();
   const [step, setStep] = useState('personalize');
   const [selectedPath, setSelectedPath] = useState('dopamine-detox');
@@ -202,6 +218,8 @@ export default function OnboardingScreen({ navigation }) {
     } else if (step === 'pickPath') {
       setStep('archetype');
     } else if (step === 'archetype') {
+      setStep('assessment');
+    } else if (step === 'assessment') {
       // Skip upsell for premium users — they've already converted.
       if (isPremium) {
         finishOnboarding();
@@ -270,6 +288,11 @@ export default function OnboardingScreen({ navigation }) {
             selectedArchetype={selectedArchetype}
             onSelect={setSelectedArchetype}
           />
+        ) : step === 'assessment' ? (
+          <BaselineAssessmentStep
+            t={t}
+            onSave={(scores) => setBaselineAssessment(scores)}
+          />
         ) : (
           <UpsellStep t={t} onSubscribe={handleUpsellSubscribe} />
         )}
@@ -305,7 +328,9 @@ export default function OnboardingScreen({ navigation }) {
                     ? t('onboarding.startPath', 'Bu yolu başlat')
                     : step === 'archetype'
                       ? t('onboarding.continueArchetype', 'Bu benim')
-                      : t('onboarding.skipUpsell', 'Şimdilik Atla')}
+                      : step === 'assessment'
+                        ? t('onboarding.continueAssessment', 'Başlangıcı kaydet')
+                        : t('onboarding.skipUpsell', 'Şimdilik Atla')}
               </Text>
               <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} style={{ marginLeft: 6 }} />
             </View>
@@ -319,7 +344,9 @@ export default function OnboardingScreen({ navigation }) {
                 ? t('onboarding.captionPickPath', 'YOLUNU SEÇ')
                 : step === 'archetype'
                   ? t('onboarding.captionArchetype', '30 GÜN SONRA NE OLACAKSIN')
-                  : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
+                  : step === 'assessment'
+                    ? t('onboarding.captionAssessment', 'BAŞLANGIÇ NOKTAN ÖLÇÜLÜYOR')
+                    : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
           </Text>
         </Animated2.View>
       </View>
@@ -735,6 +762,89 @@ function ArchetypeStep({ t, selectedArchetype, onSelect }) {
   );
 }
 
+// Baseline Assessment step — collects the 5-dimension self-rating
+// that future ProgressReportScreen will compare against. We use an
+// internal local state so the user can adjust before hitting the
+// onboarding primary CTA; on every change we sync upstream via
+// onSave so leaving mid-step still persists what they chose.
+function BaselineAssessmentStep({ t, onSave }) {
+  const [scores, setScoresLocal] = useState(defaultScores());
+  const setScore = (id, v) => {
+    setScoresLocal((prev) => {
+      const next = { ...prev, [id]: v };
+      onSave(next); // persist on every slider tap; cheap
+      return next;
+    });
+  };
+  // Persist defaults the first render too, so a user who blasts
+  // through with "Devam et" still has a baseline of 5/10 across
+  // the board (not nothing — nothing breaks the delta system).
+  useEffect(() => {
+    onSave(defaultScores());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <View style={styles.assessmentStepContent}>
+      <Text style={styles.pickTitle}>
+        {t(
+          'onboarding.assessmentTitle',
+          'Bugünün senini ölç. 30 gün sonra geri bakacağız.',
+        )}
+      </Text>
+      <Text style={styles.pickSubtitle}>
+        {t(
+          'onboarding.assessmentSubtitle',
+          '5 alanı 1-10 arası işaretle. Mükemmel cevap yok — dürüst cevap var.',
+        )}
+      </Text>
+      <ScrollView
+        contentContainerStyle={styles.assessmentList}
+        showsVerticalScrollIndicator={false}
+      >
+        {ASSESSMENT_DIMENSIONS.map((dim) => (
+          <View key={dim.id} style={styles.assessmentRow}>
+            <View style={styles.assessmentRowHeader}>
+              <View
+                style={[
+                  styles.assessmentIconBox,
+                  { backgroundColor: `${dim.color}22`, borderColor: `${dim.color}55` },
+                ]}
+              >
+                <MaterialIcons name={dim.icon} size={16} color={dim.color} />
+              </View>
+              <Text style={styles.assessmentLabel}>
+                {t(dim.labelKey, dim.labelFallback)}
+              </Text>
+              <Text style={[styles.assessmentValue, { color: dim.color }]}>
+                {scores[dim.id]}
+              </Text>
+            </View>
+            <Text style={styles.assessmentQ}>
+              {t(dim.questionKey, dim.questionFallback)}
+            </Text>
+            <View style={styles.scaleRowOb}>
+              {Array.from({ length: ASSESSMENT_MAX_PER_DIM }, (_, i) => i + 1).map((v) => {
+                const isUnder = scores[dim.id] >= v;
+                return (
+                  <TouchableOpacity
+                    key={v}
+                    onPress={() => setScore(dim.id, v)}
+                    style={[
+                      styles.scaleDotOb,
+                      isUnder && { backgroundColor: dim.color },
+                    ]}
+                  />
+                );
+              })}
+            </View>
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
+
 function PickPathStep({ t, selectedPath, onSelect }) {
   return (
     <View style={styles.pickPathContent}>
@@ -933,6 +1043,66 @@ const styles = StyleSheet.create({
 
   // Pick path step
   pickPathContent: { flex: 1, paddingTop: 40 },
+
+  // Baseline assessment — quick inline 5-question form
+  assessmentStepContent: { flex: 1, paddingTop: 40 },
+  assessmentList: {
+    paddingHorizontal: 16,
+    paddingBottom: 24,
+    gap: 14,
+  },
+  assessmentRow: {
+    backgroundColor: LT.surfaceContainerLowest,
+    borderRadius: 14,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+  },
+  assessmentRowHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  assessmentIconBox: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+  },
+  assessmentLabel: {
+    flex: 1,
+    fontSize: 11,
+    fontWeight: '900',
+    letterSpacing: 1.2,
+    color: LT.onSurface,
+  },
+  assessmentValue: {
+    fontSize: 18,
+    fontWeight: '900',
+    minWidth: 24,
+    textAlign: 'right',
+  },
+  assessmentQ: {
+    fontSize: 12,
+    color: LT.onSurfaceVariant,
+    lineHeight: 16,
+    marginBottom: 10,
+  },
+  scaleRowOb: {
+    flexDirection: 'row',
+    gap: 3,
+  },
+  scaleDotOb: {
+    flex: 1,
+    height: 18,
+    borderRadius: 4,
+    backgroundColor: LT.surfaceContainer,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+  },
 
   // Archetype step — identity-based framing
   archetypeContent: { flex: 1, paddingTop: 40 },

@@ -72,6 +72,20 @@ const initialState = {
   // the user never re-reads it. Shape: { [pathId]: 'sentence' }.
   pathPledges: {},
 
+  // ── Outcome Assessment ─────────────────────────────────────────────
+  // The user's self-rated baseline (taken at onboarding) and the
+  // history of subsequent re-assessments (every 30 days). Shape:
+  //   baselineAssessment: { ts, scores: {discipline:5, focus:4, ...} }
+  //   assessmentHistory: [{ ts, scores }, ...]   newest last
+  //   latestAssessment: convenience pointer to history[last]
+  // Without baselineAssessment, the ProgressReportScreen has nothing
+  // to compare against — so the onboarding step that collects it is
+  // gated as a soft-required (skippable but the report system
+  // visibly nags until done).
+  baselineAssessment: null,
+  assessmentHistory: [],
+  latestAssessment: null,
+
   // Streak calendar — { 'YYYY-MM-DD': count of lessons that day }
   lessonHistory: {},
 
@@ -194,6 +208,8 @@ const ACTION_TYPES = {
   RECORD_FUTURE_LETTER_SHOWN: 'RECORD_FUTURE_LETTER_SHOWN',
   SET_PATH_PLEDGE: 'SET_PATH_PLEDGE',
   CLEAR_MOMENTUM_TOAST: 'CLEAR_MOMENTUM_TOAST',
+  SET_BASELINE_ASSESSMENT: 'SET_BASELINE_ASSESSMENT',
+  ADD_ASSESSMENT: 'ADD_ASSESSMENT',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -747,6 +763,38 @@ function appReducer(state, action) {
       // dispatch tick if the screen re-renders.
       return { ...state, _momentumToast: null };
 
+    case ACTION_TYPES.SET_BASELINE_ASSESSMENT: {
+      // Onboarding-time baseline self-assessment. We deliberately
+      // allow over-write here (re-onboarding the same install) but
+      // ProgressReportScreen always computes delta vs THIS field,
+      // so resetting baseline mid-journey wipes the comparison —
+      // intentional, the user is starting over.
+      const { scores } = action.payload || {};
+      if (!scores) return state;
+      return {
+        ...state,
+        baselineAssessment: { ts: Date.now(), scores },
+      };
+    }
+
+    case ACTION_TYPES.ADD_ASSESSMENT: {
+      // Post-baseline re-assessment. Appended to history so we can
+      // chart progression over multiple 30-day cycles, but the
+      // ProgressReportScreen only compares the latest vs baseline
+      // for simplicity. History is kept trimmed at 12 entries
+      // (1 year of monthly check-ins) so cloudSync payload doesn't
+      // grow unbounded.
+      const { scores } = action.payload || {};
+      if (!scores) return state;
+      const entry = { ts: Date.now(), scores };
+      const history = [...(state.assessmentHistory || []), entry].slice(-12);
+      return {
+        ...state,
+        assessmentHistory: history,
+        latestAssessment: entry,
+      };
+    }
+
     default:
       return state;
   }
@@ -997,6 +1045,17 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.CLEAR_MOMENTUM_TOAST });
   }, []);
 
+  const setBaselineAssessment = useCallback((scores) => {
+    dispatch({
+      type: ACTION_TYPES.SET_BASELINE_ASSESSMENT,
+      payload: { scores },
+    });
+  }, []);
+
+  const addAssessment = useCallback((scores) => {
+    dispatch({ type: ACTION_TYPES.ADD_ASSESSMENT, payload: { scores } });
+  }, []);
+
   const startVacation = useCallback((days = 7) => {
     dispatch({ type: ACTION_TYPES.START_VACATION, payload: { days } });
   }, []);
@@ -1175,6 +1234,8 @@ export function AppProvider({ children }) {
     recordFutureLetterShown,
     setPathPledge,
     clearMomentumToast,
+    setBaselineAssessment,
+    addAssessment,
     startVacation,
     endVacation,
     completeDailyChallenge,

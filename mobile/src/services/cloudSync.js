@@ -23,6 +23,9 @@ const SYNCED_KEYS = [
   'dailyChallengeCompletedAt',
   'dailyLoginGrantedAt',
   'pathPledges',
+  'baselineAssessment',
+  'assessmentHistory',
+  'latestAssessment',
 ];
 
 export function pickSyncableState(state) {
