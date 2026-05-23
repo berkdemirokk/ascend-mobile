@@ -31,7 +31,22 @@ import {
 
 export default function ProgressReportScreen({ navigation }) {
   const { t } = useTranslation();
-  const { baselineAssessment, latestAssessment, userProfile } = useApp();
+  const {
+    baselineAssessment,
+    latestAssessment,
+    userProfile,
+    // Objective metrics for the new ÖLÇÜLEBİLİR İLERLEME block.
+    // Self-report delta alone is subjective + placebo-prone; surfacing
+    // hard counts (lessons completed since baseline, current streak,
+    // reflections written) gives the user — and the share image — a
+    // measurable backbone the slider scores can't fake.
+    pathProgress,
+    currentStreak,
+    longestStreak,
+    totalLessonsCompleted,
+    lessonHistory,
+    dailyDeckHistory,
+  } = useApp();
 
   // Defensive: if either side is missing, bail to Home. Reachable
   // only if a buggy callsite navigates here prematurely.
@@ -62,17 +77,50 @@ export default function ProgressReportScreen({ navigation }) {
   const beforeTotal = totalScore(baselineAssessment.scores);
   const afterTotal = totalScore(latestAssessment.scores);
 
+  // ── Objective metrics since baseline ─────────────────────────────
+  // Count lessons completed AFTER the baseline timestamp. We can't
+  // know per-lesson timestamps (pathProgress.completed is an array of
+  // lessonIds with no times), so we use lessonHistory which IS date-
+  // keyed — sum the counts for every date >= baseline date. Same
+  // approach for reflections and deck completions.
+  const baselineDate = new Date(baselineAssessment.ts || 0)
+    .toISOString()
+    .slice(0, 10);
+  const lessonsSinceBaseline = Object.entries(lessonHistory || {})
+    .filter(([date]) => date >= baselineDate)
+    .reduce((sum, [, n]) => sum + (n || 0), 0);
+  const reflectionsCount = (() => {
+    let n = 0;
+    for (const p of Object.values(pathProgress || {})) {
+      n += Object.keys(p?.reflections || {}).length;
+    }
+    return n;
+  })();
+  const deckCompletionsSinceBaseline = (dailyDeckHistory || []).filter(
+    (e) => (e?.date || '') >= baselineDate,
+  ).length;
+  // Days elapsed (clamped at 30 for the typical first cycle).
+  const daysElapsed = Math.max(
+    1,
+    Math.floor(
+      (Date.now() - (baselineAssessment.ts || 0)) / (24 * 60 * 60 * 1000),
+    ),
+  );
+
   const handleShare = async () => {
     try {
-      const name = userProfile?.name || t('progressReport.shareYou', 'Ben');
+      // Share message now leads with the OBJECTIVE metric (lessons
+      // completed), then the self-report delta, then a CTA. Removes
+      // the 'before score' that audit flagged as embarrassment.
       const msg = t(
         'progressReport.shareMsg',
-        '{{name}} · 30 günde {{delta}} puan ilerledim. Disiplin {{before}} → {{after}}. Ascend: Monk Mode ile.',
+        '{{days}} günde {{lessons}} ders, {{streak}} günlük seri. Kendime göre +{{delta}} puan ilerleme. Ascend: Monk Mode ile takip ediyorum.',
         {
-          name,
-          delta: delta.totalDelta >= 0 ? `+${delta.totalDelta}` : delta.totalDelta,
-          before: beforeTotal,
-          after: afterTotal,
+          days: daysElapsed,
+          lessons: lessonsSinceBaseline,
+          streak: currentStreak || 0,
+          delta:
+            delta.totalDelta >= 0 ? delta.totalDelta : delta.totalDelta,
         },
       );
       await Share.share({ message: msg });
@@ -103,7 +151,57 @@ export default function ProgressReportScreen({ navigation }) {
           </Text>
         </View>
 
-        {/* Per-dimension breakdown */}
+        {/* ÖLÇÜLEBİLİR İLERLEME — objective backbone for the
+            subjective self-report above. These numbers can't be
+            "felt up" by a placebo bias: lessons completed, current
+            streak, longest streak, reflections written, decks done.
+            Audit finding: 'self-report likert without an objective
+            anchor is just mood, not measurement'. Fixes that. */}
+        <View style={styles.objectiveBlock}>
+          <Text style={styles.objectiveHeader}>
+            {t('progressReport.objectiveLabel', 'ÖLÇÜLEBİLİR İLERLEME')}
+          </Text>
+          <View style={styles.objectiveGrid}>
+            <View style={styles.objectiveCell}>
+              <Text style={styles.objectiveValue}>{lessonsSinceBaseline}</Text>
+              <Text style={styles.objectiveLabel}>
+                {t('progressReport.lessonsLabel', 'DERS')}
+              </Text>
+            </View>
+            <View style={styles.objectiveDivider} />
+            <View style={styles.objectiveCell}>
+              <Text style={styles.objectiveValue}>{currentStreak || 0}</Text>
+              <Text style={styles.objectiveLabel}>
+                {t('progressReport.streakLabel', 'GÜN SERİ')}
+              </Text>
+            </View>
+            <View style={styles.objectiveDivider} />
+            <View style={styles.objectiveCell}>
+              <Text style={styles.objectiveValue}>{reflectionsCount}</Text>
+              <Text style={styles.objectiveLabel}>
+                {t('progressReport.reflectionsLabel', 'YANSIMA')}
+              </Text>
+            </View>
+            <View style={styles.objectiveDivider} />
+            <View style={styles.objectiveCell}>
+              <Text style={styles.objectiveValue}>
+                {deckCompletionsSinceBaseline}
+              </Text>
+              <Text style={styles.objectiveLabel}>
+                {t('progressReport.decksLabel', 'DESTE')}
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.objectiveFooter}>
+            {t(
+              'progressReport.objectiveFooter',
+              '{{days}} günde — sayılar yalan söylemez.',
+              { days: daysElapsed },
+            )}
+          </Text>
+        </View>
+
+        {/* Per-dimension breakdown (subjective self-report) */}
         <View style={styles.dimList}>
           {delta.dimensions.map((d) => {
             const meta = ASSESSMENT_DIMENSIONS.find((x) => x.id === d.id);
@@ -252,6 +350,56 @@ const styles = StyleSheet.create({
   },
 
   // Per-dimension
+  // ÖLÇÜLEBİLİR İLERLEME block — four equal cells with hard counts.
+  // Visually higher contrast than the per-dimension list below it so
+  // the user's eye lands on objective numbers first.
+  objectiveBlock: {
+    backgroundColor: LT.surfaceContainerLow,
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+  },
+  objectiveHeader: {
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+    color: LT.primary,
+    marginBottom: 12,
+  },
+  objectiveGrid: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    marginBottom: 10,
+  },
+  objectiveCell: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  objectiveDivider: {
+    width: 1,
+    backgroundColor: LT.outlineVariant,
+    marginVertical: 4,
+  },
+  objectiveValue: {
+    fontSize: 22,
+    fontWeight: '900',
+    color: LT.onSurface,
+    marginBottom: 2,
+  },
+  objectiveLabel: {
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 1.2,
+    color: LT.onSurfaceVariant,
+  },
+  objectiveFooter: {
+    fontSize: 11,
+    fontStyle: 'italic',
+    color: LT.onSurfaceVariant,
+    textAlign: 'center',
+  },
   dimList: {
     backgroundColor: LT.surfaceContainerLowest,
     borderRadius: 16,
