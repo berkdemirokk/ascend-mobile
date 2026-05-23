@@ -2512,10 +2512,10 @@
       },
       "31": {
         "title": "Sabah Yürüyüş Meditasyonu",
-        "teaching": "Otururken meditasyon zor. Yürürken meditasyon doğal. Her adım = nefes. Her adım = farkındalık. 10 dakika sabah yürüyüş + meditasyon = 1 saat oturma denkliği.",
-        "action": "Bugün 10 dk yürüyüş meditasyonu yap. Her adımı say.",
-        "reflectionPrompt": "Yürüme meditasyonu oturma'dan farklı mı?",
-        "proTip": "Burnundan al, ağzından ver. Her 4 adımda bir nefes.",
+        "teaching": "Yastığın üstünde oturuyorsun. Zamanlayıcı 10 dakika. Gözler kapalı. 30 saniye sonra: 'O e-postaya cevap vermedim.' 1 dakika sonra: 'Acaba acıktım mı?' Beyin **statik beden + dinamik düşünce** kombinasyonunda kaçar. Meditasyon zor çünkü doğa zıttır.\n\n**Çözüm: yürüyüş meditasyonu.** Beden hareketli olunca beyin **şu ana çapa** atar. Her adım = somut farkındalık noktası.\n\nThich Nhat Hanh (Zen ustası) — **walking meditation** öğretileri: 'Yeryüzüne ayağın değdiği her temas, mucize.' Soto Zen geleneği yüzyıllardır kullanır. Klinik araştırmalar: 10 dakika yürüme meditasyonu, **30-60 dakika oturma denkliği** verim (Plum Village protokolü).\n\nMekanizma: yürüme **bilateral stimulasyon** (sol-sağ) + ritmik nefes + duyusal akış (görme, ses, ten). Beyin bu çoklu girdiyi **anki anda** birleştirmek zorunda — **default mode network** susar. Saf farkındalık.\n\nTeknik: burnundan al, ağzından ver. **Her 4 adımda 1 nefes**. Adımları say: 1-2-3-4. Düşünce gelirse: 'düşünce' deyip adıma dön.",
+        "action": "Bugün **10 dk yürüyüş meditasyonu** yap. Her 4 adımda 1 nefes. Adımları say.",
+        "reflectionPrompt": "Yürüme meditasyonu oturma'dan farklı mıydı? Düşünceler nasıl davrandı?",
+        "proTip": "**Burnundan al, ağzından ver.** Her 4 adımda 1 nefes. Telefon evde — sadece beden + nefes.",
         "quiz": [
           {
             "q": "Yürüyüş meditasyonu vs oturma?",
@@ -2543,10 +2543,10 @@
       },
       "32": {
         "title": "Stillness 10 Dakika",
-        "teaching": "Hareket disiplinin yarısı. Diğer yarısı durabilmek. 10 dakika tam stillness — kıpırdamadan, düşünmeden, yapmadan. Bedeniniz ve zihniniz reset.",
-        "action": "Bugün 10 dk tam hareketsiz otur.",
-        "reflectionPrompt": "Stillness ne kadar zor geldi?",
-        "proTip": "Tam dik otur, gözleri %30 açık. Sırt yastığı al.",
+        "teaching": "Modern hayat = sürekli hareket, sürekli yapma. Boş bir 30 saniye → telefon. Boş bir bekleme → mesaj. Boş bir tuvalet ziyareti → Instagram. **Hiçbir şey yapmamak** korkutucu hale geldi.\n\nBlaise Pascal (1654): 'İnsanlığın bütün sorunları tek bir şeyden doğar — bir odada **tek başına oturamamak**.' 350 yıl geçti, durum **kötüleşti**.\n\nHareket disiplinin yarısı. **Diğer yarısı: durabilmek.** 10 dakika tam stillness — bedenle değil, **iradeyle** durmak. Kıpırdamadan, kaşımadan, gerinmeden, telefon kontrol etmeden.\n\nMatthieu Ricard (genetik biyolog → Tibetli keşiş, 40 yıl meditasyon) fMRI çalışmaları: uzun stillness pratiği yapanlarda **gamma dalgaları** baseline'da bile yüksek — saf farkındalık nöral imzası.\n\nMekanizma: stillness = **interoception** (içsel beden farkındalığı) güçlendirir. Insular cortex aktif olur — duyguları, ihtiyaçları, bedenin sinyallerini **daha net** algılarsın. Karar verme, duygu yönetimi, empati hep buradan beslenir.\n\nİlk 10 dakika dayanılmaz olur. Bu **gösterge**: ne kadar zor = ne kadar gerekli.",
+        "action": "Bugün **10 dk tam hareketsiz** otur. Telefonsuz, müziksiz, kıpırdamadan.",
+        "reflectionPrompt": "Stillness ne kadar zor geldi? Hangi dakikada en güçlü 'kaç' isteği geldi?",
+        "proTip": "**Dik otur**, gözleri **%30 açık** (Zen 'soft gaze'). Sırt yastığı al — fiziksel destek = mental odak.",
         "quiz": [
           {
             "q": "Stillness ne demek?",
@@ -2574,10 +2574,10 @@
       },
       "33": {
         "title": "Soğuk Daldırma",
-        "teaching": "Soğuk duş başlangıç. Soğuk daldırma master. 1-2 dk 10°C su = norepinefrin %500 artar, depresyon riski %29 düşer (Wim Hof). Vücudun 10x güçlenir.",
-        "action": "Bugün soğuk duşu 1 dakikaya çıkar.",
-        "reflectionPrompt": "1 dakikada bedenim ne öğrendi?",
-        "proTip": "Nefes kontrolü ile gir. Şok = nefesi tut yapar; tam tersi: derin yavaş nefes.",
+        "teaching": "30 saniye soğuk duşa alıştın (Ders 16). Beden artık 'şok' değil 'iş' olarak algılıyor. Adaptasyon işaret: **bir sonraki seviye** zamanı.\n\n**Soğuk daldırma = master.** Bütün vücut 1-2 dakika 10°C'nin altında. Duşa **boyun + omuz + sırt** alarak gir. Çıkış otomatik gelir — sen iradenle **kalmaya** karar verirsin.\n\nWim Hof + Susanna Søberg (Kopenhag Üniversitesi) araştırmaları: düzenli soğuk daldırma —\n- Norepinefrin **%200-500 artar** (odak hormonu)\n- Dopamin **%250 artar** (motivasyon, mutluluk)\n- Kahverengi yağ doku aktive (metabolizma hızlanır)\n- Bağışıklık T-hücre üretimi güçlenir\n- Mitochondria biyogenez (hücresel enerji)\n\nMekanizma: soğuk = **hormetic stres**. Küçük doz tehlike → vücut adaptasyon → güçlenme. Vagus siniri tonu yükselir → kalp ritmi değişkenliği artar (uzun ömür belirteci).\n\n**Nefes kontrolü kritik**. Şok refleksi: hızlı yüzeysel nefes. Tersini yap: **yavaş derin nefes**, 4 sn içeri, 6 sn dışarı. Beden 'tehdit değil' bilgisi alır.",
+        "action": "Bugün soğuk duşu **1 dakikaya çıkar**. Omuz + sırt da alsın. Nefes yavaş.",
+        "reflectionPrompt": "1 dakikada bedenin ne öğrendi? Geçen haftaki 30 saniyeden farklı mıydı?",
+        "proTip": "**Nefes kontrolü** ile gir. Şok refleksi nefes tutmak ister — tam tersi: **derin yavaş** nefes. 4 sn in / 6 sn out.",
         "quiz": [
           {
             "q": "Soğuk daldırma süre?",
@@ -2605,10 +2605,10 @@
       },
       "34": {
         "title": "Güneş Selamı Varyasyonları",
-        "teaching": "Sun salutation = 12 hareket, tüm vücut esnetme + güç. Sabah 5 dakika = ısınma + esneme + omuz açılışı. Yoga değil disiplindir.",
-        "action": "Bugün 5 sun salutation yap.",
-        "reflectionPrompt": "Hangi pozisyon zorluydu?",
-        "proTip": "YouTube'da \"5 min sun salutation\" video. İlk 1 hafta video ile, sonra ezberle.",
+        "teaching": "Uyandın. Boyun gergin (yastık), bel sıkı (yatak), omuzlar küt (uyku pozisyonu). İlk hareket: telefon almak için ileri uzanma → daha gergin. Beden 'ısınmadan' güne başladı.\n\n**Surya Namaskar (Güneş Selamı)** = **12 hareket dizisi**, 5000 yıllık Hint pratiği. Tüm vücut gerilim açıcı + ısınma + esneklik + omuz açılma + kalça açılma + omurga seyahati — **tek 3 dakikalık akış** içinde.\n\nB.K.S. Iyengar (modern yoga babası): 'Surya Namaskar günün **tek** zorunlu pratiğidir. Her şey diğer önceliklerden sonra gelir.'\n\nBilimsel kanıt (Bhavanani et al., Yoga Therapy 2011): düzenli güneş selamı pratikçilerinde —\n- Esneklik **%18 artar** (4 hafta sonra)\n- Kortizol baseline **%20 düşer**\n- Akciğer kapasitesi (VC) **%10 artar**\n- Postural denge gözlenebilir iyileşme\n\nMekanizma: 12 hareket = inversiyon (kafa aşağı), backbend (sırt açma), forward fold (öne eğilme), plank (kor) — vücudun **her yönü** kullanılır. Kan akışı, lenf akışı, omurga sıvısı = tam reset.\n\nYoga değil **disiplindir**. Spiritüel olmasına gerek yok.",
+        "action": "Bugün **5 sun salutation** yap (5 round = 5 dk). YouTube videoyu takip et ilk gün.",
+        "reflectionPrompt": "Hangi pozisyon zorluydu? Hangi bölge en sıkı geldi — omuz, bel, kalça?",
+        "proTip": "YouTube **'5 min sun salutation'** video. İlk hafta video ile, sonra ezberle. Sade akış 12 pozisyon.",
         "quiz": [
           {
             "q": "Sun salutation kaç hareket?",
@@ -2636,10 +2636,10 @@
       },
       "35": {
         "title": "Tek Sayfa Günlük",
-        "teaching": "Morning pages 3 sayfa zor. Tek sayfa yapılabilir. Her sabah aynı tek sayfa: bugün niyetim, dünden ne öğrendim, bugünün 3 önceliği.",
-        "action": "Bugün tek sayfa günlük yaz. Yargılamadan.",
-        "reflectionPrompt": "Tek sayfa yazınca zihninde ne değişti?",
-        "proTip": "Sabit format kullan: niyet / öğrenme / öncelik. Karar yorgunluğu azaltır.",
+        "teaching": "3 sayfa morning pages (Ders 20) ideal ama çoğu sabah **3 sayfa zor**. Boş sayfa korkutucu. 'Ne yazacağım?' karar yorgunluğu. Sonuç: 1 hafta yapıyorsun, 2. hafta atlıyorsun.\n\nÇözüm: **sabit formatlı tek sayfa**. Karar = sıfır. Format zaten var, sadece doldur.\n\n**3 blok**:\n1. **Niyet** (1 cümle): 'Bugün ___ olmak istiyorum.' veya 'Bugün ___ yapacağım.'\n2. **Dün öğrendim** (1-2 cümle): Spesifik bir içgörü, hata, veya gözlem\n3. **3 öncelik**: Bugünün **en önemli 3** işi (numaralı)\n\nWarren Buffett'in **'5/25 kuralı'**: 25 hedef yaz, en önemli 5'i seç, **20'sini görmezden gel**. Tek sayfa günlük bu felsefeyi sabaha uygular.\n\nTim Ferriss '5 Minute Journal' (1M+ kopya satıldı) — benzer format. Mekanizma: **kısıtlama yaratıcılık üretir**. Boş sayfa = paralizasyon. Şablon = akış.\n\nMekanizma: niyet = **implementation intention** (Gollwitzer araştırmaları) — somut niyet beyaz sayfa hedefinden **3x daha çok** uygulanır.",
+        "action": "Bugün **tek sayfa günlük** yaz: niyet (1) + dün öğrendim (1-2) + 3 öncelik. **5 dakika max**.",
+        "reflectionPrompt": "Tek sayfa yazınca zihninde ne değişti? Önceliklerin **berraklaştı** mı?",
+        "proTip": "**Sabit format** kullan: niyet / öğrenme / öncelik. Karar yorgunluğu azalır = devamlılık artar.",
         "quiz": [
           {
             "q": "Tek sayfa günlük format?",
@@ -2667,10 +2667,10 @@
       },
       "36": {
         "title": "Affirmasyon Pratiği",
-        "teaching": "Affirmasyonlar = kendi kendine sözler. \"Disiplinliyim. Odaklıyım. Sürdürürüm.\" 5 dakika tekrar. Beyin tekrara inanır, gerçeğe değil.",
-        "action": "Bugün 5 dakika 3 affirmasyon tekrar et.",
-        "reflectionPrompt": "En çok hangi affirmasyon vurdu?",
-        "proTip": "Aynaya bakarak yüksek sesle söyle. Etkisi 3x güçlenir.",
+        "teaching": "'Affirmasyon' kelimesi kulağa **boş self-help** geliyor. 'Ben başarılıyım, ben zenginim, ben mutluyum' — kim inanır? Kimse. **Bilim** ise nüanslıdır.\n\nJoanne Wood (Waterloo Üniversitesi 2009) araştırması: **gerçeklikten kopuk affirmasyonlar zarar verir** (düşük öz-güvenlilerde özellikle). Ama **gerçeklik tabanlı affirmasyonlar işe yarar**.\n\nİyi affirmasyon formülü: **'Ben ___ olan biriyim'** + **küçük somut kanıt**. Örnek:\n- ❌ 'Ben dünyanın en disiplinli adamıyım'\n- ✅ 'Ben sabah 6'da kalkmaya devam eden biriyim'\n\nGeoffrey Cohen (Stanford) — **self-affirmation theory**: kişinin **çekirdek değerlerine** dair affirmasyonlar stres yanıtını yumuşatır, akademik performansı artırır, sağlıklı davranışları kolaylaştırır. 'Ben dürüstlüğe değer veriyorum' tipi kimlik-bazlı affirmasyon.\n\nMekanizma: kendi sesini, kendi adınla, **yüksek sesle** duymak — beyin yapay/gerçek ayrımı yapmaz. Aynaya bakarak söylemek **3x güçlü** (ek görsel-işitsel pekiştirme).\n\n5 dakika = 3 affirmasyon × **birkaç tekrar**. Aceleyle değil, **inanarak**.",
+        "action": "Bugün **5 dakika** boyunca 3 affirmasyon tekrar et. Aynaya bakarak, **yüksek sesle**.",
+        "reflectionPrompt": "En çok hangi affirmasyon **vurdu**? Hangisi 'evet bu benim' hissi verdi?",
+        "proTip": "**Aynaya bakarak yüksek sesle** söyle. Etkisi 3x güçlenir. Şuna dikkat: **gerçeklik tabanlı** olsun, masal değil.",
         "quiz": [
           {
             "q": "Affirmasyon süre?",
@@ -2698,10 +2698,10 @@
       },
       "37": {
         "title": "Görselleştirme 3 Dakika",
-        "teaching": "Görselleştirme dersini 3 dakikalık günlük rutine al. Hedef gerçekleşmiş gibi gör — duygular, sesler, kokular. Beyin \"başardım\" zaten der.",
-        "action": "Bugün 3 dk hedefini görselleştir, sabah ilk şey.",
-        "reflectionPrompt": "Görselleştirmede en canlı detay neydi?",
-        "proTip": "Yatakta yap. Gözler kapalı, dik otur, derin nefes.",
+        "teaching": "Olimpiyat şampiyonları yarıştan önce ne yapar? **Gözlerini kapatıp yarışı kafalarında oynarlar.** Michael Phelps her dalış öncesi tam hareket sırasını görselleştirirdi. Boris Becker, Ronaldo, Tiger Woods — hepsi aynı.\n\nNiye? Çünkü **beyin gerçek ile canlı imgelem arasında ayrım yapmaz**. Brain Plasticity Lab (Harvard, Pascual-Leone 1995): piyano parçasını **sadece zihinsel pratik** yapan grup, fiziksel pratik yapan grupla **benzer motor korteks değişimi** gösterdi.\n\nKey detay: **canlı + duyusal**. Sadece görme değil — **duygu, ses, koku, his**. Hedef gerçekleşmiş gibi 'oynar'. Beyin '**zaten başardım**' bilgisi kayıt eder → davranış otomatik olarak hedefi destekler.\n\nMekanizma: görselleştirme **Reticular Activating System** (RAS) eğitir. RAS = beyinde 'filtre' — gün boyu gördüğün milyonlarca uyarandan **sana ne 'önemli' olduğunu** seçer. Hedefi sık görselleştiren kişi, gün boyu fırsatları **kolay fark eder**.\n\n3 dakika yeterli. Sabah ilk işin — beyin daha 'set' değil, plastik en yüksek.",
+        "action": "Bugün **3 dk hedefini görselleştir**, sabah ilk şey. Canlı, duyusal — sanki şu an oluyor.",
+        "reflectionPrompt": "Görselleştirmede en canlı detay neydi? Hangi duyuyla en çok hissettin?",
+        "proTip": "**Yatakta yap**, gözler kapalı, dik otur, derin nefes. Beyin uyku-uyanıklık eşiğinde **en plastik**.",
         "quiz": [
           {
             "q": "Görselleştirme süre?",
@@ -2729,10 +2729,10 @@
       },
       "38": {
         "title": "Hedef Günlük Review",
-        "teaching": "Yıllık hedef yazıp unutmak = 0 etki. Günlük 30 saniye okumak = sürekli farkındalık. Hedef cebinde gibi olur — her küçük karar onu destekler.",
-        "action": "Bugün ana hedefini sabah 30 saniye oku.",
-        "reflectionPrompt": "Hedefi okuyunca öncelikler değişti mi?",
-        "proTip": "Hedefi telefon kilit ekranı yap. Günde 50x bakacaksın.",
+        "teaching": "Yeni yıl. 'Bu sene değişeceğim' dedin, 12 hedef yazdın, defteri çekmeceye attın. **Şubat sonu** çekmeceyi açtın, ne yazdığını **bile hatırlamıyorsun**. Tanıdık mı?\n\nGail Matthews (Dominican Üniversitesi) araştırması: hedef yazanlar %42 daha fazla başarır. Ama burada bir incelik var — **sürekli okuyanlar** %76 başarır. Yazma + günlük tekrar = başarı katsayısı.\n\nMekanizma: **RAS filtre** (geçen ders). Beyin gün boyu binlerce uyarana maruz kalır. Ne 'önemli' olduğunu RAS belirler. Hedefini **günde 50x görmüyorsan**, beyin onu 'önemli değil' olarak kayıt eder. Otomatik filtre dışı.\n\n**30 saniye sabah okuma** = hedefini gün boyu '**zihin arka planında**' tutar. Her küçük karar (öğle yemeği seçimi, sosyal medya açma kararı, akşam aktivite) hedefe göre **otomatik filtre**.\n\nBenjamin Hardy: 'Hedefinden uzak yaşıyorsan, **hedefini görmüyorsun** demektir.'\n\nİdeal: **kâğıda yaz** + **telefon kilit ekranı** + **cüzdana koy**. Her gün ortalama 50-100 kez göz değiştir.",
+        "action": "Bugün **ana hedefini sabah 30 saniye** oku. Yüksek sesle. Sonra cebine/kilit ekranına koy.",
+        "reflectionPrompt": "Hedefi okuyunca öncelikler değişti mi? Bugün yapacağın bir şey **iptal** oldu mu?",
+        "proTip": "Hedefi **telefon kilit ekranı** yap. Günde 50x bakacaksın — beyin için 'sürekli hatırlatma'.",
         "quiz": [
           {
             "q": "Hedef günlük review süre?",
@@ -2760,10 +2760,10 @@
       },
       "39": {
         "title": "Enerji Auditi",
-        "teaching": "Sabah enerji 10/10 olmazsa sebep var. Geç yatma, alkol, ağır akşam yemeği, stres. Her sabah 1-10 puan ver. Düşük günleri analiz et.",
-        "action": "Bugün sabah enerji puanı + sebebini yaz.",
-        "reflectionPrompt": "Düşük enerjili günlerin ortak sebebi?",
-        "proTip": "7 gün boyunca yap, pattern ortaya çıkar. Optimum öğrenme yaşam tarzı.",
+        "teaching": "Bugün uyandın, **yorgunsun**. Niye? Bilmiyorsun. Geçen perşembe de yorgun uyandın, **niye** o da bilmiyorsun. Beden sinyal verir, ama sinyali **yakalamıyorsun** çünkü ölçmüyorsun. **Ölçülmeyen değişmez** (Peter Drucker).\n\n**Sabah enerji auditi** = günlük 1-10 puan + sebep notu. 7 gün sonunda **pattern** ortaya çıkar.\n\nÖrnek pattern: Pazartesi-Salı 8/10. Çarşamba akşam toplantı sonrası alkol → Perşembe 4/10. Cuma gece 1'e kadar Netflix → Cumartesi 5/10. Birden net: alkol ve geç yatma = enerji yıkımı. **Soyut 'iyi olmalıyım' yerine somut neden-sonuç.**\n\nMatthew Walker (Why We Sleep): 'Uyku kalitesi hakkında subjektif bilgimiz **berbat**. Objektif takip = davranış değişiminin tek yolu.'\n\nMekanizma: kendi davranışına **veri kaynağı** olmak — beyin için 'meta-farkındalık'. Karar ve davranış arasındaki **gizli linkler** görünür olur.\n\nApple Watch, Whoop, Oura otomatik yapar. Yoksa **3 satır not** yeter: tarih, puan (1-10), sebep tahmini.",
+        "action": "Bugün **sabah enerji puanı + sebebini** yaz. 3 satır. Telefonun notes app'i veya kâğıt.",
+        "reflectionPrompt": "Düşük enerjili günlerin ortak sebebi ne? Hangi davranışla ilişkili gibi?",
+        "proTip": "**7 gün boyunca** yap, pattern çıkar. Optimum yaşam tarzı için **veri en güçlü silah**.",
         "quiz": [
           {
             "q": "Enerji audit ölçek?",
@@ -2791,10 +2791,10 @@
       },
       "40": {
         "title": "Uyku Döngüsü Takibi",
-        "teaching": "8 saat = mit. Önemli olan döngü sayısı. 1 döngü = 90 dakika. 4-5 döngü ideal. Yatma saati / 1.5 = uyanma saati. 22:00 → 5:30 = 5 döngü.",
-        "action": "Bugün döngü hesabıyla uyu. 22:00 → 05:30.",
-        "reflectionPrompt": "Döngü hesabıyla uyku farklı mıydı?",
-        "proTip": "Apple Watch / Whoop = otomatik takip. Yoksa manuel.",
+        "teaching": "8 saat uyudun ama berbat uyandın. Yan komşun 6 saat uyumuş, tazze. Niye? Çünkü **8 saat mit**; önemli olan **uyku döngüsü sayısı** ve **döngü içinde uyanmamak**.\n\nNathaniel Kleitman (uyku bilimi kurucusu) 1953: insan uykusu **90 dakikalık döngüler** halinde — NREM 1 → NREM 2 → NREM 3 (derin) → REM (rüya). Döngü ortasında (özellikle derin uyku evrelerinde) alarm = berbat uyanma.\n\nFormül: **yatma + (n × 1.5 saat) = ideal uyanma**.\n- 22:00 yat → 05:30 (5 döngü, 7.5 saat) — ideal\n- 22:00 yat → 04:00 (4 döngü, 6 saat) — yine ideal\n- 22:00 yat → 06:00 (8 saat ama döngü ortası) — yorgun\n\nMekanizma: REM sonunda uyanırsan beyin **doğal olarak** sırlı geçişe hazır. Derin uykuda uyanırsan **sleep inertia** (uyku ataleti) — 1-2 saat berbat hissedersin.\n\nApple Watch, Whoop, Oura: otomatik döngü takibi + akıllı alarm (REM penceresinde uyandırır). Yoksa: **manuel hesap**.",
+        "action": "Bugün **döngü hesabıyla uyu**. Örnek: 22:00 → 05:30 (5 döngü). Alarmı buna göre kur.",
+        "reflectionPrompt": "Döngü hesabıyla uyku farklı mıydı? Daha kolay uyandın mı?",
+        "proTip": "**Apple Watch / Whoop / Oura** = otomatik takip + akıllı alarm. Yoksa manuel formül + kâğıt.",
         "quiz": [
           {
             "q": "1 uyku döngüsü?",
@@ -2822,10 +2822,10 @@
       },
       "41": {
         "title": "Alarmsız Uyanma",
-        "teaching": "Alarmla uyanmak = beyni şok etme. 30 gün düzenli uyku sonrası beden alarmsız uyanır. Alarmı 6:00'a kur, 5:55'te alarm öncesi uyan = master.",
-        "action": "Bugün alarmdan 5 dk önce uyanmayı dene.",
-        "reflectionPrompt": "Alarmsız uyandığında nasıl hissettin?",
-        "proTip": "Aynı saatte yat — body clock keskinleşir.",
+        "teaching": "Alarm çaldı. Kalp atışı bir anda 60'tan 100'e fırladı. Kortizol patladı, adrenalin akı. Gün **şokla** başladı. Birkaç saat sonra: yorgun, sinirli. Çünkü beden **acil durum modunda** başladı güne.\n\n**Alarmla uyanmak = beyni şok etmek.** Doğal uyku-uyanıklık geçişi 15-30 dakikalık yumuşak bir kayıştır. Alarm o kayışı **keser** — beden hala derin uyku evresindeyken zorla uyandırılır.\n\nTill Roenneberg (Münih Üniversitesi, sirkadiyen kronobiyolog): 'Alarm gerektiği gerçeği uyku borcunun bir göstergesi. Sağlıklı uyuyan kişi alarmsız uyanır.'\n\n30 gün **düzenli uyku** sonrası beden saatini öyle keskinleştirir ki alarmdan 5-10 dakika önce uyanır. Bu **master seviye**.\n\nMekanizma: SCN (suprakiazmatik çekirdek) = beyindeki ana saat. Düzenli yatış + düzenli uyanış = SCN sinyal pulsları **isabetli** olur. Vücut kortizoli **yumuşak rampada** salgılar — uyanma doğal akış olur.\n\nTeknik: alarmı yedek olarak kur (6:00), gerçek hedefin alarmdan önce uyanmak (5:55). Birkaç hafta sonra alarma gerek kalmaz.",
+        "action": "Bugün **alarmdan 5 dk önce** uyanmayı dene. Alarm yedek — gerçek hedef alarmsız uyanmak.",
+        "reflectionPrompt": "Alarmsız uyandığında nasıl hissettin? Alarmla uyanmaktan farklı mıydı?",
+        "proTip": "**Aynı saatte yat** — body clock keskinleşir. ±15 dakika tolerans, ötesi SCN'yi karıştırır.",
         "quiz": [
           {
             "q": "Alarmsız uyanma?",
@@ -2853,10 +2853,10 @@
       },
       "42": {
         "title": "Sabah Mantra",
-        "teaching": "Tek cümle. Her sabah ilk düşünce. \"Bugün disiplinli. Bugün odaklı. Bugün şükran.\" Her tekrar = beyin programlama.",
-        "action": "Bugün kendi mantra cümleni yaz, 10 kez tekrar et.",
-        "reflectionPrompt": "Hangi mantra seçtin?",
-        "proTip": "Mantrayı duş aynasına yapıştır. Sabah otomatik gelir.",
+        "teaching": "Uyandığın anda kafanda ilk cümle ne? Çoğu kişi için: 'Off, yine sabah.' 'Bugün de aynı bok.' 'Tanrım uyuyabilseydim.' Beyin **negatif çerçeveyle** açıldı. Gün boyu o filtreden bakacak.\n\nİlk düşünce ne ise, gün ona uyar. Tony Robbins: 'İlk 3 düşüncen günün tonunu kurar.' Bu rastgele olmasın — **planla**.\n\n**Sabah mantra = tek cümle, kararlı, tekrarla.** Örnekler:\n- 'Bugün disiplinli, odaklı, şükranlı.'\n- 'Ben enerjik ve niyetli uyanıyorum.'\n- 'Bugün benim — onu kalitesiz harcamayacağım.'\n\nMaharishi Mahesh Yogi → Transcendental Meditation: tek mantra, tekrar = **derin pasif farkındalık**. Klinik araştırmalar (American Heart Association): TM düzenli pratik = kortizol **%30 düşüş**, hipertansiyon iyileşmesi.\n\nMekanizma: tekrar = **synaptic strengthening** (nöronlar arası bağlantı pekişir). Ne tekrar edersen beyin onu 'temel inanç' olarak kayıt eder. Otomatik tetikleyici olur.\n\nKritik: mantra **kişisel** olmalı. Başkasınınki işe yaramaz. Yaz, **kendi sesin** yumuşak gelene kadar tekrar et.",
+        "action": "Bugün **kendi mantra cümleni yaz**. 10 kez tekrar et — yüksek sesle, anlamla.",
+        "reflectionPrompt": "Hangi mantra seçtin? Hangi cümle 'bu benim' hissini verdi?",
+        "proTip": "Mantrayı **duş aynasına** yapıştır. Sabah otomatik gelir — okumak refleks.",
         "quiz": [
           {
             "q": "Mantra format?",
@@ -2884,10 +2884,10 @@
       },
       "43": {
         "title": "5-AM Protokolü",
-        "teaching": "Robin Sharma \"5 AM Club\": 5'te kalk, ilk saat: 20 dk hareket / 20 dk pratik / 20 dk yansıma. 30 günde \"the 1 percent\" girersin.",
-        "action": "Bugün 5'te kalk, 60-20-20-20 dene.",
-        "reflectionPrompt": "İlk 60 dakika hangi blok en güçlüydü?",
-        "proTip": "Aşamalı geç: önce 7, sonra 6:30, sonra 6, sonra 5:30, sonra 5.",
+        "teaching": "Saat 5. Dünya **sessiz**. Çoğu insan derin uykuda. Sokak boş, telefon ölü, bildirim sıfır. Bu 60 dakika **dünyada başka kimseyle paylaşılmıyor** — sadece sen ve gün.\n\nRobin Sharma **'The 5 AM Club'** (kitap 4M+ satıldı): 5'te kalk, **'Victory Hour'**: 20 dk hareket / 20 dk pratik (öğrenme/meditasyon) / 20 dk yansıma (günlük/planlama).\n\n**Niye 5 AM?** İstem gücü zirvesi (Baumeister) + sosyal sessizlik (kimse mesaj atmıyor) + dijital sessizlik (Instagram henüz uyanmadı). **Saf konsantrasyon penceresi** günde sadece 1 kere açılır.\n\nMatematik: 5 AM × 365 gün = günde 1 saat 'sadece sana' = **365 saat/yıl** = **45 iş günü** (9 hafta) ekstra. 'Zaman yok' diyenin gizli sermayesi burası.\n\nMekanizma: erken saat = **prefrontal kortex zirvesi** + kortizol artışı (CAR — Cortisol Awakening Response). En zor işler için **biyolojik olarak optimum**.\n\n**Aşamalı geçiş**: bir gecede 5'e geçilmez. Önce 7, sonra 6:30, 6, 5:30, 5. Her seviyede 1-2 hafta. **Yatma saati ile sabit yatış** — erken kalk için (Ders 1).",
+        "action": "Bugün **5'te kalk**, 60-20-20-20 dene. Bir günlük deney.",
+        "reflectionPrompt": "İlk 60 dakika hangi blok en güçlüydü — hareket, pratik, yoksa yansıma?",
+        "proTip": "**Aşamalı geç**: 7 → 6:30 → 6 → 5:30 → 5. Her seviyede 1-2 hafta. Hızlı geçiş = vazgeçme.",
         "quiz": [
           {
             "q": "5-AM Club kim?",
@@ -2915,10 +2915,10 @@
       },
       "44": {
         "title": "İleri Seviye Nefes",
-        "teaching": "Wim Hof method: 30 derin nefes + nefes tutma + 15 sn tutma + tekrar. 3 round = bağışıklık güçlenir, depresyon azalır, dayanıklılık artar.",
-        "action": "Bugün 1 round Wim Hof yap.",
-        "reflectionPrompt": "Nefes kontrolü zihnini değiştirdi mi?",
-        "proTip": "YouTube \"Wim Hof basic\" + uygulamadan 1 hafta sonra denemeye geç.",
+        "teaching": "Şu anda nefes alıyorsun. **Düşünmüyorsun bile** — otomatik. Ama nefes **bilinçli kullanılırsa**, sinir sistemini doğrudan değiştirebilen tek araç. Kalbi, sindirimi, hormonları **direkt** kontrol edemezsin — ama nefesi kontrol edersen, vagus siniri **diğerlerini** otomatik ayarlar.\n\n**Wim Hof method**: 30 derin nefes (akciğer tam dolu) → nefes ver, **boş nefes tut** (1-2 dakika) → derin alıp 15 sn tut → tekrar. **3 round**.\n\nRadboud University klinik araştırması (Kox et al., PNAS 2014): Wim Hof yöntemi pratikçileri **bilinçli olarak bağışıklık sistemlerini aktive edebildiler** (endotoxin testi). Bu o güne kadar 'imkansız' sayılan bir şeydi.\n\nFaydaları:\n- **Bağışıklık güçlenir** (T-hücre adaptasyonu)\n- **Depresyon ve anksiyete azalır**\n- **Dayanıklılık artar** (sporcu, soğuk maruziyet)\n- **Inflamasyon düşer** (kronik hastalık riski)\n\nMekanizma: hiperventilasyon + nefes tutma = kanın pH'ı değişir, hücreler **stres adaptasyonu** öğrenir. Mitochondria biyogenez artar — hücresel enerji üretimi.\n\nUyarı: ilk denemede **oturarak ya da yatarak** yap. Ayakta tehlikeli (bayılma).",
+        "action": "Bugün **1 round Wim Hof** yap. Otururken veya yatarak. YouTube ile rehberli.",
+        "reflectionPrompt": "Nefes kontrolü zihnini değiştirdi mi? Hangi anda en güçlü 'farklı' hissettin?",
+        "proTip": "YouTube **'Wim Hof basic'** veya 'Wim Hof' app. İlk hafta video ile, sonra ezberle.",
         "quiz": [
           {
             "q": "Wim Hof temel?",
@@ -2946,10 +2946,10 @@
       },
       "45": {
         "title": "Soğuk Maruz Mastery",
-        "teaching": "Soğuk vücut için seroni-norepi-dopamin patlaması. Her gün soğuk = bağışıklık 10x. Hedef: 2 dk altında 10°C, 30 gün sürdür.",
-        "action": "Bugün 2 dk soğuk duş yap.",
-        "reflectionPrompt": "2 dk sonu zihinsel net mi?",
-        "proTip": "İlk 30 sn nefesi kontrol et — sonrası kolaylaşır.",
+        "teaching": "30 saniye (Ders 16), 1 dakika (Ders 33) — şimdi **2 dakika**. Bu, soğuk maruziyetin **master eşiği**. Bu noktaya geldiysen bedenin bilim laboratuvarı oldu.\n\nSusanna Søberg (Kopenhag) protokolü: haftada **toplam 11 dakika** 10-15°C su = optimum metabolik fayda. 2 dk × 5-6 gün = bu eşik.\n\nBilim katları:\n- **Serotonin**: %200 artış (mutluluk, sakinlik)\n- **Norepinefrin**: %500 artış (odak, anti-depresan)\n- **Dopamin**: %250 artış (motivasyon, 4 saat sürer)\n- **Bağışıklık** çift yönlü güçlenir (T-hücre + anti-inflammatory)\n- **Kahverengi yağ** aktive — metabolizma %15-25 hızlanır\n\nDavid Sinclair (Harvard, **Lifespan**): soğuk maruziyet = uzun ömür yolaklarını (sirtuin, AMPK) aktive eder. Hormetic stres = telomer korumacı.\n\nMekanizma: 2 dakika sonunda **vasokonstriksiyon → vasodilatasyon** geçişi olur. Damarlar 'pompa' gibi çalışır. Kalp ritmi değişkenliği (HRV) keskinleşir — sinir sistemi esnekliği.\n\nHedef: **30 gün sürdür**. Bu noktadan sonra soğuk duş = normal, sıcak duş = 'şımarık' gelir. Kimlik **soğuk-uyumlu** hale gelir.",
+        "action": "Bugün **2 dk soğuk duş** yap. Tüm vücut. Nefes yavaş ve derin.",
+        "reflectionPrompt": "2 dk sonu zihinsel net mi? 4 saat boyunca enerjin nasıldı?",
+        "proTip": "İlk 30 sn **nefes kontrolü** kritik. Sonrası adaptasyon — beden 'tehdit değil' bilgisi alır.",
         "quiz": [
           {
             "q": "Soğuk hedef süresi?",
@@ -2977,10 +2977,10 @@
       },
       "46": {
         "title": "Hareket Atıştırmaları",
-        "teaching": "Saat başı 30 sn hareket = oturmanın etkisi nötrlenir. 10 squat, omuz daireleri, boyun esnetme. Çalışma sırasında saat başı yap.",
-        "action": "Bugün her saat başı 30 sn hareket et.",
-        "reflectionPrompt": "Akşam enerjin farklı mıydı?",
-        "proTip": "Saat başı hatırlatıcı kur. 7 gün sonra otomatik olur.",
+        "teaching": "Sabah 1 saat spor yaptın — şampiyon. Sonra **8 saat masada oturdun**. Araştırma: 'oturmak yeni sigara' (James Levine — Mayo Clinic). Sabah sporu **oturmanın hasarını silmiyor**. İki ayrı sistem.\n\nÇözüm: **hareket atıştırmaları** — saat başı 30 saniye. 10 squat, omuz daireleri, boyun esnetme, masa-push-up. **Çoklu kısa hareket** > tek uzun hareket (sedanter saatler için).\n\nGenevieve Healy (Queensland Üniversitesi): saat başı 1-2 dakikalık 'aktif aralık' = **kan şekeri kontrolü %30 iyileşme**, kardiyovasküler risk düşüşü, postür koruması.\n\nMekanizma: oturmak = kas elektromiyografik sessizliği — bacak kasları **enzimsel olarak uykuda**. Lipoprotein lipaz aktivitesi düşer → trigliserit birikir → metabolik sendrom riski. 30 saniye kalkıp hareket = enzim **yeniden aktif**.\n\n8 saat × saatte 30 sn = günde 4 dakika ekstra hareket. **Ama** etki katlanır: kortizol stabilleşir, **akşam enerjisi** korunur, omurga sağlığı.\n\nApple Watch / Garmin = otomatik hatırlatıcı. Yoksa: telefon timer her saatte 1.",
+        "action": "Bugün **her saat başı 30 sn** hareket et. Telefon timer + masaya not.",
+        "reflectionPrompt": "Akşam enerjin farklı mıydı? 18:00 sonrası 'çökme' yaşadın mı?",
+        "proTip": "**Saat başı hatırlatıcı** kur — telefon, Apple Watch, masa post-it. 7 gün sonra otomatik olur.",
         "quiz": [
           {
             "q": "Hareket atıştırması süre?",
@@ -3008,10 +3008,10 @@
       },
       "47": {
         "title": "Kimlik Mantra",
-        "teaching": "\"Erken kalkıyorum\" geçici. \"Ben sabah insanıyım\" kalıcı. Kimlik mantra = davranışın değil kimliğin tekrarı. Beyin \"ben buyum\" der ve davranış uyar.",
-        "action": "Bugün kimlik mantranı yaz, 30 gün her sabah söyle.",
-        "reflectionPrompt": "Kimlik vs davranış farkını nasıl hissediyorsun?",
-        "proTip": "Mantrayı \"Ben ___\" ile başlat. Şimdiki zaman.",
+        "teaching": "'**Erken kalkıyorum**' — geçici. Bu sabah yaptın ama yarın yapmayabilirsin. Davranış değişken.\n\n'**Ben sabah insanıyım**' — kalıcı. Bu cümle bir kez yerleşince, yarın 6'da kalkmamak **kim olduğunla çelişir**. Beyin uyum zorunda hisseder. Kimlik = davranışın çekici çıpa.\n\nGeçen ders (28) kimliği öğrendin. **Bu ders günlük pratiğe sokar**: kimlik mantra.\n\nFormül: **'Ben [davranışı yapan] biriyim.'**\n- 'Ben her sabah 6'da kalkan biriyim.'\n- 'Ben günlük 5 dk meditasyon yapan biriyim.'\n- 'Ben kahvaltıdan önce 10 sayfa okuyan biriyim.'\n\nHer sabah söyle. **Şimdiki zaman**, gelecek zaman değil ('olucam' = sen henüz değilsin). 'Ben' = şu an. Beyin için **mevcut gerçeklik**.\n\nWilliam James (psikoloji babası): 'Kendine söylediğin şey, **sonunda inandığın** şeydir.' Tekrar = inanç = davranış.\n\nMekanizma: kimlik = uzun vadeli motivasyon. Davranış = kısa vadeli irade. İrade tükenir, kimlik tükenmez. 30 gün her sabah söylemek = kimlik **nöral olarak yerleşir**.",
+        "action": "Bugün **kimlik mantranı yaz**. 30 gün her sabah söyle. Aynada, yüksek sesle.",
+        "reflectionPrompt": "Kimlik vs davranış farkını nasıl hissediyorsun? Hangi cümle 'sahte' geliyor hala?",
+        "proTip": "Mantrayı **'Ben ___'** ile başlat. Şimdiki zaman. 'Olucam' = sen henüz değilsin. 'Ben' = şu an.",
         "quiz": [
           {
             "q": "Kimlik mantra başlangıcı?",
@@ -3039,10 +3039,10 @@
       },
       "48": {
         "title": "Final Sprint",
-        "teaching": "Son 3 gün. 50 günde sabahların kaotikten sistematik dönüştü. Bu son sprint = locked-in. Yarın master'sın.",
-        "action": "Bugün son sprintin niyetini yaz.",
-        "reflectionPrompt": "Niyetin sürdürebilir mi?",
-        "proTip": "Niyet fotoğraf çek, telefona kaydet.",
+        "teaching": "**Son 3 gün.** 47 sabah arkanda — kaotikten sistematik geçtin. Direnç her zaman son sprintte en sert. Beden 'bitti zaten' der, beyin 'bir gün atlasan ne olur?' fısıldar. Bu **kritik an**.\n\nMaratoncuların **%20'si 35-40 km arası** bırakır. Sen 47/50'desin — eşdeğeri **39 km, %94**. Bitiş çizgisi görünüyor ama beyin 'tamam zaten' diyor. **Tehlikeli yatıştırma**.\n\nSteven Pressfield (**The War of Art**): '_The Resistance_ başarıya yaklaştığında en güçlü saldırıyı yapar. Tam '**bitirebilirim**' dediğinde ağırlaşır. Bu **kanıt** — neredeyim.'\n\n50 gün = nöral bir eşik. **Beyin için 'tamamlanmış' bir program.** 47'de duran 'neredeyse' der. 50'de duran '**başardım**' der. Aralarındaki fark **kimliğin** farkı.\n\nNiye 50 önemli? Çünkü beyin sayıya pekiştirici verir. **'50 gün' = anılırken otorite**. 'Bunu yaptım' kanıt olur, gelecekte zor anlarda silahın.\n\nSon 3 gün **kimliğin kilitlendiği** an. Bugün **niyeti yaz**: niye sürdürmek istiyorum? Bu cümle sonraki 3 günün yakıtı.",
+        "action": "Bugün **son sprintin niyetini yaz**. 'Niye bitirmek istiyorum?' — 3 cümle. Telefon foto çek.",
+        "reflectionPrompt": "Niyetin sürdürebilir mi? Niyet **derin yerden mi** geliyor, yoksa yüzeysel mi?",
+        "proTip": "Niyet **fotoğraf çek**, telefona kaydet. Lock screen yap. Her telefon açışında **hatırlatma**.",
         "quiz": [
           {
             "q": "Final sprint süre?",
@@ -3070,10 +3070,10 @@
       },
       "49": {
         "title": "49 Gün İçinde",
-        "teaching": "49 günde sabahların gözardı edilmez güç. Erken kalkmak artık zorlama değil. Sessizlik artık huzur. 10 değişiklik listesi yap.",
-        "action": "Bugün 49 günde değişen 10 sabah ritüelini yaz.",
-        "reflectionPrompt": "En unutulmaz değişim?",
-        "proTip": "Listeyi profile picture'a yaz, hatırlatma.",
+        "teaching": "**49 sabah.** Yarın 50. 49 gün içinde değişen şeyleri tek tek yazmak şaşırtıcı olur — çünkü değişimi **gündelik** yaşadın ama **toplu** olarak bakınca büyüklüğü görünür.\n\n**Belgelenmiş değişimler** (49 gün düzenli sabah disiplini sonrası):\n- **Erken kalkmak artık zorlama değil** — beden saatini ayarladı\n- **Sessizlik artık huzur** — gürültüden rahatsızlık\n- **Telefon sabah uyarılmaz** — refleks kırıldı\n- **Soğuk duş** istek haline geldi — eskiden korkunçtu\n- **Sabah net düşünme** — toplantılarda fark eden zihinsel keskinlik\n- **Akşam doğal yorgunluk** — uyku derin\n- **Anksiyete baseline düşük** — gün başlangıcı kortizol kontrolü\n- **Daha az 'bekleme'** — anlardan kaçmak yok\n- **Kendine güven artışı** — sözünü tutmak hep tutarlı\n- **Beden farkındalığı** — interoception keskinleşti\n\nBu liste senin **kanıt arşivin**. Gelecekte 'ben yapamam' sesi geldiğinde bak: '**49 günde 10 şeyi değiştirdim, bunu da yaparım**.'\n\nNörobiyolojik gerçek: 49 gün düzenli pratik = **basal ganglia otomatizasyonu** + **miyelin kalınlaşması**. Beyin artık yeni patikayı 'default' olarak tanıyor.",
+        "action": "Bugün **49 günde değişen 10 sabah ritüelini** yaz. Bedensel, zihinsel, davranışsal. Screenshot al.",
+        "reflectionPrompt": "En unutulmaz değişim hangisi? Bunu birine anlatsa, en çok hangisi şaşırtırdı?",
+        "proTip": "Listeyi **profile picture** veya **lock screen** yap. Her telefon açışında **kanıt görünür**.",
         "quiz": [
           {
             "q": "49 günde değişen?",
@@ -3101,10 +3101,10 @@
       },
       "50": {
         "title": "Master Tamamlandı",
-        "teaching": "50 sabah. Her biri kanıt. Sen değiştin — sabahların değişti çünkü. Yeni baseline: sistematik, sessiz, niyetli. Disiplin = kimlik şimdi.",
-        "action": "Bugün aynaya bak. Yeni Sen'i selamla.",
-        "reflectionPrompt": "50 sabah önce sen şimdi olmak ister miydi?",
-        "proTip": "7 gün dinlen, sonra mind veya body discipline path.",
+        "teaching": "**50 sabah.** Her biri **kanıt**. Çoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\nLally araştırmaları, Prochaska transtheoretical model, ve davranış bilimi tutarlı: bu istatistikler abartı değil — **gerçek**. Master eşiğindesin.\n\n**Yeni Sen kim?**\n- **Sabahın insanı** — kimlik kayması tamamlandı\n- **Sessizlik dostun** — gürültüden rahatsızlık\n- **Soğuk maruz** — beden adapte\n- **Niyetli gün** — reaktif değil proaktif\n- **Telefon araç** — efendi değil\n- **Sözünü tutuyorsun** — öz-güven nöral düzeyde\n- **Disiplin kimliğin** — davranış değil\n\nDiploma yok. Sertifika yok. Sadece **ayna**. Bugün aynaya bak — **50 sabah öncesinin sen**, bugünkü seni görseydi ne hisseder? Şaşırır mı? Gurur duyar mı? Hayran kalır mı?\n\n50 gün = bağımlılığın kırılma noktası. 90 gün = kalıcılaşma. 1 yıl = kimlik. Şu noktada **karar senin**: kalıcı yap mı, yumuşak iniş mi?\n\n**Bir başka path başlat.** 7 gün dinlen — beyin pekiştirme. Sonra **Mind Discipline** veya **Body Discipline**. Disiplin **bulaşıcı** — bir alanda öğrenilen diğerlerine kolayca taşınır.",
+        "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 sabah önceki sen ile karşılaştır. Tanıyor musun?",
+        "reflectionPrompt": "50 sabah önce sen şimdi olmak ister miydi? Bu sorunun cevabı sana ne söylüyor?",
+        "proTip": "**7 gün dinlen**, sonra Mind veya Body Discipline path. Disiplin bulaşıcı — bir alanda kazanılan diğerine taşınır.",
         "quiz": [
           {
             "q": "Yeni baseline ne?",
