@@ -78,6 +78,8 @@ export default function HomeScreen({ navigation }) {
     restoreStreakFromRepair,
     pathPledges,
     setPathPledge,
+    todaySessionLessons,
+    lastLessonAtMs,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
     dailyMysteryBoxOpenedAt,
@@ -501,6 +503,23 @@ export default function HomeScreen({ navigation }) {
             />
           ))}
         </View>
+
+        {/* Today's session chip — shows the count of lessons completed
+            within the current 30-min momentum window. The audit's
+            "5 min then they leave" pattern is what we're fighting here:
+            a visible "you did 2 today, the chain bonus is active"
+            sticker makes the user want to keep stacking. Renders only
+            when there's something to celebrate (>=1 lesson). */}
+        {(todaySessionLessons || 0) > 0 ? (
+          <View style={styles.sessionChip}>
+            <MaterialIcons name="bolt" size={12} color={LT.primary} />
+            <Text style={styles.sessionChipText}>
+              {t('home.sessionToday', 'BUGÜN {{count}} DERS · MOMENTUM AKTİF', {
+                count: todaySessionLessons,
+              })}
+            </Text>
+          </View>
+        ) : null}
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             PRIMARY ACTION ZONE — fold-above-the-fold content. The CTA
@@ -954,6 +973,30 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: LT.onSurfaceVariant,
     letterSpacing: 0.3,
+  },
+  // "Bugün X ders" momentum chip — sits between the 7-day habit chain
+  // and the primary CTA. Subdued red to read as a status pill, not
+  // a CTA — it celebrates progress without pulling focus from the
+  // actual "next lesson" button below it.
+  sessionChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: 4,
+    backgroundColor: 'rgba(220, 38, 38, 0.08)',
+    borderColor: 'rgba(220, 38, 38, 0.22)',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 999,
+    marginTop: 12,
+    marginBottom: -4,
+  },
+  sessionChipText: {
+    fontSize: 11,
+    fontWeight: '900',
+    color: LT.primary,
+    letterSpacing: 0.6,
   },
   // The user's own commitment sentence echoed back under their name.
   // Italic + softer color to feel like a quote, not a heading.

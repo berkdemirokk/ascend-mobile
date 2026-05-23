@@ -70,7 +70,24 @@ export default function LessonScreen({ navigation, route }) {
     userProfile,
     lastLetterShownAt,
     recordFutureLetterShown,
+    todaySessionLessons,
+    _momentumToast,
+    clearMomentumToast,
   } = useApp();
+
+  // Compute the bonus the user would earn IF they tap "Sıradakini" now.
+  // We base it on the count AFTER this just-finished lesson because the
+  // reducer has already incremented todaySessionLessons. So the next
+  // lesson would be (todaySessionLessons + 1) in chain order — bonus
+  // schedule: 2→+25, 3→+50, 4→+75, 5+→+100.
+  const nextChainBonus = useMemo(() => {
+    const next = (todaySessionLessons || 0) + 1;
+    if (next === 2) return 25;
+    if (next === 3) return 50;
+    if (next === 4) return 75;
+    if (next >= 5) return 100;
+    return 0;
+  }, [todaySessionLessons]);
 
   const path = useMemo(() => getPathById(pathId), [pathId]);
   const lesson = useMemo(() => getLessonById(lessonId), [lessonId]);
@@ -232,6 +249,15 @@ export default function LessonScreen({ navigation, route }) {
   const celebrationScale = useRef(new Animated.Value(0)).current;
   const xpY = useRef(new Animated.Value(0)).current;
   const stepProgress = useRef(new Animated.Value(0.33)).current;
+
+  // Auto-clear the momentum toast after the celebration has had time
+  // to surface it. Without this, navigating back to a previously-
+  // completed lesson would still show the stale chain badge.
+  useEffect(() => {
+    if (!_momentumToast) return;
+    const id = setTimeout(() => clearMomentumToast(), 5000);
+    return () => clearTimeout(id);
+  }, [_momentumToast, clearMomentumToast]);
 
   useEffect(() => {
     let target = 0.33;
@@ -1111,6 +1137,28 @@ export default function LessonScreen({ navigation, route }) {
                 </View>
               )}
 
+              {/* Momentum chain badge — fires when the just-completed
+                  lesson was the 2nd, 3rd, 4th, or 5th+ in this session.
+                  The bonus XP has already been added to totalXP by the
+                  reducer; this surface is purely to make the user FEEL
+                  the chain reward, which is what hooks them into the
+                  next lesson too. Visible for ~5s then auto-cleared. */}
+              {_momentumToast ? (
+                <View style={styles.momentumBadge}>
+                  <MaterialIcons name="bolt" size={16} color="#FDE047" />
+                  <Text style={styles.momentumBadgeText}>
+                    {t(
+                      'lesson.momentumChain',
+                      'MOMENTUM × {{count}} — +{{xp}} XP',
+                      {
+                        count: _momentumToast.chainCount,
+                        xp: _momentumToast.bonusXp,
+                      },
+                    )}
+                  </Text>
+                </View>
+              ) : null}
+
               {/* "Today you learned" takeaway card — surfaces the first
                   sentence of the teaching as a one-line summary. User
                   feedback: "they solve the quiz but the point is unclear."
@@ -1214,7 +1262,11 @@ export default function LessonScreen({ navigation, route }) {
                   style={styles.celebrationPrimaryBtn}
                 >
                   <Text style={styles.celebrationPrimaryText}>
-                    {t('lesson.nextLesson', 'Sonraki Dersi Başla')}
+                    {nextChainBonus > 0
+                      ? t('lesson.nextLessonBonus', 'SIRADAKİNİ DE YAP · +{{xp}} XP', {
+                          xp: nextChainBonus,
+                        })
+                      : t('lesson.nextLesson', 'Sonraki Dersi Başla')}
                   </Text>
                   <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} />
                 </LinearGradient>
@@ -1789,6 +1841,27 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 999,
     marginTop: 4,
+  },
+  // Momentum chain badge. Gold so it visually outranks the green quiz
+  // pill — the chain is the BIG reward of stacking a multi-lesson
+  // session, and we want the user's eye to land here.
+  momentumBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: 'rgba(253, 224, 71, 0.18)',
+    borderColor: 'rgba(253, 224, 71, 0.55)',
+    borderWidth: 1,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    marginTop: 10,
+  },
+  momentumBadgeText: {
+    color: '#FDE047',
+    fontSize: 12,
+    fontWeight: '900',
+    letterSpacing: 0.8,
   },
   celebrationStatText: {
     color: '#10B981',

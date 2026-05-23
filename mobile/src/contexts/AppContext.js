@@ -52,6 +52,20 @@ const initialState = {
   // Streak Repair bookkeeping (rewarded-ad "undo the broken streak").
   streakRepairsUsed: 0,
 
+  // ── Momentum loop (single-session chaining) ────────────────────────
+  // The audit's "5 minutes then they're gone" finding: sessions ended
+  // after 1 lesson with no pull into a second. We now count lessons
+  // completed within a 30-minute window of each other and grant an
+  // escalating chain XP bonus (+25 / +50 / +75 / +100). Reset when
+  // the session times out (no new lesson within 30 min) or the day
+  // rolls over.
+  //   - lastLessonAtMs: timestamp of last COMPLETE_PATH_LESSON dispatch
+  //   - todaySessionLessons: count within the current session window
+  //   - _momentumToast: { chainCount, bonusXp, ts } — one-shot UI ping
+  lastLessonAtMs: 0,
+  todaySessionLessons: 0,
+  _momentumToast: null,
+
   // Per-path commitment-device pledges. Behavioural-econ research:
   // a written, self-authored sentence raises adherence ~30% even if
   // the user never re-reads it. Shape: { [pathId]: 'sentence' }.
@@ -178,6 +192,7 @@ const ACTION_TYPES = {
   RESTORE_STREAK_FROM_REPAIR: 'RESTORE_STREAK_FROM_REPAIR',
   RECORD_FUTURE_LETTER_SHOWN: 'RECORD_FUTURE_LETTER_SHOWN',
   SET_PATH_PLEDGE: 'SET_PATH_PLEDGE',
+  CLEAR_MOMENTUM_TOAST: 'CLEAR_MOMENTUM_TOAST',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -581,7 +596,44 @@ function appReducer(state, action) {
         quizTotal > 0 && quizCorrect >= quizTotal;
       const perfectBonus = isPerfectLesson ? PERFECT_LESSON_BONUS_XP : 0;
 
-      const finalXp = Math.round(xp * xpMultiplier) + perfectBonus;
+      // ── Momentum / Chain bonus ────────────────────────────────────
+      // A "session" is any sequence of lessons completed within
+      // SESSION_TIMEOUT_MS of each other. The 2nd lesson in a row
+      // grants +25 XP, the 3rd +50, the 4th +75, and the 5th+ +100.
+      // This is the loop fix for the "5 min → close app" pattern: a
+      // user who just finished lesson 1 sees a real reason to start
+      // lesson 2 right now (XP × 2 stacking with the bonus). Same-
+      // day-but-after-30-min counts as a fresh session — the bonus
+      // is meant to reward marathoning, not all-day-trickle. Resets
+      // also when the day rolls over (different YYYY-MM-DD).
+      const SESSION_TIMEOUT_MS = 30 * 60 * 1000;
+      const nowMs = Date.now();
+      const lastLessonSameDay =
+        state.lastCompletedDate === today; // covered the day-roll case
+      const withinSessionWindow =
+        state.lastLessonAtMs &&
+        nowMs - state.lastLessonAtMs < SESSION_TIMEOUT_MS;
+      const sessionLessonsBefore =
+        lastLessonSameDay && withinSessionWindow
+          ? state.todaySessionLessons || 0
+          : 0;
+      const sessionLessonsNow = sessionLessonsBefore + 1;
+      let momentumBonus = 0;
+      if (sessionLessonsNow === 2) momentumBonus = 25;
+      else if (sessionLessonsNow === 3) momentumBonus = 50;
+      else if (sessionLessonsNow === 4) momentumBonus = 75;
+      else if (sessionLessonsNow >= 5) momentumBonus = 100;
+      const momentumToast =
+        momentumBonus > 0
+          ? {
+              chainCount: sessionLessonsNow,
+              bonusXp: momentumBonus,
+              ts: nowMs,
+            }
+          : state._momentumToast;
+
+      const finalXp =
+        Math.round(xp * xpMultiplier) + perfectBonus + momentumBonus;
       const newTotalXP = state.totalXP + finalXp;
       const newLevel = checkLevelUp(newTotalXP, state.level);
 
@@ -680,8 +732,19 @@ function appReducer(state, action) {
           ...newSpecials.filter((a) => !state.unlockedAchievements.includes(a)),
         ],
         _milestoneToast: milestoneToast,
+        // Momentum session bookkeeping — drives the chain-XP bonus
+        // and the "Bugün X ders" badge on Home.
+        lastLessonAtMs: nowMs,
+        todaySessionLessons: sessionLessonsNow,
+        _momentumToast: momentumToast,
       };
     }
+
+    case ACTION_TYPES.CLEAR_MOMENTUM_TOAST:
+      // Cleared by the celebration screen after surfacing the chain
+      // bonus once. Keeps the toast from popping again on the same
+      // dispatch tick if the screen re-renders.
+      return { ...state, _momentumToast: null };
 
     default:
       return state;
@@ -791,6 +854,7 @@ export function AppProvider({ children }) {
     delete toSave._loaded;
     delete toSave._streakFreezeToast;
     delete toSave._milestoneToast;
+    delete toSave._momentumToast;
     // _streakLostInfo IS persisted: we want the empathy banner to
     // survive an app restart so a user who closes the app right after
     // losing their streak still sees it on the next open.
@@ -914,6 +978,10 @@ export function AppProvider({ children }) {
       type: ACTION_TYPES.SET_PATH_PLEDGE,
       payload: { pathId, pledge },
     });
+  }, []);
+
+  const clearMomentumToast = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.CLEAR_MOMENTUM_TOAST });
   }, []);
 
   const startVacation = useCallback((days = 7) => {
@@ -1093,6 +1161,7 @@ export function AppProvider({ children }) {
     restoreStreakFromRepair,
     recordFutureLetterShown,
     setPathPledge,
+    clearMomentumToast,
     startVacation,
     endVacation,
     completeDailyChallenge,
