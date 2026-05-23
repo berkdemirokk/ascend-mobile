@@ -17,6 +17,37 @@ let interstitialLoaded = false;
 let rewarded = null;
 let rewardedLoaded = false;
 
+// ─── Diagnostics ─────────────────────────────────────────────────────────────
+// Every load attempt records its outcome so the Settings → Debug panel
+// can show users the actual reason ads aren't appearing. The most common
+// causes for a brand-new AdMob account are NO_FILL (AdMob has no
+// inventory for this app's audience yet) and NETWORK_ERROR. Without
+// these recorded, "Reklam yüklenemedi" feels like a bug — with them,
+// the user can paste the codes into AdMob support.
+//
+// Shape: { ts, kind: 'rewarded'|'interstitial', status: 'loaded'|'error',
+//          code?: string, message?: string }
+const adDiagnostics = [];
+const DIAG_MAX = 20;
+
+const recordDiag = (entry) => {
+  adDiagnostics.push({ ...entry, ts: Date.now() });
+  if (adDiagnostics.length > DIAG_MAX) {
+    adDiagnostics.splice(0, adDiagnostics.length - DIAG_MAX);
+  }
+};
+
+export const getAdDiagnostics = () => [...adDiagnostics];
+
+// Hard timeout for the load promise. AdMob's SDK usually settles a
+// load within 1-3 seconds; anything beyond 12 is dead in the water
+// (network drop, SDK hang, never-resolving callback). Without this
+// guard the Promise hangs forever and the pre-load pipeline gets
+// stuck — meaning the NEXT lesson completion can't show an ad even
+// after AdMob recovers. The timeout lets us reject, record the
+// diagnostic, and let the caller try again.
+const LOAD_TIMEOUT_MS = 12000;
+
 // ─── Ad unit resolution ──────────────────────────────────────────────────────
 
 // New AdMob accounts have near-zero fill on TestFlight (no inventory yet),
@@ -119,7 +150,15 @@ export const initAds = async () => {
 // ─── Interstitial ────────────────────────────────────────────────────────────
 
 export const loadInterstitial = async () => {
-  if (!adsReady || !gma?.InterstitialAd || !gma?.AdEventType) return;
+  if (!adsReady || !gma?.InterstitialAd || !gma?.AdEventType) {
+    recordDiag({
+      kind: 'interstitial',
+      status: 'error',
+      code: 'sdk_unavailable',
+      message: !adsReady ? 'adsReady=false' : 'native module missing',
+    });
+    return;
+  }
   try {
     const adUnitId = getInterstitialId();
     interstitial = gma.InterstitialAd.createForAdRequest(adUnitId, {
@@ -127,23 +166,57 @@ export const loadInterstitial = async () => {
     });
 
     await new Promise((resolve, reject) => {
+      let settled = false;
+      const settle = (fn) => (...args) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeoutId);
+        offLoaded?.();
+        offError?.();
+        fn(...args);
+      };
       const offLoaded = interstitial.addAdEventListener(
         gma.AdEventType.LOADED,
-        () => {
+        settle(() => {
           interstitialLoaded = true;
-          offLoaded?.();
-          offError?.();
+          recordDiag({
+            kind: 'interstitial',
+            status: 'loaded',
+            adUnitId,
+          });
           resolve();
-        },
+        }),
       );
       const offError = interstitial.addAdEventListener(
         gma.AdEventType.ERROR,
-        (err) => {
+        settle((err) => {
           interstitialLoaded = false;
-          offLoaded?.();
-          offError?.();
+          // err shape from react-native-google-mobile-ads:
+          //   { code: 'googleMobileAds/no-fill' | 'network-error' | ...,
+          //     message: human-readable }
+          recordDiag({
+            kind: 'interstitial',
+            status: 'error',
+            code: err?.code || 'unknown',
+            message: err?.message || String(err),
+            adUnitId,
+          });
           reject(err);
-        },
+        }),
+      );
+      const timeoutId = setTimeout(
+        settle(() => {
+          interstitialLoaded = false;
+          recordDiag({
+            kind: 'interstitial',
+            status: 'error',
+            code: 'timeout',
+            message: `no response in ${LOAD_TIMEOUT_MS}ms`,
+            adUnitId,
+          });
+          reject(new Error('timeout'));
+        }),
+        LOAD_TIMEOUT_MS,
       );
       interstitial.load();
     });
@@ -171,31 +244,74 @@ export const showInterstitial = async () => {
 // ─── Rewarded ────────────────────────────────────────────────────────────────
 
 export const loadRewarded = async () => {
-  if (!adsReady || !gma?.RewardedAd || !gma?.RewardedAdEventType) return;
+  if (!adsReady || !gma?.RewardedAd || !gma?.RewardedAdEventType) {
+    recordDiag({
+      kind: 'rewarded',
+      status: 'error',
+      code: 'sdk_unavailable',
+      message: !adsReady ? 'adsReady=false' : 'native module missing',
+    });
+    return;
+  }
   const adUnitId = getRewardedId();
-  if (!adUnitId) return;
+  if (!adUnitId) {
+    recordDiag({
+      kind: 'rewarded',
+      status: 'error',
+      code: 'no_unit_id',
+      message: 'getRewardedId returned null (non-iOS or missing config)',
+    });
+    return;
+  }
   try {
     rewarded = gma.RewardedAd.createForAdRequest(adUnitId, {
       requestNonPersonalizedAdsOnly: !isPersonalizedAdsAllowed(),
     });
     await new Promise((resolve, reject) => {
+      let settled = false;
+      const settle = (fn) => (...args) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeoutId);
+        offLoaded?.();
+        offError?.();
+        fn(...args);
+      };
       const offLoaded = rewarded.addAdEventListener(
         gma.RewardedAdEventType.LOADED,
-        () => {
+        settle(() => {
           rewardedLoaded = true;
-          offLoaded?.();
-          offError?.();
+          recordDiag({ kind: 'rewarded', status: 'loaded', adUnitId });
           resolve();
-        },
+        }),
       );
       const offError = rewarded.addAdEventListener(
         gma.AdEventType.ERROR,
-        (err) => {
+        settle((err) => {
           rewardedLoaded = false;
-          offLoaded?.();
-          offError?.();
+          recordDiag({
+            kind: 'rewarded',
+            status: 'error',
+            code: err?.code || 'unknown',
+            message: err?.message || String(err),
+            adUnitId,
+          });
           reject(err);
-        },
+        }),
+      );
+      const timeoutId = setTimeout(
+        settle(() => {
+          rewardedLoaded = false;
+          recordDiag({
+            kind: 'rewarded',
+            status: 'error',
+            code: 'timeout',
+            message: `no response in ${LOAD_TIMEOUT_MS}ms`,
+            adUnitId,
+          });
+          reject(new Error('timeout'));
+        }),
+        LOAD_TIMEOUT_MS,
       );
       rewarded.load();
     });
@@ -280,4 +396,24 @@ export const isAdsReady = () => adsReady;
 // OutOfHearts modal to decide whether to expose the "Watch ad" CTA at all,
 // instead of showing it and then silently failing on tap.
 export const isRewardedReady = () => rewardedLoaded;
+
+/**
+ * Snapshot of the ad-system state for the debug panel. Returns enough
+ * info for the user to copy-paste into AdMob support: SDK status, the
+ * actual ad unit IDs in use, ATT permission state, and recent load
+ * outcomes. No PII — safe to share publicly.
+ */
+export const getAdSystemStatus = () => ({
+  sdkAvailable: !!gma,
+  adsReady,
+  interstitialLoaded,
+  rewardedLoaded,
+  interstitialId: getInterstitialId(),
+  rewardedId: getRewardedId(),
+  bannerId: getBannerId(),
+  trackingStatus: lastTrackingStatus,
+  personalizedAds: isPersonalizedAdsAllowed(),
+  useTestUnits: shouldUseTestUnits(),
+  diagnostics: [...adDiagnostics],
+});
 

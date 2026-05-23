@@ -43,6 +43,7 @@ import {
   initHaptics,
   hapticImpactLight,
 } from '../services/haptics';
+import AdDebugModal from '../components/AdDebugModal';
 
 const NOTIF_KEY = '@ascend/notifications_enabled_v1';
 const SOUNDS_MUTED_KEY = '@ascend/sounds_muted_v1';
@@ -241,6 +242,7 @@ export default function SettingsScreen({ navigation }) {
   const [restoring, setRestoring] = useState(false);
   const [soundsEnabled, setSoundsEnabled] = useState(true);
   const [hapticsEnabled, setHapticsEnabledState] = useState(true);
+  const [adDebugOpen, setAdDebugOpen] = useState(false);
 
   useEffect(() => {
     AsyncStorage.getItem(SOUNDS_MUTED_KEY).then((v) => {
@@ -850,6 +852,45 @@ export default function SettingsScreen({ navigation }) {
             </TouchableOpacity>
           </Section>
 
+          {/* Debug / Diagnostics — hidden in plain sight at the bottom
+              of the list. Used by the user (and us, when reports come
+              in) to understand why ads aren't appearing. The most
+              common cause for a brand-new AdMob account is "no-fill"
+              — AdMob has no inventory yet. The debug panel exposes
+              the exact error codes so the user can see this and
+              avoid filing "ads broken" tickets that aren't bugs. */}
+          <Section title={t('settings.debug', 'TEŞHİS (DEBUG)')}>
+            <TouchableOpacity
+              onPress={() => setAdDebugOpen(true)}
+              activeOpacity={0.7}
+              style={styles.row}
+            >
+              <View style={styles.rowLeft}>
+                <MaterialIcons
+                  name="bug-report"
+                  size={22}
+                  color={LT.onSurfaceVariant}
+                />
+                <View>
+                  <Text style={styles.rowLabel}>
+                    {t('settings.adDebug', 'Reklam Tanı')}
+                  </Text>
+                  <Text style={styles.rowSub}>
+                    {t(
+                      'settings.adDebugSub',
+                      'Reklam yüklenme durumu + son hatalar + ad unit ID\'leri',
+                    )}
+                  </Text>
+                </View>
+              </View>
+              <MaterialIcons
+                name="chevron-right"
+                size={18}
+                color={LT.onSurfaceVariant}
+              />
+            </TouchableOpacity>
+          </Section>
+
           {/* Legal */}
           <Section title={t('settings.legal', 'YASAL (LEGAL)')}>
             <TouchableOpacity
@@ -893,6 +934,12 @@ export default function SettingsScreen({ navigation }) {
           <View style={{ height: 32 }} />
         </ScrollView>
       </View>
+
+      {/* Ad diagnostics — opened from the Debug section row above. */}
+      <AdDebugModal
+        visible={adDebugOpen}
+        onClose={() => setAdDebugOpen(false)}
+      />
     </SafeAreaView>
   );
 }

@@ -19,6 +19,7 @@ import {
   isAdsReady,
   isRewardedReady,
   loadRewarded,
+  getAdDiagnostics,
 } from '../services/ads';
 import LiveCountdown from './LiveCountdown';
 import { LT, LT_RADIUS } from '../config/lightTheme';
@@ -92,17 +93,28 @@ export default function OutOfHeartsModal({
           }
         }
       }
-      // Still no ad after the wait, or the user dismissed early —
-      // make the failure visible so the tap doesn't feel like a
-      // dead button. Wording differs from the old copy: it tells
-      // the user the ad will be ready shortly, instead of vaguely
-      // saying "ad not ready".
+      // Still no ad after the wait, or the user dismissed early.
+      // Surface the LAST RECORDED error code so the user (and we,
+      // when they screenshot it to us) can see exactly why. The most
+      // common code for a brand-new AdMob account is
+      // "googleMobileAds/no-fill" — meaning AdMob has no inventory
+      // matching this app yet. That's a server-side issue, NOT a
+      // bug in our code, and it usually resolves on its own as the
+      // app accumulates request history (24-48 hours).
+      const diag = getAdDiagnostics();
+      const lastRewardedErr = [...diag]
+        .reverse()
+        .find((d) => d.kind === 'rewarded' && d.status === 'error');
+      const codeHint = lastRewardedErr?.code
+        ? `\n\n(Kod: ${lastRewardedErr.code})`
+        : '';
+      const baseBody = t(
+        'hearts.adNotReadyBody',
+        'Şu an reklam servisinden cevap gelmedi. Bir kaç saniye sonra tekrar dene veya Premium\'a geçerek reklamsız + sınırsız kalp al.',
+      );
       Alert.alert(
         t('hearts.adNotReadyTitle', 'Reklam yüklenemedi'),
-        t(
-          'hearts.adNotReadyBody',
-          'Şu an reklam servisinden cevap gelmedi. Bir kaç saniye sonra tekrar dene veya Premium\'a geçerek reklamsız + sınırsız kalp al.',
-        ),
+        baseBody + codeHint,
       );
     } catch {}
     setWatching(false);
