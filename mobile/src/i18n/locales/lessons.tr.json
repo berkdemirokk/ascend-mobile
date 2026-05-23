@@ -3599,10 +3599,10 @@
       },
       "16": {
         "title": "Haftalık Review",
-        "teaching": "Günlük taktiktir. Haftalık stratejidir. Cuma akşamı veya pazar sabahı 30 dk: 1) Bu hafta neyi başardım? 2) Neyi öğrendim? 3) Önümüzdeki hafta 3 öncelik? Yapan ile yapmayan arasındaki en büyük fark.",
-        "action": "Bu hafta sonu 30 dk haftalık review yap. Yazılı, somut.",
-        "reflectionPrompt": "Bu haftanın en büyük öğrenmesi neydi?",
-        "proTip": "Review için sabit gün/saat seç. Cuma 17:00 ya da pazar 09:00. Esnek olma.",
+        "teaching": "Pazartesi sabah, kafanda **kaos**: 'Bu hafta ne yapmalıyım? Geçen hafta ne yaptım? Önümüzdeki ay nasıl gidiyor?' Hiçbiri net değil. **Günlük yaşıyorsun, haftalık bakmıyorsun**.\n\nGünlük = taktik. Haftalık = strateji. **İkisi gerek**. Sadece günlük = ağaçları gör, ormanı kaçır. Sadece haftalık = soyut, eylemsiz.\n\nDavid Allen (GTD): 'Haftalık review = sistemin **bel kemiği**. Olmadan tüm sistem çöker.' Cuma 17:00 ya da Pazar 09:00 — **sabit** zaman. 30 dakika yeterli.\n\n**3 sorulu format**:\n1. **Bu hafta neyi başardım?** (somut çıktılar)\n2. **Neyi öğrendim?** (içgörü, hata, gözlem)\n3. **Önümüzdeki hafta 3 öncelik?** (1 ana, 2 destek)\n\nMekanizma: review = **meta-bilinç** + **sistematik düşünme**. Mikro kararları **makro yapıya** sıkıştırır. Pazartesi sabah 'şimdi ne?' sorusu = artık yok. **Cevap var, plan hazır.**\n\nWarren Buffett: 'Yapan ile yapmayan arasındaki en büyük fark = **review**.' Çoğu insan günlük yaşar — başarılı insanlar **haftalık düşünür**.\n\nKritik: yazılı yap. Kafa içinde kalan review = review değil.",
+        "action": "Bu hafta sonu **30 dk haftalık review** yap. **Yazılı, somut**. 3 soru formatı.",
+        "reflectionPrompt": "Bu haftanın **en büyük öğrenmesi** neydi? Önümüzdeki haftaya nasıl etki edecek?",
+        "proTip": "Review için **sabit gün/saat** seç. **Cuma 17:00** ya da **Pazar 09:00**. Esnek olma — kaçırırsın.",
         "quiz": [
           {
             "q": "Haftalık review süresi?",
@@ -3630,10 +3630,10 @@
       },
       "17": {
         "title": "\"Hayır\" Disiplini",
-        "teaching": "Warren Buffett: başarılı insanlar her şeye \"hayır\" der. Çünkü zaman = önceliğine harcanır. Her \"evet\" = başka bir şeye \"hayır.\" Disiplin = neye \"evet,\" neye \"hayır\" net olmak.",
-        "action": "Bugün 1 isteğe \"hayır\" de. Suçluluk hissi normal — geçer.",
-        "reflectionPrompt": "\"Hayır\" demek niye zor geldi? Hangi korku vardı?",
-        "proTip": "\"Hayır\" yumuşak versiyonu: \"Bunu kabul etmem benim için doğru değil.\" Açıklama gerekmez.",
+        "teaching": "Arkadaşın akşam içkiye çağırdı. Yorgunsun ama 'kıramam' dedin — **'evet'**. Çalışma arkadaşın yardım istedi. Senin işin var ama 'olur' dedin — **'evet'**. Annen pazar yemek dedi. Sen okuyacaktın ama 'tabii' dedin — **'evet'**. Hafta sonu **bittiği gibi** geldi. Kendi öncelikler için zaman **0**.\n\nWarren Buffett: 'Başarılı insanlar **her şeye 'hayır' der**. Sıradan kişi her şeye 'evet' diyor. **Bu fark**.' Steve Jobs (1997 WWDC röportajı): 'Odaklanmak = **'hayır' demek** binlerce iyi fikre.'\n\nMatematik: zaman **sıfır toplam**. Her **'evet'** = başka bir şeye **'hayır'**. 'Hayır' demediğin her **dış** istek, **iç** önceliğinden alıyor.\n\nMekanizma: 'evet' = anlık dopamine (onaylama, beğenilme). 'Hayır' = anlık kortizol (suçluluk, anksiyete). Beyin **kısa vadeli** seçer. Disiplinli kişi = **uzun vadeli** önceliği koruyabilen.\n\n**Yumuşak hayır formatı** (Greg McKeown — **Essentialism**):\n- 'Bu doğru değil benim için, ama teşekkürler.'\n- 'Şu an mümkün değil, başka zaman?'\n- 'Bunu vermeyi tercih ederim, X yapamam.'\n\nAçıklama **gerekmez**. 'Hayır' tek başına **tam cümle**.",
+        "action": "Bugün **1 isteğe 'hayır' de**. Suçluluk hissi normal — geçer. Açıklama yok.",
+        "reflectionPrompt": "'Hayır' demek niye zor geldi? Hangi korku vardı — beğenilmeme mi, ayıplanma mı?",
+        "proTip": "'Hayır' yumuşak versiyonu: **'Bunu kabul etmem benim için doğru değil.'** **Açıklama gerekmez**.",
         "quiz": [
           {
             "q": "\"Hayır\" demek = ?",
@@ -3661,10 +3661,10 @@
       },
       "18": {
         "title": "Sıkıntı Kaynak Olarak",
-        "teaching": "Sıkıntı = beyin \"boş alan istiyorum\" sinyali. Çoğu insan sıkıntıda telefona sarılır — beyin bağırırken susturuyor. Sıkıntıya izin ver. 5 dakika sıkılırsan yaratıcılık geri gelir.",
-        "action": "Bugün 10 dakika sıkıntıya izin ver. Telefonsuz, müziksiz, hiç bir şey.",
-        "reflectionPrompt": "Sıkıntıdan sonra zihninde hangi düşünce belirdi?",
-        "proTip": "Sıkılınca telefon refleksin gelirse, ellerini cebe at. Refleksi engelle.",
+        "teaching": "Asansörde **23 saniye**. Sırada **3 dakika**. Trafikte **5 dakika** kırmızı ışık. Hepsinde refleksin: **telefon**. Çünkü **sıkıntı dayanılmaz** hale geldi.\n\nManoush Zomorodi (**Bored and Brilliant**) araştırması: ortalama insan sıkıntı toleransı son 10 yılda **drasti̇k** düştü. 2008'de **8 saniye**, 2023'te **3 saniye**. Bir balıkçık'tan **daha kötü**.\n\nAma bilim diyor ki: **sıkıntı = yaratıcılık ön koşulu**. Sandi Mann (Lancashire Üniversitesi 2014): sıkıntı yaşatılan deneklerin yaratıcılık testlerinde **%41 daha iyi** performans.\n\nSebep: sıkıntı = **DMN aktivasyonu**. DMN = yaratıcılık, içsel hikaye, anlam yapısı. Sürekli stimulasyon = DMN bastırılır = **yüzeysel beyin**.\n\n**Sıkıntı = beyin 'boş alan istiyorum' sinyali**. Çoğu insan telefonla **susturuyor** — beyin bağırırken. Sonuç: ne dinlenme, ne yaratıcılık.\n\n**5 dakika sıkıntıya izin ver** → yaratıcılık **geri gelir**. Eski büyük buluşlar (Newton, Darwin, Einstein) hep **boş anlarda** geldi. Modern insan boş an **yok ediyor**.\n\nKarl Marx: 'Boş zaman = insan özünün gerçek aktivitesi.' Sıkıntıyı ortadan kaldırmak = özünü ortadan kaldırmak.",
+        "action": "Bugün **10 dakika sıkıntıya izin ver**. Telefonsuz, müziksiz, hiçbir şey. Sadece otur.",
+        "reflectionPrompt": "Sıkıntıdan sonra zihninde hangi düşünce belirdi? Aklına bir **yeni** fikir geldi mi?",
+        "proTip": "Sıkılınca **telefon refleksin** gelirse, **ellerini cebe at**. Refleksi fiziksel olarak engelle.",
         "quiz": [
           {
             "q": "Sıkıntı nedir?",
@@ -3692,10 +3692,10 @@
       },
       "19": {
         "title": "Varsayılan Uygulama Disiplini",
-        "teaching": "Ana ekranındaki ikonlar = günlük tetikleyiciler. Çıkardığın her sosyal medya = saatlerce odak. Bıraktığın her üretici uygulama = günlük teşvik. Ana ekran = kişisel saymaca makine.",
-        "action": "Bugün ana ekrandaki 3 sosyal medyayı 2. sayfaya at ya da kaldır. 3 üretici uygulama koy.",
-        "reflectionPrompt": "Yeni ana ekranda hangi yeni davranış oluştu?",
-        "proTip": "Ana ekran sadece 6 ikon olsun. Geri kalanı App Library / Drawer.",
+        "teaching": "Telefonu açtın → ana ekran → ilk gördüğün: **Instagram ikonu**. Refleks: dokun. 30 dakika sonra: scroll yapmış, ne yapacağını **unutmuş**sun. Sorun: **environment design**.\n\nBJ Fogg (Stanford Behavior Design Lab): 'Davranış = ability × motivation × **trigger**. Ana ekranda gördüğün her ikon = **trigger**.' Trigger'ı kaldır = davranış kaybolur.\n\nMatematik:\n- Ana ekranda **sosyal medya** = günde 30 dk × 365 = **182 saat/yıl** kayıp\n- Yerine **Kindle** koysan = 182 saat okuma = **40 kitap/yıl**\n\nNir Eyal (**Hooked**): 'Tasarımcılar ana ekranda olmak için **milyarlar** harcar — çünkü oradaki davranışı **kontrol eder**. Sen ücretsiz olarak bunu kontrol edebilirsin.'\n\nMekanizma: ana ekran = **default**. Default = beyin için **'normal davranış'**. Default değişirse = **otomatik davranış değişir**. İrade gerek değil — **fiziksel mimari** değişti.\n\n**Pratik**: ana ekran sadece **6 ikon** (üretici: Notes, Kindle, takvim, sözlük, fitness, banka). Sosyal medya **App Library** veya **silinmiş**. Bulmak için **arama** = ekstra friksiyon = azalan kullanım.",
+        "action": "Bugün ana ekrandan **3 sosyal medyayı kaldır**. Yerine **3 üretici uygulama** koy.",
+        "reflectionPrompt": "Yeni ana ekranda **hangi yeni davranış** oluştu? Sosyal medya kullanım azaldı mı?",
+        "proTip": "Ana ekran sadece **6 ikon** olsun. Geri kalanı **App Library / Drawer** — arama = friksiyon = az kullanım.",
         "quiz": [
           {
             "q": "Ana ekran ikonları = ?",
@@ -3723,10 +3723,10 @@
       },
       "20": {
         "title": "Bilgi Diyeti",
-        "teaching": "Çok fazla bilgi = analiz felçi. Tüketmen gereken: senin sorunlarını çözen. Tüketmemen gereken: trend, dedikodu, \"ilginç\" ama kullanılmaz. 1 alan derinlemesine > 10 alan yüzeyinde.",
-        "action": "Bugün kendine sor: hangi 3 kaynaktan bilgi tüketiyorum? Bunlar bana hizmet ediyor mu?",
-        "reflectionPrompt": "Hangi kaynak çıkarılmalı? Hangisi eklenmeli?",
-        "proTip": "\"Bana hizmet ediyor mu?\" filtresi. Hayır olan her şey = noise.",
+        "teaching": "Tarayıcında **15 sekme**, telefonda **8 podcast** kayıtlı, Notion'da **40 makale**, Kindle'da **12 yarım kitap**. **Hiçbiri bitmiyor**. Hepsi 'ilginç' ama hayatın **değişmiyor**. Bu **bilgi diyabeti**.\n\nSeneca (Roma Stoacısı, 65 AD): 'Çok kitap okumak **dikkat** dağıtır. Sadık ol, sürdür, **anlama**'ya odaklan.' 2000 yıl önce yazıldı, bugün daha **doğru**.\n\nNaval Ravikant: 'Modern dünyada problem **bilgi açlığı değil**, **bilgi fazlalığı**. Hangi bilgiyi yutmayacağını seçmek = en değerli beceri.'\n\nFilteri: **'Bana hizmet ediyor mu?'**\n- Sorunlarımı çözüyor mu? **Evet** → tüket\n- Becerimi geliştiriyor mu? **Evet** → tüket\n- Sadece 'ilginç' mi? **Hayır** → atla\n- Trend, dedikodu, drama? **Hayır** → kaldır\n\nMekanizma: bilgi tüketimi = **dopamin spike** (yenilik). Beyin yeniliği değerli sanır. Ama uygulanmayan bilgi = **yük**. Bilmek + yapmamak = bilmemekten **kötü**.\n\n**1 alan derinlemesine > 10 alan yüzeyinde**. Carl Jung 50 yıl psikoloji çalıştı. Charlie Munger 60 yıl multidisipliner. Derinlik = **uzmanlık** = piyasada nadirlik.",
+        "action": "Bugün kendine sor: **hangi 3 kaynaktan** bilgi tüketiyorum? **Bana hizmet ediyor mu?**",
+        "reflectionPrompt": "Hangi kaynak **çıkarılmalı**? Hangisi **eklenmeli**? Hayata nasıl etki ediyor?",
+        "proTip": "**'Bana hizmet ediyor mu?'** filtresi. **Hayır olan her şey = noise**. Sil, abone iptal et, unfollow.",
         "quiz": [
           {
             "q": "Bilgi diyeti filtresi?",
@@ -3754,10 +3754,10 @@
       },
       "21": {
         "title": "Okuma Stratejisi",
-        "teaching": "Okumak = düşük çaba, yüksek getiri. Ama nasıl okuduğun önemli. Pasif okuma = bilgi unutulur. Aktif okuma: not al, sorgula, uygula. 1 sayfa aktif > 20 sayfa pasif.",
-        "action": "Bugün 5 sayfa kitap oku. Kenara not al. Bir cümleyle özetle.",
-        "reflectionPrompt": "Aktif okuma pasif okumadan ne kadar farklı hissettirdi?",
-        "proTip": "Bittikten sonra: yüksek sesle 30 saniyede özetle. Anlamadığın yer = geri dön.",
+        "teaching": "Geçen ay **3 kitap bitirdin**. Bugün biri sordu: 'O kitapta ne öğrendin?' Yanıt: 'Eee... şey... iyi kitaptı.' **Hiçbir şey hatırlamıyorsun**. Çünkü **pasif okuma yaptın**.\n\nMortimer Adler (**How to Read a Book**, 1940): 'Çoğu insan **göz** ile okur — kitap görsel uyaran. **Düşünen kişi** **beyin** ile okur — kitap düşünce tetikleyici.'\n\nAraştırma: pasif okuma → 1 hafta sonra **%10 hatırlama**. Aktif okuma (not + sorgu) → 1 hafta sonra **%70 hatırlama**. **1 sayfa aktif > 20 sayfa pasif**.\n\n**Aktif okuma tekniği**:\n1. **Soru sor** (okumadan önce): bu kitap hangi sorunumu çözecek?\n2. **Kenara not al** (okurken): kısa, kendi sözcüğünle\n3. **Yüksek sesle özetle** (her bölüm sonu): 30 saniye, kameraya konuşur gibi\n4. **Uygula** (1 hafta içinde): hayatına en az 1 değişiklik\n\nMekanizma: aktif okuma = **PFC + hippokampus + motor korteks** birlikte aktif. Pasif okuma = sadece visual cortex. **Çoklu işleme** = derin kayıt.\n\nNaval Ravikant: 'Az ama derin oku. Aynı kitabı 3 kez oku — yüzeysel 30 kitaptan **daha çok** alırsın.'",
+        "action": "Bugün **5 sayfa kitap oku**. **Kenara not al**. Bir cümleyle **özetle**.",
+        "reflectionPrompt": "Aktif okuma pasif okumadan **ne kadar farklı** hissettirdi? Hatırlama nasıl?",
+        "proTip": "Bittikten sonra: **yüksek sesle 30 saniyede özetle**. Anlamadığın yer = **geri dön, tekrar oku**.",
         "quiz": [
           {
             "q": "Aktif vs pasif okuma?",
@@ -3785,10 +3785,10 @@
       },
       "22": {
         "title": "Not Sistemi",
-        "teaching": "Beyin = işleyici, depo değil. Her düşünceyi taşıyacak diye yorulur. Bir not sistemi (Apple Notes, Notion, defter) = beyin için uzantı. Yazıyorsan unutamazsın.",
-        "action": "Bugün tek bir not sistemi seç ve onu kullan. Karışıklık çıkar = sistem etkisiz.",
-        "reflectionPrompt": "Notlarını yazılı tutmak hangi mental yükü kaldırdı?",
-        "proTip": "Apple Notes basit + senkron. Karmaşık sistem (Notion, Obsidian) sonra eklersin.",
+        "teaching": "Geçen hafta o **inanılmaz fikir** vardı. 'Yarın yapacağım' dedin. Bugün hatırlamıyorsun, **hatta var olduğunu bile**. Çünkü **yakalamadın**.\n\nDavid Allen: 'Beyin = **işleyici** (CPU), **depo** (HDD) değil. Her düşünceyi taşımak zorunda olduğunda yorulur. Bir not sistemi = beynin **harici diski**.'\n\nTiago Forte (**Building a Second Brain**): 'Modern dünya bilgi yoğun. Beyin tek başına yetmez. **Sistem** gerek. Sistem yoksa = sürekli kaybetme.'\n\n**3 prensip**:\n1. **Tek sistem** — birkaç yer = kayıp\n2. **Her yerden erişim** — telefon + bilgisayar senkron\n3. **Basit > karmaşık** — Apple Notes / Google Keep / defter\n\n**Karmaşık sistem (Notion, Obsidian, Roam)** = **production tool**, ilk adım değil. Önce basit alışkanlık kur, sonra karmaşıklaştır.\n\nMekanizma: yazmak = **PFC'den eksternalize**. Düşünce kâğıda gider = beyin **'tamamlandı'** sinyali alır = serbest bırakır. Yazmama = düşünce **döngüye girer** = mental RAM yer tutar.\n\nLeonardo da Vinci: 7,200 sayfa notebook bıraktı. Her şeyi yazdı. Mozart, Newton, Edison — hepsi sürekli not. **Büyük zihinler = büyük not sistemi**.",
+        "action": "Bugün **tek bir not sistemi seç** ve onu kullan. **Karışıklık = sistem etkisiz**.",
+        "reflectionPrompt": "Notlarını yazılı tutmak hangi **mental yükü kaldırdı**? Daha mı berrak hissediyorsun?",
+        "proTip": "**Apple Notes** basit + senkron + ücretsiz. Karmaşık sistem (Notion, Obsidian) **sonra** eklersin.",
         "quiz": [
           {
             "q": "Beyin = ?",
@@ -3816,10 +3816,10 @@
       },
       "23": {
         "title": "Derin vs Yüzeysel",
-        "teaching": "Yüzeysel iş: e-posta, toplantı, mesaj, raporlama. Derin iş: yaratıcılık, analiz, strateji, öğrenme. Yüzeysel kolay olduğu için cazip — ama değer üretmez. Derin işi savun.",
-        "action": "Bugün günün ilk 90 dakikasını derin işe ayır. Yüzeysel sonra.",
-        "reflectionPrompt": "Derin işle başlayınca günün geri kalanı nasıl şekillendi?",
-        "proTip": "Sabah ilk şey = en derin iş. Beyin 11'den sonra yüzeyselleşir.",
+        "teaching": "Akşam: 'Bugün **çok** çalıştım.' İçeride hesap yap: 47 email cevapladın, 3 toplantı, 100 mesaj. Ama o **stratejik proje**? Bir satır yazmadın. **Tüm gün yüzeysel iş** yaptın.\n\nCal Newport (**Deep Work**): iki iş türü:\n\n**Yüzeysel iş** (Shallow Work):\n- E-posta, mesaj, toplantı, raporlama, idari\n- Kolay yapılır, kolay taklit edilir\n- **Az değer üretir**, **eksik kalsa fark edilmez**\n\n**Derin iş** (Deep Work):\n- Yaratıcılık, analiz, strateji, öğrenme, yazı\n- Zor yapılır, **nadir bulunur**\n- **Çok değer üretir**, **yapmazsan kariyer durur**\n\nProblem: yüzeysel **cazip** çünkü kolay. **Dopamine spike** verir (her email 'check'). Derin iş **acı verir** çünkü zor, sonuç görünmez.\n\nMekanizma: PFC yüzeysel işlerde **rest mode**'da çalışır. Derin işte **aktif mode**'da — yorucu ama **değer üretir**. Sadece yüzeysel = beyin atrofi (kullanılmayan kapasite kaybolur).\n\n**Kural: günün ilk 90 dk = derin iş**. Yüzeysel sonra. Beyin sabah keskin, 11'den sonra yüzeyselleşir. **Altın penceren** = derin iş için.",
+        "action": "Bugün günün **ilk 90 dakikasını** derin işe ayır. **Yüzeysel sonra**.",
+        "reflectionPrompt": "Derin işle başlayınca günün geri kalanı nasıl şekillendi? Akşam yorgun mu **dolu** mu hissettin?",
+        "proTip": "**Sabah ilk şey = en derin iş**. Beyin **11'den sonra yüzeyselleşir**. Stratejik iş = 09:00-11:00.",
         "quiz": [
           {
             "q": "Derin iş örneği?",
@@ -3847,10 +3847,10 @@
       },
       "24": {
         "title": "Yürü + Düşün",
-        "teaching": "Steve Jobs en zor problemlerini yürüyerek çözerdi. Darwin günde 3 kez aynı yolu yürürdü. Stanford çalışması: yürürken yaratıcılık %60 artar. Stuck hissedersen: oturmayı bırak, yürü.",
-        "action": "Bugün bir problem üzerinde 15 dakika yürüyerek düşün. Notlar al.",
-        "reflectionPrompt": "Oturarak çözemediğin neyi yürüyerek çözdün?",
-        "proTip": "Telefonsuz yürü. Müzik bile düşünce alanını daraltır.",
+        "teaching": "Steve Jobs en önemli işe alımlarını **yürüyüş röportajıyla** yapardı. Apple kampüsünde uzun walking meetings'leri ünlüydü. Charles Darwin **'sandwalk'** denilen yolda her gün **3 kez** yürür, **The Origin of Species** burada yazıldı. Nietzsche: 'Bütün gerçekten büyük düşünceler **yürürken doğar**.'\n\nMarily Oppezzo (Stanford 2014) çalışması: yürürken yaratıcılık **%60 artıyor** (Guilford's Alternate Uses Test). Hem yürürken hem oturarak yapılan testte, yürüme **her seferinde** kazanıyor.\n\nMekanizma: yürüme = **bilateral stimulasyon** (sol-sağ). Beynin **iki hemisferi** arasında bilgi akışı artar. Bu, **DMN ile Executive Network** arasında köprü kurar — yaratıcılık **iki sistem birleştiğinde** doğar.\n\nEk olarak: yürüme = **endorfin + BDNF + kan akışı**. Beyin doping hâlinde. Stuck olduğun problem = bilinçaltı 'arka planda' işliyor — yürüyüş = **çözüm yüzeye çıkıyor**.\n\n**Stuck olunca**: oturmayı bırak, **yürü**. Cevap **6.-12. dakikada** gelir. Telefonsuz, müziksiz — sadece **beden + nefes + düşünce**.\n\nKritik: müzik bile düşünce alanını **daraltır**. Tam sessizlik gerek.",
+        "action": "Bugün **bir problem üzerinde 15 dakika yürüyerek düşün**. Notlar al, dönüşte yaz.",
+        "reflectionPrompt": "Oturarak çözemediğin **neyi yürüyerek çözdün**? Hangi dakikada cevap geldi?",
+        "proTip": "**Telefonsuz yürü**. Müzik bile düşünce alanını **daraltır**. Tam sessizlik = tam yaratıcılık.",
         "quiz": [
           {
             "q": "Yürüyüş yaratıcılık etkisi?",
@@ -3878,10 +3878,10 @@
       },
       "25": {
         "title": "Beyin Boşalt",
-        "teaching": "Aklında dolaşan 47 düşünce = işleyemediğin yük. Brain dump tekniği: 10 dakika boyunca aklına geleni yaz. Hepsini. Sonra düzenle: yapılabilirler / silinmesi gereken / sonra düşünülecek.",
-        "action": "Bugün 10 dakika brain dump yap. Sansürsüz, düzeltmesiz.",
-        "reflectionPrompt": "Yazdıklarının yüzde kaçı gerçekten önemli çıktı?",
-        "proTip": "Sabah brain dump = günü temiz başlat. Akşam brain dump = uyku kalitesi artar.",
+        "teaching": "Yatağa yat, gözleri kapat. Hemen 47 düşünce dolaşmaya başlar: yapılacak, yapmadığım, kimseye söyleyemediğim, gelecek korkusu, geçmiş pişmanlık, alışveriş listesi, eski mesaj, **anneme arama**... Beyin **döngü** içinde, uyku **gelmiyor**.\n\nKonu: çok düşünce **değil** — **düzenlenmemiş** düşünce. Her düşünce 'açık döngü' (Zeigarnik etkisi — Ders 15). Açık döngü = sürekli **arka plan işleme** = mental yorgunluk.\n\n**Brain dump = açık döngüleri kapatma**. 10 dakika kâğıt al, **aklına geleni yaz**. Sansürsüz, düzeltmesiz. Sıralı değil. Dil bilgisi yok. Sadece **dışarı**.\n\nDavid Allen (GTD): 'Mind like water — su gibi temiz, durgun, ama herhangi etkiye **mükemmel tepki**. Bu sadece **boşaltılmış zihin**de mümkün.'\n\nSonra düzenle:\n- **Yapılabilir** → eylem planına\n- **Bilgi** → not sistemine\n- **Önemsiz** → sil\n- **Sonra düşünülecek** → bekletme listesi\n\nMekanizma: yazma = **PFC işleme + parietal cortex spatial organization**. Düşünce **fiziksel form** alınca beyin onu 'tamamlanmış' kabul eder = serbest bırakır.\n\nKritik: **sabah brain dump** = günü temiz başlat. **Akşam brain dump** = uyku kalitesi artar.",
+        "action": "Bugün **10 dakika brain dump** yap. Sansürsüz, düzeltmesiz, **sürekli yaz**.",
+        "reflectionPrompt": "Yazdıklarının yüzde kaçı **gerçekten önemli** çıktı? Hangisi şaşırttı?",
+        "proTip": "**Sabah brain dump = temiz başlat**. **Akşam brain dump = uyku kalitesi artar**. İkisi de etkili.",
         "quiz": [
           {
             "q": "Brain dump nedir?",
@@ -3909,10 +3909,10 @@
       },
       "26": {
         "title": "Telefonsuz Bölgeler",
-        "teaching": "Yatak odası = sadece uyku ve seks (Matthew Walker). Yemek masası = sadece yemek ve sohbet. Tuvalet = sadece tuvalet. Telefonsuz bölgeler net olunca, telefon zamanın kalır azalır.",
-        "action": "Bugün 1 telefonsuz bölge ilan et. Yatak odası en güçlü başlangıç.",
-        "reflectionPrompt": "O bölgede telefonsuz olmak nasıl hissettirdi?",
-        "proTip": "Telefonu evin girişine koy. Eve girince bırak, çıkarken al.",
+        "teaching": "Yatak odasında, **yastığın yanında** telefon. Yemek masasında, **tabağın yanında** telefon. Tuvalette, **elinde** telefon. Eskiden bu yerler **kutsal** alanlardı — uyku, beslenme, biyolojik özel. Şimdi **scroll** alanları.\n\nMatthew Walker (UC Berkeley, **Why We Sleep**): 'Yatak odası **sadece** 2 şey için: **uyku ve seks**. Diğer hiçbir şey. Çünkü bu iki şey **biyolojik temel**. Diğer aktivitelere yer açarsan uyku bozulur.'\n\nCharles Duhigg (**The Power of Habit**): 'Davranış = **trigger + routine + reward**. Yatak odası = trigger. Telefon orada = otomatik scroll routine.'\n\n**Telefonsuz bölgeler**:\n- **Yatak odası** — sadece uyku/seks\n- **Yemek masası** — sadece yemek/sohbet\n- **Tuvalet** — sadece tuvalet (mahremiyet hakkı)\n- **Banyo** — sadece banyo\n- **Spor salonu** — sadece spor\n\nMekanizma: bölge = **fiziksel trigger**. Trigger'da telefon yoksa = davranış kaybolur. **Environment design > willpower**.\n\nKritik: telefon **evin girişine** koy. Eve girince **bırak**, çıkarken **al**. Eve giriş = sınır = ev içi telefonsuz alan.\n\n**İlk gece** yatakta telefonsuz dayanılmaz olur. **Bir hafta sonra**: uyku öncesi 'rahat'.",
+        "action": "Bugün **1 telefonsuz bölge ilan et**. **Yatak odası** en güçlü başlangıç.",
+        "reflectionPrompt": "O bölgede telefonsuz olmak nasıl hissettirdi? **Eksik** mi yoksa **rahat** mı?",
+        "proTip": "**Telefonu evin girişine** koy. Eve girince bırak, çıkarken al. Sınır = mimari.",
         "quiz": [
           {
             "q": "Yatak odası kuralı?",
@@ -3940,10 +3940,10 @@
       },
       "27": {
         "title": "Öncelik Hunisi",
-        "teaching": "100 fırsat = paralizi. 3 öncelik = ilerleme. Eisenhower Matrix: 1) Acil + Önemli (yap), 2) Önemli + Acil değil (planla), 3) Acil + Önemli değil (delege), 4) Hiçbiri (sil). 3-4 = saatler kaçırıldı.",
-        "action": "Bugünkü görev listenin matrisini yap. 4. kategoriden 3 görev sil.",
-        "reflectionPrompt": "Hangi 4. kategori görevleri sildin? Niye orada başlamıştı?",
-        "proTip": "Haftalık olarak yap. Sürekli kayan öncelikler = stratejik kaymama.",
+        "teaching": "Sabah 100 e-posta, 50 mesaj, 23 toplantı çağrısı, 18 takvim hatırlatıcısı, 7 görev listesi. **Hepsi acil görünüyor**. Sen **paralize**. Hiçbirini başlatamıyorsun, çünkü hangisinin önce olduğu net değil.\n\n**Dwight D. Eisenhower** (ABD generali → başkan): 'Önemli olan **nadiren acil**, acil olan **nadiren önemli**.' Bu içgörüden **Eisenhower Matrix** doğdu.\n\n**4 kategori**:\n\n| | Acil | Acil değil |\n|---|---|---|\n| **Önemli** | **YAP** (1) — şimdi | **PLANLA** (2) — takvime al |\n| **Önemsiz** | **DELEGE** (3) — başkası yapsın | **SİL** (4) — zaman kaybı |\n\nDoğru cevap: çoğu önemli iş **2. kategoride** (önemli + acil değil). Strateji, planlama, ilişki, sağlık, öğrenme. Acil olmadığı için **erteliyorsun**. Sonra **acil olduğunda** stres altında yapıyorsun = kötü kalite.\n\nKategori 3-4 = **saatler kaçırıldı**. Stephen Covey (**7 Habits**): 'Çoğu insan 1. ve 3. kategoride yaşar — sürekli **yangın söndüren itfaiyeci**. Başarılı insanlar 2. kategoride yaşar — **yangın çıkmasını önleyen** mimar.'\n\nMekanizma: matris = **karar yapısı**. Karar yapısı = **karar yorgunluğu** sıfır.",
+        "action": "Bugünkü görev listenin **matrisini yap**. **4. kategoriden 3 görev sil**.",
+        "reflectionPrompt": "Hangi 4. kategori görevleri sildin? **Niye orada başlamıştı** — alışkanlık mı, korku mu?",
+        "proTip": "**Haftalık** olarak yap. Sürekli kayan öncelikler = **stratejik kaymama**. Pazar sabah 15 dk.",
         "quiz": [
           {
             "q": "Eisenhower Matrix kategorileri?",
@@ -3971,10 +3971,10 @@
       },
       "28": {
         "title": "Tek Yıllık Hedef",
-        "teaching": "10 hedef = 0 hedef. 1 hedef = focus. Bir yıl = ortalama 1 büyük şey başarılır. Önümüzdeki 1 yılda en büyük 1 hedefin ne? \"Spor yapayım\" değil — \"ağırlık antrenmanına başla, 1 yılda 50 kg bench press yap.\"",
-        "action": "Bugün 1 yıllık 1 hedefini yaz. Ölçülebilir, somut, zamanlı.",
-        "reflectionPrompt": "Bu hedefin altındaki gerçek \"neden\" ne?",
-        "proTip": "Hedefi sürekli görünür yere koy: telefon kilit ekranı, çalışma masası.",
+        "teaching": "1 Ocak. **15 yeni yıl kararı** yazdın: spor, dil, kitap, para biriktir, sigara bırak, az yemek, çok arkadaş... Şubat sonu **hiçbiri sürmüyor**. Sebep: **çoklu hedef = sıfır hedef**.\n\nGary Keller (**The ONE Thing**): 'Çoklu odak = paradoks. Her ek hedef = mevcut hedeflerin başarı şansını **azaltır**. Tek hedef = %80, beş hedef = %15.'\n\nMatematik: 1 yıl = **365 gün**. Bir hedef için **365 günlük tutarlılık** = mümkün ama zor. **5 hedef** için 365 günlük tutarlılık = matematiksel olarak **olanaksız** (enerji, zaman, odak sınırlı).\n\n**Önümüzdeki 1 yılda en büyük 1 hedefin ne?**\n\nKötü hedef: 'Spor yapayım.' Belirsiz, ölçülemez, kontrol edilemez.\n\nİyi hedef: 'Ağırlık antrenmanına başla, 1 yılda **50 kg bench press** yapacak duruma gel.' Ölçülebilir, somut, zamanlı.\n\nGeorge Doran (**SMART** formülü 1981): hedefler = **S**pesifik, **M**easurable, **A**chievable, **R**elevant, **T**ime-bound.\n\nMekanizma: tek hedef = **PFC odaklı yatırım**. RAS filtresi her gün **'bu hedefe hizmet ediyor mu?'** sorar. Otomatik öncelik = otomatik ilerleme.\n\nKritik: **gerçek 'neden'** olmalı. 'Çünkü öyle olmalı' yetersiz. 'Çünkü babam 50'sinde kalp krizi geçirdi, ben bu yola gitmeyeceğim' = derin neden.",
+        "action": "Bugün **1 yıllık 1 hedefini yaz**. **SMART** formatında. Ölçülebilir, somut, zamanlı.",
+        "reflectionPrompt": "Bu hedefin altındaki **gerçek 'neden'** ne? Hangi derin motivasyon var?",
+        "proTip": "Hedefi **sürekli görünür yere** koy: telefon kilit ekranı, çalışma masası, banyo aynası.",
         "quiz": [
           {
             "q": "Optimum yıllık hedef sayısı?",
@@ -4002,10 +4002,10 @@
       },
       "29": {
         "title": "Final Disiplin",
-        "teaching": "29 gün boyunca zihinsel disiplin pratik ettin. Yarın \"tamamladın.\" Ama disiplin = yarınla bitmiyor. Final test: 30 günden sonra hangi 1 disiplini her gün yapacaksın? Hayatının dokusu olacak şey.",
-        "action": "Bugün son 30 günde işe yarayan en güçlü 1 disiplini seç. Bunu 100 gün daha yap.",
-        "reflectionPrompt": "Hangi disiplini seçtin? Niye o?",
-        "proTip": "O disiplini akşam mevcut bir alışkanlığa stack et. Yığma = otomatikleşme.",
+        "teaching": "**29 gün arkanda.** Zihinsel disiplin pratiğin bitmek üzere. Yarın 'tamamladım' diyeceksin. Ama burada bir tehlike var: **disiplin yarınla bitmiyor**.\n\nGerçek test bugün başlıyor: **30 günden sonra ne yapacaksın?** Çoğu insan 'bitirdi' der, eski hayata döner. 90 gün sonra: **hiçbir kazanım kalmamış**. Sebep: **kalıcılaştırma** kararı vermedi.\n\nJames Clear (Atomic Habits): 'Asıl mesele alışkanlığı **başlatmak değil**, alışkanlığı **kalıcılaştırmak**. Çoğu kitap başlatmaya odaklanır, çoğu insan başlatmayı yapar — kalıcılık nadir.'\n\n**Final test**: bu 30 günde **en güçlü 1 disiplini seç**, **100 gün daha yap**. Bu, kimliğin **gerçek omurgası** olur.\n\nKriter: 'en güçlü' = sonucu en somut hissedilen. Pomodoro mu? Inbox 0 mı? Telefonsuz sabah mı? **Sen biliyorsun**.\n\nMekanizma: 30 gün = nöral patika başlangıcı. 100 gün = patika kalınlaşması. **130 gün** = beyin 'default' olarak tanıyor. Geri dönmek **bilinçli çaba** gerektirir — yani **dönmezsin**.\n\n**Stack et**: o disiplini mevcut bir sağlam alışkanlığa **bağla** (Ders 26 — habit stacking). Otomatik tetikleyici = irade gerek değil.",
+        "action": "Bugün son 30 günde işe yarayan **en güçlü 1 disiplini seç**. **Bunu 100 gün daha yap**.",
+        "reflectionPrompt": "Hangi disiplini seçtin? **Niye o** — en somut sonuç hangisinden geldi?",
+        "proTip": "O disiplini **mevcut bir sağlam alışkanlığa stack et**. Yığma = **otomatikleşme** = irade gerek değil.",
         "quiz": [
           {
             "q": "Final disiplin testi?",
@@ -4033,10 +4033,10 @@
       },
       "30": {
         "title": "Tamamlandı — Yeni Zihin",
-        "teaching": "Bugün 30 gün önceki sen değilsin. Odaklanmayı, derin işi, \"hayır\" demeyi öğrendin. Multitask'tan single-task'a, reaktiflikten proaktifliğe geçtin. Bu 30 gün senin yeni baselin.",
-        "action": "Bugün 30 günün özetini yaz: 3 öğrendiğim, 3 sürdüreceğim, 3 unutmayacağım.",
-        "reflectionPrompt": "Yeni zihninle hangi büyük şeyi başaracağına inanıyorsun?",
-        "proTip": "Bir sonraki yola 3 gün dinlendikten sonra başla. Tutarlılık = uzun vade. Acele = gerileme.",
+        "teaching": "**30 gün önce sen kimdin?** Çoklu görev yapan, telefon bağımlısı, hayır diyemeyen, derin işten kaçınan. **Bugün kimsin?** Tek odakla, telefon araç haline gelmiş, sınır koyan, derin işe giren.\n\n**Bu farklı bir insan.** Aynı bedensiniz ama beyin **yeniden kablolanmış**.\n\nKazandıkların:\n- **Tek odak** — multitask illüzyonu kırıldı\n- **Derin iş 90 dk** — istem gücü kası güçlü\n- **Telefon disiplini** — sürekli çek-uzat refleksi yumuşadı\n- **Hayır demek** — sınır var, öncelik var\n- **Brain dump + not sistemi** — beyin **işleyici**, depo değil\n- **Yakalama sistemi** — açık döngüler kapalı\n- **Eisenhower** — kategori netliği\n- **Reaktiflikten proaktifliğe** — gün senin\n\nLally araştırması: 30 gün düzenli pratik = nöral patika kuruldu. Devam = patika kalınlaşır.\n\n**Bu 30 gün = yeni baseline.** Geri dönmek artık 'bilinçli çaba' gerektirir. Doğal akış = **yeni sen**.\n\n**Bir sonraki yola** 3 gün dinlendikten sonra başla. Body Discipline (beden) veya Money Discipline (finans). Disiplin **bulaşıcı** — bir alanda öğrenilen prensipler diğerlerine **kolayca taşınır**.",
+        "action": "Bugün 30 günün özetini yaz: **3 öğrendiğim**, **3 sürdüreceğim**, **3 unutmayacağım**.",
+        "reflectionPrompt": "Yeni zihninle hangi **büyük şeyi** başaracağına inanıyorsun?",
+        "proTip": "Bir sonraki yola **3 gün dinlendikten sonra** başla. **Tutarlılık = uzun vade**. Acele = gerileme.",
         "quiz": [
           {
             "q": "Geçişten sonra dinlenme?",
