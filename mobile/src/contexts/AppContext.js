@@ -218,6 +218,7 @@ const ACTION_TYPES = {
   SET_BASELINE_ASSESSMENT: 'SET_BASELINE_ASSESSMENT',
   ADD_ASSESSMENT: 'ADD_ASSESSMENT',
   RECORD_DAILY_DECK: 'RECORD_DAILY_DECK',
+  GRANT_REFERRAL_REWARD: 'GRANT_REFERRAL_REWARD',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -1112,6 +1113,10 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.RECORD_DAILY_DECK, payload });
   }, []);
 
+  const grantReferralReward = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+  }, []);
+
   const startVacation = useCallback((days = 7) => {
     dispatch({ type: ACTION_TYPES.START_VACATION, payload: { days } });
   }, []);
@@ -1293,6 +1298,7 @@ export function AppProvider({ children }) {
     setBaselineAssessment,
     addAssessment,
     recordDailyDeckCompleted,
+    grantReferralReward,
     startVacation,
     endVacation,
     completeDailyChallenge,

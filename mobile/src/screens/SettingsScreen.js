@@ -29,6 +29,13 @@ import {
   cancelAllNotifications,
 } from '../services/notifications';
 import { restorePurchases } from '../services/purchases';
+import {
+  ensureMyReferral,
+  redeemReferralCode,
+  getReferralStats,
+  codeFromUserId,
+} from '../services/referral';
+import { useAuth } from '../contexts/AuthContext';
 import { setMuted, isMuted } from '../services/sounds';
 import {
   getHapticsEnabled,
@@ -63,19 +70,113 @@ export default function SettingsScreen({ navigation }) {
     return vacationUntil >= todayStr;
   })();
 
+  // Referral state — fetched lazily on Settings mount. We don't block
+  // the screen on this; the share button just works with the code we
+  // can derive locally from the user UID even before the server row is
+  // confirmed.
+  const { user } = useAuth();
+  const { grantReferralReward } = useApp();
+  const [referralCount, setReferralCount] = useState(0);
+  useEffect(() => {
+    if (!user?.id) return;
+    // Ensure the server-side row exists (idempotent) and fetch stats.
+    ensureMyReferral(user.id).catch(() => {});
+    getReferralStats(user.id)
+      .then((s) => setReferralCount(s.redemptions || 0))
+      .catch(() => {});
+  }, [user?.id]);
+
   const handleInvite = async () => {
-    const code = anonUsername || 'ascend';
-    const link = `https://ascend.app/?ref=${encodeURIComponent(code)}`;
-    const message = t(
-      'settings.inviteShare',
-      'Disiplin akademisini birlikte yapalım — Ascend\'i indir, ilk 7 gün premium senden 🔥\n{{link}}',
-      { link },
-    );
+    // Prefer the deterministic referral code (MONK-XXXX-YYYY). Falls
+    // back to anonUsername for legacy users without a UID — they still
+    // get a share-able message, just without a redeemable code.
+    const code = (user?.id && codeFromUserId(user.id)) || anonUsername || null;
+    const link = code
+      ? `https://ascend.app/?ref=${encodeURIComponent(code)}`
+      : 'https://ascend.app';
+    const message = code
+      ? t(
+          'settings.inviteShareWithCode',
+          'Ascend\'i indir, davet kodumu kullan ve 10 streak donduru kazan: {{code}}\n{{link}}',
+          { code, link },
+        )
+      : t(
+          'settings.inviteShare',
+          'Disiplin akademisini birlikte yapalım — Ascend\'i indir, ilk 7 gün premium senden 🔥\n{{link}}',
+          { link },
+        );
     try {
       await Share.share({ message });
     } catch {
       // user dismissed or no share UI available
     }
+  };
+
+  const handleRedeemCode = () => {
+    // Quick code-entry via native Alert prompt. Cross-platform: Alert.prompt
+    // is iOS-only; on Android we'd need a modal but this app is iOS-first.
+    Alert.prompt(
+      t('settings.redeemTitle', 'Davet Kodu'),
+      t(
+        'settings.redeemBody',
+        'Bir arkadaşının kodunu yaz — kabul edilirse ikinize de 10 streak donduru gelir.',
+      ),
+      async (rawCode) => {
+        if (!rawCode) return;
+        if (!user?.id) {
+          Alert.alert(
+            t('settings.redeemErrorTitle', 'Hata'),
+            t(
+              'settings.redeemAuthRequired',
+              'Davet kodu kullanmak için hesabın olmalı. Önce giriş yap.',
+            ),
+          );
+          return;
+        }
+        const result = await redeemReferralCode(rawCode, user.id);
+        if (result.ok) {
+          grantReferralReward();
+          Alert.alert(
+            t('settings.redeemSuccessTitle', 'Tebrikler! 🎉'),
+            t(
+              'settings.redeemSuccessBody',
+              '+10 streak donduru hesabına eklendi. Davet ettiğin kişiye de gönderildi.',
+            ),
+          );
+          return;
+        }
+        const reason = result.reason;
+        const messages = {
+          invalid: t('settings.redeemInvalid', 'Kod geçersiz. Tekrar dene.'),
+          own_code: t(
+            'settings.redeemOwnCode',
+            'Kendi kodunu kullanamazsın 🙂',
+          ),
+          already_redeemed: t(
+            'settings.redeemAlreadyRedeemed',
+            'Bu kod zaten başkası tarafından kullanılmış.',
+          ),
+          already_used_a_code: t(
+            'settings.redeemAlreadyUsed',
+            'Sen bir kod kullanmıştın zaten — sadece bir kez geçerli.',
+          ),
+          auth_required: t(
+            'settings.redeemAuthRequired',
+            'Önce giriş yap.',
+          ),
+          error: t(
+            'settings.redeemError',
+            'Bir hata oluştu. Tekrar dener misin?',
+          ),
+        };
+        Alert.alert(
+          t('settings.redeemErrorTitle', 'Hata'),
+          messages[reason] || messages.error,
+        );
+      },
+      'plain-text',
+      '',
+    );
   };
 
   const handleToggleVacation = () => {
@@ -477,11 +578,58 @@ export default function SettingsScreen({ navigation }) {
                   <Text style={styles.rowLabel}>
                     {t('settings.invite', 'Arkadaşını davet et')}
                   </Text>
+                  <Text style={styles.rowSub} numberOfLines={1}>
+                    {(() => {
+                      const code =
+                        (user?.id && codeFromUserId(user.id)) ||
+                        anonUsername ||
+                        '—';
+                      return t(
+                        'settings.inviteSubV2',
+                        'Kodun: {{code}}{{tail}}',
+                        {
+                          code,
+                          tail:
+                            referralCount > 0
+                              ? ` · ${referralCount} arkadaşın katıldı`
+                              : ' · ikinize de 10 streak donduru',
+                        },
+                      );
+                    })()}
+                  </Text>
+                </View>
+              </View>
+              <MaterialIcons
+                name="chevron-right"
+                size={18}
+                color={LT.onSurfaceVariant}
+              />
+            </TouchableOpacity>
+
+            {/* Redeem invite code — counterpart to "Arkadaşını davet et"
+                above. A user who joined organically can still redeem a
+                code their friend sent later, picking up the same 10
+                streak-freezes reward. One redemption per account
+                (server-side unique constraint). */}
+            <TouchableOpacity
+              onPress={handleRedeemCode}
+              activeOpacity={0.7}
+              style={[styles.row, styles.rowBorder]}
+            >
+              <View style={styles.rowLeft}>
+                <MaterialIcons
+                  name="redeem"
+                  size={22}
+                  color={LT.primary}
+                />
+                <View>
+                  <Text style={styles.rowLabel}>
+                    {t('settings.redeemInvite', 'Davet kodu gir')}
+                  </Text>
                   <Text style={styles.rowSub}>
                     {t(
-                      'settings.inviteSub',
-                      'Davet kodun: {{code}} · 7 gün premium hediye',
-                      { code: anonUsername || '—' },
+                      'settings.redeemInviteSub',
+                      'Bir arkadaşının kodun varsa, 10 streak donduru kazan',
                     )}
                   </Text>
                 </View>

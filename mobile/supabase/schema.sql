@@ -301,6 +301,48 @@ group by props->>'pathId';
 grant select on public.active_tribe_counts to anon, authenticated;
 
 -- ──────────────────────────────────────────────────────────────────────────────
+-- referrals — viral / word-of-mouth growth loop
+-- Each user has exactly one stable referral code derived from their auth UID
+-- (computed client-side, stored here on first share). When a NEW user enters
+-- the code during onboarding we write a row recording who-referred-whom; both
+-- sides get a reward (streak freezes, granted client-side after the row
+-- insert succeeds). The unique constraint on (code) prevents collision and
+-- on (redeemed_by) prevents a user from claiming multiple codes.
+-- ──────────────────────────────────────────────────────────────────────────────
+create table if not exists public.referrals (
+  id uuid primary key default gen_random_uuid(),
+  code text not null unique,
+  owner_user_id uuid not null references auth.users(id) on delete cascade,
+  redeemed_by uuid references auth.users(id) on delete set null,
+  redeemed_at timestamptz,
+  created_at timestamptz default now(),
+  -- one user can only redeem ONE code in their lifetime
+  constraint referrals_one_redeem_per_user unique (redeemed_by)
+);
+create index if not exists idx_referrals_owner on public.referrals(owner_user_id);
+create index if not exists idx_referrals_code on public.referrals(code);
+
+alter table public.referrals enable row level security;
+
+-- Anyone can read by code (so non-authed onboarding can validate a code
+-- before sign-in). Insert/update is auth-only and constrained to the
+-- caller's own row.
+create policy "referrals: read all" on public.referrals
+  for select using (true);
+create policy "referrals: owner can insert" on public.referrals
+  for insert with check (auth.uid() = owner_user_id);
+create policy "referrals: redeemer can mark redemption" on public.referrals
+  for update using (
+    -- Only allow the redeeming user to mark `redeemed_by = self` on an
+    -- otherwise-unredeemed row.
+    redeemed_by is null and auth.uid() <> owner_user_id
+  ) with check (
+    auth.uid() = redeemed_by and redeemed_at is not null
+  );
+
+grant select, insert, update on public.referrals to authenticated;
+
+-- ──────────────────────────────────────────────────────────────────────────────
 -- Auth settings you still need to check in the Supabase dashboard:
 --   Authentication → Providers → Email: enable "Confirm email" if you want
 --     e-mail verification. The app handles both confirmed and unconfirmed
