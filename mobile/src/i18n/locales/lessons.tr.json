@@ -6703,10 +6703,10 @@
       },
       "16": {
         "title": "Haftalık Para Review",
-        "teaching": "Para = ölçülmediği şey. Haftada 1 saat: gelir-gider tablosu, bütçe vs gerçek, hedeflerin durumu. 1 saat × 52 hafta = yılda 52 saat. Yıllık geliri belirleyen 52 saat.",
-        "action": "Bu hafta para review için 30 dakika harca. Excel ya da defter.",
-        "reflectionPrompt": "Haftalık review olmadan paran nasıl yönetilirdi?",
-        "proTip": "Aynı gün-saat sabit tut. Pazar 09:00 ya da cumartesi 10:00. Esnek olma.",
+        "teaching": "Sağlık check-up yılda bir gidiyorsun. Araç servise her 10K km'de bir. Ama paran için? **Hiç review yok**. Sonuç: yıl sonunda 'ne oldu?' belirsiz.\n\nPeter Drucker (yönetim babası): '**What gets measured, gets managed**.' Ölçülmeyen yönetilmez. Para = bu kuralın en net örneği.\n\n**Haftada 1 saat para review** = ömür boyu finansal disiplinin temeli.\n\n**Review içeriği** (30 dk yeterli):\n1. **Gelir-gider tablosu** — bu hafta ne geldi, ne gitti\n2. **Bütçe vs gerçek** — 50/30/20 nerede?\n3. **Net servet değişimi** — geçen haftaya göre artış/azalış\n4. **Hedef takibi** — kısa/orta/uzun vade hedef ilerlemesi\n5. **Sonraki hafta plan** — büyük alımlar, tasarruf hedefi\n\nMatematik: **1 saat × 52 hafta = 52 saat/yıl**. **Yıllık gelirini belirleyen 52 saat**. Saat başına getirisi: en yüksek aktivite.\n\nMekanizma: review = **meta-finansal bilinç** + **karar yapısı**. Mikro kararları **makro yapıya** sıkıştırır. Hafta içi karar yorgunluğu azalır.\n\nDavid Bach: 'Zenginlerin gizli alışkanlığı = düzenli money review. Fakirlerin gizli alışkanlığı = sürekli avoidance.'\n\n**Sabit zaman** kritik: **Pazar 09:00** veya **Cumartesi 10:00**. Esnek olma → kaçırırsın. Takvime koy, kutsal say.",
+        "action": "Bu hafta para review için **30 dakika** harca. Excel ya da defter.",
+        "reflectionPrompt": "Haftalık review olmadan paran **nasıl yönetilirdi**?",
+        "proTip": "**Aynı gün-saat sabit tut**. Pazar 09:00 ya da Cumartesi 10:00. **Esnek olma**.",
         "quiz": [
           {
             "q": "Haftalık review süresi?",
@@ -6734,10 +6734,10 @@
       },
       "17": {
         "title": "Gelir Çoğaltma",
-        "teaching": "Tasarruf = sınırlı. Gelir = sınırsız. Tek geliri olmak risk. 2-3 gelir kanalı disiplinli kişinin profili: ana iş + freelance/online + yatırım geliri.",
-        "action": "Bugün ana işin dışında 1 ek gelir fikrini araştır. Freelance, online satış, kira, dividend.",
-        "reflectionPrompt": "En kolay başlatabileceğin ek gelir hangisi?",
-        "proTip": "İlk hedef: ayda ekstra 5.000 TL. Bu kira ödemen = aylık 5K = yıllık 60K = ekstra emeklilik.",
+        "teaching": "Aylar boyu **tasarruf**a odaklandın. **5K aylık kestin**. Memnunsun. Ama matematik **acımasız**: **maaş 30K** → tasarruf 5K **maksimum oran**. Sınır var.\n\n**Tasarruf = sınırlı**. **Gelir = sınırsız**.\n\nBu farkı anlamak finansal disiplinin **kırılım noktası**. Sıkı tutumluluk = kısa vade işe yarar, uzun vade **gelir artırmaya** öncelik gerek.\n\nThomas Corley (**Rich Habits**, 5 yıl 233 milyoner araştırması): 'Self-made milyonerlerin **%65'i** 2+ gelir akımı, **%45'i** 3+ akım. Tek gelir = risk = tipik orta sınıf tuzak.'\n\n**Disiplinli kişi profili**:\n- **Ana iş** (maaş) → temel\n- **Freelance / online** → +5-30K/ay\n- **Yatırım geliri** (dividend, faiz, kira) → +2-10K/ay\n- **Pasif gelir** (e-kitap, kurs, online ürün) → +5-50K/ay\n\nMekanizma: çoklu gelir = **risk dağılımı** + **toplam upside**. Bir kaynak kaybedersen panik yok. Hepsi büyürse = exponansiyel.\n\n**Ek gelir başlamak için fikirler**:\n- **Freelance** (LinkedIn, Bionluk, Fiverr) — mesleğin\n- **Online satış** (Etsy, Trendyol, Amazon) — el yapımı veya dropship\n- **Online kurs** (Udemy, kendi platform) — bildiklerini öğret\n- **Yazarlık** (Medium, Substack, blog) — yazıyorsan\n- **YouTube / TikTok** — uzun vade ama büyük getiri\n- **Kira** (oda Airbnb, depo, araba) — varlığın varsa\n\n**İlk hedef**: ayda ekstra **5K TL**. = aylık kira veya araba taksiti. Anlamlı.",
+        "action": "Bugün **ana işin dışında 1 ek gelir fikrini** araştır. Freelance, online, kira, dividend.",
+        "reflectionPrompt": "**En kolay başlatabileceğin** ek gelir hangisi? Niye başlamadın hala?",
+        "proTip": "**İlk hedef**: ayda ekstra **5.000 TL**. = kira ödemen × 12 = yıllık 60K = ekstra emeklilik.",
         "quiz": [
           {
             "q": "Tek gelir = ?",
@@ -6765,10 +6765,10 @@
       },
       "18": {
         "title": "Yatırım 101: Endeks Fonları",
-        "teaching": "Hisse seçmek zor — index fund kolay. Tüm pazarın küçük dilimi, ortalama %7-10 yıllık getiri (ABD), çok düşük komisyon. Warren Buffett: emekliliği için endeks fonu öner.",
-        "action": "Bugün endeks fonunu (Türkiye için BIST 100, dünya için VOO/VT) araştır.",
-        "reflectionPrompt": "Endeks fonu yatırım korkunu nasıl etkiledi?",
-        "proTip": "Aylık küçük miktar (Dollar-cost averaging) > tek seferde büyük yatırım. Riski dağıtır.",
+        "teaching": "Yatırıma başlamak istedin. 'Hangi hisse alayım?' diye baktın. Apple? Tesla? Amazon? **Karar veremedin**. 5 yıl geçti. Hiç yatırım yapamadın. **Klasik analiz felçi**.\n\nBu yüzden **endeks fonları icat edildi**. Çözüm: **'Hangi hisse?' sorusunu by-pass et**.\n\n**Endeks fonu = bütün pazarın küçük dilimi**. ABD'de S&P 500 = en büyük 500 şirketin hepsinin küçük payı. Türkiye için BIST 100 = en büyük 100 şirket.\n\n**Niye işliyor**:\n- **Çeşitlenme otomatik** — 500 şirket = bir batarsa diğeri ayakta\n- **Ortalama %7-10 yıllık getiri** (ABD S&P, 100 yıllık)\n- **Çok düşük komisyon** (%0.03-0.5 vs aktif fon %1-3)\n- **Karar yorgunluğu sıfır** — hangi hisse sorusu yok\n\nWarren Buffett (efsanevi yatırımcı): 'Karımın mirası için **%90 S&P 500 endeks fonu** + %10 tahvil. Daha iyi tavsiye yok.' Buffett 2007'de bir aktif fon yöneticisiyle **1 milyon dolar bahis** etti — endeks fon vs aktif yönetim. **Endeks kazandı, çok fark**.\n\nMekanizma: aktif yöneticilerin **%80'i** uzun vadede endeksin altında performans gösterir (SPIVA raporları). Komisyon + işlem maliyeti + yanlış zamanlama = kayıp.\n\n**Türkiye seçenekler**: BIST 100 endeks fonu (İş Bankası, Garanti, Türkiye İş Bankası TIBET). **Dünya seçenek**: VOO (S&P 500), VT (dünya).\n\n**Dollar-cost averaging (DCA)** = aylık küçük miktar > tek seferde büyük. Riski dağıtır, zamanlama hatası önlenir.",
+        "action": "Bugün **endeks fonunu** araştır. Türkiye: BIST 100. Dünya: VOO/VT.",
+        "reflectionPrompt": "Endeks fonu **yatırım korkunu** nasıl etkiledi?",
+        "proTip": "**Aylık küçük miktar (DCA)** > tek seferde büyük. **Riski dağıtır + zamanlama hatası önler**.",
         "quiz": [
           {
             "q": "Index fund getirisi?",
@@ -6796,10 +6796,10 @@
       },
       "19": {
         "title": "Ek Gelir Disiplini",
-        "teaching": "Ek gelir başlamak değil — sürdürmek zor. İlk 6 ay 0 TL kazanabilirsin. Çoğu vazgeçer. 12. ayda kazanmaya başlar. 24. ayda hayatını dönüştürür. Sürdürürsen.",
-        "action": "Bugün ek gelir için 30 dakika ayır. Hiç para gelmese bile.",
-        "reflectionPrompt": "Ek gelir başlatma korkun ne? Para kazanamamak mı, yargı mı?",
-        "proTip": "Sosyal medyaya çıkma korkusu varsa, yazıyla başla. Medium, blog, newsletter.",
+        "teaching": "**Ek gelir başlatmak kolay**: hesap aç, ilan ver, ürün koy. **3 ay sonra**: 0 satış. **6 ay sonra**: 100 TL. **Çoğu vazgeçer bu noktada**. Hayal kırıklığı: 'Bu işe yaramıyor.'\n\nGerçek: **işe yarıyor** — sen vazgeçtin çünkü **eğri keskin**.\n\nGary Vaynerchuk (içerik üretici, **'Crush It'**): 'Internet'te içerik / ürün eğrisi: ilk 12 ay = **0**. 12-24 ay = küçük gelir. 24+ ay = exponansiyel büyüme. **Vazgeçen %95**, bu yüzden başarılı **%5** rakip yok.'\n\nGerçek sayılar:\n- **YouTube kanalı**: ilk 12 ay ortalama 50 abone, 0 dolar. 24+ ay 10K abone, 500 dolar/ay.\n- **Online kurs**: ilk 12 ay = sıfır satış. 24+ ay = pasif gelir aylık 5K+.\n- **Blog**: ilk 12 ay = trafik yok. 24+ ay SEO etkisi = aylık 1-10K\n\n**Çoğu vazgeçer**, çünkü:\n- Sosyal medyada **kıyaslama** ('Bu adam 6 ayda 100K kazandı' — yalan veya istisna)\n- **Anlık sonuç** beklentisi (dopamin economy)\n- Ego: **0 kazanırken görünmek** korku\n- Boş zaman: yorgun, kolay vazgeçer\n\nMekanizma: ek gelir **bileşik faiz** gibi. Erken yıllar **görünmez büyüme**, sonra **patlama**. Çoğu kişi görünmez evrede vazgeçer.\n\n**Disiplin formülü**: hiç para gelmese de **günde 30 dk** ayır. Tutarlılık = sonuç.\n\n**Sosyal medya korkusu** varsa: **yazıyla başla** (Medium, blog, newsletter). Ses + görüntü olmadan da başarılır.",
+        "action": "Bugün ek gelir için **30 dakika** ayır. **Hiç para gelmese bile**.",
+        "reflectionPrompt": "Ek gelir başlatma **korkun ne**? Para gelmeme mi, yargılanma mı, hata mı?",
+        "proTip": "**Sosyal medya korkusu varsa, yazıyla başla**. Medium, blog, newsletter — ses + görüntü gerek değil.",
         "quiz": [
           {
             "q": "Ek gelir 1. yıl?",
@@ -6827,10 +6827,10 @@
       },
       "20": {
         "title": "Yaşam Tarzı Şişmesi",
-        "teaching": "Maaş arttı = harcama arttı. Buna lifestyle inflation denir. %10 artış maaşa = %10 artış araba/kira/yemeğe. Net etkisi sıfır. Disiplin: artışın %50'sini tasarrufa.",
-        "action": "Bugün son maaş artışını incele. Nereye gitti?",
-        "reflectionPrompt": "Lifestyle inflation'a ne kadar düştün?",
-        "proTip": "Yeni maaşla 3 ay aynı yaşa. Beden eski standardı normal kabul eder, fazlası tasarruf.",
+        "teaching": "**Promosyon aldın**! Maaş %30 arttı. Mutluluk. **6 ay sonra**: tasarrufun aynı, hatta **daha az**. Çünkü:\n- Daha iyi araba: +taksit\n- Lüks daire: +kira\n- Daha sık dışarı: +eğlence\n- Yeni telefon: +ödeme\n\n**Net etki: sıfır**. Hatta negatif.\n\nBu **'Lifestyle inflation'** (yaşam tarzı şişmesi). En tehlikeli **finansal tuzak**. Çünkü görünmez — sen 'hayatımı iyileştiriyorum' dersin.\n\nMatematik:\n- Maaş: 30K → 39K (%30 artış)\n- Eski harcama: 25K → tasarruf 5K\n- Yeni harcama: 35K (lüks ekleme) → tasarruf 4K\n- **Net**: aslında **daha az** tasarruf\n\nGerçek: orta sınıf bu tuzakta **ömür boyu** kalır. Maaş arttıkça harcama eşit artar. **Net servet kalıcı düşük**.\n\nThomas Stanley (**Millionaire Next Door**) araştırması: gerçek milyonerlerin ortak özelliği — **maaş artışını yaşam tarzına yansıtmadılar**. Maaş 100K oldu, hala 50K standardıyla yaşıyor → 50K tasarruf/yıl → 30 yılda 5M+ servet.\n\nMekanizma: hedonik adaptasyon — yeni standart 'normal' olur. Beyin 'eski hayata dön' = mahrumiyet hissi. Önlem: **standardı sabit tut**.\n\n**Disiplin formülü**: maaş artışın **%50'si otomatik tasarrufa**. Kalan %50 yaşa. 'Önce kendine öde' kuralı yeni para için de geçerli.\n\n**'3 ay aynı yaşa'** tekniği: yeni maaşla 3 ay eski standardı koru. Beden adapte olur, sonra fazlasını gerçek tasarrufa yönlendir.",
+        "action": "Bugün **son maaş artışını incele**. Nereye gitti? Tasarruf mu, lifestyle mu?",
+        "reflectionPrompt": "**Lifestyle inflation**'a ne kadar düştün?",
+        "proTip": "**Yeni maaşla 3 ay aynı yaşa**. Beden eski standardı normal kabul eder, fazlası tasarruf.",
         "quiz": [
           {
             "q": "Lifestyle inflation nedir?",
@@ -6858,10 +6858,10 @@
       },
       "21": {
         "title": "Pazarlık Becerisi",
-        "teaching": "Pazarlık = batı kültüründe utanç verici, doğu'da norm. Maaşta pazarlık = 1 saatlik tartışma = yılda 50K-200K fark. Pazarlık ucuz değil — kaçınılmaz. \"Asıl rakam ne?\" sor.",
-        "action": "Bugün 1 fiyatı pazarlık et. Online da olsa: indirim kodu sor.",
-        "reflectionPrompt": "Pazarlık denemen nasıl gitti? Korktuğun kadar zor mu?",
-        "proTip": "\"Bu en iyi fiyatınız mı?\" — sihir cümle. Çoğu zaman %5-15 indirim açar.",
+        "teaching": "İş görüşmesi. 'Maaş beklentin?' soruldu. '60K' dedin sırıtarak. **Anlaştın**. 5 yıl sonra öğrendin: aynı pozisyondaki meslektaşın 80K alıyor. **20K × 60 ay = 1.2 milyon TL kayıp**, tek konuşmadan.\n\n**Pazarlık** = batı kültüründe (özellikle korporat) **utanç verici** sanılır. Doğu'da, pazaryerinde **norm**. Modern hayat ikisinin karışımı — beceri **kritik**.\n\nChris Voss (eski FBI rehine müzakerecisi, **Never Split the Difference**): 'Pazarlık günlük yaşamın **her köşesinde** — maaş, kira, fatura, alışveriş, hatta aile içi. Pazarlık becerisi = **fark eden yetenek**.'\n\nMatematik:\n- **Maaş müzakere**: 1 saatlik tartışma = yılda **₺50K-200K fark** = ömür boyu **milyonlar**\n- **Faturalar**: internet, kablo, sigorta — **yıllık %20-30 indirim** çoğu zaman mümkün\n- **Alışveriş**: özellikle pazarlık geleneği olan ürünler (elektronik, mobilya) — **%5-15 indirim**\n\n**Sihir cümle**: '**Bu en iyi fiyatınız mı?**' Çoğu zaman %5-15 indirim **otomatik** açar. Satıcı zaten beklerken sen sormazsan = satıcı kazandı.\n\n**Maaş için**: '**Bu pozisyon için aralık nedir?**' veya '**Beklentiyi karşılamak için ne yapabiliriz?**'\n\nMekanizma: pazarlık = **piyasa testi**. Her satıcının **alış fiyatı + minimum kar marjı** vardır. Onun üstü = ekstra kar = pazarlanabilir.\n\nİlk pazarlık **garip** gelir. **Online indirim kodu sormak** = en düşük bariyer başlangıç.",
+        "action": "Bugün **1 fiyatı pazarlık et**. Online da olsa: **indirim kodu sor**.",
+        "reflectionPrompt": "Pazarlık denemen **nasıl gitti**? Korktuğun kadar zor mu?",
+        "proTip": "**'Bu en iyi fiyatınız mı?'** — sihir cümle. Çoğu zaman **%5-15 indirim** açar.",
         "quiz": [
           {
             "q": "Pazarlık etkisi?",
@@ -6889,10 +6889,10 @@
       },
       "22": {
         "title": "Vergi Farkındalığı",
-        "teaching": "Vergi = en büyük yıllık harcaman. Çoğu insan vergi kanunlarını bilmez, indirim hakkını kullanmaz, fazla öder. 1-2 saat öğrenmek = yılda binlerce TL tasarruf.",
-        "action": "Bugün vergi indirim haklarını araştır (eğitim, sağlık, bağış, kira).",
-        "reflectionPrompt": "Hangi indirim hakkından haberdar değildin?",
-        "proTip": "Mali müşavir 1 saatlik = 5.000 TL. Kazanır 50.000 TL'yi.",
+        "teaching": "Yıllık masrafları sırala: kira, market, ulaşım, eğlence... Hepsini geç. **En büyük harcaman aslında**: **vergi**. Gelirin **%25-40'ı** devlete gider — kira'dan büyük, market'ten büyük.\n\nÇoğu insan bu **kaybı tartışmaz**. Çünkü vergi karmaşık, sıkıcı, kaçınılmaz görünür. Ama çoğu insan **fazla öder** çünkü:\n- Vergi kanununu bilmez\n- İndirim haklarını kullanmaz\n- Doğru kategorize etmez\n- Profesyonel yardım almaz\n\n**1-2 saat öğrenmek** = yılda **binlerce TL tasarruf**.\n\n**Türkiye'de unutulan indirim hakları**:\n- **Eğitim** (kendin, çocuk) — gelir vergisinden indirim\n- **Sağlık** (özel poliçe primi, tedavi)\n- **Bağış** (resmi vakıflar)\n- **Konut kira** (geliri varsa kira gideri indirim)\n- **BES** katkı payı — direkt %25 devlet katkısı\n- **Hayat sigortası** primi\n- **Mesleki dernek** aidatı\n\nMatematik: 100K yıllık gelir, doğru indirim kullanmazsa = **35K vergi**. Doğru kullanırsa = **28K vergi**. **7K fark, yıllık**.\n\nMekanizma: vergi sistemi **karmaşık tasarımlı** — uzmanlık gerektirir. Çoğu insan complicate'ten kaçınır → fazla öder. **1 saat öğrenme = 1 hayır demek değil — milyonlar.**\n\nWarren Buffett: 'Vergi optimizasyonu = legal stratejilerle daha az ödemek. **Vergi kaçırmak ≠ vergi planlaması**. İlki suç, ikincisi mantık.'\n\nMali müşavir: **1 saatlik = ₺5K**. Yıllık kazandırır **₺50K**. **10x ROI**, yatırım gibi.",
+        "action": "Bugün **vergi indirim haklarını araştır** (eğitim, sağlık, bağış, kira, BES).",
+        "reflectionPrompt": "Hangi indirim hakkından **haberdar değildin**?",
+        "proTip": "**Mali müşavir 1 saatlik = ₺5K**. Yıllık kazandırır **₺50K**. **Yatırım gibi** — 10x ROI.",
         "quiz": [
           {
             "q": "En büyük yıllık harcama?",
@@ -6920,10 +6920,10 @@
       },
       "23": {
         "title": "Sigorta Disiplini",
-        "teaching": "Sigorta = sıkıcı ama hayat kurtaran. Olmazsa olmaz: 1) Sağlık (özel poliçe), 2) Hayat (aile varsa), 3) Mesleki sorumluluk. Olmaması olmazsa olmaz: araba kasko + sandalye sigortası.",
-        "action": "Bugün sigortalarını gözden geçir. Eksik mi, fazla mı?",
-        "reflectionPrompt": "Sigortasız riskini taşıdığını fark ettiğin alan?",
-        "proTip": "Yılda 1 kez sigortaları karşılaştır. Aynı koruma %30 daha ucuza bulunabilir.",
+        "teaching": "Sigorta **sıkıcı** konu. Yıllarca prim ödüyorsun, **bir kez kullanmadın**. 'Gereksiz harcama' düşünüyorsun. **Sonra bir gün**: ciddi hastalık, kaza, ev yangını. Sigorta yokken: **maddi yıkım**.\n\nSigorta = **felaket buffer**. Olmayacak diye düşünmek = ön kabul. Olursa = **finansal hayatın çöker**.\n\n**Olmazsa olmaz 3 sigorta**:\n\n1. **Sağlık** (özel poliçe) — devlet hastanesi yetersiz, özel **₺50K-500K** tedavi maliyeti. Yıllık prim ₺3-15K = uygun.\n\n2. **Hayat** (aile varsa) — ölüm sonrası ailen finansal zorluğa düşmesin. 30 yaş, 1 milyon koruma = aylık ₺200-500.\n\n3. **Mesleki sorumluluk** (serbest meslek) — hata yapan doktor, mimar, avukat — koruma şart.\n\n**Olmaması olmazsa olmaz** (gereksiz, kar tuzaklı):\n- Araba kasko (eski araba için)\n- Sandalye sigortası (saçma)\n- Telefon ekran sigortası (kendi sorumluluk al)\n- Uzatılmış garanti (üretici garantisi yeter)\n\nNassim Taleb (**Antifragile**): 'Sigorta = **tail risk yönetimi**. Düşük olasılık × yüksek etki = mantıklı koruma. Yüksek olasılık × düşük etki = kâr tuzağı.'\n\n**Sigorta kararı = risk hesabı**: olursa **hayatım çöker** mi? Evet → sigorta gerekli. Hayır → sigorta lüks.\n\n**Yıllık karşılaştırma kritik**: aynı koruma **%30 daha ucuza** bulunabilir. Sigorta sirketi sadakatten faydalanır (otomatik artırır). Karşılaştır, geç, yeni poliçeye al.",
+        "action": "Bugün **sigortalarını gözden geçir**. Eksik mi, fazla mı?",
+        "reflectionPrompt": "**Sigortasız** riskini taşıdığını fark ettiğin alan?",
+        "proTip": "**Yılda 1 kez sigortaları karşılaştır**. Aynı koruma **%30 daha ucuza** bulunabilir.",
         "quiz": [
           {
             "q": "Olmazsa olmaz sigorta?",
@@ -6951,10 +6951,10 @@
       },
       "24": {
         "title": "Finansal Hedefler",
-        "teaching": "Hedefsiz para = amacsız harcanır. Net hedef: \"1 yıl sonra 50.000 TL acil fonu,\" \"5 yıl sonra ev peşinatı,\" \"10 yıl sonra emekli olacak kadar yatırım.\" Tarih + miktar + amaç.",
-        "action": "Bugün 3 finansal hedef yaz. Kısa (1 yıl), orta (5 yıl), uzun (20+ yıl).",
-        "reflectionPrompt": "Hangi hedef seni en çok motive ediyor?",
-        "proTip": "Hedefleri görünür yere yaz: dolap içi, masa kenarı. Görünmek = hatırlatma.",
+        "teaching": "Maaş aldın. **'Şimdi ne yapayım?'** Belirsiz. Otomatik harcadın. Ay sonu: 'Niye param yok?' Sebep basit: **hedef yok**.\n\nNiyet ≠ hedef. 'Tasarruf etmek istiyorum' = niyet (belirsiz). '**1 yıl sonra 50.000 TL acil fonu**' = hedef (somut).\n\nGail Matthews (Dominican Üniversitesi) araştırması: hedef yazanlar **%42 daha çok başarır**. Yazılmış + somut + zamanlı = sürekli ilerleme.\n\n**SMART formülü** (George Doran 1981) para için:\n- **S**pesifik (50K TL acil fon, ev peşinatı 500K)\n- **M**easurable (sayı + tarih)\n- **A**chievable (gerçekçi, aylık miktarla mümkün)\n- **R**elevant (gerçek hayat amacı)\n- **T**ime-bound (deadline)\n\n**3 hedef seviyesi**:\n\n**Kısa vade (1-3 yıl)**:\n- Acil fon 50K TL\n- Tatil bütçesi 30K\n- Borçtan çıkış\n\n**Orta vade (3-10 yıl)**:\n- Ev peşinatı 500K\n- Araba (peşin)\n- Çocuk eğitim fonu\n\n**Uzun vade (10-30 yıl)**:\n- Emeklilik 5M+\n- Finansal bağımsızlık (FIRE)\n- Miras / hayır işi\n\nMekanizma: hedef = **RAS filtresi**. Beyin gün boyu binlerce uyarana maruz kalır. Hedef varsa = otomatik filtre (bu fırsat hedefe hizmet ediyor mu?). Hedef yoksa = her uyaran 'önemli' = karar yorgunluğu.\n\n**Görünür yere yaz**: dolap, masa, telefon kilit ekranı. Görmek = hatırlatma. Hatırlatma = kararlar otomatik hedefe uyar.",
+        "action": "Bugün **3 finansal hedef** yaz. Kısa (1 yıl), orta (5 yıl), uzun (20+ yıl).",
+        "reflectionPrompt": "Hangi hedef seni **en çok motive** ediyor?",
+        "proTip": "Hedefleri **görünür yere yaz**: dolap içi, masa kenarı, telefon kilit. **Görünmek = hatırlatma**.",
         "quiz": [
           {
             "q": "Hedef formatı?",
@@ -6982,10 +6982,10 @@
       },
       "25": {
         "title": "Para Hikayeni Yeniden Yaz",
-        "teaching": "Çocukluktan gelen \"para hikayesi\" finansal davranışını şekillendirir. \"Para kötüdür,\" \"zenginler hırsızdır,\" \"biz zengin değiliz.\" Bu hikayeleri tanı, yenisini yaz: \"Para araçtır, ben yaratıcıyım.\"",
-        "action": "Bugün 5 dakika kendi para hikayeni yaz. Sonra yeni versiyonunu yaz.",
-        "reflectionPrompt": "Eski para hikayen seni nasıl tutuyor?",
-        "proTip": "Yeni hikaye 30 gün boyunca her sabah oku. Beyin tekrara inanır.",
+        "teaching": "Çocukluğunda annen babam çok tartıştı **para yüzünden**. 'Para kötü, mutluluk değil, biz zengin değiliz, zenginler hırsız.' Bu cümleler **kafanın derinine kayıt edildi**. Şimdi yetişkin: para kazanma çabası gizli **sabotaj** ile dolu.\n\nT. Harv Eker (**Secrets of the Millionaire Mind**): 'Para hayatın **kafanda inşa**. Çocukluk para hikayeleri = **finansal blueprint**. Bu blueprint değişmeden gerçek değişim yok.'\n\n**Tipik blokağlayıcı para hikayeleri**:\n- 'Para mutluluk getirmez' (sızdırma sözcüğü — başkasının dediği)\n- 'Zenginler hırsızdır / kötüdür' (sosyal mesaj)\n- 'Biz zengin değiliz' (kimlik)\n- 'Para kazanmak zor' (zihinsel limit)\n- 'Para konusu konuşulmaz' (tabu)\n- 'Borç korkunç' / 'Borç normal' (yanlış inanç)\n\nBu hikayeler **şuuraltında** çalışır — sen 'mantıklıyım' dersin ama **davranış uyumsuz**. Niye? Çünkü çocuklukta öğrenildi, **mantık erişemez** orada.\n\nÇözüm: **hikayeyi tanı + yeniden yaz**.\n\nYeni hikaye örnekleri:\n- 'Para araçtır, ben yaratıcıyım.'\n- 'Zenginlik = değer üretiminin sonucu.'\n- 'Para hayatımı genişletir, daraltmaz.'\n- 'Ben para kazanmayı hak ediyorum.'\n- 'Finansal başarı = sorumluluk, suçluluk değil.'\n\nMekanizma: yeni hikaye = **yeni belief system** = yeni davranış. **30 gün her sabah oku** = nöral pekiştirme. Eski hikayeyi **tanıma** + **yenisini tekrar** = değişim.",
+        "action": "Bugün 5 dakika **kendi para hikayeni yaz**. Sonra **yeni versiyonunu** yaz.",
+        "reflectionPrompt": "Eski para hikayen **seni nasıl tutuyor**? Hangi davranışta görünür?",
+        "proTip": "**Yeni hikaye 30 gün** boyunca her sabah oku. Beyin tekrara inanır.",
         "quiz": [
           {
             "q": "Para hikayesi nereden?",
@@ -7013,10 +7013,10 @@
       },
       "26": {
         "title": "Harcama Farkındalığı",
-        "teaching": "Çoğu harcama bilinçaltı: stres, sıkıntı, sosyal baskı, reklam tetikleyici. Farkındalık tek silah. Her harcama öncesi: \"Bunu duygusal mı, gerçek ihtiyaçtan mı alıyorum?\"",
-        "action": "Bugün her harcama öncesi 10 saniye dur, niyetini sorgula.",
-        "reflectionPrompt": "Hangi harcama duygusaldı? Niye?",
-        "proTip": "Duygusal harcama = elin telefona gider, \"şunu alayım\" der. Eli durdur.",
+        "teaching": "Stresli bir hafta. Cuma akşamı bitti. **Otomatik**: 'Kendime ödül vereyim' — Amazon'da 500 TL alışveriş. Yarın: 'Niye aldım bunu?' Klasik **duygusal harcama**.\n\nDan Ariely (Duke, behavioral economist): 'Harcamaların **%80'i duygusal**. Mantıklı görünür ama temel motivasyon duygu — stres, sıkıntı, kıskançlık, sosyal baskı, reklam tetikleyici.'\n\n**Tetikleyici duygular**:\n- **Stres** → 'rahatlama' alışverişi (gıda, alkol, elektronik)\n- **Sıkıntı** → 'eğlence' alışverişi (random ürün)\n- **Kıskançlık** → 'eşit olma' alışverişi (arkadaş aldı, ben de)\n- **Üzüntü** → 'mood lift' alışverişi (giyim, lüks)\n- **Sosyal baskı** → 'görünme' alışverişi (status sembolü)\n- **Reklam** → 'manipülasyon' alışverişi (FOMO, kısıtlı zaman)\n\nMekanizma: duygusal harcama = **kısa süreli dopamin spike** (anlık tatmin) → sonra **kortizol** (suçluluk). Sürekli döngü = finansal yıkım + duygusal yıkım.\n\n**Farkındalık tek silah**. Her harcama öncesi: '**Bunu duygusal mı, gerçek ihtiyaçtan mı alıyorum?**'\n\n**10 saniye dur** tekniği:\n1. Eli durdur (telefon, kart, cüzdan)\n2. 10 saniye dur\n3. Duyguyu fark et ('stresli misiyim, sıkıntılı mı, üzüntülü mü?')\n4. Karar: gerçek ihtiyaç mı, duygusal mı?\n5. Duyguysa: alternatif (yürüyüş, su, telefon arkadaş)\n\nDuygusal harcama → eli **telefona/karta gider**, 'şunu alayım' der. Eli **fiziksel olarak durdur** (cebe at, eli sıkı).",
+        "action": "Bugün **her harcama öncesi 10 saniye dur**, niyetini sorgula.",
+        "reflectionPrompt": "Hangi harcama **duygusaldı**? Niye — hangi tetikleyici?",
+        "proTip": "Duygusal harcama = el **telefona gider**, 'şunu alayım' der. **Eli durdur** (cebe at, sıkı sık).",
         "quiz": [
           {
             "q": "Çoğu harcama ne?",
@@ -7044,10 +7044,10 @@
       },
       "27": {
         "title": "Bilinçli Para",
-        "teaching": "Para = enerji + zaman değişimi. Her 100 TL = saatler emek. Bunu unutunca israf başlar. Hatırla: telefonun 30.000 TL = 100 saat çalışmış oldun. Telefonu hak ediyor mu?",
-        "action": "Bugün bir alacak şeye baktığında çalışma saatine çevir. \"100 saat\" gözüne büyür mü, küçük mü gelir?",
-        "reflectionPrompt": "Saate çevirince hangi alımın yeniden değerlendi?",
-        "proTip": "Saatlik kazancını bil. 200 TL/saat ise 1.000 TL'lik şey = 5 saatlik emek.",
+        "teaching": "Mağazada **30.000 TL telefon**. 'Pahalı ama almalıyım, yeni gelmiş.' Karar otomatik. Ama düşün:\n- Saatlik kazancın 200 TL\n- 30,000 / 200 = **150 saat çalışma**\n- 150 saat / 8 saat = **19 iş günü**\n- = **1 ay full-time çalışma**\n\n**1 ay ömürdeki gücün** → telefon? Hala almak istiyorsan, evet. Çoğu zaman: **yeniden değerlendirme**.\n\nVicki Robin & Joe Dominguez (**Your Money or Your Life**): 'Para = **enerji + zaman değişimi**. Her 100 TL = saatler ömür harcadın. Bunu unutunca **israf başlar**.'\n\nFormül: **gerçek saatlik kazancın** = (net maaş ÷ ay) ÷ (çalışma saatleri + yolculuk + hazırlık + iş için harcama gerek). Çoğu zaman göründüğünden **%30-50 az**.\n\nÖrnek hesap:\n- Net maaş: 30K\n- Çalışma: 200 saat/ay\n- Yolculuk: 40 saat/ay (yolda)\n- Hazırlık: 20 saat (giyim, taşınma)\n- İş için harcama: 5K (ulaşım, yemek, takım, vs)\n- Gerçek saatlik = (30K - 5K) ÷ (200+40+20) = **96 TL/saat** (göründüğü 150 TL'den çok düşük)\n\nBu **gerçek saatlik** ile bütün harcamaları **çevir**:\n- 500 TL yemek = **5 saat ömür**\n- 5,000 TL telefon = **52 saat ömür**\n- 100,000 TL araba = **1,041 saat** = **6 ay ömür**\n\nMekanizma: para = soyut. Saat = somut. Çevirim = bilinçli karar. **Saatte çevirince** çoğu lüks 'hak etmiyor' gelir.",
+        "action": "Bugün **bir alacağın şeye** baktığında **çalışma saatine çevir**. '100 saat' gözüne büyür mü, küçük mü?",
+        "reflectionPrompt": "Saate çevirince **hangi alımın yeniden değerlendi**?",
+        "proTip": "**Saatlik kazancını bil**. 200 TL/saat ise 1,000 TL'lik şey = **5 saat ömür**.",
         "quiz": [
           {
             "q": "Para = ?",
@@ -7075,10 +7075,10 @@
       },
       "28": {
         "title": "Kuşak Disiplini",
-        "teaching": "Para disiplini sadece sen değil — çocuklarını etkiler. Servet 3 kuşakta yok olur eğer disiplin geçmezse. Onları \"para konuşmasından\" uzak tutmak = miras değil yük.",
-        "action": "Bugün ailenle 1 finansal konu konuş. Bütçe, hedef, yatırım — fark etmez.",
-        "reflectionPrompt": "Aile içi para tabusu hangi konularda var?",
-        "proTip": "Çocuklarına maaş + bütçe örneği göster. Para okur-yazarlığı en değerli miras.",
+        "teaching": "Dedendeyse büyük servet inşa etti. Baban harcadı. Sen toparlamaya çalışıyorsun. Çocukların? Belirsiz. Bu **'Shirtsleeves to shirtsleeves in three generations'** — Çinli, Amerikalı, hatta İskoçya'dan aynı atasözü.\n\nİstatistik: **%70 servet 2. kuşakta** azalır, **%90 3. kuşakta** yok olur (Williams Group araştırması, 3,250 aile). Sebep: **finansal disiplin transferi yok**.\n\nNiye? Çünkü:\n- Çocukları **'para konuşmasından' uzak** tut (zarar etme)\n- Mali okur-yazarlık öğretilmedi\n- Servet 'verildi' — kazanma deneyimi yok\n- Disiplin **bireysel** öğretilmedi\n\nThomas Stanley (**The Millionaire Next Door**): 'Gerçek mirasın **para değil, finansal bilinç**. Para okur-yazarlığı öğretilmemiş çocuk = yıkıcı varis.'\n\n**Aile içi para tabusu** = nesil sorunu. Yaygın tabular:\n- 'Maaşımız konuşulmaz'\n- 'Borçlarımız sır'\n- 'Yatırımlar gizli'\n- 'Çocuk para görsün ama dokunmasın'\n\n**Çözüm**: aile içi finansal **açıklık**.\n\n**Çocuklara öğret**:\n- **Allowance** (haftalık küçük para) → kendi karar\n- **Tasarruf üçleme**: harcamak / tasarruf / bağış (her birine bir kavanoz)\n- **Bütçe pratiği**: kendi ihtiyacın için planla\n- **Yatırım girişi**: 14-16 yaşta küçük yatırım hesabı\n- **Faturalar gör**: ev nasıl çalışır, gerçek maliyetler\n\nMekanizma: deneyim > teori. Para deneyimi olan çocuk **finansal sezgi** geliştirir, olmayan kararsız kalır.",
+        "action": "Bugün **ailenle 1 finansal konu konuş**. Bütçe, hedef, yatırım — fark etmez.",
+        "reflectionPrompt": "**Aile içi para tabusu** hangi konularda var?",
+        "proTip": "**Çocuklarına maaş + bütçe örneği göster**. Para okur-yazarlığı = **en değerli miras**.",
         "quiz": [
           {
             "q": "Servet 3 kuşak?",
@@ -7106,10 +7106,10 @@
       },
       "29": {
         "title": "Final Sprint",
-        "teaching": "29 gün boyunca para disiplini pratik ettin. Yarın \"tamamladın.\" Ama para yarınla bitmiyor. Final test: bu 30 günde işe yarayan en güçlü 1 alışkanlığı seç. 100 gün daha.",
-        "action": "Bugün 30 günün en güçlü 1 para disiplinini seç. Hangisi?",
-        "reflectionPrompt": "Niye bu disiplini seçtin? Hangi sonucu verdi?",
-        "proTip": "Otomatik tasarruf en kolay sürdürülebilen. İrade gücü yok, sistem var.",
+        "teaching": "**29 gün arkanda.** Para disiplini hakkında **çok şey öğrendin**: bütçe, otomatik tasarruf, abonelik denetimi, acil fon, indeks fonları, lifestyle inflation, pazarlık, vergi, sigorta, hedef, kimlik. Yarın 'tamamladın'.\n\n**Ama gerçek test bugün başlıyor**. Çoğu insan bu 30 günü tamamlar, sonra eski hayata döner. 90 gün sonra: birikim kalmamış, yatırım yapılmamış, eski harcama. Sebep: **kalıcılaştırma kararı yok**.\n\nİstatistik: yeni yıl finansal kararları **%85'i Şubat'ta** çöker. 'Tasarruf yapacağım' diyenlerin **%90'ı** 3 ay sonra aynı yerde. Sen **son %10'da olabilirsin** — şu noktadaki kararla.\n\n**Final test**: bu 30 günde **en somut sonuç** veren **1 alışkanlığı** seç. **100 gün daha yap**.\n\nNeden 1? Çoklu = paralel = tükenir. Tek = laser focus = kalıcı.\n\nKriterler:\n- En somut sonuç (net servet, daha az stres, açık hedef)\n- Sürdürülebilir (günlük/haftalık yapılabilir yıllarca)\n- Otomatik kuşatma (irade gerek değil — sistem var)\n\n**En kolay sürdürülebilen**: **otomatik tasarruf**. İrade gücü gerek değil — banka transfer ayarı. Bir kez kurarsın, hayat boyu çalışır.\n\nMekanizma: 30 gün = patika başlangıcı. +100 gün = patika kalın. 130 gün = nöral 'default'. Bu noktadan sonra geri dönmek **bilinçli çaba** gerek = dönmezsin.",
+        "action": "Bugün **30 günün en güçlü 1 para disiplinini** seç. Hangisi?",
+        "reflectionPrompt": "**Niye bu** disiplini seçtin? Hangi sonucu verdi?",
+        "proTip": "**Otomatik tasarruf en kolay sürdürülebilen**. İrade gücü yok, **sistem var**.",
         "quiz": [
           {
             "q": "Sürdürülebilir 1 disiplin?",
@@ -7137,10 +7137,10 @@
       },
       "30": {
         "title": "Tamamlandı — Yeni Para",
-        "teaching": "30 gün önce parayla ilişki bulanıktı. Şimdi: net servet, bütçe, hedefler net. Para sahibi sen değildin — şimdi sensin. Bu sabah aynaya bak: yeni bir finansal kimlik.",
-        "action": "Bugün 30 günün özetini yaz: 3 öğrendiğim, 3 sürdüreceğim, 3 unutmayacağım.",
-        "reflectionPrompt": "Yeni para zihninle hangi finansal hedefi yakalayacaksın?",
-        "proTip": "Bir sonraki yola 3 gün dinlendikten sonra geç. Tutarlılık = kalıcılık.",
+        "teaching": "**30 gün önce kimdin?** Parayla ilişki **bulanıktı**: ne kazandığını net bilmezdin, ne harcadığını izlemez, hedefin yoktu, tasarruf 'kalanla' yapılırdı, yatırım korkutucu, vergi karmaşık.\n\n**Bugün kimsin?**\n- **Net servet biliyorsun** (Ders 6) → ölçülüyor\n- **Bütçe var** (50/30/20) → kategoriler net\n- **Otomatik tasarruf** (Ders 10) → sistem çalışıyor\n- **Acil fon** (Ders 5) → güvenlik var\n- **Hedefler yazılı** (Ders 24) → yön belli\n- **Endeks fon** (Ders 18) → yatırım korkusu kırıldı\n- **Vergi optimum** (Ders 22) → gereksiz ödeme yok\n- **Sigorta gözden geçirildi** (Ders 23) → buffer hazır\n\n**Para sahibi sen değildin** — para seni kullanıyordu. **Şimdi sensin** — sen parayı kullanıyorsun.\n\nMekanizma: 30 gün düzenli pratik = **finansal nöral patika** kuruldu. Para kararları artık **karar yorgunluğu** yaratmaz — sistem var.\n\nT. Harv Eker: 'Para yönetimi = **bilinç durumu**. Kazanmak yetmez — yönetmek gerek. Düşük gelir + iyi yönetim = uzun vade zenginlik. Yüksek gelir + kötü yönetim = uzun vade fakirlik.'\n\n**Bu 30 gün = yeni baseline**. Bir sonraki seviye:\n- 31-50 dersleri (advanced: bileşik faiz, FIRE, miras planlama)\n- Veya **Body / Mind / Silent Morning** path'lerine geç\n\n**3 gün dinlen**, sonra devam. Tutarlılık = kalıcılık. Acele = gerileme.",
+        "action": "Bugün **30 günün özetini yaz**: **3 öğrendiğim, 3 sürdüreceğim, 3 unutmayacağım**.",
+        "reflectionPrompt": "Yeni para zihninle hangi **finansal hedefi** yakalayacaksın?",
+        "proTip": "Bir sonraki yola **3 gün dinlendikten sonra** geç. **Tutarlılık = kalıcılık**.",
         "quiz": [
           {
             "q": "Geçişten sonra dinlenme?",
