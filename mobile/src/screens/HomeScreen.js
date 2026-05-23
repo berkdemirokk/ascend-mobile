@@ -84,6 +84,7 @@ export default function HomeScreen({ navigation }) {
     baselineAssessment,
     latestAssessment,
     addAssessment,
+    lastDailyDeckCompletedDate,
     dailyChallengeCompletedAt,
     completeDailyChallenge,
     dailyMysteryBoxOpenedAt,
@@ -550,6 +551,54 @@ export default function HomeScreen({ navigation }) {
             />
           ))}
         </View>
+
+        {/* Daily Deck CTA — bite-sized morning ritual (~3 minutes
+            of 6 micro-cards). Hidden once today's deck is done so
+            the user never taps into a stale deck. Sits above the
+            reassessment card because it's a daily ritual; reassess
+            is monthly. */}
+        {lastDailyDeckCompletedDate !== todayDateStr ? (
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={() => navigation.navigate('DailyDeck')}
+            style={styles.deckCard}
+          >
+            <View style={styles.deckIconBox}>
+              <MaterialIcons
+                name="auto-awesome"
+                size={20}
+                color={LT.primary}
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.deckLabel}>
+                {t('home.deckLabel', 'BUGÜNÜN DESTESİ · ~3 DK')}
+              </Text>
+              <Text style={styles.deckTitle}>
+                {t(
+                  'home.deckTitle',
+                  'Stoik bir alıntı + 1 soru + 1 mikro eylem',
+                )}
+              </Text>
+            </View>
+            <MaterialIcons
+              name="arrow-forward"
+              size={18}
+              color={LT.primary}
+            />
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.deckDoneChip}>
+            <MaterialIcons
+              name="check-circle"
+              size={14}
+              color={LT.onSurfaceVariant}
+            />
+            <Text style={styles.deckDoneChipText}>
+              {t('home.deckDone', 'Bugünün destesi tamamlandı')}
+            </Text>
+          </View>
+        )}
 
         {/* Re-assessment due — fires 30 days after baseline (or 30
             days after the latest assessment, whichever is later).
@@ -1179,6 +1228,57 @@ const styles = StyleSheet.create({
   // and the primary CTA. Subdued red to read as a status pill, not
   // a CTA — it celebrates progress without pulling focus from the
   // actual "next lesson" button below it.
+  // Daily Deck entry — softer than the reassess CTA (which is once
+  // a month and bold). Daily Deck is everyday so it's quieter, but
+  // still warmer than the extras list.
+  deckCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderRadius: 16,
+    padding: 14,
+    marginTop: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(220, 38, 38, 0.25)',
+  },
+  deckIconBox: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(220, 38, 38, 0.10)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  deckLabel: {
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.4,
+    color: LT.primary,
+    marginBottom: 2,
+  },
+  deckTitle: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: LT.onSurface,
+  },
+  // Post-completion chip — small, just a "you did it" acknowledgement.
+  deckDoneChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: 4,
+    backgroundColor: LT.surfaceContainer,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 999,
+    marginTop: 12,
+  },
+  deckDoneChipText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: LT.onSurfaceVariant,
+  },
   // 30-day re-assessment CTA — full-width primary-colored card.
   // Bold by design: this is the highest-leverage retention moment
   // we have (the "look how far you've come" payoff), so it visually

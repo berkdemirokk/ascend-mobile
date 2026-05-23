@@ -159,6 +159,9 @@
     "memoryFooter": "Tüm yansımalarına bak →",
     "reassessLabel": "30 GÜN DOLDU",
     "reassessTitle": "Tekrar ölç, ne kadar ilerlediğini gör",
+    "deckLabel": "BUGÜNÜN DESTESİ · ~3 DK",
+    "deckTitle": "Stoik bir alıntı + 1 soru + 1 mikro eylem",
+    "deckDone": "Bugünün destesi tamamlandı",
     "allDone": "Tüm yollar yürüdü. 🎉",
     "allDoneSub": "Yenisini seç. Birini tekrar yürü. İş bitmez.",
     "ctaGenericSub": "Beş dakika. Olmanın en küçük birimi.",
@@ -700,6 +703,24 @@
   "futureLetter": {
     "label": "KENDİNDEN BİR MEKTUP",
     "cta": "OKUDUM"
+  },
+  "dailyDeck": {
+    "empty": "Bugünün destesi yüklenemedi.",
+    "whoSaid": "KİM SÖYLEDİ",
+    "howToApply": "NASIL UYGULANIR",
+    "youSay": "SEN NE DİYORSUN",
+    "responsePlaceholder": "Tek satır cevap...",
+    "miniAction": "MİKRO EYLEM",
+    "commit": "BUGÜN YAPACAĞIM",
+    "commitDone": "TAAHHÜT VERDİM",
+    "doneTitle": "Destesi tamamladın.",
+    "doneBody": "Bugün 3 dakika derin bir an yaşadın. Yarın yeni deste.",
+    "shareQuote": "Alıntıyı paylaş",
+    "finish": "Tamamla",
+    "next": "Sonraki",
+    "skipResponse": "Boş geç",
+    "skipAction": "Şimdilik geç",
+    "shareMsg": "\"{{quote}}\" — {{author}}. Bugünün destesinden. Ascend: Monk Mode."
   },
   "assessment": {
     "eyebrowBaseline": "BAŞLANGIÇ DEĞERLENDİRMESİ",

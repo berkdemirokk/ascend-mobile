@@ -26,6 +26,8 @@ const SYNCED_KEYS = [
   'baselineAssessment',
   'assessmentHistory',
   'latestAssessment',
+  'dailyDeckHistory',
+  'lastDailyDeckCompletedDate',
 ];
 
 export function pickSyncableState(state) {

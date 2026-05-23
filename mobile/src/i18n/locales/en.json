@@ -163,6 +163,9 @@
     "memoryFooter": "See all your reflections →",
     "reassessLabel": "30 DAYS IN",
     "reassessTitle": "Re-measure — see how far you've come",
+    "deckLabel": "TODAY'S DECK · ~3 MIN",
+    "deckTitle": "A stoic quote + 1 question + 1 micro action",
+    "deckDone": "Today's deck completed",
     "allDone": "Every path walked. 🎉",
     "allDoneSub": "Pick another. Revisit one. The work doesn't stop.",
     "ctaGenericSub": "Five minutes. The smallest unit of becoming.",
@@ -706,6 +709,24 @@
   "futureLetter": {
     "label": "A LETTER TO YOURSELF",
     "cta": "READ"
+  },
+  "dailyDeck": {
+    "empty": "Today's deck couldn't load.",
+    "whoSaid": "WHO SAID IT",
+    "howToApply": "HOW TO APPLY",
+    "youSay": "YOUR TURN",
+    "responsePlaceholder": "One-line answer...",
+    "miniAction": "MICRO ACTION",
+    "commit": "I'LL DO IT TODAY",
+    "commitDone": "COMMITTED",
+    "doneTitle": "Deck done.",
+    "doneBody": "You took 3 deep minutes today. New deck tomorrow.",
+    "shareQuote": "Share the quote",
+    "finish": "Done",
+    "next": "Next",
+    "skipResponse": "Skip",
+    "skipAction": "Skip for now",
+    "shareMsg": "\"{{quote}}\" — {{author}}. From today's deck. Ascend: Monk Mode."
   },
   "assessment": {
     "eyebrowBaseline": "STARTING POINT ASSESSMENT",

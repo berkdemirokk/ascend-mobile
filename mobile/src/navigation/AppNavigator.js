@@ -43,6 +43,7 @@ import InsightsScreen from '../screens/InsightsScreen';
 import LessonSearchScreen from '../screens/LessonSearchScreen';
 import AssessmentScreen from '../screens/AssessmentScreen';
 import ProgressReportScreen from '../screens/ProgressReportScreen';
+import DailyDeckScreen from '../screens/DailyDeckScreen';
 import WelcomeScreen from '../screens/auth/WelcomeScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
@@ -248,6 +249,14 @@ export default function AppNavigator() {
           component={ProgressReportScreen}
           options={{
             presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="DailyDeck"
+          component={DailyDeckScreen}
+          options={{
+            presentation: 'fullScreenModal',
             animation: 'slide_from_bottom',
           }}
         />

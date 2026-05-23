@@ -86,6 +86,13 @@ const initialState = {
   assessmentHistory: [],
   latestAssessment: null,
 
+  // Daily Deck completions — the bite-sized morning ritual. Each
+  // entry: { deckId, ts, response, actionCommitted }. The response
+  // text feeds the Reflection Treasure / Reflections archive as
+  // a parallel stream to lesson reflections. Trimmed to last 60.
+  dailyDeckHistory: [],
+  lastDailyDeckCompletedDate: null,
+
   // Streak calendar — { 'YYYY-MM-DD': count of lessons that day }
   lessonHistory: {},
 
@@ -210,6 +217,7 @@ const ACTION_TYPES = {
   CLEAR_MOMENTUM_TOAST: 'CLEAR_MOMENTUM_TOAST',
   SET_BASELINE_ASSESSMENT: 'SET_BASELINE_ASSESSMENT',
   ADD_ASSESSMENT: 'ADD_ASSESSMENT',
+  RECORD_DAILY_DECK: 'RECORD_DAILY_DECK',
   DELETE_ACCOUNT: 'DELETE_ACCOUNT',
   REFRESH_TODAY: 'REFRESH_TODAY',
   COMPLETE_PATH_LESSON: 'COMPLETE_PATH_LESSON',
@@ -777,6 +785,30 @@ function appReducer(state, action) {
       };
     }
 
+    case ACTION_TYPES.RECORD_DAILY_DECK: {
+      // Logs a completed daily deck. Lets HomeScreen hide the
+      // "Bugünün Destesi" CTA after completion (to avoid the user
+      // tapping into an already-done deck). The response text is
+      // kept so the Reflections / Treasure surfaces can show it
+      // alongside lesson reflections.
+      const { deckId, response, actionCommitted } = action.payload || {};
+      if (!deckId) return state;
+      const today = getTodayDateString();
+      const entry = {
+        deckId,
+        ts: Date.now(),
+        date: today,
+        response: (response || '').trim(),
+        actionCommitted: !!actionCommitted,
+      };
+      const history = [...(state.dailyDeckHistory || []), entry].slice(-60);
+      return {
+        ...state,
+        dailyDeckHistory: history,
+        lastDailyDeckCompletedDate: today,
+      };
+    }
+
     case ACTION_TYPES.ADD_ASSESSMENT: {
       // Post-baseline re-assessment. Appended to history so we can
       // chart progression over multiple 30-day cycles, but the
@@ -1054,6 +1086,10 @@ export function AppProvider({ children }) {
 
   const addAssessment = useCallback((scores) => {
     dispatch({ type: ACTION_TYPES.ADD_ASSESSMENT, payload: { scores } });
+  }, []);
+
+  const recordDailyDeckCompleted = useCallback((payload) => {
+    dispatch({ type: ACTION_TYPES.RECORD_DAILY_DECK, payload });
   }, []);
 
   const startVacation = useCallback((days = 7) => {
