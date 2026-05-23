@@ -128,9 +128,17 @@ export const ADMOB_IDS = {
   // the APP_ID_IOS so the SDK identifies itself as the correct
   // (App-Store-linked) app on every request. Ad unit IDs are unchanged.
   APP_ID_IOS: 'ca-app-pub-9898903071826160~2513505932',
-  INTERSTITIAL_IOS: 'ca-app-pub-9898903071826160/5083828952',
-  REWARDED_IOS: 'ca-app-pub-9898903071826160/1096482484',
-  BANNER_IOS: 'ca-app-pub-9898903071826160/3722645822',
+  // ⚠️ FIX (1.0.34): The previous unit IDs (5083828952 / 1096482484 /
+  // 3722645822) did NOT exist in this AdMob account — they were
+  // stale/wrong IDs copied from somewhere else. Every ad request was
+  // returning errors silently (no impressions accumulated, "0 etkin"
+  // visible in AdMob dashboard). The user verified the actual IDs in
+  // the AdMob "Ad units" page → Ascend: Monk Mode and they are below.
+  // Match rate should go from ~0 to normal levels within a few hours
+  // of this build hitting TestFlight.
+  INTERSTITIAL_IOS: 'ca-app-pub-9898903071826160/5475177787',
+  REWARDED_IOS: 'ca-app-pub-9898903071826160/5610075008',
+  BANNER_IOS: 'ca-app-pub-9898903071826160/8236238348',
   // Google-provided test IDs — use these only when __DEV__ to avoid invalid
   // traffic flags on live ad units during development.
   TEST_INTERSTITIAL_IOS: 'ca-app-pub-3940256099942544/4411468910',
