@@ -504,6 +504,7 @@
     "errFull": "Bu halka dolu (5 kişi limit).",
     "errCollision": "Sistem yoğun, bir saniye sonra tekrar dene.",
     "errGeneric": "Bir şeyler ters gitti. Tekrar dene.",
+    "errLeaveFailed": "Halkadan ayrılırken hata oluştu. İnternet bağlantını kontrol et ve tekrar dene.",
     "authRequiredTitle": "Giriş gerekli",
     "authRequiredBody": "Halka kurmak için hesabın olmalı. Önce giriş yap."
   },

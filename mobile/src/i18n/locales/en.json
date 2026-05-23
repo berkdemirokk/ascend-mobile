@@ -510,6 +510,7 @@
     "errFull": "This squad is full (5 person limit).",
     "errCollision": "System busy, try again in a moment.",
     "errGeneric": "Something went wrong. Try again.",
+    "errLeaveFailed": "Could not leave the squad. Check your connection and try again.",
     "authRequiredTitle": "Sign in required",
     "authRequiredBody": "You need an account to create a squad. Sign in first."
   },

@@ -97,7 +97,14 @@ export default function DailyDeckScreen({ navigation }) {
     });
   };
 
+  // Idempotency guard — a double-tap on "Tamamla" during the goBack
+  // animation could dispatch the record twice and call navigation.goBack
+  // twice (which on a nested stack can pop the wrong screen). Once the
+  // user finishes, ignore re-presses.
+  const finishedRef = useRef(false);
   const finishDeck = () => {
+    if (finishedRef.current) return;
+    finishedRef.current = true;
     // Success haptic on deck completion — matches the visual confetti
     // burst on the Done card. The tactile + visual combo is what makes
     // celebration moments feel earned vs. perfunctory.

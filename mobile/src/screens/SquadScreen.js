@@ -205,10 +205,24 @@ export default function SquadScreen({ navigation }) {
           onPress: async () => {
             setBusy(true);
             try {
-              await leaveSquad({
+              const ok = await leaveSquad({
                 squadId: squadData.squad.id,
                 userId,
               });
+              if (!ok) {
+                // Server failed (RLS, network, etc.). Do NOT clear local
+                // state — that would make the user think they left while
+                // the server still has the row, causing them to "magically
+                // rejoin" on next reload.
+                Alert.alert(
+                  t('squad.errorTitle', 'Hata'),
+                  t(
+                    'squad.errLeaveFailed',
+                    'Halkadan ayrılırken hata oluştu. İnternet bağlantını kontrol et ve tekrar dene.',
+                  ),
+                );
+                return;
+              }
               if (setCurrentSquad) setCurrentSquad(null);
               setSquadData(null);
             } finally {

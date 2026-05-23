@@ -2,7 +2,7 @@
 // Two paths to refill: watch a rewarded ad OR upgrade to premium.
 // Vivid Impact light theme.
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -43,12 +43,27 @@ export default function OutOfHeartsModal({
     () => isAdsReady() && isRewardedReady(),
   );
   useEffect(() => {
-    if (!visible) return undefined;
+    if (!visible) {
+      // Modal closed — explicitly clear any stuck "watching" state so
+      // a re-open never starts in the disabled spinner.
+      setWatching(false);
+      return undefined;
+    }
     setRewardedReady(isAdsReady() && isRewardedReady());
     const id = setInterval(() => {
       setRewardedReady(isAdsReady() && isRewardedReady());
     }, 500);
     return () => clearInterval(id);
+  }, [visible]);
+
+  // Cancellation token for the slow-path polling loop. If the user
+  // closes the modal mid-poll, the loop bails out so we don't call
+  // showRewarded() after onClose (which would silently fail and
+  // leave the user with no feedback).
+  const cancelledRef = useRef(false);
+  useEffect(() => {
+    if (!visible) cancelledRef.current = true;
+    else cancelledRef.current = false;
   }, [visible]);
 
   // Try to show a rewarded ad. If one isn't loaded yet, trigger a
@@ -67,7 +82,11 @@ export default function OutOfHeartsModal({
         if (earned) {
           onRefill?.();
           onClose?.();
-          return;
+          // No early return — fall through to setWatching(false) in
+          // the finally block below. The old code returned here
+          // without resetting `watching`, so the next time the modal
+          // re-opened the button was permanently stuck in
+          // "REKLAM YÜKLENİYOR..." with no way to recover.
         }
       } else {
         // Slow path — kick off a load and poll. AdMob usually
@@ -79,17 +98,19 @@ export default function OutOfHeartsModal({
         const startedAt = Date.now();
         // eslint-disable-next-line no-constant-condition
         while (true) {
+          if (cancelledRef.current) return; // user closed modal
           if (isRewardedReady()) break;
           if (Date.now() - startedAt > 6000) break;
           // eslint-disable-next-line no-await-in-loop
           await new Promise((r) => setTimeout(r, 400));
         }
+        if (cancelledRef.current) return; // double-check after sleep
         if (isRewardedReady()) {
           const earned = await showRewarded();
           if (earned) {
             onRefill?.();
             onClose?.();
-            return;
+            // Fall through to finally — no early return.
           }
         }
       }
@@ -116,8 +137,18 @@ export default function OutOfHeartsModal({
         t('hearts.adNotReadyTitle', 'Reklam yüklenemedi'),
         baseBody + codeHint,
       );
-    } catch {}
-    setWatching(false);
+    } catch {
+      // Swallow — the most common reason here is `showRewarded` rejecting
+      // (cancelled, dismissed mid-show). User already gets feedback via
+      // the alert above when the failure path runs.
+    } finally {
+      // Always reset, regardless of which branch we took. The OLD code
+      // had `setWatching(false)` outside the try (NOT a finally) AND
+      // had early returns in the success path, so a successful refill
+      // left `watching=true` forever — re-opening the modal showed the
+      // disabled spinner permanently. This is THE fix for that.
+      setWatching(false);
+    }
   };
 
   return (

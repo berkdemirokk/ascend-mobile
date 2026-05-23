@@ -19,6 +19,7 @@ import Animated2, {
 } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useApp } from '../contexts/AppContext';
 import { redeemReferralCode } from '../services/referral';
 import { COLORS } from '../config/constants';
@@ -133,7 +134,17 @@ export default function OnboardingScreen({ navigation }) {
   // grantReferralReward on success.
   const attemptReferralRedemption = async () => {
     const code = (referralCodeInput || '').trim();
-    if (!code || !user?.id) return;
+    if (!code) return;
+    // Guest mode — no userId yet. Save the code so the next sign-in
+    // can attempt redemption. Without this, a guest user who typed a
+    // friend's code silently lost it (the redemption no-op'd with no
+    // surface). They thought it worked; it didn't.
+    if (!user?.id) {
+      try {
+        await AsyncStorage.setItem('@ascend/pending_referral_code', code);
+      } catch {}
+      return;
+    }
     try {
       const result = await redeemReferralCode(code, user.id);
       if (result.ok) {

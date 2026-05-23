@@ -26,6 +26,7 @@ import { generateAnonUsername } from '../services/leaderboard';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
 import { getMySquad, recordSquadProgress } from '../services/squad';
+import { redeemReferralCode } from '../services/referral';
 import {
   cancelAllNotifications,
   scheduleStreakAtRiskReminder,
@@ -572,6 +573,25 @@ function appReducer(state, action) {
         unlockedAchievements: [],
         pathProgress: {},
         _streakLostInfo: null, // banner shouldn't survive an explicit reset
+        // The momentum loop is per-session — leaving it set means the
+        // first lesson of the new run could erroneously fire a "chain"
+        // bonus from before the reset. Wipe.
+        lastLessonAtMs: 0,
+        todaySessionLessons: 0,
+        _momentumToast: null,
+        // Streak-repair / milestone bookkeeping is also progress-tied.
+        streakRepairsUsed: 0,
+        _milestoneToast: null,
+        // Daily-deck + mystery-box + daily-login per-day flags reset so
+        // the user can re-experience them as if fresh.
+        dailyDeckHistory: [],
+        lastDailyDeckCompletedDate: null,
+        dailyChallengeCompletedAt: null,
+        dailyMysteryBoxOpenedAt: null,
+        dailyMysteryBoxLastReward: null,
+        dailyLoginGrantedAt: null,
+        // Assessment data is the user's measurement of self — keep it.
+        // baselineAssessment / assessmentHistory NOT cleared on purpose.
       };
 
     case ACTION_TYPES.REFRESH_TODAY: {
@@ -1132,6 +1152,36 @@ export function AppProvider({ children }) {
     };
   }, [state._loaded, userId]);
 
+  // ── Pending referral redemption (guest-mode → signed-in handoff) ───────
+  // A guest user who typed a friend's code during onboarding had no userId
+  // to redeem against. We stashed the code in AsyncStorage; now that an
+  // account exists, redeem it once and clean up.
+  useEffect(() => {
+    if (!state._loaded || !userId) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const pending = await AsyncStorage.getItem(
+          '@ascend/pending_referral_code',
+        );
+        if (!pending || cancelled) return;
+        const result = await redeemReferralCode(pending, userId);
+        if (cancelled) return;
+        // Whether it succeeded or failed (invalid / already-used), drop
+        // the pending code — retrying forever would just spam the server.
+        await AsyncStorage.removeItem('@ascend/pending_referral_code');
+        if (result?.ok) {
+          dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+        }
+      } catch (e) {
+        console.warn('[AppContext] pending referral redeem failed:', e?.message);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [state._loaded, userId]);
+
   // ── Push token registration ────────────────────────────────────────────
   // Once the user is signed in AND has at least one lesson completed
   // (proxy for "they accepted notifications during onboarding"), upsert
@@ -1374,10 +1424,26 @@ export function AppProvider({ children }) {
   }, []);
 
   const completePathLesson = useCallback(
-    ({ pathId, lessonId, reflection, reflectionAudioUri, quizCorrect = 0, xp = 15 }) => {
+    ({
+      pathId,
+      lessonId,
+      reflection,
+      reflectionAudioUri,
+      quizCorrect = 0,
+      quizTotal = 0,   // ← was being dropped on the floor; perfect-lesson +10 XP never fired
+      xp = 15,
+    }) => {
       dispatch({
         type: ACTION_TYPES.COMPLETE_PATH_LESSON,
-        payload: { pathId, lessonId, reflection, reflectionAudioUri, quizCorrect, xp },
+        payload: {
+          pathId,
+          lessonId,
+          reflection,
+          reflectionAudioUri,
+          quizCorrect,
+          quizTotal,
+          xp,
+        },
       });
     },
     [],

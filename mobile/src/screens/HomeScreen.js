@@ -366,9 +366,12 @@ export default function HomeScreen({ navigation }) {
     if (!currentLesson) return;
     if ((currentStreak || 0) < 3) return;
     if (!isPremium && (hearts || 0) <= 0) return;
-    // Don't auto-route into a lesson while the pledge modal is up —
-    // pledge takes priority on the very first session.
-    if (pledgeModalVisible) return;
+    // Don't auto-route into a lesson if the user owes a pledge for the
+    // active path. The pledge modal is set on a 600ms timer and the
+    // auto-route runs on 250ms, so checking the boolean `pledgeModalVisible`
+    // is racy — the modal hasn't opened yet on the first render. Gate on
+    // the source of truth instead: do they have a pledge stored?
+    if (activePathId && !pathPledges?.[activePathId]) return;
     autoRoutedRef.current = true;
     // Tiny delay so the home screen's first frame paints — avoids a jarring
     // jump that looks like a glitch.
@@ -379,7 +382,16 @@ export default function HomeScreen({ navigation }) {
       });
     }, 250);
     return () => clearTimeout(id);
-  }, [todayCompleted, currentLesson, currentStreak, navigation, isPremium, hearts]);
+  }, [
+    todayCompleted,
+    currentLesson,
+    currentStreak,
+    navigation,
+    isPremium,
+    hearts,
+    activePathId,
+    pathPledges,
+  ]);
 
   // Prefer the user's actual name when we have one. Sources, in order:
   //   1. Onboarding profile name (user typed it)

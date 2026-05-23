@@ -261,12 +261,49 @@ export default function LessonScreen({ navigation, route }) {
     return () => clearTimeout(id);
   }, [_momentumToast, clearMomentumToast]);
 
-  // When the user navigates to a different lesson (e.g. "Sonraki Ders"
-  // chain), reset the teaching page back to 0. Without this, page 3 of
-  // lesson N would show as the first page of lesson N+1, which feels
-  // broken (the user expects to start fresh).
+  // When the user navigates to a different lesson via navigation.replace
+  // (e.g. "Sıradakini de yap" → next lesson same screen instance), React
+  // Native keeps the SAME screen component mounted — only `route.params`
+  // changes. Without resetting per-lesson state, page-3 of lesson N
+  // would show as page-1 of lesson N+1, or worse: `completing=true`
+  // would persist and PERMANENTLY disable the Complete button on the
+  // next lesson (the user's primary complaint: "tamamlandı basılmıyo").
+  //
+  // We deliberately reset ONLY per-lesson UI/quiz state — global app
+  // context (XP, streak, pathProgress) belongs in AppContext and is
+  // not touched here. The `mountedRef` is NOT reset; it's tied to
+  // the actual component lifecycle, not the lesson swap.
   useEffect(() => {
+    setStep(STEP.TEACHING);
     setTeachingPageIdx(0);
+    setQuizIndex(0);
+    setSelectedAnswer(null);
+    setRevealed(false);
+    setCorrectCount(0);
+    setReflection('');
+    setActionDone(false);
+    setCompleting(false);              // ← the dead-button cause
+    setShowCelebration(false);
+    setMilestoneVisible(false);
+    setMilestoneStreak(0);
+    setPathSceneVisible(false);
+    setPathSceneStage(0);
+    setSageModeVisible(false);
+    setOutOfHeartsVisible(false);
+    setCritBonusXP(0);
+    setCritFlash(0);
+    setMirrorQuote(null);
+    setLetterModalVisible(false);
+    setCurrentLetter(null);
+    setRecording(false);
+    setRecordingUri(null);
+    // Reset celebration scale + xpY refs so the next lesson's
+    // celebration animation starts from its base instead of the prior
+    // lesson's end state.
+    try {
+      celebrationScale.setValue(0);
+      xpY.setValue(0);
+    } catch {}
   }, [lessonId]);
 
   useEffect(() => {
@@ -413,7 +450,19 @@ export default function LessonScreen({ navigation, route }) {
   };
 
   const handleComplete = async () => {
-    if (completing || alreadyCompleted) return;
+    if (completing) return;
+    // Re-tapping the green "✓ Tamamlandı" CTA on an already-finished
+    // lesson used to silently return (dead button). Now: behave as
+    // "go back / next" — the user pressed a button, they should see
+    // something happen. Navigate back to where they came from (the
+    // PathScreen reorders to highlight the next lesson, or HomeScreen
+    // surfaces the next CTA). No XP grant, no re-dispatch.
+    if (alreadyCompleted) {
+      try {
+        navigation.goBack();
+      } catch {}
+      return;
+    }
     setCompleting(true);
 
     try {

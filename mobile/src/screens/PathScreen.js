@@ -282,6 +282,14 @@ export default function PathScreen({ navigation }) {
           refillHearts();
           setOutOfHeartsVisible(false);
         }}
+        // Without this, the "PREMIUM İLE SINIRSIZ KALPLER" button
+        // inside the modal silently no-ops (onPaywall?.() with no
+        // handler attached). Free user with 0 hearts on Paths tab
+        // would tap the red CTA and see nothing happen.
+        onPaywall={() => {
+          setOutOfHeartsVisible(false);
+          navigation.navigate('Paywall');
+        }}
         refillAt={heartsRefillAt}
       />
 
