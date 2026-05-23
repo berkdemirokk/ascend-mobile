@@ -7478,10 +7478,10 @@
       },
       "41": {
         "title": "Zihniyet Kayması",
-        "teaching": "\"Param yok\" zihniyeti = yok bırakır. \"Para çekme bilirim\" = çeker. Zenginler zihniyet sorunu çözmüş. Önce kafa, sonra cüzdan.",
-        "action": "Bugün 5 dakika \"para iyi bir araçtır\" yaz.",
-        "reflectionPrompt": "Eski para hikayen ne?",
-        "proTip": "Yeni hikaye 30 gün her sabah oku.",
+        "teaching": "**'Param yok'** dersin sürekli. Sonra para gelir, **aynı şekilde** gider. 'Param yok' kalır. Çünkü zihniyet 'yok' demiştir, **gerçeklik uyum sağlar**.\n\nT. Harv Eker: 'Düşünce → duygu → eylem → sonuç. Sonuç → düşünce (pekiştirme). Döngü. **Sonuç değiştirmek için düşünce değişmeli**, ortası değil.'\n\nNapoleon Hill (**Think and Grow Rich**, 1937, 100M+ kopya): 'Düşünce şey haline gelir — özellikle finansal alanda. Zihniyeti değiştirmeden hayatı değiştiremezsin.'\n\n**Bloklayıcı para zihniyetleri**:\n- 'Param yok / yetmiyor'\n- 'Para çekmek zor benim için'\n- 'Para kötü, ben iyi insanım'\n- 'Zengin olmak şanstır'\n- 'Hiç başaramayacağım'\n- 'Risk almak korkutucu'\n\nBu cümleler **gerçeklik yaratır**. Beyin gün boyu **bu inançlara uygun veriyi** filtreler (RAS — confirmation bias).\n\n**Geliştirici zihniyetler**:\n- 'Para iyi bir araçtır'\n- 'Ben para çekme bilirim'\n- 'Servet inşa etmek bir beceridir'\n- 'Zengin olmak değer üretiminin sonucu'\n- 'Riski yönetebilirim'\n- 'Öğreniyorum, ilerliyorum'\n\nMekanizma: **belief → behavior → outcome → belief**. Olumlu inanç = olumlu davranış = olumlu sonuç = pekiştirilmiş inanç. Tersi de doğru.\n\n**'Önce kafa, sonra cüzdan.'** Zenginlerin gizli avantajı: zihniyet sorununu **çözmüş**. Aynı maaş + farklı zihniyet = farklı sonuç.\n\n**30 gün her sabah** yeni hikayeyi oku. Beyin tekrara inanır.",
+        "action": "Bugün 5 dakika **'para iyi bir araçtır'** yaz. Yeni hikaye.",
+        "reflectionPrompt": "**Eski para hikayen ne**? Hangi cümle gizli sabotaj?",
+        "proTip": "**Yeni hikaye 30 gün** her sabah oku. Beyin tekrara inanır.",
         "quiz": [
           {
             "q": "Önce ne değişir?",
@@ -7509,10 +7509,10 @@
       },
       "42": {
         "title": "Acil Fon Mastery",
-        "teaching": "3 ay yetmedi = 6 ay hedefi. 6 ay zorunlu giderlerin = işsizlik, hastalık, kriz buffer'ı. Hayat değişir, hazır ol.",
-        "action": "Bugün acil fon hedefini 6 aya çek.",
-        "reflectionPrompt": "6 ay daha güvenli mi hissettiriyor?",
-        "proTip": "Acil fon high-yield account = enflasyon kaybı az.",
+        "teaching": "Ders 5'te 3 aylık acil fonu öğrendin. **Bu ders mastery**: **6 aylık fon**.\n\nNiye 6 ay? Çünkü modern hayat krizleri **daha uzun sürer**:\n- **İşsizlik ortalama** 4-6 ay (kovid sonrası daha uzun)\n- **Sağlık problemi** geçici çözüm 3-6 ay\n- **Aile krizi** belirsiz\n- **Sektör krizi** 6+ ay (örnek: 2020 turizm, 2023 teknoloji)\n\n3 aylık fon = ihtiyacın yarısında bitiyor → panik = kötü kararlar.\n\nMatematik:\n- Aylık zorunlu giderler: ₺15K\n- 3 aylık fon: ₺45K\n- **6 aylık fon: ₺90K**\n\n90K **likit + güvenli**. Hayat değişir, hazır ol.\n\n**Acil fon nereye?**\n- **Yastık altı**: enflasyon = yıllık %50+ kayıp (Türkiye)\n- **Çek hesabı**: faiz sıfır, enflasyon kaybı\n- **Vadeli mevduat (1 ay)**: faiz var ama düşük\n- **Para piyasası fonu**: yüksek likit + faiz (en iyi)\n- **KKM (kur korumalı mevduat)**: TL'nin enflasyon koruması (Türkiye özel)\n- **Yüksek getirili mevduat**: %30-40 faiz (Türkiye 2024)\n\nAcil fon ≠ yatırım. **Likit + güvenli** öncelik. %20-30 getiri yetersiz ama amaç değil — **buffer**.\n\nMekanizma: 6 aylık fon = **psikolojik güvenlik** = uzun vade düşünme + iyi kararlar. Acil fon yoksa = sürekli alarm = stresli kararlar.\n\nDave Ramsey: '6 aylık acil fon = finansal disiplinin **gizli silahı**. Her şey yıkılırsa ayakta kalırsın. **6 ay nakit = 6 ay zihinsel huzur**.'",
+        "action": "Bugün **acil fon hedefini 6 aya çek**.",
+        "reflectionPrompt": "**6 ay** daha **güvenli** mi hissettiriyor?",
+        "proTip": "**Acil fon high-yield account** veya **para piyasası fonu** = enflasyon kaybı az.",
         "quiz": [
           {
             "q": "Optimum acil fon?",
@@ -7540,10 +7540,10 @@
       },
       "43": {
         "title": "Müzakere Mastery",
-        "teaching": "Maaş müzakere yıllık 50K-200K fark. \"Asıl rakam ne?\" sor. \"Bu son fiyatınız mı?\" %5-15 indirim açar. Faturalar bile müzakere edilir.",
-        "action": "Bugün 1 fiyat müzakere et.",
-        "reflectionPrompt": "Müzakere zor muydu?",
-        "proTip": "Internet operatör/kablo bedava müzakere = aylık tasarruf.",
+        "teaching": "Ders 21'de müzakere temellerini öğrendin. **Bu ders mastery seviyesi**: her alanda müzakere uygula.\n\nChris Voss (eski FBI rehine müzakerecisi, **Never Split the Difference**): 'Müzakere her **insan etkileşiminde** var — tanı veya tanıma. Tanırsan = kazanırsın. Tanımazsan = kaybedersin.'\n\n**Müzakere alanları (çoğu insan denemez)**:\n\n1. **Maaş** (yıllık ₺50-200K fark)\n   - 'Bu pozisyon için aralık nedir?'\n   - 'Beklentiyi karşılamak için ne yapabiliriz?'\n   - 'Performance review sonrası tekrar konuşalım mı?'\n\n2. **Faturalar** (internet, kablo, sigorta — %20-30 indirim)\n   - 'Rakip teklif aldım' (gerçek de olabilir)\n   - 'Sadakati ödüllendiren bir program var mı?'\n   - 'Devam etmemek için bir sebep aramıyorum, ama bu fiyatla zor'\n\n3. **Kira** (yıllık artış)\n   - 'Anlaştığımız zam oranı uygun mu?'\n   - 'Yıllık değer artışı zaten oldu — sözleşme yenileme stabil olabilir mi?'\n\n4. **Alışveriş** (elektronik, mobilya, takı)\n   - 'Bu son fiyatınız mı?'\n   - 'Nakit ödesem nasıl olur?'\n   - 'Birden fazla alırsam ne yapabiliriz?'\n\n5. **Servis** (tamir, danışmanlık, hizmet)\n   - 'Paket fiyat nasıl?'\n   - 'Uzun vade müşteri olursam indirim?'\n\n**'Asıl rakam ne?'** = açık uçlu soru, satıcının kafasındaki rakamı açar.\n\n**'Bu son fiyat mı?'** = sihir cümle, %5-15 indirim genelde otomatik.\n\nMekanizma: müzakere = **piyasa testi**. Her satıcının minimum + maksimum range'i var. Sormazsan = maksimumda alırsın. Sorarsan = aşağıya inebilir.\n\nİlk müzakere garip gelir. **Online indirim kodu** sormak = en düşük bariyer başlangıç.",
+        "action": "Bugün **1 fiyat müzakere et**. Satıcı, hizmet sağlayıcı, kira — fark etmez.",
+        "reflectionPrompt": "Müzakere **zor muydu**? Beklediğinden kolay mı zor mu?",
+        "proTip": "**Internet/kablo operatörleri** = bedava müzakere = aylık tasarruf. 5 dakika konuşma = ayda ₺100+ indirim.",
         "quiz": [
           {
             "q": "Maaş müzakere yıllık?",
@@ -7571,10 +7571,10 @@
       },
       "44": {
         "title": "Yan İş Planı",
-        "teaching": "Yan iş ek gelir + kariyer hedge. 5K TL ay = ev kirası ödendi. 10K = lifestyle kalite. 30K = full-time geçiş hazırlığı. 1 yıl plan ile.",
-        "action": "Bugün yan iş için 1 saat ayır.",
-        "reflectionPrompt": "En kolay başlatılır olan?",
-        "proTip": "İlk hedef: aylık 5K TL. Konkret ölçülebilir.",
+        "teaching": "**Yan iş** sadece ek para değil. Yan iş = **kariyer hedge** (sigorta) + **beceri geliştirme** + **özgürlük seçeneği** + **passion exploration**.\n\nNicolas Cole (yazar, 'The Art and Business of Online Writing'): 'Modern dünyada **side hustle = zorunluluk**, lüks değil. Tek gelir kaynağı = nesli tükenen bir tür. Bağımsızlık için **alternatif gelir** şart.'\n\n**Yan iş seviyeleri**:\n\n**Seviye 1: ₺5K/ay** — başlangıç\n- Ek gelir = **ev kirası ödendi**\n- Pasif birikim hızlanır\n- Beceri geliştir\n\n**Seviye 2: ₺10K/ay** — orta\n- **Lifestyle kalite** artar (tatil, hobi, ek tasarruf)\n- Ana işin **bağımlılığı azalır**\n\n**Seviye 3: ₺30K/ay** — ileri\n- Ana işin maaşıyla **eşit veya fazla**\n- **Full-time geçiş** hazırlığı\n- 1 yıl plan ile bağımsızlık\n\n**Seviye 4: ₺100K/ay** — master\n- Ana iş **opsiyonel**\n- Tam zaman entrepreneur\n- Birden fazla gelir akımı\n\n**Yan iş seçenekleri** (zorluk + getiri sıralı):\n- Freelance (en kolay başla)\n- Online satış (Etsy, Trendyol, Amazon)\n- İçerik yazarlığı (Medium, Substack)\n- YouTube / TikTok (uzun yol)\n- Online kurs (uzmanlık varsa)\n- E-kitap (yazıyorsan)\n- Mentörlük / koçluk\n- Yatırım danışmanlığı (CFA gerek)\n\n**1 yıl plan**:\n- Ay 1-3: araştır, başla\n- Ay 4-6: ilk ₺ kazanma\n- Ay 7-9: ₺5K/ay\n- Ay 10-12: ₺10K/ay\n\nMekanizma: yan iş = **iş güvenliği yanılgısının kırılması**. Tek işveren = tek bağımlılık. Yan iş = **opsiyon değeri** + **özgürlük**.",
+        "action": "Bugün **yan iş için 1 saat** ayır. Araştırma, plan, ilk adım.",
+        "reflectionPrompt": "**En kolay başlatılır** olan hangisi senin için?",
+        "proTip": "**İlk hedef**: aylık **₺5K**. Konkret + ölçülebilir. Belirsiz hedef = belirsiz sonuç.",
         "quiz": [
           {
             "q": "İlk yan iş hedefi?",
@@ -7602,10 +7602,10 @@
       },
       "45": {
         "title": "Finansal Bağımsızlık",
-        "teaching": "FIRE = Financial Independence Retire Early. 25x yıllık harcaman = bağımsızlık. Yıllık 100K harcıyorsan, 2.5M = özgürlük. %4 çekme kuralı.",
-        "action": "Bugün FIRE numaranı hesapla.",
-        "reflectionPrompt": "Sayı ulaşılabilir mi?",
-        "proTip": "Mr. Money Mustache blog = FIRE topluluk.",
+        "teaching": "**'Emeklilik 65'te'** modeli **eski**. Modern alternatif: **FIRE (Financial Independence Retire Early)**. Hedef: çalışmak istemediğinde **çalışmak zorunda olmamak**.\n\n**Formül** (William Bengen 1994 — '4% kuralı'):\n- **Yıllık harcaman × 25 = FIRE numarası**\n- 25 katı birikimle yatırım yaparsan, **yıllık %4 çekme** sürdürülebilir (anaparayı tüketmeden)\n\nMatematik:\n- Yıllık harcama: ₺200K\n- FIRE: 200K × 25 = **₺5 milyon**\n- 5M yatırım × %10 = 500K yıllık getiri\n- 200K harca, 300K büyür → enflasyona karşı korunur\n\n**FIRE tipleri**:\n- **Lean FIRE**: minimum yaşam (₺2-3M Türkiye)\n- **Regular FIRE**: konforlu (₺5-10M)\n- **Fat FIRE**: lüks (₺20M+)\n- **Coast FIRE**: yeterli birikim var, çalışmak isteğin için (artık emeklilik için tasarruf gerek değil)\n\n**Pete Adeney (Mr. Money Mustache, FIRE pioneer)**: 30 yaşında emekli oldu. Engineer maaşıyla 7 yıl agresif tasarruf + yatırım. Hayatın boyunca özgür.\n\n**Standart yol vs FIRE**:\n- Standart: 65'te emekli, 50 yıl çalışmak zorunda → özgürlük 20 yıl\n- FIRE: 40-45'te emekli, 25 yıl çalış, **40 yıl özgür**\n\n**FIRE şartları**:\n- **Tasarruf oranı**: %50-70 (standart %5-10)\n- **Düşük lifestyle inflation**\n- **Endeks fonu yatırım** (Ders 18)\n- **Çeşitli gelir** (Ders 17, 34)\n- **Sade hayat tarzı**\n\nMekanizma: FIRE = bileşik faiz + yüksek tasarruf oranı + zaman = freedom dividend.",
+        "action": "Bugün **FIRE numaranı hesapla**. Yıllık harcaman × 25.",
+        "reflectionPrompt": "Sayı **ulaşılabilir** mi? 10-15 yıl plan ile mümkün mü?",
+        "proTip": "**Mr. Money Mustache blog** = FIRE topluluk. Pratik yol haritası + binlerce hikaye.",
         "quiz": [
           {
             "q": "FIRE numarası?",
@@ -7633,10 +7633,10 @@
       },
       "46": {
         "title": "Emeklilik Planlaması",
-        "teaching": "Emeklilik 65'te değil. Hazırlık 30'da başlar. Bireysel emeklilik + devlet + yatırım = 3 ayak. Erken başlamayan 60'ta panik.",
-        "action": "Bugün BES açtırmadıysan, başvur.",
-        "reflectionPrompt": "Devlet emekliliği yeter mi?",
-        "proTip": "%25 devlet katkısı = otomatik %25 kazanç. Asla bırakma.",
+        "teaching": "Türkiye'de devlet emeklilik maaşı: ortalama **₺7,500-15,000**. Hayat pahalılığı: aylık asgari yaşam **₺25K+**. Fark: **devlet emekliliği YETMİYOR**. Bu **gerçek**, görmezden gelinemez.\n\n'Devlet emeklim olur, başka şeye gerek yok' = 60'ta panik. Çok geç.\n\nDmitri Toth (emeklilik finansman uzmanı): 'Emeklilik 65'te değil — **30'da başlar**. Hazırlık zamanı = **bileşik faiz çalışma süresi**. 30 yıl × bileşik = milyonlarca.'\n\n**3 ayaklı emeklilik sistemi**:\n\n1. **Devlet emekliliği (SGK)** — temel, minimum hayat\n2. **Bireysel emeklilik (BES)** — devlet katkısı %25\n3. **Kişisel yatırım** (hisse, fon, emlak) — çoklu kaynak\n\n**BES (Bireysel Emeklilik Sistemi) — Türkiye özel**:\n- Ödediğin prim üzerine **%25 devlet katkısı**\n- Aylık ₺1000 ödüyorsan → ₺250 devlet ekler → toplam ₺1250 birikir\n- Bu **otomatik %25 kazanç**, hiçbir yatırımda yok\n- 10+ yıl dayanma şartı (erken çekersen katkı kayıp)\n\nMatematik:\n- 30 yaş başla, ayda ₺1000 BES + %25 devlet\n- 30 yıl × ayda ₺1250 × %8 yatırım getirisi\n- 65'te: **~₺2.5 milyon** birikim\n- Plus devlet emekliliği + kişisel yatırım\n- = **rahat emeklilik**\n\n**Erken başlamayan 60'ta panik**:\n- 40'ta başlasa: 65'te ₺900K (yarısı)\n- 50'de başlasa: ₺350K (çok az)\n- 60'ta başlasa: ₺80K (komedi)\n\nMekanizma: bileşik faiz erken başlangıçtan **lineer değil exponansiyel** fark yaratır.\n\n**Eylem**: BES yoksa **bugün** açtır. %25 devlet katkısı = bedava para.",
+        "action": "Bugün **BES açtırmadıysan, başvur**. Online 15 dakika.",
+        "reflectionPrompt": "**Devlet emekliliği yeter** mi senin hedef hayatın için?",
+        "proTip": "**%25 devlet katkısı** = otomatik %25 kazanç. **Asla bırakma**.",
         "quiz": [
           {
             "q": "Emeklilik 3 ayak?",
@@ -7664,10 +7664,10 @@
       },
       "47": {
         "title": "Servet Kimliği Final",
-        "teaching": "Davranışlar tekrar olunca kimlik olur. 50 günde para alışkanlıkların değişti. Şimdi kimlik konuşması: \"Ben kontrolüm. Ben planlıyorum. Ben yatırıyorum.\"",
-        "action": "Bugün servet kimliğini 3 cümlede yaz.",
-        "reflectionPrompt": "En güçlü cümle?",
-        "proTip": "Cüzdana yaz, her açtığında oku.",
+        "teaching": "Ders 32'de **servet kimliği** kavramını öğrendin. Şimdi **mastery seviyesi**: davranışlar tekrar olunca **kimlik olur**.\n\n47 günde para alışkanlıkların **dramatic değişti**:\n- Otomatik tasarruf\n- Bütçe disiplini\n- Çerçeve kararlar\n- Müzakere becerisi\n- Yatırım planı\n- Acil fon\n- Çoklu gelir\n- Vergi optimizasyonu\n- Sigorta koruma\n\n**Şimdi kimlik konuşması**:\n- '**Ben kontrolüm**' (otomatik tasarruf, bütçe, sistem)\n- '**Ben planlıyorum**' (hedef, vergi, sigorta, miras)\n- '**Ben yatırıyorum**' (endeks fon, çeşitlenme, uzun vade)\n- '**Ben servet inşa ediyorum**' (çoklu gelir, ev sahibi, pasif gelir)\n\nBu cümleler **artık doğru** — son 47 günün **kanıtı** var.\n\nJames Clear (Atomic Habits): 'Sürdürülebilir disiplin = kimlik. Davranış geçici, kimlik kalıcı. 30+ gün düzenli pratik = kimlik nöral olarak kayıt.'\n\n**3 cümle formülü** (kendine yaz):\n\n1. '**Ben** [davranış] **yapan** biriyim.' (mevcut kanıt)\n2. '**Ben** [hedef] **olan** biriyim.' (gelecek vizyon)\n3. '**Ben** [değer] **yaşayan** biriyim.' (değer sistemi)\n\nÖrnek:\n1. 'Ben her ay maaşın %20'sini otomatik tasarruf eden biriyim.'\n2. 'Ben 10 yıl içinde finansal bağımsızlığa ulaşacak biriyim.'\n3. 'Ben paranın efendisiyim, kölesi değil.'\n\nMekanizma: yazılı + sözlü + tekrarlı kimlik = nöral patika kalın = otomatik davranış.\n\nKritik: **gerçeklik tabanlı**. 'Ben dünyanın en zengin adamıyım' = yalan, beyin reddeder. 'Ben servet inşa eden biriyim' = doğru, beyin kabul eder.",
+        "action": "Bugün **servet kimliğini 3 cümlede** yaz.",
+        "reflectionPrompt": "**En güçlü cümle** hangisi? Hangi 'evet bu benim' hissi veriyor?",
+        "proTip": "**Cüzdana yaz**, her açtığında oku. Görsel hatırlatma = nöral pekiştirme.",
         "quiz": [
           {
             "q": "Servet kimliği nasıl?",
@@ -7695,10 +7695,10 @@
       },
       "48": {
         "title": "Final Sprint",
-        "teaching": "Son 3 gün. 50 günde para ilişkisi karışıktan netleşti. Bu sprint = kalıcı kimlik. Yarın paranın patronu sensin.",
-        "action": "Bugün son sprintin niyetini yaz.",
-        "reflectionPrompt": "En değişen para alışkanlığı?",
-        "proTip": "Net servet sayını kaydet, 30 gün sonra karşılaştır.",
+        "teaching": "**Son 3 gün.** 47 ders arkanda. Para ilişkisi **karışıktan netleşti**: bütçe, otomatik sistem, hedef, yatırım, sigorta, vergi, kimlik. Yarın 50 — **master**.\n\nBu noktada beden 'bitti zaten' der, beyin 'son birkaç günü atlasan bir şey olmaz' fısıldar. **Direnç** — Pressfield kavramı (zaten diğer path'lerde tanıdın).\n\nİstatistik: yeni yıl finansal kararları **%85'i Şubat'ta** çöker. Sen **son %5'tesin** — şu noktadaki kararla **lock-in** mümkün.\n\nNiye 50 önemli? Beyin için **'tamamlanmış'** etiket. 47'de duran 'neredeyse' der. 50'de duran **'başardım'** der. Aralarındaki fark = **kimlik mührü**.\n\n**Son 3 gün** = finansal kimliğin **nöral olarak** kaydedilmesi. Bu noktadan sonra geri dönmek 'bilinçli çaba' gerek = dönmezsin.\n\n**Niyet yaz**: 'Niye sürdürmek istiyorum?' 3 cümle.\n\nÖrnek:\n- 'Finansal özgürlük benim için **zaman özgürlüğü** = ailem + hobi + anlam.'\n- 'Paranın kölesi değil **efendisi** olmak istiyorum.'\n- 'Çocuklarıma **finansal bilinç + örnek** bırakmak istiyorum.'\n\nMekanizma: niyet = PFC odaklı motivasyon. Yazılı niyet = görsel hatırlatma = sürekli pekiştirme.\n\n**Net servet sayını kaydet**: 30 gün sonra **karşılaştır**. Ölçüm = motivasyon = sürdürme.",
+        "action": "Bugün **son sprintin niyetini yaz**. 3 cümle.",
+        "reflectionPrompt": "**En değişen para alışkanlığı** hangisi? Hangisi en kalıcı?",
+        "proTip": "**Net servet sayını kaydet**, **30 gün sonra karşılaştır**. Ölçüm = motivasyon.",
         "quiz": [
           {
             "q": "Final sprint?",
@@ -7726,10 +7726,10 @@
       },
       "49": {
         "title": "49 Gün İçinde",
-        "teaching": "49 günde otomatik tasarruf, çerçeveli karar, çeşitlenmiş yatırım, vergi farkındalığı. Yeni baseline = master para. 10 değişiklik listele.",
-        "action": "Bugün 49 günde değişen 10 para alışkanlığını yaz.",
-        "reflectionPrompt": "En unutulmaz değişim?",
-        "proTip": "Net servet grafiği = motivasyon.",
+        "teaching": "**49 gün.** Yarın 50. 49 günde para alışkanlıkların **başkası oldu**. Tek tek listeleme şaşırtıcı:\n\n**49 günde belgelenmiş para değişimleri**:\n- **Otomatik tasarruf** — irade gerek değil, sistem çalışıyor\n- **Bütçe disiplini** (50/30/20) — kategoriler net\n- **Net servet takibi** — aylık ölçüm + ilerleme\n- **Acil fon** — 6 aylık buffer var\n- **Endeks fon yatırımı** — DCA başlatıldı, korku kırıldı\n- **Çerçeve kararları** — pre-decision sistem\n- **Vergi farkındalığı** — indirim hakları kullanılıyor\n- **Sigorta gözden geçirildi** — eksik kapanmış, fazla iptal\n- **Çoklu gelir başlatıldı** — yan iş veya pasif kaynak\n- **Servet kimliği** — 'ben kontrolüm' iç ses\n\n10 değişiklik = **abartı değil** — bu **gerçek**. Her birinin **somut etkisi** var: daha az stres, daha çok birikim, daha berrak hedef, daha güvenli gelecek.\n\nLally araştırması: 49 gün düzenli pratik = **basal ganglia otomatizasyonu**. Beyin yeni patikayı 'default' olarak tanıyor. Geri dönmek **bilinçli çaba** gerek.\n\nBu liste senin **kanıt arşivin**. Gelecekte 'ben yapamam' sesi geldiğinde bak: '**49 günde 10 para alışkanlığı değiştirdim — bunu da yaparım**.'\n\n**Net servet grafiği** = motivasyon. Aylık ölçüm + grafik = görsel ilerleme = devamlılık.",
+        "action": "Bugün **49 günde değişen 10 para alışkanlığını** yaz.",
+        "reflectionPrompt": "**En unutulmaz değişim** hangisi? Bunu birine anlatsa en çok şaşırtırdı?",
+        "proTip": "**Net servet grafiği** = motivasyon. Aylık ölçüm + grafik = görsel ilerleme.",
         "quiz": [
           {
             "q": "Yeni baseline?",
@@ -7757,10 +7757,10 @@
       },
       "50": {
         "title": "Master Tamamlandı",
-        "teaching": "50 gün. Para artık endişe değil araç. Kontrol, plan, çeşitlenme, kimlik. Yeni baseline = finansal master. Diploma yok — net servet artıyor.",
-        "action": "Bugün aynaya bak. Yeni Sen'i selamla.",
-        "reflectionPrompt": "50 gün önceki sen şimdi olmak ister miydi?",
-        "proTip": "5 path tamamlandıysa: 6. ay her gün 1 path'tan ders. Ya da kendi path'ini tasarla.",
+        "teaching": "**50 gün.** Para artık **endişe değil araç**. Kontrol var, plan var, çeşitlenme var, kimlik var. **Yeni baseline = finansal master.**\n\nÇoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\n**Yeni Sen kim?**\n- **Bütçe ile yaşıyor** — kategoriler net\n- **Otomatik tasarruf** — sistem çalışıyor, irade gerek değil\n- **Acil fon hazır** — 6 aylık buffer\n- **Yatırım yapıyor** — endeks fon DCA\n- **Vergi optimum** — gereksiz ödeme yok\n- **Sigorta dengeli** — eksik kapanmış, fazla iptal\n- **Çoklu gelir** — risk dağıtılmış\n- **Servet kimliği** — 'ben yaratıcı'\n- **Müzakere becerisi** — pazarlık otomatik\n- **Uzun vade düşünür** — bileşik faiz silahın\n\n**Diploma yok**. Sertifika yok. Sadece **net servet artıyor**. Bu **en güçlü kanıt**.\n\nT. Harv Eker: 'Servet **dış değişim değil, iç dönüşüm**. Maaş aynı olabilir — finansal kimlik değişti = uzun vade exponansiyel fark.'\n\n50 gün = nöral patika kuruldu. 90 gün = kalıcı. 1 yıl = kimlik. Şu noktada **karar senin**: 31-50 dersleri (advanced) veya başka path.\n\n**5 path tamamlandıysa**: 6. ay her gün **1 path'tan ders** (karışım). Veya **kendi path'ini tasarla** — özelleşmiş, kişisel.\n\nAyna karşısına geç. 50 gün önceki sen → bugünkü sen. **Tanıyor musun**?\n\nFinansal disiplin **bulaşıcı** — para alanında öğrendiğin prensipler (sistem, otomasyon, uzun vade, kimlik) zihin, beden, sabah ritüeli, ilişki, kariyer — **her şeye taşınır**.\n\n**Çoğu insan yaşam boyu** 'para sorunu' yaşar. Sen artık **yaşam boyu** finansal kontrolünde. Bu **ömür boyu fark**.",
+        "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır.",
+        "reflectionPrompt": "**50 gün önceki sen şimdi olmak ister miydi**? Bu sorunun cevabı ne söylüyor?",
+        "proTip": "**5 path tamamlandıysa**: 6. ay her gün **1 path'tan ders**. Ya da **kendi path'ini tasarla**.",
         "quiz": [
           {
             "q": "Master = ?",
