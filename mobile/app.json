@@ -3,7 +3,7 @@
     "name": "Ascend: Monk Mode",
     "slug": "ascend-level-up",
     "scheme": "ascend",
-    "version": "1.0.40",
+    "version": "1.0.41",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -18,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ascend.growth",
-      "buildNumber": "45",
+      "buildNumber": "46",
       "usesAppleSignIn": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
@@ -226,14 +226,6 @@
             ]
           },
           {
-            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCrashData",
-            "NSPrivacyCollectedDataTypeLinked": false,
-            "NSPrivacyCollectedDataTypeTracking": false,
-            "NSPrivacyCollectedDataTypePurposes": [
-              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
-            ]
-          },
-          {
             "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
             "NSPrivacyCollectedDataTypeLinked": false,
             "NSPrivacyCollectedDataTypeTracking": false,
@@ -313,8 +305,7 @@
           "userTrackingUsageDescription": "We use your device's advertising ID to show you ads tailored to your interests. You can change this preference anytime in Settings."
         }
       ],
-      "expo-tracking-transparency",
-      "@sentry/react-native"
+      "expo-tracking-transparency"
     ],
     "extra": {
       "supabase": {
@@ -322,7 +313,6 @@
         "anonKey": "sb_publishable_2VZz9irXZ95Anw3kKA4d7w_AXgRzAp3"
       },
       "revenueCatIosKey": "appl_GdTXEiIwMXBaFuHLGjwBhzlrruB",
-      "sentryDsn": "",
       "eas": {
         "projectId": "2a44eced-27a4-4ae2-b831-25957422f01b"
       }
