@@ -44,12 +44,6 @@ export const WHATS_NEW = {
     titleDefault: 'Yeni özellikler geldi',
     bullets: [
       {
-        icon: 'groups',
-        key: 'whatsNew.v1_0_32.squad',
-        default:
-          'Halka (Squad) — 2-5 kişilik özel disiplin grubu kur, kollektif streak tutun.',
-      },
-      {
         icon: 'dark-mode',
         key: 'whatsNew.v1_0_32.dark',
         default:

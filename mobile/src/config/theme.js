@@ -1,26 +1,19 @@
 // Runtime theme helper — pairs with the static `LT` + `LT_DARK` token
 // sets in `./lightTheme.js`.
 //
-// Migration is intentionally incremental. The codebase is large; trying
-// to rewrite every screen's StyleSheet in one PR would be a giant diff
-// that's hard to review and easy to regress. Instead each screen opts
-// in to dynamic theming via the `useThemedStyles` hook below.
+// Current scope (intentional): root surfaces + global overlay UI are
+// dark-aware (splash, status bar, navigator background, WhatsNew modal,
+// AdDebug modal, Skeleton loader). The bulk of screens stay on the
+// static `LT.*` light palette — looks fine in light mode, visibly
+// off-brand in dark for content areas.
 //
-//   Phase 1 (shipped): root surfaces dark-aware (splash, status bar,
-//                      navigator background). Existing screens kept
-//                      their static `LT.*` references — fine on light,
-//                      visibly mismatched on dark for any non-root
-//                      content.
-//   Phase 2 (this file): expose `useTheme` + `useThemedStyles` so any
-//                      screen can become dark-aware by replacing one
-//                      line: `const styles = StyleSheet.create({...})`
-//                      → `const styles = useThemedStyles((T) =>
-//                      StyleSheet.create({...}))`. Initial screens
-//                      migrated: Squad, Settings, Profile, Reflections.
-//   Phase 3 (later):   migrate the heavyweight screens (Home, Path,
-//                      Lesson, DailyDeck, Onboarding). Each is a
-//                      mechanical refactor and tractable as its own
-//                      PR.
+// A previous per-screen dark migration was attempted (Squad / Settings /
+// Profile / Reflections moved to useThemedStyles) but was reverted on
+// 2026-05-24 because of contrast bugs we couldn't catch without a
+// systematic dark-mode review pass. The hooks below stay exported in
+// case we revisit, but no new screens should adopt them until the brand
+// has a finalized dark palette + we've cleared a contrast/legibility
+// audit. For now: ship light-only content with dark-aware chrome.
 
 import { useColorScheme } from 'react-native';
 import { LT, LT_DARK } from './lightTheme';

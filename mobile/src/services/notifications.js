@@ -21,7 +21,6 @@ const SchedulableTriggerInputTypes =
 
 const DAILY_REMINDER_ID = 'ascend-daily-reminder';
 const EVENING_REMINDER_ID = 'ascend-evening-reminder';
-const EVENING_INSIGHT_ID = 'ascend-evening-insight';
 const WEEKLY_RECAP_ID = 'ascend-weekly-recap';
 const STREAK_AT_RISK_ID = 'ascend-streak-at-risk';
 const COMEBACK_ID = 'ascend-comeback';
@@ -523,73 +522,6 @@ export const scheduleStreakReminder = async ({ currentStreak = 0 } = {}) => {
 };
 
 /**
- * Evening Insight push — only fires for users who DID work today.
- * Counterpart to the at-risk reminder: that one nags non-completers,
- * this one rewards completers with a meaningful "you did real work
- * today" beat at 21:30. Loss-aversion isn't the lever here; the
- * lever is "value summary" — the user closes the day knowing their
- * effort placed them in a measurable group, not just disappeared.
- *
- * Should be re-called whenever todaySessionLessons changes so the
- * variant + body reflect the latest count (a user who does +1 more
- * lesson after the push was scheduled gets the upgraded message).
- *
- * @param {Object} opts
- * @param {number} opts.lessonsToday  count of lessons completed today.
- *   When 0, we cancel any existing scheduled insight and bail —
- *   silent days don't need an insight push, the at-risk one covers it.
- */
-export const scheduleEveningInsight = async ({ lessonsToday = 0 } = {}) => {
-  try {
-    await Notifications.cancelScheduledNotificationAsync(EVENING_INSIGHT_ID);
-  } catch {
-    // no-op
-  }
-  if ((lessonsToday || 0) < 1) return;
-
-  // Target 21:30 today. If we're already past it, bail — the moment
-  // is gone, push tomorrow's via the next app-open dispatch.
-  const now = new Date();
-  const target = new Date();
-  target.setHours(21, 30, 0, 0);
-  if (now >= target) return;
-
-  const minutes = lessonsToday * 5;
-  // Three body tiers — high/mid/low — keyed by today's count. The
-  // statistical claims are floor estimates from the Lally/Prochaska
-  // adherence literature and aren't precise — but they're conservative
-  // and survive scrutiny.
-  let titleKey;
-  let bodyKey;
-  if (lessonsToday >= 3) {
-    titleKey = 'notifications.eveningInsightTitleHigh';
-    bodyKey = 'notifications.eveningInsightBodyHigh';
-  } else if (lessonsToday === 2) {
-    titleKey = 'notifications.eveningInsightTitle2';
-    bodyKey = 'notifications.eveningInsightBody2';
-  } else {
-    titleKey = 'notifications.eveningInsightTitle1';
-    bodyKey = 'notifications.eveningInsightBody1';
-  }
-  const title = i18n.t(titleKey, { count: lessonsToday, minutes });
-  const body = i18n.t(bodyKey, { count: lessonsToday, minutes });
-
-  await Notifications.scheduleNotificationAsync({
-    identifier: EVENING_INSIGHT_ID,
-    content: { title, body, sound: true },
-    trigger: {
-      type: SchedulableTriggerInputTypes.DATE ?? 'date',
-      date: target,
-    },
-  });
-};
-
-export const cancelEveningInsight = async () => {
-  try {
-    await Notifications.cancelScheduledNotificationAsync(EVENING_INSIGHT_ID);
-  } catch {}
-};
-
 /**
  * Streak-at-risk: schedule a 21:00 push for today only IF the user hasn't
  * completed today's lesson. The body is loss-aversion framed because that's

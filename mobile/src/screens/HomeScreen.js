@@ -368,12 +368,24 @@ export default function HomeScreen({ navigation }) {
     if (pledgeAskedRef.current) return;
     if (!activePathId) return;
     if (pathPledges?.[activePathId]) return; // already pledged
+    // Don't pop the commitment-device modal until the user has earned
+    // the right to commit — at least 3 lessons completed across any
+    // path. Asking on cold start before they've felt the loop click
+    // produced ~40% skip rate and zero adherence lift; the audit also
+    // flagged it as a trust-erosion risk ("the app is bossing me
+    // around before I've even tried it"). Now it's an opt-in dialog
+    // that surfaces after they've shown signal that they're staying.
+    const totalLessons = Object.values(pathProgress || {}).reduce(
+      (s, p) => s + (p?.completed?.length || 0),
+      0,
+    );
+    if (totalLessons < 3) return;
     // Wait a heartbeat so the modal slides in AFTER Home's first paint,
     // not during it (avoids a "screen flashed for a frame" feel).
     pledgeAskedRef.current = true;
     const id = setTimeout(() => setPledgeModalVisible(true), 600);
     return () => clearTimeout(id);
-  }, [activePathId, pathPledges]);
+  }, [activePathId, pathPledges, pathProgress]);
 
   const autoRoutedRef = useRef(false);
   useEffect(() => {
@@ -821,61 +833,6 @@ export default function HomeScreen({ navigation }) {
           }
         />
 
-        {/* Evening Insight card — only renders after 18:00 AND when the
-            user has put in real work today (>=1 lesson). Pulls the
-            "what did I do today" beat to the surface so the day's
-            effort feels EARNED instead of just disappearing. The
-            "<X% top group" framing is loss-aversion + status: the
-            user closes the loop knowing their effort placed them
-            somewhere measurable. Numbers are deliberate floor stats
-            from Lally/Prochaska behaviour-change research — most
-            users never do ANY discipline lesson, so a single completed
-            session does put them above ~95% of the population. */}
-        {(() => {
-          const nowHour = new Date().getHours();
-          if (nowHour < 18) return null;
-          const lessonsToday = todaySessionLessons || 0;
-          if (lessonsToday < 1) return null;
-          const minutes = lessonsToday * 5;
-          return (
-            <View style={styles.eveningInsight}>
-              <View style={styles.eveningInsightHeader}>
-                <MaterialIcons
-                  name="nightlight-round"
-                  size={16}
-                  color={LT.primaryContainer}
-                />
-                <Text style={styles.eveningInsightLabel}>
-                  {t('home.eveningInsightLabel', 'GÜN ÖZETİN')}
-                </Text>
-              </View>
-              <Text style={styles.eveningInsightTitle}>
-                {t(
-                  'home.eveningInsightTitle',
-                  'Bugün {{count}} ders · ~{{minutes}} dk derin iş',
-                  { count: lessonsToday, minutes },
-                )}
-              </Text>
-              <Text style={styles.eveningInsightBody}>
-                {lessonsToday >= 3
-                  ? t(
-                      'home.eveningInsightBodyHigh',
-                      'Çoğu insan bugün hiç ders yapmadı. Sen 3+ yaptın — disiplinli %2nin içindesin.',
-                    )
-                  : lessonsToday === 2
-                    ? t(
-                        'home.eveningInsightBody2',
-                        'Çoğu insan bugün hiç ders yapmadı. Sen 2 yaptın — disiplinli %5in içindesin.',
-                      )
-                    : t(
-                        'home.eveningInsightBody1',
-                        'Çoğu insan bugün hiç ders yapmadı. Sen 1 ders ile %10luk gruba katıldın — bu sıradan değil.',
-                      )}
-              </Text>
-            </View>
-          );
-        })()}
-
         {/* Past Reflection Memory — investment-feedback surface. After
             the user has ≥5 reflections, this card resurfaces an old
             one as "you wrote this — remember?". Builds the sense of
@@ -1028,7 +985,7 @@ export default function HomeScreen({ navigation }) {
           <StatCell
             icon="bolt"
             label={t('home.statXp', 'XP')}
-            value={totalXP.toLocaleString()}
+            value={(totalXP ?? 0).toLocaleString('en-US')}
           />
           <View style={styles.statDivider} />
           <StatCell
@@ -1361,40 +1318,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: LT.primary,
     letterSpacing: 0.6,
-  },
-  // Evening Insight card — quiet, dark-mode-adjacent card that
-  // shows the day's effort in a "you placed in top X%" framing.
-  // Only renders after 18:00 + ≥1 lesson, so it's never a dead card.
-  eveningInsight: {
-    backgroundColor: LT.surfaceContainerLow,
-    borderRadius: 16,
-    padding: 16,
-    marginVertical: 8,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-  },
-  eveningInsightHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    marginBottom: 8,
-  },
-  eveningInsightLabel: {
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.4,
-    color: LT.primaryContainer,
-  },
-  eveningInsightTitle: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: LT.onSurface,
-    marginBottom: 6,
-  },
-  eveningInsightBody: {
-    fontSize: 13,
-    color: LT.onSurfaceVariant,
-    lineHeight: 18,
   },
   // Memory card — "Senin sözlerin" investment-feedback surface.
   // Card uses primaryContainer border so it feels warmer than the

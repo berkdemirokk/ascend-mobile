@@ -30,6 +30,13 @@ export function AuthProvider({ children }) {
   // Bootstrap: hydrate session, subscribe to changes
   useEffect(() => {
     let unsub;
+    // `mounted` guards against the race where the component unmounts
+    // BEFORE the async IIFE finishes registering the auth listener.
+    // Without it, cleanup runs early (unsub is still undefined), the
+    // IIFE later attaches the listener, and nothing ever unsubscribes
+    // it — leaking subscriptions on every fast sign-out/sign-in cycle
+    // until the app is killed.
+    let mounted = true;
 
     (async () => {
       try {
@@ -71,10 +78,18 @@ export function AuthProvider({ children }) {
           },
         );
         unsub = listener?.subscription;
+        // If we already unmounted while waiting for the async work,
+        // tear the just-attached subscription down ourselves —
+        // otherwise it leaks because the React cleanup already ran.
+        if (!mounted) {
+          try { unsub?.unsubscribe?.(); } catch {}
+          unsub = undefined;
+        }
       }
     })();
 
     return () => {
+      mounted = false;
       try {
         unsub?.unsubscribe?.();
       } catch {}

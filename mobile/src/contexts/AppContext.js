@@ -17,23 +17,24 @@ import {
 } from '../services/purchases';
 import { getRank } from '../config/ranks';
 import { getPathById } from '../data/paths';
-import { pullState, pushState, mergeStates } from '../services/cloudSync';
-// `generateAnonUsername` is kept for future social/squad features that
-// will reuse the existing anon handle. The public leaderboard surface
-// (screen + push-on-streak-change) was removed because a global ranking
-// contradicts the "Monk Mode" framing of solo, intrinsic discipline —
-// external comparison was making the product fight itself.
+import { pullState, pushState, mergeStates, pickSyncableState } from '../services/cloudSync';
+// `generateAnonUsername` is the only export still imported from the old
+// leaderboard module — used as a default handle for the share card and
+// Profile/Settings displays. The public leaderboard surface (screen +
+// push-on-streak-change) was removed because a global ranking contradicts
+// the "Monk Mode" framing of solo, intrinsic discipline. The Squad
+// surface (private 2-5 person rings) was also removed because there was
+// no inviteable user pool — solo users would see an empty squad UI and
+// feel lonelier, not motivated.
 import { generateAnonUsername } from '../services/leaderboard';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
-import { getMySquad, recordSquadProgress } from '../services/squad';
 import { redeemReferralCode, checkReferralRewards } from '../services/referral';
 import {
   cancelAllNotifications,
   scheduleStreakAtRiskReminder,
   scheduleComebackReminder,
   cancelComebackReminder,
-  scheduleEveningInsight,
   registerPushToken,
 } from '../services/notifications';
 
@@ -58,9 +59,6 @@ const initialState = {
   longestStreak: 0,
   lastCompletedDate: null,
 
-  // Variable-reward "Letter from Future Self" surface — last ms
-  // timestamp it was shown so we can enforce the 7-day cooldown.
-  lastLetterShownAt: 0,
   // Streak Repair bookkeeping (rewarded-ad "undo the broken streak").
   streakRepairsUsed: 0,
 
@@ -170,15 +168,6 @@ const initialState = {
   // trigger confetti animation once per milestone.
   _milestoneToast: null,
 
-  // ── Squad (B2) ─────────────────────────────────────────────────────
-  // The 2-5 person collective accountability ring. We cache the squad
-  // id locally so the COMPLETE_PATH_LESSON side-effect knows where to
-  // upsert today's progress without an extra round-trip. Refreshed by
-  // SquadScreen on every mount (in case user joined from another device
-  // or got kicked). Cleared on leave / sign-out / account delete.
-  currentSquadId: null,
-  currentSquadName: null,
-
   // Internal
   _loaded: false,
 };
@@ -232,7 +221,6 @@ const ACTION_TYPES = {
   CLEAR_STREAK_FREEZE_TOAST: 'CLEAR_STREAK_FREEZE_TOAST',
   CLEAR_STREAK_LOST_INFO: 'CLEAR_STREAK_LOST_INFO',
   RESTORE_STREAK_FROM_REPAIR: 'RESTORE_STREAK_FROM_REPAIR',
-  RECORD_FUTURE_LETTER_SHOWN: 'RECORD_FUTURE_LETTER_SHOWN',
   SET_PATH_PLEDGE: 'SET_PATH_PLEDGE',
   CLEAR_MOMENTUM_TOAST: 'CLEAR_MOMENTUM_TOAST',
   SET_BASELINE_ASSESSMENT: 'SET_BASELINE_ASSESSMENT',
@@ -258,13 +246,25 @@ const ACTION_TYPES = {
   GRANT_BONUS_XP: 'GRANT_BONUS_XP',
   GRANT_DAILY_LOGIN: 'GRANT_DAILY_LOGIN',
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
-  SET_CURRENT_SQUAD: 'SET_CURRENT_SQUAD',
 };
 
 function appReducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.LOAD_STATE: {
-      const next = { ...state, ...action.payload, _loaded: true };
+      // Whitelist payload keys against initialState's shape — this
+      // prevents fossil fields from prior versions (currentSquadId,
+      // lastLetterShownAt, dailyMysteryBox*) from leaking into the new
+      // state and getting pushed back up to the cloud on the next sync.
+      // Without this, every cloud push would re-write the dead keys
+      // forever, and a multi-device user would see them spread.
+      const allowedKeys = Object.keys(initialState);
+      const sanitizedPayload = {};
+      for (const k of allowedKeys) {
+        if (action.payload && Object.prototype.hasOwnProperty.call(action.payload, k)) {
+          sanitizedPayload[k] = action.payload[k];
+        }
+      }
+      const next = { ...state, ...sanitizedPayload, _loaded: true };
       // First-launch sentinel — stamp installedAt the very first time
       // we ever load state. We need to distinguish two cases:
       //
@@ -382,13 +382,6 @@ function appReducer(state, action) {
       // after they complete a fresh lesson (so it doesn't keep showing
       // forever after they've moved on).
       return { ...state, _streakLostInfo: null };
-
-    case ACTION_TYPES.RECORD_FUTURE_LETTER_SHOWN:
-      // Bookkeeping for the "Letter from Future Self" variable-reward
-      // surface. We track the last shown timestamp so the cooldown
-      // logic in futureLetter.shouldShowLetter can enforce a 7-day
-      // minimum gap between letters — keeps the surface feeling rare.
-      return { ...state, lastLetterShownAt: Date.now() };
 
     case ACTION_TYPES.SET_PATH_PLEDGE: {
       // Self-authored sentence the user writes when committing to a
@@ -529,15 +522,6 @@ function appReducer(state, action) {
 
     case ACTION_TYPES.CLEAR_MILESTONE_TOAST:
       return { ...state, _milestoneToast: null };
-
-    case ACTION_TYPES.SET_CURRENT_SQUAD: {
-      const { id, name } = action.payload || {};
-      return {
-        ...state,
-        currentSquadId: id || null,
-        currentSquadName: name || null,
-      };
-    }
 
     case ACTION_TYPES.GRANT_REFERRAL_REWARD: {
       // Redeemer + referrer both get +10 streak-freeze tokens when a
@@ -698,10 +682,16 @@ function appReducer(state, action) {
       let comebackApplied = false;
       if (state.lastCompletedDate) {
         const last = new Date(state.lastCompletedDate);
-        const daysSince = Math.floor((Date.now() - last.getTime()) / 86400000);
-        if (daysSince >= 3) {
-          xpMultiplier *= 2;
-          comebackApplied = true;
+        const lastMs = last.getTime();
+        // Guard against corrupt persisted state — older builds may have
+        // written non-ISO strings here. NaN check prevents daysSince
+        // becoming NaN which would silently disable comeback bonus.
+        if (!Number.isNaN(lastMs)) {
+          const daysSince = Math.floor((Date.now() - lastMs) / 86400000);
+          if (daysSince >= 3) {
+            xpMultiplier *= 2;
+            comebackApplied = true;
+          }
         }
       }
       const dow = new Date().getDay();
@@ -790,9 +780,14 @@ function appReducer(state, action) {
         if (state.lastCompletedDate === yesterday) {
           newStreak = state.currentStreak + 1;
         } else {
-          // Reset path. Only record a "loss" event if the prior streak
-          // was meaningful — losing a 1-day streak isn't worth narrating.
-          if ((state.currentStreak || 0) >= 3) {
+          // Reset path. Record a "loss" event even for short streaks so
+          // brand-new users (streak 1-2) also get the empathy banner —
+          // the audit found they're the segment most at risk of churn
+          // after a missed day, but were getting zero acknowledgement.
+          // The banner copy still leans on `previousLongest` when it's
+          // meaningfully larger than the just-lost count, so the message
+          // stays honest for both veteran and rookie segments.
+          if ((state.currentStreak || 0) >= 1) {
             streakLostInfo = {
               lost: state.currentStreak,
               previousLongest: state.longestStreak || 0,
@@ -1030,18 +1025,6 @@ export function AppProvider({ children }) {
     state.vacationUntil,
   ]);
 
-  // Evening Insight push — schedules a 21:30 "you placed in top X%"
-  // notification for users who actually worked today. Re-runs every
-  // time todaySessionLessons changes so the message scales with the
-  // latest count (1 lesson → bottom tier, 3+ → top tier). Cancels
-  // itself when lessonsToday goes back to 0 (next-day reset).
-  useEffect(() => {
-    if (!state._loaded) return;
-    scheduleEveningInsight({
-      lessonsToday: state.todaySessionLessons || 0,
-    }).catch(() => {});
-  }, [state._loaded, state.todaySessionLessons]);
-
   useEffect(() => {
     if (!state._loaded) return;
     // Cancel any comeback push immediately on app open (user is back), then
@@ -1208,8 +1191,11 @@ export function AppProvider({ children }) {
     // (commonly a fragment of the previous user's state).
     if (!pullCompletedRef.current) return;
     const timer = setTimeout(() => {
-      const toPush = { ...state };
-      delete toPush._loaded;
+      // Sanitize before push: `pickSyncableState` keeps only the
+      // explicit SYNCED_KEYS allowlist, so fossil fields from removed
+      // features (e.g. currentSquadId after Squad MVP was removed) can
+      // never be re-written to the cloud row.
+      const toPush = pickSyncableState(state);
       pushState(userId, toPush).catch((e) =>
         console.warn('[AppContext] Cloud push failed:', e?.message),
       );
@@ -1266,43 +1252,6 @@ export function AppProvider({ children }) {
     }, 60 * 1000); // every minute
     return () => clearInterval(interval);
   }, []);
-
-  // ── Squad: fetch on auth, clear on sign-out ─────────────────────────────
-  // Side-effect-only; SquadScreen does the same lookup on mount so the
-  // user can always pull-to-refresh by re-opening the screen. We do
-  // this here so the FIRST lesson of a session correctly mirrors to the
-  // squad without needing the user to visit SquadScreen first.
-  useEffect(() => {
-    if (!state._loaded) return;
-    if (!userId) {
-      // Sign-out / guest mode → drop the cached squad so the lesson
-      // completion handler doesn't try to post to a stale squad.
-      if (state.currentSquadId) {
-        dispatch({ type: ACTION_TYPES.SET_CURRENT_SQUAD, payload: null });
-      }
-      return;
-    }
-    let cancelled = false;
-    (async () => {
-      try {
-        const data = await getMySquad(userId);
-        if (cancelled) return;
-        dispatch({
-          type: ACTION_TYPES.SET_CURRENT_SQUAD,
-          payload: {
-            id: data?.squad?.id || null,
-            name: data?.squad?.name || null,
-          },
-        });
-      } catch (e) {
-        // Non-fatal — squad is a bonus surface, not a blocker.
-        console.warn('[AppContext] squad fetch failed:', e?.message);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [state._loaded, userId]);
 
   // ── Owner-side referral rewards (close the viral loop) ────────────────
   // For every friend who has redeemed THIS user's code but where the
@@ -1381,48 +1330,6 @@ export function AppProvider({ children }) {
     // users complete lessons regularly.
   }, [state._loaded, userId, state.pathProgress]);
 
-  // ── Squad: mirror lesson completion to server ──────────────────────────
-  // When the user finishes any lesson today, we upsert a row into
-  // squad_member_progress so the collective streak math has a record.
-  // The watcher fires on `lessonHistory[today]` changes; recordSquad-
-  // Progress is idempotent server-side (unique (squad,user,date) +
-  // upsert), so dispatching twice for the same day is harmless. No-op
-  // if the user isn't in a squad or isn't authenticated.
-  //
-  // The ref captures (date, count) together — without the date key
-  // the count compare would skip the first lesson of a new day if
-  // yesterday's count happened to also equal today's count (e.g. one
-  // lesson yesterday, one today both look like "1" and would skip).
-  const lastMirroredRef = useRef({ date: null, count: 0 });
-  useEffect(() => {
-    if (!state._loaded || !userId || !state.currentSquadId) return;
-    const today = (() => {
-      const d = new Date();
-      const y = d.getFullYear();
-      const m = String(d.getMonth() + 1).padStart(2, '0');
-      const dd = String(d.getDate()).padStart(2, '0');
-      return `${y}-${m}-${dd}`;
-    })();
-    const todayCount = (state.lessonHistory || {})[today] || 0;
-    if (todayCount === 0) return;
-    const last = lastMirroredRef.current;
-    if (last.date === today && last.count === todayCount) return;
-    lastMirroredRef.current = { date: today, count: todayCount };
-    recordSquadProgress({
-      squadId: state.currentSquadId,
-      userId,
-      date: today,
-      lessonsCount: todayCount,
-    }).catch((e) =>
-      console.warn('[AppContext] squad progress mirror failed:', e?.message),
-    );
-  }, [
-    state._loaded,
-    userId,
-    state.currentSquadId,
-    state.lessonHistory,
-  ]);
-
   // ── Action creators ─────────────────────────────────────────────────────
   const completeOnboarding = useCallback(() => {
     dispatch({ type: ACTION_TYPES.COMPLETE_ONBOARDING });
@@ -1450,10 +1357,6 @@ export function AppProvider({ children }) {
 
   const restoreStreakFromRepair = useCallback(() => {
     dispatch({ type: ACTION_TYPES.RESTORE_STREAK_FROM_REPAIR });
-  }, []);
-
-  const recordFutureLetterShown = useCallback(() => {
-    dispatch({ type: ACTION_TYPES.RECORD_FUTURE_LETTER_SHOWN });
   }, []);
 
   const setPathPledge = useCallback((pathId, pledge) => {
@@ -1546,21 +1449,6 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.CLEAR_MILESTONE_TOAST });
   }, []);
 
-  /**
-   * Cache the user's current squad locally. Called by SquadScreen
-   * after a load / create / join / leave so the lesson-complete
-   * side-effect knows which squad to post progress to. Pass `null`
-   * to clear (used on leave or by the auth-sync effect below).
-   */
-  const setCurrentSquad = useCallback((squad) => {
-    dispatch({
-      type: ACTION_TYPES.SET_CURRENT_SQUAD,
-      payload: {
-        id: squad?.id || null,
-        name: squad?.name || null,
-      },
-    });
-  }, []);
 
   const deleteAccount = useCallback(async () => {
     // Apple guideline 5.1.1(v): account creation requires server-side
@@ -1697,7 +1585,6 @@ export function AppProvider({ children }) {
     clearStreakFreezeToast,
     clearStreakLostInfo,
     restoreStreakFromRepair,
-    recordFutureLetterShown,
     setPathPledge,
     clearMomentumToast,
     setBaselineAssessment,
@@ -1711,7 +1598,6 @@ export function AppProvider({ children }) {
     setDailyMood,
     grantBonusXP,
     clearMilestoneToast,
-    setCurrentSquad,
     deleteAccount,
     setActivePath,
     completePathLesson,

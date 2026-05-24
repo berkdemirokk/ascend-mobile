@@ -32,7 +32,6 @@ const SYNCED_KEYS = [
   // causing multi-device drift (letter cooldown wrong, repair count
   // reset, momentum session phantom on second device).
   'streakRepairsUsed',
-  'lastLetterShownAt',
   'todaySessionLessons',
   'lastLessonAtMs',
 ];
@@ -282,10 +281,6 @@ export function mergeStates(localState, cloudPayload) {
     streakRepairsUsed: Math.max(
       localState.streakRepairsUsed || 0,
       cloudPayload.streakRepairsUsed || 0,
-    ),
-    lastLetterShownAt: Math.max(
-      localState.lastLetterShownAt || 0,
-      cloudPayload.lastLetterShownAt || 0,
     ),
     // Momentum window — newer side wins. Stale value from old cloud
     // doesn't matter because reducer guard checks SESSION_TIMEOUT_MS.

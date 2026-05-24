@@ -170,7 +170,10 @@ export default function PathScreen({ navigation }) {
                 if (sharingCert) return;
                 setSharingCert(true);
                 const today = new Date();
-                const dateStr = today.toLocaleDateString();
+                // Force en-US so non-Latin locales (AR, FA, HI) don't
+                // emit non-Latin digits that break downstream rendering
+                // or look out of place on a English-styled certificate.
+                const dateStr = today.toLocaleDateString('en-US');
                 const userName =
                   (user?.user_metadata?.name || '').trim() ||
                   (user?.email || '').split('@')[0] ||
@@ -305,7 +308,7 @@ export default function PathScreen({ navigation }) {
         <PathCertificateCard
           ref={certCardRef}
           pathTitle={t(`paths.${activePath.id}.title`, activePath.id)}
-          completedDate={new Date().toLocaleDateString()}
+          completedDate={new Date().toLocaleDateString('en-US')}
           userName={
             (user?.user_metadata?.name || '').trim() ||
             (user?.email || '').split('@')[0] ||

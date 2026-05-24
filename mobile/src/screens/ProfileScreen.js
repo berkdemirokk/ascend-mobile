@@ -219,7 +219,7 @@ export default function ProfileScreen({ navigation }) {
           <StatCard
             icon="bolt"
             label={t('profile.totalXp', 'TOPLAM XP')}
-            value={totalXP.toLocaleString()}
+            value={(totalXP ?? 0).toLocaleString('en-US')}
           />
           <StatCard
             icon="local-fire-department"

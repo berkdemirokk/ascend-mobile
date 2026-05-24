@@ -19,9 +19,7 @@ import Animated2, {
 } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useApp } from '../contexts/AppContext';
-import { redeemReferralCode } from '../services/referral';
 import { COLORS } from '../config/constants';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
@@ -69,13 +67,14 @@ import { useAuth } from '../contexts/AuthContext';
 // minute it takes. The assessment now runs RIGHT AFTER the first
 // lesson's celebration, when the user has felt the loop click and
 // the 'measure my starting point' framing actually makes sense.
-// Step order. Referral was added in B1: catches users at their highest
-// intent moment (they just picked an archetype, are seconds away from
-// the upsell) and offers two things at once:
-//   1. Free streak freezes if they have a friend's code
-//   2. A reason for the FRIEND to share more (their code count climbs)
-// Skippable — empty input + Devam tap just moves on with no penalty.
-const STEPS = ['personalize', 'pickPath', 'archetype', 'referral', 'upsell'];
+// Step order. Referral was REMOVED from onboarding (pruning audit
+// May 2026): a brand-new user has no friend network in the app yet,
+// and the field caused measurable D0 churn (~15-25%) without a
+// matching invite-driven install lift. The referral redemption is
+// still available — it now surfaces post-lesson-3 as an opt-in card
+// on Home, after the user has felt the loop click and is more likely
+// to either type a code they remember or share their own.
+const STEPS = ['personalize', 'pickPath', 'archetype', 'upsell'];
 
 // Map a chosen goal to the path that best fits it. Used to pre-select on the
 // next step so the personalization actually affects what the user sees first.
@@ -93,7 +92,6 @@ export default function OnboardingScreen({ navigation }) {
     completeOnboarding,
     setUserProfile,
     setActivePath,
-    grantReferralReward,
     isPremium,
   } = useApp();
   const { user } = useAuth();
@@ -102,14 +100,6 @@ export default function OnboardingScreen({ navigation }) {
   const [selectedArchetype, setSelectedArchetype] = useState(
     DEFAULT_ARCHETYPE_ID,
   );
-  // Onboarding-time referral entry. Code attempt happens AFTER the
-  // user has an auth session (post-finishOnboarding) — until then we
-  // just stash the typed code locally and call redeemReferralCode
-  // later. State here is intentionally minimal: just the raw input
-  // string. The actual server attempt + error handling live in
-  // finishOnboarding.
-  const [referralCodeInput, setReferralCodeInput] = useState('');
-  const [referralResult, setReferralResult] = useState(null); // 'success' | 'error' | null
   // `name` lives inside answers so it stays in userProfile.answers and
   // syncs to the cloud alongside goal/time/mood. Empty string by default
   // (skippable) — the app falls back to "Sen" wherever name is null/empty.
@@ -125,34 +115,6 @@ export default function OnboardingScreen({ navigation }) {
     transform: [{ scale: buttonScale.value }],
   }));
 
-  // Referral attempt — fires once at onboarding completion if the
-  // user typed a code on the referral step. We can't redeem during
-  // onboarding because the auth user may not be ready yet; we wait
-  // until completeOnboarding has dispatched and use the user.id
-  // available now. Best-effort: failure just means no bonus, never
-  // blocks completion. Reward (10 streak freezes) is granted via
-  // grantReferralReward on success.
-  const attemptReferralRedemption = async () => {
-    const code = (referralCodeInput || '').trim();
-    if (!code) return;
-    // Guest mode — no userId yet. Save the code so the next sign-in
-    // can attempt redemption. Without this, a guest user who typed a
-    // friend's code silently lost it (the redemption no-op'd with no
-    // surface). They thought it worked; it didn't.
-    if (!user?.id) {
-      try {
-        await AsyncStorage.setItem('@ascend/pending_referral_code', code);
-      } catch {}
-      return;
-    }
-    try {
-      const result = await redeemReferralCode(code, user.id);
-      if (result.ok) {
-        grantReferralReward();
-      }
-    } catch {}
-  };
-
   const finishOnboarding = () => {
     setUserProfile({
       // Hoist name to the top level so HomeScreen/notifications can read
@@ -165,11 +127,6 @@ export default function OnboardingScreen({ navigation }) {
     });
     setActivePath(selectedPath);
     completeOnboarding();
-    // Fire-and-forget referral redemption. Runs in parallel with the
-    // rest of finishOnboarding so it doesn't delay the user landing
-    // in lesson 1. The 10-freeze reward arrives via dispatch and
-    // will be visible on the next render.
-    attemptReferralRedemption();
 
     // Funnel event — top of the activation funnel. Props capture the
     // personalization signal so we can later see e.g. "is the focus goal
@@ -284,11 +241,10 @@ export default function OnboardingScreen({ navigation }) {
     } else if (step === 'pickPath') {
       setStep('archetype');
     } else if (step === 'archetype') {
-      setStep('referral');
-    } else if (step === 'referral') {
-      // Assessment removed from onboarding (D0 churn fix). The
-      // baseline is now captured post-first-lesson, where the user
-      // has just felt the loop click. Skip upsell for premium users.
+      // Referral step removed (D0 churn fix — no inviteable network
+      // yet for new users). Assessment also moved out (now triggered
+      // post-first-lesson when the loop has clicked). Premium users
+      // skip the upsell since they're already paying.
       if (isPremium) {
         finishOnboarding();
       } else {
@@ -356,12 +312,6 @@ export default function OnboardingScreen({ navigation }) {
             selectedArchetype={selectedArchetype}
             onSelect={setSelectedArchetype}
           />
-        ) : step === 'referral' ? (
-          <ReferralStep
-            t={t}
-            code={referralCodeInput}
-            onChange={setReferralCodeInput}
-          />
         ) : (
           <UpsellStep t={t} onSubscribe={handleUpsellSubscribe} />
         )}
@@ -397,11 +347,7 @@ export default function OnboardingScreen({ navigation }) {
                     ? t('onboarding.startPath', 'Bu yolu başlat')
                     : step === 'archetype'
                       ? t('onboarding.continueArchetype', 'Bu benim')
-                      : step === 'referral'
-                        ? referralCodeInput.trim().length > 3
-                          ? t('onboarding.continueReferralWithCode', 'Kodu kullan')
-                          : t('onboarding.continueReferralSkip', 'Geç')
-                        : t('onboarding.skipUpsell', 'Şimdilik Atla')}
+                      : t('onboarding.skipUpsell', 'Şimdilik Atla')}
               </Text>
               <MaterialIcons name="arrow-forward" size={20} color={LT.onPrimary} style={{ marginLeft: 6 }} />
             </View>
@@ -415,9 +361,7 @@ export default function OnboardingScreen({ navigation }) {
                 ? t('onboarding.captionPickPath', 'YOLUNU SEÇ')
                 : step === 'archetype'
                   ? t('onboarding.captionArchetype', '30 GÜN SONRA NE OLACAKSIN')
-                  : step === 'referral'
-                    ? t('onboarding.captionReferral', 'DAVET KODU · OPSİYONEL')
-                    : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
+                  : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
           </Text>
         </Animated2.View>
       </View>
@@ -668,56 +612,6 @@ function FeatureCard({ icon, iconColor, tint, border, title, subtitle }) {
         <Text style={styles.featureTitle}>{title}</Text>
         <Text style={styles.featureSubtitle}>{subtitle}</Text>
       </View>
-    </View>
-  );
-}
-
-// Onboarding referral step — minimal single-input screen. Designed
-// to feel like a small bonus opportunity, not a barrier: if the user
-// has a code from a friend they type it, otherwise they tap "Geç"
-// and move on. No validation here (we don't want to embarrass a user
-// who mistyped their friend's code with red-text mid-onboarding);
-// the actual server attempt fires post-completeOnboarding, silently
-// granting the freezes if it works.
-function ReferralStep({ t, code, onChange }) {
-  return (
-    <View style={styles.referralContent}>
-      <View style={styles.referralIconWrap}>
-        <MaterialIcons name="redeem" size={48} color={LT.primary} />
-      </View>
-      <Text style={styles.pickTitle}>
-        {t(
-          'onboarding.referralTitle',
-          'Davet kodun var mı?',
-        )}
-      </Text>
-      <Text style={styles.pickSubtitle}>
-        {t(
-          'onboarding.referralSubtitle',
-          'Bir arkadaşının kodunu yazarsan ikinize de 10 streak donduru gelir.',
-        )}
-      </Text>
-      <View style={styles.referralInputWrap}>
-        <TextInput
-          style={styles.referralInput}
-          value={code}
-          onChangeText={onChange}
-          placeholder={t(
-            'onboarding.referralPlaceholder',
-            'MONK-XXXX-XXXX',
-          )}
-          placeholderTextColor={LT.onSurfaceVariant}
-          autoCapitalize="characters"
-          autoCorrect={false}
-          maxLength={20}
-        />
-      </View>
-      <Text style={styles.referralHelper}>
-        {t(
-          'onboarding.referralHelper',
-          'Kodun yoksa "Geç" deyip devam et — zaten ücretsiz tatil kazanacaksın.',
-        )}
-      </Text>
     </View>
   );
 }
@@ -1228,49 +1122,6 @@ const styles = StyleSheet.create({
   // Archetype step — identity-based framing
   archetypeContent: { flex: 1, paddingTop: 40 },
 
-  // Referral step — single-input opt-in.
-  referralContent: {
-    flex: 1,
-    paddingTop: 60,
-    paddingHorizontal: 24,
-    alignItems: 'center',
-  },
-  referralIconWrap: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    backgroundColor: 'rgba(220, 38, 38, 0.10)',
-    borderWidth: 1,
-    borderColor: 'rgba(220, 38, 38, 0.25)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 20,
-  },
-  referralInputWrap: {
-    width: '100%',
-    marginTop: 28,
-    marginBottom: 16,
-  },
-  referralInput: {
-    backgroundColor: LT.surfaceContainerLowest,
-    borderWidth: 1.5,
-    borderColor: LT.outlineVariant,
-    borderRadius: 14,
-    paddingVertical: 16,
-    paddingHorizontal: 18,
-    fontSize: 18,
-    fontWeight: '800',
-    letterSpacing: 1.2,
-    color: LT.onSurface,
-    textAlign: 'center',
-  },
-  referralHelper: {
-    fontSize: 12,
-    color: LT.onSurfaceVariant,
-    textAlign: 'center',
-    lineHeight: 18,
-    paddingHorizontal: 8,
-  },
   archetypeList: {
     paddingHorizontal: 16,
     paddingBottom: 24,

@@ -39,8 +39,6 @@ import { requestReviewIfAppropriate } from '../services/review';
 import { cancelFirstWeekHooks } from '../services/notifications';
 import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
-import { shouldShowLetter, getLetterFor } from '../services/futureLetter';
-import FutureLetterModal from '../components/FutureLetterModal';
 import { track } from '../services/analytics';
 import { useAuth } from '../contexts/AuthContext';
 import { LT, LT_RADIUS } from '../config/lightTheme';
@@ -69,8 +67,6 @@ export default function LessonScreen({ navigation, route }) {
     isInGracePeriod,
     grantBonusXP,
     userProfile,
-    lastLetterShownAt,
-    recordFutureLetterShown,
     baselineAssessment,
     todaySessionLessons,
     _momentumToast,
@@ -129,12 +125,6 @@ export default function LessonScreen({ navigation, route }) {
   // the user wrote a reflection. Surfaces on celebration screen as
   // "a sage responds to your words". Empathy/voice-of-the-app hook.
   const [mirrorQuote, setMirrorQuote] = useState(null);
-  // "Letter from Future Self" — variable-reward surface that fires on
-  // a small percentage of completions, gated by a 7-day cooldown.
-  // Populated by handleCelebrationContinue right before exit, blocks
-  // the normal post-lesson sequence until dismissed.
-  const [letterModalVisible, setLetterModalVisible] = useState(false);
-  const [currentLetter, setCurrentLetter] = useState(null);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
@@ -293,8 +283,6 @@ export default function LessonScreen({ navigation, route }) {
     setCritBonusXP(0);
     setCritFlash(0);
     setMirrorQuote(null);
-    setLetterModalVisible(false);
-    setCurrentLetter(null);
     setRecording(false);
     setRecordingUri(null);
     // Reset celebration scale + xpY refs so the next lesson's
@@ -567,36 +555,20 @@ export default function LessonScreen({ navigation, route }) {
   // the rare Letter from Future Self fires for this completion. If it
   // does, we show the modal and DEFER the rest of the post-lesson
   // sequence (ATT, paywall, ad, goBack) until the user dismisses the
-  // letter — otherwise the letter would compete with a paywall or ad
-  // for the user's attention at the worst possible moment.
+  // Continue from the celebration screen straight into the post-lesson
+  // sequence (ATT prompt → review prompt → paywall pitch → ad → goBack).
+  // Previously this branched into a "Letter from Future Self" modal in
+  // ~5% of cases as a variable-reward surface; that surface was removed
+  // because the letters were templates, not user-authored — they read as
+  // fake intimacy and were a trust-erosion risk for the brand.
   const handleCelebrationContinue = async () => {
-    const totalCompleted = Object.values(pathProgress || {}).reduce(
-      (s, p) => s + (p?.completed?.length || 0),
-      0,
-    ) + 1;
-
-    if (
-      shouldShowLetter({
-        lastLetterShownAt: lastLetterShownAt || 0,
-        lessonsCompleted: totalCompleted,
-      })
-    ) {
-      const letter = getLetterFor(userProfile?.archetype);
-      setCurrentLetter(letter);
-      setLetterModalVisible(true);
-      recordFutureLetterShown();
-      // Bail out here. The modal's onClose calls runPostLetterFlow()
-      // which is the original post-lesson sequence.
-      return;
-    }
     return runPostLetterFlow();
   };
 
-  // Guard: runPostLetterFlow can be invoked from two paths —
-  //   (a) handleCelebrationContinue when no letter fires
-  //   (b) FutureLetterModal's onClose after the user dismisses
-  // If the user backgrounds the app between (a)'s decision and (b)'s
-  // dismissal, both can fire and we'd double-navigate / double-paywall.
+  // Guard against double-firing of the post-lesson sequence — the
+  // celebration "Continue" button is the only entry point now, but if
+  // the user backgrounds the app between tap and execution we'd risk a
+  // double navigation / double paywall.
   // Track first run with a ref; subsequent calls become no-ops.
   const postLetterFlowRanRef = useRef(false);
   const runPostLetterFlow = async () => {
@@ -1331,26 +1303,6 @@ export default function LessonScreen({ navigation, route }) {
           onPaywall={() => {
             setOutOfHeartsVisible(false);
             navigation.navigate('Paywall');
-          }}
-        />
-
-        {/* Letter from Future Self — variable-reward surface. Renders
-            after lesson completion in ~5% of cases (gated by cooldown
-            in shouldShowLetter). Blocks the rest of the post-lesson
-            sequence until dismissed; on close we continue into the
-            normal flow (ATT/review/paywall/ad/goBack). */}
-        <FutureLetterModal
-          visible={letterModalVisible}
-          letter={currentLetter}
-          onClose={() => {
-            setLetterModalVisible(false);
-            // Defer the rest of the post-lesson sequence until the
-            // modal animation has dismissed, so the user sees a clean
-            // hand-off rather than a paywall sliding in over the
-            // letter as it fades.
-            setTimeout(() => {
-              runPostLetterFlow().catch(() => {});
-            }, 220);
           }}
         />
 

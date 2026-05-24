@@ -235,7 +235,7 @@ export default function InsightsScreen({ navigation }) {
           <QuickStat
             icon="bolt"
             label={t('insights.statXp', 'TOPLAM XP')}
-            value={totalXP.toLocaleString()}
+            value={(totalXP ?? 0).toLocaleString('en-US')}
           />
           <View style={styles.rowDivider} />
           <QuickStat

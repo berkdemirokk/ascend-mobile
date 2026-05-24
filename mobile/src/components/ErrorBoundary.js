@@ -7,6 +7,7 @@ import {
   ScrollView,
   Linking,
 } from 'react-native';
+import * as Sentry from '@sentry/react-native';
 import { LT } from '../config/lightTheme';
 import { LEGAL } from '../config/constants';
 import { logError } from '../services/analytics';
@@ -33,7 +34,19 @@ export default class ErrorBoundary extends React.Component {
     );
     recent.push(now);
     this.setState({ info, recentCrashes: recent });
-    // Log to Supabase for post-mortem. Best-effort, fire-and-forget.
+    // Send to Sentry (with grouping by error type + component stack) AND
+    // to our Supabase log table (for query-ability inside the team).
+    // Best-effort, fire-and-forget — never let logging itself crash the
+    // already-crashed render path.
+    try {
+      Sentry.withScope((scope) => {
+        scope.setTag('source', 'ErrorBoundary');
+        if (info?.componentStack) {
+          scope.setContext('react', { componentStack: info.componentStack });
+        }
+        Sentry.captureException(error);
+      });
+    } catch {}
     try {
       logError({
         error,

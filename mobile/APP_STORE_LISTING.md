@@ -12,12 +12,15 @@ Türkçe / English versiyonlarına yapıştır.
 
 ## Subtitle (max 30 chars)
 
-- **TR:** `5 dk/gün · 30 günde dönüş` (24 chars — value prop + time + outcome)
-- **EN:** `5 min/day · 30-day transform` (28 chars)
+- **TR:** `Disiplin & alışkanlık rutini` (28 chars — ASO-optimized)
+- **EN:** `Discipline & habit routine` (26 chars)
 
-> Old subtitle "Disiplin. Odak. Tekrar." was poetic but vague. New
-> subtitle answers the user's "what does this app DO for me" in one
-> read: small time commitment + concrete promise on the 30-day mark.
+> ASO audit (May 2026): subtitle hits the search index. "Sprint" and
+> "alev" are creative-copy words — they get no search lift in TR. The
+> long-tail searches that actually convert in this category are
+> `disiplin`, `alışkanlık`, `rutin`, `odak`, `21 gün`. Subtitle now
+> carries the two highest-volume of those (`disiplin` + `alışkanlık`)
+> while still reading as a clean one-line promise.
 
 ---
 
@@ -177,15 +180,22 @@ STOP SCROLLING. START WALKING THE PATH.
 
 **TR:**
 ```
-disiplin,alışkanlık,monk,duolingo,detoks,odak,streak,stoik,erken kalk,sabah rutini
+disiplin,alışkanlık,odak,rutin,sprint,21gün,meditasyon,nofap,stoik,kişisel,gelişim,hedef,seri
 ```
-(72 chars)
+(93 chars) — ASO audit (May 2026):
+- `monk` çıkarıldı: app name'de zaten geçiyor.
+- `duolingo` çıkarıldı: 3rd-party trademark → reject riski.
+- `streak` → `seri`: Türk kullanıcı seri arar.
+- `nofap` + `stoik` + `meditasyon` + `21gün` eklendi: monk-mode kitlesinin
+  uzun-kuyruk gerçek aramaları.
+- `kişiselgelişim` → `kişisel,gelişim` ayrı token (App Store index token
+  bazlı; 2 ayrı match avantajı).
 
 **EN:**
 ```
-discipline,habit,monk,stoic,detox,focus,streak,morning,routine,mindful,journal
+discipline,habit,stoic,detox,focus,streak,morning,routine,mindful,journal,nofap
 ```
-(72 chars)
+(78 chars) — `monk` çıkarıldı (name'de var), `nofap` eklendi.
 
 ---
 
@@ -273,10 +283,15 @@ discipline,habit,monk,stoic,detox,focus,streak,morning,routine,mindful,journal
 
 ## App Store Categories
 
-- **Primary:** Health & Fitness
-- **Secondary:** Productivity
+- **Primary:** Lifestyle
+- **Secondary:** Health & Fitness
 
-(Alternatif: Lifestyle / Education — kişisel gelişim daha çok Health & Fitness'a yakın çünkü disiplin = kendine bakım)
+ASO audit (May 2026): Health & Fitness TR'de Adidas Running, Yazio,
+Apple Health, Endel, Headspace dominant — yeni app görünürlük şansı
+neredeyse sıfır. Lifestyle TR top 100 çok daha boş (mostly burç +
+dekor app'leri), top 50'ye girme şansı ~10x daha yüksek. Productivity
+(Notion + Forest dominant) mid-tier boş ama Lifestyle daha avantajlı.
+Disiplin = ritüel + kimlik framing'i Lifestyle'a doğal olarak oturur.
 
 ---
 
@@ -435,12 +450,12 @@ Thank you!
 - [ ] Terms of service URL: ✓ (terms.html)
 - [ ] Support URL: ✗ (mailto: berkdemirok@icloud.com kullan)
 - [ ] Marketing URL: opsiyonel ✗
-- [ ] Categories: Health & Fitness + Productivity ✗ (set et)
+- [ ] Categories: Lifestyle (primary) + Health & Fitness (secondary) ✗ (set et)
 - [ ] Age rating: 12+ ✗ (set et)
 - [ ] Privacy nutrition labels: ✗ (yukarıdakine göre doldur)
 - [ ] In-App Purchases: 2 subs Ready to Submit ✗ (Yearly hala Missing)
 - [ ] Sandbox tester: ✗ (oluştur)
-- [ ] Apple Edge Function deployed: ✗ (delete-user)
+- [x] Apple Edge Function deployed: ✓ (delete-user ACTIVE v3, 2026-05-11; supabase functions list teyit)
 - [ ] Real device test (Build 24): ✗ (push edilmedi henüz)
 
 User'ın yapacağı: yukarıdaki "✗" işaretli her şey.
