@@ -29,7 +29,7 @@
 <h3>1.1 Information you provide</h3>
 <ul>
   <li><strong>Account info:</strong> email, name (optional). Provided via email/password or "Sign in with Apple". With Apple Sign-In you can hide your real email; in that case only Apple's relay address is stored.</li>
-  <li><strong>In-app content:</strong> chosen discipline path, lesson progress, quiz answers, streak (day count), XP, achievements, hearts, and optional written lesson reflections.</li>
+  <li><strong>In-app content:</strong> chosen discipline path, lesson progress, quiz answers, streak (day count), XP, achievements, hearts, optional written lesson reflections, and optional local voice-journal recordings. Raw voice recordings stay on your device and are not uploaded to our backend.</li>
   <li><strong>Preferences:</strong> app language, sound on/off, notification preference.</li>
 </ul>
 
@@ -37,18 +37,19 @@
 <ul>
   <li><strong>Device identifiers:</strong> Apple Push Notification token (only if you enable notifications). App Store sandbox subscription validation data.</li>
   <li><strong>Advertising identifier (IDFA):</strong> ONLY if you tap "Allow" in the App Tracking Transparency (ATT) prompt; Google AdMob then uses it for ad measurement. If you tap "Ask App Not to Track", your IDFA is not shared and you receive non-personalized ads only. Premium subscribers see no ad SDKs at all.</li>
-  <li><strong>Diagnostics:</strong> we currently do not run any crash-reporting or analytics SDK. If we add one we will update this policy and notify you in-app.</li>
+  <li><strong>Usage and diagnostics:</strong> lesson completion, onboarding/paywall events, and JavaScript error details may be stored in Supabase for app functionality, analytics, and debugging. These event payloads do not include your real name or email.</li>
 </ul>
 
 <h2>2. Data We Do NOT Collect</h2>
 <ul>
   <li>Location (GPS or IP-based)</li>
   <li>Contacts, calendar</li>
-  <li>Photos, video, camera, microphone</li>
+  <li>Photos, video, camera</li>
   <li>Browsing history, data from other apps</li>
   <li>Sensitive financial data (card numbers, bank info). All purchases run through the Apple App Store; we have no access to payment instruments.</li>
   <li>Health data</li>
 </ul>
+<p>Microphone permission is used only if you choose to record a voice journal. The audio file remains local to your device and does not transfer between devices.</p>
 
 <h2>3. How We Use Data</h2>
 <ul>

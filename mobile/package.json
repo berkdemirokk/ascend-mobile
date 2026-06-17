@@ -7,6 +7,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "doctor": "npx expo-doctor",
+    "export:ios": "npx expo export --platform ios --output-dir dist-ci",
+    "audit:critical": "npm audit --omit=dev --audit-level=critical",
+    "quality:ci": "npm run doctor && npm run export:ios && npm run audit:critical",
     "build:ios": "eas build --platform ios",
     "build:ios:preview": "eas build --platform ios --profile preview",
     "submit:ios": "eas submit --platform ios"
@@ -53,5 +57,15 @@
   "devDependencies": {
     "@babel/core": "^7.25.2"
   },
-  "private": true
+  "private": true,
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "expo-av"
+        ],
+        "listUnknownPackages": false
+      }
+    }
+  }
 }

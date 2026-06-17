@@ -1,6 +1,7 @@
 node_modules/
 .expo/
 dist/
+dist-ci/
 web-build/
 .env
 .env.local
@@ -9,4 +10,10 @@ web-build/
 ios/build/
 android/build/
 credentials/
+certs/
+credentials.json
 *.p8
+*.p12
+*.mobileprovision
+*.cer
+*.certSigningRequest

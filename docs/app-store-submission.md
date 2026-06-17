@@ -111,20 +111,21 @@ tier boş ama Lifestyle daha avantajlı kalıyor.
 ### Data Collected and Linked to User
 - **Contact Info → Email Address** — App Functionality (Supabase auth)
 - **Identifiers → User ID** — App Functionality (Supabase, RevenueCat anon ID)
-- **User Content → Other User Content** — App Functionality (lesson reflections)
+- **User Content → Other User Content** — App Functionality (written lesson reflections). Voice journal audio is local-only and is not uploaded.
 
 ### Data Collected and NOT Linked to User
 - **Usage Data → Product Interaction** — Analytics & Third-Party Advertising
   (lesson completes, XP, paywall events fed to AdMob/SKAdNetwork)
-- **Diagnostics → Crash Data** — opsiyonel (Sentry henüz kurulu değil; ekleyince
-  bu satırı işaretle)
+- **Diagnostics → Crash Data / Other Diagnostic Data** — App Functionality & Analytics
+  (JavaScript errors and diagnostic events written to Supabase; no Sentry SDK yet)
 
 ### Data Used to Track You
 - **Identifiers → Device ID (IDFA)** — Third-Party Advertising
   (sadece kullanıcı App Tracking Transparency'de "İzin Ver"e basarsa)
 
 ### Data NOT Collected
-- Location, contacts, photos, browsing history, health, financial info — NONE
+- Location, contacts, photos, browsing history, health, financial info — NONE.
+- Microphone audio is local-only for optional voice journals and is not uploaded.
 
 ### Tracking
 - App Tracking Transparency: **REQUIRED** — Google AdMob entegre, IDFA'yı

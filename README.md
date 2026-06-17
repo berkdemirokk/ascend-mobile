@@ -13,7 +13,7 @@ A Duolingo-style discipline learning app for iOS — 5 paths × 50 lessons each 
 - **Subscriptions**: RevenueCat + StoreKit (in-app purchases)
 - **Ads**: AdMob (banner + interstitial + rewarded)
 - **Build**: EAS Build via GitHub Actions → TestFlight
-- **i18n**: TR / EN / AR
+- **i18n**: TR / EN
 
 ## Project Structure
 
@@ -21,17 +21,17 @@ A Duolingo-style discipline learning app for iOS — 5 paths × 50 lessons each 
 ascend-ai-growth-coach/
 ├── mobile/              # Expo iOS app (active)
 │   ├── src/
-│   │   ├── screens/     # 11 screens (Path, Lesson 3-step, Profile, etc.)
-│   │   ├── components/  # 5 modals/components
+│   │   ├── screens/     # Path, lesson, profile, settings, auth, reports
+│   │   ├── components/  # Shared UI and modals
 │   │   ├── services/    # ads, purchases, supabase, sounds, notifications
 │   │   ├── contexts/    # AppContext, AuthContext
-│   │   ├── i18n/        # locales/{tr,en,ar}.json + lessons.{tr,en}.json
-│   │   ├── data/        # paths.js (5 disciplines)
+│   │   ├── i18n/        # locales/{tr,en}.json + lessons.{tr,en}.json
+│   │   ├── data/        # paths and assessment data
 │   │   └── config/      # constants, achievements, ranks, paywallVariants
 │   ├── scripts/         # ASC + RC config + content seeders
 │   ├── credentials/     # .p8 keys (gitignored)
-│   ├── DESIGN.md        # Stitch design system manifest
-│   ├── MARKETING_KIT.md # Ad campaign brief for AI tools
+│   ├── DESIGN.md        # Design system manifest
+│   ├── MARKETING_KIT.md # Ad campaign brief
 │   └── APP_PREVIEW_GUIDE.md
 ├── docs/                # GitHub Pages (privacy, terms, submission notes)
 └── .github/workflows/   # expo-testflight.yml (build + upload pipeline)
@@ -42,14 +42,15 @@ ascend-ai-growth-coach/
 - **5 paths**: Dopamine Detox, Silent Morning, Mind/Body/Money Discipline
 - **50 lessons each** = 250 total
 - **2 quiz questions per lesson** = 1000 quiz questions
-- **2 languages**: TR + EN parallel (AR fallback to TR for curriculum)
+- **2 languages**: TR + EN parallel. Arabic is not enabled in-app until the curriculum is fully translated.
 
 ## Build & Deploy
 
 CI/CD via GitHub Actions:
 - Push tag `mobile-vX.Y.Z` → triggers `expo-testflight.yml`
 - Builds iOS .ipa via EAS Build local on macOS runner
-- Uploads to TestFlight via altool with App Store Connect API key
+- Runs Expo Doctor, iOS export, and critical npm audit before the EAS build
+- Uploads to TestFlight with the App Store Connect API key
 
 Required GitHub secrets:
 - `EXPO_TOKEN`

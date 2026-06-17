@@ -37,7 +37,7 @@ Build sonrası senin yapacakların. Sırayla. Her birinin yanına ✅ at.
 7. Localizations:
    - 🇹🇷 TR Display Name: "Premium Aylık", Description: "Tüm yollar, ek freeze, reklamsız"
    - 🇺🇸 EN Display Name: "Monthly Premium", Description: "All paths, extra freezes, ad-free"
-   - 🇸🇦 AR Display Name: "بريميوم شهري", Description: "كل المسارات، تجميد إضافي، بدون إعلانات"
+   - Arabic localization is not enabled in v1; do not add AR until lessons are fully translated.
 
 ### 1.3 Yıllık subscription
 1. **+ Create Subscription**
@@ -97,9 +97,9 @@ Her iki subscription için:
    - App: **`com.ascend.growth`**
    - Apple ID: `6761607644`
 4. Ad Units:
-   - Interstitial — kod ID: `ca-app-pub-9898903071826160/9449500287` (mevcut)
-   - Banner (opsiyonel)
-   - Rewarded (opsiyonel — streak freeze için)
+   - Interstitial: `ca-app-pub-9898903071826160/5475177787`
+   - Banner: `ca-app-pub-9898903071826160/8236238348`
+   - Rewarded: `ca-app-pub-9898903071826160/5610075008`
 
 ATT prompt için NSUserTrackingUsageDescription **app.json'da hazır** ✅
 
@@ -107,11 +107,10 @@ ATT prompt için NSUserTrackingUsageDescription **app.json'da hazır** ✅
 
 ## 4️⃣ App Store Connect — App Information
 
-### 4.1 Localizations (3 dil)
-**Localizations** sekmesi → Add 3 languages → her birine `APP_STORE_METADATA.md`'deki içerik:
+### 4.1 Localizations (2 dil)
+**Localizations** sekmesi → Add 2 languages → her birine `APP_STORE_METADATA.md`'deki içerik:
 - Turkish (Primary)
 - English (US)
-- Arabic
 
 ### 4.2 Categories
 - **Primary:** Health & Fitness
@@ -199,7 +198,7 @@ App Store Connect → **App Review Information**
     - First 5 lessons of each path are free
     - Premium unlocks remaining lessons and removes ads
     - Apple Sign-In available in addition to email signup
-    - All UI in Turkish, English, and Arabic
+    - App UI is available in Turkish and English
     ```
 
 ---
@@ -224,7 +223,7 @@ App Store Connect → ana ekran → **Submit for Review**
 | Subscription metadata eksik | Description'a "Auto-renewable subscription" notu ekle |
 | Demo account çalışmıyor | Supabase'de oluştur, password ekle |
 | Apple Sign-In capability eksik | EAS credentials regenerate (zaten yapıldı) |
-| Curriculum sadece TR | App Store description'da "UI in 3 languages, course content in Turkish (English/Arabic coming soon)" yaz |
+| Dil bilgisi hatalı | App Store description'da sadece Turkish + English desteği yaz |
 
 ---
 
@@ -236,7 +235,7 @@ App Store Connect → ana ekran → **Submit for Review**
 | Path system + Duolingo UI | ✅ |
 | 30 ders Dopamin Detoks (TR+EN) | ✅ |
 | 4 yol scaffolding (5 ders her birinde) | ✅ |
-| 3 dil i18n | ✅ |
+| 2 dil i18n (TR/EN) | ✅ |
 | Apple Sign-In | ✅ kod, capability |
 | AdMob | ✅ kod, hesap onayı bekleniyor |
 | Privacy/Terms HTML | ✅ GitHub Pages'te |

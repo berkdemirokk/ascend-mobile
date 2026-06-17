@@ -39,8 +39,25 @@ const SYNCED_KEYS = [
 export function pickSyncableState(state) {
   const out = {};
   for (const k of SYNCED_KEYS) {
-    if (state[k] !== undefined) out[k] = state[k];
+    if (state[k] === undefined) continue;
+    out[k] = k === 'pathProgress'
+      ? stripLocalOnlyPathProgress(state[k])
+      : state[k];
   }
+  return out;
+}
+
+// Voice journal audio files are local-only; never sync file:// URIs to cloud.
+function stripLocalOnlyPathProgress(pathProgress = {}) {
+  const out = {};
+  Object.entries(pathProgress || {}).forEach(([pathId, progress]) => {
+    if (!progress || typeof progress !== 'object' || Array.isArray(progress)) {
+      out[pathId] = progress;
+      return;
+    }
+    const { reflectionAudio, ...syncableProgress } = progress;
+    out[pathId] = syncableProgress;
+  });
   return out;
 }
 
