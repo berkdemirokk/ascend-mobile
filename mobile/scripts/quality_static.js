@@ -380,14 +380,26 @@ run('MaterialIcons names', () => {
 
 run('release toolchain', () => {
   const packageJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+  const appJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'app.json'), 'utf8'));
   const easJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'eas.json'), 'utf8'));
   const dependencies = packageJson.dependencies || {};
   const image = easJson.build?.production?.ios?.image || '';
+  const releaseVersion = appJson.expo?.version || '';
+  const versionParts = releaseVersion.split('.').map(Number);
+  const previousApproved = [1, 0, 41];
+  const isNewReleaseTrain = versionParts.length === 3
+    && versionParts.every(Number.isInteger)
+    && versionParts.some((part, index) => (
+      part > previousApproved[index]
+      && versionParts.slice(0, index).every((value, prefix) => value === previousApproved[prefix])
+    ));
 
   assert(/^[~^]?54\./.test(dependencies.expo || ''), `production requires Expo SDK 54, found ${dependencies.expo}`);
   assert(image !== 'latest' && /xcode-26(?:\.|$)/.test(image), `production must pin Xcode 26, found ${image}`);
   assert(/^[~^]?7\./.test(dependencies['@react-navigation/native'] || ''), 'React Navigation 7 is required');
   assert(Boolean(dependencies['react-native-worklets']), 'react-native-worklets must be a direct dependency');
+  assert(isNewReleaseTrain, `release version must be newer than 1.0.41, found ${releaseVersion}`);
+  assert(!Object.prototype.hasOwnProperty.call(appJson.expo?.ios || {}, 'buildNumber'), 'iOS buildNumber must be managed remotely by EAS');
 
   const deprecatedSafeAreaImports = [];
   for (const file of jsFiles) {

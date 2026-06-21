@@ -38,31 +38,31 @@ import { useTheme, useThemedStyles } from '../config/theme';
  * when adding a new release.
  */
 export const WHATS_NEW = {
-  '1.0.41': {
+  '1.0.42': {
     icon: 'auto-awesome',
-    titleKey: 'whatsNew.v1_0_41.title',
+    titleKey: 'whatsNew.v1_0_42.title',
     titleDefault: 'Daily Discipline daha net',
     bullets: [
       {
         icon: 'task-alt',
-        key: 'whatsNew.v1_0_41.home',
+        key: 'whatsNew.v1_0_42.home',
         default:
           'Bugünün ana görevi artık Home ekranında net şekilde öne çıkar.',
       },
       {
         icon: 'route',
-        key: 'whatsNew.v1_0_41.flow',
+        key: 'whatsNew.v1_0_42.flow',
         default:
           'İlk ders ve yol akışı sadeleşti; gereksiz otomatik yönlendirmeler kaldırıldı.',
       },
       {
         icon: 'workspace-premium',
-        key: 'whatsNew.v1_0_41.store',
+        key: 'whatsNew.v1_0_42.store',
         default:
           'Premium fiyat yükleme ve satın alma geri bildirimi daha sağlam.',
       },
     ],
-    ctaKey: 'whatsNew.v1_0_41.cta',
+    ctaKey: 'whatsNew.v1_0_42.cta',
     ctaDefault: 'Tamam',
   },
   '1.0.32': {

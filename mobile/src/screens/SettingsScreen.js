@@ -436,9 +436,9 @@ export default function SettingsScreen({ navigation }) {
     );
   };
 
-  // EAS uses a remote iOS build number, so the app.json value can be stale.
-  // Native values reflect the binary actually installed from TestFlight.
-  const version = Constants?.expoConfig?.version || '1.0.41';
+  // EAS manages iOS build numbers remotely. Native values reflect the binary
+  // actually installed from TestFlight.
+  const version = Constants?.expoConfig?.version || '1.0.42';
   const buildNumber =
     Constants?.platform?.ios?.buildNumber ||
     Constants?.manifest?.ios?.buildNumber ||

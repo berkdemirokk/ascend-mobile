@@ -2,8 +2,8 @@
 
 Current source of truth for App Store Connect metadata.
 
-App version: 1.0.41
-Build: 46
+App version: 1.0.42
+Build: managed remotely by EAS
 Bundle ID: com.ascend.growth
 App Store ID: 6761607644
 Languages: Turkish and English
@@ -142,4 +142,4 @@ Voice reflections:
 
 ## Review Notes Summary
 
-Use `APP_REVIEW_INFO.md` for App Review notes. Use `TEST_PLAN_v1.0.41_b46.md` before submission.
+Use `APP_REVIEW_INFO.md` for App Review notes. Use `TEST_PLAN_v1.0.42.md` before submission.

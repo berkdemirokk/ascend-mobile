@@ -1,4 +1,4 @@
-# Test Plan - Ascend: Daily Discipline v1.0.41 build 46
+# Test Plan - Ascend: Daily Discipline v1.0.42
 
 Walk through this on a real iPhone via TestFlight before submitting a new App Store build.
 
@@ -92,4 +92,3 @@ Pass: account deletion meets App Store 5.1.1(v).
 - RevenueCat products: com.ascend.premium.monthly and com.ascend.premium.yearly.
 - AdMob release units are real units; test units are not forced in release.
 - `npm run quality:ci` passes before tagging/submitting.
-

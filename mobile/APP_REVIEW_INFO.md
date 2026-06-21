@@ -1,6 +1,6 @@
 ﻿# Ascend: Daily Discipline - App Review Information
 
-Use this for App Store Connect review notes for app version 1.0.41, build 46.
+Use this for App Store Connect review notes for app version 1.0.42.
 
 ## Sign-In Info
 
