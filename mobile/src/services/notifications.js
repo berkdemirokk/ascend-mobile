@@ -6,13 +6,18 @@ import Constants from 'expo-constants';
 import i18n from '../i18n';
 import { navigateFromAnywhere } from '../navigation/AppNavigator';
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: true,
-  }),
-});
+try {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowBanner: true,
+      shouldShowList: true,
+      shouldPlaySound: true,
+      shouldSetBadge: true,
+    }),
+  });
+} catch (e) {
+  console.warn('[notifications] handler setup failed:', e?.message);
+}
 
 // Schedulable trigger shape changed in expo-notifications 0.28+ (SDK 52).
 // Fall back to the legacy shape on older installs so either version works.

@@ -419,6 +419,21 @@ run('release toolchain', () => {
   assert(!deprecatedSafeAreaImports.length, `deprecated react-native SafeAreaView: ${deprecatedSafeAreaImports.join(', ')}`);
 });
 
+run('startup fail-open guards', () => {
+  const appSource = fs.readFileSync(path.join(ROOT, 'App.js'), 'utf8');
+  const authSource = fs.readFileSync(path.join(SRC, 'contexts', 'AuthContext.js'), 'utf8');
+  const notificationSource = fs.readFileSync(path.join(SRC, 'services', 'notifications.js'), 'utf8');
+  const getSessionCalls = authSource.match(/supabase\.auth\.getSession\(\)/g) || [];
+
+  assert(/I18N_STARTUP_TIMEOUT_MS\s*=\s*3000/.test(appSource), 'i18n startup must have a hard timeout');
+  assert(appSource.includes("setI18nReady(true)"), 'i18n timeout must release the launch screen');
+  assert(getSessionCalls.length === 1, `auth bootstrap must reuse one session request, found ${getSessionCalls.length}`);
+  assert(/if \(result\?\.timedOut\)\s*{\s*setLoading\(false\)/s.test(authSource), 'auth timeout must release the launch screen');
+  assert(/sessionRequest\s*\.then/.test(authSource), 'late auth restoration must reuse the original request');
+  assert(notificationSource.includes('shouldShowBanner: true'), 'notification handler must use the current iOS banner behavior');
+  assert(notificationSource.includes('shouldShowList: true'), 'notification handler must use the current iOS list behavior');
+});
+
 run('lesson locale schema', () => {
   const locales = [['tr', trLessons], ['en', enLessons]];
   const pathIds = Object.keys(trLessons.lessons);

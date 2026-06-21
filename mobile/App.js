@@ -18,6 +18,8 @@ import { getThemedLT } from './src/config/theme';
 import { useWhatsNew } from './src/hooks/useWhatsNew';
 import WhatsNewModal from './src/components/WhatsNewModal';
 
+const I18N_STARTUP_TIMEOUT_MS = 3000;
+
 // Crash reporting (Sentry) was wired here briefly but removed when the
 // EAS production build's Sentry source-map auto-upload step failed
 // without a SENTRY_AUTH_TOKEN secret. Re-add when we're ready to set
@@ -34,9 +36,23 @@ export default function App() {
   const T = getThemedLT(scheme);
 
   useEffect(() => {
+    let mounted = true;
+    const timeoutId = setTimeout(() => {
+      console.warn('i18n init timed out; continuing with fallback strings');
+      if (mounted) setI18nReady(true);
+    }, I18N_STARTUP_TIMEOUT_MS);
+
     initI18n()
       .catch((e) => console.warn('i18n init failed:', e?.message))
-      .finally(() => setI18nReady(true));
+      .finally(() => {
+        clearTimeout(timeoutId);
+        if (mounted) setI18nReady(true);
+      });
+
+    return () => {
+      mounted = false;
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   useEffect(() => {

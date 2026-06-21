@@ -88,31 +88,32 @@ export function AuthProvider({ children }) {
           setLoading(false);
           return;
         }
-        const result = await withTimeout(supabase.auth.getSession(), 5000);
+        const sessionRequest = supabase.auth.getSession();
+        const result = await withTimeout(sessionRequest, 5000);
+        if (!mounted) return;
         setSession(result?.data?.session ?? null);
-        // If the call timed out, leave `loading` as-is so the splash
-        // keeps showing AND kick off an un-timed background re-fetch.
-        // The onAuthStateChange listener registered below will also
-        // surface any session that arrives later, so the user doesn't
-        // get bounced to Welcome and re-asked to sign in on a slow
-        // network.
+        // Never leave the launch screen blocked on network state. Keep the
+        // original request alive in the background so a persisted session
+        // can still restore when connectivity returns, without starting a
+        // second unbounded request.
         if (result?.timedOut) {
-          supabase.auth
-            .getSession()
+          setLoading(false);
+          sessionRequest
             .then(({ data }) => {
-              if (data?.session) setSession(data.session);
+              if (mounted && data?.session) setSession(data.session);
             })
-            .catch(() => {})
-            .finally(() => setLoading(false));
+            .catch((e) => {
+              console.warn('[AuthContext] late getSession failed:', e?.message);
+            });
         } else {
           setLoading(false);
         }
       } catch (e) {
         console.warn('[AuthContext] getSession failed:', e?.message);
-        setLoading(false);
+        if (mounted) setLoading(false);
       }
 
-      if (SUPABASE_CONFIGURED) {
+      if (SUPABASE_CONFIGURED && mounted) {
         const { data: listener } = supabase.auth.onAuthStateChange(
           (_event, s) => {
             setSession(s);
