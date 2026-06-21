@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import { REVENUECAT_CONFIG } from '../config/constants';
+import { getPackageForPeriod } from './purchasePackages';
 
 let Purchases = null;
 let isInitialized = false;
@@ -193,15 +194,10 @@ export const purchasePremium = async (period = 'monthly') => {
 
     // Pick package by RevenueCat package type or fallback to product id match
     const pkgs = offerings.availablePackages;
-    let pkg = null;
-    if (period === 'yearly') {
-      pkg = pkgs.find((p) => p.packageType === 'ANNUAL')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_YEARLY);
-    } else {
-      pkg = pkgs.find((p) => p.packageType === 'MONTHLY')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_MONTHLY);
+    const pkg = getPackageForPeriod(pkgs, period);
+    if (!pkg) {
+      throw new Error(`No ${period} package available`);
     }
-    if (!pkg) pkg = pkgs[0];
 
     const { customerInfo } = await P.purchasePackage(pkg);
     const unlocked =
@@ -222,12 +218,8 @@ export const getAvailablePackages = async () => {
     if (!offerings?.availablePackages?.length) return null;
     const pkgs = offerings.availablePackages;
     return {
-      monthly: pkgs.find((p) => p.packageType === 'MONTHLY')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_MONTHLY)
-        || null,
-      yearly: pkgs.find((p) => p.packageType === 'ANNUAL')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_YEARLY)
-        || null,
+      monthly: getPackageForPeriod(pkgs, 'monthly'),
+      yearly: getPackageForPeriod(pkgs, 'yearly'),
     };
   } catch (e) {
     console.warn('getAvailablePackages error:', e?.message);

@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useAuth } from '../../contexts/AuthContext';
+import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { supabase } from '../../services/supabase';
 import { LT } from '../../config/lightTheme';
 
@@ -79,7 +79,10 @@ export default function LoginScreen({ navigation }) {
         );
         return;
       }
-      Alert.alert(t('common.error'), msg || t('auth.invalidCredentials'));
+      Alert.alert(
+        t('common.error'),
+        getAuthErrorMessage(t, error, 'auth.invalidCredentials'),
+      );
     }
   };
 
@@ -101,6 +104,8 @@ export default function LoginScreen({ navigation }) {
           {/* Top bar */}
           <View style={styles.topBar}>
             <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityLabel={t('common.back', 'Geri')}
               onPress={() => navigation.goBack()}
               style={styles.backBtn}
             >
@@ -167,6 +172,10 @@ export default function LoginScreen({ navigation }) {
                   style={styles.input}
                 />
                 <TouchableOpacity
+                  accessibilityRole="button"
+                  accessibilityLabel={showPassword
+                    ? t('auth.hidePassword', 'Şifreyi gizle')
+                    : t('auth.showPassword', 'Şifreyi göster')}
                   onPress={() => setShowPassword(!showPassword)}
                   hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                 >
@@ -273,7 +282,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 28,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     textAlign: 'center',
     marginBottom: 8,
   },

@@ -18,7 +18,7 @@
 //     with check (auth.uid() = user_id or user_id is null);
 //
 // PII rule: events here NEVER include the real name, email, or anything
-// that could re-identify the user. Use anon_user_id (the monk_<digits>
+// that could re-identify the user. Use anon_user_id (the ascender_<digits>
 // handle) for cohort analysis.
 
 import { supabase, SUPABASE_CONFIGURED } from './supabase';

@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
-  Easing,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
@@ -14,14 +13,14 @@ import ConfettiBurst from './ConfettiBurst';
 import { hapticMilestone } from '../services/haptics';
 
 const MILESTONES = {
-  3: { emoji: '🔥', title: '3 Gün!', subtitle: 'Alev tutuştu' },
-  7: { emoji: '💎', title: '1 Hafta!', subtitle: 'Sertleşmeye başladın' },
-  14: { emoji: '⚡', title: '2 Hafta!', subtitle: 'Yeni baseline kuruluyor' },
-  21: { emoji: '🛡️', title: '3 Hafta!', subtitle: 'Disiplin kalıcı' },
-  30: { emoji: '👑', title: '30 Gün!', subtitle: 'Yeni adam, yeni hayat' },
-  60: { emoji: '⚔️', title: '60 Gün!', subtitle: 'Saygı kazanılmış' },
-  100: { emoji: '🏆', title: '100 Gün!', subtitle: 'Efsanesin' },
-  365: { emoji: '🐉', title: '1 Yıl!', subtitle: 'Sage' },
+  3: { emoji: '🔥', title: '3 Days!', subtitle: 'The flame is lit' },
+  7: { emoji: '💎', title: '1 Week!', subtitle: 'One week complete' },
+  14: { emoji: '⚡', title: '2 Weeks!', subtitle: 'New rhythm forming' },
+  21: { emoji: '🛡️', title: '3 Weeks!', subtitle: 'Discipline is becoming stable' },
+  30: { emoji: '👑', title: '30 Days!', subtitle: 'New routine, new direction' },
+  60: { emoji: '⚔️', title: '60 Days!', subtitle: 'Respect is earned' },
+  100: { emoji: '🏆', title: '100 Days!', subtitle: 'Mastery is visible' },
+  365: { emoji: '🐉', title: '1 Year!', subtitle: 'One year complete' },
 };
 
 export const isMilestone = (streak) => Object.keys(MILESTONES).includes(String(streak));
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center',
     marginBottom: 4,
-    letterSpacing: -0.5,
+    letterSpacing: 0,
   },
   subtitle: {
     fontSize: 16,

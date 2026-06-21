@@ -92,19 +92,19 @@ export const LT_TYPE = {
   displayHero: {
     fontSize: 64,
     lineHeight: 70,
-    letterSpacing: -1,
+    letterSpacing: 0,
     fontWeight: '900',
   },
   h1: {
     fontSize: 32,
     lineHeight: 38,
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     fontWeight: '700',
   },
   h2: {
     fontSize: 24,
     lineHeight: 31,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     fontWeight: '700',
   },
   bodyLg: {
@@ -132,7 +132,7 @@ export const LT_TYPE = {
   streakNumber: {
     fontSize: 48,
     lineHeight: 48,
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     fontWeight: '900',
   },
 };

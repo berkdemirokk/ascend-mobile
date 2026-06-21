@@ -22,6 +22,47 @@ const withTimeout = (promise, ms) =>
 
 const AuthContext = createContext(null);
 
+const makeAuthError = (code, message) =>
+  Object.assign(new Error(message || code), { code });
+
+export const getAuthErrorMessage = (
+  t,
+  error,
+  fallbackKey = 'auth.invalidCredentials',
+) => {
+  const code = error?.code || '';
+  if (code === 'ASCEND_AUTH_NOT_CONFIGURED') {
+    return t(
+      'auth.serviceNotConfigured',
+      'Bulut bağlantısı hazır değil. Misafir olarak devam edebilir veya biraz sonra tekrar deneyebilirsin.',
+    );
+  }
+  if (code === 'ASCEND_APPLE_MODULE_UNAVAILABLE') {
+    return t(
+      'auth.appleModuleUnavailable',
+      'Apple ile giriş modülü bu build içinde yüklenemedi.',
+    );
+  }
+  if (code === 'ASCEND_APPLE_UNAVAILABLE') {
+    return t(
+      'auth.appleUnavailable',
+      'Apple ile giriş bu cihazda kullanılamıyor.',
+    );
+  }
+  if (code === 'ASCEND_APPLE_MISSING_TOKEN') {
+    return t(
+      'auth.appleSignInGenericError',
+      'Apple ile giriş başarısız oldu. Tekrar dene.',
+    );
+  }
+  return (
+    error?.message ||
+    error?.error_description ||
+    (typeof error === 'string' ? error : null) ||
+    t(fallbackKey)
+  );
+};
+
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -98,7 +139,12 @@ export function AuthProvider({ children }) {
 
   const signUp = useCallback(async ({ email, password, name }) => {
     if (!SUPABASE_CONFIGURED) {
-      return { error: new Error('Supabase henüz yapılandırılmadı.') };
+      return {
+        error: makeAuthError(
+          'ASCEND_AUTH_NOT_CONFIGURED',
+          'Authentication service is not configured.',
+        ),
+      };
     }
     const { data, error } = await supabase.auth.signUp({
       email: email.trim().toLowerCase(),
@@ -112,7 +158,12 @@ export function AuthProvider({ children }) {
 
   const signIn = useCallback(async ({ email, password }) => {
     if (!SUPABASE_CONFIGURED) {
-      return { error: new Error('Supabase henüz yapılandırılmadı.') };
+      return {
+        error: makeAuthError(
+          'ASCEND_AUTH_NOT_CONFIGURED',
+          'Authentication service is not configured.',
+        ),
+      };
     }
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
@@ -139,7 +190,12 @@ export function AuthProvider({ children }) {
 
   const resetPassword = useCallback(async (email) => {
     if (!SUPABASE_CONFIGURED) {
-      return { error: new Error('Supabase henüz yapılandırılmadı.') };
+      return {
+        error: makeAuthError(
+          'ASCEND_AUTH_NOT_CONFIGURED',
+          'Authentication service is not configured.',
+        ),
+      };
     }
     // Pass redirectTo so the email link deep-links back into the app
     // (ascend:// scheme is registered in app.json). Without this the
@@ -161,18 +217,33 @@ export function AuthProvider({ children }) {
 
   const signInWithApple = useCallback(async () => {
     if (!SUPABASE_CONFIGURED) {
-      return { error: new Error('Supabase henüz yapılandırılmadı.') };
+      return {
+        error: makeAuthError(
+          'ASCEND_AUTH_NOT_CONFIGURED',
+          'Authentication service is not configured.',
+        ),
+      };
     }
     try {
       const AppleAuthentication = await import('expo-apple-authentication').catch(() => null);
       const Crypto = await import('expo-crypto').catch(() => null);
       if (!AppleAuthentication || !Crypto) {
-        return { error: new Error('Apple Sign-In modülü yüklenemedi.') };
+        return {
+          error: makeAuthError(
+            'ASCEND_APPLE_MODULE_UNAVAILABLE',
+            'Apple Sign-In module is unavailable in this build.',
+          ),
+        };
       }
 
       const isAvailable = await AppleAuthentication.isAvailableAsync();
       if (!isAvailable) {
-        return { error: new Error('Apple Sign-In bu cihazda kullanılamıyor.') };
+        return {
+          error: makeAuthError(
+            'ASCEND_APPLE_UNAVAILABLE',
+            'Apple Sign-In is unavailable on this device.',
+          ),
+        };
       }
 
       const rawNonce = Crypto.randomUUID
@@ -192,7 +263,12 @@ export function AuthProvider({ children }) {
       });
 
       if (!credential?.identityToken) {
-        return { error: new Error('Apple kimlik doğrulaması başarısız.') };
+        return {
+          error: makeAuthError(
+            'ASCEND_APPLE_MISSING_TOKEN',
+            'Apple Sign-In did not return an identity token.',
+          ),
+        };
       }
 
       const { data, error } = await supabase.auth.signInWithIdToken({

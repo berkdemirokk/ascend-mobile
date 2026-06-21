@@ -22,9 +22,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { LT } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
-import { hapticImpactMedium, hapticMilestone } from '../services/haptics';
+import { hapticImpactMedium } from '../services/haptics';
 
 export default function TransformationReportModal({
   visible,
@@ -39,7 +38,7 @@ export default function TransformationReportModal({
   const handleShare = async () => {
     hapticImpactMedium();
     const lines = [
-      t('transform.shareIntro', "I'm growing on Ascend: Monk Mode."),
+      t('transform.shareIntro', "I'm growing on Ascend: Daily Discipline."),
       '',
       `🔥 ${t('transform.statLessons', { count: report.lessonsTotal })}`,
       `📅 ${t('transform.statActiveDays', { days: report.activeDays })}`,
@@ -61,7 +60,12 @@ export default function TransformationReportModal({
       >
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.topBar}>
-            <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+            <TouchableOpacity
+              onPress={onClose}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              accessibilityRole="button"
+              accessibilityLabel={t('common.close', 'Kapat')}
+            >
               <MaterialIcons name="close" size={22} color="#FFFFFF" />
             </TouchableOpacity>
             <Text style={styles.topLabel}>
@@ -262,7 +266,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '900',
     textAlign: 'center',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     paddingHorizontal: 24,
   },
   heroSub: {
@@ -294,7 +298,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
     marginVertical: 4,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   statLabel: {
     color: '#FDE047',
@@ -356,7 +360,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '900',
     marginTop: 10,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   lockSub: {
     color: '#FFFFFF',

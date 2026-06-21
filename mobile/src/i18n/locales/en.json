@@ -4,7 +4,6 @@
     "back": "Back",
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "start": "Start",
     "goPremium": "Go Premium",
     "save": "Save",
     "delete": "Delete",
@@ -35,7 +34,7 @@
     "profile": "You"
   },
   "onboarding": {
-    "title": "Monk Mode",
+    "title": "Daily Discipline",
     "subtitle": "Pick your discipline. Walk the path. Transform yourself.",
     "bullet1": "One lesson per day",
     "bullet1Sub": "Micro-learning for focused growth.",
@@ -55,10 +54,6 @@
     "continueArchetype": "That's me",
     "archetypeTitle": "Who will you be in 30 days?",
     "archetypeSubtitle": "Pick one. For the next 30 days, you'll act as this person.",
-    "captionAssessment": "MEASURING YOUR STARTING POINT",
-    "assessmentTitle": "Measure today's you. We'll look back in 30 days.",
-    "assessmentSubtitle": "Rate 5 areas 1-10. No perfect answer — only an honest one.",
-    "continueAssessment": "Save starting point",
     "personalizeIntro": "A few quick questions for your personal plan",
     "qName": "What should we call you?",
     "namePlaceholder": "Your name (optional)",
@@ -79,18 +74,17 @@
     "pickPathTitle": "Which discipline will you focus on?",
     "pickPathSubtitle": "Pick a foundational path to start your growth journey.",
     "upsellTitle": "Accelerate discipline",
-    "upsellSubtitle": "First 7 days free, then ₺149,99/month (auto-renews). Cancel anytime.",
     "upsellF1": "Unlimited hearts",
     "upsellF2": "All 5 paths unlocked",
     "upsellF3": "Ad-free experience",
     "upsellF4": "Premium achievements",
-    "priceMonthly": "₺149.99 / month",
-    "priceTrial": "First 7 days free, then auto-renews. Cancel anytime.",
-    "upsellCta": "Start 7-day free trial",
-    "upsellDisclaimer": "₺149.99/month — subscription auto-renews. Cancel anytime in the App Store."
+    "priceMonthly": "7-day free trial",
+    "priceTrial": "Exact price and billing period appear after App Store prices load. You confirm before purchase.",
+    "upsellCta": "See offer",
+    "upsellDisclaimer": "Before purchase starts, price, billing period, and auto-renewal details are shown on the same screen."
   },
   "auth": {
-    "welcomeTitle": "Welcome to Monk Mode",
+    "welcomeTitle": "Ascend: Daily Discipline",
     "welcomeSubtitle": "Your discipline journey starts here",
     "login": "Log In",
     "signup": "Sign Up",
@@ -102,7 +96,28 @@
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
     "signInWithApple": "Continue with Apple",
+    "signupWithEmail": "Sign up with email",
+    "haveAccount": "I already have an account",
+    "tagline": "Discipline. Focus. Repeat.",
+    "notConfigured": "Cloud connection is off — guest mode only",
+    "serviceNotConfigured": "Cloud connection is not ready. Continue as guest or try again in a moment.",
+    "welcomeBack": "Welcome back",
+    "welcomeBackSub": "Continue your discipline journey.",
+    "createAccount": "Create account",
+    "createAccountSub": "Open your first lesson free.",
+    "namePlaceholder": "Your name",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "passwordHint": "At least 6 characters",
+    "signupSuccess": "Signup successful",
+    "signupSuccessBody": "Check your email and tap the verification link. Then sign in.",
+    "legalAgreePrefix": "By signing up, you agree to the ",
+    "legalTerms": "Terms of Service",
+    "legalAgreeAnd": " and ",
+    "legalPrivacy": "Privacy Policy",
+    "legalAgreeSuffix": ".",
     "appleSignInGenericError": "Apple Sign-In failed. Please try again.",
+    "appleModuleUnavailable": "Apple Sign-In could not load in this build.",
+    "appleUnavailable": "Apple Sign-In is unavailable on this device.",
     "emailNotConfirmed": "Email not confirmed. Check your inbox or resend the confirmation email.",
     "resendConfirmation": "Resend confirmation email",
     "resendSent": "Confirmation email re-sent.",
@@ -114,7 +129,9 @@
     "forgotPasswordSub": "We'll send a reset link to your email.",
     "resetSentBody": "Reset link sent. Don't forget to check your spam folder.",
     "sendResetLink": "Send reset link",
-    "backToLogin": "Back to login"
+    "backToLogin": "Back to login",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   },
   "error": {
     "title": "Something went wrong",
@@ -156,20 +173,31 @@
     "currentStreak": "CURRENT STREAK",
     "longestStreak": "LONGEST",
     "daysStrong": "DAYS",
-    "todayCta": "YOUR NEXT STEP",
+    "todayCta": "TODAY'S MAIN STEP",
+    "todayDoneLabel": "TODAY COMPLETE",
+    "todayDoneTitle": "Your streak is safe",
+    "todayDoneSub": "Main lesson done. Open the next lesson if you want to keep momentum.",
+    "mainLessonOpen": "1. Main lesson",
+    "mainLessonDone": "Main lesson done",
+    "bonusDeckOpen": "2. Bonus deck",
+    "bonusDeckDone": "Bonus done",
+    "nextLessonOptional": "OPEN NEXT LESSON",
     "extrasHeader": "TODAY'S EXTRAS",
     "sessionToday": "TODAY {{count}} LESSONS · MOMENTUM ON",
     "memoryLabel": "YOUR WORDS · {{total}} REFLECTIONS",
     "memoryFooter": "See all your reflections →",
+    "baselineLabel": "1-MINUTE STARTING POINT",
+    "baselineTitle": "Save your starting point",
+    "baselineBody": "Save how you feel today; we'll show the change in 30 days.",
     "reassessLabel": "30 DAYS IN",
     "reassessTitle": "Re-measure — see how far you've come",
-    "deckLabel": "TODAY'S DECK · ~3 MIN",
+    "deckLabel": "BONUS RITUAL · ~3 MIN",
     "deckTitle": "A stoic quote + 1 question + 1 micro action",
-    "deckDone": "Today's deck completed",
+    "deckDone": "Bonus deck completed",
     "allDone": "Every path walked. 🎉",
     "allDoneSub": "Pick another. Revisit one. The work doesn't stop.",
-    "ctaGenericSub": "Five minutes. The smallest unit of becoming.",
-    "startNow": "TAKE THE STEP",
+    "ctaGenericSub": "Today's main step is waiting. About 5 minutes.",
+    "startNow": "START PRACTICE",
     "viewPaths": "BROWSE PATHS",
     "statXp": "XP",
     "statLessons": "LESSONS",
@@ -225,6 +253,7 @@
     "completeTitle": "Lesson Complete",
     "greatWork": "Great work!",
     "correct": "correct",
+    "completeFooter": "You took one more step on the discipline path.",
     "nextLesson": "Start Next Lesson",
     "nextLessonBonus": "STACK ANOTHER · +{{xp}} XP",
     "momentumChain": "MOMENTUM × {{count}} — +{{xp}} XP",
@@ -260,7 +289,7 @@
     "topic_mind": "Mind",
     "topic_money": "Money",
     "topic_social": "Relationships",
-    "shareIntro": "I'm growing on Ascend: Monk Mode.",
+    "shareIntro": "I'm growing on Ascend: Daily Discipline.",
     "shareCta": "Share my transformation",
     "premiumLockTitle": "Deeper insights",
     "premiumLockSub": "Reflection word count, mood shift analysis, path-by-path progress, and a shareable card — unlock with Premium.",
@@ -319,7 +348,7 @@
     "beginner":   { "title": "Beginner",   "sub": "The journey just started. Every day you choose, you become." },
     "apprentice": { "title": "Apprentice", "sub": "Three days in. The flame is no longer accident — it's choice." },
     "warrior":    { "title": "Warrior",    "sub": "Two weeks. The hard part is past. Now you sharpen." },
-    "monk":       { "title": "Monk",       "sub": "Thirty days. The old self is gone. The disciplined self walks." },
+    "monk":       { "title": "Disciplined", "sub": "Thirty days. The old self is gone. The disciplined self walks." },
     "sage":       { "title": "Sage",       "sub": "One hundred days. You no longer push the path. The path walks with you." },
     "legend":     { "title": "Legend",     "sub": "One year. Few reach here. You did." }
   },
@@ -356,6 +385,7 @@
     "title": "You",
     "rank": "Rank",
     "stats": "Stats",
+    "subtitle": "AT THE START",
     "totalXp": "Total XP",
     "lessonsDone": "Lessons Done",
     "pathsDone": "Paths Done",
@@ -363,8 +393,10 @@
     "longestStreak": "Longest Streak",
     "levelProgress": "Level Progress",
     "level": "Level",
+    "nextRank": "NEXT RANK",
     "maxLevel": "Max Level!",
     "recentAchievements": "Recent Achievements",
+    "achievements": "ACHIEVEMENTS",
     "seeAll": "See all",
     "noAchievements": "Complete lessons to unlock achievements!",
     "completed": "✓ Completed",
@@ -379,7 +411,9 @@
     "identityTitle": "YOUR IDENTITY",
     "identitySub": "The paths you finish shape who you are. You are now:",
     "publicShareCta": "SHARE PROFILE",
-    "publicShareMessage": "My Ascend profile 🔥\n{{streak}}-day streak · {{xp}} XP · level {{level}}\n{{link}}"
+    "publicShareMessage": "My Ascend profile 🔥\n{{streak}}-day streak · {{xp}} XP · level {{level}}\n{{link}}",
+    "reflectionsLink": "My Reflections",
+    "reflectionsLinkSub": "Past lesson reflections"
   },
   "streakFreeze": {
     "savedTitle": "Streak saved 🛡️",
@@ -416,6 +450,8 @@
     "invite": "Invite a friend",
     "inviteSub": "Your code: {{code}} · 7-day premium gift",
     "inviteSubV2": "Code: {{code}}{{tail}}",
+    "inviteJoined": "{{count}} friends joined",
+    "inviteReward": "both get 10 streak freezes",
     "inviteShareWithCode": "Get Ascend, use my invite code and earn 10 streak freezes: {{code}}\n{{link}}",
     "redeemInvite": "Enter invite code",
     "redeemInviteSub": "If a friend gave you a code, earn 10 streak freezes",
@@ -437,6 +473,7 @@
     "logout": "Log Out",
     "signOutTitle": "Log out",
     "signOutConfirm": "Are you sure you want to log out? Your progress stays on this device.",
+    "signOutBody": "Are you sure you want to log out? Your progress stays on this device.",
     "deleteAccount": "Delete Account",
     "deleteAccountConfirm": "Are you sure you want to delete your account? This cannot be undone.",
     "deleteAccountFailed": "Could not delete your account. Check your connection and try again.",
@@ -458,9 +495,31 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "version": "Version",
-    "support": "Support"
+    "build": "Build",
+    "support": "Support",
+    "debug": "DEBUG",
+    "adDebug": "Ad Diagnostics",
+    "adDebugSub": "Ad load status, recent errors, and ad unit IDs"
+  },
+  "adDebug": {
+    "title": "Ad Diagnostics",
+    "state": "STATE",
+    "unitIds": "AD UNIT IDS",
+    "loadInterstitial": "Load interstitial",
+    "loadRewarded": "Load rewarded",
+    "diagnostics": "LAST 20 ATTEMPTS",
+    "empty": "No ad load attempt has been recorded yet. Press one of the buttons above to start logging.",
+    "help": "HELP",
+    "share": "Share report"
   },
   "whatsNew": {
+    "v1_0_41": {
+      "title": "Daily Discipline is clearer",
+      "home": "Today's main step now stands out clearly on Home.",
+      "flow": "The first-lesson and path flow is simpler; unnecessary auto-routing was removed.",
+      "store": "Premium price loading and purchase feedback are more reliable.",
+      "cta": "Got it"
+    },
     "v1_0_32": {
       "title": "New features are live 🎉",
       "dark": "Dark mode — Automatically follows system theme. Easier on the eyes at night.",
@@ -469,9 +528,9 @@
     }
   },
   "paywall": {
-    "title": "Full Monk Mode",
+    "title": "Daily Discipline Premium",
     "subtitle": "First 7 days free",
-    "titleA": "FULL MONK MODE",
+    "titleA": "DAILY DISCIPLINE PRO",
     "subtitleA": "First 7 days free",
     "ctaTrialA": "Start 7-day free trial",
     "bestValueA": "BEST VALUE",
@@ -507,10 +566,12 @@
     "notReadyTitle": "Subscriptions not ready",
     "notReadyBody": "Couldn't reach App Store. Check your connection and try again in a few minutes.",
     "notReadyBodyShort": "Couldn't load. Try again in a moment.",
+    "retryPrices": "Reload prices",
     "loadingPrices": "Loading prices...",
     "notConfigured": "Subscriptions aren't visible in store yet. Try again shortly.",
     "networkError": "Network error. Check your connection.",
     "bestValue": "BEST VALUE",
+    "pricePerMonth": "{{price}} / month",
     "billedMonthly": "Billed monthly",
     "trustPrivate": "PRIVATE",
     "trustCancel": "CANCEL",
@@ -550,6 +611,8 @@
     "lessonsCount": "{{count}} lessons",
     "tier": "Tier {{tier}}",
     "premiumLocked": "Unlock with Premium",
+    "lockedTitle": "This lesson is locked",
+    "lockedBody": "Finish the active lesson first. The path opens step by step.",
     "start": "Start",
     "developmentStages": "Development Stages",
     "devSubtitle": "Your roadmap to mental & spiritual mastery.",
@@ -594,7 +657,7 @@
     }
   },
   "notifications": {
-    "reminderTitleStart": "🔥 Begin monk mode",
+    "reminderTitleStart": "🔥 Begin Daily Discipline",
     "reminderTitleDanger": "🔥 {{streak}} days at risk",
     "reminderTitleProgress": "🔥 {{streak}} days — discipline",
     "reminderBodyStart": "Take the first step. 5 minutes.",
@@ -607,7 +670,7 @@
     "dailyStart1Body": "Lesson 1 is still waiting. One start — the rest follows.",
     "dailyStart2Title": "Discipline starts small",
     "dailyStart2Body": "5 minutes, 1 lesson, 1 flame. Light the fire today.",
-    "dailyStart3Title": "First step into monk mode",
+    "dailyStart3Title": "First step into Daily Discipline",
     "dailyStart3Body": "You haven't started yet — the first lesson is the easiest. Open it.",
     "dailyStart4Title": "Not tomorrow — today",
     "dailyStart4Body": "Postponing is pulling you backward. One start is enough.",
@@ -697,9 +760,9 @@
     "actionStartLesson": "Start Lesson"
   },
   "share": {
-    "streakStart": "Starting monk mode 🔥 Discipline. Focus. Repeat.",
-    "streakActive": "{{streak}} days — monk mode running 🔥 Join me, don't let the flame die.",
-    "title": "Monk Mode 🔥",
+    "streakStart": "Starting Daily Discipline 🔥 Discipline. Focus. Repeat.",
+    "streakActive": "{{streak}} days — Daily Discipline running 🔥 Join me, don't let the flame die.",
+    "title": "Daily Discipline 🔥",
     "streakAria": "Share streak",
     "failedTitle": "Couldn't share",
     "failedBody": "Something went wrong. Try again."
@@ -713,13 +776,6 @@
     "goPremium": "GO PREMIUM — UNLIMITED HEARTS",
     "adNotReadyTitle": "Ad failed to load",
     "adNotReadyBody": "No ad came back from the network. Try again in a few seconds or go Premium for ad-free + unlimited hearts."
-  },
-  "_achievements_dup": {
-    "_comment": "Duplicate block — merged into the canonical achievements block above. Renamed so the merged version wins. Kept for diff history.",
-    "unlocked": "UNLOCKED",
-    "locked": "Not unlocked yet",
-    "premiumGated": "Goal reached — unlock with Premium",
-    "upgradeCta": "GO PREMIUM"
   },
   "heatmap": {
     "title": "LAST 30 DAYS",
@@ -755,7 +811,7 @@
     "next": "Next",
     "skipResponse": "Skip",
     "skipAction": "Skip for now",
-    "shareMsg": "\"{{quote}}\" — {{author}}. From today's deck. Ascend: Monk Mode."
+    "shareMsg": "\"{{quote}}\" — {{author}}. From today's deck. Ascend: Daily Discipline."
   },
   "assessment": {
     "eyebrowBaseline": "STARTING POINT ASSESSMENT",
@@ -786,7 +842,7 @@
     "narrativeDown": "You dropped — not bad, honest. Most people lie to themselves. See where you fell most, restart there.",
     "share": "SHARE",
     "shareYou": "Me",
-    "shareMsg": "{{lessons}} lessons in {{days}} days, {{streak}}-day streak. +{{delta}} points by my own measure. Tracking with Ascend: Monk Mode.",
+    "shareMsg": "{{lessons}} lessons in {{days}} days, {{streak}}-day streak. +{{delta}} points by my own measure. Tracking with Ascend: Daily Discipline.",
     "objectiveLabel": "MEASURABLE PROGRESS",
     "lessonsLabel": "LESSONS",
     "streakLabel": "DAY STREAK",
@@ -797,6 +853,9 @@
     "notReady": "No comparison data yet. Come back when 30 days are up."
   },
   "pledge": {
+    "cardLabel": "OPTIONAL",
+    "cardTitle": "Write one sentence for this path",
+    "cardBody": "Only you will see it. If you write it, Home will quietly remind you.",
     "label": "COMMITMENT",
     "title": "What do you commit to on the {{path}} path?",
     "thisPath": "this",
@@ -840,21 +899,12 @@
     "title": "Search lessons",
     "placeholder": "Keyword — focus, morning, dopamine...",
     "helpText": "At least 2 letters — matches title, teaching, or action text.",
-    "noResults": "No results. Try a different word."
-  },
-  "leaderboard": {
-    "title": "Leaderboard",
-    "intro": "Top 50 disciplined users by current streak. Ranking is anonymous — real identities are never shared.",
-    "you": "(you)",
-    "xp": "{{count}} XP",
-    "emptyTitle": "No one here yet",
-    "emptyBody": "Complete your first lesson to enter the leaderboard."
+    "noResults": "No results. Try a different word.",
+    "clear": "Clear search"
   },
   "insights": {
     "title": "Stats",
     "subtitle": "Your journey, in numbers. Discipline made tangible.",
-    "leaderboardTitle": "Leaderboard",
-    "leaderboardSub": "Anonymous. Longest streaks win.",
     "weekLabel": "THIS WEEK",
     "weekLessons": "lessons",
     "weekActiveDays": "{{count}}/7 active days",
@@ -886,14 +936,6 @@
     "freezeAvailable": "{{count}} available. Auto-used when you skip a day.",
     "freezeEmpty": "No freezes yet. Get 3 with Premium.",
     "getFreezes": "GET 3 FREEZES WITH PREMIUM"
-  },
-  "_hearts_dup": {
-    "_comment": "Duplicate hearts block — second-write-wins semantics meant earlier keys were silently shadowed. Renamed so the canonical hearts block above takes effect. Kept as _-prefix for historical reference.",
-    "outTitle": "Out of Hearts",
-    "outSubtitle": "Need a heart to continue. Watch an ad for +1 or go Premium.",
-    "refillIn": "Auto-refill in {{mins}}",
-    "watchAd": "WATCH AD, +1 HEART",
-    "goPremium": "GO PREMIUM, UNLIMITED HEARTS"
   },
   "calendar": {
     "title": "ACTIVITY MAP",
@@ -928,13 +970,13 @@
   },
   "milestone": {
     "3":   { "title": "3 Days!",   "subtitle": "The flame is lit" },
-    "7":   { "title": "1 Week!",   "subtitle": "You're hardening up" },
+    "7":   { "title": "1 Week!",   "subtitle": "One week complete" },
     "14":  { "title": "2 Weeks!",  "subtitle": "New baseline forming" },
-    "21":  { "title": "3 Weeks!",  "subtitle": "Discipline is permanent" },
-    "30":  { "title": "30 Days!",  "subtitle": "New man, new life" },
+    "21":  { "title": "3 Weeks!",  "subtitle": "Discipline is becoming stable" },
+    "30":  { "title": "30 Days!",  "subtitle": "New routine, new direction" },
     "60":  { "title": "60 Days!",  "subtitle": "Respect earned" },
-    "100": { "title": "100 Days!", "subtitle": "You're a legend" },
-    "365": { "title": "1 Year!",   "subtitle": "Sage" }
+    "100": { "title": "100 Days!", "subtitle": "Mastery is visible" },
+    "365": { "title": "1 Year!",   "subtitle": "One year complete" }
   },
   "dailyChallenges": {
     "cold_water": { "title": "Cold Water Shock", "body": "Take a 30-second cold shower or splash cold water on your face today." },
@@ -972,7 +1014,7 @@
     "novice": { "title": "Novice", "subtitle": "The journey begins" },
     "disciple": { "title": "Disciple", "subtitle": "First path completed" },
     "warrior": { "title": "Warrior", "subtitle": "Warrior mindset" },
-    "monk": { "title": "Monk", "subtitle": "Discipline at the peak" },
+    "monk": { "title": "Disciplined", "subtitle": "Discipline at the peak" },
     "master": { "title": "Master", "subtitle": "Master" },
     "legend": { "title": "Legend", "subtitle": "Legend" }
   },
@@ -992,7 +1034,6 @@
     "level_8": { "title": "Master", "description": "Reach level 8" },
     "night_owl": { "title": "Night Owl", "description": "Finish a lesson after 23:00" },
     "early_bird": { "title": "Early Bird", "description": "Finish a lesson before 06:00" },
-    "weekend_warrior": { "title": "Weekend Warrior", "description": "Keep your streak through a weekend" },
-    "inner_circle": { "title": "???", "description": "???" }
+    "weekend_warrior": { "title": "Weekend Warrior", "description": "Keep your streak through a weekend" }
   }
 }

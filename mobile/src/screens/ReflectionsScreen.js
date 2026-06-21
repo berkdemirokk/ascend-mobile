@@ -87,6 +87,8 @@ export default function ReflectionsScreen({ navigation }) {
         {/* Top bar */}
         <View style={styles.topBar}>
           <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={t('common.back', 'Geri')}
             onPress={() => navigation.goBack()}
             style={styles.backBtn}
           >
@@ -200,7 +202,7 @@ export default function ReflectionsScreen({ navigation }) {
                     <View key={lessonId} style={styles.card}>
                       <View style={styles.cardHeader}>
                         <Text style={styles.cardLessonNum}>
-                          DERS {lessonOrder}
+                          {t('path.lessonLabel', 'Ders').toUpperCase()} {lessonOrder}
                         </Text>
                         <Text style={styles.cardLessonTitle} numberOfLines={1}>
                           {lessonTitle}
@@ -423,7 +425,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '900',
     marginBottom: 8,
-    letterSpacing: -0.3,
+    letterSpacing: 0,
   },
   emptyBody: {
     color: LT.onSurfaceVariant,

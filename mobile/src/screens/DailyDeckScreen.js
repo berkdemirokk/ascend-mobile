@@ -126,7 +126,7 @@ export default function DailyDeckScreen({ navigation }) {
       await Share.share({
         message: t(
           'dailyDeck.shareMsg',
-          '"{{quote}}" — {{author}}. Bugünün destesinden. Ascend: Monk Mode.',
+          '"{{quote}}" — {{author}}. Bugünün destesinden. Ascend: Daily Discipline.',
           { quote: deck.quote, author: deck.author },
         ),
       });
@@ -161,6 +161,8 @@ export default function DailyDeckScreen({ navigation }) {
         <View style={styles.topBar}>
           {progressDots}
           <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={t('common.close', 'Kapat')}
             onPress={() => navigation.goBack()}
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
           >

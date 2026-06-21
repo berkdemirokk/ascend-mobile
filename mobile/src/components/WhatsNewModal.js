@@ -38,6 +38,33 @@ import { useTheme, useThemedStyles } from '../config/theme';
  * when adding a new release.
  */
 export const WHATS_NEW = {
+  '1.0.41': {
+    icon: 'auto-awesome',
+    titleKey: 'whatsNew.v1_0_41.title',
+    titleDefault: 'Daily Discipline daha net',
+    bullets: [
+      {
+        icon: 'task-alt',
+        key: 'whatsNew.v1_0_41.home',
+        default:
+          'Bugünün ana görevi artık Home ekranında net şekilde öne çıkar.',
+      },
+      {
+        icon: 'route',
+        key: 'whatsNew.v1_0_41.flow',
+        default:
+          'İlk ders ve yol akışı sadeleşti; gereksiz otomatik yönlendirmeler kaldırıldı.',
+      },
+      {
+        icon: 'workspace-premium',
+        key: 'whatsNew.v1_0_41.store',
+        default:
+          'Premium fiyat yükleme ve satın alma geri bildirimi daha sağlam.',
+      },
+    ],
+    ctaKey: 'whatsNew.v1_0_41.cta',
+    ctaDefault: 'Tamam',
+  },
   '1.0.32': {
     icon: 'rocket-launch',
     titleKey: 'whatsNew.v1_0_32.title',
@@ -185,7 +212,7 @@ const makeStyles = (T) =>
       fontSize: 22,
       fontWeight: '900',
       textAlign: 'center',
-      letterSpacing: -0.4,
+      letterSpacing: 0,
       marginBottom: 18,
     },
     bulletList: {

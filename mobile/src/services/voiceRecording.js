@@ -5,8 +5,6 @@
 // Recording is local-only: the audio file URI is stored alongside the text
 // reflection in AsyncStorage / cloudSync. We never upload audio to a backend.
 
-import { Platform } from 'react-native';
-
 let Audio = null;
 let recording = null;
 

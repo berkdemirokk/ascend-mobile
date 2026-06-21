@@ -1,5 +1,5 @@
 ---
-name: Monk Mode
+name: Ascend Daily Discipline
 colors:
   surface: '#13131b'
   surface-dim: '#13131b'
@@ -54,13 +54,13 @@ typography:
     fontSize: 32px
     fontWeight: '900'
     lineHeight: '1.1'
-    letterSpacing: -0.04em
+    letterSpacing: 0
   h2:
     fontFamily: Inter
     fontSize: 20px
     fontWeight: '800'
     lineHeight: '1.2'
-    letterSpacing: -0.02em
+    letterSpacing: 0
   body-lg:
     fontFamily: Inter
     fontSize: 16px

@@ -1,6 +1,6 @@
 // Character Evolution — visible identity progression keyed off the
 // user's longest streak. The user starts as a regular person and
-// visually transforms into a warrior, then monk, then legend as their
+// visually transforms into a warrior, then disciplined master, then legend as their
 // streak grows. This is the strongest sunk-cost / identity-reinforcement
 // signal an app can show — "look at who I became".
 //
@@ -16,7 +16,7 @@
 //   beginner  → regular person
 //   apprentice→ karateka (training)
 //   warrior   → crossed swords (committed)
-//   monk      → meditation posture (mastery)
+//   monk      → disciplined posture (mastery)
 //   sage      → old man = wise / time-tested
 //   legend    → crown = unmatched
 export const CHARACTER_STAGES = [

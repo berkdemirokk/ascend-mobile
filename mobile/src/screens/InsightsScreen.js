@@ -300,7 +300,7 @@ export default function InsightsScreen({ navigation }) {
         {!isPremium && (
           <TouchableOpacity
             style={styles.upsell}
-            onPress={() => navigation.navigate('Paywall')}
+            onPress={() => navigation.navigate('Paywall', { source: 'insights_upsell' })}
             activeOpacity={0.9}
           >
             <View style={styles.upsellInner}>
@@ -434,7 +434,7 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: 32,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     lineHeight: 38,
     color: LT.onSurface,
     marginBottom: 6,
@@ -472,7 +472,7 @@ const styles = StyleSheet.create({
   weekTotal: {
     fontSize: 36,
     fontWeight: '900',
-    letterSpacing: -1,
+    letterSpacing: 0,
     color: LT.onSurface,
     lineHeight: 38,
   },
@@ -568,7 +568,7 @@ const styles = StyleSheet.create({
   bigHeroNumber: {
     fontSize: 64,
     fontWeight: '900',
-    letterSpacing: -2.5,
+    letterSpacing: 0,
     color: LT.primaryContainer,
     lineHeight: 64,
   },
@@ -576,7 +576,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '900',
     color: LT.primaryContainer,
-    letterSpacing: -1,
+    letterSpacing: 0,
     marginBottom: 8,
   },
   bigHeroSub: {
@@ -630,7 +630,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '900',
     color: LT.onSurface,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   quickStatLabel: {
     fontSize: 9,
@@ -694,7 +694,7 @@ const styles = StyleSheet.create({
   pathRowCount: {
     fontSize: 12,
     fontWeight: '900',
-    letterSpacing: -0.2,
+    letterSpacing: 0,
     color: LT.onSurfaceVariant,
     minWidth: 50,
     textAlign: 'right',
@@ -752,7 +752,7 @@ const styles = StyleSheet.create({
   recordValue: {
     fontSize: 22,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     color: LT.onSurface,
   },
   recordValueAccent: {
@@ -764,41 +764,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
     color: LT.outline,
     textTransform: 'uppercase',
-  },
-
-  // Leaderboard CTA
-  leaderboardCta: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    marginHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 14,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.xl,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    padding: 16,
-  },
-  leaderboardIconWrap: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(227, 18, 18, 0.08)',
-    borderWidth: 1,
-    borderColor: 'rgba(227, 18, 18, 0.18)',
-  },
-  leaderboardTitle: {
-    fontSize: 14,
-    fontWeight: '900',
-    color: LT.onSurface,
-    marginBottom: 2,
-  },
-  leaderboardSub: {
-    fontSize: 11,
-    color: LT.onSurfaceVariant,
-    fontWeight: '600',
   },
 
   // Premium upsell
@@ -826,7 +791,7 @@ const styles = StyleSheet.create({
   upsellTitle: {
     fontSize: 22,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     color: LT.onPrimary,
     lineHeight: 28,
     marginBottom: 6,

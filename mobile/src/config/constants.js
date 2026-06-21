@@ -103,6 +103,10 @@ export const STORAGE_KEYS = {
 // builds don't break the moment this commit lands — rotate the key in
 // the RevenueCat dashboard and remove the fallback as a follow-up.
 import Constants from 'expo-constants';
+import {
+  PRODUCT_ID_MONTHLY,
+  PRODUCT_ID_YEARLY,
+} from './revenuecatProducts';
 
 const extra = Constants?.expoConfig?.extra ?? {};
 
@@ -111,14 +115,14 @@ export const REVENUECAT_CONFIG = {
   ENTITLEMENT_ID: 'premium',
   OFFERING_ID: 'default',
   // Match App Store Connect product IDs (verified via ASC API)
-  PRODUCT_ID_MONTHLY: 'com.ascend.premium.monthly',
-  PRODUCT_ID_YEARLY: 'com.ascend.premium.yearly',
-  PRODUCT_ID: 'com.ascend.premium.monthly',
+  PRODUCT_ID_MONTHLY,
+  PRODUCT_ID_YEARLY,
+  PRODUCT_ID: PRODUCT_ID_MONTHLY,
 };
 
 export const ADMOB_IDS = {
   // Real production IDs from the AdMob console for the App Store-linked
-  // "Ascend: Monk Mode" app (publisher pub-9898903071826160, app
+  // "Ascend: Daily Discipline" app (publisher pub-9898903071826160, app
   // ~2513505932). This app is linked to App Store ID 6761607644.
   //
   // ⚠️ Build 53 + 54 shipped with the WRONG APP ID (~9553442066) which
@@ -133,7 +137,7 @@ export const ADMOB_IDS = {
   // stale/wrong IDs copied from somewhere else. Every ad request was
   // returning errors silently (no impressions accumulated, "0 etkin"
   // visible in AdMob dashboard). The user verified the actual IDs in
-  // the AdMob "Ad units" page → Ascend: Monk Mode and they are below.
+  // the AdMob "Ad units" page → Ascend: Daily Discipline and they are below.
   // Match rate should go from ~0 to normal levels within a few hours
   // of this build hitting TestFlight.
   INTERSTITIAL_IOS: 'ca-app-pub-9898903071826160/5475177787',

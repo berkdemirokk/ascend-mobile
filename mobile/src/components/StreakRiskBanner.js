@@ -13,7 +13,6 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { LT } from '../config/lightTheme';
 import { hapticImpactMedium } from '../services/haptics';
 
 // Banner shows from this hour onward, until midnight.
@@ -125,7 +124,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     marginBottom: 2,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   body: {
     color: '#FFFFFF',

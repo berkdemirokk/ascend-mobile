@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '800',
     lineHeight: 24,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     marginBottom: 14,
   },
   footer: {

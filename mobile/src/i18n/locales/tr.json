@@ -4,7 +4,6 @@
     "back": "Geri",
     "cancel": "İptal",
     "confirm": "Onayla",
-    "start": "Başlat",
     "goPremium": "Premium'a geç",
     "save": "Kaydet",
     "delete": "Sil",
@@ -35,7 +34,7 @@
     "profile": "Sen"
   },
   "onboarding": {
-    "title": "Monk Mode",
+    "title": "Daily Discipline",
     "subtitle": "Disiplini seç. Yolu yürü. Kendini dönüştür.",
     "bullet1": "Her gün tek ders",
     "bullet1Sub": "Odaklanmış gelişim için mikro öğrenme.",
@@ -75,18 +74,17 @@
     "pickPathTitle": "Hangi disipline odaklanacaksın?",
     "pickPathSubtitle": "Gelişim yolculuğuna başlamak için temel bir yol seç.",
     "upsellTitle": "Disiplini hızlandır",
-    "upsellSubtitle": "İlk 7 gün ücretsiz, sonra ayda ₺149,99 (otomatik yenilenir). İstediğin an iptal et.",
     "upsellF1": "Sınırsız kalpler",
     "upsellF2": "Tüm 5 yolun kilidi açık",
     "upsellF3": "Reklamsız deneyim",
     "upsellF4": "Premium başarılar",
-    "priceMonthly": "₺149,99 / ay",
-    "priceTrial": "İlk 7 gün ücretsiz, sonra otomatik yenilenir. İstediğin an iptal et.",
-    "upsellCta": "7 gün ücretsiz dene",
-    "upsellDisclaimer": "₺149,99/ay — abonelik otomatik yenilenir. App Store'dan dilediğin an iptal edebilirsin."
+    "priceMonthly": "7 gün ücretsiz deneme",
+    "priceTrial": "Net fiyat ve dönem App Store fiyatları yüklendiğinde gösterilir. Satın almadan önce onaylarsın.",
+    "upsellCta": "Teklifi gör",
+    "upsellDisclaimer": "Satın alma başlamadan önce fiyat, dönem ve otomatik yenileme bilgisi aynı ekranda gösterilir."
   },
   "auth": {
-    "welcomeTitle": "Monk Mode'a Hoşgeldin",
+    "welcomeTitle": "Ascend: Daily Discipline",
     "welcomeSubtitle": "Disiplin yolculuğun başlıyor",
     "login": "Giriş Yap",
     "signup": "Kayıt Ol",
@@ -98,7 +96,28 @@
     "noAccount": "Hesabın yok mu?",
     "hasAccount": "Zaten hesabın var mı?",
     "signInWithApple": "Apple ile devam et",
+    "signupWithEmail": "E-posta ile kayıt ol",
+    "haveAccount": "Zaten hesabım var",
+    "tagline": "Disiplin. Odak. Tekrar.",
+    "notConfigured": "Bulut bağlantısı yok — sadece misafir modu çalışır",
+    "serviceNotConfigured": "Bulut bağlantısı hazır değil. Misafir olarak devam edebilir veya biraz sonra tekrar deneyebilirsin.",
+    "welcomeBack": "Tekrar hoşgeldin",
+    "welcomeBackSub": "Disiplin yolculuğuna devam et.",
+    "createAccount": "Hesap oluştur",
+    "createAccountSub": "İlk dersini ücretsiz aç.",
+    "namePlaceholder": "Adın",
+    "passwordTooShort": "Şifre en az 6 karakter olmalı",
+    "passwordHint": "En az 6 karakter",
+    "signupSuccess": "Kayıt başarılı",
+    "signupSuccessBody": "E-postanı kontrol et ve doğrulama linkine tıkla. Sonra giriş yap.",
+    "legalAgreePrefix": "Kayıt olarak ",
+    "legalTerms": "Kullanım Koşulları",
+    "legalAgreeAnd": " ve ",
+    "legalPrivacy": "Gizlilik Politikamızı",
+    "legalAgreeSuffix": " kabul etmiş olursun.",
     "appleSignInGenericError": "Apple ile giriş başarısız oldu. Tekrar dene.",
+    "appleModuleUnavailable": "Apple ile giriş modülü bu build içinde yüklenemedi.",
+    "appleUnavailable": "Apple ile giriş bu cihazda kullanılamıyor.",
     "emailNotConfirmed": "E-postanı doğrulamadın. Mailini kontrol et veya yeniden doğrulama maili gönder.",
     "resendConfirmation": "Doğrulama mailini yeniden gönder",
     "resendSent": "Doğrulama maili yeniden gönderildi.",
@@ -110,7 +129,9 @@
     "forgotPasswordSub": "E-posta adresine sıfırlama linki gönderelim.",
     "resetSentBody": "Sıfırlama linki gönderildi. Spam klasörüne de bakmayı unutma.",
     "sendResetLink": "Sıfırlama linki gönder",
-    "backToLogin": "Girişe dön"
+    "backToLogin": "Girişe dön",
+    "showPassword": "Şifreyi göster",
+    "hidePassword": "Şifreyi gizle"
   },
   "error": {
     "title": "Bir şeyler ters gitti",
@@ -152,20 +173,31 @@
     "currentStreak": "MEVCUT SERİ",
     "longestStreak": "EN UZUN",
     "daysStrong": "GÜN",
-    "todayCta": "BİR SONRAKİ ADIMIN",
+    "todayCta": "BUGÜNÜN ANA GÖREVİ",
+    "todayDoneLabel": "BUGÜN TAMAMLANDI",
+    "todayDoneTitle": "Serin güvende",
+    "todayDoneSub": "Ana ders bitti. İstersen momentum için sıradaki dersi açabilirsin.",
+    "mainLessonOpen": "1. Ana ders",
+    "mainLessonDone": "Ana ders bitti",
+    "bonusDeckOpen": "2. Bonus deste",
+    "bonusDeckDone": "Bonus bitti",
+    "nextLessonOptional": "SIRADAKİ DERSİ AÇ",
     "extrasHeader": "BUGÜNÜN EKSTRALARI",
     "sessionToday": "BUGÜN {{count}} DERS · MOMENTUM AKTİF",
     "memoryLabel": "SENİN SÖZLERİN · {{total}} YANSIMA",
     "memoryFooter": "Tüm yansımalarına bak →",
+    "baselineLabel": "1 DAKİKALIK BAŞLANGIÇ",
+    "baselineTitle": "Başlangıç noktanı kaydet",
+    "baselineBody": "Bugünkü durumunu kaydet; 30 gün sonra değişimi göstereceğiz.",
     "reassessLabel": "30 GÜN DOLDU",
     "reassessTitle": "Tekrar ölç, ne kadar ilerlediğini gör",
-    "deckLabel": "BUGÜNÜN DESTESİ · ~3 DK",
+    "deckLabel": "BONUS RİTÜEL · ~3 DK",
     "deckTitle": "Stoik bir alıntı + 1 soru + 1 mikro eylem",
-    "deckDone": "Bugünün destesi tamamlandı",
+    "deckDone": "Bonus deste tamamlandı",
     "allDone": "Tüm yollar yürüdü. 🎉",
     "allDoneSub": "Yenisini seç. Birini tekrar yürü. İş bitmez.",
-    "ctaGenericSub": "Beş dakika. Olmanın en küçük birimi.",
-    "startNow": "ADIMI AT",
+    "ctaGenericSub": "Bugünün ana adımı seni bekliyor. Yaklaşık 5 dakika.",
+    "startNow": "PRATİĞE BAŞLA",
     "viewPaths": "YOLLARA GÖZAT",
     "statXp": "XP",
     "statLessons": "DERS",
@@ -221,6 +253,7 @@
     "completeTitle": "Ders Tamamlandı",
     "greatWork": "Harika iş!",
     "correct": "doğru",
+    "completeFooter": "Disiplin yolunda bir adım daha attın.",
     "nextLesson": "Sonraki Dersi Başla",
     "nextLessonBonus": "SIRADAKİNİ DE YAP · +{{xp}} XP",
     "momentumChain": "MOMENTUM × {{count}} — +{{xp}} XP",
@@ -256,7 +289,7 @@
     "topic_mind": "Zihin",
     "topic_money": "Para",
     "topic_social": "İlişkiler",
-    "shareIntro": "Ascend: Monk Mode'da büyüyorum.",
+    "shareIntro": "Ascend: Daily Discipline'da büyüyorum.",
     "shareCta": "Dönüşümümü paylaş",
     "premiumLockTitle": "Daha derin içgörüler",
     "premiumLockSub": "Yansıma kelime sayısı, ruh hali değişimi, yol bazlı ilerleme ve paylaşılabilir kart — Premium ile aç.",
@@ -315,7 +348,7 @@
     "beginner":   { "title": "Acemi",     "sub": "Yolculuk yeni başladı. Her gün seçtiğinde, oluyorsun." },
     "apprentice": { "title": "Çırak",     "sub": "Üç gün geçti. Alev artık tesadüf değil — bir seçim." },
     "warrior":    { "title": "Savaşçı",   "sub": "İki hafta. Zorlu kısım geride. Şimdi keskinleştir." },
-    "monk":       { "title": "Keşiş",     "sub": "Otuz gün. Eski sen gitti. Disiplinli sen yürüyor." },
+    "monk":       { "title": "Disiplinli", "sub": "Otuz gün. Eski sen gitti. Disiplinli sen yürüyor." },
     "sage":       { "title": "Bilge",     "sub": "Yüz gün. Artık yolu sen itmiyorsun. Yol seninle yürüyor." },
     "legend":     { "title": "Efsane",    "sub": "Bir yıl. Buraya az insan ulaşır. Sen ulaştın." }
   },
@@ -351,6 +384,7 @@
   "profile": {
     "title": "Sen",
     "rank": "Rütbe",
+    "subtitle": "YOLUN BAŞINDA",
     "stats": "İstatistikler",
     "totalXp": "Toplam XP",
     "lessonsDone": "Tamamlanan Ders",
@@ -359,8 +393,10 @@
     "longestStreak": "En Uzun Streak",
     "levelProgress": "Seviye İlerlemesi",
     "level": "Seviye",
+    "nextRank": "SONRAKİ RÜTBE",
     "maxLevel": "Max Seviye!",
     "recentAchievements": "Son Başarılar",
+    "achievements": "BAŞARIMLAR",
     "seeAll": "Tümünü gör",
     "noAchievements": "Başarı kazanmak için ders tamamla!",
     "completed": "✓ Tamamlandı",
@@ -375,7 +411,9 @@
     "identityTitle": "KİMLİĞİN",
     "identitySub": "Bitirdiğin yollar seni şekillendiriyor. Sen artık şusun:",
     "publicShareCta": "PROFİLİ PAYLAŞ",
-    "publicShareMessage": "Ascend'de profilim 🔥\n{{streak}} gün streak · {{xp}} XP · seviye {{level}}\n{{link}}"
+    "publicShareMessage": "Ascend'de profilim 🔥\n{{streak}} gün streak · {{xp}} XP · seviye {{level}}\n{{link}}",
+    "reflectionsLink": "Yansımalarım",
+    "reflectionsLinkSub": "Geçmiş ders yansımaların"
   },
   "streakFreeze": {
     "savedTitle": "Streak kurtarıldı 🛡️",
@@ -403,6 +441,10 @@
     "resetProgressBody": "XP, streak ve ders ilerlemen sıfırlanır. Premium ve hesap bilgilerin korunur.",
     "signOutTitle": "Çıkış yap",
     "signOutConfirm": "Hesabından çıkış yapmak istediğine emin misin? İlerlemen bu cihazda kalacak.",
+    "signOutBody": "Hesabından çıkış yapmak istediğine emin misin? İlerlemen bu cihazda kalacak.",
+    "resetProgressTitle": "İlerlemeyi Sıfırla",
+    "resetDoneTitle": "Sıfırlandı",
+    "resetDoneBody": "İlerlemen sıfırlandı.",
     "restoring": "Geri yükleniyor...",
     "restoreSuccessTitle": "Başarılı",
     "restoreSuccessBody": "Premium abonelik geri yüklendi.",
@@ -426,6 +468,8 @@
     "invite": "Arkadaşını davet et",
     "inviteSub": "Davet kodun: {{code}} · 7 gün premium hediye",
     "inviteSubV2": "Kodun: {{code}}{{tail}}",
+    "inviteJoined": "{{count}} arkadaşın katıldı",
+    "inviteReward": "ikinize de 10 streak donduru",
     "inviteShare": "Disiplin akademisini birlikte yapalım — Ascend'i indir, ilk 7 gün premium senden 🔥\n{{link}}",
     "inviteShareWithCode": "Ascend'i indir, davet kodumu kullan ve 10 streak donduru kazan: {{code}}\n{{link}}",
     "redeemInvite": "Davet kodu gir",
@@ -441,7 +485,6 @@
     "redeemAlreadyUsed": "Sen bir kod kullanmıştın zaten — sadece bir kez geçerli.",
     "redeemAuthRequired": "Davet kodu kullanmak için hesabın olmalı. Önce giriş yap.",
     "redeemError": "Bir hata oluştu. Tekrar dener misin?",
-    "account": "Hesap",
     "logout": "Çıkış Yap",
     "deleteAccount": "Hesabı Sil",
     "deleteAccountConfirm": "Hesabını silmek istediğine emin misin? Geri alınamaz.",
@@ -452,9 +495,31 @@
     "privacyPolicy": "Gizlilik Politikası",
     "termsOfService": "Kullanım Koşulları",
     "version": "Sürüm",
-    "support": "Destek"
+    "build": "Derleme",
+    "support": "Destek",
+    "debug": "TEŞHİS",
+    "adDebug": "Reklam Tanı",
+    "adDebugSub": "Reklam yüklenme durumu, son hatalar ve ad unit ID'leri"
+  },
+  "adDebug": {
+    "title": "Reklam Tanı",
+    "state": "DURUM",
+    "unitIds": "AD UNIT IDS",
+    "loadInterstitial": "Interstitial yükle",
+    "loadRewarded": "Rewarded yükle",
+    "diagnostics": "SON 20 DENEME",
+    "empty": "Henüz reklam yükleme girişimi kaydedilmedi. Yukarıdaki butonlardan birine bas, kayıt başlasın.",
+    "help": "YARDIM",
+    "share": "Raporu paylaş"
   },
   "whatsNew": {
+    "v1_0_41": {
+      "title": "Daily Discipline daha net",
+      "home": "Bugünün ana görevi artık Home ekranında net şekilde öne çıkar.",
+      "flow": "İlk ders ve yol akışı sadeleşti; gereksiz otomatik yönlendirmeler kaldırıldı.",
+      "store": "Premium fiyat yükleme ve satın alma geri bildirimi daha sağlam.",
+      "cta": "Tamam"
+    },
     "v1_0_32": {
       "title": "Yeni özellikler geldi 🎉",
       "dark": "Karanlık mod — Sistem temasını otomatik takip eder. Geceleri daha rahat.",
@@ -463,9 +528,9 @@
     }
   },
   "paywall": {
-    "title": "Tam Monk Mode",
+    "title": "Daily Discipline Premium",
     "subtitle": "İlk 7 gün ücretsiz",
-    "titleA": "TAM MONK MODE",
+    "titleA": "DAILY DISCIPLINE PRO",
     "subtitleA": "İlk 7 gün ücretsiz",
     "ctaTrialA": "7 gün ücretsiz başla",
     "bestValueA": "EN İYİ FİYAT",
@@ -501,10 +566,12 @@
     "notReadyTitle": "Abonelikler hazır değil",
     "notReadyBody": "App Store bağlantısı kurulamadı. İnternetini kontrol et veya birkaç dakika sonra tekrar dene.",
     "notReadyBodyShort": "Yüklenemedi. Birazdan tekrar dene.",
+    "retryPrices": "Fiyatları tekrar yükle",
     "loadingPrices": "Fiyatlar yükleniyor...",
     "notConfigured": "Abonelik henüz mağazada görünür değil. Lütfen birkaç dakika sonra tekrar dene.",
     "networkError": "Bağlantı hatası. İnterneti kontrol et.",
     "bestValue": "EN İYİ FİYAT",
+    "pricePerMonth": "{{price}} / ay",
     "billedMonthly": "Aylık tahsil edilir",
     "trustPrivate": "GİZLİ",
     "trustCancel": "İPTAL ET",
@@ -544,6 +611,8 @@
     "lessonsCount": "{{count}} ders",
     "tier": "Tier {{tier}}",
     "premiumLocked": "Premium ile aç",
+    "lockedTitle": "Bu ders henüz kilitli",
+    "lockedBody": "Önce sıradaki aktif dersi bitir. Yol adım adım açılır.",
     "start": "Başla",
     "developmentStages": "Gelişim Aşamaları",
     "devSubtitle": "Zihinsel ve ruhsal ustalığa giden yol haritanız.",
@@ -588,7 +657,7 @@
     }
   },
   "notifications": {
-    "reminderTitleStart": "🔥 Monk mode başlasın",
+    "reminderTitleStart": "🔥 Daily Discipline başlasın",
     "reminderTitleDanger": "🔥 {{streak}} gün tehlikede",
     "reminderTitleProgress": "🔥 {{streak}} gün — disiplin",
     "reminderBodyStart": "İlk dersi tamamla. 5 dakika.",
@@ -601,7 +670,7 @@
     "dailyStart1Body": "Ders 1 hâlâ bekliyor. Tek bir başlangıç — gerisi gelir.",
     "dailyStart2Title": "Disiplin küçük başlar",
     "dailyStart2Body": "5 dakika, 1 ders, 1 alev. Bugün ateşi yak.",
-    "dailyStart3Title": "Monk mode'a ilk adım",
+    "dailyStart3Title": "Daily Discipline'a ilk adım",
     "dailyStart3Body": "Daha hiç başlamadın — ilk ders en kolayı. Şimdi aç.",
     "dailyStart4Title": "Yarın değil — bugün",
     "dailyStart4Body": "Ertelemek seni geri çekiyor. Tek bir başlangıç yeter.",
@@ -691,9 +760,9 @@
     "actionStartLesson": "Ders Başla"
   },
   "share": {
-    "streakStart": "Monk mode başlatıyorum 🔥 Disiplin. Odak. Tekrar.",
-    "streakActive": "{{streak}} gün — monk mode sürüyor 🔥 Sen de başla, alevi söndürme.",
-    "title": "Monk Mode 🔥",
+    "streakStart": "Daily Discipline başlatıyorum 🔥 Disiplin. Odak. Tekrar.",
+    "streakActive": "{{streak}} gün — Daily Discipline sürüyor 🔥 Sen de başla, alevi söndürme.",
+    "title": "Daily Discipline 🔥",
     "streakAria": "Streak paylaş",
     "failedTitle": "Paylaşılamadı",
     "failedBody": "Bir sorun oluştu, tekrar dene."
@@ -707,13 +776,6 @@
     "goPremium": "PREMIUM İLE SINIRSIZ KALPLER",
     "adNotReadyTitle": "Reklam yüklenemedi",
     "adNotReadyBody": "Şu an reklam servisinden cevap gelmedi. Bir kaç saniye sonra tekrar dene veya Premium'a geçerek reklamsız + sınırsız kalp al."
-  },
-  "_achievements_dup": {
-    "_comment": "Duplicate block — merged into canonical achievements block above. Renamed to break key collision.",
-    "unlocked": "AÇILDI",
-    "locked": "Henüz açılmadı",
-    "premiumGated": "Hedefe ulaştın — Premium ile aç",
-    "upgradeCta": "PREMIUM'A GEÇ"
   },
   "heatmap": {
     "title": "SON 30 GÜN",
@@ -749,7 +811,7 @@
     "next": "Sonraki",
     "skipResponse": "Boş geç",
     "skipAction": "Şimdilik geç",
-    "shareMsg": "\"{{quote}}\" — {{author}}. Bugünün destesinden. Ascend: Monk Mode."
+    "shareMsg": "\"{{quote}}\" — {{author}}. Bugünün destesinden. Ascend: Daily Discipline."
   },
   "assessment": {
     "eyebrowBaseline": "BAŞLANGIÇ DEĞERLENDİRMESİ",
@@ -780,7 +842,7 @@
     "narrativeDown": "Düştün — kötü değil, dürüst. Çoğu insan kendine yalan söyler. Hangi alanda en çok düştüğünü gör, oradan yeniden başla.",
     "share": "PAYLAŞ",
     "shareYou": "Ben",
-    "shareMsg": "{{days}} günde {{lessons}} ders, {{streak}} günlük seri. Kendime göre +{{delta}} puan ilerleme. Ascend: Monk Mode ile takip ediyorum.",
+    "shareMsg": "{{days}} günde {{lessons}} ders, {{streak}} günlük seri. Kendime göre +{{delta}} puan ilerleme. Ascend: Daily Discipline ile takip ediyorum.",
     "objectiveLabel": "ÖLÇÜLEBİLİR İLERLEME",
     "lessonsLabel": "DERS",
     "streakLabel": "GÜN SERİ",
@@ -791,6 +853,9 @@
     "notReady": "Henüz karşılaştıracak veri yok. 30 gün dolduğunda gelirsin."
   },
   "pledge": {
+    "cardLabel": "İSTEĞE BAĞLI",
+    "cardTitle": "Bu yol için bir cümle söz ver",
+    "cardBody": "Sadece sen göreceksin. Yazarsan Home’da sessizce hatırlatırız.",
     "label": "TAAHHÜT",
     "title": "{{path}} yoluna ne için söz veriyorsun?",
     "thisPath": "Bu yola",
@@ -834,21 +899,12 @@
     "title": "Ders ara",
     "placeholder": "Anahtar kelime — odak, sabah, dopamin...",
     "helpText": "En az 2 harfle ara — başlık, öğreti veya aksiyon içinde geçerse çıkar.",
-    "noResults": "Sonuç yok. Başka kelime dene."
-  },
-  "leaderboard": {
-    "title": "Liderlik Tablosu",
-    "intro": "En uzun streak'e sahip 50 disiplinci. Sıralama anonim — gerçek kimliklerin paylaşılmaz.",
-    "you": "(sen)",
-    "xp": "{{count}} XP",
-    "emptyTitle": "Henüz kimse yok",
-    "emptyBody": "İlk dersini yaparak liderlik tablosuna gir."
+    "noResults": "Sonuç yok. Başka kelime dene.",
+    "clear": "Aramayı temizle"
   },
   "insights": {
     "title": "İstatistikler",
     "subtitle": "Yolculuğun, sayılarda. Disiplinin somut ifadesi.",
-    "leaderboardTitle": "Liderlik Tablosu",
-    "leaderboardSub": "Anonim. En uzun seriler kazanır.",
     "weekLabel": "BU HAFTA",
     "weekLessons": "ders",
     "weekActiveDays": "{{count}}/7 gün aktif",
@@ -880,14 +936,6 @@
     "freezeAvailable": "{{count}} adet kullanılabilir. Bir gün atlarsan otomatik kullanılır.",
     "freezeEmpty": "Henüz dondurucu yok. Premium ile 3 dondurucu kazan.",
     "getFreezes": "PREMIUM İLE 3 DONDURUCU AL"
-  },
-  "_hearts_dup": {
-    "_comment": "Duplicate hearts block — see en.json _hearts_dup for context. Renamed to break key collision.",
-    "outTitle": "Kalpler Bitti",
-    "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyerek 1 kalp kazan veya Premium'a geç.",
-    "refillIn": "Yenilenme: {{mins}}",
-    "watchAd": "REKLAM İZLE, +1 KALP KAZAN",
-    "goPremium": "PREMIUM İLE SINIRSIZ KALPLER"
   },
   "calendar": {
     "title": "AKTİVİTE HARİTASI",
@@ -922,13 +970,13 @@
   },
   "milestone": {
     "3":   { "title": "3 Gün!",    "subtitle": "Alev tutuştu" },
-    "7":   { "title": "1 Hafta!",  "subtitle": "Sertleşmeye başladın" },
-    "14":  { "title": "2 Hafta!",  "subtitle": "Yeni baseline kuruluyor" },
+    "7":   { "title": "1 Hafta!",  "subtitle": "Bir hafta tamamlandı" },
+    "14":  { "title": "2 Hafta!",  "subtitle": "Yeni ritim kuruluyor" },
     "21":  { "title": "3 Hafta!",  "subtitle": "Disiplin kalıcı" },
-    "30":  { "title": "30 Gün!",   "subtitle": "Yeni adam, yeni hayat" },
-    "60":  { "title": "60 Gün!",   "subtitle": "Saygı kazanılmış" },
-    "100": { "title": "100 Gün!",  "subtitle": "Efsanesin" },
-    "365": { "title": "1 Yıl!",    "subtitle": "Bilge" }
+    "30":  { "title": "30 Gün!",   "subtitle": "Yeni rutin, yeni yön" },
+    "60":  { "title": "60 Gün!",   "subtitle": "Saygı emekle geldi" },
+    "100": { "title": "100 Gün!",  "subtitle": "Ustalık görünür oldu" },
+    "365": { "title": "1 Yıl!",    "subtitle": "Bir yıl tamamlandı" }
   },
   "dailyChallenges": {
     "cold_water": { "title": "Soğuk Su Şoku", "body": "Bugün 30 saniye soğuk duş veya yüzünü soğuk suyla yıka." },
@@ -966,7 +1014,7 @@
     "novice": { "title": "Acemi", "subtitle": "Yolculuk başlıyor" },
     "disciple": { "title": "Çırak", "subtitle": "İlk yol tamamlandı" },
     "warrior": { "title": "Savaşçı", "subtitle": "Savaşçı zihniyeti" },
-    "monk": { "title": "Keşiş", "subtitle": "Disiplin zirvede" },
+    "monk": { "title": "Disiplinli", "subtitle": "Disiplin zirvede" },
     "master": { "title": "Üstad", "subtitle": "Usta" },
     "legend": { "title": "Efsane", "subtitle": "Efsane" }
   },
@@ -986,7 +1034,6 @@
     "level_8": { "title": "Usta", "description": "Seviye 8" },
     "night_owl": { "title": "Gece Kuşu", "description": "Gece 23:00 sonrası ders bitir" },
     "early_bird": { "title": "Erken Kuş", "description": "Sabah 06:00 öncesi ders bitir" },
-    "weekend_warrior": { "title": "Hafta Sonu Savaşçısı", "description": "Hafta sonu boyunca seri tut" },
-    "inner_circle": { "title": "???", "description": "???" }
+    "weekend_warrior": { "title": "Hafta Sonu Savaşçısı", "description": "Hafta sonu boyunca seri tut" }
   }
 }

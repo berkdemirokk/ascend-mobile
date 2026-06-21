@@ -13,9 +13,10 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useAuth } from '../../contexts/AuthContext';
+import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { LT } from '../../config/lightTheme';
 import { setLanguage, getCurrentLanguage, SUPPORTED_LANGUAGES } from '../../i18n';
+import { track } from '../../services/analytics';
 
 export default function WelcomeScreen({ navigation }) {
   const { t } = useTranslation();
@@ -23,6 +24,10 @@ export default function WelcomeScreen({ navigation }) {
   const [appleAvailable, setAppleAvailable] = useState(false);
   const [appleLoading, setAppleLoading] = useState(false);
   const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
+
+  useEffect(() => {
+    track({ event: 'welcome_view' });
+  }, []);
 
   useEffect(() => {
     if (Platform.OS !== 'ios') return;
@@ -38,26 +43,35 @@ export default function WelcomeScreen({ navigation }) {
   }, []);
 
   const handleApple = async () => {
+    track({ event: 'auth_apple_tap' });
     setAppleLoading(true);
     try {
       const result = await signInWithApple();
-      if (result?.canceled) return;
+      if (result?.canceled) {
+        track({ event: 'auth_apple_cancelled' });
+        return;
+      }
       // Surface ANY error shape — Supabase can return `error.message`
       // directly, or a plain string, or a generic object (we've seen
       // "Invalid token" without .message). Apple reviewers test Apple
       // Sign-In and a silent black-hole is a guaranteed rejection.
       if (result?.error) {
         const errObj = result.error;
-        const msg =
-          errObj?.message ||
-          errObj?.error_description ||
-          (typeof errObj === 'string' ? errObj : null) ||
-          t('auth.appleSignInGenericError', 'Apple ile giriş başarısız oldu. Tekrar dene.');
+        const msg = getAuthErrorMessage(
+          t,
+          errObj,
+          'auth.appleSignInGenericError',
+        );
+        track({
+          event: 'auth_apple_failed',
+          props: { message: String(msg).slice(0, 160) },
+        });
         Alert.alert(t('common.error', 'Hata'), msg);
         return;
       }
       // Defensive: even if no error, if there's no session shape, alert.
       if (!result?.data?.session && !result?.session) {
+        track({ event: 'auth_apple_failed', props: { message: 'no_session' } });
         Alert.alert(
           t('common.error', 'Hata'),
           t(
@@ -65,15 +79,17 @@ export default function WelcomeScreen({ navigation }) {
             'Apple ile giriş başarısız oldu. Tekrar dene.',
           ),
         );
+      } else {
+        track({ event: 'auth_apple_succeeded' });
       }
     } catch (e) {
+      track({
+        event: 'auth_apple_failed',
+        props: { message: String(e?.message || e).slice(0, 160) },
+      });
       Alert.alert(
         t('common.error', 'Hata'),
-        e?.message ||
-          t(
-            'auth.appleSignInGenericError',
-            'Apple ile giriş başarısız oldu. Tekrar dene.',
-          ),
+        getAuthErrorMessage(t, e, 'auth.appleSignInGenericError'),
       );
     } finally {
       setAppleLoading(false);
@@ -83,6 +99,21 @@ export default function WelcomeScreen({ navigation }) {
   const handleChangeLang = async (code) => {
     await setLanguage(code);
     setCurrentLang(code);
+  };
+
+  const handleSignupTap = () => {
+    track({ event: 'signup_tap', props: { source: 'welcome' } });
+    navigation.navigate('Signup');
+  };
+
+  const handleLoginTap = () => {
+    track({ event: 'login_tap', props: { source: 'welcome' } });
+    navigation.navigate('Login');
+  };
+
+  const handleGuestTap = () => {
+    track({ event: 'guest_continue', props: { source: 'welcome' } });
+    continueAsGuest();
   };
 
   return (
@@ -101,7 +132,7 @@ export default function WelcomeScreen({ navigation }) {
               resizeMode="cover"
             />
           </View>
-          <Text style={styles.brand}>MONK MODE</Text>
+          <Text style={styles.brand}>DAILY DISCIPLINE</Text>
           <Text style={styles.tagline}>
             {t('auth.tagline', 'Disiplin. Odak. Tekrar.')}
           </Text>
@@ -132,7 +163,7 @@ export default function WelcomeScreen({ navigation }) {
           <TouchableOpacity
             style={styles.primaryBtnWrap}
             activeOpacity={0.9}
-            onPress={() => navigation.navigate('Signup')}
+            onPress={handleSignupTap}
           >
             <View style={styles.primaryBtn}>
               <MaterialIcons name="email" size={18} color={LT.onPrimary} />
@@ -145,7 +176,7 @@ export default function WelcomeScreen({ navigation }) {
           <TouchableOpacity
             style={styles.secondaryBtn}
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('Login')}
+            onPress={handleLoginTap}
           >
             <Text style={styles.secondaryText}>
               {t('auth.haveAccount', 'Zaten hesabım var')}
@@ -155,7 +186,7 @@ export default function WelcomeScreen({ navigation }) {
           <TouchableOpacity
             style={styles.guestBtn}
             activeOpacity={0.7}
-            onPress={continueAsGuest}
+            onPress={handleGuestTap}
           >
             <Text style={styles.guestText}>
               {t('auth.guestMode', 'Misafir olarak devam et')}
@@ -246,7 +277,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 36,
     fontWeight: '900',
-    letterSpacing: -1,
+    letterSpacing: 0,
     marginBottom: 10,
   },
   tagline: {

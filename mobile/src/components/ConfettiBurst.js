@@ -6,7 +6,7 @@
 // Designed to overlay an existing UI as an "explode" effect — pair it
 // with milestone modals, level-up screens, lesson completions.
 
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { View, StyleSheet, Animated, Easing, Dimensions } from 'react-native';
 
 const COLORS = [

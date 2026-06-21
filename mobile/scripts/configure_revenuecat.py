@@ -180,7 +180,7 @@ def make_offering_current(project_id, offering_id):
 
 # ─── Main ────────────────────────────────────────────────────────────────────
 def main():
-    print(">>> Configuring RevenueCat for Monk Mode\n")
+    print(">>> Configuring RevenueCat for Ascend: Daily Discipline\n")
 
     print("=== STEP 1: Find project ===")
     project = find_project()

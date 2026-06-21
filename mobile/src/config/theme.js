@@ -7,8 +7,7 @@
 // static `LT.*` light palette — looks fine in light mode, visibly
 // off-brand in dark for content areas.
 //
-// A previous per-screen dark migration was attempted (Squad / Settings /
-// Profile / Reflections moved to useThemedStyles) but was reverted on
+// A previous per-screen dark migration was attempted but was reverted on
 // 2026-05-24 because of contrast bugs we couldn't catch without a
 // systematic dark-mode review pass. The hooks below stay exported in
 // case we revisit, but no new screens should adopt them until the brand

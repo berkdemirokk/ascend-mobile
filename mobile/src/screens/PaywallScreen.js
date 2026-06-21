@@ -26,10 +26,29 @@ import { useAuth } from '../contexts/AuthContext';
 import { LT } from '../config/lightTheme';
 import { LEGAL } from '../config/constants';
 
-export default function PaywallScreen({ navigation }) {
+const formatStoreCurrency = (amount, currencyCode) => {
+  if (typeof amount !== 'number') return '—';
+  try {
+    if (
+      currencyCode &&
+      typeof Intl !== 'undefined' &&
+      typeof Intl.NumberFormat === 'function'
+    ) {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency: currencyCode,
+      }).format(amount);
+    }
+  } catch {}
+  return `${amount.toFixed(2)} ${currencyCode || ''}`.trim();
+};
+
+export default function PaywallScreen({ navigation, route }) {
   const { t } = useTranslation();
   const { setPremium } = useApp();
   const { user } = useAuth();
+  const source = route?.params?.source || 'unknown';
+  const afterClose = route?.params?.afterClose || null;
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [isRestoring, setIsRestoring] = useState(false);
   const [selected, setSelected] = useState('yearly');
@@ -37,14 +56,28 @@ export default function PaywallScreen({ navigation }) {
   const [loadingPackages, setLoadingPackages] = useState(true);
   const [variant, setVariant] = useState(null);
 
+  const loadPackages = async () => {
+    setLoadingPackages(true);
+    try {
+      const pkgs = await getAvailablePackages();
+      setPackages(pkgs || { monthly: null, yearly: null });
+    } finally {
+      setLoadingPackages(false);
+    }
+  };
+
+  useEffect(() => {
+    if (loadingPackages) return;
+    if (selected === 'yearly' && !packages.yearly && packages.monthly) {
+      setSelected('monthly');
+    } else if (selected === 'monthly' && !packages.monthly && packages.yearly) {
+      setSelected('yearly');
+    }
+  }, [loadingPackages, packages.monthly, packages.yearly, selected]);
+
   useEffect(() => {
     (async () => {
-      try {
-        const pkgs = await getAvailablePackages();
-        if (pkgs) setPackages(pkgs);
-      } finally {
-        setLoadingPackages(false);
-      }
+      await loadPackages();
       try {
         const v = await getPaywallVariant();
         setVariant(v);
@@ -55,7 +88,7 @@ export default function PaywallScreen({ navigation }) {
         track({
           event: 'paywall_shown',
           userId: user?.id,
-          props: { variant: v?.id || null },
+          props: { variant: v?.id || null, source },
         });
       } catch {
         setVariant({ id: 'A' });
@@ -74,13 +107,19 @@ export default function PaywallScreen({ navigation }) {
   const monthlyPrice = packages.monthly?.product?.priceString || '—';
   const yearlyPrice = packages.yearly?.product?.priceString || '—';
   const yearlyPerMonth = packages.yearly?.product?.price
-    ? `${(packages.yearly.product.price / 12).toFixed(2)} ${packages.yearly.product.currencyCode || ''}`.trim()
+    ? formatStoreCurrency(
+        packages.yearly.product.price / 12,
+        packages.yearly.product.currencyCode,
+      )
     : '—';
 
-  // True only when StoreKit actually delivered packages we can buy.
-  // The CTA + price displays gate on this — Apple has rejected apps
-  // for showing fake/placeholder prices on a buyable button.
-  const packagesReady = !!(packages.monthly || packages.yearly);
+  const closePaywall = () => {
+    if (afterClose?.name) {
+      navigation.replace(afterClose.name, afterClose.params || {});
+      return;
+    }
+    navigation.goBack();
+  };
 
   // Apple guideline 3.1.2(a): the same paywall screen MUST disclose
   // trial length + the EXACT price that will be charged + billing
@@ -89,6 +128,11 @@ export default function PaywallScreen({ navigation }) {
   // matches what StoreKit will charge.
   const selectedPackage =
     selected === 'yearly' ? packages.yearly : packages.monthly;
+  // True only when StoreKit actually delivered the package selected by
+  // the user. The CTA + price displays gate on this; Apple has rejected
+  // apps for showing fake/placeholder prices on a buyable button.
+  const packagesReady = !!selectedPackage;
+  const packagesBusy = isSubscribing || isRestoring || loadingPackages;
   const selectedPriceStr = selectedPackage?.product?.priceString || '—';
   const periodLabel =
     selected === 'yearly'
@@ -101,7 +145,22 @@ export default function PaywallScreen({ navigation }) {
   );
 
   const handleSubscribe = async () => {
+    track({
+      event: 'paywall_cta_tap',
+      userId: user?.id,
+      props: {
+        variant: variant?.id || null,
+        source,
+        period: selected,
+        packagesReady,
+      },
+    });
     if (!packagesReady) {
+      track({
+        event: 'purchase_blocked',
+        userId: user?.id,
+        props: { variant: variant?.id || null, source, period: selected },
+      });
       Alert.alert(
         t('paywall.notReadyTitle', 'Abonelikler hazır değil'),
         t(
@@ -114,18 +173,48 @@ export default function PaywallScreen({ navigation }) {
     logPaywallEvent(variant?.id || 'A', selected === 'yearly' ? 'select_yearly' : 'select_monthly');
     setIsSubscribing(true);
     try {
+      track({
+        event: 'purchase_started',
+        userId: user?.id,
+        props: {
+          variant: variant?.id || null,
+          source,
+          period: selected,
+          price: selectedPriceStr,
+        },
+      });
       const result = await purchasePremium(selected);
       // New shape: { status: 'unlocked' | 'pending' | 'cancelled', ... }
       if (result?.status === 'unlocked') {
         logPaywallEvent(variant?.id || 'A', 'purchase', { period: selected });
+        track({
+          event: 'purchase_unlocked',
+          userId: user?.id,
+          props: {
+            variant: variant?.id || null,
+            source,
+            period: selected,
+            price: selectedPriceStr,
+          },
+        });
         setPremium(true);
-        navigation.goBack();
+        closePaywall();
       } else if (result?.status === 'pending') {
         // Charge succeeded but RevenueCat hasn't seen the entitlement
         // yet (delivery lag). Tell the user, push them toward Restore
         // Purchases. THIS WAS SILENTLY FAILING BEFORE — they got
         // charged and saw nothing.
         logPaywallEvent(variant?.id || 'A', 'purchase_pending', { period: selected });
+        track({
+          event: 'purchase_pending',
+          userId: user?.id,
+          props: {
+            variant: variant?.id || null,
+            source,
+            period: selected,
+            price: selectedPriceStr,
+          },
+        });
         Alert.alert(
           t('paywall.pendingTitle', 'Satın alım alındı'),
           t(
@@ -134,9 +223,26 @@ export default function PaywallScreen({ navigation }) {
           ),
         );
       }
+      if (result?.status === 'cancelled') {
+        track({
+          event: 'purchase_cancelled',
+          userId: user?.id,
+          props: { variant: variant?.id || null, source, period: selected },
+        });
+      }
       // status === 'cancelled' → user dismissed the system sheet; no alert.
     } catch (e) {
       const msg = e?.message || '';
+      track({
+        event: 'purchase_failed',
+        userId: user?.id,
+        props: {
+          variant: variant?.id || null,
+          source,
+          period: selected,
+          message: String(msg || e).slice(0, 220),
+        },
+      });
       let body = t('common.tryAgain');
       if (/no packages|offerings|not configured/i.test(msg)) {
         body = t(
@@ -154,15 +260,47 @@ export default function PaywallScreen({ navigation }) {
     }
   };
 
+  const handleRetryPackages = async () => {
+    track({
+      event: 'paywall_retry_tap',
+      userId: user?.id,
+      props: { variant: variant?.id || null, source },
+    });
+    await loadPackages();
+  };
+
+  const handleCtaPress = async () => {
+    if (!packagesReady) {
+      await handleRetryPackages();
+      return;
+    }
+    await handleSubscribe();
+  };
+
   const handleRestore = async () => {
+    track({
+      event: 'restore_tap',
+      userId: user?.id,
+      props: { variant: variant?.id || null, source },
+    });
     setIsRestoring(true);
     try {
       const success = await restorePurchases();
       if (success) {
+        track({
+          event: 'restore_success',
+          userId: user?.id,
+          props: { variant: variant?.id || null, source },
+        });
         setPremium(true);
-        navigation.goBack();
+        closePaywall();
         return;
       }
+      track({
+        event: 'restore_empty',
+        userId: user?.id,
+        props: { variant: variant?.id || null, source },
+      });
       // No active entitlement found OR restore failed. Apple guideline
       // 3.1.1 requires explicit user feedback on EVERY Restore tap —
       // success OR no-restore. The OLD code silently did nothing on
@@ -178,6 +316,15 @@ export default function PaywallScreen({ navigation }) {
         ),
       );
     } catch (e) {
+      track({
+        event: 'restore_failed',
+        userId: user?.id,
+        props: {
+          variant: variant?.id || null,
+          source,
+          message: String(e?.message || e).slice(0, 220),
+        },
+      });
       Alert.alert(t('common.error'), e?.message || t('common.tryAgain'));
     } finally {
       setIsRestoring(false);
@@ -193,7 +340,9 @@ export default function PaywallScreen({ navigation }) {
       {/* Top bar */}
       <View style={styles.topBar}>
         <TouchableOpacity
-          onPress={() => navigation.goBack()}
+          accessibilityRole="button"
+          accessibilityLabel={t('common.close', 'Kapat')}
+          onPress={closePaywall}
           style={styles.closeBtn}
         >
           <MaterialIcons name="close" size={22} color={LT.onSurface} />
@@ -208,7 +357,7 @@ export default function PaywallScreen({ navigation }) {
         <View style={styles.hero}>
           <Text style={styles.heroEmoji}>{variant?.heroEmoji || '🔥'}</Text>
           <Text style={styles.heroTitle}>
-            {t(variant?.headline || 'paywall.title', 'TAM MONK MODE').toUpperCase()}
+            {t(variant?.headline || 'paywall.title', 'DAILY DISCIPLINE PRO').toUpperCase()}
           </Text>
           <Text style={styles.heroSubtitle}>
             {t(
@@ -308,15 +457,7 @@ export default function PaywallScreen({ navigation }) {
               );
             })()}
             <TouchableOpacity
-              onPress={async () => {
-                setLoadingPackages(true);
-                try {
-                  const pkgs = await getAvailablePackages();
-                  if (pkgs) setPackages(pkgs);
-                } finally {
-                  setLoadingPackages(false);
-                }
-              }}
+              onPress={handleRetryPackages}
               style={styles.retryBtn}
             >
               <Text style={styles.retryText}>
@@ -326,73 +467,76 @@ export default function PaywallScreen({ navigation }) {
           </View>
         ) : (
           <View style={styles.priceCards}>
-            {/* Yearly */}
-            <TouchableOpacity
-              onPress={() => setSelected('yearly')}
-              activeOpacity={0.85}
-              style={[
-                styles.priceCard,
-                styles.priceCardYearly,
-                selected === 'yearly' && styles.priceCardYearlyActive,
-              ]}
-            >
-              <View style={styles.bestValueBadge}>
-                <Text style={styles.bestValueText}>
-                  {t(variant?.bestValueBadge || 'paywall.bestValue', 'EN İYİ FİYAT')}
+            {packages.yearly ? (
+              <TouchableOpacity
+                onPress={() => setSelected('yearly')}
+                activeOpacity={0.85}
+                style={[
+                  styles.priceCard,
+                  styles.priceCardYearly,
+                  selected === 'yearly' && styles.priceCardYearlyActive,
+                ]}
+              >
+                <View style={styles.bestValueBadge}>
+                  <Text style={styles.bestValueText}>
+                    {t(variant?.bestValueBadge || 'paywall.bestValue', 'EN İYİ FİYAT')}
+                  </Text>
+                </View>
+                <Text style={styles.pricePeriodYearly}>
+                  {t('paywall.yearly', 'YILLIK').toUpperCase()}
                 </Text>
-              </View>
-              <Text style={styles.pricePeriodYearly}>
-                {t('paywall.yearly', 'YILLIK').toUpperCase()}
-              </Text>
-              <Text style={styles.priceAmountYearly}>{yearlyPrice}</Text>
-              <Text style={styles.pricePerMonthYearly}>{yearlyPerMonth} / ay</Text>
-            </TouchableOpacity>
+                <Text style={styles.priceAmountYearly}>{yearlyPrice}</Text>
+                <Text style={styles.pricePerMonthYearly}>
+                  {t('paywall.pricePerMonth', '{{price}} / ay', {
+                    price: yearlyPerMonth,
+                  })}
+                </Text>
+              </TouchableOpacity>
+            ) : null}
 
-            {/* Monthly */}
-            <TouchableOpacity
-              onPress={() => setSelected('monthly')}
-              activeOpacity={0.85}
-              style={[
-                styles.priceCard,
-                styles.priceCardMonthly,
-                selected === 'monthly' && styles.priceCardMonthlyActive,
-              ]}
-            >
-              <Text style={styles.pricePeriod}>
-                {t('paywall.monthly', 'AYLIK').toUpperCase()}
-              </Text>
-              <Text style={styles.priceAmount}>{monthlyPrice}</Text>
-              <Text style={styles.pricePerMonth}>
-                {t('paywall.billedMonthly', 'Her ay faturalandırılır')}
-              </Text>
-            </TouchableOpacity>
+            {packages.monthly ? (
+              <TouchableOpacity
+                onPress={() => setSelected('monthly')}
+                activeOpacity={0.85}
+                style={[
+                  styles.priceCard,
+                  styles.priceCardMonthly,
+                  selected === 'monthly' && styles.priceCardMonthlyActive,
+                ]}
+              >
+                <Text style={styles.pricePeriod}>
+                  {t('paywall.monthly', 'AYLIK').toUpperCase()}
+                </Text>
+                <Text style={styles.priceAmount}>{monthlyPrice}</Text>
+                <Text style={styles.pricePerMonth}>
+                  {t('paywall.billedMonthly', 'Her ay faturalandırılır')}
+                </Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
         )}
 
-        {/* CTA — disabled while packages are loading or unresolved so
-            the user can't tap a buy button that would error. Apple
-            also rejects paywalls where the price next to the CTA is
-            placeholder/fake. */}
+        {/* CTA retries StoreKit loading when packages are unresolved.
+            It only starts purchase after actual StoreKit packages exist. */}
         <TouchableOpacity
-          onPress={handleSubscribe}
-          disabled={isSubscribing || isRestoring || loadingPackages || !packagesReady}
+          onPress={handleCtaPress}
+          disabled={packagesBusy}
           activeOpacity={0.9}
           style={styles.ctaShadow}
         >
           <View
             style={[
               styles.ctaButton,
-              (isSubscribing ||
-                isRestoring ||
-                loadingPackages ||
-                !packagesReady) && { opacity: 0.6 },
+              packagesBusy && { opacity: 0.6 },
             ]}
           >
             {isSubscribing || loadingPackages ? (
               <ActivityIndicator color={LT.onPrimary} />
             ) : (
               <Text style={styles.ctaText}>
-                {t(variant?.ctaText || 'paywall.ctaTrial', '7 gün ücretsiz başla')}
+                {packagesReady
+                  ? t(variant?.ctaText || 'paywall.ctaTrial', '7 gün ücretsiz başla')
+                  : t('paywall.retryPrices', 'Fiyatları tekrar yükle')}
               </Text>
             )}
           </View>
@@ -513,7 +657,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 26,
     fontWeight: '900',
-    letterSpacing: -1,
+    letterSpacing: 0,
     marginBottom: 6,
     textAlign: 'center',
   },
@@ -709,7 +853,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 30,
     fontWeight: '900',
-    letterSpacing: -0.8,
+    letterSpacing: 0,
   },
   pricePerMonth: {
     color: LT.onSurfaceVariant,
@@ -730,7 +874,7 @@ const styles = StyleSheet.create({
     color: LT.onPrimary,
     fontSize: 30,
     fontWeight: '900',
-    letterSpacing: -0.8,
+    letterSpacing: 0,
   },
   pricePerMonthYearly: {
     color: LT.onPrimary,

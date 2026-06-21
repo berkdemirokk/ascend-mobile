@@ -14,7 +14,6 @@ import {
   setupNotifCategories,
   setupNotifResponseListener,
 } from './src/services/notifications';
-import { LT } from './src/config/lightTheme';
 import { getThemedLT } from './src/config/theme';
 import { useWhatsNew } from './src/hooks/useWhatsNew';
 import WhatsNewModal from './src/components/WhatsNewModal';

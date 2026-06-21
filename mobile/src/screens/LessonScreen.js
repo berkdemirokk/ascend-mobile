@@ -41,7 +41,7 @@ import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
 import { track } from '../services/analytics';
 import { useAuth } from '../contexts/AuthContext';
-import { LT, LT_RADIUS } from '../config/lightTheme';
+import { LT } from '../config/lightTheme';
 
 const STEP = {
   TEACHING: 'teaching',
@@ -54,7 +54,7 @@ const REFLECTION_MAX = 250;
 export default function LessonScreen({ navigation, route }) {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { pathId, lessonId } = route.params || {};
+  const { pathId, lessonId } = route?.params || {};
   const {
     completePathLesson,
     pathProgress,
@@ -292,8 +292,8 @@ export default function LessonScreen({ navigation, route }) {
       celebrationScale.setValue(0);
       xpY.setValue(0);
     } catch {}
-    // Reset the post-letter run guard so next lesson can fire it once.
-    postLetterFlowRanRef.current = false;
+    // Reset the post-lesson run guard so next lesson can fire it once.
+    postLessonFlowRanRef.current = false;
   }, [lessonId]);
 
   useEffect(() => {
@@ -558,11 +558,8 @@ export default function LessonScreen({ navigation, route }) {
   // Continue from the celebration screen straight into the post-lesson
   // sequence (ATT prompt → review prompt → paywall pitch → ad → goBack).
   // Previously this branched into a "Letter from Future Self" modal in
-  // ~5% of cases as a variable-reward surface; that surface was removed
-  // because the letters were templates, not user-authored — they read as
-  // fake intimacy and were a trust-erosion risk for the brand.
   const handleCelebrationContinue = async () => {
-    return runPostLetterFlow();
+    return runPostLessonFlow();
   };
 
   // Guard against double-firing of the post-lesson sequence — the
@@ -570,10 +567,10 @@ export default function LessonScreen({ navigation, route }) {
   // the user backgrounds the app between tap and execution we'd risk a
   // double navigation / double paywall.
   // Track first run with a ref; subsequent calls become no-ops.
-  const postLetterFlowRanRef = useRef(false);
-  const runPostLetterFlow = async () => {
-    if (postLetterFlowRanRef.current) return;
-    postLetterFlowRanRef.current = true;
+  const postLessonFlowRanRef = useRef(false);
+  const runPostLessonFlow = async () => {
+    if (postLessonFlowRanRef.current) return;
+    postLessonFlowRanRef.current = true;
     const totalCompleted = Object.values(pathProgress || {}).reduce(
       (s, p) => s + (p?.completed?.length || 0),
       0,
@@ -621,7 +618,7 @@ export default function LessonScreen({ navigation, route }) {
     if (shouldShowPostLessonPaywall) {
       // Replace the lesson screen with Paywall so back-button goes Home,
       // not back into the just-completed lesson.
-      navigation.replace('Paywall');
+      navigation.replace('Paywall', { source: 'post_lesson_3' });
       return;
     }
 
@@ -669,6 +666,8 @@ export default function LessonScreen({ navigation, route }) {
   const renderTopBar = () => (
     <View style={styles.topBar}>
       <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={t('common.close', 'Kapat')}
         onPress={() => navigation.goBack()}
         style={styles.closeBtn}
         hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
@@ -1302,7 +1301,7 @@ export default function LessonScreen({ navigation, route }) {
           }}
           onPaywall={() => {
             setOutOfHeartsVisible(false);
-            navigation.navigate('Paywall');
+            navigation.navigate('Paywall', { source: 'lesson_out_of_hearts' });
           }}
         />
 
@@ -1462,7 +1461,7 @@ export default function LessonScreen({ navigation, route }) {
               <TouchableOpacity
                 onPress={() => {
                   if (!isPremium) {
-                    navigation.navigate('Paywall');
+                    navigation.navigate('Paywall', { source: 'sage_mode' });
                   } else {
                     setSageModeVisible(true);
                   }
@@ -1680,7 +1679,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     fontStyle: 'italic',
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   // "Today you learned" takeaway card on the celebration screen. Surfaces
   // the first sentence of the teaching so the user actually walks away
@@ -1708,7 +1707,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 20,
-    letterSpacing: -0.1,
+    letterSpacing: 0,
   },
   // Reflection Mirror — sage-quote card surfaced on celebration screen
   // after a user submits a reflection. Empathy hook.
@@ -1735,7 +1734,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontStyle: 'italic',
     lineHeight: 20,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   // Sage Mode button — premium-exclusive entry on celebration screen.
   // Gold-tinted, sits above the "Next Lesson" CTA so it's visible but
@@ -1774,7 +1773,7 @@ const styles = StyleSheet.create({
 
   title: {
     color: LT.onSurface, fontSize: 24, fontWeight: '900',
-    marginBottom: 24, lineHeight: 30, letterSpacing: -0.4,
+    marginBottom: 24, lineHeight: 30, letterSpacing: 0,
   },
 
   heroBox: {
@@ -2105,7 +2104,7 @@ const styles = StyleSheet.create({
     color: '#B45309',
     fontSize: 36,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     textShadowColor: 'rgba(253, 224, 71, 0.5)',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
@@ -2116,7 +2115,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '900',
     marginBottom: 8,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   celebrationSubtitle: {
     color: LT.onSurfaceVariant,

@@ -107,14 +107,14 @@ App Store'da **app preview video**'ları conversion'ı **%15-25 artırır**. App
 ```
 "Disiplini öğrenme zamanı. 5 yol, 50 ders, sınırsız sen.
 Quiz ile pekiştir. Streakini koru. Yeni sen başlasın.
-Monk Mode — şimdi App Store'da."
+Ascend: Daily Discipline — şimdi App Store'da."
 ```
 
 ### English Script
 ```
 "Time to learn discipline. 5 paths, 50 lessons, unlimited you.
 Reinforce with quizzes. Keep your streak. Become the new you.
-Monk Mode — now on App Store."
+Ascend: Daily Discipline — now on App Store."
 ```
 
 **Voice over araçları**:

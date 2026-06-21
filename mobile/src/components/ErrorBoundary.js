@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     marginBottom: 10,
     textAlign: 'center',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   subtitle: {
     color: LT.onSurfaceVariant,

@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useAuth } from '../../contexts/AuthContext';
+import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { LT } from '../../config/lightTheme';
 
 export default function ForgotPasswordScreen({ navigation }) {
@@ -35,7 +35,10 @@ export default function ForgotPasswordScreen({ navigation }) {
     const { error } = await resetPassword(email);
     setLoading(false);
     if (error) {
-      Alert.alert(t('common.error'), error.message || t('common.tryAgain'));
+      Alert.alert(
+        t('common.error'),
+        getAuthErrorMessage(t, error, 'common.tryAgain'),
+      );
       return;
     }
     setSent(true);
@@ -57,6 +60,8 @@ export default function ForgotPasswordScreen({ navigation }) {
 
           <View style={styles.topBar}>
             <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityLabel={t('common.back', 'Geri')}
               onPress={() => navigation.goBack()}
               style={styles.backBtn}
             >
@@ -205,7 +210,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 28,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     textAlign: 'center',
     marginBottom: 8,
     paddingHorizontal: 12,

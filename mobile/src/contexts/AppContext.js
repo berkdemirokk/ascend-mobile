@@ -18,15 +18,7 @@ import {
 import { getRank } from '../config/ranks';
 import { getPathById } from '../data/paths';
 import { pullState, pushState, mergeStates, pickSyncableState } from '../services/cloudSync';
-// `generateAnonUsername` is the only export still imported from the old
-// leaderboard module — used as a default handle for the share card and
-// Profile/Settings displays. The public leaderboard surface (screen +
-// push-on-streak-change) was removed because a global ranking contradicts
-// the "Monk Mode" framing of solo, intrinsic discipline. The Squad
-// surface (private 2-5 person rings) was also removed because there was
-// no inviteable user pool — solo users would see an empty squad UI and
-// feel lonelier, not motivated.
-import { generateAnonUsername } from '../services/leaderboard';
+import { generateAnonUsername } from '../services/anonymousHandle';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
 import { redeemReferralCode, checkReferralRewards } from '../services/referral';
@@ -37,6 +29,7 @@ import {
   cancelComebackReminder,
   registerPushToken,
 } from '../services/notifications';
+import { calendarDaysSince, toLocalDateString } from '../utils/dateOnly';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
 
@@ -133,8 +126,8 @@ const initialState = {
   pathProgress: {},
   activePathId: 'dopamine-detox',
 
-  // Anonymous handle for the public streak leaderboard. Generated on first
-  // sign-in and re-used across devices via cloudSync.
+  // Anonymous profile handle. Generated on first sign-in and re-used across
+  // devices via cloudSync.
   anonUsername: null,
 
   // Streak Vacation Mode (premium): user can pause their streak for up to
@@ -174,21 +167,12 @@ const initialState = {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-const getTodayDateString = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
+const getTodayDateString = () => toLocalDateString(new Date());
 
 const getYesterdayDateString = () => {
   const d = new Date();
   d.setDate(d.getDate() - 1);
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+  return toLocalDateString(d);
 };
 
 // Heart refill cadence — halved from 30 → 15 min in v1.0.12 because user
@@ -208,6 +192,11 @@ const NEW_USER_GRACE_HOURS = 24;
 // Bonus XP awarded when a lesson is finished without losing any hearts.
 // Makes the heart system feel rewarding rather than purely punitive.
 const PERFECT_LESSON_BONUS_XP = 10;
+
+const normalizeAnonUsername = (value) => {
+  if (typeof value !== 'string') return value;
+  return value.replace(/^monk_/, 'ascender_');
+};
 
 // ─── Reducer ─────────────────────────────────────────────────────────────────
 
@@ -252,8 +241,7 @@ function appReducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.LOAD_STATE: {
       // Whitelist payload keys against initialState's shape — this
-      // prevents fossil fields from prior versions (currentSquadId,
-      // lastLetterShownAt, dailyMysteryBox*) from leaking into the new
+      // prevents fossil fields from prior versions from leaking into the new
       // state and getting pushed back up to the cloud on the next sync.
       // Without this, every cloud push would re-write the dead keys
       // forever, and a multi-device user would see them spread.
@@ -263,6 +251,9 @@ function appReducer(state, action) {
         if (action.payload && Object.prototype.hasOwnProperty.call(action.payload, k)) {
           sanitizedPayload[k] = action.payload[k];
         }
+      }
+      if (Object.prototype.hasOwnProperty.call(sanitizedPayload, 'anonUsername')) {
+        sanitizedPayload.anonUsername = normalizeAnonUsername(sanitizedPayload.anonUsername);
       }
       const next = { ...state, ...sanitizedPayload, _loaded: true };
       // First-launch sentinel — stamp installedAt the very first time
@@ -538,7 +529,7 @@ function appReducer(state, action) {
 
     case ACTION_TYPES.ENSURE_ANON_USERNAME: {
       // Generate once, then sticky. cloudSync will replicate the chosen
-      // handle across devices so the user stays the same monk.
+      // handle across devices so the user keeps the same public profile.
       if (state.anonUsername) return state;
       return { ...state, anonUsername: action.payload };
     }
@@ -681,17 +672,10 @@ function appReducer(state, action) {
       let xpMultiplier = 1;
       let comebackApplied = false;
       if (state.lastCompletedDate) {
-        const last = new Date(state.lastCompletedDate);
-        const lastMs = last.getTime();
-        // Guard against corrupt persisted state — older builds may have
-        // written non-ISO strings here. NaN check prevents daysSince
-        // becoming NaN which would silently disable comeback bonus.
-        if (!Number.isNaN(lastMs)) {
-          const daysSince = Math.floor((Date.now() - lastMs) / 86400000);
-          if (daysSince >= 3) {
-            xpMultiplier *= 2;
-            comebackApplied = true;
-          }
+        const daysSince = calendarDaysSince(state.lastCompletedDate);
+        if (daysSince !== null && daysSince >= 3) {
+          xpMultiplier *= 2;
+          comebackApplied = true;
         }
       }
       const dow = new Date().getDay();
@@ -814,6 +798,7 @@ function appReducer(state, action) {
       const newSpecials = checkSpecialAchievements({
         now: new Date(),
         unlocked: state.unlockedAchievements,
+        lessonHistory: state.lessonHistory,
       });
 
       // Milestone toast: trigger confetti + haptic on these streak counts.
@@ -993,7 +978,7 @@ export function AppProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state._loaded]);
 
-  // ── Ensure the user has an anon handle for the leaderboard ───────────────
+  // ── Ensure the user has an anonymous profile handle ─────────────────────
   useEffect(() => {
     if (!state._loaded) return;
     if (state.anonUsername) return;
@@ -1193,8 +1178,7 @@ export function AppProvider({ children }) {
     const timer = setTimeout(() => {
       // Sanitize before push: `pickSyncableState` keeps only the
       // explicit SYNCED_KEYS allowlist, so fossil fields from removed
-      // features (e.g. currentSquadId after Squad MVP was removed) can
-      // never be re-written to the cloud row.
+      // features can never be re-written to the cloud row.
       const toPush = pickSyncableState(state);
       pushState(userId, toPush).catch((e) =>
         console.warn('[AppContext] Cloud push failed:', e?.message),

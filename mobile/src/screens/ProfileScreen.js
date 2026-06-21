@@ -121,10 +121,10 @@ export default function ProfileScreen({ navigation }) {
     ];
   }, [unlockedAchievements]);
 
-  const username = user?.email?.split('@')[0] || 'StoicMonk';
+  const username = user?.email?.split('@')[0] || 'Ascender';
 
   const handleSharePublicProfile = async () => {
-    const handle = anonUsername || 'monk';
+    const handle = anonUsername || 'ascender';
     const link = `https://ascend.app/u/${encodeURIComponent(handle)}`;
     const message = t(
       'profile.publicShareMessage',
@@ -142,10 +142,10 @@ export default function ProfileScreen({ navigation }) {
     try {
       const message =
         currentStreak > 0
-          ? t('share.streakActive', '{{streak}} gün — monk mode sürüyor 🔥', {
+          ? t('share.streakActive', '{{streak}} gün — Daily Discipline sürüyor 🔥', {
               streak: currentStreak,
             })
-          : t('share.streakStart', 'Monk mode başlatıyorum 🔥');
+          : t('share.streakStart', 'Daily Discipline başlatıyorum 🔥');
       await new Promise((r) => setTimeout(r, 60));
       const ok = await captureAndShare({
         viewRef: shareCardRef,
@@ -175,6 +175,7 @@ export default function ProfileScreen({ navigation }) {
             onPress={handleShareStreak}
             disabled={sharing}
             style={styles.shareBtn}
+            accessibilityRole="button"
             accessibilityLabel={t('share.streakAria', 'Streak paylaş')}
             activeOpacity={0.7}
           >
@@ -474,7 +475,7 @@ export default function ProfileScreen({ navigation }) {
         onClose={() => setSelectedAchievement(null)}
         achievementId={selectedAchievement?.id}
         unlocked={selectedAchievement && !selectedAchievement.locked}
-        onUpgrade={() => navigation.navigate('Paywall')}
+        onUpgrade={() => navigation.navigate('Paywall', { source: 'achievement_detail' })}
       />
 
       {/* Transformation Report — full-screen modal with personal
@@ -488,7 +489,7 @@ export default function ProfileScreen({ navigation }) {
         onClose={() => setReportVisible(false)}
         onUpgradeTap={() => {
           setReportVisible(false);
-          navigation.navigate('Paywall');
+          navigation.navigate('Paywall', { source: 'transformation_report' });
         }}
       />
 
@@ -499,7 +500,7 @@ export default function ProfileScreen({ navigation }) {
           streak={currentStreak || 0}
           longestStreak={longestStreak || 0}
           lessonsCompleted={completedLessonsTotal || 0}
-          title={t('share.title', 'Monk Mode 🔥')}
+          title={t('share.title', 'Daily Discipline 🔥')}
           subtitle={t('profile.shareSubtitle', 'Disiplin. Odak. Tekrar.')}
           streakLabel={t('profile.shareStreakLabel', 'GÜN')}
           longestLabel={t('profile.shareLongestLabel', 'EN UZUN')}
@@ -687,7 +688,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 30,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginBottom: 4,
   },
@@ -739,7 +740,7 @@ const styles = StyleSheet.create({
   statCardValue: {
     fontSize: 30,
     fontWeight: '900',
-    letterSpacing: -0.8,
+    letterSpacing: 0,
     color: LT.onSurface,
   },
   statCardValueAccent: {
@@ -778,7 +779,7 @@ const styles = StyleSheet.create({
   levelTitle: {
     fontSize: 18,
     fontWeight: '900',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginTop: 2,
   },
@@ -789,7 +790,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '900',
     color: LT.primaryContainer,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   levelXPMax: {
     fontSize: 12,
@@ -890,7 +891,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '900',
     color: LT.onSurface,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
 
   // Transformation Report entry CTA — dark gradient card on Profile
@@ -928,7 +929,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '900',
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
 
   // Path Mastery — per-path progress cards. The sunk-cost visualization
@@ -1044,7 +1045,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: LT.onSurface,
     textAlign: 'center',
-    letterSpacing: -0.1,
+    letterSpacing: 0,
   },
   achTitleLocked: {
     color: LT.outline,

@@ -95,6 +95,8 @@ export default function LessonSearchScreen({ navigation }) {
 
       <View style={styles.topBar}>
         <TouchableOpacity
+          accessibilityRole="button"
+          accessibilityLabel={t('common.back', 'Geri')}
           onPress={() => navigation.goBack()}
           style={styles.backBtn}
           hitSlop={{ top: 12, left: 12, right: 12, bottom: 12 }}
@@ -119,7 +121,12 @@ export default function LessonSearchScreen({ navigation }) {
           returnKeyType="search"
         />
         {query ? (
-          <TouchableOpacity onPress={() => setQuery('')} hitSlop={8}>
+          <TouchableOpacity
+            onPress={() => setQuery('')}
+            hitSlop={8}
+            accessibilityRole="button"
+            accessibilityLabel={t('search.clear', 'Aramayı temizle')}
+          >
             <MaterialIcons name="close" size={18} color={LT.onSurfaceVariant} />
           </TouchableOpacity>
         ) : null}
@@ -177,7 +184,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '900',
     color: LT.onSurface,
-    letterSpacing: -0.3,
+    letterSpacing: 0,
   },
 
   searchBox: {

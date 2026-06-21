@@ -31,7 +31,6 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { LT } from '../config/lightTheme';
 import { speak, stop as stopTts } from '../services/tts';
 import { getCurrentLanguage } from '../i18n';
 import {
@@ -195,6 +194,8 @@ export default function SageMode({
             {/* Close button — always present, but stops TTS first */}
             <View style={styles.topBar}>
               <TouchableOpacity
+                accessibilityRole="button"
+                accessibilityLabel={t('common.close', 'Kapat')}
                 onPress={() => {
                   try { stopTts(); } catch {}
                   if (breathTimer.current) clearInterval(breathTimer.current);
@@ -442,7 +443,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '900',
     marginBottom: 8,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   doneSub: {
     color: '#FDE047',
@@ -457,7 +458,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '900',
     textAlign: 'center',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   bigSub: {
     color: '#FFFFFF',

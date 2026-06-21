@@ -1,4 +1,4 @@
-# Ascend: Monk Mode
+# Ascend: Daily Discipline
 
 An Expo iOS app for discipline training: 5 paths, 50 lessons each, streaks, hearts, achievements, subscriptions, ads, Supabase auth/cloud sync, and TR/EN localization.
 

@@ -23,21 +23,28 @@
 import { supabase, SUPABASE_CONFIGURED } from './supabase';
 
 const TABLE = 'referrals';
+const REFERRAL_PREFIX = 'ASCEND';
+const LEGACY_REFERRAL_PREFIX = 'MONK';
+
+const suffixFromUserId = (userId) => {
+  if (!userId) return null;
+  const cleaned = String(userId).replace(/-/g, '').toUpperCase();
+  if (cleaned.length < 8) return null;
+  return `${cleaned.slice(0, 4)}-${cleaned.slice(-4)}`;
+};
 
 /**
  * Deterministic code from a user UID. UUID first 4 chars + last 4 chars,
- * uppercase, hyphen-separated, prefixed "MONK-".
- * Example: "MONK-A1B2-9F8E" from UID "a1b2cd34-...-9f8e1234"
+ * uppercase, hyphen-separated, prefixed "ASCEND-".
+ * Example: "ASCEND-A1B2-9F8E" from UID "a1b2cd34-...-9f8e1234"
  *
  * Stable for the lifetime of the account. No randomness — same UID
  * always produces the same code, which matters if a user accidentally
  * opens Invite from two devices (both should see the same code).
  */
 export const codeFromUserId = (userId) => {
-  if (!userId) return null;
-  const cleaned = String(userId).replace(/-/g, '').toUpperCase();
-  if (cleaned.length < 8) return null;
-  return `MONK-${cleaned.slice(0, 4)}-${cleaned.slice(-4)}`;
+  const suffix = suffixFromUserId(userId);
+  return suffix ? `${REFERRAL_PREFIX}-${suffix}` : null;
 };
 
 /**
@@ -50,16 +57,15 @@ export const ensureMyReferral = async (userId) => {
   const code = codeFromUserId(userId);
   if (!code) return null;
   try {
-    // upsert with onConflict on owner_user_id would be cleaner but we
-    // don't have a unique constraint there (intentional — a user could
-    // theoretically rotate codes). For now: select first, insert if
-    // missing.
-    const { data: existing } = await supabase
+    // Keep old MONK-* rows redeemable, but always ensure the current
+    // displayed code is ASCEND-* so new shares match the product brand.
+    const { data: existingCurrent } = await supabase
       .from(TABLE)
       .select('code')
-      .eq('owner_user_id', userId)
+      .eq('code', code)
       .maybeSingle();
-    if (existing?.code) return existing.code;
+    if (existingCurrent?.code) return existingCurrent.code;
+
     const { error } = await supabase.from(TABLE).insert({
       code,
       owner_user_id: userId,
@@ -93,13 +99,24 @@ export const redeemReferralCode = async (rawCode, userId) => {
   if (!code || code.length < 8) return { ok: false, reason: 'invalid' };
 
   try {
-    // Find the row.
-    const { data: row, error: findErr } = await supabase
+    // Find the row. New ASCEND-* codes are preferred; legacy MONK-*
+    // fallback only runs if the new branded row does not exist yet.
+    let { data: row, error: findErr } = await supabase
       .from(TABLE)
       .select('id, owner_user_id, redeemed_by')
       .eq('code', code)
       .maybeSingle();
     if (findErr) return { ok: false, reason: 'error' };
+    if (!row && code.startsWith(`${REFERRAL_PREFIX}-`)) {
+      const legacyCode = `${LEGACY_REFERRAL_PREFIX}-${code.slice(REFERRAL_PREFIX.length + 1)}`;
+      const legacyResult = await supabase
+        .from(TABLE)
+        .select('id, owner_user_id, redeemed_by')
+        .eq('code', legacyCode)
+        .maybeSingle();
+      if (legacyResult.error) return { ok: false, reason: 'error' };
+      row = legacyResult.data;
+    }
     if (!row) return { ok: false, reason: 'invalid' };
     if (row.owner_user_id === userId) return { ok: false, reason: 'own_code' };
     if (row.redeemed_by) return { ok: false, reason: 'already_redeemed' };

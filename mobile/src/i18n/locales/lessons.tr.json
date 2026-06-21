@@ -7,7 +7,7 @@
     },
     "silent-morning": {
       "title": "Sessiz Sabah",
-      "subtitle": "21 günde monk mode sabah ritüeli",
+      "subtitle": "21 günde Daily Discipline sabah ritüeli",
       "description": "Erken kalk. Telefonu açma. İlk saatini sessizlikte yaşa."
     },
     "mind-discipline": {
@@ -2543,7 +2543,7 @@
       },
       "32": {
         "title": "Stillness 10 Dakika",
-        "teaching": "Modern hayat = sürekli hareket, sürekli yapma. Boş bir 30 saniye → telefon. Boş bir bekleme → mesaj. Boş bir tuvalet ziyareti → Instagram. **Hiçbir şey yapmamak** korkutucu hale geldi.\n\nBlaise Pascal (1654): 'İnsanlığın bütün sorunları tek bir şeyden doğar — bir odada **tek başına oturamamak**.' 350 yıl geçti, durum **kötüleşti**.\n\nHareket disiplinin yarısı. **Diğer yarısı: durabilmek.** 10 dakika tam stillness — bedenle değil, **iradeyle** durmak. Kıpırdamadan, kaşımadan, gerinmeden, telefon kontrol etmeden.\n\nMatthieu Ricard (genetik biyolog → Tibetli keşiş, 40 yıl meditasyon) fMRI çalışmaları: uzun stillness pratiği yapanlarda **gamma dalgaları** baseline'da bile yüksek — saf farkındalık nöral imzası.\n\nMekanizma: stillness = **interoception** (içsel beden farkındalığı) güçlendirir. Insular cortex aktif olur — duyguları, ihtiyaçları, bedenin sinyallerini **daha net** algılarsın. Karar verme, duygu yönetimi, empati hep buradan beslenir.\n\nİlk 10 dakika dayanılmaz olur. Bu **gösterge**: ne kadar zor = ne kadar gerekli.",
+        "teaching": "Modern hayat = sürekli hareket, sürekli yapma. Boş bir 30 saniye → telefon. Boş bir bekleme → mesaj. Boş bir tuvalet ziyareti → Instagram. **Hiçbir şey yapmamak** korkutucu hale geldi.\n\nBlaise Pascal (1654): 'İnsanlığın bütün sorunları tek bir şeyden doğar — bir odada **tek başına oturamamak**.' 350 yıl geçti, durum **kötüleşti**.\n\nHareket disiplinin yarısı. **Diğer yarısı: durabilmek.** 10 dakika tam stillness — bedenle değil, **iradeyle** durmak. Kıpırdamadan, kaşımadan, gerinmeden, telefon kontrol etmeden.\n\nMatthieu Ricard (genetik biyolog → Tibetli meditasyon ustası, 40 yıl meditasyon) fMRI çalışmaları: uzun stillness pratiği yapanlarda **gamma dalgaları** baseline'da bile yüksek — saf farkındalık nöral imzası.\n\nMekanizma: stillness = **interoception** (içsel beden farkındalığı) güçlendirir. Insular cortex aktif olur — duyguları, ihtiyaçları, bedenin sinyallerini **daha net** algılarsın. Karar verme, duygu yönetimi, empati hep buradan beslenir.\n\nİlk 10 dakika dayanılmaz olur. Bu **gösterge**: ne kadar zor = ne kadar gerekli.",
         "action": "Bugün **10 dk tam hareketsiz** otur. Telefonsuz, müziksiz, kıpırdamadan.",
         "reflectionPrompt": "Stillness ne kadar zor geldi? Hangi dakikada en güçlü 'kaç' isteği geldi?",
         "proTip": "**Dik otur**, gözleri **%30 açık** (Zen 'soft gaze'). Sırt yastığı al — fiziksel destek = mental odak.",

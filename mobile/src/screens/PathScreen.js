@@ -16,6 +16,7 @@ import {
   Animated,
   Easing,
   StatusBar,
+  Alert,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -53,7 +54,6 @@ export default function PathScreen({ navigation }) {
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
   const [streakInfoVisible, setStreakInfoVisible] = useState(false);
   const [sharingCert, setSharingCert] = useState(false);
-  const autoStartedRef = useRef(false);
   const certCardRef = useRef(null);
   const { user } = useAuth();
 
@@ -73,39 +73,22 @@ export default function PathScreen({ navigation }) {
     [activePath, pathProgress],
   );
 
-  // Auto-start first lesson on initial mount if user has zero progress.
-  useEffect(() => {
-    if (autoStartedRef.current) return;
-    autoStartedRef.current = true;
-    if (!activePath || lessons.length === 0) return;
-    const totalCompleted = Object.values(pathProgress || {}).reduce(
-      (s, p) => s + (p?.completed?.length || 0),
-      0,
-    );
-    if (totalCompleted === 0) {
-      const timer = setTimeout(() => {
-        const firstLesson = lessons[0];
-        if (firstLesson) {
-          navigation.navigate('Lesson', {
-            pathId: firstLesson.pathId,
-            lessonId: firstLesson.id,
-          });
-        }
-      }, 600);
-      return () => clearTimeout(timer);
-    }
-  }, [activePath, lessons, pathProgress, navigation]);
-
   const handleLessonTap = (lesson, finalState) => {
     if (finalState === 'premium') {
-      navigation.navigate('Paywall');
+      navigation.navigate('Paywall', { source: 'path_locked_lesson' });
       return;
     }
     if (finalState === 'locked') {
-      // tapping locked is a no-op (we don't reveal hint via toast for now)
+      Alert.alert(
+        t('path.lockedTitle', 'Bu ders henüz kilitli'),
+        t(
+          'path.lockedBody',
+          'Önce sıradaki aktif dersi bitir. Yol adım adım açılır.',
+        ),
+      );
       return;
     }
-    if (!isPremium && hearts <= 0) {
+    if (!isPremium && (hearts || 0) <= 0) {
       setOutOfHeartsVisible(true);
       return;
     }
@@ -125,6 +108,8 @@ export default function PathScreen({ navigation }) {
         currentStreak={currentStreak}
         rightContent={
           <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={t('search.title', 'Ders ara')}
             onPress={() => navigation.navigate('LessonSearch')}
             style={styles.searchBtn}
             hitSlop={{ top: 8, left: 8, right: 8, bottom: 8 }}
@@ -292,7 +277,7 @@ export default function PathScreen({ navigation }) {
         // would tap the red CTA and see nothing happen.
         onPaywall={() => {
           setOutOfHeartsVisible(false);
-          navigation.navigate('Paywall');
+          navigation.navigate('Paywall', { source: 'path_out_of_hearts' });
         }}
         refillAt={heartsRefillAt}
       />
@@ -518,7 +503,7 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: 32,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     lineHeight: 38,
     color: LT.onSurface,
     marginBottom: 6,
@@ -689,7 +674,7 @@ const styles = StyleSheet.create({
     lineHeight: 140,
     color: LT.onSurface,
     opacity: 0.045,
-    letterSpacing: -4,
+    letterSpacing: 0,
   },
   cardBgNumberActive: {
     color: LT.primaryContainer,
@@ -723,7 +708,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     lineHeight: 28,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginBottom: 6,
   },

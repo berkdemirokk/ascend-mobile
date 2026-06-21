@@ -104,7 +104,12 @@ export default function AdDebugModal({ visible, onClose }) {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>{t('adDebug.title', 'Reklam Tanı')}</Text>
-          <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
+          <TouchableOpacity
+            onPress={onClose}
+            style={styles.closeBtn}
+            accessibilityRole="button"
+            accessibilityLabel={t('common.close', 'Kapat')}
+          >
             <MaterialIcons name="close" size={22} color={T.onSurface} />
           </TouchableOpacity>
         </View>
@@ -311,7 +316,7 @@ const makeStyles = (T) =>
       color: T.onSurface,
       fontSize: 18,
       fontWeight: '800',
-      letterSpacing: -0.3,
+      letterSpacing: 0,
     },
     closeBtn: {
       width: 36,

@@ -50,6 +50,8 @@ export default function StreakLostBanner({
           {t('streakLost.label', 'ZİNCİRİN KIRILDI')}
         </Text>
         <TouchableOpacity
+          accessibilityRole="button"
+          accessibilityLabel={t('common.close', 'Kapat')}
           onPress={onDismiss}
           hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
           style={styles.closeBtn}

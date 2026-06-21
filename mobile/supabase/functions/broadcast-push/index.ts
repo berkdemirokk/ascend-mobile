@@ -1,8 +1,7 @@
 // Supabase Edge Function: broadcast-push
 //
 // Sends a single push notification to ALL users with a registered
-// Expo push token. Use case: "the app got an update — try the new
-// Squad feature", milestone announcements, occasional product news.
+// Expo push token for release notes or occasional product news.
 //
 // Auth model:
 //   - NOT user-callable. There is no "users can spam each other" code
@@ -24,7 +23,7 @@
 //   curl -X POST https://<project>.supabase.co/functions/v1/broadcast-push \
 //     -H "X-Broadcast-Secret: <your secret>" \
 //     -H "Content-Type: application/json" \
-//     -d '{"title":"Ascend güncellendi","body":"Halka özelliği geldi — dene!","data":{"deeplink":"squad"}}'
+//     -d '{"title":"Ascend güncellendi","body":"Yeni sürüm hazır.","data":{"deeplink":"home"}}'
 //
 // Response:
 //   { ok: true, sent: 42, failed: 2, errors: ["DeviceNotRegistered", ...] }
@@ -53,7 +52,7 @@ const BATCH_SIZE = 100; // Expo's documented limit
 interface BroadcastBody {
   title: string;
   body: string;
-  data?: Record<string, unknown>; // arbitrary payload, e.g. { deeplink: "squad" }
+  data?: Record<string, unknown>; // arbitrary payload, e.g. { deeplink: "home" }
   sound?: 'default' | null;
   // Optional dry-run mode: counts targets but doesn't actually send.
   dryRun?: boolean;

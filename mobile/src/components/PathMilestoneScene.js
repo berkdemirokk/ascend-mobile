@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     textAlign: 'center',
     marginBottom: 10,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   body: {
     color: '#FFFFFF',

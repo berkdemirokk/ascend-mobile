@@ -23,7 +23,7 @@ Build sonrası senin yapacakların. Sırayla. Her birinin yanına ✅ at.
 ## 1️⃣ App Store Connect — Subscriptions
 
 ### 1.1 Subscription Group oluştur
-1. https://appstoreconnect.apple.com → My Apps → Ascend: Monk Mode
+1. https://appstoreconnect.apple.com → My Apps → Ascend: Daily Discipline
 2. Sol menü → **Subscriptions**
 3. **+ Subscription Group** → Reference Name: `Premium`
 
@@ -92,7 +92,7 @@ Her iki subscription için:
 
 1. https://admob.google.com
 2. Hesap aktif mi? (publisher ID: `pub-9898903071826160`)
-3. Apps → "Ascend Monk Mode" var mı? Yoksa **Add App**:
+3. Apps → "Ascend Daily Discipline" var mı? Yoksa **Add App**:
    - Platform: iOS
    - App: **`com.ascend.growth`**
    - Apple ID: `6761607644`
@@ -164,7 +164,7 @@ TestFlight build hazır olunca:
 2. **Yan tuş + Power tuşu** ile screenshot
 3. iPhone'undan AirDrop / iCloud ile bilgisayara aktar
 4. **Gerekli 3 ekran** minimum:
-   - **Onboarding hero** ("Monk Mode" + "Başla")
+   - **Onboarding hero** ("Daily Discipline" + "Başla")
    - **Path screen** (Duolingo tree görünümü)
    - **Lesson screen** (öğretim/eylem/yansıma)
 5. **Önerilen 6 ekran**:

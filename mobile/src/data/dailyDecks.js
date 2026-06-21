@@ -12,7 +12,7 @@
 //
 // Sources are mixed on purpose:
 //   - Stoic core (Marcus Aurelius, Epictetus, Seneca) — the
-//     "Monk Mode" anchor.
+//     Daily Discipline anchor.
 //   - Modern figures (Naval Ravikant, Cal Newport, James Clear)
 //     — make the philosophy feel applicable today.
 //   - Turkish writers (Cemil Meriç, Doğan Cüceloğlu, Sabri Esat

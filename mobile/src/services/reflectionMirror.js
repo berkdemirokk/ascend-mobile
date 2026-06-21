@@ -2,7 +2,7 @@
 // When the user writes a reflection, we scan the text for emotional /
 // topical signals, then return a curated quote that resonates with
 // what they wrote. No AI, no network — just a small dictionary mapping
-// keyword clusters to Stoic / monk / wisdom quotes (multilingual).
+// keyword clusters to Stoic / discipline / wisdom quotes (multilingual).
 //
 // Why this matters: the reflection journal previously sat in a void —
 // user wrote, app stored, app moved on. With the Mirror, the user

@@ -12,7 +12,7 @@ This file intentionally stays short. Older versions of this document contained s
 
 Current runtime facts:
 
-- App name: `Ascend: Monk Mode`
+- App name: `Ascend: Daily Discipline`
 - Bundle ID: `com.ascend.growth`
 - App Store ID: `6761607644`
 - iOS build version in `app.json`: `1.0.41`

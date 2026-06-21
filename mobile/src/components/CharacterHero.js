@@ -5,14 +5,13 @@
 // TRANSFORMED through the app, not just earned points.
 //
 // Identity > behavior (James Clear, Atomic Habits). The emoji is the
-// VISUAL proof of identity. When a user sees themselves as "🧘 Monk"
+// VISUAL proof of identity. When a user sees themselves as "🧘 Disciplined"
 // in their profile, they're far less likely to skip a day.
 
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Easing } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import { LT } from '../config/lightTheme';
 import {
   getCharacterStage,
   getNextCharacterStage,
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '900',
     marginBottom: 4,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   subtitle: {
     color: '#FFFFFF',

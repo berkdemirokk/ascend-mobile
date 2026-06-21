@@ -194,7 +194,7 @@ def add_free_trial_offer(token, sub_id, duration="ONE_WEEK", territory="USA"):
 
 # ─── Main flow ────────────────────────────────────────────────────────────────
 def main():
-    print(">>> Configuring App Store Connect for Monk Mode\n")
+    print(">>> Configuring App Store Connect for Ascend: Daily Discipline\n")
     token = make_token()
 
     print("=== STEP 1: Inventory existing subscriptions ===")
@@ -225,16 +225,16 @@ def main():
     LOCALES = [
         {
             "locale": "en-US",
-            "monthly_name": "Monk Mode Premium (Monthly)",
+            "monthly_name": "Daily Discipline Premium (Monthly)",
             "monthly_desc": "Unlimited hearts, all paths, ad-free.",
-            "yearly_name": "Monk Mode Premium (Yearly)",
+            "yearly_name": "Daily Discipline Premium (Yearly)",
             "yearly_desc": "Unlimited hearts, all paths, ad-free. Best value.",
         },
         {
             "locale": "tr",
-            "monthly_name": "Monk Mode Premium (Aylık)",
+            "monthly_name": "Daily Discipline Premium (Aylık)",
             "monthly_desc": "Sınırsız kalp, tüm yollar, reklamsız.",
-            "yearly_name": "Monk Mode Premium (Yıllık)",
+            "yearly_name": "Daily Discipline Premium (Yıllık)",
             "yearly_desc": "Sınırsız kalp, tüm yollar, reklamsız. En iyi fiyat.",
         },
     ]

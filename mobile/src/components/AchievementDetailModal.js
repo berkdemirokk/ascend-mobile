@@ -77,7 +77,12 @@ export default function AchievementDetailModal({
         style={styles.backdrop}
       >
         <TouchableOpacity activeOpacity={1} style={styles.card}>
-          <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
+          <TouchableOpacity
+            onPress={onClose}
+            style={styles.closeBtn}
+            accessibilityRole="button"
+            accessibilityLabel={t('common.close', 'Kapat')}
+          >
             <MaterialIcons name="close" size={20} color={LT.onSurfaceVariant} />
           </TouchableOpacity>
 
@@ -234,7 +239,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 22,
     fontWeight: '900',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     marginBottom: 8,
     textAlign: 'center',
   },

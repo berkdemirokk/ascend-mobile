@@ -99,12 +99,6 @@ export const ACHIEVEMENTS = [
   { id: 'night_owl', title: 'Gece Kuşu', description: 'Gece 23:00 sonrası ders bitir', icon: '🦉', type: 'special', rarity: 'rare', hidden: true },
   { id: 'early_bird', title: 'Erken Kuş', description: 'Sabah 06:00 öncesi ders bitir', icon: '🐦', type: 'special', rarity: 'rare', hidden: true },
   { id: 'weekend_warrior', title: 'Hafta Sonu Savaşçısı', description: 'Hafta sonu boyunca seri tut', icon: '⚔️', type: 'special', rarity: 'uncommon', hidden: true },
-
-  // ===== PREMIUM TEASER =====
-  // Shown as '???' to free users — drives curiosity + paywall. Only the
-  // shape (rarity + locked silhouette) is visible until premium upgrade
-  // reveals the real title and unlocks the badge.
-  { id: 'inner_circle', title: '???', description: '???', icon: '🎭', type: 'special', rarity: 'legendary', hidden: false, premiumOnly: true, isTeaser: true },
 ];
 
 export const RARITY_COLORS = {
@@ -158,22 +152,31 @@ export function checkAchievements(ctx) {
  * @param {Object} ctx
  * @param {Date}   ctx.now - current moment
  * @param {string[]} ctx.unlocked
+ * @param {Record<string, number>} ctx.lessonHistory - completions by date
  * @returns {string[]} new specials to unlock
  */
 export function checkSpecialAchievements(ctx) {
   const now = ctx?.now || new Date();
   const unlocked = ctx?.unlocked || [];
+  const lessonHistory = ctx?.lessonHistory || {};
   const out = [];
   const hour = now.getHours();
   const day = now.getDay(); // 0 = Sunday, 6 = Saturday
 
   if (hour >= 23 && !unlocked.includes('night_owl')) out.push('night_owl');
   if (hour < 6 && !unlocked.includes('early_bird')) out.push('early_bird');
-  if ((day === 0 || day === 6) && !unlocked.includes('weekend_warrior')) {
-    // Triggers on the second weekend day completion to actually require both.
-    // Caller should pass weekendStreak count via ctx if they want stricter
-    // gating; for now, hitting weekend at all once is enough.
-    out.push('weekend_warrior');
+  if (day === 0 && !unlocked.includes('weekend_warrior')) {
+    const saturday = new Date(now);
+    saturday.setDate(saturday.getDate() - 1);
+    const year = saturday.getFullYear();
+    const month = String(saturday.getMonth() + 1).padStart(2, '0');
+    const date = String(saturday.getDate()).padStart(2, '0');
+    const saturdayKey = `${year}-${month}-${date}`;
+    // Sunday completion is the current event. Requiring a Saturday entry
+    // means the achievement now matches its "complete both days" promise.
+    if ((lessonHistory[saturdayKey] || 0) > 0) {
+      out.push('weekend_warrior');
+    }
   }
   return out;
 }

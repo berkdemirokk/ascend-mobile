@@ -28,9 +28,8 @@ const SYNCED_KEYS = [
   'latestAssessment',
   'dailyDeckHistory',
   'lastDailyDeckCompletedDate',
-  // Added after audit found these were being pushed without merge,
-  // causing multi-device drift (letter cooldown wrong, repair count
-  // reset, momentum session phantom on second device).
+  // Added after audit found these were being pushed without merge, causing
+  // multi-device drift in repair counts and momentum session bookkeeping.
   'streakRepairsUsed',
   'todaySessionLessons',
   'lastLessonAtMs',
