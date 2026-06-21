@@ -305,7 +305,9 @@
           "userTrackingUsageDescription": "We use your device's advertising ID to show you ads tailored to your interests. You can change this preference anytime in Settings."
         }
       ],
-      "expo-tracking-transparency"
+      "expo-tracking-transparency",
+      "expo-asset",
+      "expo-font"
     ],
     "extra": {
       "supabase": {

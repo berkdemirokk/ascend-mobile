@@ -21,7 +21,7 @@
       "autoIncrement": true,
       "ios": {
         "resourceClass": "m-medium",
-        "image": "latest"
+        "image": "macos-sequoia-15.6-xcode-26.0"
       }
     }
   },

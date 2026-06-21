@@ -7,12 +7,12 @@ import {
   Switch,
   Alert,
   StyleSheet,
-  SafeAreaView,
   Linking,
   StatusBar,
   ActivityIndicator,
   Share,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';

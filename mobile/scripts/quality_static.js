@@ -378,6 +378,33 @@ run('MaterialIcons names', () => {
   assert(!invalid.length, invalid.join('; '));
 });
 
+run('release toolchain', () => {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
+  const easJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'eas.json'), 'utf8'));
+  const dependencies = packageJson.dependencies || {};
+  const image = easJson.build?.production?.ios?.image || '';
+
+  assert(/^[~^]?54\./.test(dependencies.expo || ''), `production requires Expo SDK 54, found ${dependencies.expo}`);
+  assert(image !== 'latest' && /xcode-26(?:\.|$)/.test(image), `production must pin Xcode 26, found ${image}`);
+  assert(/^[~^]?7\./.test(dependencies['@react-navigation/native'] || ''), 'React Navigation 7 is required');
+  assert(Boolean(dependencies['react-native-worklets']), 'react-native-worklets must be a direct dependency');
+
+  const deprecatedSafeAreaImports = [];
+  for (const file of jsFiles) {
+    traverse(getAst(file), {
+      ImportDeclaration(importPath) {
+        if (importPath.node.source.value !== 'react-native') return;
+        if (importPath.node.specifiers.some((specifier) => (
+          specifier.type === 'ImportSpecifier' && specifier.imported.name === 'SafeAreaView'
+        ))) {
+          deprecatedSafeAreaImports.push(relative(file));
+        }
+      },
+    });
+  }
+  assert(!deprecatedSafeAreaImports.length, `deprecated react-native SafeAreaView: ${deprecatedSafeAreaImports.join(', ')}`);
+});
+
 run('lesson locale schema', () => {
   const locales = [['tr', trLessons], ['en', enLessons]];
   const pathIds = Object.keys(trLessons.lessons);
