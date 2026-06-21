@@ -397,7 +397,9 @@ run('release toolchain', () => {
   assert(/^[~^]?54\./.test(dependencies.expo || ''), `production requires Expo SDK 54, found ${dependencies.expo}`);
   assert(image !== 'latest' && /xcode-26(?:\.|$)/.test(image), `production must pin Xcode 26, found ${image}`);
   assert(/^[~^]?7\./.test(dependencies['@react-navigation/native'] || ''), 'React Navigation 7 is required');
-  assert(Boolean(dependencies['react-native-worklets']), 'react-native-worklets must be a direct dependency');
+  assert(appJson.expo?.newArchEnabled === false, 'Legacy Architecture must remain explicit for SDK 54 stability');
+  assert(!dependencies['react-native-reanimated'], 'react-native-reanimated is not required by the app');
+  assert(!dependencies['react-native-worklets'], 'react-native-worklets is not required by the app');
   assert(isNewReleaseTrain, `release version must be newer than 1.0.41, found ${releaseVersion}`);
   assert(!Object.prototype.hasOwnProperty.call(appJson.expo?.ios || {}, 'buildNumber'), 'iOS buildNumber must be managed remotely by EAS');
 

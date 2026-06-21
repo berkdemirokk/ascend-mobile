@@ -9,11 +9,6 @@ import {
   StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Animated2, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-} from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useApp } from '../contexts/AppContext';
@@ -90,11 +85,6 @@ export default function OnboardingScreen({ navigation }) {
     time: null,
     mood: null,
   });
-
-  const buttonScale = useSharedValue(1);
-  const animatedButtonStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: buttonScale.value }],
-  }));
 
   const finishOnboarding = () => {
     setUserProfile({
@@ -211,10 +201,6 @@ export default function OnboardingScreen({ navigation }) {
   };
 
   const handleNext = () => {
-    buttonScale.value = withSpring(0.95, {}, () => {
-      buttonScale.value = withSpring(1);
-    });
-
     if (step === 'personalize') {
       setStep('pickPath');
     } else if (step === 'pickPath') {
@@ -342,7 +328,7 @@ export default function OnboardingScreen({ navigation }) {
           <UpsellStep t={t} onSubscribe={handleUpsellSubscribe} />
         )}
 
-        <Animated2.View style={[styles.bottomArea, animatedButtonStyle]}>
+        <View style={styles.bottomArea}>
           {/* Step dots */}
           <View style={styles.dots}>
             {STEPS.map((s, i) => {
@@ -389,7 +375,7 @@ export default function OnboardingScreen({ navigation }) {
                   ? t('onboarding.captionArchetype', '30 GÜN SONRA NE OLACAKSIN')
                   : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
           </Text>
-        </Animated2.View>
+        </View>
       </View>
     </SafeAreaView>
   );

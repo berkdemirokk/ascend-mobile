@@ -4,6 +4,7 @@
     "slug": "ascend-level-up",
     "scheme": "ascend",
     "version": "1.0.42",
+    "newArchEnabled": false,
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
