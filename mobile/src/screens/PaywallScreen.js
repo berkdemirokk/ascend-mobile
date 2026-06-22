@@ -301,10 +301,10 @@ export default function PaywallScreen({ navigation, route }) {
         userId: user?.id,
         props: { variant: variant?.id || null, source },
       });
-      // No active entitlement found OR restore failed. Apple guideline
-      // 3.1.1 requires explicit user feedback on EVERY Restore tap —
-      // success OR no-restore. The OLD code silently did nothing on
-      // false, which is a known rejection cause.
+      // A false result now means RevenueCat responded successfully but found
+      // no active entitlement. Network/module errors throw and land in the
+      // catch branch, so users no longer see a misleading "nothing to
+      // restore" message during an outage.
       Alert.alert(
         t(
           'paywall.restoreNoneTitle',
@@ -325,7 +325,13 @@ export default function PaywallScreen({ navigation, route }) {
           message: String(e?.message || e).slice(0, 220),
         },
       });
-      Alert.alert(t('common.error'), e?.message || t('common.tryAgain'));
+      Alert.alert(
+        t('common.error'),
+        t(
+          'paywall.restoreFailedBody',
+          'Satın alımlar şu anda kontrol edilemedi. İnternet bağlantını kontrol edip tekrar dene.',
+        ),
+      );
     } finally {
       setIsRestoring(false);
     }

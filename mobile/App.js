@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator, useColorScheme } from 'react-native';
+import { View, ActivityIndicator, AppState, useColorScheme } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -17,6 +17,10 @@ import {
 import { getThemedLT } from './src/config/theme';
 import { useWhatsNew } from './src/hooks/useWhatsNew';
 import WhatsNewModal from './src/components/WhatsNewModal';
+import {
+  flushAnalytics,
+  installGlobalErrorHandler,
+} from './src/services/analytics';
 
 const I18N_STARTUP_TIMEOUT_MS = 3000;
 
@@ -34,6 +38,18 @@ export default function App() {
   // sprint; this is phase 1.
   const scheme = useColorScheme();
   const T = getThemedLT(scheme);
+
+  useEffect(() => {
+    const removeErrorHandler = installGlobalErrorHandler();
+    const appStateSubscription = AppState.addEventListener('change', (state) => {
+      if (state !== 'active') flushAnalytics().catch(() => {});
+    });
+    return () => {
+      appStateSubscription.remove();
+      removeErrorHandler();
+      flushAnalytics().catch(() => {});
+    };
+  }, []);
 
   useEffect(() => {
     let mounted = true;

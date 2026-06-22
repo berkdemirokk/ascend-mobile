@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -85,6 +85,17 @@ export default function OnboardingScreen({ navigation }) {
     time: null,
     mood: null,
   });
+
+  useEffect(() => {
+    track({
+      event: 'onboarding_step_viewed',
+      userId: user?.id,
+      props: {
+        step,
+        stepIndex: STEPS.indexOf(step),
+      },
+    });
+  }, [step, user?.id]);
 
   const finishOnboarding = () => {
     setUserProfile({

@@ -434,6 +434,27 @@ run('startup fail-open guards', () => {
   assert(notificationSource.includes('shouldShowList: true'), 'notification handler must use the current iOS list behavior');
 });
 
+run('release observability', () => {
+  const analyticsSource = fs.readFileSync(path.join(SRC, 'services', 'analytics.js'), 'utf8');
+  const appSource = fs.readFileSync(path.join(ROOT, 'App.js'), 'utf8');
+  const onboardingSource = fs.readFileSync(path.join(SRC, 'screens', 'OnboardingScreen.js'), 'utf8');
+  assert(analyticsSource.includes("QUEUE_STORAGE_KEY"), 'analytics queue must survive app termination');
+  assert(analyticsSource.includes('const { error } = await supabase.from(TABLE).insert(batch)'), 'analytics must inspect Supabase insert errors');
+  assert(analyticsSource.includes('Constants.nativeBuildVersion'), 'analytics events must include native build version');
+  assert(analyticsSource.includes('installGlobalErrorHandler'), 'global JS errors must be captured');
+  assert(appSource.includes('installGlobalErrorHandler()'), 'App must install the global JS error handler');
+  assert(appSource.includes('flushAnalytics()'), 'App lifecycle must flush analytics');
+  assert(onboardingSource.includes("event: 'onboarding_step_viewed'"), 'onboarding funnel must record each viewed step');
+});
+
+run('purchase failure semantics', () => {
+  const purchaseSource = fs.readFileSync(path.join(SRC, 'services', 'purchases.js'), 'utf8');
+  const restoreMatch = purchaseSource.match(/export const restorePurchases = async \(\) => \{([\s\S]*?)\n\};/);
+  assert(restoreMatch, 'restorePurchases implementation missing');
+  assert(restoreMatch[1].includes("throw new Error"), 'unavailable purchase service must throw');
+  assert(!/catch\s*\([^)]*\)[\s\S]*return false/.test(restoreMatch[1]), 'restore errors must not be reported as an empty entitlement');
+});
+
 run('first-session content pacing', () => {
   const appJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'app.json'), 'utf8'));
   const lessonScreen = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');

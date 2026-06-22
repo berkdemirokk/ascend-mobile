@@ -285,7 +285,13 @@ export default function SettingsScreen({ navigation }) {
         );
       }
     } catch (e) {
-      Alert.alert(t('common.error', 'Hata'), e?.message || t('common.tryAgain'));
+      Alert.alert(
+        t('common.error', 'Hata'),
+        t(
+          'settings.restoreFailedBody',
+          'App Store bağlantısı kurulamadı. İnternetini kontrol edip tekrar dene.',
+        ),
+      );
     } finally {
       setRestoring(false);
     }

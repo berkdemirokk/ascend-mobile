@@ -228,13 +228,10 @@ export const getAvailablePackages = async () => {
 };
 
 export const restorePurchases = async () => {
-  try {
-    const P = await ensureReady();
-    if (!P) return false;
-    const customerInfo = await P.restorePurchases();
-    return customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
-  } catch (e) {
-    console.warn('Restore error:', e?.message);
-    return false;
+  const P = await ensureReady();
+  if (!P) {
+    throw new Error(lastInitError || 'Purchases service is unavailable');
   }
+  const customerInfo = await P.restorePurchases();
+  return customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
 };
