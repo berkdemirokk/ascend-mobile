@@ -5,17 +5,20 @@
 // Backup: ProfileScreen.legacy.js
 
 import React, { useMemo, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import {
+  useTranslation } from 'react-i18next';
 import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   StyleSheet,
   Alert,
   StatusBar,
   Share,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import Svg, { Circle } from 'react-native-svg';

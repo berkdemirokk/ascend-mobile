@@ -305,6 +305,25 @@ const main = async () => {
   assert(!Object.prototype.hasOwnProperty.call(syncable, 'isPremium'), 'store-authoritative premium state was synced');
   assert(!Object.prototype.hasOwnProperty.call(syncable.pathProgress['dopamine-detox'], 'reflectionAudio'), 'local audio URI was synced');
 
+  const { resolveAccessibilityProps } = loadModule(
+    path.join(ROOT, 'src/components/AccessibleControls.js'),
+  );
+  const defaultButton = resolveAccessibilityProps({ onPress: () => {} });
+  assert(defaultButton.accessibilityRole === 'button', 'interactive control has no default button role');
+  const radio = resolveAccessibilityProps({ onPress: () => {}, accessibilityRole: 'radio' });
+  assert(radio.accessibilityRole === 'radio', 'explicit accessibility role was overwritten');
+  const hiddenBackdrop = resolveAccessibilityProps({ onPress: () => {}, accessible: false });
+  assert(hiddenBackdrop.accessibilityRole === undefined, 'hidden backdrop became an accessibility button');
+  const disabledControl = resolveAccessibilityProps({
+    onPress: () => {},
+    disabled: true,
+    accessibilityState: { selected: true },
+  });
+  assert(
+    disabledControl.accessibilityState.disabled && disabledControl.accessibilityState.selected,
+    'disabled accessibility state did not preserve existing state',
+  );
+
   console.log(`runtime tests passed: ${assertions} assertions`);
 };
 

@@ -2,11 +2,13 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
   ScrollView,
   Linking,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
 import { LT } from '../config/lightTheme';
 import { LEGAL } from '../config/constants';
 import { logError } from '../services/analytics';

@@ -4,7 +4,14 @@
 // Used by: PathScreen, HomeScreen, StatsScreen, ProfileScreen.
 
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { LT, LT_RADIUS } from '../config/lightTheme';

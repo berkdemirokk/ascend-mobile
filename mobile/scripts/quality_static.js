@@ -227,6 +227,91 @@ run('icon button accessibility', () => {
   assert(!issues.length, issues.slice(0, 30).join('; '));
 });
 
+run('shared accessible touch controls', () => {
+  const wrapperFile = path.join(SRC, 'components', 'AccessibleControls.js');
+  const wrapperSource = fs.readFileSync(wrapperFile, 'utf8');
+  const rawImports = [];
+  for (const file of jsFiles) {
+    if (file === wrapperFile) continue;
+    traverse(getAst(file), {
+      ImportDeclaration(importPath) {
+        if (importPath.node.source.value !== 'react-native') return;
+        const rawControls = importPath.node.specifiers.filter((specifier) => (
+          specifier.type === 'ImportSpecifier'
+          && ['TouchableOpacity', 'Pressable'].includes(specifier.imported.name)
+        ));
+        if (rawControls.length) rawImports.push(relative(file));
+      },
+    });
+  }
+  assert(!rawImports.length, `raw React Native touch controls: ${rawImports.join(', ')}`);
+  assert(wrapperSource.includes("accessibilityRole ?? (onPress && accessible !== false ? 'button' : undefined)"), 'shared touch controls must provide a default button role');
+  assert(wrapperSource.includes('disabled: true'), 'shared touch controls must expose disabled state');
+});
+
+run('small-screen interactive widths', () => {
+  const issues = [];
+  for (const file of jsFiles) {
+    const ast = getAst(file);
+    const wideStyles = new Set();
+    traverse(ast, {
+      VariableDeclarator(variablePath) {
+        const { id, init } = variablePath.node;
+        if (id.type !== 'Identifier' || init?.type !== 'CallExpression') return;
+        if (init.callee?.type !== 'MemberExpression'
+          || init.callee.object?.name !== 'StyleSheet'
+          || init.callee.property?.name !== 'create'
+          || init.arguments[0]?.type !== 'ObjectExpression') return;
+        for (const styleProperty of init.arguments[0].properties) {
+          if (styleProperty.type !== 'ObjectProperty'
+            || styleProperty.value?.type !== 'ObjectExpression') continue;
+          const styleName = styleProperty.key.name || styleProperty.key.value;
+          const fixedWide = styleProperty.value.properties.some((property) => (
+            property.type === 'ObjectProperty'
+            && ['width', 'minWidth'].includes(property.key.name || property.key.value)
+            && property.value?.type === 'NumericLiteral'
+            && property.value.value > 280
+          ));
+          if (fixedWide) wideStyles.add(`${id.name}.${styleName}`);
+        }
+      },
+    });
+
+    const inspectStyle = (node, line) => {
+      if (!node || typeof node !== 'object') return;
+      if (node.type === 'MemberExpression' && !node.computed
+        && node.object?.type === 'Identifier' && node.property?.type === 'Identifier') {
+        const reference = `${node.object.name}.${node.property.name}`;
+        if (wideStyles.has(reference)) issues.push(`${relative(file)}:${line} uses ${reference}`);
+      }
+      if (node.type === 'ObjectExpression') {
+        for (const property of node.properties) {
+          if (property.type === 'ObjectProperty'
+            && ['width', 'minWidth'].includes(property.key.name || property.key.value)
+            && property.value?.type === 'NumericLiteral'
+            && property.value.value > 280) {
+            issues.push(`${relative(file)}:${line} has inline fixed width ${property.value.value}`);
+          }
+        }
+      }
+      for (const key of VISITOR_KEYS[node.type] || []) {
+        const child = node[key];
+        if (Array.isArray(child)) child.forEach((item) => inspectStyle(item, line));
+        else inspectStyle(child, line);
+      }
+    };
+
+    traverse(ast, {
+      JSXOpeningElement(openingPath) {
+        if (!['TouchableOpacity', 'Pressable'].includes(jsxName(openingPath.node.name))) return;
+        const style = jsxAttribute(openingPath.node, 'style');
+        inspectStyle(style?.value?.expression, openingPath.node.loc?.start.line || '?');
+      },
+    });
+  }
+  assert(!issues.length, `fixed-width controls can overflow 320pt screens: ${issues.slice(0, 20).join('; ')}`);
+});
+
 run('navigation routes', () => {
   const routes = new Set();
   const calls = [];

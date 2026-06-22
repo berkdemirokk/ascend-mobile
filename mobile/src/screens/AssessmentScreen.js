@@ -17,9 +17,11 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  Pressable,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+  AccessiblePressable as Pressable,
+} from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';

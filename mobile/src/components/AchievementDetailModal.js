@@ -6,9 +6,11 @@ import {
   View,
   Text,
   Modal,
-  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { ACHIEVEMENTS, RARITY_COLORS, isPremiumGated } from '../config/achievements';
@@ -75,6 +77,7 @@ export default function AchievementDetailModal({
         activeOpacity={1}
         onPress={onClose}
         style={styles.backdrop}
+        accessible={false}
       >
         <TouchableOpacity activeOpacity={1} style={styles.card}>
           <TouchableOpacity
