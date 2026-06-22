@@ -5140,312 +5140,302 @@
         ]
       },
       "16": {
-        "title": "Sugar-Free Day",
-        "teaching": "Sugar = addiction molecule. Hijacks brain reward. 1-day sugar-free challenge: only natural fruit sugar allowed. No chocolate, cake, soda, packaged.",
-        "action": "Today consume zero processed sugar.",
-        "reflectionPrompt": "When did you crave the most?",
-        "proTip": "First 3 days hard, 4th softens. By day 14, sweets bother you.",
+        "title": "Notice Added Sugar",
+        "teaching": "A total sugar ban is less useful than seeing where added sugar accumulates in your day. Fruit, milk, and heavily processed products are not the same category.\n\nSugar may appear under several names on a label. Look at the combined pattern across drinks, sauces, snacks, and desserts instead of declaring one food bad.\n\nCompare the labels of three products you use often. Replace the least valuable source with a less sweet or unsweetened option.\n\nRigid restriction may be unsuitable with diabetes care, a prescribed diet, or eating-disorder history. Put individualized health support first.",
+        "action": "Compare three labels today and choose one practical alternative to an added-sugar source.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Sugar-free challenge?",
+            "q": "What is the soundest approach to notice added sugar?",
             "options": [
-              "1h",
-              "1 day",
-              "1 week",
-              "1 month"
+              "Evaluate added sugar through the overall product pattern",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "Start 1 day."
+            "correct": 0,
+            "explain": "The core approach is to evaluate added sugar through the overall product pattern."
           },
           {
-            "q": "Craving breaks when?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "1 day",
-              "4-7 days",
-              "14 days",
-              "30 days"
+              "Check whether restriction fits individual health needs",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Day 4 onwards softens."
+            "correct": 0,
+            "explain": "The appropriate boundary is to check whether restriction fits individual health needs."
           }
         ]
       },
       "17": {
-        "title": "Alcohol Awareness",
-        "teaching": "Alcohol = body stress + sleep loss + protein synthesis block. 1 glass = 3-day recovery. Even \"social\" alcohol is long-term poison. Disciplined person: 0-2 glasses/week.",
-        "action": "Today no alcohol. If habit, start \"Alcohol-Free Monday.\"",
-        "reflectionPrompt": "How did the alcohol-free evening go? Sleep difference?",
-        "proTip": "Order soda + lime in social settings. Looks like cocktail, zero impact.",
+        "title": "See Your Alcohol Pattern",
+        "teaching": "Alcohol awareness is more than a one-day ban. It means seeing when, why, and how much you drink without hiding the influence of stress or social settings.\n\nServing size varies by product and country. Record the beverage, amount, and time rather than relying only on the number of glasses.\n\nFor one week, note the drinking moment and the feeling before it. You may choose an alcohol-free day and observe sleep, energy, and social comfort.\n\nSuddenly stopping heavy regular use can be dangerous. Seek medical support before reducing when shaking, sweating, or withdrawal is a concern.",
+        "action": "Record the amount, time, and preceding feeling for any alcohol you drink today.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "1 drink recovery time?",
+            "q": "What is the soundest approach to see your alcohol pattern?",
             "options": [
-              "None",
-              "1h",
-              "1 day",
-              "3 days"
+              "Track amount, timing, and triggers together",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 3,
-            "explain": "3 days recovery."
+            "correct": 0,
+            "explain": "The core approach is to track amount, timing, and triggers together."
           },
           {
-            "q": "Disciplined weekly alcohol?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Unlimited",
-              "0-2 drinks",
-              "5+",
-              "Only evening"
+              "Get medical support when withdrawal may be possible",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "0-2 drinks max."
+            "correct": 0,
+            "explain": "The appropriate boundary is to get medical support when withdrawal may be possible."
           }
         ]
       },
       "18": {
-        "title": "Gut Health",
-        "teaching": "Gut = \"second brain.\" Damaged microbiome = depression, fatigue, weak immunity. Solution: fermented food (yogurt, kefir, sauerkraut) + fiber (greens, legumes) + less processed.",
-        "action": "Today eat 1 fermented food + 1 greens meal.",
-        "reflectionPrompt": "How much did you think about gut health before?",
-        "proTip": "Tablespoon of kefir morning. Difference felt in 1 week.",
+        "title": "Variety for Digestion",
+        "teaching": "Digestive health is not fixed by one fermented product. Regular meals, suitable fluids, and a variety of tolerated plant foods create a more practical base.\n\nIncreasing fiber too quickly can cause discomfort. Add vegetables, beans, whole grains, and fruit gradually according to your own tolerance.\n\nAdd one plant food you do not usually eat and note how you feel. A small fermented serving is optional when you enjoy and tolerate it.\n\nPersistent pain, bleeding, unexplained weight loss, or major bowel changes need medical assessment rather than a general food tip.",
+        "action": "Add one tolerated plant food in a small serving today and note your response.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Gut = ?",
+            "q": "What is the soundest approach to variety for digestion?",
             "options": [
-              "Digestion",
-              "Second brain",
-              "Filter",
-              "Passive"
+              "Build dietary variety gradually around tolerance",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "Second brain — flora critical."
+            "correct": 0,
+            "explain": "The core approach is to build dietary variety gradually around tolerance."
           },
           {
-            "q": "Fermented food example?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Chocolate",
-              "Kefir",
-              "White bread",
-              "Sugar"
+              "Assess persistent or serious digestive symptoms",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Kefir = probiotic."
+            "correct": 0,
+            "explain": "The appropriate boundary is to assess persistent or serious digestive symptoms."
           }
         ]
       },
       "19": {
-        "title": "Sun Exposure",
-        "teaching": "Vitamin D deficiency = public health crisis. Most chronically low. Solution: 15-20 min direct sun (arms/face) without sunscreen daily. Morning/midday strongest.",
-        "action": "Today 15 min direct sun. Skin uncovered, no sunscreen.",
-        "reflectionPrompt": "How did sunlight affect your mood?",
-        "proTip": "Eat lunch outside. 30 min sun + social value combined.",
+        "title": "Safer Time Outdoors",
+        "teaching": "Daylight can support a daytime routine, but unprotected sun should not become a required health task. The useful amount and protection vary widely.\n\nBurn risk changes with time, season, location, UV level, skin, and medication. Being behind glass is different from direct outdoor exposure.\n\nCheck the UV level before going out. Use shade, clothing, a hat, and suitable sun protection for the conditions; do not aim for burning.\n\nPhotosensitizing medication, skin conditions, or vitamin concerns require individualized guidance. Do not use unprotected exposure as self-treatment.",
+        "action": "Check the UV level before going outside and choose suitable protection for the conditions.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Vitamin D sun duration?",
+            "q": "What is the soundest approach to safer time outdoors?",
             "options": [
-              "1 min",
-              "15-20 min",
-              "2h",
-              "5h"
+              "Plan outdoor time together with current UV conditions",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "15-20 min daily."
+            "correct": 0,
+            "explain": "The core approach is to plan outdoor time together with current uv conditions."
           },
           {
-            "q": "Sunscreen effect?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "None",
-              "Blocks D",
-              "Boosts",
-              "Same"
+              "Avoid deliberate burning and unprotected self-treatment",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Sunscreen = D blocker."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid deliberate burning and unprotected self-treatment."
           }
         ]
       },
       "20": {
-        "title": "Pre-Sleep Stretch",
-        "teaching": "Back-leg-spine tension = poor sleep. 5 min pre-sleep stretch = parasympathetic activation, muscle release, deeper sleep. No yoga needed, just simple moves.",
-        "action": "Tonight 5 min stretch before bed. 3 moves: forward bend, butterfly, shoulder opener.",
-        "reflectionPrompt": "Stretched vs unstretched evening — difference?",
-        "proTip": "Do it in bed. No mat needed. Lie back, legs up wall.",
+        "title": "Gentle Pre-Sleep Movement",
+        "teaching": "Light movement before bed may ease physical tension for some people. Intense stretching or reaching a specific pose is not required.\n\nA comfortable movement is slow, controlled, and pain-free. Use a small range around the shoulders, hips, or back while breathing normally.\n\nChoose three easy movements and spend a few calm breaths with each. Notice whether you feel more comfortable, unchanged, or more tense afterward.\n\nStop for numbness, sharp pain, a recent injury, or symptoms that increase with movement. Stretching does not replace assessment.",
+        "action": "Use three comfortable movements through a pain-free range for a few calm breaths tonight.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Pre-sleep stretch?",
+            "q": "What is the soundest approach to gentle pre-sleep movement?",
             "options": [
-              "None",
-              "5 min suffices",
-              "1h required",
-              "Never"
+              "Use gentle movement for comfort rather than performance",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "5 min suffices."
+            "correct": 0,
+            "explain": "The core approach is to use gentle movement for comfort rather than performance."
           },
           {
-            "q": "Stretch effect?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Stress up",
-              "Parasympathetic",
-              "Sympathetic",
-              "No effect"
+              "Stop for pain, numbness, or worsening symptoms",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Parasympathetic = calm."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop for pain, numbness, or worsening symptoms."
           }
         ]
       },
       "21": {
-        "title": "Sitting Posture",
-        "teaching": "8h/day sitting? Posture rules everything. Right: feet flat, knees 90°, hips highest, shoulders back. Wrong: hunched, crossed legs, edge-of-chair.",
-        "action": "Today posture-check 30s every hour. Stand 30s once an hour.",
-        "reflectionPrompt": "How did posture awareness shift through the day?",
-        "proTip": "Lumbar pillow. $5 pillow saves $5,000 chiropractor.",
+        "title": "Movement Over Perfect Posture",
+        "teaching": "There is no single perfect sitting position. Discomfort can reflect time spent still, workload, and workstation setup as well as posture.\n\nThe screen, chair, and desk should come toward you rather than requiring constant reaching. Foot support and tool placement can change the load.\n\nChoose a cue that fits your work. Walk briefly, move the shoulders, or change position during two natural breaks instead of chasing a rigid timer.\n\nDo not assume persistent neck, back, or radiating arm symptoms are only posture errors. Seek suitable ergonomic or health assessment when needed.",
+        "action": "Improve one workstation setting and change position during two natural breaks today.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Right sitting?",
+            "q": "What is the soundest approach to movement over perfect posture?",
             "options": [
-              "Crossed legs",
-              "Knees 90°",
-              "Edge of chair",
-              "Active"
+              "Build regular position changes instead of one perfect pose",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "Knees 90°, feet flat."
+            "correct": 0,
+            "explain": "The core approach is to build regular position changes instead of one perfect pose."
           },
           {
-            "q": "Hourly do?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Always sit",
-              "30s standing",
-              "Lie",
-              "Run"
+              "Assess persistent or radiating symptoms",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Stand 30s every hour."
+            "correct": 0,
+            "explain": "The appropriate boundary is to assess persistent or radiating symptoms."
           }
         ]
       },
       "22": {
-        "title": "Sleep Hygiene",
-        "teaching": "Sleep isn't medicine — it's daily design. 8 conditions: 1) fixed time, 2) dark, 3) silent, 4) cool (18°C), 5) phoneless, 6) last meal 3h prior, 7) caffeine before 14:00, 8) minimal alcohol.",
-        "action": "Today check the 8 conditions. Which is broken?",
-        "reflectionPrompt": "Easiest one to fix?",
-        "proTip": "Write 8 conditions on bedside note. Tick each night. 30 days = system.",
+        "title": "Audit Your Sleep Environment",
+        "teaching": "Sleep hygiene is not a long perfection checklist. It is a way to find a few conditions that make the approach to sleep calmer and more predictable.\n\nLight, noise, temperature, caffeine timing, and phone use affect people differently. Changing everything at once makes the useful cause hard to identify.\n\nChoose the condition most likely to interfere. Test one small change for a week and note sleep onset and how you feel in the morning.\n\nGeneral hygiene does not explain chronic insomnia, loud snoring, breathing pauses, or severe daytime sleepiness. Those signs need assessment.",
+        "action": "Choose one sleep-environment condition and test one small change this week.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Optimal room temp?",
+            "q": "What is the soundest approach to audit your sleep environment?",
             "options": [
-              "15°C",
-              "18-20°C",
-              "24°C",
-              "28°C"
+              "Observe one sleep variable at a time",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "18-20°C deep sleep."
+            "correct": 0,
+            "explain": "The core approach is to observe one sleep variable at a time."
           },
           {
-            "q": "Caffeine cutoff?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "None",
-              "14:00",
-              "18:00",
-              "22:00"
+              "Get support for chronic or breathing-related symptoms",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "No caffeine after 14:00."
+            "correct": 0,
+            "explain": "The appropriate boundary is to get support for chronic or breathing-related symptoms."
           }
         ]
       },
       "23": {
-        "title": "Plateau Break",
-        "teaching": "In training, progress stops 4-6 weeks in — plateau. Body adapts. Break: 1) up weight, 2) up reps, 3) change rest time, 4) move variety. One variable suffices.",
-        "action": "Today change 1 variable in training (reps, weight, tempo, exercise).",
-        "reflectionPrompt": "Which variable changed? Body response?",
-        "proTip": "6 weeks → plateau → week 7 change again. As body adapts, you adapt.",
+        "title": "Read a Training Plateau",
+        "teaching": "Slower training progress does not automatically require more load. Sleep, food, stress, technique, and time on the current plan can affect results.\n\nReview movement, load, repetitions, effort, and recovery. Without a record, the feeling of a plateau may not match the actual pattern.\n\nChoose one small adjustment in load, repetitions, rest, or technique and observe it across several sessions before changing another variable.\n\nMore effort is unsuitable when pain, persistent fatigue, or a clear performance decline is present. Consider rest and qualified assessment.",
+        "action": "Review your last three sessions and choose one small variable to adjust.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Plateau weeks?",
+            "q": "What is the soundest approach to read a training plateau?",
             "options": [
-              "1",
-              "4-6",
-              "12",
-              "52"
+              "Evaluate a plateau with records and recovery context",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "Body adapts."
+            "correct": 0,
+            "explain": "The core approach is to evaluate a plateau with records and recovery context."
           },
           {
-            "q": "Break plateau?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Quit",
-              "Change variable",
-              "Push harder",
-              "Same"
+              "Avoid increasing load during pain or persistent fatigue",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "One variable suffices."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid increasing load during pain or persistent fatigue."
           }
         ]
       },
       "24": {
-        "title": "Breath Control",
-        "teaching": "Breath = autonomic nervous system remote. Fast breath = stress. Slow breath = calm. Inhale through nose, exhale 1.5x longer. 5-min practice = instant calm.",
-        "action": "Today in stress moment, do 1 min of 4-in / 6-out.",
-        "reflectionPrompt": "How much did breath practice change stress?",
-        "proTip": "Nose breathing. Mouth breathing = sleep apnea risk + tooth decay.",
+        "title": "Use Breath to Pause",
+        "teaching": "Paying attention to breathing can create a short pause during stress. One fixed timing ratio is not required; a comfortable rhythm matters more.\n\nBreathe through the route that feels natural. A slightly longer exhale may feel calming, without holding the breath or forcing depth.\n\nRelax the shoulders and breathe out a little more slowly for one minute. Notice whether your tension changes afterward.\n\nReturn to normal breathing and stop if dizziness, air hunger, or panic increases. Follow individualized guidance for a respiratory condition.",
+        "action": "During one stressful moment, breathe comfortably and lengthen the exhale slightly for one minute.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Calming breath rhythm?",
+            "q": "What is the soundest approach to use breath to pause?",
             "options": [
-              "1:1",
-              "4 in / 6 out",
-              "10 in",
-              "Fast"
+              "Use unforced breathing as a short pause",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "Longer exhale = calm."
+            "correct": 0,
+            "explain": "The core approach is to use unforced breathing as a short pause."
           },
           {
-            "q": "Nose vs mouth breath?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Same",
-              "Nose > mouth",
-              "Mouth fine",
-              "Unknown"
+              "Return to normal breathing if symptoms increase",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Nose = filter + warm + humidify."
+            "correct": 0,
+            "explain": "The appropriate boundary is to return to normal breathing if symptoms increase."
           }
         ]
       },
       "25": {
-        "title": "Recovery Protocols",
-        "teaching": "Training = micro damage; recovery = repair. Bad recovery = constant fatigue. Tools: 1) 7-9h sleep, 2) protein, 3) hydration, 4) walking, 5) hot/cold contrast.",
-        "action": "Today apply at least 4 of the 5 recovery tools.",
-        "reflectionPrompt": "Which recovery tool moved the needle most?",
-        "proTip": "Cold shower post-workout = inflammation drop. Hot bath = muscle release.",
+        "title": "Plan Recovery",
+        "teaching": "Recovery is not a special product or complex protocol. Sufficient sleep opportunity, regular food, suitable rest, and managed training load form the base.\n\nThe same tool is not needed after every hard session. Consider next-day energy, soreness, desire to move, and performance together.\n\nPlace one easier day in the week and add a recovery note to the training log. Increase load gradually only when recovery is consistently manageable.\n\nDo not keep forcing training through persistent fatigue, illness, sharp pain, or a marked performance drop. Seek appropriate health support.",
+        "action": "Schedule one easier day and add a recovery note after each session this week.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Recovery tools?",
+            "q": "What is the soundest approach to plan recovery?",
             "options": [
-              "1",
-              "5",
-              "10",
-              "20"
+              "Plan recovery through sleep, food, rest, and load",
+              "Make one number mandatory for everyone",
+              "Ignore warning symptoms",
+              "Change every variable at once"
             ],
-            "correct": 1,
-            "explain": "5 main (sleep, protein, water, walk, hot/cold)."
+            "correct": 0,
+            "explain": "The core approach is to plan recovery through sleep, food, rest, and load."
           },
           {
-            "q": "Post-workout cold?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Dangerous",
-              "Reduces inflammation",
-              "No effect",
-              "Hot only"
+              "Reduce load for persistent fatigue, illness, or pain",
+              "Treat sharp pain as progress",
+              "Continue while symptoms increase",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Cold = less inflammation."
+            "correct": 0,
+            "explain": "The appropriate boundary is to reduce load for persistent fatigue, illness, or pain."
           }
         ]
       },
@@ -6682,312 +6672,302 @@
         ]
       },
       "16": {
-        "title": "Weekly Money Review",
-        "teaching": "Money = unmeasured = unmanaged. 1 hour weekly: income-expense, budget vs actual, goal status. 52 hours yearly defines yearly income.",
-        "action": "This week spend 30 min on money review. Excel or journal.",
-        "reflectionPrompt": "How would your money roll without review?",
-        "proTip": "Fixed time-day. Sunday 09:00 or Saturday 10:00. No flex.",
+        "title": "A Weekly Money Check",
+        "teaching": "A regular money check is not a judgment of every purchase. It is a short way to see cash-flow changes before they become surprises.\n\nAccount balance alone is incomplete. Upcoming bills, card debt, irregular income, and planned goal transfers should be visible together.\n\nChoose a brief recurring time. Review money in, money out, upcoming items, and decisions needed, then record only the next actions.\n\nDo not turn a shared budget into one-sided monitoring. Discuss major decisions openly with the people involved and respect financial privacy.",
+        "action": "Review money in, money out, upcoming items, and decisions needed this week.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Weekly review duration?",
+            "q": "What is the soundest approach to a weekly money check?",
             "options": [
-              "5 min",
-              "30 min",
-              "5h",
-              "Never"
+              "Make money review a short repeatable decision routine",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "30 min suffices."
+            "correct": 0,
+            "explain": "The core approach is to make money review a short repeatable decision routine."
           },
           {
-            "q": "Fixed time-day?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Flex",
-              "Fixed",
-              "Never",
-              "Random"
+              "Keep shared-budget decisions transparent and respectful",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "Flex = skip."
+            "correct": 0,
+            "explain": "The appropriate boundary is to keep shared-budget decisions transparent and respectful."
           }
         ]
       },
       "17": {
-        "title": "Income Multiplication",
-        "teaching": "Saving = limited. Income = unlimited. Single income is risk. 2-3 income channels is disciplined-person profile: main job + freelance/online + investments.",
-        "action": "Today research 1 side income (freelance, online sales, rent, dividend).",
-        "reflectionPrompt": "Easiest extra income to start?",
-        "proTip": "First target: extra $500/mo. That's a rent payment = $6K/yr = extra retirement.",
+        "title": "Evaluate an Income Option",
+        "teaching": "A side-income idea is not judged by revenue potential alone. Time, startup cost, skill, tax, safety, and employment terms also matter.\n\nFast-money promises, upfront fees, and unclear products are warning signs. One success story is not enough evidence for a decision.\n\nWrite three options that fit your skills. Estimate the first customer, weekly time, and startup cost, then choose the smallest test.\n\nVerify employer rules, licenses, tax, and personal-safety conditions before starting. Do not borrow for an uncertain experiment.",
+        "action": "Compare three side-income options by time, cost, and path to a first customer.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Single income = ?",
+            "q": "What is the soundest approach to evaluate an income option?",
             "options": [
-              "Safe",
-              "Risk",
-              "Enough",
-              "Ideal"
+              "Evaluate income ideas through time, cost, and risk",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Single income = risk."
+            "correct": 0,
+            "explain": "The core approach is to evaluate income ideas through time, cost, and risk."
           },
           {
-            "q": "Disciplined profile?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "1 income",
-              "2-3 incomes",
-              "10 incomes",
-              "None"
+              "Avoid upfront fees and unclear promises",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "2-3 channels optimum."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid upfront fees and unclear promises."
           }
         ]
       },
       "18": {
-        "title": "Investing 101: Index Funds",
-        "teaching": "Stock-picking is hard — index funds are easy. Slice of the whole market, average 7-10% annual return (US), tiny fees. Warren Buffett: index funds for retirement.",
-        "action": "Today research index funds (S&P 500, VOO, VT, world index).",
-        "reflectionPrompt": "How did index funds shift investing fear?",
-        "proTip": "Monthly small (Dollar-cost averaging) > one-time big. Spreads risk.",
+        "title": "Understanding Index Funds",
+        "teaching": "An index fund aims to track a defined market benchmark. It may offer diversification, but it does not remove the possibility of loss.\n\nFunds with similar labels can differ in fees, tax treatment, currency, tracking method, and access. Past returns do not determine future results.\n\nBefore buying, compare the tracked index, total cost, portfolio allocation, and selling conditions in the official document.\n\nA named product would not be a recommendation here. Time horizon, risk capacity, and local tax may require licensed financial guidance.",
+        "action": "Find the index, cost, allocation, and selling terms in one fund document.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Index fund return?",
+            "q": "What is the soundest approach to understanding index funds?",
             "options": [
-              "2%",
-              "7-10%/yr",
-              "50%",
-              "100%"
+              "Compare funds by structure, cost, and risk",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Avg 7-10% yearly."
+            "correct": 0,
+            "explain": "The core approach is to compare funds by structure, cost, and risk."
           },
           {
-            "q": "DCA?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "One-time",
-              "Monthly small",
-              "Never",
-              "Expensive"
+              "Do not treat past returns as a future result",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "Monthly steady."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not treat past returns as a future result."
           }
         ]
       },
       "19": {
-        "title": "Side Income Discipline",
-        "teaching": "Side income — starting easy, sustaining hard. First 6 months: $0. Most quit. Month 12 starts earning. Month 24 transforms life. If you sustain.",
-        "action": "Today spend 30 min on a side hustle. Even with $0 income.",
-        "reflectionPrompt": "Fear in starting side income? No money or judgment?",
-        "proTip": "Camera shy? Start with writing. Medium, blog, newsletter.",
+        "title": "Run a Small Income Test",
+        "teaching": "Building side income takes regular effort, but unlimited work before demand appears is not sound. A small experiment tests interest at lower cost.\n\nChoose one specific problem and one reachable group. Speak with potential users before building a full product to reduce wasted work.\n\nDefine a one-week test with one offer, one channel, and one measurable response. Review interest, cost, and time together at the end.\n\nA pace that endangers primary income, health, or employment terms is not sustainable. Set the test boundary before starting.",
+        "action": "Write a one-week low-cost test with one offer, one channel, and one response measure.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Side income year 1?",
+            "q": "What is the soundest approach to run a small income test?",
             "options": [
-              "Always pays",
-              "First 6 mo $0",
-              "Guaranteed",
-              "Never start"
+              "Test an income idea through a small measurable experiment",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "First 6 mo $0 normal."
+            "correct": 0,
+            "explain": "The core approach is to test an income idea through a small measurable experiment."
           },
           {
-            "q": "Most quit when?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Never",
-              "After 6 mo",
-              "1 yr",
-              "2 yr"
+              "Protect primary income and health from an uncertain test",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "Most quit at 6 mo."
+            "correct": 0,
+            "explain": "The appropriate boundary is to protect primary income and health from an uncertain test."
           }
         ]
       },
       "20": {
-        "title": "Lifestyle Inflation",
-        "teaching": "Salary up = expenses up. Called lifestyle inflation. 10% raise → 10% more car/rent/food. Net effect zero. Discipline: 50% of raise to savings.",
-        "action": "Today inspect last raise. Where did it go?",
-        "reflectionPrompt": "How much did lifestyle inflation hit you?",
-        "proTip": "Live 3 months on old salary. Body accepts old as normal, extra goes to savings.",
+        "title": "Choose Lifestyle Upgrades",
+        "teaching": "Spending more after income rises is not automatically a mistake. The issue is when the increase becomes a permanent cost without connection to your priorities.\n\nA new convenience may save time or support health, while status spending may provide less value. Personal priorities should decide.\n\nList three expenses that rose after the latest income change. Keep one deliberately, reduce one, and direct part toward a chosen goal.\n\nNew fixed costs carry more risk with irregular income. Test rent, debt, and subscription commitments against a difficult-month scenario.",
+        "action": "List three expenses that rose with income and turn one into a deliberate choice.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Lifestyle inflation?",
+            "q": "What is the soundest approach to choose lifestyle upgrades?",
             "options": [
-              "Savings up",
-              "Salary up = expense up",
-              "Tax",
-              "Budget"
+              "Align income growth with chosen priorities",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Net effect zero."
+            "correct": 0,
+            "explain": "The core approach is to align income growth with chosen priorities."
           },
           {
-            "q": "Solution?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Refuse raise",
-              "50% of raise to savings",
-              "More spending",
-              "None"
+              "Stress-test new fixed costs against irregular income",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "50% to savings."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stress-test new fixed costs against irregular income."
           }
         ]
       },
       "21": {
-        "title": "Negotiation Skill",
-        "teaching": "Negotiation = embarrassing in West, normal in East. Salary negotiation = 1 hour talk = $5K-20K/yr difference. Negotiation isn't cheap — it's essential. Ask \"what's the real number?\"",
-        "action": "Today negotiate one price. Even online: ask for a discount code.",
-        "reflectionPrompt": "How did the negotiation attempt go? As scary as feared?",
-        "proTip": "\"Is this your best price?\" — the magic phrase. Often unlocks 5-15% off.",
+        "title": "Negotiate Respectfully",
+        "teaching": "Negotiation is not defeating the other party. It is asking clearly whether terms can change, and not every price or setting is negotiable.\n\nDelivery, timing, scope, payment schedule, or service may matter alongside price. Know the market information and your own limit first.\n\nAsk a short respectful question about a suitable option, package, or current promotion. Accept a negative response without pressure.\n\nRespect legal and ethical boundaries in health, wages, and regulated services. Do not trade away safety or clear quality for a lower price.",
+        "action": "Ask respectfully about a suitable option or current promotion on one appropriate purchase.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Negotiation effect?",
+            "q": "What is the soundest approach to negotiate respectfully?",
             "options": [
-              "No effect",
-              "5-15% off",
-              "50%",
-              "Negative"
+              "Use information and mutual respect in negotiation",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Often 5-15%."
+            "correct": 0,
+            "explain": "The core approach is to use information and mutual respect in negotiation."
           },
           {
-            "q": "Magic phrase?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Expensive",
-              "\"Is this best price?\"",
-              "Discount",
-              "Cheap"
+              "Accept a negative response without pressure",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "Best-price question opens."
+            "correct": 0,
+            "explain": "The appropriate boundary is to accept a negative response without pressure."
           }
         ]
       },
       "22": {
-        "title": "Tax Awareness",
-        "teaching": "Tax = your biggest annual expense. Most don't know tax laws, miss deductions, overpay. 1-2 hours of learning = thousands saved annually.",
-        "action": "Today research deductions (education, health, donations, rent).",
-        "reflectionPrompt": "Which deduction were you unaware of?",
-        "proTip": "1-hour with accountant = $200. Saves $2,000.",
+        "title": "Use Official Tax Information",
+        "teaching": "Tax rules vary by country, income type, and year. Applying a social-media example directly can create penalties or an incomplete filing.\n\nOrganized income, expense, donation, investment, and side-work records support accurate reporting. A deduction depends on documentation and eligibility.\n\nOpen the current guide from your tax authority and save only the section relevant to you. Put applicable deadlines on the calendar.\n\nThis lesson is not tax or legal advice. Multiple incomes, companies, foreign assets, or uncertainty may require an authorized professional.",
+        "action": "Verify the relevant rule and deadline in the current official tax guide today.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Biggest yearly expense?",
+            "q": "What is the soundest approach to use official tax information?",
             "options": [
-              "Rent",
-              "Tax",
-              "Food",
-              "Fun"
+              "Base tax decisions on current official information and records",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Tax usually biggest."
+            "correct": 0,
+            "explain": "The core approach is to base tax decisions on current official information and records."
           },
           {
-            "q": "Accountant cost?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Expensive",
-              "1h = $200, saves $2K",
-              "Useless",
-              "Luxury"
+              "Use authorized help for complex situations",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "Investment-like."
+            "correct": 0,
+            "explain": "The appropriate boundary is to use authorized help for complex situations."
           }
         ]
       },
       "23": {
-        "title": "Insurance Discipline",
-        "teaching": "Insurance = boring but life-saving. Must-haves: 1) Health (private), 2) Life (if family), 3) Professional liability. Skip: extended warranties, rental car insurance.",
-        "action": "Today review your insurance. Underinsured or overinsured?",
-        "reflectionPrompt": "In what area do you carry uninsured risk?",
-        "proTip": "Compare insurance yearly. Same coverage 30% cheaper elsewhere.",
+        "title": "Match Insurance to Risk",
+        "teaching": "Insurance does not remove every risk; it provides the coverage written in a contract for defined events. A useful policy matches a real potential loss.\n\nPremium is only one term. Deductible, limit, exclusions, waiting period, and renewal conditions also affect the protection.\n\nList each policy on one page with event, limit, deductible, and end date. Look for duplicated coverage and important gaps.\n\nNeeds vary with family, debt, work, and country. For major decisions, use licensed support that explains conflicts of interest.",
+        "action": "List policy coverage, limit, deductible, and end date on one page.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Must-have insurance?",
+            "q": "What is the soundest approach to match insurance to risk?",
             "options": [
-              "Auto",
-              "Health + life",
-              "Furniture",
-              "None"
+              "Match policy coverage to a real risk you need to protect",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Health, life, professional."
+            "correct": 0,
+            "explain": "The core approach is to match policy coverage to a real risk you need to protect."
           },
           {
-            "q": "Insurance compare?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No effect",
-              "Yearly 30% cheaper",
-              "Same",
-              "Expensive"
+              "Read exclusions and deductibles before deciding",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "Same coverage 30% cheaper."
+            "correct": 0,
+            "explain": "The appropriate boundary is to read exclusions and deductibles before deciding."
           }
         ]
       },
       "24": {
-        "title": "Financial Goals",
-        "teaching": "Without goals, money = aimless spend. Clear goals: \"$5K emergency fund in 1 year,\" \"house down payment in 5 years,\" \"retirement-ready in 20.\" Date + amount + purpose.",
-        "action": "Today write 3 financial goals. Short (1y), mid (5y), long (20+y).",
-        "reflectionPrompt": "Which goal motivates you most?",
-        "proTip": "Keep goals visible: closet door, desk edge. Visibility = reminder.",
+        "title": "Make a Financial Goal Concrete",
+        "teaching": "A financial goal is more than a number. Purpose, date, currency, priority, and reason help connect it to daily decisions.\n\nShort, medium, and long horizons are useful frames rather than fixed year counts. Inflation, life changes, and currency can alter the target.\n\nChoose one goal and write its current estimated cost, date, existing savings, and first small action. Review it at regular intervals.\n\nImmediate safety and required payments may come before competing goals. Do not use unrealistic returns or risky debt to force the timeline.",
+        "action": "Write one goal with purpose, date, estimated cost, current savings, and first action.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Goal format?",
+            "q": "What is the soundest approach to make a financial goal concrete?",
             "options": [
-              "Vague",
-              "Date + amount + purpose",
-              "Just intent",
-              "None"
+              "Define a goal through purpose, date, cost, and action",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Date, amount, purpose required."
+            "correct": 0,
+            "explain": "The core approach is to define a goal through purpose, date, cost, and action."
           },
           {
-            "q": "Goal count?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "1",
-              "3 (short+mid+long)",
-              "10",
-              "20"
+              "Avoid unrealistic risk to force a goal timeline",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "3 goals = focus."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid unrealistic risk to force a goal timeline."
           }
         ]
       },
       "25": {
-        "title": "Rewrite Your Money Story",
-        "teaching": "Childhood \"money story\" shapes financial behavior. \"Money is bad,\" \"rich people are thieves,\" \"we're not wealthy.\" Recognize, then rewrite: \"Money is a tool, I am the creator.\"",
-        "action": "Today write your money story for 5 min. Then write a new version.",
-        "reflectionPrompt": "How does your old story hold you back?",
-        "proTip": "Read new story every morning for 30 days. Brain trusts repetition.",
+        "title": "Update Your Money Story",
+        "teaching": "Beliefs about money can reflect family, culture, past loss, and success. That story is an interpretation you can examine, not a fixed identity.\n\nSaying “I am bad with money” leaves no room for action. A specific sentence reveals which skill is missing and what can change.\n\nWrite the old sentence, name the experience behind it, and create a new sentence you can support with evidence. Choose one small matching action.\n\nFinancial trauma, control, or family conflict may bring intense emotion. Appropriate psychological support can matter alongside a financial plan.",
+        "action": "Rewrite one old money belief as a specific sentence with one supporting action.",
+        "reflectionPrompt": "Which small change from this lesson best fits your current conditions?",
         "quiz": [
           {
-            "q": "Money story from?",
+            "q": "What is the soundest approach to update your money story?",
             "options": [
-              "Birth",
-              "Childhood",
-              "Genes",
-              "Luck"
+              "Turn a fixed money belief into changeable behavior language",
+              "Treat an unclear promise as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Learned in childhood."
+            "correct": 0,
+            "explain": "The core approach is to turn a fixed money belief into changeable behavior language."
           },
           {
-            "q": "New story effective?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Never",
-              "30 days every morning",
-              "1 time",
-              "Unknown"
+              "Seek appropriate support for intense financial trauma",
+              "Ignore essential expenses",
+              "Skip official conditions",
+              "Borrow as the first response to risk"
             ],
-            "correct": 1,
-            "explain": "Repetition = belief."
+            "correct": 0,
+            "explain": "The appropriate boundary is to seek appropriate support for intense financial trauma."
           }
         ]
       },
