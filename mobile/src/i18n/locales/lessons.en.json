@@ -5440,312 +5440,302 @@
         ]
       },
       "26": {
-        "title": "Weekly Workout",
-        "teaching": "Random training = random results. Weekly: 3 resistance + 2 cardio + 2 rest. 7-day structure → 12-week transformation.",
-        "action": "This week write a 7-day plan. Each day what + how much.",
-        "reflectionPrompt": "How would the week go without a plan?",
-        "proTip": "Plan Sunday night. Monday auto-starts.",
+        "title": "A Weekly Movement Plan",
+        "teaching": "A useful movement week does not fill every day with hard training. Strength, endurance, daily movement, and recovery should match individual capacity.\n\nPlace sessions only where they fit the real calendar. There is no need to load the same muscles on consecutive days or stack a missed workout tomorrow.\n\nYou might begin with two main sessions, a few short walks, and at least one easier day. Adjust time and effort from the previous week.\n\nA new trainee or anyone with pregnancy, chronic illness, or injury should adapt a general template with individual guidance.",
+        "action": "Plan two main sessions, short movement breaks, and one easier day this week.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Optimum weekly?",
+            "q": "What is the soundest approach to a weekly movement plan?",
             "options": [
-              "7 days resistance",
-              "3 res + 2 cardio + 2 rest",
-              "All cardio",
-              "Zero plan"
+              "Balance weekly load with recovery",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "Balanced structure."
+            "correct": 0,
+            "explain": "The core approach is to balance weekly load with recovery."
           },
           {
-            "q": "Plan when?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Saturday",
-              "Sunday night",
-              "Monday morning",
-              "Never"
+              "Adapt a general template to individual health conditions",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Plan Sunday, start Monday."
+            "correct": 0,
+            "explain": "The appropriate boundary is to adapt a general template to individual health conditions."
           }
         ]
       },
       "27": {
-        "title": "Sleep Apnea Awareness",
-        "teaching": "25% of men carry sleep apnea — most unaware. Symptoms: excessive daytime sleep, snoring, morning headache, frequent waking. Untreated = heart disease + diabetes risk.",
-        "action": "Today ask your partner to listen for snoring. Sleepy daytime? Morning headache?",
-        "reflectionPrompt": "Which apnea symptom might you have?",
-        "proTip": "If suspected, see a sleep doctor. Polysomnography = one night, life-saving.",
+        "title": "Sleep Apnea Signs",
+        "teaching": "Loud snoring alone does not diagnose sleep apnea. Repeated breathing pauses, choking awakenings, and marked daytime sleepiness can make assessment important.\n\nMorning headache, unrefreshing sleep, and poor focus may also occur, but they have other causes. A phone recording cannot make the diagnosis.\n\nRecord the date and situation when signs repeat in you or a partner. Discuss them with primary care or a sleep clinic.\n\nDrowsiness while driving is an immediate safety risk. Stop driving and seek prompt medical help in that situation.",
+        "action": "Record repeated snoring, breathing pauses, or daytime sleepiness and arrange an assessment.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Men with sleep apnea %?",
+            "q": "What is the soundest approach to sleep apnea signs?",
             "options": [
-              "5%",
-              "15%",
-              "25%",
-              "50%"
+              "Treat a cluster of signs as a reason for assessment",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 2,
-            "explain": "25% of men."
+            "correct": 0,
+            "explain": "The core approach is to treat a cluster of signs as a reason for assessment."
           },
           {
-            "q": "Apnea symptom?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "None",
-              "Snoring + day sleep",
-              "Joy",
-              "No effect"
+              "Stop driving and get help for driving drowsiness",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Snoring + daytime sleep."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop driving and get help for driving drowsiness."
           }
         ]
       },
       "28": {
-        "title": "Discipline Identity",
-        "teaching": "Don't say \"I am healthy\" — say \"I am someone who lives healthy.\" Identity > behavior. \"I used to smoke, not now\" = relapse risk. \"I'm not a smoker\" = permanent.",
-        "action": "Today claim 1 new body identity label.",
-        "reflectionPrompt": "Which identity? Your evidence?",
-        "proTip": "Speak the identity aloud each morning. Brain believes repetition.",
+        "title": "A Flexible Body Identity",
+        "teaching": "An identity such as “I am someone who moves” can remind you of a behavior. It should not make one missed day feel fraudulent or shameful.\n\nA sound identity rests on process rather than perfection. “I restart within my conditions” is more realistic than claiming flawless performance.\n\nChoose one action you actually took this month and write a short identity sentence around it. Plan one small action that supports it this week.\n\nDo not turn body size or performance into moral value. Identity should support health instead of rigid control.",
+        "action": "Write a flexible body-identity sentence based on one action you actually completed.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "\"Don't smoke\" vs \"Not a smoker\"?",
+            "q": "What is the soundest approach to a flexible body identity?",
             "options": [
-              "Same",
-              "Identity 10x stronger",
-              "Behavior strong",
-              "Unknown"
+              "Tie identity to a repeatable process rather than perfection",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "Identity is permanent."
+            "correct": 0,
+            "explain": "The core approach is to tie identity to a repeatable process rather than perfection."
           },
           {
-            "q": "Discipline = ?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Behavior",
-              "Identity",
-              "Plan",
-              "Motivation"
+              "Avoid using body identity for shame or rigid control",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Identity > behavior."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid using body identity for shame or rigid control."
           }
         ]
       },
       "29": {
-        "title": "Final Sprint",
-        "teaching": "29 days of body discipline. Tomorrow you \"complete.\" But body doesn't end with tomorrow. Final test: which 1 most powerful habit of 30 days? 100 more days.",
-        "action": "Today pick the strongest 1 body discipline of 30 days. Which?",
-        "reflectionPrompt": "Why this one? What result did it deliver?",
-        "proTip": "Mark it \"non-negotiable\" on calendar. Mon-Sun every day.",
+        "title": "Choose One Habit to Keep",
+        "teaching": "At the end of a program, you do not need to keep the hardest habit. Keep the behavior that gives value and can repeat in real life.\n\nReview recent weeks. Which action supported energy, comfort, or routine, and which required the least negotiation?\n\nChoose one habit, define its minimum version, and place it in the next two weeks. Review the result afterward.\n\nDo not continue a symptom-producing or guilt-driven practice only to protect a streak. Changing the plan is not quitting.",
+        "action": "Choose the minimum version of one body habit and schedule it for two weeks.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Final discipline test?",
+            "q": "What is the soundest approach to choose one habit to keep?",
             "options": [
-              "End",
-              "Which 1 to keep?",
-              "Tiredness",
-              "Satisfaction"
+              "Value repeatability over difficulty",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "Pick 1 habit to continue."
+            "correct": 0,
+            "explain": "The core approach is to value repeatability over difficulty."
           },
           {
-            "q": "Non-negotiable means?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Flexible",
-              "Every day Mon-Sun",
-              "Weekly",
-              "Monthly"
+              "Change a plan that produces symptoms or constant guilt",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Daily required."
+            "correct": 0,
+            "explain": "The appropriate boundary is to change a plan that produces symptoms or constant guilt."
           }
         ]
       },
       "30": {
-        "title": "Complete — New Body",
-        "teaching": "30 days ago body weak, scattered, sleepless. Now: movement, sleep, nutrition structured. Body changed — because you did. Look in mirror: new body, new identity.",
-        "action": "Today summarize 30 days: 3 learned, 3 to keep, 3 not to forget.",
-        "reflectionPrompt": "With this new body, what big thing will you do?",
-        "proTip": "Rest 3 days before next path. Body shapes through consistency.",
+        "title": "Review Your Body Path",
+        "teaching": "Program completion is not a certificate of a health outcome. It is a chance to summarize behaviors you tried and observations you actually made.\n\nSeparate information learned from changes personally observed. A single good or bad week does not establish a certain cause.\n\nCreate three columns: helped, unclear, and stop. Add one behavior and a short observation to each row.\n\nDo not hide persistent pain, sleep, or food problems inside a success summary. Move them to professional assessment when appropriate.",
+        "action": "Sort behaviors into helped, unclear, and stop, adding one observation to each.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Rest after transition?",
+            "q": "What is the soundest approach to review your body path?",
             "options": [
-              "None",
-              "3 days",
-              "1 week",
-              "1 month"
+              "Separate personal observation from a certain health conclusion",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "3 days rest."
+            "correct": 0,
+            "explain": "The core approach is to separate personal observation from a certain health conclusion."
           },
           {
-            "q": "30-day summary?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "None",
-              "3+3+3",
-              "Random",
-              "List"
+              "Do not dismiss persistent health problems in a program summary",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "3 learned, 3 to keep, 3 not to forget."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not dismiss persistent health problems in a program summary."
           }
         ]
       },
       "31": {
-        "title": "Vagus Nerve",
-        "teaching": "Vagus = brain-gut highway. Blocked: stress, digestion problems, depression. Open: deep breath, cold, humming, gargling. 5 min daily = system reset.",
-        "action": "Today gargle or hum for 5 min.",
-        "reflectionPrompt": "How did vagus practice feel?",
-        "proTip": "Cold face wash = fastest vagus stimulation.",
+        "title": "Use Sound to Settle",
+        "teaching": "Humming or gentle sound may slow breathing and bring attention to the body. It should not be presented as treatment for a specific nerve.\n\nVibration and a longer exhale may feel comfortable, while others may dislike them. Gargling is not required, and straining the throat adds no value.\n\nTry a few short hums at a comfortable volume. Relax the jaw and shoulders, return to normal breathing, and observe the effect neutrally.\n\nStop for dizziness, throat pain, or breathing discomfort. This is not medical treatment for anxiety or heart conditions.",
+        "action": "Try a few short comfortable hums today and observe how they feel.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Vagus connects?",
+            "q": "What is the soundest approach to use sound to settle?",
             "options": [
-              "Brain-kidney",
-              "Brain-gut",
-              "Heart-muscle",
-              "No"
+              "Use sound as a brief comfort experiment",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "Brain-gut highway."
+            "correct": 0,
+            "explain": "The core approach is to use sound as a brief comfort experiment."
           },
           {
-            "q": "Activation method?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Stress",
-              "Hum/gargle/cold",
-              "Sport",
-              "Sleep"
+              "Stop for discomfort and do not replace medical care",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Vagus stimulation techniques."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop for discomfort and do not replace medical care."
           }
         ]
       },
       "32": {
-        "title": "NEAT Awareness",
-        "teaching": "NEAT = non-exercise activity thermogenesis. Walk, stand, fidget. High NEAT = 500-800 kcal/day burned. Get fit without exercise.",
-        "action": "Today try standing 5 hours (vs sitting).",
-        "reflectionPrompt": "Did NEAT change daily energy?",
-        "proTip": "Stand on phone calls. Walking meetings.",
+        "title": "Increase Everyday Movement",
+        "teaching": "Walking, stairs, and household activity contribute to daily movement. Standing for hours is not automatically a healthy opposite to sitting.\n\nBoth prolonged sitting and standing can cause discomfort. The goal is more variety in position and movement across the day.\n\nBreak two sitting periods with a short walk or light household task. When standing for work, consider support, footwear, and position changes.\n\nMovement goals need adaptation with balance problems, vascular conditions, pregnancy, or pain. Do not force symptoms to collect time.",
+        "action": "Break two long sitting periods with short comfortable movement today.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "NEAT acronym?",
+            "q": "What is the soundest approach to increase everyday movement?",
             "options": [
-              "Exercise",
-              "Non-exercise activity",
-              "Diet",
-              "Sleep"
+              "Build movement and position variety instead of prolonged standing",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "Non-exercise activity thermogenesis."
+            "correct": 0,
+            "explain": "The core approach is to build movement and position variety instead of prolonged standing."
           },
           {
-            "q": "High NEAT daily burn?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "100 kcal",
-              "500-800 kcal",
-              "5000",
-              "0"
+              "Adapt the target for symptoms or balance concerns",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "500-800 kcal burned."
+            "correct": 0,
+            "explain": "The appropriate boundary is to adapt the target for symptoms or balance concerns."
           }
         ]
       },
       "33": {
-        "title": "Sun Exposure v2",
-        "teaching": "Morning sun = suppresses melatonin, raises wakefulness. Midday = vitamin D. Evening = circadian reset. 3 exposures = ideal.",
-        "action": "Today 5 min sun morning + noon + evening.",
-        "reflectionPrompt": "Which exposure felt strongest?",
-        "proTip": "Barefoot = grounding bonus.",
+        "title": "Daylight Moments",
+        "teaching": "Going outdoors during the day can support a sense of time and a movement routine. Direct sun three times daily is not a required prescription.\n\nMorning, noon, and evening differ in brightness and UV. Cloud, season, location, skin, and medication change the conditions.\n\nChoose a short outdoor break earlier in the day when possible. Use shade, clothing, and suitable protection when UV is high.\n\nDo not aim for burning or self-treat a vitamin concern through exposure time. Seek individualized health guidance when needed.",
+        "action": "Plan a short early outdoor break and use protection appropriate to the UV conditions.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Morning sun effect?",
+            "q": "What is the soundest approach to daylight moments?",
             "options": [
-              "Melatonin up",
-              "Melatonin down",
-              "No effect",
-              "Stress"
+              "Combine daylight with a safer outdoor routine",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "Wakefulness hormone rises."
+            "correct": 0,
+            "explain": "The core approach is to combine daylight with a safer outdoor routine."
           },
           {
-            "q": "Optimal exposure count?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "1",
-              "3 (morn/noon/eve)",
-              "10",
-              "0"
+              "Avoid burning and unprotected self-treatment",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "3 exposures ideal."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid burning and unprotected self-treatment."
           }
         ]
       },
       "34": {
-        "title": "Sleep Architecture",
-        "teaching": "Sleep = REM + N1 + N2 + N3. N3 (deep) = body repair, REM = mind repair. Late sleep steals N3. Early bed = deep-sleep rich.",
-        "action": "Today sleep at 22:00. N3 abundant.",
-        "reflectionPrompt": "Morning energy different?",
-        "proTip": "First 3 hours rich in N3. 22-01 = most precious sleep.",
+        "title": "Understanding Sleep Stages",
+        "teaching": "Sleep cycles through different stages, but you cannot directly control them with one bedtime. There is no universal correct clock time.\n\nConsumer wearables estimate sleep stages and do not replace clinical measurement. A single-night value can create unnecessary concern.\n\nTrack sleep opportunity, wake time, and daytime function instead of chasing a stage score. A multiweek pattern is more useful than one night.\n\nDo not rely on device scores for persistent insomnia, breathing pauses, or severe daytime sleepiness. Seek clinical assessment.",
+        "action": "Track sleep opportunity, wake time, and daytime energy instead of stage scores this week.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Deep sleep stage?",
+            "q": "What is the soundest approach to understanding sleep stages?",
             "options": [
-              "REM",
-              "N3",
-              "N1",
-              "Wake"
+              "Treat stage estimates as estimates rather than a diagnosis",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "N3 = deep repair."
+            "correct": 0,
+            "explain": "The core approach is to treat stage estimates as estimates rather than a diagnosis."
           },
           {
-            "q": "Most precious hours?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "00-04",
-              "22-01",
-              "04-07",
-              "Equal"
+              "Use assessment instead of device scores for persistent symptoms",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "First 3 hours rich in N3."
+            "correct": 0,
+            "explain": "The appropriate boundary is to use assessment instead of device scores for persistent symptoms."
           }
         ]
       },
       "35": {
-        "title": "Mobility 15 Min",
-        "teaching": "5 min wasn't enough — 15 min mobility daily makes a difference. Shoulder, hip, ankle, back, neck. Small openness daily = big long-term.",
-        "action": "Today 15 min full-body mobility.",
-        "reflectionPrompt": "Which joint felt unlocked?",
-        "proTip": "YouTube \"15 min mobility\" + repeat 7 days.",
+        "title": "A Personal Mobility Flow",
+        "teaching": "A fifteen-minute mobility session may be useful, but every joint does not need equal time and the full body need not be forced in one session.\n\nYour priority changes with the day and activity. Desk work and running may create different movement needs.\n\nChoose three areas and use a few slow comfortable movements in each. Notice whether control improves on the next repetition.\n\nSkip a general flow with new injury, swelling, locking, or sharp pain. Do not force end range without assessment.",
+        "action": "Use a short pain-free mobility flow for three areas that need it today.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "New mobility duration?",
+            "q": "What is the soundest approach to a personal mobility flow?",
             "options": [
-              "1 min",
-              "15 min",
-              "1 hour",
-              "0"
+              "Choose mobility time from current needs",
+              "Make one time mandatory for everyone",
+              "Ignore warning signs",
+              "Fill every day with hard training"
             ],
-            "correct": 1,
-            "explain": "15 min makes a difference."
+            "correct": 0,
+            "explain": "The core approach is to choose mobility time from current needs."
           },
           {
-            "q": "Which joints?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Just shoulder",
-              "Whole body",
-              "Wrist",
-              "Knee"
+              "Stop a general flow for injury, locking, or sharp pain",
+              "Force through symptoms",
+              "Treat a device estimate as diagnosis",
+              "Ignore individual conditions"
             ],
-            "correct": 1,
-            "explain": "Shoulder/hip/ankle/back/neck."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop a general flow for injury, locking, or sharp pain."
           }
         ]
       },
@@ -6972,312 +6962,302 @@
         ]
       },
       "26": {
-        "title": "Spending Awareness",
-        "teaching": "Most spending is subconscious: stress, boredom, social pressure, ad triggers. Awareness is the only weapon. Before each purchase: \"Is this emotional or real need?\"",
-        "action": "Today pause 10 sec before each purchase. Question intent.",
-        "reflectionPrompt": "Which purchase was emotional? Why?",
-        "proTip": "Emotional spending = \"I'll just buy this\" reflex. Stop the hand.",
+        "title": "Pause Before Spending",
+        "teaching": "A short pause is not meant to block every purchase. It creates thinking space between an impulse and a decision.\n\nAsk not “Do I deserve this?” but “Am I choosing this today, is it in the budget, and what does it replace?”\n\nFor an unplanned purchase, leave it in the cart and write its purpose and cost. Use a brief pause for small items and longer time for major ones.\n\nDo not delay medicine, safety, or urgent needs to satisfy an arbitrary waiting rule. The pause should not block necessary spending.",
+        "action": "For one unplanned purchase, write its budget place, purpose, and alternative.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Most spending is?",
+            "q": "What is the soundest approach to pause before spending?",
             "options": [
-              "Conscious",
-              "Subconscious",
-              "Plan",
-              "Smart"
+              "Use a pause to observe an impulse",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Subconscious triggers."
+            "correct": 0,
+            "explain": "The core approach is to use a pause to observe an impulse."
           },
           {
-            "q": "Awareness weapon?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "None",
-              "10 sec pause + question",
-              "Quick buy",
-              "Phone"
+              "Do not arbitrarily delay urgent or necessary spending",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Question intent."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not arbitrarily delay urgent or necessary spending."
           }
         ]
       },
       "27": {
-        "title": "Mindful Money",
-        "teaching": "Money = energy + time exchange. $100 = hours of effort. Forgetting that starts waste. Remember: $1,000 phone = 50 work hours. Worth it?",
-        "action": "Today, looking at a purchase, convert to work hours. Big or small?",
-        "reflectionPrompt": "Which purchase got reframed when in hours?",
-        "proTip": "Know your hourly. $20/hr = $1,000 item = 50 hours of life.",
+        "title": "See Price as Work Time",
+        "teaching": "Converting a price into work hours can make cost concrete, but salary alone does not define the value of your time.\n\nNet hourly income, tax, unpaid work, care duties, and rest needs affect the comparison. This is decision support, not a guilt calculation.\n\nConvert one unplanned item into approximate net work time. Then consider usage frequency, alternatives, and budget impact.\n\nDo not reject a health, accessibility, or time-saving item only because the hour count is high. Value depends on personal conditions.",
+        "action": "Write the approximate net work time and use frequency for one unplanned item.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Money = ?",
+            "q": "What is the soundest approach to see price as work time?",
             "options": [
-              "Paper",
-              "Energy + time",
-              "Luck",
-              "Sugar"
+              "Use work-time cost alongside other measures of value",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Hours of effort."
+            "correct": 0,
+            "explain": "The core approach is to use work-time cost alongside other measures of value."
           },
           {
-            "q": "$100 = ?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Little",
-              "Hours of effort",
-              "Nothing",
-              "A lot"
+              "Do not reduce the value of time to salary alone",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Convert to hourly rate."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not reduce the value of time to salary alone."
           }
         ]
       },
       "28": {
-        "title": "Generational Discipline",
-        "teaching": "Money discipline isn't just you — it shapes your kids. Wealth dies in 3 generations without transferred discipline. Hiding \"money talk\" = burden, not legacy.",
-        "action": "Today discuss 1 financial topic with family. Budget, goal, investment.",
-        "reflectionPrompt": "What money topics are taboo in your family?",
-        "proTip": "Show kids salary + budget. Money literacy = most valuable inheritance.",
+        "title": "A Family Money Conversation",
+        "teaching": "Money conversations can support trust and shared planning, but no one should be forced to reveal every income or debt detail.\n\nOpen with a shared purpose rather than blame, such as an upcoming bill, travel budget, care duty, or emergency plan.\n\nAsk permission for a short conversation, choose one topic, and listen without interruption. If no decision is reached, set the next step and time.\n\nDo not force a joint conversation alone when financial control, threats, or violence may be present. Seek a safe confidential support channel.",
+        "action": "Ask permission and choose one shared financial topic for a family conversation.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Wealth in 3 generations?",
+            "q": "What is the soundest approach to a family money conversation?",
             "options": [
-              "Always grows",
-              "Dies without discipline",
-              "Same",
-              "Negative"
+              "Use permission and a shared purpose in money conversations",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Discipline must transfer."
+            "correct": 0,
+            "explain": "The core approach is to use permission and a shared purpose in money conversations."
           },
           {
-            "q": "Most valuable inheritance?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Money",
-              "Money literacy",
-              "House",
-              "Job"
+              "Put safety first when control or violence is possible",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Knowledge generates money."
+            "correct": 0,
+            "explain": "The appropriate boundary is to put safety first when control or violence is possible."
           }
         ]
       },
       "29": {
-        "title": "Final Sprint",
-        "teaching": "29 days of money discipline. Tomorrow you \"complete.\" But money doesn't end with tomorrow. Final test: which 1 powerful habit of 30 days? 100 more days.",
-        "action": "Today pick the strongest 1 money discipline of 30 days. Which?",
-        "reflectionPrompt": "Why this? What result did it deliver?",
-        "proTip": "Auto-savings is easiest sustained. No willpower, just system.",
+        "title": "Choose One Money Habit",
+        "teaching": "The most valuable habit at program end is not the one that appears to make the most money. It is repeatable and improves decision quality.\n\nReview the month. Which practice reduced surprises, made a goal visible, or lowered unnecessary stress?\n\nChoose one habit and define its minimum version. Write its time, tool, and success measure for the next two weeks.\n\nAdapting the system when conditions change is not failure. Do not risk essentials for a rigid rate or date.",
+        "action": "Choose the minimum version of one money habit and write a two-week plan.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Sustainable 1 discipline?",
+            "q": "What is the soundest approach to choose one money habit?",
             "options": [
-              "Willpower",
-              "Auto-savings",
-              "Negotiation",
-              "Tax"
+              "Put sustainable decision quality ahead of short-term excitement",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "System > willpower."
+            "correct": 0,
+            "explain": "The core approach is to put sustainable decision quality ahead of short-term excitement."
           },
           {
-            "q": "Final test?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Done",
-              "Which 1 to keep?",
-              "Tired",
-              "Satisfied"
+              "Do not risk essentials for a rigid target",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Pick 1 discipline."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not risk essentials for a rigid target."
           }
         ]
       },
       "30": {
-        "title": "Complete — New Money",
-        "teaching": "30 days ago money relationship was murky. Now: net worth, budget, goals are clear. You didn't own money — now you do. Look in mirror: new financial identity.",
-        "action": "Today summarize 30 days: 3 learned, 3 to keep, 3 not to forget.",
-        "reflectionPrompt": "With this new money mind, which financial goal next?",
-        "proTip": "Rest 3 days before next path. Consistency = permanence.",
+        "title": "Review Your Money Path",
+        "teaching": "Completion does not mean financial safety has been achieved. This point is a chance to review the tools tried and the current picture.\n\nSeparate knowledge from results. Opening an account does not show that a budget works, and reading about an investment does not make it suitable.\n\nCreate three columns: use, reassess, and stop. Add a dated next action to each item.\n\nDo not cover debt, tax, or investment uncertainty with motivation language. Use licensed or authorized support when needed.",
+        "action": "Sort financial tools into use, reassess, and stop, then add a dated next action.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Rest after transition?",
+            "q": "What is the soundest approach to review your money path?",
             "options": [
-              "None",
-              "3 days",
-              "1 week",
-              "1 month"
+              "Separate learned information from demonstrated personal results",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "3 days rest."
+            "correct": 0,
+            "explain": "The core approach is to separate learned information from demonstrated personal results."
           },
           {
-            "q": "30-day summary?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "None",
-              "3+3+3",
-              "Random",
-              "List"
+              "Do not hide complex problems behind motivation",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "3 learned, 3 to keep, 3 not to forget."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not hide complex problems behind motivation."
           }
         ]
       },
       "31": {
-        "title": "Compound Interest",
-        "teaching": "Einstein: \"8th wonder of the world.\" $100 × 10%/yr × 30 yr = $1,750. Letting money compound 30 years multiplies 17x. Start early, start small.",
-        "action": "Today use a compound interest calculator, see 30 years out.",
-        "reflectionPrompt": "Today's small saving in 30 years?",
-        "proTip": "compoundinterestcalculator.net = free calc.",
+        "title": "A Compound Return Scenario",
+        "teaching": "A compound calculator shows a scenario where gains are added back to the balance. The rate entered is an assumption, not an outcome.\n\nFees, tax, inflation, currency, and irregular contributions change real results. A smooth chart does not show market movement.\n\nRun low, middle, and high assumptions for the same contribution. Consider nominal value separately from current purchasing power.\n\nDo not use a calculator result to justify a specific product or borrowing. Investment decisions require risk capacity and official product information.",
+        "action": "Run three assumptions for one contribution and note fees and inflation separately.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Compound interest \"8th wonder\" by?",
+            "q": "What is the soundest approach to a compound return scenario?",
             "options": [
-              "Newton",
-              "Einstein",
-              "Gates",
-              "Buffett"
+              "Treat compound calculations as scenarios built on assumptions",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Einstein named it."
+            "correct": 0,
+            "explain": "The core approach is to treat compound calculations as scenarios built on assumptions."
           },
           {
-            "q": "Early start?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No effect",
-              "Compound power",
-              "Risk",
-              "Expensive"
+              "Do not borrow or choose a product from calculator output alone",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Time = compound power."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not borrow or choose a product from calculator output alone."
           }
         ]
       },
       "32": {
-        "title": "Wealth Identity",
-        "teaching": "\"I earn\" is behavior. \"I am wealthy\" is identity. Rich think differently: invest before spend, own not rent, time invested. Change identity.",
-        "action": "Today claim \"wealth-builder\" identity.",
-        "reflectionPrompt": "Which decision changed with new identity?",
-        "proTip": "Mirror: \"I am building wealth.\" Daily repeat.",
+        "title": "A Financial Process Identity",
+        "teaching": "A “wealth builder” label may motivate, but it can turn current balance into a measure of character or personal worth.\n\nA stronger identity rests on behavior: keeping records, reading terms, asking for help, or updating a plan.\n\nChoose one action you genuinely perform and write a short process statement. Set one action that supports it this week.\n\nIncome, debt, and wealth also reflect social conditions. Do not interpret financial hardship as a moral failure.",
+        "action": "Write a financial process identity based on one behavior you genuinely perform.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Behavior or identity?",
+            "q": "What is the soundest approach to a financial process identity?",
             "options": [
-              "Behavior",
-              "Identity permanent",
-              "Same",
-              "Unknown"
+              "Tie financial identity to repeated behavior instead of balance",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Identity > behavior."
+            "correct": 0,
+            "explain": "The core approach is to tie financial identity to repeated behavior instead of balance."
           },
           {
-            "q": "Rich think differently?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No effect",
-              "Invest before spend",
-              "Same",
-              "No"
+              "Do not treat financial hardship as moral failure",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Order is different."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not treat financial hardship as moral failure."
           }
         ]
       },
       "33": {
-        "title": "Buy Once, Cry Once",
-        "teaching": "Cheap × 5 = expensive. $40 shoes × 5 yr = $200. $200 shoes × 20 yr = $200. Same budget, 4x quality. Total life cost.",
-        "action": "Today buy 1 long-term-use item with quality.",
-        "reflectionPrompt": "How does quality save long-term?",
-        "proTip": "Buy It For Life subreddit = lifetime product recommendations.",
+        "title": "Repair, Rent, or Buy",
+        "teaching": "Long use can improve value, but an expensive item is not automatically durable. Usage and repairability matter.\n\nBefore buying new, compare repair, borrowing, rental, and used options. Each has different costs and risks.\n\nWrite the need, use frequency, maintenance cost, and after-sales coverage. Check independent product information.\n\nDo not exceed the budget or borrow because of a buy-once slogan. Access may be cheaper than ownership for rare use.",
+        "action": "Compare repair, rental, used, and new options for one current need.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Cheap × 5 = ?",
+            "q": "What is the soundest approach to repair, rent, or buy?",
             "options": [
-              "Cheap",
-              "Expensive",
-              "Same",
-              "Unknown"
+              "Base ownership on use and total cost",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Total = expensive."
+            "correct": 0,
+            "explain": "The core approach is to base ownership on use and total cost."
           },
           {
-            "q": "BIFL source?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Forum",
-              "Reddit subreddit",
-              "Email",
-              "No"
+              "Do not exceed the budget on a quality assumption",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Lifetime recommendations."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not exceed the budget on a quality assumption."
           }
         ]
       },
       "34": {
-        "title": "Income Streams",
-        "teaching": "1 income = 1 risk. Average wealthy: 7 income streams (Tom Corley research): salary + freelance + dividends + rent + digital + mentorship + royalty. Target 3-4.",
-        "action": "Today plan 1 additional income stream.",
-        "reflectionPrompt": "Which is easiest to start?",
-        "proTip": "Digital product (ebook, course) = highest margin.",
+        "title": "Map an Income Source",
+        "teaching": "Multiple income sources may add resilience, but each new source is not passive. Management, tax, capital, and time can be required.\n\nSalary, freelance work, business, rent, royalties, and investment income carry different risks. There is no required number of sources.\n\nList current skills and assets. Map the customer, time, and legal conditions for one lower-cost option.\n\nDo not risk primary income or emergency savings for an unclear income promise. Check scam signs and contracts.",
+        "action": "Map the customer, time, cost, and legal conditions for one income option.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Optimum income streams?",
+            "q": "What is the soundest approach to map an income source?",
             "options": [
-              "1",
-              "3-4",
-              "20",
-              "100"
+              "Evaluate an income source by its real workload",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "7 wealthy avg, 3-4 target."
+            "correct": 0,
+            "explain": "The core approach is to evaluate an income source by its real workload."
           },
           {
-            "q": "Highest margin?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Salary",
-              "Digital product",
-              "Rent",
-              "Unknown"
+              "Protect primary income and emergency savings from unclear promises",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Digital product."
+            "correct": 0,
+            "explain": "The appropriate boundary is to protect primary income and emergency savings from unclear promises."
           }
         ]
       },
       "35": {
-        "title": "Tax Optimization",
-        "teaching": "Tax is your biggest annual expense. 25-40% of income gone. Optimize: retirement, education deduction, health contribution, donation. 2 hours of learning = thousands saved.",
-        "action": "Today research which tax deductions you're missing.",
-        "reflectionPrompt": "Biggest loss?",
-        "proTip": "CPA 1-hour = $200. Saves $5K yearly.",
+        "title": "Legal Tax Planning",
+        "teaching": "Tax planning uses lawful rights and timing correctly. It does not mean hiding income or creating false records.\n\nDeductions and exemptions depend on country, year, income type, and suitable documentation. An old list may not match current rules.\n\nCheck eligibility, deadlines, and required records in the official guide. Note an unused right only when you qualify.\n\nUse an authorized professional for companies, investments, foreign income, or uncertain transactions. This lesson is not personal tax advice.",
+        "action": "Check eligibility, records, and deadline for one item in the official tax guide.",
+        "reflectionPrompt": "What is the smallest step from this lesson that fits your conditions?",
         "quiz": [
           {
-            "q": "Tax magnitude?",
+            "q": "What is the soundest approach to legal tax planning?",
             "options": [
-              "No",
-              "25-40% income",
-              "5%",
-              "100%"
+              "Base tax planning on current law and records",
+              "Treat an assumption as certain",
+              "Decide without reading terms",
+              "Apply one example to everyone"
             ],
-            "correct": 1,
-            "explain": "Biggest yearly expense."
+            "correct": 0,
+            "explain": "The core approach is to base tax planning on current law and records."
           },
           {
-            "q": "CPA value?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Expensive",
-              "1 hour = $5K saved",
-              "Useless",
-              "Unknown"
+              "Do not hide income or use improper documentation",
+              "Put essentials at risk",
+              "Skip official information",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Like investment."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not hide income or use improper documentation."
           }
         ]
       },
