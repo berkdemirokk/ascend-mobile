@@ -142,10 +142,10 @@ export default function ProfileScreen({ navigation }) {
     try {
       const message =
         currentStreak > 0
-          ? t('share.streakActive', '{{streak}} gün — Daily Discipline sürüyor 🔥', {
+          ? t('share.streakActive', 'Ascend: Daily Discipline serim {{streak}} gündür sürüyor.', {
               streak: currentStreak,
             })
-          : t('share.streakStart', 'Daily Discipline başlatıyorum 🔥');
+          : t('share.streakStart', 'Ascend: Daily Discipline ile ilk günümü başlatıyorum.');
       await new Promise((r) => setTimeout(r, 60));
       const ok = await captureAndShare({
         viewRef: shareCardRef,
@@ -500,7 +500,7 @@ export default function ProfileScreen({ navigation }) {
           streak={currentStreak || 0}
           longestStreak={longestStreak || 0}
           lessonsCompleted={completedLessonsTotal || 0}
-          title={t('share.title', 'Daily Discipline 🔥')}
+          title={t('share.title', 'Ascend: Daily Discipline')}
           subtitle={t('profile.shareSubtitle', 'Disiplin. Odak. Tekrar.')}
           streakLabel={t('profile.shareStreakLabel', 'GÜN')}
           longestLabel={t('profile.shareLongestLabel', 'EN UZUN')}

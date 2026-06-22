@@ -434,6 +434,48 @@ run('startup fail-open guards', () => {
   assert(notificationSource.includes('shouldShowList: true'), 'notification handler must use the current iOS list behavior');
 });
 
+run('first-session content pacing', () => {
+  const appJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'app.json'), 'utf8'));
+  const lessonScreen = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');
+  const paths = trLessons.lessons || {};
+  const jargonTitle = /\b(?:Master|Mastery|Mid-point|Baseline|Kill|Deep|Review|Inbox)\b/i;
+  const unsupportedOpeningClaim = /\b(?:kokain|cocaine|phantom reaching|baseline|%\d+)\b/i;
+
+  assert(appJson.expo?.name === 'Ascend: Daily Discipline', 'installed app name must match the App Store brand');
+  assert(trMain.onboarding?.title === 'Ascend: Daily Discipline', 'onboarding brand must match the installed app');
+  assert(lessonScreen.includes('Array.from({ length: 4 }'), 'teaching flow must cap long lessons at four beats');
+
+  for (const [pathId, lessons] of Object.entries(paths)) {
+    const first = lessons?.['1'];
+    assert(first, `${pathId} must have an opening lesson`);
+    const teachingWords = String(first.teaching || '').split(/\s+/).filter(Boolean).length;
+    const actionWords = String(first.action || '').split(/\s+/).filter(Boolean).length;
+    const paragraphs = String(first.teaching || '').split(/\n\n+/).filter(Boolean);
+    assert(teachingWords >= 60 && teachingWords <= 110, `${pathId}.1 teaching must be 60-110 words, found ${teachingWords}`);
+    assert(paragraphs.length === 4, `${pathId}.1 teaching must have four beats, found ${paragraphs.length}`);
+    assert(actionWords <= 24, `${pathId}.1 action must be at most 24 words, found ${actionWords}`);
+    assert(!unsupportedOpeningClaim.test(first.teaching), `${pathId}.1 contains an unsupported or jargon-heavy opening claim`);
+  }
+
+  const defaultFreeLessons = paths['dopamine-detox'] || {};
+  for (let lessonId = 1; lessonId <= 10; lessonId += 1) {
+    const lesson = defaultFreeLessons[String(lessonId)];
+    const teachingWords = String(lesson?.teaching || '').split(/\s+/).filter(Boolean).length;
+    const actionWords = String(lesson?.action || '').split(/\s+/).filter(Boolean).length;
+    const paragraphs = String(lesson?.teaching || '').split(/\n\n+/).filter(Boolean);
+    assert(teachingWords >= 70 && teachingWords <= 110, `dopamine-detox.${lessonId} teaching must be 70-110 words, found ${teachingWords}`);
+    assert(paragraphs.length === 4, `dopamine-detox.${lessonId} must have four beats, found ${paragraphs.length}`);
+    assert(actionWords <= 24, `dopamine-detox.${lessonId} action must be at most 24 words, found ${actionWords}`);
+    assert(!unsupportedOpeningClaim.test(lesson?.teaching || ''), `dopamine-detox.${lessonId} contains an unsupported or jargon-heavy claim`);
+  }
+
+  for (const [pathId, lessons] of Object.entries(paths)) {
+    for (const [lessonId, lesson] of Object.entries(lessons)) {
+      assert(!jargonTitle.test(lesson.title || ''), `${pathId}.${lessonId} title contains avoidable English jargon: ${lesson.title}`);
+    }
+  }
+});
+
 run('lesson locale schema', () => {
   const locales = [['tr', trLessons], ['en', enLessons]];
   const pathIds = Object.keys(trLessons.lessons);

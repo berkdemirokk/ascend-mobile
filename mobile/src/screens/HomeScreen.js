@@ -460,7 +460,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.greetingSubtitle}>
             {t(
               'home.subtitle',
-              'Disiplin yolunda bir gün daha. Hadi başla.',
+              'Motivasyon bekleme. Beş dakikalık görevi bitir ve gününe dön.',
             )}
           </Text>
         </View>
@@ -558,7 +558,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.ctaCardLabel}>
               {todayCompleted
                 ? t('home.todayDoneLabel', 'BUGÜN TAMAMLANDI')
-                : t('home.todayCta', 'BUGÜNÜN ANA GÖREVİ')}
+                : t('home.todayCta', 'BUGÜNÜN TEK GÖREVİ')}
             </Text>
             <View style={styles.ctaPathBadge}>
               <MaterialIcons
@@ -574,7 +574,7 @@ export default function HomeScreen({ navigation }) {
 
           <Text style={styles.ctaTitle}>
             {todayCompleted
-              ? t('home.todayDoneTitle', 'Serin güvende')
+              ? t('home.todayDoneTitle', 'Bugünün sözü tutuldu')
               : currentLesson
                 ? t(
                     `lessons.${currentLesson.pathId}.${currentLesson.order}.title`,
@@ -588,7 +588,7 @@ export default function HomeScreen({ navigation }) {
               ? currentLesson
                 ? t(
                     'home.todayDoneSub',
-                    'Ana ders bitti. İstersen momentum için sıradaki dersi açabilirsin.',
+                    'Ana görev bitti. Devam etmek istersen sıradaki ders hazır.',
                   )
                 : t(
                     'home.allDoneSub',
@@ -599,7 +599,7 @@ export default function HomeScreen({ navigation }) {
                     `lessons.${currentLesson.pathId}.${currentLesson.order}.summary`,
                     t(
                       'home.ctaGenericSub',
-                      'Bugünün ana adımı seni bekliyor. Yaklaşık 5 dakika.',
+                      'Beş dakika ayır. Tek bir şeyi gerçekten uygula.',
                     ),
                   )
                 : t(
@@ -672,7 +672,7 @@ export default function HomeScreen({ navigation }) {
               >
                 {todayCompleted
                   ? t('home.nextLessonOptional', 'SIRADAKİ DERSİ AÇ')
-                  : t('home.startNow', 'PRATİĞE BAŞLA')}
+                  : t('home.startNow', '5 DAKİKAYI BAŞLAT')}
               </Text>
               <MaterialIcons
                 name="arrow-forward"
@@ -718,7 +718,7 @@ export default function HomeScreen({ navigation }) {
               <Text style={styles.deckTitle}>
                 {t(
                   'home.deckTitle',
-                  'Stoik bir alıntı + 1 soru + 1 mikro eylem',
+                  'Bir fikir, dürüst bir soru, küçük bir hamle',
                 )}
               </Text>
             </View>
@@ -939,7 +939,7 @@ export default function HomeScreen({ navigation }) {
             zero impact on the core habit loop.
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
         <Text style={styles.extrasHeader}>
-          {t('home.extrasHeader', 'BUGÜNÜN EKSTRALARI')}
+          {t('home.extrasHeader', 'ENERJİN KALDIYSA')}
         </Text>
 
         {/* Daily Mystery Challenge — surfaces ONLY when today's deck
@@ -1076,12 +1076,12 @@ export default function HomeScreen({ navigation }) {
               </View>
               <View style={styles.premiumCardText}>
                 <Text style={styles.premiumCardTitle}>
-                  {t('home.premiumTitle', 'Premium ile sınırları kaldır')}
+                  {t('home.premiumTitle', 'Ritmi kesmeden devam et')}
                 </Text>
                 <Text style={styles.premiumCardSub}>
                   {t(
                     'home.premiumSub',
-                    'Reklamsız · Tüm yollar · Streak donduru · İndirim',
+                    'Reklamsız · Tüm yollar · Seri koruması · Yıllık avantaj',
                   )}
                 </Text>
               </View>

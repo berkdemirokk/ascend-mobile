@@ -38,7 +38,7 @@ export default function TransformationReportModal({
   const handleShare = async () => {
     hapticImpactMedium();
     const lines = [
-      t('transform.shareIntro', "I'm growing on Ascend: Daily Discipline."),
+      t('transform.shareIntro', "I'm making progress with Ascend: Daily Discipline."),
       '',
       `🔥 ${t('transform.statLessons', { count: report.lessonsTotal })}`,
       `📅 ${t('transform.statActiveDays', { days: report.activeDays })}`,

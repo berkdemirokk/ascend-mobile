@@ -2,341 +2,341 @@
   "paths": {
     "dopamine-detox": {
       "title": "Dopamin Detoksu",
-      "subtitle": "30 günde dijital bağımlılığı kır",
-      "description": "Telefondan, sosyal medyadan, hızlı dopamin kaynaklarından adım adım çık. Beyin yeniden sıfırlansın."
+      "subtitle": "Ekran dürtüsünü adım adım yönet",
+      "description": "Telefonu tamamen bırakma. Ne zaman ve neden açtığına yeniden sen karar ver."
     },
     "silent-morning": {
       "title": "Sessiz Sabah",
-      "subtitle": "21 günde Daily Discipline sabah ritüeli",
-      "description": "Erken kalk. Telefonu açma. İlk saatini sessizlikte yaşa."
+      "subtitle": "Günün ilk saatini geri al",
+      "description": "Sabahı alarm savaşıyla değil, geceden kurduğun sakin bir planla başlat."
     },
     "mind-discipline": {
       "title": "Zihin Disiplini",
-      "subtitle": "28 günde derin odak ustası ol",
-      "description": "Tek odak. Dikkat dağıtmayan iş. Deep work zihinsel kasını kur."
+      "subtitle": "Dağılmadan tek bir işi bitir",
+      "description": "Dikkat kaçaklarını azalt, kısa odak bloklarıyla somut işler tamamla."
     },
     "body-discipline": {
       "title": "Beden Disiplini",
-      "subtitle": "30 günde bedeni geri kazan",
-      "description": "Hareket, beslenme, soğuk duş. Bedenin için sertlik."
+      "subtitle": "Enerjini küçük hareketlerle geri kur",
+      "description": "Sert başlangıçlar değil; yürüyüş, uyku ve beslenmede tekrarlanabilir adımlar."
     },
     "money-discipline": {
       "title": "Para Disiplini",
-      "subtitle": "21 günde finansal sertlik",
-      "description": "Gereksiz harcamayı bitir. Bütçe yap. Tasarruf alışkanlığı kur."
+      "subtitle": "Paranın nereye gittiğini gerçekten gör",
+      "description": "Tekrarlanan ödemeleri yakala, dürtüsel harcamayı yavaşlat ve kararlarını görünür kıl."
     }
   },
   "lessons": {
     "dopamine-detox": {
       "1": {
-        "title": "Bağımlılığın Bilimi",
-        "teaching": "Akşam yatağa giriyorsun. Telefonu açıyorsun, 'sadece 5 dakika' diyorsun. 90 dakika sonra hala Instagram'dasın. 'Niye kalkamadım?' diye soruyorsun kendine. Cevap dopaminde.\n\nDopamin bir ödül kimyasalı değil — **beklenti kimyasalı**. Beyin, bir sonraki video, bir sonraki bildirim, bir sonraki 'belki ilginç bir şey' beklerken dopamin salıyor. Ödül asla net olarak gelmediği için döngü durmuyor. Kumarhane mantığının aynısı: belki gelecek sefer.\n\nStanford'da Andrew Huberman'ın araştırmaları net: sonsuz scroll, dopamin sisteminde kokainle benzer bir baseline kaymasına yol açıyor. Sen telefonu bıraktıktan 24 saat sonra bile, beyin 'normal' hissetmek için ekran istiyor. Aslında telefon iyi hissettirmiyor — telefonsuz olmak kötü hissettiriyor. Aradaki farkı hisset.\n\nİyi haber: bu öğrenme tersine çevrilebilir. Beyin 7-30 günde yeni baseline'a oturur. İlk 3 gün zor — phantom reaching yaşarsın, durup dururken telefona uzanırsın. 4-7 gün anlam belirir. 14-30 gün arası 'eski telefon hayatım' uzak gelir. Şu an Gün 1'desin.\n\nBugünün işi devasa değil. Sadece bir mikro-pratik: her telefona uzandığında, açmadan önce 10 saniye dur. Bu 10 saniye, otomatik reflexi yavaşlatır. Beyin 'bunu gerçekten istiyor muyum?' diye sorma fırsatı bulur. Çoğu zaman cevap hayır.",
-        "action": "Bugün telefonunu açtığın her seferinde, ekrana bakmadan 10 saniye bekle. Sadece bekle. Sonra istediğini yap. Bu küçük duraklamayı en az 5 kez yap.",
-        "reflectionPrompt": "Bugün telefonu kaç kez 'düşünmeden' açtığını fark ettin? O an aslında ne arıyordun?",
+        "title": "Telefonu Neden Açtığını Yakala",
+        "teaching": "Elin telefona gidiyor. Bildirim yok, mesaj beklemiyorsun; yine de ekranı açıyorsun. Kararı sen vermeden hareket başlamış oluyor.\n\nSonsuz akışların gücü tek bir harika içerik değildir. Bir sonrakinin ne olacağını bilmemendir. Belirsizlik, 'bir tane daha' dürtüsünü canlı tutar.\n\nBurada amaç telefonu hayatından çıkarmak değil. Otomatik hareket ile bilinçli karar arasına küçücük bir boşluk koymak. O boşluk büyüdükçe kontrol geri gelir.\n\nBir sonraki beş açışında ekranı uyandırmadan önce 10 saniye bekle. Sonra gerçekten işin varsa aç; yoksa telefonu bırak.",
+        "action": "Bir sonraki 5 otomatik uzanışında telefonu açmadan 10 saniye bekle. Her seferinde kendine 'Şu an ne için açıyorum?' diye sor.",
+        "reflectionPrompt": "Telefonu açmak istediğin anda asıl ihtiyacın neydi: bilgi, bağlantı, sıkıntıdan kaçış mı?",
         "quiz": [
           {
-            "q": "Dopamin neyle salınır?",
+            "q": "10 saniyelik duraklamanın asıl amacı ne?",
             "options": [
-              "Ödül geldiğinde",
-              "Ödül beklerken",
-              "Stresle",
-              "Uyurken"
+              "Telefonu tamamen bırakmak",
+              "Otomatik davranışı görünür kılmak",
+              "Daha hızlı cevap vermek",
+              "Bildirimleri çoğaltmak"
             ],
             "correct": 1,
-            "explain": "Dopamin **beklenti** kimyasalıdır — ödülün gelmesini hayal ederken salınır, ödül geldiğinde değil. Bu yüzden sonsuz scroll bağımlılık yapıyor: ödül asla net olarak gelmediği için beklenti hiç bitmiyor."
+            "explain": "Kısa duraklama, elinle niyetin arasındaki otomatik bağı keser. Telefonu açıp açmamaya yeniden sen karar verirsin."
           },
           {
-            "q": "Beyin yeni baseline'a kaç günde oturur?",
+            "q": "Telefonu açma dürtüsü geldiğinde ilk adım hangisi?",
             "options": [
-              "1-3 gün",
-              "4-7 gün",
-              "7-30 gün",
-              "60+ gün"
+              "Uygulamayı hemen açmak",
+              "Telefonu kapatıp kaçmak",
+              "Bekleyip amacını adlandırmak",
+              "Yeni bildirim aramak"
             ],
             "correct": 2,
-            "explain": "Huberman ve dopamin araştırmaları 7-30 günlük aralık gösteriyor. İlk 3 gün en zoru (phantom reaching), 14-30 gün arasında eski hayat uzak gelir."
+            "explain": "Önce bekle, sonra neden açmak istediğini söyle. Dürtüyü adlandırmak kararı otomatik olmaktan çıkarır."
           }
         ],
-        "proTip": "Bağımlılık hep bahane bekler — \"sadece 5 dakika\" o bahanedir. 10 saniyelik duraklama, bahaneyi öldürür."
+        "proTip": "Hedef ekransız yaşamak değil; ekranı ne zaman açacağına yeniden senin karar vermen."
       },
       "2": {
-        "title": "Bildirimleri Söndür",
-        "teaching": "Çalışıyorsun. Konsantrasyon iyi gidiyor. Telefon titriyor — bir bildirim. Sadece bir bakış. Tekrar ekranına dönüyorsun. Ama beyin artık eski yerinde değil. UC Irvine'da Gloria Mark'ın araştırması net: bir bildirimle dikkatin tam olarak iş'e geri dönmesi **23 dakika 15 saniye** sürüyor.\n\nGünde 50 bildirim alıyorsan basit matematik: 50 × 23 dakika = teorik olarak hiçbir zaman tam odakta değilsin. Pratikte beyin 'multitasking moduna' geçer — yani her şeye yarım dikkat verir, hiçbirine tam. Verim çöker, hata oranı artar, akşamları daha yorgun hissedersin (çünkü beyin gün boyu context-switch yapmış).\n\nBuradaki en sert gerçek: bildirimler sana hizmet etmiyor. Hizmet ettikleri uygulamalar. Instagram bildirimi sana 'arkadaşının paylaşımını' söylemiyor — Instagram'ın günlük aktif kullanıcı metriğine seni geri çekiyor. TikTok bildirimi 'eğlenceli içerik' değil, your watch time hedefi. Bildirim sistemi, en yetenekli psikoloji ve UX ekipleri tarafından senin dikkatini sömürmek için tasarlandı. Sen bunun maliyetini odaklanma kapasitenle ödüyorsun.\n\nİyi haber: bu kontrolü geri almak 5 dakikalık iş. Ayarlar → Bildirimler → her uygulama için kapatmak. Çoğu telefon zaten 'Bildirimler' filtresi sunar.\n\nKuralı sertleştirelim: bugünden itibaren sadece arama, doğrudan mesaj (WhatsApp DM, iMessage) ve takvim hatırlatıcısı bildirim verecek. Geri kalan her uygulama sessiz. Eğer Instagram'a bakmak istiyorsan, sen karar verince Instagram'ı açacaksın — Instagram seni çağırmayacak.",
-        "action": "Telefonundaki TÜM uygulamaların bildirimlerini kapat. Sadece arama ve doğrudan mesaj kalsın. Bunu şu anda yap (Ayarlar → Bildirimler → tek tek kapat). Ertelersen yapmazsın.",
-        "reflectionPrompt": "En zor kapatılan bildirim hangisiydi? Niye onu kapatmaktan korktun?",
+        "title": "Dikkatini Kimin Çağırdığına Sen Karar Ver",
+        "teaching": "Tam işe girmişken ekran yanıyor. 'Bir saniye bakıp dönerim' diyorsun. Döndüğünde aynı cümleyi yeniden okumak zorunda kalıyorsun.\n\nSorun yalnız kaybettiğin birkaç saniye değil. Her kesinti, zihnini önceki işe yeniden yüklemeye zorlar. Gün boyunca küçük kopuşlar birikince akşam yorgun ama tatminsiz kalırsın.\n\nHer uyarı acil değildir. Arama, gerçekten beklediğin mesaj ve takvim hatırlatması sana hizmet eder. Beğeni, öneri ve kampanya bildirimleri ise seni uygulamaya geri çağırır.\n\nKontrolü geri almak için herkesi susturman gerekmiyor. İnsanları açık bırak, makineleri sessize al. Uygulamaya ne zaman bakacağına sen karar ver.",
+        "action": "Ayarlar → Bildirimler'i aç. Beğeni, öneri, haber ve kampanya gönderen en az 5 uygulamayı sessize al. Arama ve önemli kişiler açık kalsın.",
+        "reflectionPrompt": "Seni en sık bölen uygulama hangisiydi? Bildirim kapalıyken onu gerçekten ne zaman kontrol etmek istersin?",
         "quiz": [
           {
-            "q": "Bir bildirimden sonra dikkat ne kadar dağılır?",
+            "q": "Bildirimlerin görünmeyen maliyeti nedir?",
             "options": [
-              "1 dakika",
-              "5 dakika",
-              "10 dakika",
-              "23 dakika"
-            ],
-            "correct": 3,
-            "explain": "Gloria Mark (UC Irvine) araştırması: 23 dakika 15 saniye. Yani günde 30 bildirim alan biri teorik olarak günün YARISINDAN fazlasını 'tam odağa geri dönmeye çalışırken' geçiriyor."
-          },
-          {
-            "q": "Bildirimler kime hizmet eder?",
-            "options": [
-              "Sana",
-              "Uygulamalara",
-              "Ailene",
-              "Hiç kimseye"
+              "Telefonun rengini değiştirmek",
+              "İşe yeniden odaklanma yükü",
+              "Daha çok depolama kullanmak",
+              "Şarjı anında bitirmek"
             ],
             "correct": 1,
-            "explain": "Bildirimler app'lerin günlük aktif kullanıcı (DAU) ve oturum süresi metriklerine hizmet eder. Senin değil, onların KPI'larını besler. Sen ödediği faturayı odaklanma kapasitenle ödüyorsun."
-          }
-        ],
-        "proTip": "Bildirimleri kapatmak iletişimi kesmek değil — kontrolü almak. Sen ne zaman bakacağına karar verirsin."
-      },
-      "3": {
-        "title": "Sosyal Medya Orucu",
-        "teaching": "Otobüsü bekliyorsun. 2 dakikan var. Telefonu çıkarıyorsun, parmak otomatik olarak Instagram ikonuna gidiyor. 'Ne yapıyorum?' diye düşünmüyorsun bile. Parmak biliyor. Bu, beynin sosyal medyayı 'fasulye' seviyesinde otomatize ettiği yer.\n\nSosyal medya en hızlı dopamin kaynaklarından biri. Üç sebepten:\n\n**1. Sonsuz scroll** — Klasik gazete biterdi, sayfa sayısı vardı. Instagram'ın sonu yok. Beyin 'işim bitti' sinyali alamıyor.\n**2. Beklenmedik içerik (variable reward)** — Skinner'ın güvercin deneyi: her tıklamada ödül gelen güvercin sıkılır; **rastgele** aralıklarla ödül gelen güvercin DAHA fazla tıklar. Senin feed'in tam bu mantıkla tasarlandı.\n**3. Sosyal kıyaslama** — Arkadaşının tatil fotoğrafı senin 'bana yeter' eşiğini düşürür. Stanford'da bir çalışma: Instagram'da 30 dakika geçiren kullanıcıların subjektif iyi-oluş skorları %18 düşüyor — sadece 30 dakikada.\n\nBugün bir denemeyi başlatıyorsun: **24 saat sosyal medya yok**. Instagram, TikTok, Twitter, YouTube Shorts, Reels — hepsi. WhatsApp ve direkt mesajlar serbest (ihtiyaç, sömürü değil).\n\nİlk 3-4 saat zor olacak. Telefonunu sebepsiz açacaksın, parmak Instagram olduğu yere gidecek. Bu **phantom reaching** — bilek-beyin refleksi. Buna kızma; gülümse ve telefonu cebine koy. Refleks 24 saatte zayıflıyor, 7 günde unutuluyor.\n\nÖnemli: Bu 'tamamen bırakma' değil. Sadece bir günlük sıfırlama. Yarın yine açabilirsin — ama bugünden sonra ilişkin daha farkındalıklı olacak.",
-        "action": "Tüm sosyal medya uygulamalarını ana ekrandan kaldır. Bir klasöre koy ve klasörün adını 'Düşmanlar' yap. Bugün 24 saat hiçbirini açma. İhtiyaç hissedersen yere yatıp 'ben telefon değilim' diye 3 kez söyle (ciddi).",
-        "reflectionPrompt": "Hangi an 'Sadece bir kere bakayım' dürtüsü geldi? O an aslında ne arıyordun — bilgi mi, kaçış mı?",
-        "quiz": [
-          {
-            "q": "Phantom reaching nedir?",
-            "options": [
-              "Telefonu düşürmek",
-              "Otomatik telefona uzanma",
-              "Sosyal medya orucu",
-              "Yeni bildirim"
-            ],
-            "correct": 1,
-            "explain": "Beyin alışkanlıkla telefona otomatik uzanır — parmak senin niyetin olmadan yola çıkar. İlk 24 saat refleks zayıflar, 7 günde büyük ölçüde söner."
+            "explain": "Kesinti bittikten sonra zihin önceki bağlamı yeniden kurar. Çok sayıda küçük bölünme, günün sonunda büyük bir dikkat kaybına dönüşür."
           },
           {
-            "q": "Sosyal medya orucu kaç saat?",
+            "q": "Hangi bildirimleri açık bırakmak daha anlamlı?",
             "options": [
-              "6 saat",
-              "12 saat",
-              "24 saat",
-              "48 saat"
+              "Her kampanyayı",
+              "Tüm sosyal medya önerilerini",
+              "Arama ve gerçekten önemli mesajları",
+              "Her uygulamanın varsayılanını"
             ],
             "correct": 2,
-            "explain": "İlk denemede 24 saat yeterli — bilek-beyin refleksini kırar, beyin 'normal hayat sosyal medya değildir' sinyalini alır. Çok daha uzun süreler motivasyon krizi yaratır."
+            "explain": "Amaç iletişimi kesmek değil, önemsiz çağrıları ayıklamak. İnsanlar ulaşabilsin; uygulamalar dikkatini yönetmesin."
           }
         ],
-        "proTip": "24 saatlik oruç çoğu için ilk gerçek dijital sessizlik. Sıkılınca panik yapma — sıkılmak başarı işareti."
+        "proTip": "İnsanları açık bırak, makineleri sessize al. Bu kural karar vermeyi kolaylaştırır."
       },
-      "4": {
-        "title": "Junk İçerik Tüketimini Kes",
-        "teaching": "Yemek için bir analoji düşün. Cips paketi açmak kolay. Kıvrak, tuzlu, doyurucu hisseder. Ama bir saat sonra hala açsın. Çünkü cips beyne 'enerji aldım' sinyalini verir ama gerçek besin vermez. Beslenme bilimi buna **boş kalori** der.\n\nJunk içerik aynı mekanizma — sadece beynin için.\n\nReddit'te 'sadece 5 dakika' diyerek bir saat geçirmek, YouTube'da rastgele video açmak, sürekli haber kontrolü, podcast'i arka planda iş yaparken dinlemek (gerçekte dinlemiyorsun, sesleniyorsun)... Bunlar beyine 'düşünüyorum / öğreniyorum' sinyali verir ama gerçekte tüketim, üretim değil.\n\nFark etmediğin şey: bu içerikler seni sadece **daha aptal** yapmıyor — **daha pasif** yapıyor. Beynin başkalarının düşüncelerini tüketmeye alışıyor, **kendi düşüncelerini üretemez** hale geliyor. Sessiz kaldığında ne düşüneceğini bilmiyorsun, çünkü iç sesin başkalarının paragrafları olmuş.\n\nNassim Taleb'in **antikütüphane** fikri ilgili: kütüphanende okuduğun kitaplar değil, okumadığın kitaplar değerlidir — çünkü okumadıkların ne kadar bilmediğini hatırlatır. Junk içerik ise tersi: okuduğunun çoğu boş, ama 'çok şey biliyorum' yanılsaması verir.\n\nBugün filtreyi kuruyoruz. Bugün **tüketim oruçu**: yalnızca üret. Aklına yeni bir bilgi sokmuyorsun, sadece var olanı işliyor ve dışarı çıkarıyorsun.",
-        "action": "Bugün hiçbir içerik tüketme. Yalnızca üret. Yazı yaz, çiz, yürüyüşe çık ve düşün, biriyle gerçek konuşma yap. Bilgi tüketmek yok bugün — sadece kendi cümlelerini kur.",
-        "reflectionPrompt": "Bugün kaç kez 'bilgi açlığı' duydun? O açlık aslında ne için — bilgi mi, kaçış mı, bir şeyle meşgul olmak mı?",
+      "3": {
+        "title": "İki Saatlik Sessiz Pencere",
+        "teaching": "Kısa bir boşluk oluşuyor: durak, sıra, asansör. Elin düşünmeden sosyal medya simgesine gidiyor. İki dakikalık bekleme, yirmi dakikalık akışa dönüşebiliyor.\n\nSonsuz akışın doğal bir bitiş noktası yoktur. Kitabın bölümü, filmin sonu vardır; akış ise sana 'tamamlandı' demez. Çıkış kararını sen vermedikçe devam eder.\n\nBir anda 24 saat bırakmak etkileyici görünür ama çoğu kişi için gereksiz derecede zordur. Önce iki saatlik net bir pencere kurmak, dürtünün ne zaman geldiğini görmeyi kolaylaştırır.\n\nBu iki saatte uygulamaları silmeyeceksin. Sadece ana ekrandan kaldıracak, süreyi başlatacak ve her uzanışta ne hissettiğini fark edeceksin.",
+        "action": "Sosyal medya uygulamalarını ana ekrandan kaldır. Bugün uygun bir zamanda 2 saatlik sayaç başlat ve bu pencere boyunca akışları açma.",
+        "reflectionPrompt": "İki saat içinde en güçlü bakma dürtüsü ne zaman geldi? O anda sıkılmış mı, gerilmiş mi, yalnız mıydın?",
         "quiz": [
           {
-            "q": "Junk içerik nedir?",
+            "q": "Sonsuz akışı bırakmayı zorlaştıran temel özellik ne?",
             "options": [
-              "Eski içerik",
-              "Beyin için boş kalori",
-              "Premium içerik",
-              "Eğitim videosu"
-            ],
-            "correct": 1,
-            "explain": "Amaçsız tüketilen içerik beyne boş kalori gibidir — enerji aldın hissi verir ama gerçek besin vermez. Boşluğu doldurmaz, sadece erteler."
-          },
-          {
-            "q": "Bugünün ana fikri?",
-            "options": [
-              "Üret, tüketme",
-              "Daha çok tüket",
-              "Sadece dinle",
-              "Hiçbir şey yapma"
+              "Doğal bir bitiş noktasının olmaması",
+              "Yazıların kısa olması",
+              "Telefonun ağır olması",
+              "Uygulamaların renkli olması"
             ],
             "correct": 0,
-            "explain": "Üretmek tüketmekten besleyicidir. Tüketim hızlıdır, üretim yorucudur — ama beyin sadece üretirken büyür, sadece tüketirken küçülür."
-          }
-        ],
-        "proTip": "Junk içerik = boş kalori. Üretim = besin. Bir gün üretim, bir hafta zihinsel tokluk."
-      },
-      "5": {
-        "title": "Sıkılmaya İzin Ver",
-        "teaching": "Çocukluğunu hatırla. Yağmurlu bir Pazar öğleden sonra, dışarı çıkamıyorsun, TV'de bir şey yok. 'Sıkıldım!' diye anneye yakınıyorsun. Anne 'sıkılan kafa kendine iş bulur' diyor. O öğleden sonra ya bir oyun icat ediyordun, ya bir kitabı tekrar okuyordun, ya pencereden bir saat yağmuru izliyordun. Beyin yaratıcılığa **mecbur kalıyordu**.\n\nO 'mecbur kalma' kayboldu. Modern hayat her boş anı doldurmaya programlandı. Asansörde telefon. Tuvalette telefon. Yürürken kulaklık. Yemek yerken video. Markette sırada beklerken Instagram. Trafik ışığında TikTok.\n\nSonuç: beyin asla **idle moduna** geçmiyor. Bu, neyrolojide ciddi bir mesele. Beynin 'Default Mode Network' (DMN) adlı bir devresi var — sen aktif bir şey yapmadığında devreye giren bir ağ. DMN'nin işi: anılarını işlemek, gelecek senaryoları kurmak, problemleri arka planda çözmek, yaratıcı bağlantılar kurmak. Yani **yaratıcılık, hatırlama, içsel-anlam idle modda doğar**.\n\nSürekli içerik tüketirken DMN sustuğu için: 'Boğazıma takılan o şarkıyı çıkaramıyorum', 'Niye o tartışmada ne diyeceğimi sonradan buldum', 'Yıllardır bir film izlerken ağlamadım' — hepsi aynı sebebin sonucu. Beynin işleyecek/üretecek zamanı yok.\n\nSıkıntı bir hastalık değil — **sinyal**. 'Beynim boş zaman istiyor' diyor. Onu dinle. İlk 10 dakika rahatsızdır, 15-20. dakikada beyin teslim olur ve düşünmeye başlar. 25-30. dakikada bazen şaşırtıcı bir düşünce çıkar — günlerce 'unuttuğun' bir sorunun çözümü, bir niyet, bir karar.",
-        "action": "Bugün 30 dakika hiçbir şey yapma. Telefonsuz, müziksiz, kitapsız. Sadece otur ya da sessizce yürü. Düşüncelerini gözlemle, yargılama. Sıkılırsan harika — sıkıntının tam ortasında dur, dayan, devam et.",
-        "reflectionPrompt": "30 dakikanın sonunda zihninde hangi düşünce belirdi? Önceden farkında mıydın? Bu düşünce sana ne söylüyor?",
-        "quiz": [
-          {
-            "q": "Sıkıntının ana mesajı?",
-            "options": [
-              "Hastalık",
-              "Boş zaman istiyor",
-              "Açlık",
-              "Yorgunluk"
-            ],
-            "correct": 1,
-            "explain": "Sıkıntı, beynin **boş alan istemesinin sinyalidir** — Default Mode Network devreye giremiyor demektir. Onu hastalık gibi görüp doldurmaya çalışmak, beynin yaratıcılığını kısıtlar."
+            "explain": "Akış kendiliğinden bitmez. Çıkış için bilinçli bir sınır koymadığında bir sonraki içerik sürekli hazırdır."
           },
           {
-            "q": "Yaratıcılık nerede doğar?",
+            "q": "Bugünkü deneyin hedefi ne?",
             "options": [
-              "Yoğun çalışmada",
-              "Idle modda",
-              "Sosyal medyada",
-              "Müzikte"
+              "Telefonu sonsuza kadar bırakmak",
+              "İki saat boyunca dürtüyü gözlemlemek",
+              "Yeni uygulama indirmek",
+              "Tüm mesajları engellemek"
             ],
             "correct": 1,
-            "explain": "**Default Mode Network** (idle mod) yaratıcılık tohumlarının çimlendiği yer. Bağlantılar burada kurulur, problemler burada çözülür, içgörü burada gelir."
+            "explain": "Kısa ve uygulanabilir pencere, otomatik davranışı görünür kılar. Amaç büyük söz vermek değil, kontrol edebildiğin bir deney yapmaktır."
           }
         ],
-        "proTip": "Sıkıntıdan korkma — orada yaratıcılık yaşar. 30 dakika boşluk, 30 sayfa kitaptan daha verimli olabilir."
+        "proTip": "Zorlaştırma: uygulamayı silmek yerine simgesini ana ekrandan kaldır. Ulaşmak için gereken fazladan adım dürtüyü yavaşlatır."
+      },
+      "4": {
+        "title": "İçerik Diyetini Sen Seç",
+        "teaching": "Boş bir anda bir video açıyorsun. Sonra önerilen bir tane daha geliyor. Yarım saat geçiyor ama aklında anlatabileceğin tek bir fikir kalmıyor.\n\nSorun eğlenmek değil. Ne aradığını bilmeden tüketmeye başlamak. Amaç yoksa platform senin yerine seçim yapar ve bir sonraki içerik sürekli hazırdır.\n\nİyi içerik seni bir düşünceye, karara veya eyleme taşır. Amaçsız akış ise yalnız zamanı doldurur. Aradaki farkı içerikten önce sorduğun soru belirler: 'Buraya ne için girdim?'\n\nBugün tüketimi tamamen kesmeyeceksin. Tek bir içerik seçecek, bitirecek ve ondan kalan fikri kendi cümlenle yazacaksın.",
+        "action": "Merak ettiğin tek bir yazı veya video seç. Bitirince uygulamadan çık ve aklında kalan fikri 3 cümleyle yaz.",
+        "reflectionPrompt": "Seçtiğin içerik sende hangi düşünceyi veya eylemi bıraktı? Bırakmadıysa neden izledin?",
+        "quiz": [
+          {
+            "q": "Amaçsız içerik tüketimini durduran ilk soru hangisi?",
+            "options": [
+              "Buraya ne için girdim?",
+              "Kaç beğeni almış?",
+              "Bir sonraki ne?",
+              "Herkes bunu izliyor mu?"
+            ],
+            "correct": 0,
+            "explain": "Amacını önce söylemek, seçimi akışa bırakmanı engeller. Ne aradığını biliyorsan bitiş noktan da belli olur."
+          },
+          {
+            "q": "Bir içeriğin sende kaldığını nasıl anlarsın?",
+            "options": [
+              "Saatlerce izlediğinde",
+              "Kendi cümlenle anlatabildiğinde",
+              "Hemen yenisini açtığında",
+              "Yalnız başlığı hatırladığında"
+            ],
+            "correct": 1,
+            "explain": "Kendi cümlenle özetleyebiliyorsan içerik düşünceye dönüşmüştür. Aksi halde yalnız akışta zaman geçirmiş olabilirsin."
+          }
+        ],
+        "proTip": "Uygulamayı açmadan önce amacını tek cümleyle söyle. Cümle kuramıyorsan açmak için iyi bir nedenin yoktur."
+      },
+      "5": {
+        "title": "Boşluğu Hemen Doldurma",
+        "teaching": "Asansör geliyor, sıra ilerlemiyor veya arkadaşın iki dakika gecikiyor. Elin hemen telefona gidiyor. Boşluk oluşur oluşmaz onu içerikle kapatıyorsun.\n\nSıkılmak bir hata değildir. Zihnin dışarıdan yeni bir şey almadan önce elindekileri işlemesi için kısa bir fırsattır. Bu fırsatı sürekli kesersen ne düşündüğünü fark etmek zorlaşır.\n\nOtuz dakika sessiz oturmak başlangıç için gereksiz derecede büyük olabilir. On dakikalık telefonsuz yürüyüş, rahatsızlığı görecek kadar uzun ama ertelemeyecek kadar kısadır.\n\nAmaç özel bir fikir bulmak değil. Kaç kez telefona uzanmak istediğini ve zihninin boşlukta nereye gittiğini merakla izlemek.",
+        "action": "10 dakika sessizce yürü veya otur. Telefon, müzik ve podcast kullanma. Süre bitince aklına en çok gelen şeyi yaz.",
+        "reflectionPrompt": "Sessizlikte zihnin en çok nereye gitti? O düşünceyi normalde neyle bastırıyorsun?",
+        "quiz": [
+          {
+            "q": "Bugünkü sessizliğin amacı ne?",
+            "options": [
+              "Özel bir fikir bulmak",
+              "Boşluğu hemen doldurmadan gözlemlemek",
+              "Daha çok çalışmak",
+              "Telefonu tamamen bırakmak"
+            ],
+            "correct": 1,
+            "explain": "Amaç sonuç üretmek değil, boşluk geldiğinde otomatik olarak ekrana kaçmadan ne olduğunu fark etmektir."
+          },
+          {
+            "q": "Başlangıç için neden 10 dakika seçildi?",
+            "options": [
+              "Ertelemeyecek kadar kısa olduğu için",
+              "Tam bir saat olduğu için",
+              "Telefon şarj olduğu için",
+              "Her sorunu çözdüğü için"
+            ],
+            "correct": 0,
+            "explain": "On dakika rahatsızlığı fark etmeye yeter; görevi gözünde büyütüp ertelemeni de zorlaştırır."
+          }
+        ],
+        "proTip": "Boşluğu verimli yapmak zorunda değilsin. On dakika boyunca hiçbir şey üretmemek de görevin bir parçası."
       },
       "6": {
         "title": "Telefonu Yatak Odasından Çıkar",
-        "teaching": "Saat gece yarısı. Yatakta yatıyorsun. 'Tek bir bakış' diyerek Instagram'ı açıyorsun. 45 dakika sonra hala uyanıksın. Yarın işe yorgun gideceksin ve 'iyi uyuyamadım' diye söyleneceksin. Ama bu uyku problemi değil — bu telefon problemi.\n\nTelefon yastığının yanında uyumak, uyku kalitesini üç ayrı yerden parçalar:\n\n**1. Mavi ışık melatonini baskılar.** Harvard Medical School çalışmaları gösteriyor: yatmadan önce 2 saat ekran kullanımı, melatonin üretimini %22 düşürüyor. Yani vücut 'uyumaya hazırım' sinyalini geç alıyor.\n**2. Gece bildirimleri uyku evrelerini böler.** Bildirim sesi gelmese bile, beyin yarı-uyanık kontrol modunda kalır. Derin uyku evresine (yenilenmenin yapıldığı evre) yeterince inilemez.\n**3. Sabah ilk işin scroll olur.** Daha gözün tam açılmadan beyin bildirim, mesaj, sosyal medya kontrolüne girer. Günü reaktif başlatırsın — kendi niyetinle değil, başkalarının ajandasıyla.\n\nUyumadan önce son ekran ne? Sabah uyandığında ilk ekran ne? Bu iki an, zihinsel sağlığını şekillendirir. İkisi de telefon olursa, hayatın **ekran-aralığında** geçer. Gün başlamadan dağılırsın, gün bitmeden de uyuyamazsın.\n\nBugün fiziksel mesafe yaratıyoruz. Telefon yatak odasında olduğu sürece, irade gücüyle 'bakmayacağım' demek yetmez — beyin alışkanlıkla uzanır. Çözüm: telefonun fiziksel olarak ulaşılamaz olması. Başka oda. Mutfak, salon, koridor — fark etmez. Yeter ki yataktan uzakta.\n\nBu küçük bir hareket gibi gözükür ama radikal bir karardır. Tek başına uyku kalitesinde %15-30 iyileşme yapar (sleep tracker'larla ölçülmüş).",
-        "action": "Bu gece telefonunu yatak odasının dışında, başka bir odada şarj cihazına koy. Uyandığında önce 30 dakika telefonsuz geçir. Alarm için klasik bir alarm saati al (₺50 civarı) veya mevcut bir saat kullan.",
-        "reflectionPrompt": "Telefon yatak odasında olmayınca uykuya dalma hızın değişti mi? Sabah ilk düşüncen neye gitti?",
+        "teaching": "Yatağa girdikten sonra 'son bir kez' ekrana bakıyorsun. Telefon elindeyken bitiş kararını her içerikten sonra yeniden vermen gerekiyor.\n\nTelefonun yatağa yakın olması iki alışkanlığı birbirine bağlar: gece son yaptığın şey ve sabah ilk yaptığın şey ekran olur. Sorun yalnız ışık değil, ulaşmanın fazla kolay olmasıdır.\n\nİradeyi test etmek yerine ortamı değiştir. Telefon kol mesafesinde değilse otomatik uzanış işe yaramaz; ayağa kalkman gerekir ve karar görünür hale gelir.\n\nBaşka oda mümkün değilse kapı yanında, çantanın içinde veya yataktan kalkmadan ulaşamayacağın bir yerde şarj et. Amaç kusursuzluk değil, mesafe.",
+        "action": "Bu gece telefonu yataktan kalkmadan ulaşamayacağın bir yerde şarja bırak. Alarm gerekiyorsa sesi duyabileceğin kadar yakın tut.",
+        "reflectionPrompt": "Telefon elinin altında olmayınca gece ve sabah yaptığın ilk seçim nasıl değişti?",
         "quiz": [
           {
-            "q": "Telefonu yatak odasından çıkarma etkisi?",
+            "q": "Telefonu yataktan uzaklaştırmanın temel faydası ne?",
             "options": [
-              "Yok",
-              "Sabah ilk uyaran biten",
-              "Daha uyanık",
-              "Negatif"
+              "Şarjı hızlandırmak",
+              "Otomatik uzanışı zorlaştırmak",
+              "Bildirimleri artırmak",
+              "Alarmı kapatmak"
             ],
             "correct": 1,
-            "explain": "Yatak odasında telefon = sabah ilk uyaran ve uyku evrelerini bölen gece bildirimleri. Çıkarmak hem uyku kalitesini hem de günün ilk saatini geri kazandırır."
+            "explain": "Ulaşmak için ayağa kalkman gerektiğinde davranış otomatik olmaktan çıkar ve yeniden karar verme fırsatı doğar."
           },
           {
-            "q": "Alternatif alarm?",
+            "q": "Telefon başka odaya konamıyorsa ne yapılabilir?",
             "options": [
-              "Telefon",
-              "Saat alarmı",
-              "Yok",
-              "Komşu"
+              "Yastığın altına koymak",
+              "Yataktan ulaşılamayan bir yere koymak",
+              "Elde tutmak",
+              "Ekranı açık bırakmak"
             ],
             "correct": 1,
-            "explain": "Klasik saat alarmı yeterli — ₺50'lik bir cihaz hem alarm hem disiplin sınırı olur. Eski usul, sade, etkili."
+            "explain": "Amaç belirli bir ürün almak değil, telefon ile yatak arasında fiziksel bir engel kurmaktır."
           }
         ],
-        "proTip": "Telefonu yatak odasının dışına, bir saat alarmı koy. Eski usul, etkili — ve uyandığında ilk 30 dakika senin."
+        "proTip": "Başka oda şart değil. Yataktan kalkmayı gerektiren her mesafe, otomatik uzanışı bilinçli karara çevirir."
       },
       "7": {
-        "title": "Sabah İlk Saat Dokunma",
-        "teaching": "Uyandın. Gözlerin daha tam açık değil. Eli yastığın altına götürüyorsun, telefonu çıkarıyorsun. WhatsApp, Instagram, sonra e-posta. 'Sadece bakacağım' diyordun, 20 dakika geçti. Yataktan kalkmadın daha. Gün ekran-aralığında başladı.\n\nBeyin uyandığında **kortizol uyanma cevabı** modunda. Endokrinoloji araştırmaları net: uyandıktan sonraki ilk 30-60 dakikada kortizol pikleri yapar. Bu pikler doğal — vücudu güne hazırlar. Aynı pencerede dopamin reseptörleri çok hassastır, algı keskin, motivasyon yüksek, plan yapma kapasitesi günün en yüksek noktasında.\n\nBu 60 dakika beynin **niyet penceresi** olarak adlandırılıyor. Bu pencerede ne yaparsan, beyin onu o günkü 'önemli iş' olarak öğreniyor.\n\nO 60 dakikada telefona uzanırsan ne oluyor? Beynini başkalarının programına bağlıyorsun: bildirim algoritması, e-postada bekleyen acil işler, sosyal medya feed'inin sana gösterdiği endişe-tetikleyici içerikler... Günün ilk 'önemli iş'i = başkalarının ajandası. Sen reaktif moda geçtin. Bütün gün o reaktiflikle akıp gidecek.\n\nTim Ferriss'ten Naval Ravikant'a, Cal Newport'a kadar onlarca high-performer'ın ortak alışkanlığı: sabah ilk saat telefon yok. Çünkü ilk saatin parmak izi, günün tamamına yansıyor.\n\nSabah ilk saat senindir. Onu kullanmazsan, bütün gün başkasının olur. Bu basit cümleyi her sabah hatırla.",
-        "action": "Yarın uyandıktan sonra ilk 60 dakika telefona dokunma. Su iç, yüzünü yıka, dışarı çık ya da kahvaltı et — telefonsuz. Telefonu görmen bile gerekmez; başka odada bıraktığın için zaten yanında değil.",
-        "reflectionPrompt": "İlk saatte telefon olmadan ne hissettin? Boşluk mu, dinginlik mi? Bu boşluk sana ne söylüyor?",
+        "title": "Sabahın İlk 30 Dakikası",
+        "teaching": "Uyandığında ilk iş mesajları açarsan gün daha yataktan çıkmadan başkalarının istekleriyle dolar. Sen plan yapmadan bildirimler öncelik sırasını kurar.\n\nTelefonu sabah hiç kullanmamak gerçekçi olmayabilir. Fakat ilk 30 dakikayı korumak, güne tepki vererek değil kendi sıranla başlaman için küçük bir sınır oluşturur.\n\nBu sürede karmaşık bir sabah rutini gerekmiyor. Su iç, yüzünü yıka, perdeyi aç, giyin veya kahvaltını hazırla. Ekran dışındaki ilk birkaç hareket yeter.\n\nTelefonu açacağın saati önceden belirle. Süre dolduğunda mesajlarına bakabilirsin; böylece yasak koymaz, başlangıç sırasını sen seçersin.",
+        "action": "Yarın uyandıktan sonraki ilk 30 dakikada telefonu açma. Su, yüzünü yıkama ve kahvaltı gibi üç basit adım seç.",
+        "reflectionPrompt": "Telefon açılmadan geçen ilk 30 dakika günün hızını ve ruh halini nasıl değiştirdi?",
         "quiz": [
           {
-            "q": "Sabah 1. saat kuralı?",
+            "q": "Sabahın ilk 30 dakikasını korumanın amacı ne?",
             "options": [
-              "Telefon kullan",
-              "Telefonsuz",
-              "Sosyal medya",
-              "Müzik"
+              "Güne kendi sıranla başlamak",
+              "Tüm mesajları silmek",
+              "Daha geç uyanmak",
+              "Telefonu tamamen bırakmak"
             ],
-            "correct": 1,
-            "explain": "İlk 60 dakika = **niyet penceresi**. Kortizol pikinde, dopamin reseptörleri hassasken; bu pencerede beyne ne öğretirsen günün 'önemli iş'i o olur."
+            "correct": 0,
+            "explain": "Bildirimlere tepki vermeden önce kendi basit adımlarını tamamlamak, sabahın öncelik sırasını senin kurmanı sağlar."
           },
           {
-            "q": "Erken telefon etkisi?",
+            "q": "Telefon yasağı yerine hangi yöntem daha uygulanabilir?",
             "options": [
-              "İyi",
-              "Reaktif gün",
-              "Verimli",
-              "Yok"
+              "Açılacağı saati önceden belirlemek",
+              "Yastığın altında tutmak",
+              "Bildirimleri artırmak",
+              "Her beş dakikada kontrol etmek"
             ],
-            "correct": 1,
-            "explain": "Erken telefon = beyin günü reaktif başlatır. Senin niyetin değil, bildirim ve algoritmaların ajandası günün kurulumu olur."
+            "correct": 0,
+            "explain": "Net bir açılış saati, belirsiz ve sert bir yasaktan daha kolay uygulanır. Süre dolunca telefonunu normal şekilde kullanabilirsin."
           }
         ],
-        "proTip": "İlk 1 saat aslan kuralı: telefon yok, internet yok, sadece sen + niyet. High-performer'ların ortak sırrı."
+        "proTip": "Telefonu ne zaman açmayacağını değil, ne zaman açacağını belirle. Net saat, belirsiz yasaktan daha kolay uygulanır."
       },
       "8": {
-        "title": "Grayscale Modu",
-        "teaching": "Instagram ikonunda kırmızı '12' rakamı. WhatsApp'ta yeşil noktayla beliren mesaj. TikTok'un canlı renk paletindeki feed önizlemesi. Bunlar tesadüf değil — her biri beynin görsel reseptörlerinin **dopamin tetiklenmek için** evrildiği renklerle yapılmış.\n\nRenkler beyin için ekstra dopamin yakıtıdır. Pavlov köpekleri zilden tükürdü; biz kırmızı bildirim noktalarından tükürüyoruz. Bu çok eski bir mekanizma — modern teknoloji onu sömürmek için optimize edildi.\n\niOS ve Android'de **grayscale** (siyah-beyaz) modu var. Açtığında telefon aniden 'sıkıcı' görünür. Instagram'ın o canlı renkli feed'i griye dönüşür; bir gazete sayfasına bakar gibi olursun. Beyin 'hıh, burada ödül yok' sinyali alır.\n\nTristan Harris (eski Google etik tasarımcısı) bunu meslek hayatında tavsiye eder: grayscale modu, ekran süresini ortalama %40 düşürür. UCSD'de 36 kişiyle yapılan deneyde benzer sonuç: 1 hafta grayscale = günlük telefon süresinde 50 dakika azalma. Hiçbir irade gücü, hiçbir uygulama engelleme — sadece renksiz ekran.\n\nBu hile değil. Bilim. Beynin uzun süredir hijack edilmişti, biz onu doğal moduna döndürüyoruz. Bir şeyler kayboluyor gibi hissedersin — kayıp olan algoritmik dopamin sömürüsü, sen değilsin. Üç gün sonra bunu fark edersin.",
-        "action": "Telefonunu grayscale moduna al şu an. **iOS:** Ayarlar > Erişilebilirlik > Görüntü ve Yazı Boyutu > Renk Filtreleri > Tonlama > Gri Tonlama. **Android:** Ayarlar > Dijital Wellbeing > Bedtime Mode veya Developer Options > Simulate Color Space > Monochromacy. 24 saat böyle kullan.",
-        "reflectionPrompt": "Renk olmadan en çok hangi uygulamaya ilgini kaybettin? O ilgi aslında uygulamaya mıydı, renge miydi?",
+        "title": "Telefonu Bir Gün Renksiz Kullan",
+        "teaching": "Uygulama simgeleri, rozetler ve videolar dikkatini çekmek için renk kullanır. Telefonu eline aldığında gözün çoğu zaman amacından önce bu işaretlere gider.\n\nGri tonlama, ekranı kullanılmaz yapmaz. Harita, mesaj ve arama çalışmaya devam eder; yalnız görsel çekicilik azalır. Bu yüzden telefonu araç olarak kullanmak ile oyalanmak arasındaki fark daha görünür olabilir.\n\nBu yöntem herkeste aynı sonucu vermek zorunda değildir. Bir günlük deney olarak düşün: ekran süreni mucizevi biçimde düzeltmesini değil, hangi uygulamaların renkle seni çektiğini göstermesini bekle.\n\nBeğenmezsen gün sonunda kapatabilirsin. Önemli olan ayarı kalıcı yapmak değil, davranışındaki farkı gözlemlemek.",
+        "action": "Telefonunda Renk Filtreleri veya Gri Tonlama ayarını aç ve gün sonuna kadar kullan. En sık açtığın üç uygulamayı not et.",
+        "reflectionPrompt": "Renkler gidince hangi uygulama daha az çekici oldu? Hangisini yine aynı amaçla kullandın?",
         "quiz": [
           {
-            "q": "Grayscale modu nedir?",
+            "q": "Gri tonlama deneyinde ne değişmez?",
             "options": [
-              "Renkli",
-              "Renksiz",
-              "Karanlık",
-              "Aydınlık"
+              "Uygulamaların temel işlevleri",
+              "Ekrandaki renkler",
+              "Simgelerin görünümü",
+              "Görsel çekicilik"
             ],
-            "correct": 1,
-            "explain": "Grayscale = **renksiz** ekran. Beynin bildirim/uygulama renkleriyle eşleştirdiği dopamin uyarıcısını ortadan kaldırır."
+            "correct": 0,
+            "explain": "Mesaj, harita ve arama çalışmaya devam eder. Değişen şey ekranın renkli sunumu ve bazı uygulamaların görsel çekiciliğidir."
           },
           {
-            "q": "Etkisi?",
+            "q": "Bu deneyden beklenen asıl sonuç ne?",
             "options": [
-              "Etkisiz",
-              "Otomatik bırakma",
-              "Daha çok kullanma",
-              "Yok"
+              "Telefonu sonsuza kadar bırakmak",
+              "Hangi uygulamaların renkle çektiğini görmek",
+              "Şarjı iki kat artırmak",
+              "Tüm bildirimleri silmek"
             ],
             "correct": 1,
-            "explain": "UCSD deneyi: grayscale günlük telefon süresini ortalama 50 dakika düşürür. İrade gerektirmez — beyin renksiz uygulamayı reddeder."
+            "explain": "Amaç garanti edilmiş bir ekran süresi düşüşü değil, kendi davranışındaki görsel tetikleyicileri fark etmektir."
           }
         ],
-        "proTip": "Grayscale = renk yok. Beyin renksiz uygulamaları sıkıcı bulur, otomatik bırakır. Ekran süresinde %40 düşüş garanti."
+        "proTip": "Gri tonlama bir yasak değil, deneydir. İşini zorlaştırıyorsa kapat; yalnızca hangi görsel işaretlerin seni çektiğini kaydet."
       },
       "9": {
-        "title": "Aşırı Uyaranı Kes",
-        "teaching": "Bir bardak su iç. Sıradan bir bardak su. Şimdi 30 saniye dolu bir TikTok feed scroll et: dans, komedi, şok edici haber, sevimli köpek, motivasyon mottosu, yemek, dans daha. Aynı 30 saniye. **Aynı beyin**, ama biri yüzlerce dopamin atışı, diğeri sıfır.\n\nBu modern dopamin sömürüsünün en güçlü hali: **kısa-video bağımlılığı**. TikTok, Reels, Shorts — sınırsız çeşitlilik, 15 saniyelik doyum, gerçek-dışı stimülasyon. Beyni gerçek hayatın yavaş ödüllerine **ilgisizleştirir**.\n\nMekanizma şu: algoritma beynine 30 saniyede ne istediğini öğrenir (hangi videoyu izleyip hangisinden scroll'la geçtin). Sonra durmadan o **mikro-ödülü** verir. Beyin 5 dakika içinde 'gerçek hayatın baseline'ı budur' demeye başlar. 30 dakika scroll edince zaman algın bozulur (1 saat 10 dakika gibi gelir), dikkat süren çöker, sonra bir kitabı **5 dakika** okumak zorlaşır. Çünkü kitap algoritmanın hızında ödül vermiyor — beyin sıkıldı bile.\n\nWuhan Üniversitesi'nde 2023 fMRI çalışmaları net: TikTok kullanıcılarının prefrontal korteks (uzun düşünce, plan, irade) aktivitesi non-kullanıcılara göre belirgin düşük. Dahası: hipokampus (hafıza) iletişim kaybı gösteriyor — yani izlediğin şeyleri hatırlamıyorsun bile, sadece izlerken o anlık uyaran var.\n\n30 günlük detoks bilimi açık: kısa-video uygulamalarını kaldırınca dopamin baseline'ı 2-4 haftada normale döner. Dikkat süreleri uzar. Can sıkıntısına tahammülün artar (bu çok önemli — sıkıntıya tahammül = derin iş yapabilme). Kitap okumak yine zevkli olmaya başlar.",
-        "action": "Bugünden başla: 30 gün TikTok / Reels / Shorts yok. Uygulamaları telefondan **tamamen kaldır** (sadece kapatmak yetmez — gizliyse açarsın). Sosyal medya zorunluysa sadece masaüstü tarayıcısından gir, kısa-video bölümlerine giremezsin.",
-        "reflectionPrompt": "Bu kararı verirken hangi engel aklına geldi? O engel gerçekten mi, yoksa beyin bağımlılığı koruma mekanizması mı?",
+        "title": "Kısa Video Döngüsünü Kır",
+        "teaching": "Kısa videolarda her kaydırma konuyu, sesi ve duyguyu değiştirir. Komediden habere, yemekten tartışmaya birkaç saniyede geçersin. Bitiş çizgisi olmadığı için süreyi fark etmek zorlaşır.\n\nSorun tek tek videoların kısa olması değil. Kararı sürekli bir sonraki videoya bırakmandır. Açık bir amaç veya süre yoksa çıkış anı da belirsiz kalır.\n\nOtuz günlük büyük söz yerine bir günlük ölçülebilir deney yap. Kısa video akışlarını 24 saat açma; mesajlaşma ve ihtiyaç duyduğun diğer işlevleri normal kullan.\n\nDürtü geldiğinde uygulamayı silmek zorunda değilsin. Simgesini ana ekrandan kaldır, hangi saatte açmak istediğini not et ve o an başka ne yapabileceğini seç.",
+        "action": "Bugün 24 saat TikTok, Reels ve Shorts akışlarını açma. Her bakma dürtüsünün saatini not et; diğer telefon işlerini normal kullan.",
+        "reflectionPrompt": "Kısa video dürtüsü günün hangi saatinde ve hangi duygudan sonra en güçlüydü?",
         "quiz": [
           {
-            "q": "Sonsuz scroll'un dopamin etkisi?",
+            "q": "Kısa video akışında süreyi fark etmeyi zorlaştıran ne?",
             "options": [
-              "Doğal",
-              "Dopamin enflasyonu",
-              "Etkisiz",
-              "Pozitif"
+              "Her videonun uzun olması",
+              "Doğal bir bitiş noktasının olmaması",
+              "Telefonun sessiz olması",
+              "Mesajların açık olması"
             ],
             "correct": 1,
-            "explain": "Algoritma her saniye ödül verir — bu **dopamin enflasyonudur**. Beyin gerçek hayatın yavaş ödüllerini (okuma, derin sohbet, doğa) artık 'değersiz' bulur."
+            "explain": "Akış kendiliğinden tamamlanmaz. Süre veya amaç koymadığında çıkış kararını her videodan sonra yeniden vermen gerekir."
           },
           {
-            "q": "Dikkat süresine etkisi?",
+            "q": "Bugünkü deney neyi yasaklamıyor?",
             "options": [
-              "Geliştirir",
-              "Yıkıcı",
-              "Etkisiz",
-              "Artırır"
+              "Mesajlaşma ve gerekli telefon işlerini",
+              "TikTok akışını",
+              "Reels akışını",
+              "Shorts akışını"
             ],
-            "correct": 1,
-            "explain": "Sürekli kısa-uyaranlı içerik, uzun odaklanmayı imkansızlaştırır. Wuhan Üniversitesi çalışması: TikTok kullanıcılarında prefrontal korteks aktivitesi düşük."
+            "correct": 0,
+            "explain": "Amaç telefonu kullanmayı bırakmak değil, sonsuz kısa video akışını diğer gerekli işlevlerden ayırmaktır."
           }
         ],
-        "proTip": "Sonsuz scroll = dopamin enflasyonu. Gerçek odaklanmaya düşmanca etkidir. Uygulamayı sil, gizleme — sadece silinmiş olmalı."
+        "proTip": "Mesajlaşmayı ve kısa video akışını aynı şey sayma. İhtiyacın olan işlevi kullan, sonsuz akışa girmeden çık."
       },
       "10": {
-        "title": "10 Gün Tamamlandı — Mid-point Yansıma",
-        "teaching": "Tebrikler — şu an çoğu kişinin vazgeçtiği eşikteyim. 30 günlük detoksun üçte birini bitirdin. Çoğu kişi 7. günde vazgeçer; sen 10. gündesin. Bu eşik bilinçaltında 'aslında ben kararlı bir insanım' inancını kuran ilk gerçek kanıt.\n\nŞu ana kadar ne fark ettin? Çoğu kullanıcının 10 günde yaşadığı standart bir eğri var:\n\n**1-3. gün — Şok fazı:** Phantom reaching çok güçlü, sürekli telefonu açma refleksi. 'Bu çok aptal bir karar' düşüncesi sık geliyor. Sıkıntı patlamaları.\n**4-7. gün — Direnç fazı:** Beyin yaratıcı bahaneler bulur ('bir kere baksam streak'i bozmaz', 'sadece DM kontrol edeyim', 'arkadaşıma haber verecektim'). Bu beynin **bağımlılık koruma mekanizmasıdır**. Kararla yüzleş, vazgeç.\n**8-10. gün — Kabul fazı:** Refleksler zayıflıyor. Sıkıldığında telefona uzanmıyor, bir an düşünüyor, sonra başka şey yapıyor. Bu **temel sıfırlama** başlangıcı.\n\nİkinci ve üçüncü hafta daha da netleşir: 14-20 gün arası **netlik fazı** (zihinsel dağınıklık azalır, derin uyku artar, yaratıcılık geri gelir), 21-30 gün arası **yeni baseline** (eski hayat artık uzak gelir, sıkıntı patlamaları durur, telefon 'araç' olmaya geri döner — 'arkadaş' olmaktan çıkar).\n\nVücut dilini değiştir. Aynaya bak. Daha mı dik duruyorsun? Gözlerin daha mı net? Yatışmış mı? Bu küçük şeyler değişimin ilk işaretleri — fizyolojik. Cortisol bazal seviyesi düşmeye başladığında postür, ifade, ses tonu — hepsi yumuşar.\n\nKalan 20 gün için kendine söz ver: bugünkü uyandığında olduğun kişi değil, 30. günde olacak kişi senin gerçek 'sen'in. Şimdi yarısındasın değil — eşiktesin.",
-        "action": "Bugünü yansıma günü yap. 15 dakika otur, telefonsuz, ve şunları yaz: (1) İlk 10 günde ne değişti? (2) En zor an hangisiydi ve nasıl atlattın? (3) Hangi alışkanlığı kaybetmedin ki kaybetmek istemiştin?",
-        "reflectionPrompt": "İlk 10 günde fark ettiğin EN BÜYÜK değişim ne? Bu değişim sana nasıl bir 'sen' olduğunu söylüyor?",
+        "title": "10. Gün: Ne Değişti?",
+        "teaching": "On gündür farklı küçük deneyler yaptın. Bazıları kolay geldi, bazılarını atladın. Bugün yeni bir kural eklemek yerine hangisinin gerçekten işe yaradığını ölçeceksin.\n\nİlerleme yalnız ekran süresinin düşmesi değildir. Telefonu neden açtığını daha erken fark etmek, bildirimleri azaltmak veya sabah ilk işi değiştirmek de somut sonuçtur.\n\nBaşarısız görünen denemeler de veri verir. Uygulamadığın görev fazla büyük müydü, yanlış saatte miydi, yoksa senin hayatına uymuyor muydu? Cevap, sonraki planı sadeleştirir.\n\nDevam etmek için bütün kuralları taşımana gerek yok. İlk dokuz dersten en çok işine yarayan iki tanesini seç ve yalnız onları bir hafta daha sürdür.",
+        "action": "Üç kısa cevap yaz: Ne işe yaradı? Ne işlemedi? Gelecek 7 gün hangi iki kuralı sürdüreceksin?",
+        "reflectionPrompt": "Telefon kullanımında gözlemleyebildiğin en somut değişiklik neydi?",
         "quiz": [
           {
-            "q": "Mid-point amacı?",
+            "q": "10. gün kontrolünün amacı ne?",
             "options": [
-              "Bitiş",
-              "Geri bakma + ölçüm",
-              "Atlama",
-              "Yorgunluk"
+              "Yeni on kural eklemek",
+              "İşe yarayanı ölçüp seçmek",
+              "Bütün görevleri bırakmak",
+              "Ekran süresini gizlemek"
             ],
             "correct": 1,
-            "explain": "İlerlemeyi gözlemle."
+            "explain": "Bugün yeni yük eklemek yerine hangi deneylerin hayatında karşılık bulduğunu ölçersin."
           },
           {
-            "q": "Yarıyolda hangi adım?",
+            "q": "Gelecek hafta kaç kural seçmek yeterli?",
             "options": [
-              "Vazgeç",
-              "Yansıma",
-              "Hızlan",
-              "Aynı"
+              "İki",
+              "On",
+              "Yirmi",
+              "Hiçbiri"
             ],
-            "correct": 1,
-            "explain": "Yansıma = sürdürme yakıtı."
+            "correct": 0,
+            "explain": "En çok işe yarayan iki kuralı bir hafta sürdürmek planı basit ve uygulanabilir tutar."
           }
         ],
-        "proTip": "Yarıyolda durup geriye bakmak = ilerlemenin ölçüsü. Yapan başarısı, yapmayan unutkanlığı."
+        "proTip": "İşe yarayan iki kuralı sürdürmek, on kuralı yarım uygulamaktan daha güçlüdür."
       },
       "11": {
         "title": "Ortamı Değiştir",
@@ -618,7 +618,7 @@
         "proTip": "Yavaşlama = disiplinin görsel formu. Hızlı = kontrolsüz. Slow Movement bu ilkenin felsefesi."
       },
       "20": {
-        "title": "20. Gün — Yeni Baseline",
+        "title": "20. Gün: Yeni Denge",
         "teaching": "Bugün 20. gün. **Detoks'un üçte ikisi bitti.** Beyin dopamin reseptörlerini yeniden kalibre etmiş olabilir. Şu fenomeni fark ettiysen, kanıttır:\n\n'Düz' olarak hissettiğin durum aslında **yeni normal**. Stimülasyon olmadan hayatın acı çekmediğini fark ettin mi? Yatağa girip 10 dakika sessiz uyumak için bekleyebiliyor musun? Bir kahve içerken telefon olmadan sıkılmıyor musun? Bir sohbete tamamen mevcut olarak girebiliyor musun? Bunlar nörobiyolojik göstergelerdir.\n\nÇoğu kişi bu noktada şaşırır: **'Daha az aslında daha iyi.'** Bu büyük bir öğretmen. Bağımlılık döneminde aklın bu fikre tahammül edemezdi — sürekli daha fazla, daha hızlı, daha parlak isterdi. Şimdi sade bir yemek tatmin ediyor. Sıradan bir yürüyüş besliyor. Eski 'eğlenceli' şeyler (4 saat dizi maratonu, sürekli atıştırma + telefon) artık **yorucu** geliyor.\n\nBilimsel olarak: 7-30 günlük 'dopamin fasting' (Stanford Dr. Cameron Sepah'ın araştırma alanı) reseptör hassasiyetini sıfırlar. Beyin **doğal ödüllere** yeniden hassaslaşır. Bir gün önce sıkıcı gelen şey bir gün sonra zevkli olabilir.\n\n**10 gün kaldı.** Bu son 10 gün 'sertleştirme' bölümü — yeni baseline'ı kalıcı yapma. Çünkü detoks bittiğinde tehlike geri dönüş. İrade rahatlar, beyin 'bir kerelik' diyebilir. Son 10 günde **yeni kim** olmak istediğine karar vereceksin.\n\nBu gün özel. Ama kutlama da yeni-sen ile uyumlu olmalı. Eski-sen 'bir kasa bira + 6 saat dizi + Domino's' diyebilirdi. Yeni-sen sessiz bir yürüyüş, kaliteli bir akşam yemeği, sevdiğin biriyle gerçek sohbet diyor. **Düşük dopamin, yüksek anlam** — bu yeni hayatın slogan'ı.",
         "action": "20 günü kutla — ama dopamin bombası ile **değil**. Sevdiğin biriyle birlikte sessiz bir aktivite yap. Doğa yürüyüşü, kaliteli yemek, derin sohbet. Bu kutlama yeni-sen'in protokolü.",
         "reflectionPrompt": "20 gün önceki 'sen' ile şu anki 'sen' arasındaki en büyük fark ne? Birine anlatsan en çok hangisi şaşırtırdı?",
@@ -1548,7 +1548,7 @@
         ]
       },
       "50": {
-        "title": "Tamamlandı — Master",
+        "title": "Yol Tamamlandı",
         "teaching": "**50 gün.** Çoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen son %5'in içindesin. **Masteri tamamladın.**\n\nBu sayılar abartı değil. Davranış değişimi araştırmaları (Lally 2010, Prochaska 1992, ve onlarca takip çalışması) bu istatistikleri belgeliyor. Bağımlılık kırma + kalıcı disiplin = istatistiksel olarak nadir. Sen istisnasın.\n\n**Yeni Sen kim?**\n- Sıkıntıya **hakim** — eski tetikleyici şimdi dost\n- Dürtüyü **sörfle** — dalga gibi izliyor, geçmesini bekliyor\n- Dijital **minimalist** — telefon araç, arkadaş değil\n- Mevcut bir **insan** — sohbete tam katılıyorsun\n- Derin **işçi** — 90 dakika tek-odakta kalabiliyorsun\n- Kendine kanıtladı**n** — disiplin artık karakterinde\n\nDiploma yok. Sertifika yok. Sadece **ayna**. Aynaya bak — 50 gün öncesinin sen, oraya bakıp şu anki seni görseydi ne hisseder?\n\n50 günde **bağımlılık kırılır**. 90 günde **kalıcılaşır**. 1 yılda **kimlik olur**. Şu noktada karar senin: kalıcı yap mı, yoksa eski hayata yumuşak iniş mi?\n\n**Bir başka path başlat.** 7 gün dinlen — beyin pekiştirme zamanı. Sonra Mind Discipline veya Body Discipline. Disiplin **bulaşıcı** — bir alanda öğrenilen prensipler diğerlerine kolayca taşınır.",
         "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır. Bu adamı/kadını tanıyor musun?",
         "reflectionPrompt": "50 gün önceki sen şimdi olmak ister miydi? Bu sorunun cevabı sana ne söylüyor?",
@@ -1581,35 +1581,35 @@
     },
     "silent-morning": {
       "1": {
-        "title": "Erken Kalkmanın Anahtarı: Erken Yat",
-        "teaching": "Sabah 6'da kalkmak istiyorsun. Geçen pazar yine söz verdin kendine. Pazartesi alarm çaldı, snooze, snooze, snooze. 7:30'da yine geç. Niye? Çünkü gece 1'de yattın. **Erken kalkmanın sırrı sabahın saati değil, gecenin saati**. Yatma saatini erkeneye çekmeden, erken kalkma sürdürülemez.\n\nMatthew Walker (UC Berkeley, **Why We Sleep**): vücut 8 saatlik uyku için tasarlanmış. Bu 8 saat de **belirli pencerede** olmalı. Melatonin döngüsü 22:00–06:00 arası optimumdur. Bu pencerede uyumayan beyin **derin uyku evrelerini** (NREM stage 3-4) eksik yaşar — sabah yorgun uyanmanın ana sebebi.\n\nBeyin saat 22:30 civarı melatonin pikine girer. Eğer o saatte uyanıksan (ekran, kahve, aktif iş) — beyin 'pencereyi kaçırdı' der, melatonin yeniden basılır. 4-5 saat sonra düşer ama derin uyku kaçırılmıştır.\n\nBugün denklemi tersinden başlatıyorsun: **erken yat, erken kalk**. 21:30 yatış hedefiyle başla. 22:00 uyu. Sabah 6'da doğal uyanırsın — alarm gerekmez 1-2 hafta sonra.",
-        "action": "Bu gece **21:30 yatağa gir**. Telefonu yatak odasının dışına bırak. 22:00'a kadar uyumaya çalış. Yarın saat 6'da uyanmayı dene.",
-        "reflectionPrompt": "Erken yatmaya direnç gösteren ne oldu — beyninde hangi ses 'biraz daha' dedi? O ses ne istiyordu gerçekte?",
+        "title": "Sabahı Geceden Kazan",
+        "teaching": "Alarmı erkene kuruyorsun ama geceyi hiç değiştirmiyorsun. Sabah geldiğinde planınla uykun yarışıyor; çoğu gün uyku kazanıyor.\n\nErken kalkmak bir irade gösterisi değildir. Yeterli uyku için yatağa giriş saatini de öne çekmediğinde yalnızca ertesi günün enerjisinden borç alırsın.\n\nBir gecede iki saatlik sıçrama yapmak yerine yatışını 30 dakika erkene al. Küçük değişiklik daha az direnç yaratır ve tekrar edilmesi kolaydır.\n\nBu akşam uyanman gereken saatten geriye doğru gerçekçi bir uyku aralığı hesapla. Son 30 dakikayı ekransız bırak ve yatağı günün kapanış noktası yap.",
+        "action": "Bu gece normalden 30 dakika önce yatağa gir. Son 30 dakikada telefonu yatağın dışında şarja bırak.",
+        "reflectionPrompt": "Geceyi uzatmana en çok ne sebep oluyor: ekran, iş, dizi, yoksa günün bitmesini istememek mi?",
         "quiz": [
           {
-            "q": "Erken kalkmanın gerçek anahtarı?",
+            "q": "Erken kalkmayı sürdürülebilir yapan ilk değişiklik hangisi?",
             "options": [
-              "Erken yat",
+              "Yatış saatini de erkene almak",
               "Çok kahve",
               "Gürültülü alarm",
               "Hiç uyuma"
             ],
             "correct": 0,
-            "explain": "Erken yatmadan erken kalkmak sürdürülemez."
+            "explain": "Yalnız alarmı erkene çekmek uyku süresini azaltır. Sabah planı, gecenin kapanış saatiyle birlikte kurulmalıdır."
           },
           {
-            "q": "Optimum melatonin saati?",
+            "q": "İlk gece için en gerçekçi adım hangisi?",
             "options": [
-              "18:00-22:00",
-              "22:00-06:00",
-              "00:00-08:00",
-              "20:00-04:00"
+              "İki saat erken yatmak",
+              "Hiç uyumamak",
+              "30 dakika erken yatmak",
+              "Üç alarm kurmak"
             ],
-            "correct": 1,
-            "explain": "22:00-06:00 arasında derin uyku derin olur."
+            "correct": 2,
+            "explain": "Küçük ve tekrarlanabilir değişiklik, bir gecelik sert plandan daha kolay alışkanlığa dönüşür."
           }
         ],
-        "proTip": "Yatma saatini \"günün en önemli randevusu\" olarak takvime ekle."
+        "proTip": "Alarmı yalnız uyanmak için değil, geceyi kapatmak için de kur. Yatma alarmı karar vermeyi senden önce yapar."
       },
       "2": {
         "title": "Alarmı Telefonsuz Yap",
@@ -2728,7 +2728,7 @@
         ]
       },
       "38": {
-        "title": "Hedef Günlük Review",
+        "title": "Hedef Günlüğünü Gözden Geçir",
         "teaching": "Yeni yıl. 'Bu sene değişeceğim' dedin, 12 hedef yazdın, defteri çekmeceye attın. **Şubat sonu** çekmeceyi açtın, ne yazdığını **bile hatırlamıyorsun**. Tanıdık mı?\n\nGail Matthews (Dominican Üniversitesi) araştırması: hedef yazanlar %42 daha fazla başarır. Ama burada bir incelik var — **sürekli okuyanlar** %76 başarır. Yazma + günlük tekrar = başarı katsayısı.\n\nMekanizma: **RAS filtre** (geçen ders). Beyin gün boyu binlerce uyarana maruz kalır. Ne 'önemli' olduğunu RAS belirler. Hedefini **günde 50x görmüyorsan**, beyin onu 'önemli değil' olarak kayıt eder. Otomatik filtre dışı.\n\n**30 saniye sabah okuma** = hedefini gün boyu '**zihin arka planında**' tutar. Her küçük karar (öğle yemeği seçimi, sosyal medya açma kararı, akşam aktivite) hedefe göre **otomatik filtre**.\n\nBenjamin Hardy: 'Hedefinden uzak yaşıyorsan, **hedefini görmüyorsun** demektir.'\n\nİdeal: **kâğıda yaz** + **telefon kilit ekranı** + **cüzdana koy**. Her gün ortalama 50-100 kez göz değiştir.",
         "action": "Bugün **ana hedefini sabah 30 saniye** oku. Yüksek sesle. Sonra cebine/kilit ekranına koy.",
         "reflectionPrompt": "Hedefi okuyunca öncelikler değişti mi? Bugün yapacağın bir şey **iptal** oldu mu?",
@@ -2883,7 +2883,7 @@
         ]
       },
       "43": {
-        "title": "5-AM Protokolü",
+        "title": "05.00 Sabah Planı",
         "teaching": "Saat 5. Dünya **sessiz**. Çoğu insan derin uykuda. Sokak boş, telefon ölü, bildirim sıfır. Bu 60 dakika **dünyada başka kimseyle paylaşılmıyor** — sadece sen ve gün.\n\nRobin Sharma **'The 5 AM Club'** (kitap 4M+ satıldı): 5'te kalk, **'Victory Hour'**: 20 dk hareket / 20 dk pratik (öğrenme/meditasyon) / 20 dk yansıma (günlük/planlama).\n\n**Niye 5 AM?** İstem gücü zirvesi (Baumeister) + sosyal sessizlik (kimse mesaj atmıyor) + dijital sessizlik (Instagram henüz uyanmadı). **Saf konsantrasyon penceresi** günde sadece 1 kere açılır.\n\nMatematik: 5 AM × 365 gün = günde 1 saat 'sadece sana' = **365 saat/yıl** = **45 iş günü** (9 hafta) ekstra. 'Zaman yok' diyenin gizli sermayesi burası.\n\nMekanizma: erken saat = **prefrontal kortex zirvesi** + kortizol artışı (CAR — Cortisol Awakening Response). En zor işler için **biyolojik olarak optimum**.\n\n**Aşamalı geçiş**: bir gecede 5'e geçilmez. Önce 7, sonra 6:30, 6, 5:30, 5. Her seviyede 1-2 hafta. **Yatma saati ile sabit yatış** — erken kalk için (Ders 1).",
         "action": "Bugün **5'te kalk**, 60-20-20-20 dene. Bir günlük deney.",
         "reflectionPrompt": "İlk 60 dakika hangi blok en güçlüydü — hareket, pratik, yoksa yansıma?",
@@ -2945,7 +2945,7 @@
         ]
       },
       "45": {
-        "title": "Soğuk Maruz Mastery",
+        "title": "Soğuğa Uyum",
         "teaching": "30 saniye (Ders 16), 1 dakika (Ders 33) — şimdi **2 dakika**. Bu, soğuk maruziyetin **master eşiği**. Bu noktaya geldiysen bedenin bilim laboratuvarı oldu.\n\nSusanna Søberg (Kopenhag) protokolü: haftada **toplam 11 dakika** 10-15°C su = optimum metabolik fayda. 2 dk × 5-6 gün = bu eşik.\n\nBilim katları:\n- **Serotonin**: %200 artış (mutluluk, sakinlik)\n- **Norepinefrin**: %500 artış (odak, anti-depresan)\n- **Dopamin**: %250 artış (motivasyon, 4 saat sürer)\n- **Bağışıklık** çift yönlü güçlenir (T-hücre + anti-inflammatory)\n- **Kahverengi yağ** aktive — metabolizma %15-25 hızlanır\n\nDavid Sinclair (Harvard, **Lifespan**): soğuk maruziyet = uzun ömür yolaklarını (sirtuin, AMPK) aktive eder. Hormetic stres = telomer korumacı.\n\nMekanizma: 2 dakika sonunda **vasokonstriksiyon → vasodilatasyon** geçişi olur. Damarlar 'pompa' gibi çalışır. Kalp ritmi değişkenliği (HRV) keskinleşir — sinir sistemi esnekliği.\n\nHedef: **30 gün sürdür**. Bu noktadan sonra soğuk duş = normal, sıcak duş = 'şımarık' gelir. Kimlik **soğuk-uyumlu** hale gelir.",
         "action": "Bugün **2 dk soğuk duş** yap. Tüm vücut. Nefes yavaş ve derin.",
         "reflectionPrompt": "2 dk sonu zihinsel net mi? 4 saat boyunca enerjin nasıldı?",
@@ -3100,7 +3100,7 @@
         ]
       },
       "50": {
-        "title": "Master Tamamlandı",
+        "title": "Yol Tamamlandı",
         "teaching": "**50 sabah.** Her biri **kanıt**. Çoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\nLally araştırmaları, Prochaska transtheoretical model, ve davranış bilimi tutarlı: bu istatistikler abartı değil — **gerçek**. Master eşiğindesin.\n\n**Yeni Sen kim?**\n- **Sabahın insanı** — kimlik kayması tamamlandı\n- **Sessizlik dostun** — gürültüden rahatsızlık\n- **Soğuk maruz** — beden adapte\n- **Niyetli gün** — reaktif değil proaktif\n- **Telefon araç** — efendi değil\n- **Sözünü tutuyorsun** — öz-güven nöral düzeyde\n- **Disiplin kimliğin** — davranış değil\n\nDiploma yok. Sertifika yok. Sadece **ayna**. Bugün aynaya bak — **50 sabah öncesinin sen**, bugünkü seni görseydi ne hisseder? Şaşırır mı? Gurur duyar mı? Hayran kalır mı?\n\n50 gün = bağımlılığın kırılma noktası. 90 gün = kalıcılaşma. 1 yıl = kimlik. Şu noktada **karar senin**: kalıcı yap mı, yumuşak iniş mi?\n\n**Bir başka path başlat.** 7 gün dinlen — beyin pekiştirme. Sonra **Mind Discipline** veya **Body Discipline**. Disiplin **bulaşıcı** — bir alanda öğrenilen diğerlerine kolayca taşınır.",
         "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 sabah önceki sen ile karşılaştır. Tanıyor musun?",
         "reflectionPrompt": "50 sabah önce sen şimdi olmak ister miydi? Bu sorunun cevabı sana ne söylüyor?",
@@ -3133,38 +3133,38 @@
     },
     "mind-discipline": {
       "1": {
-        "title": "Tek Odak Kuralı",
-        "teaching": "Saat 14:00. 3 sekme açık (Slack, Gmail, Twitter), tarayıcıda 12 tab var, telefonda WhatsApp titreyip duruyor, Spotify çalıyor, kulağına eşin bir şey diyor. Sen 'çalışıyorum' diyorsun. **Aslında hiç bir şey yapmıyorsun.**\n\nMultitasking **bir illüzyon**. Beyin paralel çalışmaz — **hızlı geçiş** yapar. Stanford Üniversitesi (Clifford Nass): heavy multitasker'lar her testte tek-görevcilere göre **daha yavaş, daha hatalı, daha geç**. Daha kötüsü: bu kişiler **kendilerini daha iyi sanır**.\n\nHer görev geçişi = **'context switching cost'**. Beyin önceki görevi 'kapatıp' yenisini 'açar'. Bu cost ortalama **%40 verim kaybı** (American Psychological Association meta-analizi).\n\nMekanizma: prefrontal kortex'te **task-set reconfiguration** denilen süreç. Her geçiş 0.5-2 saniye + nöral 'yapışkanlık' (attention residue — sonraki ders). 8 saatte 100 geçiş = saatlerce verim kaybı.\n\n**Deep work = tek odak.** Tek pencere, tek ses, tek niyet. Zihinsel kas — geliştirilebilir. İlk gün 25 dk zor, 1 hafta sonra 90 dk doğal.",
-        "action": "Bugün **25 dakika tek görev bloku** yap (Pomodoro). Telefon başka odada. Tek sekme. Sayacı görünür.",
-        "reflectionPrompt": "25 dakika sonra zihnin yorgun mu, daha mı net? Geçiş yapmadığında ne fark ettin?",
+        "title": "25 Dakikada Tek Bir Şey",
+        "teaching": "Ekranda on iki sekme, telefonda mesajlar, arkada müzik. Çok şey açık olduğu için çok şey yaptığını hissediyorsun; gün sonunda ise neyin bittiği belirsiz.\n\nZihin aynı anda iki dikkat isteyen işi yürütmez. Aralarında hızlı geçiş yapar. Her geçişte önceki işin bağlamını bırakıp yenisini kurman gerekir.\n\nTek odak, bütün günü sessiz bir odada geçirmek değildir. Kısa bir süre için bitiş çizgisi belli tek bir iş seçmektir: bir e-postayı tamamlamak, iki sayfa yazmak, bir problemi çözmek.\n\nŞimdi 25 dakikalık bir alan aç. Tek iş, tek pencere, görünür sayaç. Süre bitince devam edip etmeyeceğine yeniden karar verirsin.",
+        "action": "Bitince neyin tamamlanmış olacağını tek cümleyle yaz. Telefonu uzağa koy ve o iş için 25 dakikalık sayaç başlat.",
+        "reflectionPrompt": "25 dakikanın sonunda somut olarak ne bitti? Seni başka işe çekmeye çalışan ilk şey neydi?",
         "quiz": [
           {
-            "q": "Multitasking efsanesi nedir?",
+            "q": "Çoklu görev sırasında zihin gerçekte ne yapar?",
             "options": [
-              "Beyin paralel çalışır",
-              "Beyin hızlı geçiş yapar",
-              "Bilim kanıtladı",
-              "Daha verimli"
+              "Tüm işleri aynı anda bitirir",
+              "İşler arasında hızlı geçiş yapar",
+              "Hiç enerji harcamaz",
+              "Daha az hata yapar"
             ],
             "correct": 1,
-            "explain": "Beyin paralel değil, hızlı geçiş yapar — performans düşer."
+            "explain": "Dikkat isteyen işler paralel ilerlemez. Zihin bağlamlar arasında gidip gelir ve her dönüşte yeniden yerini bulur."
           },
           {
-            "q": "Görev geçişinde performans ne kadar düşer?",
+            "q": "İyi tanımlanmış bir odak bloğu nasıl başlar?",
             "options": [
-              "%10",
-              "%20",
-              "%30",
-              "%40"
+              "Tüm işleri aynı anda açarak",
+              "Bitiş çizgisini tek cümleyle yazarak",
+              "Telefonu masada tutarak",
+              "Süre koymadan başlayarak"
             ],
-            "correct": 3,
-            "explain": "%40 düşüş + hata oranı artışı."
+            "correct": 1,
+            "explain": "Net bitiş çizgisi, 25 dakika boyunca neye hayır diyeceğini ve neyi tamamlayacağını görünür kılar."
           }
         ],
-        "proTip": "Telefonu hep odanın diğer ucuna koy. \"Ulaşmak için kalkmak\" gerekirse, çoğu kez vazgeçersin."
+        "proTip": "Telefonu sessize almak yetmez. Ulaşmak için ayağa kalkman gerekiyorsa dürtü ile davranış arasına gerçek bir engel girer."
       },
       "2": {
-        "title": "Distraction Kill List",
+        "title": "Dikkat Kaçakları Listesi",
         "teaching": "'Bugün niye verimsizdim?' Akşam soruyorsun. Yanıt vermek zor — çünkü dikkatini **kim çaldı** somut değil. **Görünmeyen düşmanlar** günü bitirdi.\n\nNir Eyal (**Indistractable**): 'Distraction = isim koymadığın her şey. İsim koyduğun anda **görünür**, görünür hale geldiği anda **dövebilirsin**.'\n\n**Distraction Kill List = tanı + savunma.** Günde 1 kez kâğıt al, son 24 saatte dikkatini bölen **5 şeyi** yaz. Uygulama, kişi, düşünce — fark etmez. Her biri için **1 savunma** kur.\n\nÖrnek:\n- 'Instagram → ana ekrandan kaldırdım'\n- 'WhatsApp grupları → sessize aldım'\n- 'X kişinin mesajları → cevap saatlerini sınırladım'\n- 'Iş kaygısı → akşam 30 dk düşünce zamanı'\n\nMekanizma: **meta-bilinç** (kendi davranışına dışarıdan bakmak) prefrontal kortex aktivasyonu = otomatik dürtü zayıflar. **İsim koyma + savunma kurma = davranışsal alarm** sistemi.\n\nMarcus Aurelius: 'Düşmanını tanı, savaşı kazanma şansın var. Tanımadığın düşman kazandığın savaşta bile seni öldürür.'",
         "action": "**5 dakika** liste yap: bugün dikkatini bölen **5 şey** ne? Her biri için **1 somut savunma** yaz.",
         "reflectionPrompt": "Listenin en şaşırtıcı maddesi hangisiydi? Hiç tahmin etmediğin biri ortaya çıktı mı?",
@@ -3195,7 +3195,7 @@
         "proTip": "Distraction listeni telefonun ana ekranına koy. Görmek = farkına varmak."
       },
       "3": {
-        "title": "Deep Work Bloku",
+        "title": "Derin Çalışma Bloğu",
         "teaching": "Modern bilgi ekonomisinde **kıt kaynak nedir**? Bilgi değil — internet bedava. Zaman değil — herkeste eşit. **Derin odak**. Dünya nüfusunun **belki %5'i** günde 90 dk kesintisiz odaklanabilir. Bu kişiler ekonominin **kazananları**.\n\nCal Newport (**Deep Work**, Georgetown CS professor): 'Deep work = deep value. Yüzeysel iş kolay, taklit edilebilir, az değerli. Derin iş zor, nadir, **piyasada en yüksek getiri**.'\n\nMatematik: 90 dakika **gerçek deep work** > 8 saat çoklu-görev (dağınık). Çünkü deep work'te **şu üç şey** olur:\n1. **Anlama derinliği** — 'aha' anları gelir\n2. **Otomatikleşme** — beyin paterni öğrenir, sonraki sefer hızlanır\n3. **Beceri inşa** — miyelin kılıfı kalınlaşır (Maguire 2000)\n\nMekanizma: deep work = **PFC (prefrontal cortex) + DMN sinerjisi**. Hem analitik (PFC) hem yaratıcı (DMN) ağlar devrede. Distraction = PFC kesilir, DMN bastırılır = sadece reaktif beyin (limbik sistem).\n\nKademeli antrenman gerek: 25 → 45 → 60 → 90 dakika. 2-4 hafta.",
         "action": "Bugün **90 dakikalık tek görev bloku** yap. Pomodoro değil — **kesintisiz 90 dk**. Telefon başka oda.",
         "reflectionPrompt": "90 dakikadan sonra bitirdiğin iş, sığ modunda kaç saatte biterdi?",
@@ -3474,7 +3474,7 @@
         ]
       },
       "12": {
-        "title": "Inbox Sıfır",
+        "title": "Gelen Kutusunu Sıfırla",
         "teaching": "Inbox'ı açtın: **2,847 okunmamış mesaj**. Her gün 50-100 yeni gelir. **Hiçbiri okunmuyor**. Önemli olanı bulmak için scroll yapıyorsun. Asla bulamıyorsun. Inbox = **stres üretici**.\n\nMerlin Mann (**'Inbox Zero'** kavramı yaratıcısı): 'Inbox 0 ≠ 0 mesaj. = sıfır **dikkat gerektiren** mesaj. Her mesaj **işlendi** — yanıt, arşiv, sil, veya planla.'\n\n**4D kuralı** (David Allen GTD'den):\n- **Do** (2 dakika altı → hemen yap)\n- **Delegate** (başkasına gider → atayıp ilet)\n- **Defer** (sonra ele alınacak → planla + arşivle)\n- **Delete** (gereksiz → sil)\n\nMekanizma: e-posta gelen kutusu = **başkasının önceliğinin senin önceliğine üstün gelmesi**. Senin günü senin kuracak — Inbox başkalarının önceliklerini sana **dayatır**. Birikim = **sürekli stres** (görmesen de var).\n\nKritik kural: **Inbox'ı sabah ilk açma**. Sabah altın penceren — başkalarına ait değil. **11:00 ve 17:00** günde 2x. Bu saatler dışında **kapalı**.\n\nİlk gün son 24 saatlik mesajları işle. Eski 2,000 mesaj? **'Select all → Archive'**. Önemli olansa zaten geri gelir.",
         "action": "Bugün **inbox'ını sıfırla**. Eski 100'ü zorlama, son 24 saatlik yeter. 4D kuralı uygula.",
         "reflectionPrompt": "Inbox 0 hissi nasıldı? Daha **berrak** mı? Kayıp hissi mi yoksa **özgürlük** mü?",
@@ -3536,7 +3536,7 @@
         ]
       },
       "14": {
-        "title": "Deep Work 90 Dakika",
+        "title": "90 Dakika Derin Çalışma",
         "teaching": "**90 dakika.** Tek görev. Hiç kesinti. Telefon başka oda. Sekme bir tane. Müzik yok (veya enstrümantal). Bu **modern hayatın en değerli 90 dakikası**.\n\nCal Newport (**Deep Work**, kitap 2016 best-seller): 'Derin iş = ekonominin **en değerli becerisi**, **en nadir bulunan** aynı zamanda. Bu paradoks = onu yapabilenlere **muazzam getiri**.'\n\nMatematik: 90 dk derin iş > 8 saat çoklu görev. Çünkü:\n- **Flow state'e** girersin (Csikszentmihalyi) — verim 5x\n- **Bağlam** kurulur, hiç kopmaz\n- **Kalite** keskindir, hata az\n- **Yeniden başlama maliyeti** sıfır\n\nMekanizma: derin iş = **PFC + posterior parietal cortex** aktif birlikte. Dikkat ağı kararlı = miyelin kalınlaşması (deBellis vd, 2008 — uzun pratik = beyaz madde değişimi).\n\nİlk hafta **zor**. Beyin **alışmamış** — 25 dakikada protestoya başlar. 'Su iç', 'tuvalet', 'bir bakayım' — hepsi **direnç sesleri**. Geçer.\n\n**30 gün sonra**: 90 dk doğal. Sonra 120, sonra 180. **Kapasite genişler**. Carl Jung günde 8 saat deep work yapardı. Pratik = beceri.",
         "action": "Bugün **1 deep work bloğu** yap: 90 dakika, telefon başka odada, **sekme kapalı**.",
         "reflectionPrompt": "90 dakika sonu enerjini ne durumda hissettin? Yorgun mu, **canlı** mı?",
@@ -3598,7 +3598,7 @@
         ]
       },
       "16": {
-        "title": "Haftalık Review",
+        "title": "Haftalık Gözden Geçirme",
         "teaching": "Pazartesi sabah, kafanda **kaos**: 'Bu hafta ne yapmalıyım? Geçen hafta ne yaptım? Önümüzdeki ay nasıl gidiyor?' Hiçbiri net değil. **Günlük yaşıyorsun, haftalık bakmıyorsun**.\n\nGünlük = taktik. Haftalık = strateji. **İkisi gerek**. Sadece günlük = ağaçları gör, ormanı kaçır. Sadece haftalık = soyut, eylemsiz.\n\nDavid Allen (GTD): 'Haftalık review = sistemin **bel kemiği**. Olmadan tüm sistem çöker.' Cuma 17:00 ya da Pazar 09:00 — **sabit** zaman. 30 dakika yeterli.\n\n**3 sorulu format**:\n1. **Bu hafta neyi başardım?** (somut çıktılar)\n2. **Neyi öğrendim?** (içgörü, hata, gözlem)\n3. **Önümüzdeki hafta 3 öncelik?** (1 ana, 2 destek)\n\nMekanizma: review = **meta-bilinç** + **sistematik düşünme**. Mikro kararları **makro yapıya** sıkıştırır. Pazartesi sabah 'şimdi ne?' sorusu = artık yok. **Cevap var, plan hazır.**\n\nWarren Buffett: 'Yapan ile yapmayan arasındaki en büyük fark = **review**.' Çoğu insan günlük yaşar — başarılı insanlar **haftalık düşünür**.\n\nKritik: yazılı yap. Kafa içinde kalan review = review değil.",
         "action": "Bu hafta sonu **30 dk haftalık review** yap. **Yazılı, somut**. 3 soru formatı.",
         "reflectionPrompt": "Bu haftanın **en büyük öğrenmesi** neydi? Önümüzdeki haftaya nasıl etki edecek?",
@@ -4218,7 +4218,7 @@
         ]
       },
       "36": {
-        "title": "Tek Görev Mastery",
+        "title": "Tek Görev Ustalığı",
         "teaching": "Ders 1'de tek odak ile tanıştın (25 dk). Ders 6'da single-task disiplini (1 saat). Ders 14'te deep work 90 dakika. Bugün **mastery seviyesi**: 90 dakika **tam single-task** — bildirim sıfır, sekme tek, müzik **instrümental** (vokal yok).\n\nMihaly Csikszentmihalyi (**Flow**, kitap 1990): 'Flow = beceri × zorluk dengesinde, **tek odak** ile, kesintisiz. Bu hâl insan bilincinin **en iyi anı** — yaratıcılık, performans, mutluluk zirvesi.'\n\n**Flow state şartları**:\n1. **Net hedef** (90 dk içinde X biteceğim)\n2. **Anlık geri bildirim** (ilerleme görünür)\n3. **Beceri-zorluk dengesi** (kolay = sıkıntı, zor = stres)\n4. **Kesintisiz odak** (single-task)\n\n90 dakika tam single-task + flow = **haftalık çalışmaya eşdeğer çıktı**. Bu **abartı değil** — performans araştırmalarında defalarca ölçüldü.\n\nMekanizma: flow = **noradrenalin + dopamin + endorfin + anandamid + serotonin** kokteyli. Beyin doping hâlinde. Performance amplifikasyonu **500%'ye kadar** (DARPA çalışması — Jamie Wheal, Steven Kotler).\n\nKritik: vokalli müzik **dikkat kapasitesi** kullanır. Brain üzerinde dil işleme = yazma görevi ile çakışır. **Instrümental** (klasik, lo-fi, ambient) = nötr.\n\nDND mode = **telefon + bilgisayar + Mac/PC** hepsi. Önemli çağrı 'favorites' geçer, gerisi engellenir.",
         "action": "Bugün **90 dakika tam single-task**. DND mode. Tek sekme. Instrümental veya sessiz.",
         "reflectionPrompt": "Verim ne kadar arttı? **Flow state**'e girdin mi — zaman akıp gitti mi?",
@@ -4652,7 +4652,7 @@
         ]
       },
       "50": {
-        "title": "Master Tamamlandı",
+        "title": "Yol Tamamlandı",
         "teaching": "**50 gün.** Çoğu insanın zihni **dağıtık**: 47 bildirim, 12 sekme, 8 yarım iş, sürekli tekrar 'şimdi ne yapayım?' Senin zihnin = **master**. Düzenli, odaklı, niyetli.\n\nÇoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\n**Yeni Sen kim?**\n- **Sıkıntı dostun** — eski tetikleyici şimdi yaratıcılık zamanı\n- **Derin iş dilin** — 90 dakika doğal\n- **Mental modeller silahların** — her durumda doğru araç\n- **Time blocking ritmin** — gün senin\n- **Pre-decision çerçeveleri** — karar otomatik\n- **80/20 lensin** — çoğu zaman %20'yi yapıyorsun\n- **'Hayır'** sınır kelimen — öncelik korunmuş\n- **Brain dump + yakalama sistemi** — beyin işleyici, depo değil\n\n**Disiplin = yeni IQ.** Eski 'zeka' = doğal yetenek. Yeni IQ = **disiplin × bilim × tutarlılık**.\n\nDiploma yok. Sertifika yok. Sadece **ayna**. 50 gün önceki sen → bugünkü sen. **Tanıyor musun**?\n\n50 gün = nöral patika kalıcı. 90 gün = otomatik. 1 yıl = kimlik. Şu noktada **karar senin**: kalıcı yap, yumuşak iniş, veya yeni bir path.\n\n**Bir başka path başlat**. 7 gün dinlen — beyin pekiştirme. Sonra **Body Discipline** (beden) veya **Money Discipline** (finans). Disiplin **bulaşıcı**.",
         "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır.",
         "reflectionPrompt": "50 gün önceki sen şimdi **olmak ister** miydi? Bu sorunun cevabı ne söylüyor?",
@@ -4685,35 +4685,35 @@
     },
     "body-discipline": {
       "1": {
-        "title": "Hareket Eşiği",
-        "teaching": "8 saat iş, 1 saat trafik, 3 saat ekran. Toplam: günde **12 saat oturma**. Kafa **sürekli bulanık**, motivasyon yerde, akşam 'tükenmişim' diyorsun ama hiç ter dökmedin. Bu **modern hayatın gizli krizi**.\n\nDr. James Levine (Mayo Clinic, 2014): '**Oturmak yeni sigara**.' Günde 6+ saat oturma = sigara içen kadar **mortalite riski**. Kan akışı yavaşlar, beyin **az oksijen** alır, mitokondri aktivitesi düşer.\n\nLevine ekibi Lancet meta-analizi (2016, 1 milyon kişi): günde **60-75 dakika orta yoğunluk hareket**, 8 saat oturmayı **nötrler**. Daha az hareket → oturma zararı **silinmez**.\n\nMekanizma: kas elektromiyografik sessizlik (oturmada) = **lipoprotein lipaz** aktivitesi düşer = trigliserit birikir = metabolik sendrom. Hareket = enzim **yeniden aktif**.\n\nÇözüm **karmaşık değil**: günde **30 dk hareket**. Yürüyüş, basit egzersiz, koşu — fark etmez. **Kan akışı + nefes hızı** artsın yeter.\n\nSalon gerek değil. Bedeninle başla. Tempolu yürüyüş = en düşük bariyer, en yüksek getiri.",
-        "action": "Bugün **30 dakika tempolu yürüyüş** yap. Sıkışıksa: öğle aralık 10 dk + akşam 20 dk böl.",
-        "reflectionPrompt": "Yürüyüş sonrası **zihinsel berraklık** hissettin mi? Akşam enerjin farklı mıydı?",
+        "title": "Enerjiyi Bekleme, Hareketle Başlat",
+        "teaching": "Bütün gün oturdun ama yine de yorgunsun. Bu çelişki değil: hareketsizlik dinlenmekle aynı şey değildir. Beden kullanılmadığında enerji hissi de düşebilir.\n\nHareket için salon, ekipman veya kusursuz program gerekmiyor. Başlangıçta önemli olan yoğunluk değil, oturduğun yerden kalkıp bedene 'gün başladı' sinyali vermek.\n\nOtuz dakikalık büyük hedef bazen başlamayı zorlaştırır. On dakikalık hızlı yürüyüş ise bahane üretmeyecek kadar küçüktür ve günün akışına sığar.\n\nBugün performans ölçmeyeceksin. Kapıdan çıkacak, biraz hızlanacak ve on dakika sonra nasıl hissettiğine bakacaksın.",
+        "action": "Ayakkabını giy ve 10 dakika tempolu yürü. Telefonu cebinde bırak; yalnız adımlarına ve nefesine dikkat et.",
+        "reflectionPrompt": "Başlamadan önceki enerjinle döndükten sonraki enerjin arasında ne değişti?",
         "quiz": [
           {
-            "q": "Modern hayatın en büyük fiziksel sorunu?",
+            "q": "Bugünkü dersin başlangıç ilkesi ne?",
             "options": [
-              "Çok yemek",
-              "Hareketsizlik",
-              "Az uyku",
-              "Stres"
+              "Kusursuz programı beklemek",
+              "Küçük ve yapılabilir hareketle başlamak",
+              "İlk gün çok zorlanmak",
+              "Ekipman satın almak"
             ],
             "correct": 1,
-            "explain": "8 saat oturma = kafa bulanıklığının ana sebebi."
+            "explain": "Başlangıçta amaç rekor kırmak değil, hareketsizlik eşiğini geçmektir. On dakika bunun için yeterince küçüktür."
           },
           {
-            "q": "Günde minimum hareket?",
+            "q": "Bugünün görevi ne kadar sürüyor?",
             "options": [
-              "10 dk",
-              "20 dk",
-              "30 dk",
-              "60 dk"
+              "10 dakika",
+              "45 dakika",
+              "90 dakika",
+              "2 saat"
             ],
-            "correct": 2,
-            "explain": "30 dakika tempolu hareket yeterli."
+            "correct": 0,
+            "explain": "On dakikalık yürüyüş, başlamayı kolaylaştıran ilk adımdır. Sonrasında devam etmek isteğe bağlıdır."
           }
         ],
-        "proTip": "Hareket eşiğine dolaşırsan kahve ya da çay alırken ekstra adım at. Bu sezgisel olarak günlüğe eklenir."
+        "proTip": "Yürüyüşü mevcut bir işin önüne bağla: öğle yemeğinden önce veya eve girer girmez. Saat seçmekten daha kolay hatırlanır."
       },
       "2": {
         "title": "Soğuk Duş Protokolü",
@@ -5770,7 +5770,7 @@
         ]
       },
       "36": {
-        "title": "Günlük Yürüme Mastery",
+        "title": "Günlük Yürüme Ustalığı",
         "teaching": "10K adım = **iyi**. Ders 8'de öğrendin. Şimdi seviyeyi yükselt: **12K-15K**. Bu **elite zona**. Çünkü bilim sürekli evrim:\n\nLancet (2023) güncel meta-analiz:\n- 7K adım → mortalite %50 düşer\n- 10K → %52\n- **12K** → %58 (en yüksek azalma)\n- 15K+ → ek fayda küçük ama var\n\n**Hareket = en doğal ilaç**. Patent yok, yan etki yok, ücretsiz. Aspirin'den 100x güçlü etki, doğal yoldan.\n\n12K = günde **8-10 km** = **90 dakika** dağıtık yürüme. Mümkün mü?\n\nGünlük hayata gizleme:\n- Sabah 30 dk yürüyüş = 4K\n- Öğle 15 dk yürüyüş = 2K\n- Akşam 30 dk yürüyüş = 4K\n- + gün içi hareket (ofis, ev, alışveriş) = 2K\n- **Toplam: 12K**\n\n**Yürüyüş şekli kritik**:\n- **Dik** (göğüs açık, omuz geri)\n- **Tempolu** (140-160 adım/dk)\n- **Kollar serbest** salınsın\n- **Burun nefesi** (Ders 24)\n- **Telefon yok** (DMN aktif — yaratıcılık + dinlenme)\n\nKıvrılarak yürümek = düşük etki + postür kötüleşir. Dik tempolu yürüyüş = **kardiyovasküler + metabolik + nöral** fayda.\n\nToplantıyı yürüyerek yap = Adım sayını **2x**. Steve Jobs, Mark Zuckerberg, Aaron Sorkin — hepsi.",
         "action": "Bugün **12K adımı vur**. Dik, tempolu, telefonsuz mümkünse.",
         "reflectionPrompt": "12K'da **uyku farklı** mı? Akşam yorgunluğu mu yoksa **canlılık** mı?",
@@ -5801,7 +5801,7 @@
         ]
       },
       "37": {
-        "title": "Soğuk Mastery",
+        "title": "Soğuğa Uyum Ustalığı",
         "teaching": "Soğuk duşa 30 sn → 1 dk → 2 dk **geçtin**. Şimdi en yüksek seviye: **ice bath / cold plunge**. **1-3 dakika, 5-10°C su**. Bu **biyohacker / elite atlet** seviyesi.\n\nSusanna Søberg (Kopenhag, soğuk araştırmaları otoritesi) protokol: **haftada toplam 11 dakika** 10-15°C su = optimum kahverengi yağ aktivasyonu + metabolik adaptasyon.\n\nBilim çarpıcı:\n- **Norepinefrin %500 artar** (anti-depresan etkisi)\n- **Dopamin %250 artar** (4 saatlik motivasyon)\n- **Depresyon riski %29 düşer**\n- **Bağışıklık 10x güçlenir**\n- **Mitochondria biyogenez** = uzun ömür\n- **Brown fat aktivasyonu** = metabolizma artar\n- **Antrenman sonrası inflammasyon** çözer = hızlı recovery\n\nMekanizma: extreme soğuk = beden 'tehlike' algılar, **hormetic adaptasyon** başlar. Adaptasyonun yan etkisi = güçlenmiş tüm sistemler.\n\n**Pratik ice bath**: kova **soğuk su + buz** (10 kg buz). Beden tamamen daldırma (boyun üstü). 1-3 dk.\n\n**Profesyonel cold plunge** (₺5-50 bin) — yatırım büyük ama kullanım ömrü uzun. Veya banyo soğuk su + buz = yine etkili.\n\nKritik:\n- **İlk 30 sn**: nefes kontrolü. Şok refleksi nefes tutmak ister — tersini yap (yavaş derin nefes).\n- **30 sn sonrası**: rahatla. Beden adapte oldu.\n- **Çıkışta**: kendiliğinden ısın (havlu yok, beden brown fat aktive ederek ısınır = ekstra fayda).",
         "action": "Bugün **ice bath dene** (kova + soğuk su + 10 kg buz). 1 dakika hedefi.",
         "reflectionPrompt": "Sıcaklık kontrolünde hissettiğin **baskın duygu**? Korku, güç, ne?",
@@ -5956,7 +5956,7 @@
         ]
       },
       "42": {
-        "title": "Postür Mastery",
+        "title": "Duruş Ustalığı",
         "teaching": "Ders 21'de postür temellerini öğrendin. Şimdi **mastery**: postür **sürekli farkındalık** seviyesi. Saat başı hatırlatıcı **yetmez** — her oturuş, her telefon, her yürüyüş.\n\nDr. Amy Cuddy (Harvard, **'power posing'** araştırmacısı): 'Postür sadece **görünüş** değil — **biyokimya**.'\n\nKlinik kanıt:\n- **Dik postür 2 dakika** = testosteron **%20 artar**, kortizol **%25 düşer**\n- **Kambur postür 2 dakika** = tam tersi (Cuddy 2010)\n- **Kambur**: solunum kapasitesi **%30 düşer** (akciğer sıkışır)\n- **Boyun öne**: omurga ekstra yük (Hansraj — Ders 21)\n- **Kapalı omuz**: kalp + akciğer **tam genişlemez**\n\nMekanizma: postür → solunum → kortizol → kas dengesi → ruh hali → karar verme. Hepsi bağlı.\n\n**Mastery seviyesi günlük kontrol noktaları**:\n\n1. **Sabah uyanış** — yataktan kalkış postürü\n2. **Diş fırçalama** — ayna kontrolü\n3. **Bilgisayar başı** — saat başı 30 sn\n4. **Telefon kullanımı** — göz hizası, omuz geri\n5. **Yürüyüş** — dik, baş yukarı\n6. **Toplantı** — ayakta, sırtık dik\n7. **Yemek** — omuz geri\n8. **Yatış** — düzgün yatak pozisyonu\n\n**Telefon kullanımı = en büyük postür düşmanı**. **'Text neck'** modern hastalığı. Çözüm: **telefonu göz hizasında** tut, başını eğme. Hareket gözünle değil **telefonla**.\n\n30 gün bilinçli pratik → postür **default** olur, otomatik dik.",
         "action": "Bugün **her saat başı 1 dk postür kontrolü**. Bilgisayar, telefon, yürüyüş.",
         "reflectionPrompt": "Akşam **sırt ağrısı azaldı** mı? Hangi pozisyonda en kötüydün?",
@@ -6049,7 +6049,7 @@
         ]
       },
       "45": {
-        "title": "Recovery Mastery",
+        "title": "Toparlanma Ustalığı",
         "teaching": "Ders 25'te recovery'nin temellerini öğrendin. **Bu ders mastery seviyesi**.\n\nKalvin Park (sport scientist): 'Elite atletler antrenmandan **2x daha çok** recovery'ye odaklanır. Çünkü antrenman = stres = yıkım. **Adaptasyon recovery'de** olur. Az recovery = ilerleme **sıfır** + sakatlık.'\n\n**Recovery mastery 6 araç**:\n\n1. **Uyku 8 saat optimum** (Ders 5, 22, 34)\n   - N3 zenginliği için 22:00 yat\n   - Tam karanlık + serin oda\n\n2. **Protein** — 1.6-2.2g/kg antrenman günleri\n   - Hemen sonra: 30g (kas sentezi penceresi)\n   - Akşam: kazein (yavaş emilim, gece onarım)\n\n3. **Foam roller** — haftada 3 kez × 10 dk\n   - Yapışıklık çözer (fasya)\n   - Kan akışı arttırır\n   - DOMS (kas ağrısı) azalır\n\n4. **Theragun / massage gun** — alternatifi\n   - Derin doku masajı 5 dk\n   - Eklemleri direkt evite (sadece kas)\n\n5. **Aktif toparlanma** (Ders 25)\n   - Yürüyüş, hafif yoga, mobilite\n\n6. **Sıcak / soğuk kontrast** (Ders 38)\n   - Sauna 15 dk + buz banyosu 1 dk × 3 tur\n   - Lenf pompası\n\n**Haftalık recovery yapısı**:\n- Cumartesi: yoga + foam roller\n- Pazar: tam dinlenme + uzun yürüyüş\n\n**30 dakika dedicated recovery** = ertesi gün antrenmanda **%30 daha güçlü**. Yatırım büyük getiri.\n\nMasaj profesyonel: ayda 1 kez = bilim destekler. ₺300-500/seans. Yatırım vs salon üyeliği = aynı tier.",
         "action": "Bugün **30 dk dedicated recovery**. Foam roller + esneme + yürüyüş.",
         "reflectionPrompt": "Recovery sonrası **enerji**? Yarınki antrenman için motivasyon?",
@@ -6204,7 +6204,7 @@
         ]
       },
       "50": {
-        "title": "Master Tamamlandı",
+        "title": "Yol Tamamlandı",
         "teaching": "**50 gün.** Çoğu insan bedenini **şans + genler + yaş**'a bırakır. Senin bedenin = **disiplinin** = **kimliğin**. Hareket, uyku, beslenme, soğuk, sıcak, mobilite, recovery — hepsi otomatik.\n\n**Bedenin patronu sen.**\n\nÇoğu insan **5 günde** vazgeçer (yeni yıl kararları istatistiği). %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\n**Yeni Sen kim?**\n- **Atlet** — kimlik nöral olarak yerleşti\n- **Hareket isteği** — eskiden yapamadığın şimdi vazgeçilmez\n- **Soğuk dost** — sıcak duş 'gevşeklik' gibi\n- **Uyku savunucusu** — geç yatma 'aptalca' geliyor\n- **Beslenme bilinçli** — şeker 'tatsız'\n- **Recovery sistematik** — antrenmandan ayrı zaman\n- **Postür dik** — kambur 'yanlış'\n- **Hidrasyon otomatik** — şişe sürekli yanında\n\n**Disiplin = yeni biyoloji.** Bedenin hücresel düzeyde değişti: mitochondria, miyofibril, bağırsak florası, hormon profili, sinir sistemi tonu. Bu yeni baseline.\n\nDiploma yok. Sertifika yok. Sadece **ayna**. 50 gün önceki sen → bugünkü sen. **Tanıyor musun**?\n\n50 gün = bağımlılık kırılma noktası (eski hareketsizlik, kötü beslenme). 90 gün = kalıcı. 1 yıl = kimlik.\n\n**Bir başka path başlat**. 7 gün dinlen, sonra **Money Discipline** veya **Mind Discipline**. Disiplin **bulaşıcı** — bedeni disipline eden zihni ve parayı kolayca disipline eder.",
         "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır.",
         "reflectionPrompt": "50 gün önceki sen şimdi olmak **ister miydi**? Bu sorunun cevabı ne söylüyor?",
@@ -6237,35 +6237,35 @@
     },
     "money-discipline": {
       "1": {
-        "title": "Görünmez Harcama Tehlikesi",
-        "teaching": "Banka hesap özetini açtın. 'Ne harcadım bu ay?' Büyük şeyler net: kira, market, fatura. Ama **küçük olan, otomatik çekilen, aboneliğe giren** — bunları hatırlayamıyorsun. **Yılda binlerce TL** sessizce gidiyor.\n\nWest Monroe Partners araştırması: ortalama insan **aylık ₺800-1500** unutulmuş aboneliğe öder. Yıllık **₺10-18 bin**. Bu **görünmez harcama** — kart bilanço'sunda gizli, kafada gizli.\n\nÖrnek liste (çoğu kişi):\n- Netflix (kullanmıyor, başkası kullanıyor)\n- Spotify Family (yarısı eski arkadaş)\n- Adobe Creative (1 yıl açmadın)\n- iCloud ekstra storage\n- Gym (3 ay önceki)\n- Online kurs (hiç açmadın)\n- Premium news\n- App-içi abonelikler (forgotten)\n\nMekanizma: 'küçük harcamalar = harcamalar' beyni filtre dışı. **Recurring billing** = endüstri tasarımı — sen unut, onlar gel.\n\nDan Ariely (**Predictably Irrational**): 'Otomatik harcamalar = irrational behavior tetikleyici. Görmeme = onaylama.'\n\n**Çözüm**: son 3 ay hesap özetini **tek tek** geç. Her recurring → kullanıyor musun? **Hayırsa iptal et şu an**.",
-        "action": "**Banka hesap özetinden son 3 ayı** geç. Her abonelik/tekrarlanan ödemeyi **listele**. Kullanmadıklarını **şu an iptal et**.",
-        "reflectionPrompt": "Kaç abonelik bulundun? **Yıllık ne kadar para**ydı?",
+        "title": "Paranın Sessizce Kaçtığı Yer",
+        "teaching": "Büyük harcamaları hatırlarsın: kira, market, ulaşım. Ay sonunda şaşırtan şey çoğu zaman küçük ama tekrarlanan ödemelerdir.\n\nBir aboneliği ilk gün bilinçli seçersin; sonraki aylarda ödeme otomatikleşir. Kullanımın azalırken ücret görünmez hale gelir. Sorun tutarın küçük olması değil, kararın artık verilmemesidir.\n\nBugün bütün finans hayatını düzeltmeyeceksin. Yalnız son 30 günlük hareketlerde tekrar eden ödemeleri arayacaksın: üyelik, uygulama, bulut alanı, spor salonu, dijital hizmet.\n\nHer satır için tek soru sor: 'Bunu bugün ilk kez görsem yine satın alır mıydım?' Cevap hayırsa iptal ekranını aç.",
+        "action": "Son 30 günlük kart veya banka hareketini aç. Tekrarlanan ödemeleri listele ve artık kullanmadığın en az bir tanesini iptal et.",
+        "reflectionPrompt": "Bugün yeniden satın almayacağın hangi ödeme devam ediyordu? Aylık toplamı ne kadar?",
         "quiz": [
           {
-            "q": "En tehlikeli harcama tipi?",
+            "q": "Tekrarlanan ödemeyi görünmez yapan ne?",
             "options": [
-              "Büyük tek",
-              "Görünmez abonelikler",
-              "Yemek",
-              "Ulaşım"
+              "Her ay yeniden karar vermemen",
+              "Tutarın ekranda yazması",
+              "Bankanın mesaj göndermesi",
+              "Nakit kullanmak"
             ],
-            "correct": 1,
-            "explain": "Otomatik ödenen küçük tutarlar yıllık binleri yakar."
+            "correct": 0,
+            "explain": "İlk satın alma bilinçlidir; sonraki çekimler otomatikleşir. Kullanım değişse bile ödeme devam edebilir."
           },
           {
-            "q": "İlk adım ne olmalı?",
+            "q": "Bir aboneliği değerlendirirken en iyi soru hangisi?",
             "options": [
-              "Tasarruf",
-              "Banka özeti incele",
-              "Kredi al",
-              "Yatırım"
+              "Eskiden neden almıştım?",
+              "Bugün ilk kez görsem yine alır mıydım?",
+              "Başkaları kullanıyor mu?",
+              "Logosu güzel mi?"
             ],
             "correct": 1,
-            "explain": "Görünmezi görünür yapmak ilk adım."
+            "explain": "Bugünkü ihtiyacı sorunca geçmiş kararın etkisinden çıkarsın. Değer üretmiyorsa otomatik ödeme devam etmemeli."
           }
         ],
-        "proTip": "Banka ekstresinin son 3 ayını yan yana koy. Tekrar eden harcamalar görünür olur."
+        "proTip": "İptal etmekte kararsızsan hizmeti not al ve 7 gün kullanıp kullanmadığına bak. Kullanmadıysan karar zaten verilmiştir."
       },
       "2": {
         "title": "Bütçe = Özgürlük",
@@ -6702,7 +6702,7 @@
         ]
       },
       "16": {
-        "title": "Haftalık Para Review",
+        "title": "Haftalık Para Kontrolü",
         "teaching": "Sağlık check-up yılda bir gidiyorsun. Araç servise her 10K km'de bir. Ama paran için? **Hiç review yok**. Sonuç: yıl sonunda 'ne oldu?' belirsiz.\n\nPeter Drucker (yönetim babası): '**What gets measured, gets managed**.' Ölçülmeyen yönetilmez. Para = bu kuralın en net örneği.\n\n**Haftada 1 saat para review** = ömür boyu finansal disiplinin temeli.\n\n**Review içeriği** (30 dk yeterli):\n1. **Gelir-gider tablosu** — bu hafta ne geldi, ne gitti\n2. **Bütçe vs gerçek** — 50/30/20 nerede?\n3. **Net servet değişimi** — geçen haftaya göre artış/azalış\n4. **Hedef takibi** — kısa/orta/uzun vade hedef ilerlemesi\n5. **Sonraki hafta plan** — büyük alımlar, tasarruf hedefi\n\nMatematik: **1 saat × 52 hafta = 52 saat/yıl**. **Yıllık gelirini belirleyen 52 saat**. Saat başına getirisi: en yüksek aktivite.\n\nMekanizma: review = **meta-finansal bilinç** + **karar yapısı**. Mikro kararları **makro yapıya** sıkıştırır. Hafta içi karar yorgunluğu azalır.\n\nDavid Bach: 'Zenginlerin gizli alışkanlığı = düzenli money review. Fakirlerin gizli alışkanlığı = sürekli avoidance.'\n\n**Sabit zaman** kritik: **Pazar 09:00** veya **Cumartesi 10:00**. Esnek olma → kaçırırsın. Takvime koy, kutsal say.",
         "action": "Bu hafta para review için **30 dakika** harca. Excel ya da defter.",
         "reflectionPrompt": "Haftalık review olmadan paran **nasıl yönetilirdi**?",
@@ -7322,7 +7322,7 @@
         ]
       },
       "36": {
-        "title": "Sigorta Mastery",
+        "title": "Sigorta Kontrolü",
         "teaching": "Ders 23'te sigorta disiplini temellerini öğrendin. **Bu ders mastery seviyesi**: **kritik 4 sigorta** + iyi pratik.\n\n**Olmazsa olmaz 4 sigorta**:\n\n1. **Sağlık (özel poliçe)** — devlet hastanesi yetersiz, özel hastane tedavi **₺50K-500K**. Yıllık prim ₺3-15K. **ROI net**.\n\n2. **Hayat sigortası** (aile varsa) — beklenmedik ölüm = ailen finansal **enkaz**. 30 yaş, 1M koruma = ayda **₺200-500**. **Aile bekası**.\n\n3. **İş kaybı / işsizlik sigortası** — beklenmedik işsizlik = 6+ ay gelir kaybı. Sigorta = bridge buffer. Genelde devlet (İŞKUR) yetersiz, özel ek koruma.\n\n4. **Mesleki sorumluluk** (serbest meslek: doktor, mimar, avukat, danışman) — hata yapma riski yüksek = koruma şart.\n\n**Olmaması olmazsa olmaz** (kâr tuzakları):\n- **Araba kasko** (eski araba için) — yenisi için trafik+kasko yeter\n- **Sandalye sigortası** (saçma — kendi ev koşulu)\n- **Telefon ekran sigortası** (kapak al, dikkat et)\n- **Uzatılmış garanti** (üretici garantisi yeter, ek %50 maliyet sıçraması)\n\nNassim Taleb (**Antifragile**): 'Sigorta = **tail risk** (kuyruk risk) yönetimi. Düşük olasılık × yüksek etki = sigorta mantıklı. Yüksek olasılık × düşük etki = sigorta kâr tuzağı.'\n\n**Yıllık karşılaştırma kritik**:\n- Sigorta şirketleri sadakatten faydalanır (otomatik prim artırır)\n- Aynı koruma rakipte **%30 daha ucuz** olabilir\n- Karşılaştırma siteleri: SigortaTeklifAl, Sigortam.net\n- Her yıl prim ödemesi öncesi karşılaştır, geç\n\nMekanizma: sigorta = **felaket buffer**, **birikim değil**. Olmayacak diye düşünmek = ön kabul. Olursa = finansal yıkım.",
         "action": "Bugün **sigortalarını gözden geçir**. **Eksik veya fazla**?",
         "reflectionPrompt": "Hangi sigorta **öncelik**? Hangi var olan aslında **gereksiz**?",
@@ -7508,7 +7508,7 @@
         ]
       },
       "42": {
-        "title": "Acil Fon Mastery",
+        "title": "Acil Durum Fonu Ustalığı",
         "teaching": "Ders 5'te 3 aylık acil fonu öğrendin. **Bu ders mastery**: **6 aylık fon**.\n\nNiye 6 ay? Çünkü modern hayat krizleri **daha uzun sürer**:\n- **İşsizlik ortalama** 4-6 ay (kovid sonrası daha uzun)\n- **Sağlık problemi** geçici çözüm 3-6 ay\n- **Aile krizi** belirsiz\n- **Sektör krizi** 6+ ay (örnek: 2020 turizm, 2023 teknoloji)\n\n3 aylık fon = ihtiyacın yarısında bitiyor → panik = kötü kararlar.\n\nMatematik:\n- Aylık zorunlu giderler: ₺15K\n- 3 aylık fon: ₺45K\n- **6 aylık fon: ₺90K**\n\n90K **likit + güvenli**. Hayat değişir, hazır ol.\n\n**Acil fon nereye?**\n- **Yastık altı**: enflasyon = yıllık %50+ kayıp (Türkiye)\n- **Çek hesabı**: faiz sıfır, enflasyon kaybı\n- **Vadeli mevduat (1 ay)**: faiz var ama düşük\n- **Para piyasası fonu**: yüksek likit + faiz (en iyi)\n- **KKM (kur korumalı mevduat)**: TL'nin enflasyon koruması (Türkiye özel)\n- **Yüksek getirili mevduat**: %30-40 faiz (Türkiye 2024)\n\nAcil fon ≠ yatırım. **Likit + güvenli** öncelik. %20-30 getiri yetersiz ama amaç değil — **buffer**.\n\nMekanizma: 6 aylık fon = **psikolojik güvenlik** = uzun vade düşünme + iyi kararlar. Acil fon yoksa = sürekli alarm = stresli kararlar.\n\nDave Ramsey: '6 aylık acil fon = finansal disiplinin **gizli silahı**. Her şey yıkılırsa ayakta kalırsın. **6 ay nakit = 6 ay zihinsel huzur**.'",
         "action": "Bugün **acil fon hedefini 6 aya çek**.",
         "reflectionPrompt": "**6 ay** daha **güvenli** mi hissettiriyor?",
@@ -7539,7 +7539,7 @@
         ]
       },
       "43": {
-        "title": "Müzakere Mastery",
+        "title": "Müzakere Ustalığı",
         "teaching": "Ders 21'de müzakere temellerini öğrendin. **Bu ders mastery seviyesi**: her alanda müzakere uygula.\n\nChris Voss (eski FBI rehine müzakerecisi, **Never Split the Difference**): 'Müzakere her **insan etkileşiminde** var — tanı veya tanıma. Tanırsan = kazanırsın. Tanımazsan = kaybedersin.'\n\n**Müzakere alanları (çoğu insan denemez)**:\n\n1. **Maaş** (yıllık ₺50-200K fark)\n   - 'Bu pozisyon için aralık nedir?'\n   - 'Beklentiyi karşılamak için ne yapabiliriz?'\n   - 'Performance review sonrası tekrar konuşalım mı?'\n\n2. **Faturalar** (internet, kablo, sigorta — %20-30 indirim)\n   - 'Rakip teklif aldım' (gerçek de olabilir)\n   - 'Sadakati ödüllendiren bir program var mı?'\n   - 'Devam etmemek için bir sebep aramıyorum, ama bu fiyatla zor'\n\n3. **Kira** (yıllık artış)\n   - 'Anlaştığımız zam oranı uygun mu?'\n   - 'Yıllık değer artışı zaten oldu — sözleşme yenileme stabil olabilir mi?'\n\n4. **Alışveriş** (elektronik, mobilya, takı)\n   - 'Bu son fiyatınız mı?'\n   - 'Nakit ödesem nasıl olur?'\n   - 'Birden fazla alırsam ne yapabiliriz?'\n\n5. **Servis** (tamir, danışmanlık, hizmet)\n   - 'Paket fiyat nasıl?'\n   - 'Uzun vade müşteri olursam indirim?'\n\n**'Asıl rakam ne?'** = açık uçlu soru, satıcının kafasındaki rakamı açar.\n\n**'Bu son fiyat mı?'** = sihir cümle, %5-15 indirim genelde otomatik.\n\nMekanizma: müzakere = **piyasa testi**. Her satıcının minimum + maksimum range'i var. Sormazsan = maksimumda alırsın. Sorarsan = aşağıya inebilir.\n\nİlk müzakere garip gelir. **Online indirim kodu** sormak = en düşük bariyer başlangıç.",
         "action": "Bugün **1 fiyat müzakere et**. Satıcı, hizmet sağlayıcı, kira — fark etmez.",
         "reflectionPrompt": "Müzakere **zor muydu**? Beklediğinden kolay mı zor mu?",
@@ -7756,7 +7756,7 @@
         ]
       },
       "50": {
-        "title": "Master Tamamlandı",
+        "title": "Yol Tamamlandı",
         "teaching": "**50 gün.** Para artık **endişe değil araç**. Kontrol var, plan var, çeşitlenme var, kimlik var. **Yeni baseline = finansal master.**\n\nÇoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen **son %5'in içindesin**.\n\n**Yeni Sen kim?**\n- **Bütçe ile yaşıyor** — kategoriler net\n- **Otomatik tasarruf** — sistem çalışıyor, irade gerek değil\n- **Acil fon hazır** — 6 aylık buffer\n- **Yatırım yapıyor** — endeks fon DCA\n- **Vergi optimum** — gereksiz ödeme yok\n- **Sigorta dengeli** — eksik kapanmış, fazla iptal\n- **Çoklu gelir** — risk dağıtılmış\n- **Servet kimliği** — 'ben yaratıcı'\n- **Müzakere becerisi** — pazarlık otomatik\n- **Uzun vade düşünür** — bileşik faiz silahın\n\n**Diploma yok**. Sertifika yok. Sadece **net servet artıyor**. Bu **en güçlü kanıt**.\n\nT. Harv Eker: 'Servet **dış değişim değil, iç dönüşüm**. Maaş aynı olabilir — finansal kimlik değişti = uzun vade exponansiyel fark.'\n\n50 gün = nöral patika kuruldu. 90 gün = kalıcı. 1 yıl = kimlik. Şu noktada **karar senin**: 31-50 dersleri (advanced) veya başka path.\n\n**5 path tamamlandıysa**: 6. ay her gün **1 path'tan ders** (karışım). Veya **kendi path'ini tasarla** — özelleşmiş, kişisel.\n\nAyna karşısına geç. 50 gün önceki sen → bugünkü sen. **Tanıyor musun**?\n\nFinansal disiplin **bulaşıcı** — para alanında öğrendiğin prensipler (sistem, otomasyon, uzun vade, kimlik) zihin, beden, sabah ritüeli, ilişki, kariyer — **her şeye taşınır**.\n\n**Çoğu insan yaşam boyu** 'para sorunu' yaşar. Sen artık **yaşam boyu** finansal kontrolünde. Bu **ömür boyu fark**.",
         "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır.",
         "reflectionPrompt": "**50 gün önceki sen şimdi olmak ister miydi**? Bu sorunun cevabı ne söylüyor?",

@@ -332,18 +332,27 @@ export default function LessonScreen({ navigation, route }) {
   const currentQuestion = hasQuiz ? quiz[quizIndex] : null;
 
   // ── Teaching page splitter ────────────────────────────────────────
-  // Every lesson in lessons.tr.json is authored in the 4-layer
-  // format (sahne → bilim → mekanizma → pratik) with paragraphs
-  // separated by `\n\n`. We split on those separators so each
-  // paragraph renders as its own card. Lessons authored before the
-  // expansion (shorter, one-paragraph) gracefully collapse to a
-  // single page. Always safe — empty teaching → empty array.
+  // Keep every lesson to at most four teaching beats. Older content often
+  // contains 6-12 short paragraphs; showing each as a separate page turns a
+  // five-minute lesson into a tap marathon. Grouping preserves every word
+  // while keeping a predictable situation -> reason -> shift -> try rhythm.
   const teachingPages = useMemo(() => {
     if (!teaching) return [];
-    return teaching
+    const paragraphs = teaching
       .split(/\n\n+/)
       .map((p) => p.trim())
       .filter((p) => p.length > 0);
+    if (paragraphs.length <= 4) return paragraphs;
+
+    const pages = Array.from({ length: 4 }, () => []);
+    paragraphs.forEach((paragraph, index) => {
+      const pageIndex = Math.min(
+        pages.length - 1,
+        Math.floor((index * pages.length) / paragraphs.length),
+      );
+      pages[pageIndex].push(paragraph);
+    });
+    return pages.map((page) => page.join('\n\n'));
   }, [teaching]);
   const [teachingPageIdx, setTeachingPageIdx] = useState(0);
   const isLastTeachingPage =

@@ -368,12 +368,12 @@ export default function OnboardingScreen({ navigation }) {
           {/* Caption */}
           <Text style={styles.caption}>
             {step === 'personalize'
-              ? t('onboarding.captionPersonalize', 'KİŞİSEL PLAN OLUŞTURULUYOR')
+              ? t('onboarding.captionPersonalize', 'SANA UYAN PLANI KURALIM')
               : step === 'pickPath'
-                ? t('onboarding.captionPickPath', 'YOLUNU SEÇ')
+                ? t('onboarding.captionPickPath', 'ÖNCE TEK BİR ŞEYİ DÜZELT')
                 : step === 'archetype'
-                  ? t('onboarding.captionArchetype', '30 GÜN SONRA NE OLACAKSIN')
-                  : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
+                  ? t('onboarding.captionArchetype', '30 GÜNLÜK NİYETİNİ SEÇ')
+                  : t('onboarding.captionUpsell', 'RİTMİ KESMEDEN DEVAM ET')}
           </Text>
         </View>
       </View>
@@ -383,11 +383,11 @@ export default function OnboardingScreen({ navigation }) {
 
 function PersonalizeStep({ t, answers, onAnswer }) {
   const goalOptions = [
-    { id: 'focus', icon: 'center-focus-strong', labelKey: 'onboarding.goalFocus', fallback: 'Daha çok odaklan' },
-    { id: 'morning', icon: 'wb-twilight', labelKey: 'onboarding.goalMorning', fallback: 'Sabah rutinim' },
-    { id: 'fitness', icon: 'fitness-center', labelKey: 'onboarding.goalFitness', fallback: 'Vücut disiplini' },
-    { id: 'money', icon: 'account-balance-wallet', labelKey: 'onboarding.goalMoney', fallback: 'Para disiplini' },
-    { id: 'discipline', icon: 'whatshot', labelKey: 'onboarding.goalGeneral', fallback: 'Genel disiplin' },
+    { id: 'focus', icon: 'center-focus-strong', labelKey: 'onboarding.goalFocus', fallback: 'Dikkatimi geri almak' },
+    { id: 'morning', icon: 'wb-twilight', labelKey: 'onboarding.goalMorning', fallback: 'Sabaha hakim olmak' },
+    { id: 'fitness', icon: 'fitness-center', labelKey: 'onboarding.goalFitness', fallback: 'Enerjimi yükseltmek' },
+    { id: 'money', icon: 'account-balance-wallet', labelKey: 'onboarding.goalMoney', fallback: 'Paramı yönetmek' },
+    { id: 'discipline', icon: 'whatshot', labelKey: 'onboarding.goalGeneral', fallback: 'Başladığımı bitirmek' },
   ];
   const timeOptions = [
     { id: '5', labelKey: 'onboarding.time5', fallback: '5 dk' },
@@ -395,9 +395,9 @@ function PersonalizeStep({ t, answers, onAnswer }) {
     { id: '30', labelKey: 'onboarding.time30', fallback: '30+ dk' },
   ];
   const moodOptions = [
-    { id: 'motivated', icon: 'whatshot', labelKey: 'onboarding.moodMotivated', fallback: 'Yüksek motivasyon' },
-    { id: 'lost', icon: 'help-outline', labelKey: 'onboarding.moodLost', fallback: 'Karışık hissediyorum' },
-    { id: 'fresh', icon: 'auto-awesome', labelKey: 'onboarding.moodFresh', fallback: 'Yeni başlangıç' },
+    { id: 'motivated', icon: 'whatshot', labelKey: 'onboarding.moodMotivated', fallback: 'Hazırım, başlayalım' },
+    { id: 'lost', icon: 'help-outline', labelKey: 'onboarding.moodLost', fallback: 'Dağınığım, yön lazım' },
+    { id: 'fresh', icon: 'auto-awesome', labelKey: 'onboarding.moodFresh', fallback: 'Sıfırdan başlıyorum' },
   ];
 
   return (
@@ -407,7 +407,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
       keyboardShouldPersistTaps="handled"
     >
       <Text style={styles.personalizeIntro}>
-        {t('onboarding.personalizeIntro', 'Sana özel plan için 3 hızlı soru')}
+        {t('onboarding.personalizeIntro', 'Üç kısa cevap ver; ilk görevi sana göre seçelim.')}
       </Text>
 
       {/* Name — optional. Drives personalised push titles + Home greeting.
@@ -429,7 +429,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
 
       {/* Goal */}
       <Text style={styles.personalizeQ}>
-        {t('onboarding.qGoal', 'Ne için buradasın?')}
+        {t('onboarding.qGoal', 'Önce neyi düzeltmek istiyorsun?')}
       </Text>
       <View style={styles.optionList}>
         {goalOptions.map((opt) => {
@@ -461,7 +461,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
 
       {/* Time */}
       <Text style={styles.personalizeQ}>
-        {t('onboarding.qTime', 'Günde ne kadar zaman ayırabilirsin?')}
+        {t('onboarding.qTime', 'Gerçekçi olarak kaç dakikan var?')}
       </Text>
       <View style={styles.optionRow}>
         {timeOptions.map((opt) => {
@@ -483,7 +483,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
 
       {/* Mood */}
       <Text style={styles.personalizeQ}>
-        {t('onboarding.qMood', 'Şu an nasıl hissediyorsun?')}
+        {t('onboarding.qMood', 'Bugün hangi noktadasın?')}
       </Text>
       <View style={styles.optionList}>
         {moodOptions.map((opt) => {
@@ -524,7 +524,7 @@ function UpsellStep({ t, onSubscribe }) {
     >
       <Text style={styles.upsellEmoji}>🔥</Text>
       <Text style={styles.upsellTitle}>
-        {t('onboarding.upsellTitle', 'Disiplini hızlandır')}
+        {t('onboarding.upsellTitle', 'İvmeni yarıda kesme')}
       </Text>
 
       {/* No hardcoded local price here. Exact StoreKit price + billing
@@ -609,13 +609,13 @@ function ArchetypeStep({ t, selectedArchetype, onSelect }) {
       <Text style={styles.pickTitle}>
         {t(
           'onboarding.archetypeTitle',
-          '30 gün sonra hangisi olacaksın?',
+          '30 gün sonra neyin değişmiş olsun?',
         )}
       </Text>
       <Text style={styles.pickSubtitle}>
         {t(
           'onboarding.archetypeSubtitle',
-          'Bir tane seç. Sonraki 30 gün boyunca bu kişi olarak hareket edeceksin.',
+          'Tek bir yön seç. Planın her gün o yönde küçük bir kanıt üretsin.',
         )}
       </Text>
       <ScrollView
@@ -681,10 +681,10 @@ function PickPathStep({ t, selectedPath, onSelect }) {
   return (
     <View style={styles.pickPathContent}>
       <Text style={styles.pickTitle}>
-        {t('onboarding.pickPathTitle', 'Hangi disipline odaklanacaksın?')}
+        {t('onboarding.pickPathTitle', 'Bugün hangi soruna saldırıyoruz?')}
       </Text>
       <Text style={styles.pickSubtitle}>
-        {t('onboarding.pickPathSubtitle', 'Gelişim yolculuğuna başlamak için temel bir yol seç.')}
+        {t('onboarding.pickPathSubtitle', 'Hepsini aynı anda değil. Şimdi en çok canını sıkanı seç.')}
       </Text>
       <ScrollView
         contentContainerStyle={styles.pathGrid}

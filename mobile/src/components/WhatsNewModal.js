@@ -41,7 +41,7 @@ export const WHATS_NEW = {
   '1.0.42': {
     icon: 'auto-awesome',
     titleKey: 'whatsNew.v1_0_42.title',
-    titleDefault: 'Daily Discipline daha net',
+    titleDefault: 'Daily Discipline artık daha net',
     bullets: [
       {
         icon: 'task-alt',
