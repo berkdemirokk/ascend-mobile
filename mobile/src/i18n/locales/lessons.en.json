@@ -29,314 +29,314 @@
   "lessons": {
     "dopamine-detox": {
       "1": {
-        "title": "The Science of Addiction",
-        "teaching": "Dopamine isn't a reward chemical — it's an anticipation chemical. Your brain releases dopamine while imagining a future reward, not when the reward arrives.\n\nWhile scrolling your phone, every video, every notification is a small dopamine hit. Your brain learns: 'Phone = reward exists.' Result: constantly checking your phone, reaching for it when bored, real life feeling 'flat.'\n\nGood news: this learning is reversible. Your brain settles into a new baseline in 7–30 days. You're starting now.",
-        "action": "Every time you open your phone today, wait 10 seconds before looking at the screen. Just wait. Then do what you wanted.",
-        "reflectionPrompt": "Did you notice how many times you opened your phone 'without thinking' today?",
+        "title": "Catch Why You Open Your Phone",
+        "teaching": "Your hand reaches for the phone even when no alert arrived and no message is expected. The movement starts before you make a decision.\n\nThe pull of an endless feed is not one perfect post. It is not knowing what comes next. Uncertainty keeps “one more” available.\n\nThe goal is not to remove the phone from your life. Put a small gap between automatic movement and a deliberate choice. Control grows inside that gap.\n\nBefore the next five unlocks, wait ten seconds without waking the screen. Open it when you can name a real purpose; otherwise put it down.",
+        "action": "Before your next five automatic unlocks, wait ten seconds and ask, “What am I opening this for?”",
+        "reflectionPrompt": "What did you actually need in that moment: information, connection, or escape from boredom?",
         "quiz": [
           {
-            "q": "When is dopamine released?",
+            "q": "What is the purpose of the ten-second pause?",
             "options": [
-              "When reward arrives",
-              "While anticipating reward",
-              "Under stress",
-              "During sleep"
+              "Quit phones forever",
+              "Make automatic behavior visible",
+              "Reply faster",
+              "Create more alerts"
             ],
             "correct": 1,
-            "explain": "Dopamine is the anticipation chemical — released while imagining future reward."
+            "explain": "The pause separates the hand movement from the decision so you can choose again."
           },
           {
-            "q": "How many days for new baseline?",
+            "q": "What comes first when the urge appears?",
             "options": [
-              "1-3 days",
-              "4-7 days",
-              "7-30 days",
-              "60+ days"
+              "Open immediately",
+              "Hide the phone forever",
+              "Wait and name the purpose",
+              "Search for alerts"
             ],
             "correct": 2,
-            "explain": "Science shows 7-30 day window."
+            "explain": "Waiting and naming the purpose turns an automatic reaction into a conscious choice."
           }
         ],
-        "proTip": "Addiction always waits for an excuse — \"just 5 minutes\" is that excuse."
+        "proTip": "The target is not a screen-free life. It is deciding for yourself when the screen opens."
       },
       "2": {
-        "title": "Kill Notifications",
-        "teaching": "Every notification creates a micro-explosion in your attention. Research: it takes 23 minutes to fully refocus after one notification.\n\nIf you get 50 notifications a day, you're never fully focused. Your brain is in constant 'is something incoming?' mode.\n\nNotifications don't serve you — they serve apps. Their growth metrics. You pay the cost.",
-        "action": "Turn OFF every notification on your phone. Keep only calls and direct messages. Do this now. If you postpone, you won't.",
-        "reflectionPrompt": "Which notification was hardest to disable? Why?",
+        "title": "Decide Who Gets to Interrupt You",
+        "teaching": "The screen lights up just as you settle into work. You check for one second, then return and reread the same sentence.\n\nThe cost is not only the glance. Each interruption makes your mind rebuild the previous context. Small breaks accumulate into an unfinished, tiring day.\n\nNot every alert is urgent. Calls, expected messages, and calendar reminders may serve you. Likes, recommendations, and promotions mainly call you back into an app.\n\nYou do not need to silence every person. Leave people available and mute machines. Decide when you want to check an app.",
+        "action": "Open notification settings and mute likes, recommendations, news, or promotions from at least five apps. Keep important people available.",
+        "reflectionPrompt": "Which app interrupted you most, and when would you intentionally choose to check it?",
         "quiz": [
           {
-            "q": "Time to refocus after one notification?",
+            "q": "What is the hidden cost of an alert?",
             "options": [
-              "1 min",
-              "5 min",
-              "10 min",
-              "23 min"
-            ],
-            "correct": 3,
-            "explain": "23 minutes is the full refocus window."
-          },
-          {
-            "q": "Notifications serve who?",
-            "options": [
-              "You",
-              "The apps",
-              "Your family",
-              "Nobody"
+              "Changing phone color",
+              "Rebuilding focus",
+              "Using storage",
+              "Instant battery loss"
             ],
             "correct": 1,
-            "explain": "They serve apps' growth metrics, not you."
-          }
-        ],
-        "proTip": "Turning off notifications isn't cutting communication — taking control."
-      },
-      "3": {
-        "title": "Social Media Fast",
-        "teaching": "Social media is one of the fastest dopamine sources. Infinite scroll, unpredictable content, social comparison — you've plugged your brain into an optimized exploitation machine.\n\nToday you start a test: 24 hours, no social media. Instagram, TikTok, Twitter, YouTube Shorts — all of it.\n\nThe first few hours will be hard. You'll auto-unlock your phone and reach for the app. This is 'phantom reaching.' Normal. It passes.",
-        "action": "Remove all social media apps from your home screen. Put them in a folder named 'Enemies.' Don't open any of them for 24 hours.",
-        "reflectionPrompt": "When did the urge 'just one quick check' come up? What were you feeling at that moment?",
-        "quiz": [
-          {
-            "q": "What is \"phantom reaching\"?",
-            "options": [
-              "Dropping phone",
-              "Auto-reaching for phone",
-              "Social fast",
-              "New notification"
-            ],
-            "correct": 1,
-            "explain": "Habitual auto-reach for phone without thinking."
+            "explain": "After an interruption, your mind has to reconstruct the context of the previous task."
           },
           {
-            "q": "Social media fast duration?",
+            "q": "Which alerts are more reasonable to keep?",
             "options": [
-              "6 hrs",
-              "12 hrs",
-              "24 hrs",
-              "48 hrs"
+              "Every promotion",
+              "All recommendations",
+              "Calls and truly important messages",
+              "Every default alert"
             ],
             "correct": 2,
-            "explain": "24 hours breaks the habit on first try."
+            "explain": "The goal is not isolation. Let people reach you without letting every app direct your attention."
           }
         ],
-        "proTip": "24-hour fast is the first true digital silence for most."
+        "proTip": "Keep people available and mute machines. This simple rule removes repeated decisions."
       },
-      "4": {
-        "title": "Cut Junk Content",
-        "teaching": "Junk content = empty calories for your brain. Random YouTube videos, Reddit scrolling, news refreshing, podcasts only as background.\n\nWhat you don't notice: this content isn't just making you dumber — it's making you an accessory. Your brain gets used to consuming others' thoughts and forgets how to produce its own.\n\nToday we install a filter: every piece of content you consume must serve a purpose.",
-        "action": "Don't consume any content today. Only produce. Write, draw, walk and think, have a real conversation. No information consumption today.",
-        "reflectionPrompt": "How many times today did you feel 'information hunger'? What was that hunger really for?",
+      "3": {
+        "title": "Create a Two-Hour Quiet Window",
+        "teaching": "A small pause appears at a bus stop, in a line, or in an elevator. Your finger opens social media before you decide, and two minutes can become twenty.\n\nAn endless feed has no natural stopping point. A book has a chapter and a film has credits; the feed never says complete.\n\nA dramatic 24-hour ban is harder than necessary for a first experiment. A clear two-hour window is long enough to notice urges and short enough to complete.\n\nDo not delete every app. Remove them from the home screen, start a timer, and observe what you feel each time your hand reaches for them.",
+        "action": "Remove social apps from the home screen and start a two-hour window today without opening their feeds.",
+        "reflectionPrompt": "When was the urge strongest, and were you bored, tense, lonely, or avoiding something?",
         "quiz": [
           {
-            "q": "What is junk content?",
+            "q": "What makes an endless feed hard to leave?",
             "options": [
-              "Old content",
-              "Empty calories for brain",
-              "Premium content",
-              "Educational"
-            ],
-            "correct": 1,
-            "explain": "Purposeless consumption is empty calories."
-          },
-          {
-            "q": "Today's main idea?",
-            "options": [
-              "Produce, don't consume",
-              "Consume more",
-              "Just listen",
-              "Do nothing"
+              "No natural stopping point",
+              "Short text",
+              "Phone weight",
+              "Bright icons alone"
             ],
             "correct": 0,
-            "explain": "Producing is more nourishing than consuming."
+            "explain": "Without a natural end, you have to make a fresh exit decision after every item."
+          },
+          {
+            "q": "What is today’s experiment?",
+            "options": [
+              "Quit forever",
+              "Observe urges for two hours",
+              "Install a new app",
+              "Block every message"
+            ],
+            "correct": 1,
+            "explain": "A short measurable window reveals the habit without requiring a dramatic promise."
           }
         ],
-        "proTip": "Junk content = empty calories. Producing = nourishment."
+        "proTip": "Removing an icon from the home screen adds one useful step between the urge and the feed."
+      },
+      "4": {
+        "title": "Choose Your Content Diet",
+        "teaching": "You open one video during an empty moment. Recommendations continue, half an hour passes, and no single idea remains that you could explain.\n\nEntertainment is not the problem. Starting without knowing what you want lets the platform choose for you, with another item always ready.\n\nUseful content can lead to a thought, decision, or action. An aimless feed only fills time. Ask before opening: “What am I here to get?”\n\nDo not stop all consumption today. Choose one piece, finish it, close the app, and write the idea that remained in your own words.",
+        "action": "Choose one article or video. Close the app afterward and write the idea that stayed with you in three sentences.",
+        "reflectionPrompt": "What thought or action did it leave you with? If none, why did you keep watching?",
+        "quiz": [
+          {
+            "q": "Which question interrupts aimless consumption?",
+            "options": [
+              "What am I here to get?",
+              "How many likes?",
+              "What comes next?",
+              "Is everyone watching?"
+            ],
+            "correct": 0,
+            "explain": "Naming the purpose keeps the platform from making every next choice for you."
+          },
+          {
+            "q": "How do you know content stayed with you?",
+            "options": [
+              "You watched for hours",
+              "You can explain it in your words",
+              "You opened another item",
+              "You remember only the title"
+            ],
+            "correct": 1,
+            "explain": "Putting the idea in your own words turns consumption into thought."
+          }
+        ],
+        "proTip": "Say your purpose before opening an app. If you cannot form the sentence, the reason may be weak."
       },
       "5": {
-        "title": "Allow Boredom",
-        "teaching": "Modern life is programmed to fill every empty moment. Phone in the elevator. Phone in the bathroom. Headphones while walking. Video while eating.\n\nResult: your brain never enters idle mode. Creativity is born in idle mode. Solutions come in idle mode. Self-knowledge happens in idle mode.\n\nBoredom isn't a sickness — it's a signal. Your brain saying: 'I need empty time.' Listen to it.",
-        "action": "Do nothing for 30 minutes today. No phone, no music, no book. Just sit or walk. Observe your thoughts. If you get bored, great — keep going.",
-        "reflectionPrompt": "What thought emerged in your mind by the end of 30 minutes? Were you aware of it before?",
+        "title": "Do Not Fill Every Empty Moment",
+        "teaching": "The elevator is slow, the line pauses, or a friend is two minutes late. Your hand goes straight to the phone as soon as empty space appears.\n\nBoredom is not an error. It gives your mind a brief chance to process what is already there without another input.\n\nThirty silent minutes can feel unnecessarily large at first. Ten minutes without audio or a phone is long enough to notice discomfort and short enough not to postpone.\n\nYou do not need to produce a brilliant idea. Notice how often you want the phone and where your mind travels when the space remains open.",
+        "action": "Sit or walk quietly for ten minutes without a phone, music, or podcast. Write the thought that returned most.",
+        "reflectionPrompt": "Where did your mind go, and what do you usually use to cover that thought?",
         "quiz": [
           {
-            "q": "Boredom's real message?",
+            "q": "What is the goal of today’s quiet?",
             "options": [
-              "Sickness",
-              "Wants empty time",
-              "Hunger",
-              "Fatigue"
+              "Produce a brilliant idea",
+              "Observe without filling the space",
+              "Work harder",
+              "Quit phones"
             ],
             "correct": 1,
-            "explain": "Brain signaling for empty space."
+            "explain": "The task is observation, not forcing a productive result."
           },
           {
-            "q": "Where is creativity born?",
+            "q": "Why begin with ten minutes?",
             "options": [
-              "Heavy work",
-              "Idle mode",
-              "Social media",
-              "Music"
+              "It is short enough to start",
+              "It solves every problem",
+              "The phone needs charging",
+              "It is a full hour"
             ],
-            "correct": 1,
-            "explain": "Idle mode = where creative seeds germinate."
+            "correct": 0,
+            "explain": "Ten minutes is enough to notice the urge without making the exercise too large."
           }
         ],
-        "proTip": "Don't fear boredom — creativity lives there."
+        "proTip": "The empty space does not have to be productive. Producing nothing for ten minutes is allowed."
       },
       "6": {
-        "title": "Phone Out of Bedroom",
-        "teaching": "Sleeping with the phone next to your pillow shreds sleep quality. Blue light suppresses melatonin, night notifications fragment sleep stages, the morning's first act becomes scrolling.\n\nWhat's your last screen before sleep? First screen on waking? These determine your mental health. If both are the phone, your life happens in the gap between screens.\n\nToday we create physical distance. Charging the phone in another room is simple but radical.",
-        "action": "Tonight, charge your phone outside your bedroom — in another room. When you wake up, spend 30 minutes phone-free first.",
-        "reflectionPrompt": "Did your time-to-sleep change without the phone in the room?",
+        "title": "Move the Phone Away from Bed",
+        "teaching": "You check the screen one last time in bed. With the phone in hand, you must make a new stopping decision after every message or post.\n\nKeeping it close connects two habits: the final action at night and the first action in the morning both become screen time. Ease of reach matters as much as light.\n\nChange the environment instead of testing willpower. When the phone is beyond arm’s reach, an automatic grab cannot finish; you have to stand up and choose.\n\nIf another room is not possible, use the doorway, a bag, or any place you cannot reach from bed. The target is distance, not perfection.",
+        "action": "Charge the phone where you cannot reach it from bed tonight. Keep it close enough to hear an alarm if needed.",
+        "reflectionPrompt": "How did distance change your final choice at night and first choice in the morning?",
         "quiz": [
           {
-            "q": "Phone out of bedroom effect?",
+            "q": "What is the main benefit of moving the phone?",
             "options": [
-              "None",
-              "Removes morning trigger",
-              "More awake",
-              "Negative"
+              "Faster charging",
+              "Interrupting the automatic reach",
+              "More alerts",
+              "Disabling alarms"
             ],
             "correct": 1,
-            "explain": "Phone in bedroom = first stimulus."
+            "explain": "Standing up creates a visible decision between the urge and the action."
           },
           {
-            "q": "Alternative alarm?",
+            "q": "What if another room is impossible?",
             "options": [
-              "Phone",
-              "Clock",
-              "None",
-              "Neighbor"
+              "Put it under the pillow",
+              "Place it beyond reach from bed",
+              "Hold it",
+              "Leave the screen on"
             ],
             "correct": 1,
-            "explain": "Classic clock works."
+            "explain": "Any distance that requires leaving the bed can break the automatic movement."
           }
         ],
-        "proTip": "Place a real alarm clock outside the bedroom. Old-school, effective."
+        "proTip": "Another room is optional. Requiring yourself to stand up is enough to create a useful boundary."
       },
       "7": {
-        "title": "Don't Touch the First Hour",
-        "teaching": "When you wake, your brain is in 'cortisol awakening response' mode. The first 30–60 minutes are when perception, motivation, and day-planning capacity are highest.\n\nIf you reach for your phone in that hour, you're plugging your brain into others' agenda: notifications, emails, social feeds — you've lost control of your day.\n\nThe first hour is yours. Use it, or someone else gets your whole day.",
-        "action": "Tomorrow, don't touch your phone for the first 60 minutes after waking. Drink water, wash your face, go outside, eat breakfast — phone-free.",
-        "reflectionPrompt": "How did the phoneless first hour feel? Empty, or calm?",
+        "title": "Protect the First 30 Minutes",
+        "teaching": "If messages are the first thing you open, the day fills with other people’s requests before you leave bed. Alerts set the priority order before you do.\n\nNever using a phone in the morning may be unrealistic. Protecting only the first 30 minutes creates a small boundary for starting in your own sequence.\n\nNo elaborate routine is required. Drink water, wash your face, open the curtains, dress, or prepare breakfast. A few screen-free movements are enough.\n\nChoose the time when the phone will open. Once the window ends, check it normally; this changes the order without creating a permanent ban.",
+        "action": "Keep the phone closed for 30 minutes after waking tomorrow. Choose three simple screen-free actions to do first.",
+        "reflectionPrompt": "How did the first 30 minutes change the speed or mood of your morning?",
         "quiz": [
           {
-            "q": "First-hour rule?",
+            "q": "Why protect the first 30 minutes?",
             "options": [
-              "Use phone",
-              "Phoneless",
-              "Social media",
-              "Music"
+              "Start in your own order",
+              "Delete every message",
+              "Wake later",
+              "Quit the phone"
             ],
-            "correct": 1,
-            "explain": "First 60 min = intent window."
+            "correct": 0,
+            "explain": "Completing your first simple actions before reacting lets you choose the morning’s order."
           },
           {
-            "q": "Early phone effect?",
+            "q": "What works better than a vague ban?",
             "options": [
-              "Good",
-              "Reactive day",
-              "Productive",
-              "None"
+              "Choose the phone’s opening time",
+              "Keep it under the pillow",
+              "Add alerts",
+              "Check every five minutes"
             ],
-            "correct": 1,
-            "explain": "Reactivity-led day."
+            "correct": 0,
+            "explain": "A clear opening time is easier to follow than an indefinite prohibition."
           }
         ],
-        "proTip": "First-hour lion rule: no phone, no internet, just you + intent."
+        "proTip": "Decide when the phone will open, not only when it must stay closed."
       },
       "8": {
-        "title": "Grayscale Mode",
-        "teaching": "Colors are extra dopamine fuel for the brain. Red notification dots, green checkmarks, glowing visual content — they create subconscious pull.\n\niOS and Android both have a 'grayscale' mode. When you turn it on, the phone suddenly looks 'boring.' That's a powerful psychological circuit-breaker.\n\nThis isn't a hack. It's science. The brain has been hijacked, we're returning it to its natural state.",
-        "action": "Switch your phone to grayscale. iOS: Settings > Accessibility > Display & Text Size > Color Filters > Grayscale. Use it for 24 hours.",
-        "reflectionPrompt": "Without color, which app did you lose interest in fastest?",
+        "title": "Use Your Phone in Grayscale for a Day",
+        "teaching": "App icons, badges, and videos use color to attract attention. When you pick up the phone, your eyes may notice those signals before your original purpose.\n\nGrayscale does not remove useful functions. Maps, messages, and calls still work; only visual appeal changes. The difference between using a tool and wandering may become easier to see.\n\nThis method will not affect everyone equally. Treat it as a one-day experiment, not a promised cure for screen time.\n\nTurn it off at the end if it gets in the way. The goal is to identify which visual signals pull you, not to keep a permanent setting.",
+        "action": "Enable Grayscale or Color Filters until the end of today. Note the three apps you still open most.",
+        "reflectionPrompt": "Which app became less attractive without color, and which one did you still use with a clear purpose?",
         "quiz": [
           {
-            "q": "Grayscale mode is?",
+            "q": "What does not change in grayscale?",
             "options": [
-              "Color",
-              "Colorless",
-              "Dark",
-              "Light"
+              "Core app functions",
+              "Screen colors",
+              "Icon appearance",
+              "Visual appeal"
             ],
-            "correct": 1,
-            "explain": "Colorless = brain finds boring."
+            "correct": 0,
+            "explain": "Messages, maps, and calls still work; the color presentation changes."
           },
           {
-            "q": "Effect?",
+            "q": "What is the experiment meant to reveal?",
             "options": [
-              "No effect",
-              "Auto drop usage",
-              "More usage",
-              "None"
+              "A permanent cure",
+              "Which apps use color to pull you",
+              "Double battery life",
+              "Deleted alerts"
             ],
             "correct": 1,
-            "explain": "Brain rejects colorless apps."
+            "explain": "The goal is observing your own visual triggers, not guaranteeing a specific result."
           }
         ],
-        "proTip": "Grayscale = no color. Brain finds colorless apps boring, drops them automatically."
+        "proTip": "Grayscale is an experiment, not a ban. Turn it off if it blocks useful work and keep the observation."
       },
       "9": {
-        "title": "Cut Hyperstimulation",
-        "teaching": "The strongest form of modern dopamine exploitation is short-form video addiction. TikTok, Reels, Shorts — unlimited variety, 15-second hits, unreal stimulation. The brain becomes indifferent to the slower rewards of real life.\n\nThe algorithm learns what your brain wants in 30 seconds, then delivers that reward non-stop. After 30 minutes of scrolling your sense of time breaks, your attention span collapses, and reading a book for 5 minutes becomes hard.\n\nThe science of a 30-day detox is clear: removing short-video apps brings dopamine baseline back to normal in 2-4 weeks. Attention spans lengthen. Tolerance for boredom returns.",
-        "action": "Starting today: 30 days, no TikTok / Reels / Shorts. Remove the apps from your phone. If you must use social media, only use it from desktop.",
-        "reflectionPrompt": "What objection came to mind when you made this decision?",
+        "title": "Break the Short-Video Loop",
+        "teaching": "Every swipe in a short-video feed changes the topic, sound, and mood. Comedy becomes news, food, or argument within seconds, and the lack of an ending hides time.\n\nShort videos are not the only issue. The problem is leaving every next decision to the feed without a purpose or time boundary.\n\nTry one measurable day instead of making a 30-day promise. Avoid short-video feeds for 24 hours while using messages and necessary phone functions normally.\n\nYou do not have to delete the apps. Remove their icons from the home screen, note when the urge arrives, and choose what else to do in that moment.",
+        "action": "Avoid TikTok, Reels, and Shorts feeds for 24 hours. Note the time of each urge; use other phone functions normally.",
+        "reflectionPrompt": "At what time and after which feeling was the short-video urge strongest?",
         "quiz": [
           {
-            "q": "Effect of infinite scroll on dopamine?",
+            "q": "What makes time hard to notice in the feed?",
             "options": [
-              "Natural",
-              "Dopamine inflation",
-              "No effect",
-              "Positive"
+              "Every video is long",
+              "There is no natural ending",
+              "The phone is silent",
+              "Messages are open"
             ],
             "correct": 1,
-            "explain": "The algorithm rewards every second — the brain devalues the slow rewards of real life."
+            "explain": "Without an ending, you must make a fresh exit decision after each video."
           },
           {
-            "q": "Effect on attention span?",
+            "q": "What is not banned today?",
             "options": [
-              "Improves",
-              "Destructive",
-              "No effect",
-              "Increases"
+              "Messages and necessary phone tasks",
+              "TikTok feeds",
+              "Reels feeds",
+              "Shorts feeds"
             ],
-            "correct": 1,
-            "explain": "Constant short-stimulus content makes long focus impossible."
+            "correct": 0,
+            "explain": "The experiment separates useful phone functions from endless short-video feeds."
           }
         ],
-        "proTip": "Infinite scroll = dopamine inflation. Hostile to real focus."
+        "proTip": "Do not treat messaging and short-video feeds as the same behavior. Use the function you need and leave."
       },
       "10": {
-        "title": "Day 10 — Mid-point Reflection",
-        "teaching": "You've finished a third of the 30-day detox. What have you noticed?\n\nThe first week is hard. The second week the brain pushes back and tricks you ('what's one slip?'). The third week the new baseline settles.\n\nChange your body language. Look in the mirror. Are you standing taller? Eyes clearer? These small signs are the first markers of change.",
-        "action": "Make today a reflection day. Sit for 15 minutes and write: (1) What changed in the first 10 days? (2) Which moment was hardest? (3) Which habit didn't slip?",
-        "reflectionPrompt": "What's the BIGGEST change you noticed in the first 10 days?",
+        "title": "Day 10: What Changed?",
+        "teaching": "You have tried several small experiments for ten days. Some were easy, some were skipped. Today you will measure what worked instead of adding another rule.\n\nProgress is not only lower screen time. Noticing why you unlock, reducing alerts, or changing the first morning action are concrete results too.\n\nAttempts that failed are also data. Was the task too large, at the wrong time, or simply a poor fit for your life? The answer makes the next plan smaller.\n\nYou do not need to carry every rule forward. Choose the two most useful practices from the first nine lessons and keep only those for another week.",
+        "action": "Write three answers: What worked? What did not? Which two rules will you keep for the next seven days?",
+        "reflectionPrompt": "What is the most concrete change you can observe in your phone use?",
         "quiz": [
           {
-            "q": "Mid-point purpose?",
+            "q": "What is the purpose of the Day 10 review?",
             "options": [
-              "Finish",
-              "Look back + measure",
-              "Skip",
-              "Fatigue"
+              "Add ten rules",
+              "Measure and choose what worked",
+              "Hide screen time",
+              "Quit everything"
             ],
             "correct": 1,
-            "explain": "Observe progress."
+            "explain": "Today is for selecting useful experiments rather than adding more load."
           },
           {
-            "q": "Halfway step?",
+            "q": "How many rules are enough for next week?",
             "options": [
-              "Quit",
-              "Reflect",
-              "Speed up",
-              "Same"
+              "Two",
+              "Ten",
+              "Twenty",
+              "None"
             ],
-            "correct": 1,
-            "explain": "Reflection = continuation fuel."
+            "correct": 0,
+            "explain": "Keeping the two most useful rules makes the plan simple and repeatable."
           }
         ],
-        "proTip": "Mid-point look back = progress meter. Doer remembers, skipper forgets."
+        "proTip": "Two useful rules practiced consistently are stronger than ten rules practiced halfway."
       },
       "11": {
         "title": "Change the Environment",
@@ -4716,128 +4716,128 @@
         "proTip": "Add extra steps fetching coffee/tea — small additions compound to your daily threshold."
       },
       "2": {
-        "title": "Cold Shower Protocol",
-        "teaching": "Cold shock = sympathetic activation = adrenaline + dopamine = clear mind.\n\nWim Hof science: cold exposure strengthens immunity, reduces depression, increases motivation.\n\nDay 1 unbearable. Day 7 routine. Day 30 you miss it.",
-        "action": "End your shower with 30 seconds of cold water today.",
-        "reflectionPrompt": "What did you feel in the first minute after?",
+        "title": "Cold Is Optional, Safety Is Not",
+        "teaching": "Cold showers are often framed as a test of character. Enduring discomfort, however, is not a measure of health or worth.\n\nBrief cool water may make some people feel more alert, but responses vary. People with cardiovascular conditions, blood-pressure concerns, or a history of fainting should seek medical advice before trying cold exposure.\n\nThe goal is observation, not punishment. Stop immediately with dizziness, chest pain, breathing difficulty, or numbness.\n\nIf it is appropriate for you, do not jump to ice-cold water. Lower the temperature slightly at the end of a normal shower and notice whether your breathing stays comfortable.",
+        "action": "If appropriate for you, cool the water slightly for 15 seconds. Return to normal immediately if concerning symptoms appear.",
+        "reflectionPrompt": "How did your body and breathing respond, and did continuing feel appropriate for you?",
         "quiz": [
           {
-            "q": "Cold shock activates which system?",
+            "q": "What comes first during cold exposure?",
             "options": [
-              "Digestive",
-              "Sympathetic",
-              "Parasympathetic",
-              "Immune"
+              "Lasting the longest",
+              "Safety and body signals",
+              "Using ice",
+              "Holding your breath"
             ],
             "correct": 1,
-            "explain": "Sympathetic = adrenaline + dopamine = clear mind."
+            "explain": "The goal is not to force discomfort. Your health context and warning signs come first."
           },
           {
-            "q": "Min cold shower duration?",
+            "q": "When should the attempt stop immediately?",
             "options": [
-              "10s",
-              "30s",
-              "1m",
-              "5m"
+              "When water feels cool",
+              "With dizziness or chest pain",
+              "When a timer is running",
+              "When the shower is short"
             ],
             "correct": 1,
-            "explain": "30 seconds is enough; benefits begin."
+            "explain": "Dizziness, chest pain, breathing difficulty, or numbness are reasons to stop safely."
           }
         ],
-        "proTip": "Start cold shower on the exhale. Holding breath tenses you; release it to relax."
+        "proTip": "Cold exposure is optional. You can practice calm under mild discomfort through a walk or controlled breathing instead."
       },
       "3": {
-        "title": "Nutrition Foundation: Protein",
-        "teaching": "The body is built from protein. Insufficient protein = low energy, slow tissue repair, low satiety.\n\nRule: 1g of protein per kilogram of body weight.\n\nSources: meat, fish, eggs, legumes, dairy.",
-        "action": "Add a protein source to every meal today. Calculate total protein grams in the evening.",
-        "reflectionPrompt": "How was your energy when you got enough protein?",
+        "title": "See the Protein Source on Your Plate",
+        "teaching": "If a meal leaves you hungry soon afterward, it can help to examine what was on the plate. Protein is one part of a balanced meal alongside carbohydrates and fats.\n\nNeeds are not identical. Age, body size, activity, health, and goals all matter, so one gram rule cannot fit everyone. Medical needs call for a qualified clinician or dietitian.\n\nProtein is not limited to meat. Eggs, dairy, fish, poultry, legumes, tofu, and other options may fit different preferences.\n\nDo not chase a number today. Look at one meal and identify whether it contains a visible protein source and other foods that support you.",
+        "action": "Choose one main meal and name its protein source. Add an option that suits you if none is present.",
+        "reflectionPrompt": "How long did the meal satisfy you, and how did your energy feel afterward?",
         "quiz": [
           {
-            "q": "Daily protein rule?",
+            "q": "Why is protein need not one universal number?",
             "options": [
-              "0.5g/kg",
-              "1g/kg",
-              "2g/kg",
-              "5g/kg"
+              "Everyone eats identically",
+              "Age, activity, and health differ",
+              "Only athletes need it",
+              "It is measured by time"
             ],
             "correct": 1,
-            "explain": "1g protein per kg body weight."
+            "explain": "Individual context changes nutritional needs, so a single target cannot describe everyone."
           },
           {
-            "q": "Worst protein source?",
+            "q": "Which is a plant protein source?",
             "options": [
-              "Meat",
-              "Eggs",
-              "Sugary snack",
-              "Legumes"
+              "Legumes",
+              "Sugary soda",
+              "Jam",
+              "Table sugar"
             ],
-            "correct": 2,
-            "explain": "Snacks aren't meals."
+            "correct": 0,
+            "explain": "Beans, lentils, and chickpeas are examples of plant protein sources."
           }
         ],
-        "proTip": "Protein every meal. 20-30g/meal × 3 meals = daily 60-90g optimum."
+        "proTip": "Make the plate visible first. Seek a registered dietitian for a target tailored to your situation."
       },
       "4": {
-        "title": "Cut Sugar",
-        "teaching": "Processed sugar is the oldest form of dopamine exploitation. Spike, crash, fatigue, more sugar — the loop.\n\n7-day sugar cut: clear thinking, stable energy, better sleep, weight loss.\n\nThe addiction breaks in 7 days.",
-        "action": "Today eat zero processed sugar. Sweets, sodas, packaged snacks — none. Natural fruit OK.",
-        "reflectionPrompt": "Did you feel an afternoon sugar crash?",
+        "title": "Notice Added Sugar",
+        "teaching": "Wanting something sweet in the afternoon does not prove weak discipline. Hunger, habit, sleep, stress, and meal composition can produce the same urge.\n\nCalling sugar poison or treating food as an enemy creates unnecessary conflict. A more useful step is noticing where added sugar appears and how often you choose it.\n\nFruit and a sweetened drink are not the same experience. Health goals should consider your full eating pattern and personal medical context.\n\nDo not ban all sugar today. Read one label on a product you use often and replace one added-sugar choice with a lower-sugar option.",
+        "action": "Check the label of one frequent drink or snack. Replace only that item with a lower-sugar option today.",
+        "reflectionPrompt": "What did you replace, and was the original choice driven by hunger, habit, stress, or convenience?",
         "quiz": [
           {
-            "q": "Processed sugar effect?",
+            "q": "What is today’s target?",
             "options": [
-              "Stable energy",
-              "Spike + crash",
-              "Weight loss",
-              "Immunity"
+              "Ban every carbohydrate",
+              "Notice and replace one added-sugar source",
+              "Skip meals",
+              "Eat only fruit"
             ],
             "correct": 1,
-            "explain": "Sugar = spike + crash cycle."
+            "explain": "One visible change is more practical than a sweeping short-term ban."
           },
           {
-            "q": "Sugar addiction breaks in days?",
+            "q": "What can influence a sweet craving?",
             "options": [
-              "1",
-              "3",
-              "7",
-              "30"
+              "Character alone",
+              "Sleep, stress, hunger, and habit",
+              "Phone color",
+              "Shoe choice"
             ],
-            "correct": 2,
-            "explain": "7 days, sugar tastes flat."
+            "correct": 1,
+            "explain": "Cravings can have several causes and should not be reduced to willpower."
           }
         ],
-        "proTip": "Replace sugar craving with water + 1 sweet fruit (apple). After 7 days the craving breaks."
+        "proTip": "Observe frequency rather than labeling food good or bad. Seek professional support for medical nutrition needs."
       },
       "5": {
-        "title": "Sleep Hardness",
-        "teaching": "Sleep quality is the foundation of all discipline. Decision-making weakens, willpower battery low.\n\nSleep hardness: 7–8 hours, sleep before 22:00, dark room, cool 18–20°C.\n\nNon-negotiable. Every other part of your life depends on it.",
-        "action": "Today harden your sleep environment. Lights out by 22:30.",
-        "reflectionPrompt": "Did your time-to-sleep change?",
+        "title": "Build One Sleep Anchor",
+        "teaching": "After a short night, focus, patience, and desire to move may fall. That is not a character flaw; it is how insufficient rest can affect daily decisions.\n\nNot everyone needs the same bedtime. Needs vary with age, health, and schedule. Aim for a duration that supports you and a pattern you can repeat.\n\nDarkness, quiet, comfortable temperature, and less late screen use may help, but no single hour or temperature fits everyone. Persistent insomnia, loud snoring, or excessive daytime sleepiness deserves clinical evaluation.\n\nDo not rebuild everything tonight. Work backward from tomorrow’s wake time, choose a realistic bedtime, and make the last 30 minutes calmer.",
+        "action": "Write tomorrow’s wake time. Choose a realistic bedtime and set an alarm to leave screens 30 minutes before it.",
+        "reflectionPrompt": "Was the bedtime realistic, and what delayed you most before sleep?",
         "quiz": [
           {
-            "q": "Foundation of discipline?",
+            "q": "What is a useful starting point for sleep?",
             "options": [
-              "Motivation",
-              "Sleep",
-              "Money",
-              "Plan"
+              "A universal 10 p.m. rule",
+              "A realistic and consistent schedule",
+              "More alarms",
+              "Intense late exercise"
             ],
             "correct": 1,
-            "explain": "Bad sleep = optimized for indiscipline."
+            "explain": "A repeatable schedule that fits your life is more useful than one universal clock time."
           },
           {
-            "q": "Optimal room temp?",
+            "q": "What may need professional evaluation?",
             "options": [
-              "15°C",
-              "18-20°C",
-              "22-24°C",
-              "26°C"
+              "One occasional late night",
+              "Persistent insomnia or excessive daytime sleepiness",
+              "Closing curtains",
+              "Setting an alarm"
             ],
             "correct": 1,
-            "explain": "18-20°C optimum for deep sleep."
+            "explain": "Ongoing symptoms that affect daytime function should not be dismissed as a habit issue."
           }
         ],
-        "proTip": "Bedroom 18-20°C, dark, silent. 3 conditions = deep sleep guarantee."
+        "proTip": "Judge sleep over a weekly pattern, not one night. Seek clinical advice for persistent problems."
       },
       "6": {
         "title": "Bedtime: 22:00",
@@ -6268,128 +6268,128 @@
         "proTip": "Lay 3 months of bank statements side by side. Recurring charges become visible."
       },
       "2": {
-        "title": "Budget = Freedom",
-        "teaching": "Most hear budget as restriction. Really, budget = freedom.\n\nYou cannot control what you do not know.\n\n50/30/20 rule: 50% essentials, 30% wants, 20% savings.",
-        "action": "Open a sheet. Write monthly income. Split into 50/30/20. Compare against actual.",
-        "reflectionPrompt": "Which category went over its limit?",
+        "title": "Use a Budget as a Map",
+        "teaching": "Budget can sound like restriction. Its basic purpose is to make where you want money to go visible before it is spent.\n\nRatios such as 50/30/20 are examples, not universal rules. Housing, income, debt, family, and location can make a different split appropriate.\n\nDo not build perfect categories on day one. Three groups are enough: essentials, flexible spending, and money for future goals.\n\nStart with reality rather than an ideal. Sort the previous month into those groups, then choose only one area you want to change.",
+        "action": "Sort last month into essentials, flexible spending, and future goals. Mark one category you want to change.",
+        "reflectionPrompt": "Which category differed from your expectation, and what will you change next month?",
         "quiz": [
           {
-            "q": "50/30/20 rule?",
+            "q": "How should 50/30/20 be used?",
             "options": [
-              "50 essentials, 30 wants, 20 save",
-              "50 save, 50 spend",
-              "20-20-60",
-              "30-30-40"
+              "As a mandatory rule",
+              "As a starting comparison",
+              "As a legal limit",
+              "Only for investors"
+            ],
+            "correct": 1,
+            "explain": "Life and income differ, so a sample ratio cannot replace a personal budget."
+          },
+          {
+            "q": "How many groups are enough for a first budget?",
+            "options": [
+              "Three simple groups",
+              "At least forty",
+              "No groups",
+              "A new group daily"
             ],
             "correct": 0,
-            "explain": "50% needs, 30% wants, 20% savings."
-          },
-          {
-            "q": "Real benefit of budget?",
-            "options": [
-              "Restriction",
-              "Freedom",
-              "Stress",
-              "Tax"
-            ],
-            "correct": 1,
-            "explain": "Awareness = control = freedom."
+            "explain": "Essentials, flexible spending, and future goals create a useful first view."
           }
         ],
-        "proTip": "Apply 50/30/20 strictly 1 month, then flex. Without baseline, flex is meaningless."
+        "proTip": "The first month is for an accurate picture, not a perfect budget. Observe before setting ideal ratios."
       },
       "3": {
-        "title": "24-Hour Wait Rule",
-        "teaching": "Impulse buying = dopamine, not real need. After 24 hours, you realize 80% was not necessary.\n\nRule: any purchase over $10 — wait 24 hours.\n\nThis simple rule saves thousands annually.",
-        "action": "Postpone every $10+ purchase by 24 hours. Keep a waiting list.",
-        "reflectionPrompt": "What did you postpone today?",
+        "title": "Choose Your Own Waiting Threshold",
+        "teaching": "A purchase made minutes after seeing an item may reflect the moment’s excitement more than a lasting need. Waiting adds time without forbidding the purchase.\n\nA fixed currency threshold ages quickly and means different things at different incomes. Choose a level meaningful to your own flexible-spending budget.\n\nPut unplanned purchases above that threshold on a list and wait 24 hours. Do not delay necessary, planned, or emergency expenses with this rule.\n\nAfterward ask: Do I still want it? Where will I use it? Which goal will this purchase delay?",
+        "action": "Set your personal waiting threshold. Put one unplanned purchase above it on a list for 24 hours.",
+        "reflectionPrompt": "What did you delay, and how did your decision change after waiting?",
         "quiz": [
           {
-            "q": "24-hour rule applies above?",
+            "q": "Why should the threshold not be one fixed amount?",
             "options": [
-              "$1",
-              "$5",
-              "$10",
-              "$50"
+              "Prices never change",
+              "Income, budgets, and prices differ",
+              "Lists are forbidden",
+              "Only cash matters"
             ],
-            "correct": 2,
-            "explain": "Any $10+ purchase waits 24h."
+            "correct": 1,
+            "explain": "A meaningful amount differs by person and changes over time."
           },
           {
-            "q": "After waiting, % unnecessary?",
+            "q": "Which expense can sit outside the waiting rule?",
             "options": [
-              "30%",
-              "50%",
-              "80%",
-              "95%"
+              "An impulse accessory",
+              "A necessary emergency expense",
+              "An ad-driven purchase",
+              "An unplanned hobby item"
             ],
-            "correct": 2,
-            "explain": "80% was impulse, not need."
+            "correct": 1,
+            "explain": "The rule is for unplanned impulses, not for delaying urgent necessities."
           }
         ],
-        "proTip": "After 24 hours, if you still want it, you really want it. Most often the answer is \"no.\""
+        "proTip": "Write where you will use the item next to its price. A weak use case often reveals a weak need."
       },
       "4": {
-        "title": "Food Cost Visibility",
-        "teaching": "Eating out vs cooking is a 5–10x cost difference. Most do not see it.\n\nEating out should be a vacation experience, not daily routine.",
-        "action": "Cook one meal at home today. Calculate cost.",
-        "reflectionPrompt": "How much did cooking save?",
+        "title": "Compare the Real Cost of One Meal",
+        "teaching": "Eating out can buy time, convenience, and connection, not just ingredients. Comparing only food cost misses part of the decision, but never comparing can hide an expensive routine.\n\nFixed price examples age quickly. Use a real receipt and current grocery prices where you live, including delivery, transport, and preparation time.\n\nThe goal is not to label restaurants bad. Separate meals chosen for an experience from meals repeated only because they are easy.\n\nChoose one meal you buy often. Put its full outside cost beside the approximate home cost and time required.",
+        "action": "Compare one frequent meal using current outside and home prices. Write the time difference beside the cost.",
+        "reflectionPrompt": "Considering both money and time, which choice made more sense for you today?",
         "quiz": [
           {
-            "q": "Home cooking vs eating out cost?",
+            "q": "What belongs in a meal comparison?",
             "options": [
-              "Same",
-              "2x",
-              "5-10x",
-              "Same"
-            ],
-            "correct": 2,
-            "explain": "5-10x cost difference compounds yearly."
-          },
-          {
-            "q": "Eating out should be?",
-            "options": [
-              "Daily routine",
-              "Vacation experience",
-              "Never",
-              "Weekly once"
+              "Ingredients only",
+              "Price, delivery or travel, and time",
+              "Restaurant name only",
+              "Calories only"
             ],
             "correct": 1,
-            "explain": "Vacation experience, not routine."
+            "explain": "The real choice includes convenience and preparation time as well as money."
+          },
+          {
+            "q": "What is the lesson’s goal?",
+            "options": [
+              "Ban eating out",
+              "See the real cost of a repeated choice",
+              "Cook every day",
+              "Always pick the cheapest"
+            ],
+            "correct": 1,
+            "explain": "The purpose is visibility, not a universal ban."
           }
         ],
-        "proTip": "Cooking at home need not be complex. 4 moves: chop, sauté, season, eat."
+        "proTip": "Choose two quick home meals for busy days so convenience does not require a fresh decision."
       },
       "5": {
-        "title": "Emergency Fund",
-        "teaching": "Financial stress leads to bad decisions.\n\nEmergency fund = 3 months of essential expenses.\n\nWithout this fund, financial discipline is artificial.",
-        "action": "Open a separate account. Transfer 10% of your salary.",
-        "reflectionPrompt": "Where will the 10% come from?",
+        "title": "Calculate Your First Emergency Buffer",
+        "teaching": "An unexpected expense or income gap can create pressure to make rushed decisions. Even a small accessible cash buffer may reduce that pressure.\n\nThree or six months does not have to be the first milestone for everyone. If that feels distant, begin with one week and then one month of essential expenses.\n\nEmergency money prioritizes access rather than chasing high returns. Where to keep it depends on local protections, taxes, and personal circumstances.\n\nYou do not need to transfer money today. Calculate essential monthly expenses, choose a first milestone, and identify a realistic recurring contribution.",
+        "action": "Total your monthly essentials. Choose a one-week or one-month first buffer and write a realistic recurring contribution.",
+        "reflectionPrompt": "What is your first buffer target, and how quickly can you realistically build it?",
         "quiz": [
           {
-            "q": "Emergency fund months?",
+            "q": "What is the main purpose of an emergency fund?",
             "options": [
-              "1",
-              "3",
-              "6",
-              "12"
+              "High-risk returns",
+              "An accessible buffer for surprises",
+              "Daily shopping",
+              "A larger credit limit"
             ],
             "correct": 1,
-            "explain": "3 months of essential expenses minimum."
+            "explain": "This money is primarily for reducing pressure during unexpected needs."
           },
           {
-            "q": "Without emergency fund, discipline is?",
+            "q": "What can be a practical first milestone?",
             "options": [
-              "Strong",
-              "Artificial",
-              "Easy",
-              "Sustainable"
+              "Never starting",
+              "One week of essential expenses",
+              "Borrowing to invest",
+              "Saving an entire salary at once"
             ],
             "correct": 1,
-            "explain": "Without fund, discipline is artificial."
+            "explain": "A smaller reachable milestone can make progress toward a larger buffer easier."
           }
         ],
-        "proTip": "Park emergency fund out of reach: separate bank, separate card. \"Visible\" money gets spent."
+        "proTip": "This is general education, not personal financial advice. Consider local rules and qualified guidance when choosing products."
       },
       "6": {
         "title": "Net Worth Audit",

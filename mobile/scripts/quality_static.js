@@ -478,16 +478,38 @@ run('first-session content pacing', () => {
     assert(!unsupportedOpeningClaim.test(first.teaching), `${pathId}.1 contains an unsupported or jargon-heavy opening claim`);
   }
 
-  const defaultFreeLessons = paths['dopamine-detox'] || {};
-  for (let lessonId = 1; lessonId <= 10; lessonId += 1) {
-    const lesson = defaultFreeLessons[String(lessonId)];
-    const teachingWords = String(lesson?.teaching || '').split(/\s+/).filter(Boolean).length;
-    const actionWords = String(lesson?.action || '').split(/\s+/).filter(Boolean).length;
-    const paragraphs = String(lesson?.teaching || '').split(/\n\n+/).filter(Boolean);
-    assert(teachingWords >= 70 && teachingWords <= 110, `dopamine-detox.${lessonId} teaching must be 70-110 words, found ${teachingWords}`);
-    assert(paragraphs.length === 4, `dopamine-detox.${lessonId} must have four beats, found ${paragraphs.length}`);
-    assert(actionWords <= 24, `dopamine-detox.${lessonId} action must be at most 24 words, found ${actionWords}`);
-    assert(!unsupportedOpeningClaim.test(lesson?.teaching || ''), `dopamine-detox.${lessonId} contains an unsupported or jargon-heavy claim`);
+  for (const [language, resource] of [['tr', trLessons], ['en', enLessons]]) {
+    const defaultFreeLessons = resource.lessons['dopamine-detox'] || {};
+    for (let lessonId = 1; lessonId <= 10; lessonId += 1) {
+      const lesson = defaultFreeLessons[String(lessonId)];
+      const teachingWords = String(lesson?.teaching || '').split(/\s+/).filter(Boolean).length;
+      const actionWords = String(lesson?.action || '').split(/\s+/).filter(Boolean).length;
+      const paragraphs = String(lesson?.teaching || '').split(/\n\n+/).filter(Boolean);
+      assert(teachingWords >= 70 && teachingWords <= 110, `${language}.dopamine-detox.${lessonId} teaching must be 70-110 words, found ${teachingWords}`);
+      assert(paragraphs.length === 4, `${language}.dopamine-detox.${lessonId} must have four beats, found ${paragraphs.length}`);
+      assert(actionWords <= 24, `${language}.dopamine-detox.${lessonId} action must be at most 24 words, found ${actionWords}`);
+      assert(!unsupportedOpeningClaim.test(lesson?.teaching || ''), `${language}.dopamine-detox.${lessonId} contains an unsupported or jargon-heavy claim`);
+    }
+  }
+
+  const safetyEditedLessons = {
+    'body-discipline': [2, 3, 4, 5],
+    'money-discipline': [2, 3, 4, 5],
+  };
+  for (const [language, resource] of [['tr', trLessons], ['en', enLessons]]) {
+    for (const [pathId, lessonIds] of Object.entries(safetyEditedLessons)) {
+      for (const lessonId of lessonIds) {
+        const lesson = resource.lessons[pathId][String(lessonId)];
+        const teachingWords = String(lesson.teaching || '').split(/\s+/).filter(Boolean).length;
+        const actionWords = String(lesson.action || '').split(/\s+/).filter(Boolean).length;
+        const paragraphs = String(lesson.teaching || '').split(/\n\n+/).filter(Boolean);
+        const riskyClaim = /%\s*\d+|\d+\s*%|\b(?:guarantee|garanti|kanıtlandı|proven)\b/i;
+        assert(teachingWords >= 65 && teachingWords <= 120, `${language}.${pathId}.${lessonId} teaching must be 65-120 words, found ${teachingWords}`);
+        assert(paragraphs.length === 4, `${language}.${pathId}.${lessonId} must have four beats, found ${paragraphs.length}`);
+        assert(actionWords <= 24, `${language}.${pathId}.${lessonId} action must be at most 24 words, found ${actionWords}`);
+        assert(!riskyClaim.test(lesson.teaching), `${language}.${pathId}.${lessonId} contains a percentage or guarantee claim`);
+      }
+    }
   }
 
   for (const [pathId, lessons] of Object.entries(paths)) {
