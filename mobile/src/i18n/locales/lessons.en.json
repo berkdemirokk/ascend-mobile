@@ -271,7 +271,7 @@
               "Deleted alerts"
             ],
             "correct": 1,
-            "explain": "The goal is observing your own visual triggers, not guaranteeing a specific result."
+            "explain": "The goal is observing your own visual triggers, not promising a specific result."
           }
         ],
         "proTip": "Grayscale is an experiment, not a ban. Turn it off if it blocks useful work and keep the observation."
@@ -1581,10 +1581,10 @@
     },
     "silent-morning": {
       "1": {
-        "title": "The Key to Waking Early: Sleep Early",
-        "teaching": "The secret of waking early is not the morning hour, it is the night hour. Without bringing bedtime earlier, waking early is not sustainable.\n\nThe melatonin cycle is optimal between 22:00 and 06:00. Brains that do not sleep in this window miss deep sleep stages, the main reason for tired mornings.\n\nToday you reverse the equation: sleep early, wake early. Start with a 21:30 bedtime goal.",
-        "action": "Tonight, get in bed by 21:30. Leave the phone outside the bedroom. Try to sleep by 22:00.",
-        "reflectionPrompt": "What resisted sleeping early?",
+        "title": "Win the Morning the Night Before",
+        "teaching": "You set an earlier alarm without changing the night. When morning arrives, your plan competes with sleep, and sleep usually wins.\n\nWaking early is not a willpower performance. Moving the alarm while shrinking rest only borrows energy from the next day.\n\nDo not shift bedtime by hours in one night. Moving it 30 minutes creates less resistance and is easier to repeat.\n\nWork backward from the time you need to wake. Choose a realistic sleep window, keep the final 30 minutes quieter, and treat bed as the day’s closing point.",
+        "action": "Go to bed 30 minutes earlier tonight and charge the phone outside arm’s reach during the final 30 minutes.",
+        "reflectionPrompt": "What most often extends your night: a screen, work, entertainment, or not wanting the day to end?",
         "quiz": [
           {
             "q": "Real key to waking early?",
@@ -1609,13 +1609,13 @@
             "explain": "Deep sleep happens between 22:00-06:00."
           }
         ],
-        "proTip": "Put your bedtime in the calendar as \"the most important appointment of the day.\""
+        "proTip": "Set an alarm for closing the night, not only for waking in the morning."
       },
       "2": {
-        "title": "Phoneless Alarm",
-        "teaching": "Alarm = phone = scroll = the day already lost. Separating the alarm function from the phone is creating a mental boundary.\n\nGet a physical alarm clock. Leave the phone outside the room. The first thing your hand touches in the morning should be the alarm button, not a screen.",
-        "action": "Buy or order a physical alarm clock today. Leave the phone outside the room before bed.",
-        "reflectionPrompt": "How hard will it be to switch from screen-on to alarm-button?",
+        "title": "Separate the Alarm from the Feed",
+        "teaching": "You stop the alarm and the same hand opens messages, news, or a feed. A tool meant to wake you becomes the first invitation to stay in bed.\n\nYou do not have to buy a special clock. A watch, smart speaker, inexpensive alarm, or a phone placed beyond reach can separate waking from scrolling.\n\nThe useful part is physical distance. If stopping the alarm requires standing up, the next action is no longer an automatic swipe.\n\nChoose the simplest option already available to you. Keep the alarm audible but make the feed require a separate, deliberate decision.",
+        "action": "Set tonight’s alarm where you must stand to stop it. Do not open another app until you leave the bed.",
+        "reflectionPrompt": "Did standing up change what you did during the first five minutes?",
         "quiz": [
           {
             "q": "Why is phone-as-alarm bad?",
@@ -1640,13 +1640,13 @@
             "explain": "Distance from phone creates mental boundary."
           }
         ],
-        "proTip": "Place the phone in the farthest corner of the room — physical distance builds psychological boundary."
+        "proTip": "The goal is not buying a clock. It is separating the wake-up action from the feed action."
       },
       "3": {
         "title": "Water, Face, Window",
-        "teaching": "When you wake, build a 3-step chain: drink a glass of water, wash your face, open a window or step outside for 1 minute.\n\nWater breaks overnight dehydration. Face wash pulls you out of parasympathetic. Natural light resets circadian rhythm.\n\nThis 3-minute chain makes mornings 10x clearer than before.",
-        "action": "Tomorrow apply this chain. Right after waking: water then face then window. Phoneless.",
-        "reflectionPrompt": "How did you feel after the triple chain?",
+        "teaching": "When the phone is no longer the first action, the empty space needs a simple replacement. A long routine creates too many decisions while you are still waking.\n\nUse three ordinary cues: drink water if you are thirsty, wash your face, and open the curtains or step toward daylight. None is a miracle protocol.\n\nTheir value is sequence. One action leads to the next without asking what to do, and the phone stays outside that chain.\n\nPrepare the glass and clear the path to the window the night before. In the morning, complete the three steps before deciding what comes next.",
+        "action": "Tomorrow complete this chain before the phone: water, wash your face, and open the curtains or step outside.",
+        "reflectionPrompt": "Which part made starting easiest, and did the chain reduce the urge to check the phone?",
         "quiz": [
           {
             "q": "Morning triple chain?",
@@ -1671,13 +1671,13 @@
             "explain": "Cold shock = wake mode activation."
           }
         ],
-        "proTip": "After cold face-wash, skip the towel; air-drying delivers extra wake-up shock."
+        "proTip": "Keep the chain simple enough to remember while sleepy. Consistency matters more than adding steps."
       },
       "4": {
-        "title": "Morning Silence",
-        "teaching": "Most people turn morning into a noise bath: notifications, news, podcasts, calls. The brain is exhausted before the day starts.\n\nSilence is not a luxury, it is a basic need. Spending the first 60 minutes silent makes you less reactive all day.\n\nSilence is not doing nothing. It is making space to think.",
-        "action": "Tomorrow spend the first 60 minutes silent: no music, no podcasts, no sound.",
-        "reflectionPrompt": "Did silent morning make you more tired or more calm?",
+        "title": "The First Quiet of the Morning",
+        "teaching": "Starting audio the moment you wake gives your mind a new agenda before your own thoughts have formed. Music and podcasts are not bad; they can simply become automatic.\n\nQuiet is not a meditation performance. It means noticing your pace, the room, and the first thoughts without adding another stream of content.\n\nAn hour is unnecessary. Ten minutes is long enough to see the habit and short enough not to burden the morning.\n\nTomorrow, avoid screens and headphones for the first ten minutes. Drink water, get ready, or approach a window, then continue the day normally.",
+        "action": "Spend the first ten minutes tomorrow without a screen or headphones. Get ready and notice the sounds around you.",
+        "reflectionPrompt": "Did quiet feel calming or uncomfortable, and what thought appeared first?",
         "quiz": [
           {
             "q": "Why morning silence isn't luxury?",
@@ -1702,13 +1702,13 @@
             "explain": "Silent start = calm reactivity all day."
           }
         ],
-        "proTip": "Even talking can break silence — true silence is internal + external."
+        "proTip": "Do not force quiet to be productive. Let your environment be the first input of the day."
       },
       "5": {
-        "title": "5-Minute Morning Intent",
-        "teaching": "Most start the day reactive: email, WhatsApp, notifications. You react to what comes to you, not what you intended.\n\n5 minutes of intent changes this. Three questions: (1) Today is main priority? (2) Which habits will I sustain? (3) What will I be proud of tonight?\n\nThese 5 minutes shape the rest of the day.",
-        "action": "Practice morning intent for 5 minutes tomorrow. Pen and paper, answer the three questions.",
-        "reflectionPrompt": "Did written intent influence your decisions throughout the day?",
+        "title": "A One-Sentence Morning Intention",
+        "teaching": "A long task list can create pressure before the day starts. When everything appears important, choosing where to begin becomes harder.\n\nAn intention is not a slogan that controls the whole day. It names one visible outcome that would make today meaningful.\n\n“I will be productive” is vague. “Before 10, I will finish the first page of the proposal” tells you when to start and what done means.\n\nUse five minutes: write the one outcome, identify its first physical step, and choose when it begins on your calendar.",
+        "action": "Complete this sentence tomorrow: “Today I will finish ___.” Add the first step and the time you will begin.",
+        "reflectionPrompt": "Did one outcome simplify the day, and was it truly the most important result?",
         "quiz": [
           {
             "q": "Reactive day start means?",
@@ -1733,7 +1733,7 @@
             "explain": "Priority, habits, pride — three shape the day."
           }
         ],
-        "proTip": "Write your intent answers. The brain remembers written intent 4x more than mental intent."
+        "proTip": "Write an observable finish line. Replace “work on it” with what will be complete."
       },
       "6": {
         "title": "Morning Light: 10 Minutes",
@@ -3133,41 +3133,41 @@
     },
     "mind-discipline": {
       "1": {
-        "title": "Single-Focus Rule",
-        "teaching": "The brain evolved to do one task at a time. Multitasking is an illusion: the brain just switches fast and performance drops at every switch.\n\nDeep work means single focus. One window, one sound, one intent. This requires training.\n\nMental muscle. Trainable. You start today.",
-        "action": "Do one 25-minute single-focus block (Pomodoro) today. Phone in another room. Only relevant tab open.",
-        "reflectionPrompt": "After 25 minutes was your mind tired or clearer?",
+        "title": "One Thing for 25 Minutes",
+        "teaching": "Twelve tabs, messages, and background audio can make a day feel busy while leaving no clear result.\n\nThe mind does not complete two attention-heavy tasks at once; it switches context and must find its place again.\n\nSingle focus does not require a silent room all day. Choose one short block with a visible finish line: one email, two pages, or one problem.\n\nWrite what will be done, move the phone away, and start 25 minutes. When the timer ends, decide whether to continue.",
+        "action": "Write one finish line, move the phone away, and start a 25-minute timer for that task.",
+        "reflectionPrompt": "What was visibly complete, and what first tried to pull you into another task?",
         "quiz": [
           {
-            "q": "Multitasking myth is?",
+            "q": "What happens during attention-heavy multitasking?",
             "options": [
-              "Brain works parallel",
-              "Brain switches fast",
-              "Science proved",
-              "More productive"
+              "Every task finishes together",
+              "The mind switches contexts",
+              "No effort is required",
+              "Errors disappear"
             ],
             "correct": 1,
-            "explain": "Brain switches fast — performance drops."
+            "explain": "The mind moves between contexts and has to find its place again after each switch."
           },
           {
-            "q": "Performance drop per switch?",
+            "q": "How does a useful focus block begin?",
             "options": [
-              "10%",
-              "20%",
-              "30%",
-              "40%"
+              "Open every task",
+              "Write one visible finish line",
+              "Keep the phone on the desk",
+              "Avoid setting a time"
             ],
-            "correct": 3,
-            "explain": "40% drop + error rate increase."
+            "correct": 1,
+            "explain": "A visible finish line defines what will be complete and what can wait during the block."
           }
         ],
-        "proTip": "Keep your phone across the room. If reaching means standing, you'll often skip it."
+        "proTip": "Make reaching the phone require standing up. Physical distance creates a useful decision."
       },
       "2": {
-        "title": "Distraction Kill List",
-        "teaching": "Distractions are invisible enemies. Every day list their names: which apps, which people, which thoughts split your attention?\n\nList means notice. What you notice loses its power.\n\nToday look at the list and build a defense for each.",
-        "action": "In 5 minutes list 5 things that split your attention today. For each write a defense.",
-        "reflectionPrompt": "What was the most surprising item on the list?",
+        "title": "Make Attention Leaks Visible",
+        "teaching": "At night you may wonder why little moved forward without finding one major interruption. The day often dissolves through small messages, tabs, and remembered tasks.\n\nRecording a distraction is more useful than blaming it. Note where, when, and during which task it appeared, and a pattern becomes visible.\n\nDo not build a large defense for every item. Mute one alert, write an idea on paper, or set a reply time.\n\nDuring one focus block, record the first five interruptions. Afterward change the environment for the one that repeated most.",
+        "action": "Record the first five interruptions in one focus block. Build one defense against the most frequent.",
+        "reflectionPrompt": "Did the most frequent interruption come from outside, or from your own thought or habit?",
         "quiz": [
           {
             "q": "Distraction Kill List is?",
@@ -3192,13 +3192,13 @@
             "explain": "Awareness breaks habit power."
           }
         ],
-        "proTip": "Pin your distraction kill list on the phone home screen. Seeing = noticing."
+        "proTip": "Do not solve the interruption while working. Record one word and choose the defense afterward."
       },
       "3": {
-        "title": "Deep Work Block",
-        "teaching": "Cal Newport: deep work = deep value. Shallow work is easily replicated, produces little value. Deep work is hard, rare, very valuable.\n\n90 minutes of true deep work per day produces 10x more output than 8 hours of shallow.\n\nReaching this requires gradual training.",
-        "action": "Do one 90-minute single-task block today. 90 min uninterrupted.",
-        "reflectionPrompt": "How long would the same task have taken in shallow mode?",
+        "title": "A 45-Minute Deep Work Block",
+        "teaching": "Deep work does not mean closing the door all day. It means keeping one clear result in the same context for an uninterrupted period.\n\nThe first lesson used 25 minutes. Moving to 45 instead of jumping to 90 builds capacity while keeping the task realistic.\n\nBefore starting, mute alerts, open required files, and write the result. Decide what the break will look like too.\n\nWhen another task appears, park it on paper instead of switching. At the timer, review the result and number of interruptions.",
+        "action": "Write one result, close unrelated screens, and start 45 minutes. Park new tasks on paper.",
+        "reflectionPrompt": "What did you finish, and which thought tried hardest to break the block?",
         "quiz": [
           {
             "q": "Optimal deep work block?",
@@ -3223,13 +3223,13 @@
             "explain": "Deep work produces deep value."
           }
         ],
-        "proTip": "Write your goal on paper before deep work starts. \"In these 90 min I will finish ___.\""
+        "proTip": "The goal is not merely spending time. Write the visible result before the timer starts."
       },
       "4": {
-        "title": "Morning Rule: Important First",
-        "teaching": "Willpower is highest in the morning. By night you are depleted. Move important work to morning.\n\nFirst 90 minutes is the day golden window. Doing shallow work in this window is a crime.\n\nPriority rule: hardest task first. Everything else can wait.",
-        "action": "Tomorrow do your hardest task between 9:00 and 10:30. No email or WhatsApp.",
-        "reflectionPrompt": "When you started with deep work first, how did the rest of the day go?",
+        "title": "Open the Important Work First",
+        "teaching": "Starting with email is easy because other people decide what needs attention. The day feels active while your important work moves to the end.\n\nImportant does not always mean largest. It is the one task with a real consequence if delayed or meaningful progress toward a longer goal.\n\nYou do not need to ban the inbox all morning. Give the important work 20 minutes before opening communication channels.\n\nPrepare the file and first step the night before. In the morning, begin that step instead of making a new decision.",
+        "action": "Choose tomorrow’s important task tonight. Prepare its first step and give it 20 minutes before messages.",
+        "reflectionPrompt": "How did opening your work before messages change the day’s sense of priority?",
         "quiz": [
           {
             "q": "Why morning 90 min is golden?",
@@ -3254,13 +3254,13 @@
             "explain": "Shallow work in golden hour is a crime."
           }
         ],
-        "proTip": "Don't open email before 11am. Despite what feels urgent, email always waits."
+        "proTip": "Do not write “finish the project.” Write the physical action for the first 20 minutes."
       },
       "5": {
-        "title": "Phone Interval Rule",
-        "teaching": "A phone always on means constant interruption. If you check 50 times in 8 work hours, you have 50 micro-interruptions.\n\nPhone interval rule: keep the phone off outside 2 to 3 designated times per day. Other times: airplane mode.\n\nFirst week is hard. Second week normalizes.",
-        "action": "Try the interval rule today: 12:00, 17:00, 20:00 — 15-minute checks. Airplane mode all other times.",
-        "reflectionPrompt": "How many times did the phone want you in airplane mode?",
+        "title": "Schedule Phone Check Windows",
+        "teaching": "Checking at every urge divides the day into small pieces. Turning the phone off completely may be unrealistic for work or family.\n\nScheduled checks sit between those extremes. Choose short windows for messages and social apps so communication continues without every vibration directing your work.\n\nThere is no universal interval. Try 30, 60, or 90 minutes based on urgency, and let emergency contacts through.\n\nChoose two focus blocks today. Keep the phone out of sight and open a five-minute check window after each block.",
+        "action": "Choose two phone-check times today. Keep the device away between them and allow emergency calls.",
+        "reflectionPrompt": "Did scheduled checking block communication, or mostly reduce unnecessary unlocks?",
         "quiz": [
           {
             "q": "Phone interval rule?",
@@ -3285,7 +3285,7 @@
             "explain": "Every check = micro-interruption to focus."
           }
         ],
-        "proTip": "Schedule phone-check windows on your calendar: 12:00 and 17:00. Airplane mode otherwise."
+        "proTip": "Set an end time for the check window too, so messages do not turn into a feed."
       },
       "6": {
         "title": "Single-Task Discipline",
@@ -4685,10 +4685,10 @@
     },
     "body-discipline": {
       "1": {
-        "title": "Movement Threshold",
-        "teaching": "Modern life is sedentary. 8 hours of sitting is the main reason for the fog over your head. Blood flow slows, brain gets less oxygen, motivation drops.\n\nSolution is not complex: 30 minutes of movement daily. What matters is increasing blood flow.\n\nNo gym needed. Start with your body.",
-        "action": "Take a 30-minute brisk walk today.",
-        "reflectionPrompt": "Did you feel mental clarity after the walk?",
+        "title": "Start Energy with Movement",
+        "teaching": "You can sit all day and still feel tired. Inactivity is not always the same as rest, and low movement can leave energy feeling flat.\n\nStarting does not require a gym, equipment, or a perfect plan. The first goal is simply to cross the threshold from sitting to moving.\n\nA large workout can create resistance. A ten-minute brisk walk is small enough to fit and long enough to notice how you feel.\n\nDo not measure performance today. Step outside, move a little faster, and compare your energy before and after.",
+        "action": "Put on your shoes and walk briskly for ten minutes. Keep the phone in your pocket.",
+        "reflectionPrompt": "What changed between your energy before the walk and after returning?",
         "quiz": [
           {
             "q": "Modern life's biggest physical issue?",
@@ -4713,7 +4713,7 @@
             "explain": "30 min brisk movement is enough."
           }
         ],
-        "proTip": "Add extra steps fetching coffee/tea — small additions compound to your daily threshold."
+        "proTip": "Attach the walk to an existing cue, such as before lunch or immediately after arriving home."
       },
       "2": {
         "title": "Cold Is Optional, Safety Is Not",
@@ -6237,10 +6237,10 @@
     },
     "money-discipline": {
       "1": {
-        "title": "Invisible Spending Danger",
-        "teaching": "Most dangerous spending is invisible: subscriptions, auto-debits, small but accumulating.\n\nEveryone has 5–15 forgotten subscriptions. Thousands lost annually.\n\nToday we make the invisible visible.",
-        "action": "Go through last 3 months of bank statements. List every subscription. Cancel ones you do not use.",
-        "reflectionPrompt": "How many subscriptions? Annual cost?",
+        "title": "Find Where Money Leaves Quietly",
+        "teaching": "Large expenses are easy to remember. The surprise at month-end often comes from smaller recurring payments that no longer require a decision.\n\nYou consciously choose a subscription once, then billing becomes automatic while your usage may decline. The problem is not only price; it is that the decision stopped happening.\n\nDo not fix your whole financial life today. Scan the last 30 days for memberships, apps, storage, or services that repeat.\n\nAsk each one: “If I saw this for the first time today, would I buy it again?” If not, open the cancellation screen.",
+        "action": "Review the last 30 days, list recurring payments, and cancel at least one service you no longer use.",
+        "reflectionPrompt": "Which payment would you not buy again today, and what is its monthly cost?",
         "quiz": [
           {
             "q": "Most dangerous spending type?",
@@ -6265,7 +6265,7 @@
             "explain": "Make invisible visible first."
           }
         ],
-        "proTip": "Lay 3 months of bank statements side by side. Recurring charges become visible."
+        "proTip": "If unsure, note the service and watch whether you use it for seven days before deciding."
       },
       "2": {
         "title": "Use a Budget as a Map",

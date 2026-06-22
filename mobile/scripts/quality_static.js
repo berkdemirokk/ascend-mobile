@@ -512,6 +512,34 @@ run('first-session content pacing', () => {
     }
   }
 
+  const freeLessonLimits = {
+    'dopamine-detox': 10,
+    'silent-morning': 5,
+    'mind-discipline': 5,
+    'body-discipline': 5,
+    'money-discipline': 5,
+  };
+  const riskyFreeClaim = /%\s*\d+|\d+\s*%|\b(?:guarantee|guaranteed|garanti|kanıtlandı|proven)\b/i;
+  for (const [language, resource] of [['tr', trLessons], ['en', enLessons]]) {
+    for (const [pathId, limit] of Object.entries(freeLessonLimits)) {
+      for (let lessonId = 1; lessonId <= limit; lessonId += 1) {
+        const lesson = resource.lessons[pathId][String(lessonId)];
+        const teachingWords = String(lesson.teaching || '').split(/\s+/).filter(Boolean).length;
+        const actionWords = String(lesson.action || '').split(/\s+/).filter(Boolean).length;
+        const paragraphs = String(lesson.teaching || '').split(/\n\n+/).filter(Boolean);
+        const allCopy = [
+          lesson.teaching,
+          lesson.action,
+          ...lesson.quiz.flatMap((question) => [question.q, question.explain, ...question.options]),
+        ].join(' ');
+        assert(teachingWords >= 60 && teachingWords <= 120, `${language}.${pathId}.${lessonId} free teaching must be 60-120 words, found ${teachingWords}`);
+        assert(paragraphs.length === 4, `${language}.${pathId}.${lessonId} free teaching must have four beats, found ${paragraphs.length}`);
+        assert(actionWords <= 24, `${language}.${pathId}.${lessonId} free action must be at most 24 words, found ${actionWords}`);
+        assert(!riskyFreeClaim.test(allCopy), `${language}.${pathId}.${lessonId} free lesson contains an unqualified percentage or guarantee`);
+      }
+    }
+  }
+
   for (const [pathId, lessons] of Object.entries(paths)) {
     for (const [lessonId, lesson] of Object.entries(lessons)) {
       assert(!jargonTitle.test(lesson.title || ''), `${pathId}.${lessonId} title contains avoidable English jargon: ${lesson.title}`);

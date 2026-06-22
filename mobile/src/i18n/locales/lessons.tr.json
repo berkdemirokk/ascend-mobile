@@ -271,7 +271,7 @@
               "Tüm bildirimleri silmek"
             ],
             "correct": 1,
-            "explain": "Amaç garanti edilmiş bir ekran süresi düşüşü değil, kendi davranışındaki görsel tetikleyicileri fark etmektir."
+            "explain": "Amaç kesin bir ekran süresi düşüşü vadetmek değil, kendi davranışındaki görsel tetikleyicileri fark etmektir."
           }
         ],
         "proTip": "Gri tonlama bir yasak değil, deneydir. İşini zorlaştırıyorsa kapat; yalnızca hangi görsel işaretlerin seni çektiğini kaydet."
@@ -1644,9 +1644,9 @@
       },
       "3": {
         "title": "Su, Yüz, Pencere",
-        "teaching": "Uyandın. Hala uykulu, gözler açık değil tam. Eskiden ilk hareket: telefon. Şimdi telefon başka odada — peki ne yapacaksın? İşte sabah ritüelinin temeli bu boş noktada başlıyor.\n\nUyandığında **üç eylem zinciri** kur:\n1. **Bir bardak su iç** — gece 6-8 saat dehidrasyon kırılır, beyin hidrate olur (kafa karışıklığının %40'ı dehidrasyondan)\n2. **Yüzünü yıka (soğuk)** — soğuk şok parasempatik (uyku) modundan sempatik (uyanıklık) moduna geçirir, kortizol baseline'ı netleşir\n3. **Pencereyi aç veya dışarı çık 1 dakika** — sabah ışığı (1000-10000 lux) retinaya çarpar, suprakiazmatik çekirdek sirkadiyen ritmi sıfırlar\n\nAndrew Huberman protokolü: uyandıktan **30-60 dakika** içinde sabah ışığı = gece daha kolay uyku + gün boyu enerji düzeyi.\n\nBu 3 dakikalık zincir, sabahı eskisinden **10x daha berrak** yapar. Kahveden önce.",
-        "action": "Yarın bu zinciri uygula. Uyanır uyanmaz: **su iç → yüzünü yıka → pencereye yaklaş**. Telefonsuz, kahvesiz.",
-        "reflectionPrompt": "Üçlü zincirden sonra, eski sabahlara göre nasıl hissettin? Beyin daha mı netti? Enerji ne zamana kadar sürdü?",
+        "teaching": "Telefon artık ilk hareket değilse oluşan boşluğa basit bir sıra gerekir. Uzun sabah rutini, henüz uyanırken gereğinden fazla karar yaratır.\n\nÜç sıradan işaret kullan: susadıysan su iç, yüzünü yıka ve perdeyi aç veya gün ışığına yaklaş. Bunların hiçbiri tek başına mucize protokol değildir.\n\nDeğerleri sıralı olmalarındadır. Bir hareket diğerini başlatır ve telefon bu zincirin dışında kalır. Soğuk su kullanmak zorunda değilsin; rahat sıcaklığı seç.\n\nBardağı ve pencereye giden alanı geceden hazırla. Sabah üç adımı bitir, sonra günün geri kalanına karar ver.",
+        "action": "Yarın telefondan önce şu zinciri tamamla: su, yüzünü yıkama ve perdeyi açma veya dışarı yaklaşma.",
+        "reflectionPrompt": "Hangi adım başlamayı kolaylaştırdı ve zincir telefonu kontrol etme dürtüsünü azalttı mı?",
         "quiz": [
           {
             "q": "Sabah üçlü zincir nedir?",
@@ -1657,27 +1657,27 @@
               "Müzik-meditasyon-okuma"
             ],
             "correct": 0,
-            "explain": "Su-yüz-pencere uyandırma + sirkadiyen reset zinciri."
+            "explain": "Üç basit adım, sabah ne yapacağına yeniden karar vermeden ekransız bir başlangıç sırası kurar."
           },
           {
-            "q": "Soğuk yüz yıkamanın etkisi?",
+            "q": "Yüzünü yıkarken soğuk su şart mı?",
             "options": [
-              "Uyku verir",
-              "Parasempatikten çıkarır",
-              "Cildi kurutur",
-              "Vakit alır"
+              "Evet, buz gibi olmalı",
+              "Hayır, rahat sıcaklık seçilebilir",
+              "Yalnız yazın",
+              "Sadece kahveden sonra"
             ],
             "correct": 1,
-            "explain": "Soğuk şok = uyanıklık moduna geçiş."
+            "explain": "Amaç bedeni şoka sokmak değil, telefonun yerine hatırlanabilir ve rahat bir sabah sırası kurmaktır."
           }
         ],
-        "proTip": "Soğuk yüz yıkamaktan sonra havluyu kullanma; suyun kendiliğinden kuruması ekstra uyandırır."
+        "proTip": "Zinciri uykuluyken de hatırlayacak kadar basit tut. Yeni adım eklemek yerine aynı sırayı tekrarla."
       },
       "4": {
-        "title": "Sabah Sessizliği",
-        "teaching": "Çoğu kişi sabahı bir **gürültü banyosuna** çevirir: telefonun bildirim sesi, haber kanalı, podcast, telefon konuşması, kahvaltıda dizi. Beyin daha gün başlamadan **tükenir**. 9'da iş yerine giderken zaten 200 dijital uyaranla karşılaşmış oluyorsun.\n\n**Sessizlik bir lüks değil — temel ihtiyaç.** Cal Newport (Digital Minimalism): 'Solitude (yalnızlık + sessizlik) modern hayatın en kıt kaynağı, en değerli zihinsel arazi.' Çünkü:\n- **Yaratıcılık** sessizlikte doğar (DMN aktif)\n- **Kendini tanıma** sessizlikte olur\n- **Karar verme** sessizlikte netleşir\n- **Anksiyete** sessizlikte düşer (kortizol baseline)\n\nİlk 60 dakikayı sessiz geçirmek, gün boyu daha **az reaktif** kılar. Reaktif gün = başkalarının ajandası. Niyetli gün = senin ajandan.\n\nSessizlik **hiçbir şey yapmamak değil**. Düşünmek için yer açmak. Sade rutin: su, yüz, pencere, kahvaltı, niyet pratiği — hepsi sessizce. Beyin bu boşlukta günü kurar.",
-        "action": "Yarın **ilk 60 dakikayı sessiz** geçir: müzik yok, podcast yok, ses yok, konuşma minimum. Sadece sabah rutini ve düşünme.",
-        "reflectionPrompt": "Sessiz sabah seni daha mı yorgun yaptı, yoksa daha mı dingin? Düşüncelerinde hangi yeni şey belirdi?",
+        "title": "Sabahın İlk Sessizliği",
+        "teaching": "Uyandığın anda ses açmak, zihnine daha kendi düşüncen oluşmadan yeni bir gündem verir. Müzik veya podcast kötü değildir; yalnız sabahın ilk dakikalarında otomatik seçim haline gelebilir.\n\nSessizlik özel bir meditasyon performansı değildir. Dışarıdan içerik almadan bedeninin hızını, odadaki sesleri ve aklına gelen ilk düşünceleri fark etmektir.\n\nBir saat sessizlik gerekmiyor. On dakika, alışkanlığı görecek kadar uzun ve sabahı zorlaştırmayacak kadar kısadır.\n\nYarın ilk on dakikada ekran ve kulaklık kullanma. Su iç, hazırlan veya pencereye yaklaş; sonra gününe normal biçimde devam et.",
+        "action": "Yarın uyandıktan sonraki ilk 10 dakikayı ekransız ve kulaklıksız geçir. Yalnız hazırlan ve çevrendeki sesleri fark et.",
+        "reflectionPrompt": "İlk on dakikada sessizlik rahatlatıcı mı, rahatsız edici mi geldi; aklına ilk ne geldi?",
         "quiz": [
           {
             "q": "Sabah sessizlik niye lüks değil?",
@@ -1702,13 +1702,13 @@
             "explain": "Sessiz başlangıç = gün boyu sakin reaktivite."
           }
         ],
-        "proTip": "İlk 30 dakikan boyunca konuşmaya da gerek yok — gerçek sessizlik içsel + dışsal birliktedir."
+        "proTip": "Sessizliği başarıya dönüştürmeye çalışma. Sadece günün ilk girdisini başkasının içeriği yerine kendi çevren seçsin."
       },
       "5": {
-        "title": "Sabah 5 Dakikalık Niyet",
-        "teaching": "Sabah 8:30. İş yerine geldin. E-postaları açtın. Üç acil bekleyen. WhatsApp'ta 17 mesaj. Slack'te toplantı bildirimi. **9:00'da** — gün başlamadan 1.5 saat geçmiş ve sen hiçbir şeye **niyet etmedin**. Sadece tepki verdin.\n\nÇoğu kişi gününü **reaktif** başlar: e-posta, WhatsApp, bildirimler, haberler. Niyet ettiğin değil, sana gelen şeylere tepki verirsin. Bu hayat tarzının istatistiği net (McKinsey 2022 study): bilgi işçilerinin verimli iş saatleri **günde 2.8 saat** — geri kalan tepki + context switch.\n\n**5 dakikalık niyet** değiştirir bunu. Bir defter al (telefon değil — yazma kasla bağ kurar). Üç soru:\n1. **Bugünün ana önceliği ne?** (Tek mesele — birden çok değil)\n2. **Hangi alışkanlıkları sürdüreceğim?** (Streak'ler, kuralar)\n3. **Akşam neye gurur duyacağım?** (End-of-day reverse engineering)\n\nDavid Allen (Getting Things Done) tezini bu: gün başında 'önemli' net değilse, gün sonu 'iyi' net olmaz.\n\nBu 5 dakika, günün geri kalanını **şekillendirir**. Önemli işler önce yapılır, e-posta sonraya kalır. Niyet senin elinde.",
-        "action": "Yarın sabah **5 dakika niyet pratiği** yap. Bir kalem ve kağıt al, üç soruya yaz. Telefon yok, e-posta yok.",
-        "reflectionPrompt": "Niyet yazılı olunca, gün boyu kararlarını etkiledi mi? Hangi karar farklı oldu?",
+        "title": "Sabah İçin Tek Cümlelik Niyet",
+        "teaching": "Uzun yapılacaklar listesi sabah daha başlamadan baskı yaratabilir. Her şey önemli görünürse hangi işe önce başlayacağını seçmek zorlaşır.\n\nNiyet, bütün günü kontrol eden bir slogan değildir. Bugün tamamlandığında günü anlamlı kılacak tek davranışı görünür hale getiren kısa bir cümledir.\n\n“Verimli olacağım” belirsizdir. “Saat 10.00’dan önce teklif dosyasının ilk sayfasını bitireceğim” ise ne zaman başlayacağını ve neyin biteceğini söyler.\n\nSabah beş dakika ayır: günün tek sonucunu yaz, ilk fiziksel adımı belirle ve takvimde başlayacağı zamanı seç.",
+        "action": "Yarın sabah şu cümleyi tamamla: “Bugün mutlaka ___ bitireceğim.” İlk adımı ve başlayacağın saati altına yaz.",
+        "reflectionPrompt": "Tek sonuç seçmek gününü sadeleştirdi mi; seçtiğin iş gerçekten en önemli olan mıydı?",
         "quiz": [
           {
             "q": "Reaktif gün başlangıcı ne demektir?",
@@ -1733,7 +1733,7 @@
             "explain": "Öncelik, alışkanlık, gurur — üç soru günü şekillendirir."
           }
         ],
-        "proTip": "Niyet sorularını yazılı yap. Beyin yazılı niyeti zihinsel niyetten 4x daha fazla hatırlar."
+        "proTip": "Niyet cümlesi sonuç içersin. “Çalışacağım” yerine neyin görünür biçimde tamamlanacağını yaz."
       },
       "6": {
         "title": "Sabah Işığı: 10 Dakika",
@@ -3164,10 +3164,10 @@
         "proTip": "Telefonu sessize almak yetmez. Ulaşmak için ayağa kalkman gerekiyorsa dürtü ile davranış arasına gerçek bir engel girer."
       },
       "2": {
-        "title": "Dikkat Kaçakları Listesi",
-        "teaching": "'Bugün niye verimsizdim?' Akşam soruyorsun. Yanıt vermek zor — çünkü dikkatini **kim çaldı** somut değil. **Görünmeyen düşmanlar** günü bitirdi.\n\nNir Eyal (**Indistractable**): 'Distraction = isim koymadığın her şey. İsim koyduğun anda **görünür**, görünür hale geldiği anda **dövebilirsin**.'\n\n**Distraction Kill List = tanı + savunma.** Günde 1 kez kâğıt al, son 24 saatte dikkatini bölen **5 şeyi** yaz. Uygulama, kişi, düşünce — fark etmez. Her biri için **1 savunma** kur.\n\nÖrnek:\n- 'Instagram → ana ekrandan kaldırdım'\n- 'WhatsApp grupları → sessize aldım'\n- 'X kişinin mesajları → cevap saatlerini sınırladım'\n- 'Iş kaygısı → akşam 30 dk düşünce zamanı'\n\nMekanizma: **meta-bilinç** (kendi davranışına dışarıdan bakmak) prefrontal kortex aktivasyonu = otomatik dürtü zayıflar. **İsim koyma + savunma kurma = davranışsal alarm** sistemi.\n\nMarcus Aurelius: 'Düşmanını tanı, savaşı kazanma şansın var. Tanımadığın düşman kazandığın savaşta bile seni öldürür.'",
-        "action": "**5 dakika** liste yap: bugün dikkatini bölen **5 şey** ne? Her biri için **1 somut savunma** yaz.",
-        "reflectionPrompt": "Listenin en şaşırtıcı maddesi hangisiydi? Hiç tahmin etmediğin biri ortaya çıktı mı?",
+        "title": "Dikkat Kaçaklarını Görünür Kıl",
+        "teaching": "Akşam “bugün neden ilerleyemedim?” dediğinde tek bir büyük kesinti bulamayabilirsin. Gün çoğu zaman küçük mesajlar, sekmeler ve akla gelen işler arasında çözülür.\n\nDikkat dağıtan şeyi suçlamak yerine kaydetmek daha kullanışlıdır. Nerede, ne zaman ve hangi iş sırasında geldiğini gördüğünde tekrar eden örüntü belirir.\n\nHer kesintiye büyük çözüm kurma. Bildirimi kapatmak, akla gelen işi kâğıda yazmak veya cevap saatini belirlemek gibi tek bir savunma seç.\n\nBugün bir odak bloğunda dikkatini bölen ilk beş şeyi not et. Blok bitince en sık tekrarlanan biri için ortamı değiştir.",
+        "action": "Bir odak bloğunda ilk beş kesintiyi not et. En sık tekrarlanan biri için bugün tek bir önlem kur.",
+        "reflectionPrompt": "En sık kesinti dışarıdan mı geldi, yoksa kendi düşüncen veya alışkanlığın mıydı?",
         "quiz": [
           {
             "q": "Distraction Kill List nedir?",
@@ -3192,13 +3192,13 @@
             "explain": "Bilinç gücü — fark etmek alışkanlığı kırar."
           }
         ],
-        "proTip": "Distraction listeni telefonun ana ekranına koy. Görmek = farkına varmak."
+        "proTip": "Kesinti anında çözüm üretme. Tek kelimeyle kaydet ve iş bittikten sonra önlem seç."
       },
       "3": {
-        "title": "Derin Çalışma Bloğu",
-        "teaching": "Modern bilgi ekonomisinde **kıt kaynak nedir**? Bilgi değil — internet bedava. Zaman değil — herkeste eşit. **Derin odak**. Dünya nüfusunun **belki %5'i** günde 90 dk kesintisiz odaklanabilir. Bu kişiler ekonominin **kazananları**.\n\nCal Newport (**Deep Work**, Georgetown CS professor): 'Deep work = deep value. Yüzeysel iş kolay, taklit edilebilir, az değerli. Derin iş zor, nadir, **piyasada en yüksek getiri**.'\n\nMatematik: 90 dakika **gerçek deep work** > 8 saat çoklu-görev (dağınık). Çünkü deep work'te **şu üç şey** olur:\n1. **Anlama derinliği** — 'aha' anları gelir\n2. **Otomatikleşme** — beyin paterni öğrenir, sonraki sefer hızlanır\n3. **Beceri inşa** — miyelin kılıfı kalınlaşır (Maguire 2000)\n\nMekanizma: deep work = **PFC (prefrontal cortex) + DMN sinerjisi**. Hem analitik (PFC) hem yaratıcı (DMN) ağlar devrede. Distraction = PFC kesilir, DMN bastırılır = sadece reaktif beyin (limbik sistem).\n\nKademeli antrenman gerek: 25 → 45 → 60 → 90 dakika. 2-4 hafta.",
-        "action": "Bugün **90 dakikalık tek görev bloku** yap. Pomodoro değil — **kesintisiz 90 dk**. Telefon başka oda.",
-        "reflectionPrompt": "90 dakikadan sonra bitirdiğin iş, sığ modunda kaç saatte biterdi?",
+        "title": "45 Dakikalık Derin Çalışma",
+        "teaching": "Derin çalışma bütün gün kapıyı kapatmak değildir. Bitiş çizgisi belli bir işi, kesintisiz bir süre boyunca tek bağlamda tutmaktır.\n\nİlk dersin 25 dakikalık bloğu başlangıçtı. Doğrudan 90 dakikaya çıkmak yerine bugün 45 dakika seçmek, odağı büyütürken görevi uygulanabilir bırakır.\n\nBlok başlamadan önce bildirimleri kapat, gerekli dosyaları aç ve bitireceğin sonucu tek cümleyle yaz. Molada ne yapacağını da önceden belirle.\n\nSüre içinde başka bir iş aklına gelirse geçiş yapma; bir kâğıda yazıp mevcut işe dön. Sayaç bittiğinde sonuç ve kesinti sayısını değerlendir.",
+        "action": "Tek bir sonuç yaz, gereksiz ekranları kapat ve 45 dakikalık sayaç başlat. Yeni işleri kâğıda park et.",
+        "reflectionPrompt": "45 dakikada ne tamamlandı ve odağını bozmaya en çok hangi düşünce çalıştı?",
         "quiz": [
           {
             "q": "Deep work günde kaç dakika optimal?",
@@ -3223,13 +3223,13 @@
             "explain": "Derin iş, derin değer üretir."
           }
         ],
-        "proTip": "Deep work başlamadan önce hedefini bir kâğıda yaz. \"Şu 90 dakikada şunu bitireceğim.\""
+        "proTip": "Blok hedefi süre geçirmek değil, görünür bir sonuç üretmektir. Başlamadan önce sonucu yaz."
       },
       "4": {
-        "title": "Sabah Kuralı: Önemli İlk",
-        "teaching": "9'da işe geldin. 'Bir email kontrol edeyim.' 10:30 olmuş — hala emailde. 11'de toplantı. Öğle yemeği. 14:00 — 'şimdi başlayayım.' Yorgun. Telefon. 16:00 — '15:00'ye randevum var.' 18:00 — eve gidiyorsun, gerçek iş **hiç başlamadı**.\n\nBrian Tracy (**Eat That Frog**): 'Mark Twain — eğer sabah ilk işin canlı kurbağa yemekse, gün boyu sana daha kötü bir şey olmaz.' **En zor işi ilk yap.**\n\nRoy Baumeister (Florida State) — ego depletion: irade kası **gün boyu zayıflar**. Sabah 100/100, akşam 30/100. Önemli işe akşam başlamak = **boş tankta yarış**.\n\nMekanizma: kortizol piki (CAR — Cortisol Awakening Response) sabah ilk 30-60 dakika. Bu pik = doğal odak. Bunu **email yazmak**, WhatsApp cevaplamak için harcamak = en değerli yakıtı çöpe atmak.\n\n**Sabah ilk 90 dk = altın pencere.** Burada sığ iş yapmak suç. Email, mesaj, sosyal medya = öğleden sonra.\n\n**Kural**: günün en zorlu işi → ilk yap. Geri kalanı bekleyebilir.",
-        "action": "Yarın **gününün en zor işini** sabah 9–10:30 arasında yap. Email yok. WhatsApp yok. **Sadece o iş**.",
-        "reflectionPrompt": "Sabah ilk 90 dk derin işle başladığında, gün geri kalanı nasıl gitti? Akşam yorgun muydun, dolu muydun?",
+        "title": "Günün Önemli İşini Önce Aç",
+        "teaching": "Sabah e-posta ve mesajlarla başlamak kolaydır; çünkü ne yapacağını başkalarının talepleri belirler. Gün hareketli görünür ama kendi önemli işin sona kalabilir.\n\n“En önemli” her zaman en büyük proje değildir. Bugün gecikirse gerçek sonucu olacak veya uzun vadeli hedefini ilerletecek tek iştir.\n\nGelen kutusunu bütün sabah yasaklamak zorunda değilsin. Önce önemli işe 20 dakikalık başlangıç yap, ardından iletişim kanallarını aç.\n\nAkşamdan dosyayı hazırla ve ilk adımı yaz. Sabah karar vermek yerine doğrudan o adıma başlamak sürtünmeyi azaltır.",
+        "action": "Bu akşam yarının önemli işini seç ve ilk adımı hazırla. Sabah mesajlardan önce o işe 20 dakika ver.",
+        "reflectionPrompt": "Mesajlardan önce kendi işini açmak günün öncelik hissini nasıl değiştirdi?",
         "quiz": [
           {
             "q": "Sabah 90 dk altın penceresi neden?",
@@ -3254,13 +3254,13 @@
             "explain": "Sığ iş altın saatte yapılırsa suç."
           }
         ],
-        "proTip": "Sabah ilk e-postayı 11'den önce açma. Yapanın aksine, e-posta hep bekler."
+        "proTip": "Önemli işi “bitir” demek yerine ilk 20 dakikada yapacağın fiziksel hareketi yaz."
       },
       "5": {
-        "title": "Telefon Aralık Kuralı",
-        "teaching": "Ortalama insan **günde 96 kez** telefon kontrol eder (Asurion 2019). Her **10 dakikada 1**. Çalışırken her kontrol = beyin bağlamını **yeniden inşa** etmek zorunda.\n\nGloria Mark (UC Irvine) çalışması: bir kesintiden sonra **tam odağa dönmek 23 dakika 15 saniye**. Yani günde 50 kontrol = teorik olarak **19 saat** odak kaybı (paralel sayılırsa). Pratikte: hiç derin işe girilemiyor.\n\n**Telefon aralık kuralı**: günde **2-3 belirlenmiş zaman** dışında telefon **uçak modu**. Örnek: 12:00, 17:00, 20:00 — her birinde 15 dakika 'toplu kontrol'. Diğer 23 saatte 15 dakika = **erişilemez**.\n\nMekanizma: telefon = sürekli **dopamin spike beklentisi**. Beyin 'bir şey gelmiş olabilir' der, kortizol salgılar. Kapalı telefon = beklenti kapalı = sinir sistemi sakin.\n\nİlk hafta zor olur — **fantom titreşim** hissi (Brendan O'Neill çalışmaları: %89 telefon kullanıcısı yaşar). 2. hafta beyin adapte olur.\n\nAcil olan **arar**. WhatsApp 'çok acil' = muhtemelen değil.",
-        "action": "Bugün **telefon aralık kuralını** dene: 12:00, 17:00, 20:00 = 15 dk kontrol. **Diğer her zaman uçak modu**.",
-        "reflectionPrompt": "Uçak modunda **kaç kez** telefon istedi? Hangi anda en güçlü dürtü geldi?",
+        "title": "Telefon İçin Kontrol Saatleri Belirle",
+        "teaching": "Telefonu her dürtüde kontrol etmek günü küçük parçalara böler. Tamamen kapatmak ise iş veya aile nedeniyle gerçekçi olmayabilir.\n\nİki uç arasında planlı kontrol vardır. Mesajlara ve sosyal uygulamalara bakacağın kısa pencereleri önceden seçersen iletişim sürer, fakat her titreşim çalışma saatini yönetmez.\n\nTek bir evrensel aralık yoktur. İşinin aciliyeti ve yakınlarının ihtiyacına göre 30, 60 veya 90 dakikalık bir düzen deneyebilirsin. Acil kişileri ayrı bırak.\n\nBugün iki odak bloğu seç. Telefonu görünmez bir yere koy ve her blok sonunda beş dakikalık kontrol penceresi aç.",
+        "action": "Bugün iki telefon kontrol saati belirle. Arada cihazı uzağa koy; acil kişilerin aramalarını açık bırak.",
+        "reflectionPrompt": "Planlı kontrol iletişimi aksattı mı, yoksa yalnız gereksiz açışları mı azalttı?",
         "quiz": [
           {
             "q": "Telefon aralık kuralı nedir?",
@@ -3285,7 +3285,7 @@
             "explain": "Her kontrol = mikro-kesinti = odak kaybı."
           }
         ],
-        "proTip": "Telefonu kontrol saatlerini takvime koy: 12:00 ve 17:00. Diğer her zaman uçak modu."
+        "proTip": "Kontrol penceresinin başlangıcı kadar bitişini de belirle; mesajdan akışa kaymayı önler."
       },
       "6": {
         "title": "Tek Görev Disiplini",
