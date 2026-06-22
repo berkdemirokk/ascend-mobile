@@ -33,7 +33,7 @@ import { calendarDaysSince, toLocalDateString } from '../utils/dateOnly';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
 
-const initialState = {
+export const initialState = {
   onboarded: false,
 
   // When the user first opened the app. Used to compute the new-user
@@ -68,6 +68,7 @@ const initialState = {
   lastLessonAtMs: 0,
   todaySessionLessons: 0,
   _momentumToast: null,
+  _lessonReward: null,
 
   // Per-path commitment-device pledges. Behavioural-econ research:
   // a written, self-authored sentence raises adherence ~30% even if
@@ -200,7 +201,7 @@ const normalizeAnonUsername = (value) => {
 
 // ─── Reducer ─────────────────────────────────────────────────────────────────
 
-const ACTION_TYPES = {
+export const ACTION_TYPES = {
   LOAD_STATE: 'LOAD_STATE',
   COMPLETE_ONBOARDING: 'COMPLETE_ONBOARDING',
   SET_USER_PROFILE: 'SET_USER_PROFILE',
@@ -237,7 +238,7 @@ const ACTION_TYPES = {
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
 };
 
-function appReducer(state, action) {
+export function appReducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.LOAD_STATE: {
       // Whitelist payload keys against initialState's shape — this
@@ -575,6 +576,7 @@ function appReducer(state, action) {
         lastLessonAtMs: 0,
         todaySessionLessons: 0,
         _momentumToast: null,
+        _lessonReward: null,
         // Streak-repair / milestone bookkeeping is also progress-tied.
         streakRepairsUsed: 0,
         _milestoneToast: null,
@@ -665,10 +667,7 @@ function appReducer(state, action) {
       };
       if (current.completed.includes(lessonId)) return state;
 
-      // ── Bonus XP multipliers ──────────────────────────────────────────
-      // Comeback bonus: returning after 3+ days gone gives 2x XP, once.
-      // Random bonus days: Monday + Friday are 2x days. Stacks with
-      // comeback (rare overlap = 4x — that's a feature, not a bug).
+      // Comeback and the visible premium weekend boost are deterministic.
       let xpMultiplier = 1;
       let comebackApplied = false;
       if (state.lastCompletedDate) {
@@ -679,24 +678,10 @@ function appReducer(state, action) {
         }
       }
       const dow = new Date().getDay();
-      const isBonusDay = dow === 1 || dow === 5; // Mon or Fri
-      if (isBonusDay) xpMultiplier *= 2;
 
-      // PREMIUM WEEKEND BOOST — Saturdays + Sundays grant a 3x
-      // multiplier for premium users only. Visible on Home with a
-      // banner so free users see the perk and feel the upgrade pull.
-      // Stacks with the Mon/Fri 2x (impossible weekday overlap) and
-      // the surprise 20% chance below — premium weekend can easily
-      // hit 6x on a lucky lesson, which is the "wow" moment.
+      // This multiplier is visible on Home before a premium lesson.
       const isWeekend = dow === 0 || dow === 6; // Sun or Sat
       if (isWeekend && state.isPremium) xpMultiplier *= 3;
-
-      // ── Variable rewards (v1.0.12) ────────────────────────────────────
-      // Surprise reward — ~20% chance of an extra 2x. Variable schedules
-      // are the most addictive reinforcement pattern (casino mechanic).
-      // Stacks with the deterministic multipliers above.
-      const isSurpriseDay = Math.random() < 0.2;
-      if (isSurpriseDay) xpMultiplier *= 2;
 
       // Perfect Lesson Bonus — completing every quiz question correctly
       // (i.e., not losing any hearts) earns a flat bonus. Makes the
@@ -806,7 +791,7 @@ function appReducer(state, action) {
       const hitMilestone = MILESTONES.includes(newStreak)
         && state.currentStreak !== newStreak;
       const milestoneToast = hitMilestone
-        ? { streak: newStreak, comebackApplied, isBonusDay, ts: Date.now() }
+        ? { streak: newStreak, comebackApplied, ts: Date.now() }
         : state._milestoneToast;
 
       return {
@@ -854,6 +839,16 @@ function appReducer(state, action) {
         lastLessonAtMs: nowMs,
         todaySessionLessons: sessionLessonsNow,
         _momentumToast: momentumToast,
+        _lessonReward: {
+          totalXp: finalXp,
+          baseXp: xp,
+          multiplier: xpMultiplier,
+          perfectBonus,
+          momentumBonus,
+          comebackApplied,
+          weekendBoostApplied: isWeekend && state.isPremium,
+          ts: nowMs,
+        },
       };
     }
 
@@ -1048,6 +1043,7 @@ export function AppProvider({ children }) {
     delete toSave._streakFreezeToast;
     delete toSave._milestoneToast;
     delete toSave._momentumToast;
+    delete toSave._lessonReward;
     try {
       AsyncStorage.setItem(
         STORAGE_KEYS.USER_STATE,
@@ -1067,6 +1063,7 @@ export function AppProvider({ children }) {
       delete toSave._streakFreezeToast;
       delete toSave._milestoneToast;
       delete toSave._momentumToast;
+      delete toSave._lessonReward;
       // _streakLostInfo IS persisted: we want the empathy banner to
       // survive an app restart so a user who closes the app right
       // after losing their streak still sees it on the next open.

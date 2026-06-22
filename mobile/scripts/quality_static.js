@@ -458,6 +458,16 @@ run('purchase failure semantics', () => {
   assert(!/catch\s*\([^)]*\)[\s\S]*return false/.test(restoreMatch[1]), 'restore errors must not be reported as an empty entitlement');
 });
 
+run('deterministic lesson rewards', () => {
+  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8');
+  const lessonSource = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');
+  assert(!appContextSource.includes('Math.random()'), 'lesson completion reward must not use random multipliers');
+  assert(!lessonSource.includes('Math.random()'), 'quiz answers must not grant random rewards');
+  assert(appContextSource.includes('_lessonReward: {'), 'reducer must expose an itemized lesson reward receipt');
+  assert(appContextSource.includes('totalXp: finalXp'), 'reward receipt must use the granted XP total');
+  assert(lessonSource.includes('_lessonReward?.totalXp'), 'celebration must display the granted XP total');
+});
+
 run('first-session content pacing', () => {
   const appJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'app.json'), 'utf8'));
   const lessonScreen = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');

@@ -12,7 +12,7 @@ import { unlinkPurchaseUser } from '../services/purchases';
 // Tagged result: `timedOut: true` lets the caller distinguish "no session"
 // from "couldn't determine yet" so we don't immediately bounce a real user
 // to the Welcome screen on slow networks (~5s is common on cellular).
-const withTimeout = (promise, ms) =>
+export const withTimeout = (promise, ms) =>
   Promise.race([
     promise.then((value) => ({ ...value, timedOut: false })),
     new Promise((resolve) =>
