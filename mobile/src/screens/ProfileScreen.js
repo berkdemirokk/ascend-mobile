@@ -177,6 +177,7 @@ export default function ProfileScreen({ navigation }) {
             style={styles.shareBtn}
             accessibilityRole="button"
             accessibilityLabel={t('share.streakAria', 'Streak paylaş')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             activeOpacity={0.7}
           >
             <MaterialIcons

@@ -9,9 +9,10 @@
     "web": "expo start --web",
     "doctor": "npx expo-doctor",
     "quality:static": "node scripts/quality_static.js",
+    "quality:runtime": "node scripts/runtime_tests.js",
     "export:ios": "npx expo export --platform ios --output-dir dist-ci",
     "audit:critical": "npm audit --omit=dev --audit-level=critical",
-    "quality:ci": "npm run quality:static && npm run doctor && npm run export:ios && npm run audit:critical",
+    "quality:ci": "npm run quality:static && npm run quality:runtime && npm run doctor && npm run export:ios && npm run audit:critical",
     "build:ios": "eas build --platform ios",
     "build:ios:preview": "eas build --platform ios --profile preview",
     "submit:ios": "eas submit --platform ios"

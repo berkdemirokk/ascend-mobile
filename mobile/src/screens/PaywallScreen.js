@@ -348,6 +348,7 @@ export default function PaywallScreen({ navigation, route }) {
         <TouchableOpacity
           accessibilityRole="button"
           accessibilityLabel={t('common.close', 'Kapat')}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           onPress={closePaywall}
           style={styles.closeBtn}
         >

@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import { REVENUECAT_CONFIG } from '../config/constants';
 import { getPackageForPeriod } from './purchasePackages';
+import { createPurchaseOperations, hasActiveEntitlement } from './purchaseOperations';
 
 let Purchases = null;
 let isInitialized = false;
@@ -123,9 +124,7 @@ export const checkPremiumStatus = async () => {
     const P = await ensureReady();
     if (!P) return null;
     const customerInfo = await P.getCustomerInfo();
-    return (
-      customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null
-    );
+    return hasActiveEntitlement(customerInfo, REVENUECAT_CONFIG.ENTITLEMENT_ID);
   } catch (e) {
     console.warn('Check premium error:', e?.message);
     return null; // unknown — don't downgrade user
@@ -183,34 +182,16 @@ export const getOfferings = async () => {
   return null;
 };
 
-export const purchasePremium = async (period = 'monthly') => {
-  try {
-    const offerings = await getOfferings();
-    if (!offerings?.availablePackages?.length) {
-      throw new Error('No packages available');
-    }
-    const P = await ensureReady();
-    if (!P) throw new Error('Purchases module unavailable');
+const purchaseOperations = createPurchaseOperations({
+  getOfferings: () => getOfferings(),
+  ensureReady: () => ensureReady(),
+  entitlementId: REVENUECAT_CONFIG.ENTITLEMENT_ID,
+  unavailableMessage: 'Purchases module unavailable',
+});
 
-    // Pick package by RevenueCat package type or fallback to product id match
-    const pkgs = offerings.availablePackages;
-    const pkg = getPackageForPeriod(pkgs, period);
-    if (!pkg) {
-      throw new Error(`No ${period} package available`);
-    }
-
-    const { customerInfo } = await P.purchasePackage(pkg);
-    const unlocked =
-      customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
-    return {
-      status: unlocked ? 'unlocked' : 'pending',
-      customerInfo,
-    };
-  } catch (e) {
-    if (e.userCancelled) return { status: 'cancelled' };
-    throw e;
-  }
-};
+export const purchasePremium = (period = 'monthly') => (
+  purchaseOperations.purchasePremium(period)
+);
 
 export const getAvailablePackages = async () => {
   try {
@@ -228,10 +209,10 @@ export const getAvailablePackages = async () => {
 };
 
 export const restorePurchases = async () => {
-  const P = await ensureReady();
-  if (!P) {
-    throw new Error(lastInitError || 'Purchases service is unavailable');
+  try {
+    return await purchaseOperations.restorePurchases();
+  } catch (error) {
+    if (!isInitialized && lastInitError) throw new Error(lastInitError);
+    throw error;
   }
-  const customerInfo = await P.restorePurchases();
-  return customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
 };

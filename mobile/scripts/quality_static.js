@@ -218,6 +218,9 @@ run('icon button accessibility', () => {
         if (!jsxAttribute(opening, 'accessibilityRole')) {
           issues.push(`${relative(file)}:${line} missing accessibilityRole`);
         }
+        if (!jsxAttribute(opening, 'hitSlop')) {
+          issues.push(`${relative(file)}:${line} missing hitSlop`);
+        }
       },
     });
   }

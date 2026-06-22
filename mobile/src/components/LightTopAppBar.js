@@ -32,6 +32,7 @@ export default function LightTopAppBar({
         style={styles.avatarBtn}
         accessibilityRole="button"
         accessibilityLabel={t('settings.title', 'Ayarlar')}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         activeOpacity={0.7}
       >
         <View style={styles.avatarCircle}>

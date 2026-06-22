@@ -460,6 +460,7 @@ export default function SettingsScreen({ navigation }) {
           <TouchableOpacity
             accessibilityRole="button"
             accessibilityLabel={t('common.back', 'Geri')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             onPress={() => navigation.goBack()}
             style={styles.headerBack}
           >
