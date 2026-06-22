@@ -550,6 +550,37 @@ run('first-session content pacing', () => {
   }
 });
 
+run('reviewed advanced lesson safety', () => {
+  const reviewedRanges = {
+    'body-discipline': [[6, 15]],
+    'money-discipline': [[6, 15]],
+  };
+  const riskyClaim = /%|\b(?:percent|guarantee|guaranteed|proven|research|studies|study|science|scientific|experts?|mortality|lifespan|y\u00fczde|garanti|kan\u0131tland\u0131|kan\u0131tlanm\u0131\u015f|ara\u015ft\u0131rma(?:lar)?|bilimsel|uzmanlar|mortalite|\u00f6m\u00fcr)\b/i;
+  for (const [language, resource] of [['tr', trLessons], ['en', enLessons]]) {
+    for (const [pathId, ranges] of Object.entries(reviewedRanges)) {
+      for (const [start, end] of ranges) {
+        for (let lessonId = start; lessonId <= end; lessonId += 1) {
+          const lesson = resource.lessons[pathId][String(lessonId)];
+          const teachingWords = String(lesson.teaching || '').split(/\s+/).filter(Boolean).length;
+          const actionWords = String(lesson.action || '').split(/\s+/).filter(Boolean).length;
+          const paragraphs = String(lesson.teaching || '').split(/\n\n+/).filter(Boolean);
+          const allCopy = [
+            lesson.title,
+            lesson.teaching,
+            lesson.action,
+            lesson.reflectionPrompt,
+            ...lesson.quiz.flatMap((question) => [question.q, question.explain, ...question.options]),
+          ].join(' ');
+          assert(teachingWords >= 60 && teachingWords <= 120, `${language}.${pathId}.${lessonId} reviewed teaching must be 60-120 words, found ${teachingWords}`);
+          assert(paragraphs.length === 4, `${language}.${pathId}.${lessonId} reviewed teaching must have four beats, found ${paragraphs.length}`);
+          assert(actionWords <= 24, `${language}.${pathId}.${lessonId} reviewed action must be at most 24 words, found ${actionWords}`);
+          assert(!riskyClaim.test(allCopy), `${language}.${pathId}.${lessonId} reviewed lesson contains an unsupported authority, percentage, or guarantee claim`);
+        }
+      }
+    }
+  }
+});
+
 run('lesson locale schema', () => {
   const locales = [['tr', trLessons], ['en', enLessons]];
   const pathIds = Object.keys(trLessons.lessons);

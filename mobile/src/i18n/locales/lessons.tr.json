@@ -4840,312 +4840,302 @@
         "proTip": "Uyku düzenini tek gecede değil, bir haftalık ortalamada değerlendir. Kalıcı sorunlarda sağlık uzmanına danış."
       },
       "6": {
-        "title": "Yatma Saati: 22:00",
-        "teaching": "Hafta içi 23:00 yat, hafta sonu 02:00. **Pazartesi** berbat — beden 'jet lag' yaşıyor. 'Sosyal jet lag' (Till Roenneberg, kronobiyolog terimi): farklı yatma saatleri = sürekli **iç saatler bozuk**. Sigara gibi kanıtlı mortalite riski.\n\nMatthew Walker araştırmaları: yatış saati **±15 dakika** içinde olursa = sirkadiyen ritm **keskin** = uyku kalitesi optimum. **±2 saat farklı** olursa = uyku kalitesi **%40 düşer**.\n\n**22:00 = melatonin doğal zirvesi.** Pineal bez bu saatte salgıyı artırır — eğer **ışık + ekran yoksa**. Bu pencerede yatış = beden **doğal akışla** uyur. 23:00 sonrası = melatonin penceresi **kaçırılır**, kortizol yeniden yükselir ('second wind'), uyumak zorlaşır.\n\nMekanizma: SCN (suprakiazmatik çekirdek) = ana saat. Her gün aynı saatte yatış = SCN sinyali **isabetli**. Esneklik = sinyal **bulanık** = beden hangi saatte uyacağını bilemez.\n\n**Hafta içi-sonu fark etmez.** 'Cumartesi geç yatayım, telafi yaparım' = mit. Telafi yok — sadece bozulma.\n\n21:00'dan sonra: mavi ışık filtre + sarı gece lambası + ekran kapatma. Beden 22:00'a hazırlanır.",
-        "action": "Bugün gece **22:00'da yatakta ol**. Telefon başka odada.",
-        "reflectionPrompt": "**22:00'da** yatağa geçmek dünden ne kadar farklı? Uykuya dalmak ne kadar sürdü?",
-        "proTip": "**21:00'dan sonra mavi ışık filtre + sarı gece lambası**. Beden 22:00'a hazırlanır.",
+        "title": "Tutarlı Yatma Saati",
+        "teaching": "Uyku düzeni tek bir sihirli saate değil, bedeninin ritmine ve günlük sorumluluklarına uyan tutarlı bir aralığa dayanır. Herkes için aynı yatış saati doğru değildir.\n\nHer akşam benzer zamanda yavaşlamak, zihne günün kapandığını anlatır. Işık, hareket ve uyarıcı içerik azaldığında uykuya geçiş daha öngörülebilir hale gelebilir.\n\nUyanman gereken saatten geriye doğru gerçekçi bir yatış aralığı seç. Son yarım saati düşük ışık, sakin bir rutin ve telefondan uzak bir ortamla koru.\n\nBir gece plana uyamamak başarısızlık değildir. Ertesi gün aşırı telafi yerine normal aralığına dön; süren uyku sorunun varsa bir sağlık uzmanına danış.",
+        "action": "Bu gece için gerçekçi bir yatış aralığı seç ve son yarım saati ekransız geçir.",
+        "reflectionPrompt": "Uykuya geçişini en çok hangi akşam alışkanlığı zorlaştırıyor?",
         "quiz": [
           {
-            "q": "Optimum yatış saati?",
+            "q": "Tutarlı Yatma Saati konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "20:00",
-              "22:00",
-              "00:00",
-              "02:00"
+              "Kendi düzenine uyan tutarlı bir yatış aralığı kurmak",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 1,
-            "explain": "22:00 = melatonin doğal zirvesi."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Kendi düzenine uyan tutarlı bir yatış aralığı kurmak."
           },
           {
-            "q": "Esnek yatış uyku düşüşü?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Yok",
-              "%10",
-              "%40",
-              "%80"
+              "Süren uyku sorununda profesyonel destek almak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 2,
-            "explain": "%40 uyku kalitesi düşer."
+            "correct": 0,
+            "explain": "Güvenli sınır: Süren uyku sorununda profesyonel destek almak."
           }
         ]
       },
       "7": {
-        "title": "Hidrasyon: 2 Litre",
-        "teaching": "Saat 15:00, kafan ağır, odaklanamıyorsun. **'Kahve içmem lazım'** diyorsun. Ama gerçek sebep: bugün **3 bardak su içtin**. Kronik dehidre **çoğu insan**.\n\nVücudun **%60'ı su**. Beyin **%75 su**. **%2 dehidratasyon** = bilişsel performans **%20 düşer** (Lieberman, Tufts Üniversitesi). Bu **'bir bardak su iç'** mertebesinde.\n\nBu kadar basit ama **göz ardı edilen** fark:\n- Yorgunluk %50 artar\n- Konsantrasyon zorlaşır\n- Açlık sinyali (susuzlukla karışır) güçlenir → fazla yemek\n- Cilt kötü\n- Baş ağrısı sık\n- Eklem rahatsızlığı\n\nÇözüm **basit**: günde **2 litre = ~8 bardak**. Bölüm:\n- **1 litre sabah** (uyandıktan öğleye kadar)\n- **1 litre öğleden sonra** (öğle-akşam)\n\nMekanizma: dehidre beyin = **nöron hacmi küçülür** (geçici) = elektrik sinyali yavaşlar. Hidrasyon = beyin **normal hacim** = optimum işleme.\n\nKritik: **sabah ilk içecek su** (uykuda 6-8 saat dehidre kaldın). Kahve **90 dakika sonra**. Kahve hidrasyonu **engellemez** ama su yerine geçmez.\n\nŞişe görünür yere koy = **environment design** = otomatik içme.",
-        "action": "Bugün **2 litre su iç**. 1L sabah, 1L öğleden sonra. Şişe görünür yere koy.",
-        "reflectionPrompt": "Bedeninde **tam hidrasyonun** farkını ne zaman hissettin? Enerji, odak, hangisi?",
-        "proTip": "**Sabah ilk içecek su**. Hidrasyon **kahveden 90 dk önce** başlar — kahve hidrasyonu desteklemez.",
+        "title": "Hidrasyon Rutini",
+        "teaching": "Su ihtiyacı beden ölçüsü, hava, hareket, beslenme ve sağlık durumuna göre değişir. Tek bir litre hedefini herkes için zorunlu saymak doğru değildir.\n\nSusuzluk, ağız kuruluğu ve alışılmadık koyu idrar gibi işaretler gün içindeki ihtiyacını fark etmene yardım edebilir. Ama bu işaretler tek başına tanı değildir.\n\nSuyu görünür ve kolay ulaşılır tut. Öğünlerin yanında ve hareketten sonra birkaç yudum içmek, büyük miktarı bir anda zorlamaktan daha sürdürülebilir bir rutin kurar.\n\nBazı kalp, böbrek ve ilaç durumlarında sıvı önerisi farklıdır. Sana sıvı kısıtlaması verildiyse genel tavsiye yerine kendi sağlık planını izle.",
+        "action": "Bugün su şişeni görünür bir yere koy ve üç doğal mola anında su iç.",
+        "reflectionPrompt": "Gün içinde su içmeyi en sık hangi anda unutuyorsun?",
         "quiz": [
           {
-            "q": "Optimum günlük su?",
+            "q": "Hidrasyon Rutini konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "500ml",
-              "1L",
-              "2L",
-              "5L"
+              "İhtiyacı kişisel koşullara göre izlemek",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 2,
-            "explain": "2 litre = ~8 bardak."
+            "correct": 0,
+            "explain": "Temel yaklaşım: İhtiyacı kişisel koşullara göre izlemek."
           },
           {
-            "q": "%2 dehidratasyon etkisi?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Yok",
-              "%5 düşüş",
-              "%20 düşüş",
-              "%50"
+              "Tıbbi sıvı kısıtlaması varsa kişisel sağlık planını izlemek",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 2,
-            "explain": "Bilişsel %20 düşüş."
+            "correct": 0,
+            "explain": "Güvenli sınır: Tıbbi sıvı kısıtlaması varsa kişisel sağlık planını izlemek."
           }
         ]
       },
       "8": {
-        "title": "Günde 10.000 Adım",
-        "teaching": "'**10.000 adım**' Apple Watch satışı için **moda** sanılıyor. Aslında **1964 Tokyo Olimpiyatları**: Japon firma Yamasa Toki bir pedometre çıkardı, ismi **'manpo-kei'** ('10.000 adım sayar'). Pazarlama. Ama bilim sonradan **doğruladı**.\n\n**Lancet (2023) meta-analizi** (47 çalışma, ~227,000 kişi):\n- **4,000 adım/gün** → ölüm riski **azalmaya başlar**\n- **7,500 adım/gün** → %47 düşüş\n- **10,000 adım** → %52 düşüş\n- **15,000+ adım** → ek fayda küçük\n\nBu **tüm sebeplerden ölüm** (all-cause mortality). Kanser, kalp, demans — hepsi.\n\nSürekli oturma = **kanserle eş tehlikeli** (Levine — Mayo Clinic). Hareket = **ilaç** — patent yok, ücretsiz, yan etki sıfır.\n\nMekanizma: yürüme = **lenf akışı + lipoprotein lipaz aktivasyonu + BDNF + endorfin + insülin hassasiyeti**. Her sistem güçlenir.\n\nGünlük hayata yığma:\n- **Toplantıyı yürüyerek** yap (Steve Jobs tarzı)\n- **Telefonla konuşurken** dolaş\n- **Asansör yerine merdiven**\n- **1 km mesafe** → yürüyüş, taksi değil\n- **Parkı 2 sokak öteye** park et\n\nApple Health / Google Fit = otomatik sayar.",
-        "action": "Bugün **10.000 adıma ulaş**. Telefonda sayar var. Mahalle turu, merdiven, dolaşma.",
-        "reflectionPrompt": "10K adıma ulaşmak **gününü nasıl yapılandırdı**? Akşam farklı mı hissettin?",
-        "proTip": "**Toplantıyı yürüyerek** yap. **Telefonla konuşurken yürü**. **Asansör yerine merdiven**.",
+        "title": "Günlük Hareket Hedefi",
+        "teaching": "Adım sayısı yararlı bir geri bildirimdir; ancak sağlık için tek doğru sayı yoktur. Başlangıç noktan, hareket kabiliyetin ve gününün yapısı hedefi belirler.\n\nAsıl amaç uzun hareketsiz dönemleri bölmek ve toplam hareketi zamanla artırmaktır. Kısa yürüyüşler de gün içinde birikerek düzenli hareket alışkanlığına katkı sağlar.\n\nÖnce üç normal gününü ölç. Sonra mevcut ortalamanın biraz üzerinde, sürdürülebilir bir hedef seç ve telefon görüşmesi ya da öğle molası gibi bir ana bağla.\n\nAğrı, baş dönmesi veya göğüs rahatsızlığı olursa dur. Hareket kısıtın ya da bilinen bir sağlık durumun varsa hedefini uygun bir uzmanla belirle.",
+        "action": "Bugünkü olağan adımını ölç ve buna kısa, rahat bir yürüyüş ekle.",
+        "reflectionPrompt": "Günündeki hangi sabit mola kısa yürüyüş için en uygun?",
         "quiz": [
           {
-            "q": "Günlük adım hedefi?",
+            "q": "Günlük Hareket Hedefi konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "1K",
-              "5K",
-              "10K",
-              "50K"
+              "Kendi başlangıç düzeyinden kademeli ilerlemek",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 2,
-            "explain": "7-10K = optimum sağlık."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Kendi başlangıç düzeyinden kademeli ilerlemek."
           },
           {
-            "q": "Adımla ölüm riski?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Aynı",
-              "%30 düşük",
-              "%80 yüksek",
-              "Bilinmez"
+              "Uyarı belirtisinde durup uygun destek almak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 1,
-            "explain": "%30 daha düşük ölüm."
+            "correct": 0,
+            "explain": "Güvenli sınır: Uyarı belirtisinde durup uygun destek almak."
           }
         ]
       },
       "9": {
         "title": "Direnç Antrenmanına Giriş",
-        "teaching": "Sadece **kardiyo** yapıyorsun — koşu, bisiklet, yürüyüş. **Yeterli sanıyorsun**. Ama **30+** yaşındaysan **kas kaybı** (sarkopeni) başladı: yıllık **%1**. 50'sinde **%20 kas kaybetmiş** olacaksın — eklem ağrısı, denge sorunu, dimdik duramazlık.\n\nBritish Journal of Sports Medicine (Saeidifard et al., 2019, **80,000 kişi**): direnç antrenmanı = **%30 daha çok ömür** (kardiyodan ayrı + ek katkı). Hem kardiyo + direnç = **maksimum mortalite düşüşü**.\n\nKas = **ikinci kalp**. Çünkü:\n- **Glukoz deposu** (insülin hassasiyeti)\n- **Endokrin organ** (myokine salgılar — anti-inflammatory)\n- **Metabolik motor** (her kilo kas = +10 kalori/gün dinlenmede)\n- **Yapı destekleyici** (omurga, eklem)\n\nMekanizma: direnç antrenmanı = mikro yıkım → tamir → kas büyüme (hipertrofi) + kemik yoğunluğu artışı. mTOR yolağı + IGF-1 + testosteron yükselişi.\n\n**3 temel hareket**: squat (alt vücut), push-up (üst vücut iter), pull-up veya row (üst vücut çeker). + plank (kor).\n\n**Hafta 3 gün yeterli**. Pazartesi-Çarşamba-Cuma **20 dakika** ev egzersizi. **Salon gerek değil** — vücut ağırlığı yeter ilk 3-6 ay.",
-        "action": "Bugün **3 temel hareketi 3 set** yap: **squat, push-up, plank**. 10 tekrar her biri.",
-        "reflectionPrompt": "Direnç antrenmanı sonrası **enerjin** nasıldı? Kardiyoyla farklı mıydı?",
-        "proTip": "**Hafta 3 gün yeterli**. Pazartesi-Çarşamba-Cuma 20 dk ev egzersizi. Salon gerek değil.",
+        "teaching": "Direnç çalışması, kasların kontrollü bir yüke karşı çalışmasıdır. Vücut ağırlığı, bant veya uygun ağırlık kullanılabilir; başlangıç için spor salonu şart değildir.\n\nİyi bir ilk program itme, çekme, çömelme ve gövdeyi sabitleme gibi temel hareketleri kapsar. Ama hareket seçimi mevcut beceri ve rahatsızlıklara göre uyarlanmalıdır.\n\nKolay bir varyasyon seç, birkaç kontrollü tekrar yap ve form bozulmadan bırak. Aynı kas grubuna yeniden yük vermeden önce toparlanmak için zaman tanı.\n\nKeskin ağrı, uyuşma veya eklemde güvensizlik normal antrenman hissi değildir. Böyle bir durumda hareketi bırak ve gerekiyorsa nitelikli destek al.",
+        "action": "Bugün kolay squat, duvar şınavı ve kısa plank varyasyonunu kontrollü biçimde dene.",
+        "reflectionPrompt": "Hangi temel hareketi güvenli biçimde öğrenmeye öncelik vermelisin?",
         "quiz": [
           {
-            "q": "Direnç antrenmanı ömür?",
+            "q": "Direnç Antrenmanına Giriş konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "Yok",
-              "%10 artış",
-              "%30 artış",
-              "%200"
+              "Kolay varyasyon ve kontrollü formla başlamak",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 2,
-            "explain": "%30 daha çok ömür."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Kolay varyasyon ve kontrollü formla başlamak."
           },
           {
-            "q": "30 sonrası kas kaybı?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Yok",
-              "%1/yıl",
-              "%5/yıl",
-              "%10/yıl"
+              "Keskin ağrıda hareketi bırakmak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 1,
-            "explain": "Yıllık %1, antrenmansız."
+            "correct": 0,
+            "explain": "Güvenli sınır: Keskin ağrıda hareketi bırakmak."
           }
         ]
       },
       "10": {
-        "title": "Günlük Push-Up",
-        "teaching": "Tek bir hareket, **çok büyük etki**. Push-up: göğüs + omuz + triceps + kor + dengeleyici kaslar. Ekipmansız, her yerde, 30 saniye.\n\n**Justin Yang et al. (Harvard, JAMA Network Open 2019)**, 1,104 erkek itfaiyeci, 10 yıl takip: **40+ push-up yapabilen** kişilerin kalp hastalığı riski **%96 daha düşük** (10'dan az yapabilenlere göre). Bu **olağanüstü bir korelasyon** — sigara bırakmaktan daha güçlü.\n\nNeden push-up bu kadar tahmin edici? Çünkü push-up = **fonksiyonel güç + dayanıklılık + kor istikrar** birleşimi. Tek harekette **bütün sağlık göstergesi**.\n\n**Bedel: 5 dakika**. Hatta dağıtsan: sabah 5, öğle 5, akşam 10 = 20.\n\nKritik: form > sayı. Yanlış form = sakatlık + boşa enerji.\n- Eller omuz hizası altı, parmaklar düz\n- Vücut **düz çizgi** (kalça sarkmasın)\n- Dirsek **45° açı** (yana açma)\n- Aşağı: göğüs yere yaklaşsın (5 cm)\n- Yukarı: dirsek **kilitlenmesin**\n\n**Habit stack**: diş fırçaladıktan sonra 5 push-up. **100 günde 500 push-up** birikir. Yıllık 1,800 — bedel **sıfır**.\n\nİlk hafta zor. 2. hafta otomatik. 1. ay = kas net görünür.",
-        "action": "Bugün **20 push-up** yap. Tek seri değilse, gün sonu toplam 20.",
-        "reflectionPrompt": "Push-up sayını **günlük artırmak** ne kadar zor? Form nasıl?",
-        "proTip": "**Diş fırçaladıktan sonra 5 push-up**. Habit stack = 100 günde **500 push-up** birikir.",
+        "title": "Şınavda Güvenli İlerleme",
+        "teaching": "Şınav göğüs, omuz, kol ve gövdeyi birlikte çalıştıran pratik bir harekettir. Değeri tek seferde yapılan yüksek sayıdan değil, uygun seviyede temiz tekrardan gelir.\n\nDuvar, yüksek bir masa, dizler veya zemin farklı zorluk seçenekleri sunar. Bedenini baştan topuğa dengeli tutabildiğin seviye doğru başlangıçtır.\n\nKısa bir set yap, birkaç tekrar daha yapabilecek halde dur ve hareket kalitesini kaydet. Zorluk kolaylaştığında önce küçük bir tekrar, sonra varyasyon ekle.\n\nOmuz ya da bilekte keskin ağrı varsa zorlamayı sürdürme. El konumunu ve eğimi değiştir; sorun devam ederse uygun bir uzmana danış.",
+        "action": "Bugün temiz formu koruyabildiğin şınav varyasyonunda iki rahat set yap.",
+        "reflectionPrompt": "Formun bozulmadan önce hangi işaret sana durman gerektiğini söylüyor?",
         "quiz": [
           {
-            "q": "Push-up sayısı kalp riski?",
+            "q": "Şınavda Güvenli İlerleme konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "Etkisiz",
-              "40+ = %96 düşük",
-              "10+ = %50",
-              "100+ = aynı"
+              "Sayının önüne temiz formu koymak",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 1,
-            "explain": "40+ push-up = %96 düşük risk."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Sayının önüne temiz formu koymak."
           },
           {
-            "q": "Stack tekniği?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Yok",
-              "Diş sonrası 5",
-              "100'lük set",
-              "Random"
+              "Eklem ağrısında zorluğu azaltmak veya durmak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 1,
-            "explain": "Diş + push-up = otomatik."
+            "correct": 0,
+            "explain": "Güvenli sınır: Eklem ağrısında zorluğu azaltmak veya durmak."
           }
         ]
       },
       "11": {
-        "title": "Günlük Squat",
-        "teaching": "Sandalyeden zorla kalkıyorsun, **'eh yaş ilerliyor'** diyorsun. Aslında: **50 yaşındaysan** ve squat yapmıyorsan, **80'inde tuvalete yardımsız gidemezsin**. Bu **biyolojik tahmin**.\n\nSquat = **tüm vücut hareketi**. Kuadriseps, glutes, kor, hamstring, denge, mobilite. Tek hareket = bütün alt vücut sağlığı.\n\nBJSM çalışması: **30 saniye Sit-to-Stand testi** mortalite tahmin gücü daha yüksek **VO2 max'tan**. Yani 50 yaşındaki adam squat yapamıyorsa = 80'inde olmama riski yüksek.\n\nAyrıca:\n- **Kemik yoğunluğu** (osteoporoz önleme — özellikle kadın)\n- **Diz sağlığı** (zayıf bacak = diz **stres**)\n- **Sırt sağlığı** (zayıf glutes = sırt kompansasyon)\n- **Denge** (yaşlı düşmesi #1 ölüm sebebi 65+)\n\n**Doğru form**:\n- Ayaklar omuz hizası, hafif dışa\n- **Kalçayı geriye it** (sandalyeye otururken gibi)\n- Dizler **ayak parmağı hizasını geçmesin**\n- Sırt **düz** (bel kambur değil)\n- Göğüs **yukarı**\n- İniş: kalça **diz hizasının altı** (full depth)\n\n30+ yaş kişi → **günde 30 squat**. Eklem dostu, ekipmansız, etkili. 3 ay sonra: 'zorlanma' kelimesi unutulur.",
-        "action": "Bugün **30 squat** yap. Set bölersen **3x10**. **Form > sayı**.",
-        "reflectionPrompt": "Squat **formuna dikkat etmek** nasıldı? Hangi bölge en zayıf hissedildi?",
-        "proTip": "**Kalçayı geriye it**, dizler ayak parmağı hizasını geçmesin. **Aynaya bak** veya **videoya çek**.",
+        "title": "Squat Mekaniği",
+        "teaching": "Squat oturma, kalkma ve yerden güç alma becerisini çalıştırır. Her bedenin kalça, diz ve ayak bileği yapısı farklı olduğu için tek bir kusursuz görünüm yoktur.\n\nDengeli bir tekrar boyunca ayakların zeminde kalır, dizlerin ayak yönünü izler ve hareket ağrısız bir aralıkta sürer. Derinlik kişiye göre değişebilir.\n\nÖnce sandalyeye kontrollü oturup kalkmayı dene. Rahat olduğunda sandalyeyi alçaltabilir veya desteği azaltabilirsin; aynı anda yalnızca bir şeyi değiştir.\n\nDizde, kalçada veya belde keskin ağrı hissedersen hareket aralığını küçült ya da dur. Devam eden ağrı için değerlendirme almak daha doğrudur.",
+        "action": "Bugün bir sandalyeye kontrollü oturup kalkarak iki rahat squat seti yap.",
+        "reflectionPrompt": "Squat sırasında dengeyi en çok hangi noktada kaybediyorsun?",
         "quiz": [
           {
-            "q": "Squat formu?",
+            "q": "Squat Mekaniği konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "Diz öne",
-              "Kalça geri",
-              "Dik",
-              "Hızlı"
+              "Ağrısız aralıkta dengeli hareket etmek",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 1,
-            "explain": "Kalçayı geriye it."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Ağrısız aralıkta dengeli hareket etmek."
           },
           {
-            "q": "Squat kapsamı?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Sadece bacak",
-              "Tüm vücut",
-              "Kor",
-              "Sırt"
+              "Keskin ağrıda aralığı azaltmak veya durmak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 1,
-            "explain": "Tüm vücut hareketi."
+            "correct": 0,
+            "explain": "Güvenli sınır: Keskin ağrıda aralığı azaltmak veya durmak."
           }
         ]
       },
       "12": {
-        "title": "Plank Disiplini",
-        "teaching": "Sırt ağrın var. Doktora gittin: 'kor güçsüz'. Fizyoterapist aynı şeyi dedi. **Sırt ağrısının %80'i** kas dengesizliği, çoğu zaman = **zayıf kor**.\n\nKor = sadece **abs** değil. Kor = **derin abdominal + bel kasları + diyafram + pelvik taban**. Bir **silindir** gibi gövdeyi destekler. Zayıf kor = silindir gevşek = sırt **kompansasyon** yapar = ağrı.\n\nDr. Stuart McGill (Waterloo Üniversitesi, dünya bel ağrısı otoritesi): 'Sit-up = bel için **tehlikeli** (omurga fleksiyonu tekrarlanır). Plank = **güvenli + etkili**. **60 saniye plank** = 100 sit-up'tan **fonksiyonel olarak değerli**.'\n\nMekanizma: plank = **izometrik kasılma** = kor **bütün olarak** çalışır. Sit-up = **rektus abdominis** (yüzeysel) — derin stabilizasyon kasları zayıf kalır.\n\n**Progresyon**:\n- 1. gün: 30 sn\n- 1. hafta: 45 sn\n- 2. hafta: 60 sn\n- 1. ay: 90 sn\n- 3. ay: 2-3 dakika\n\nNefes kritik: **nefes tutmayın**. Yanlış: efforla nefes durur. Doğru: **yavaş nefes ver**, kor **aktif** kalır.\n\nForm: vücut **düz çizgi** (kalça yukarı veya aşağı olmamalı). Aynaya bak veya partnerden kontrol iste.",
-        "action": "Bugün **30 saniye plank** yap. Yarın 35, ertesi gün 40. **60 saniyeye ulaşana** dek artır.",
-        "reflectionPrompt": "Plank tutmaya çalışırken **zihninde ne oldu**? Hangi bölge en zayıf?",
-        "proTip": "**Nefes verme** — yanlış nefes tut. **Doğru**: yavaş nefes ver, kor aktif kalır.",
+        "title": "Gövde Stabilitesi",
+        "teaching": "Gövde çalışması yalnızca karın kaslarını göstermek için değildir. Amaç, nefes alırken omurga ve pelvis çevresinde kontrollü bir destek üretebilmektir.\n\nPlank bunun bir seçeneğidir; herkes için tek seçenek değildir. Duvar plankı, yüksek yüzey plankı veya kısa taşıma hareketleri daha uygun bir başlangıç olabilir.\n\nNefesini tutmadan kısa süre kaliteli pozisyonu koru. Belin çöküyor, omuzların sıkışıyor veya nefesin kilitleniyorsa seti bitir ve daha kolay varyasyona dön.\n\nGövde egzersizi bel ağrısını tek başına açıklamaz veya tedavi etmez. Süren, yayılan ya da günlük yaşamı etkileyen ağrı profesyonel değerlendirme gerektirir.",
+        "action": "Bugün rahat nefes alabildiğin plank varyasyonunu iki kısa set uygula.",
+        "reflectionPrompt": "Gövde çalışırken nefesin mi yoksa pozisyonun mu önce bozuluyor?",
         "quiz": [
           {
-            "q": "Plank başlangıç?",
+            "q": "Gövde Stabilitesi konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "10 sn",
-              "30 sn",
-              "5 dk",
-              "1 saat"
+              "Nefesle birlikte kontrollü stabilite üretmek",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 1,
-            "explain": "30 sn ile başla."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Nefesle birlikte kontrollü stabilite üretmek."
           },
           {
-            "q": "Sırt ağrısı sebebi?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Yaş",
-              "Zayıf kor",
-              "Genetik",
-              "Şans"
+              "Süren veya yayılan ağrıyı değerlendirmek",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 1,
-            "explain": "Sırt ağrısının %80 zayıf kor."
+            "correct": 0,
+            "explain": "Güvenli sınır: Süren veya yayılan ağrıyı değerlendirmek."
           }
         ]
       },
       "13": {
-        "title": "Kardiyo Bölgeleri",
-        "teaching": "Koşmaya çıktın. 'Çok yorgun', 'kondisyon kötü' diyorsun, 30 dakika sonra **bitik**siz. Asıl sorun: **çok hızlı koştun** — Zone 3-4 (orta-yüksek yoğunluk). Bu **etkisiz orta bölge**.\n\n**Heart Rate Zones** (5 bölge sistemi):\n- **Zone 1**: %50-60 max kalp atışı — çok kolay (yürüyüş)\n- **Zone 2**: %60-70 — **konuşabildiğin tempo** (orta yoğunluk)\n- **Zone 3**: %70-80 — zorlanma başladı\n- **Zone 4**: %80-90 — zor (laktat eşiği)\n- **Zone 5**: %90-100 — maksimum (sprint)\n\nDr. Iñigo San-Millán (Colorado Üniversitesi, **Tour de France bilim danışmanı**): 'Elite atletler **zamanlarının %80'ini Zone 2'de** geçirir. %20 Zone 4-5. Zone 3 = **black hole** — hem yorucu hem etkisiz.'\n\n**Zone 2 faydası**:\n- **Mitokondri çoğalması** (hücresel enerji üretimi)\n- **Yağ yakımı** zirvesi (Zone 2 = primary fuel = fat)\n- **Dayanıklılık** zemininde\n- **Toparlanma** hızlı (ertesi gün enerjik)\n\nÇoğu insan Zone 3-4'te koşar: çok yorgun olur ama mitokondri **az gelişir**, yağ yerine **glikoz** yakar (limited supply).\n\nKritik test: **konuşabiliyorsan Zone 2**. Cümle yarıda kesilirse Zone 3+. **Hafta 3 kez × 30 dakika Zone 2** = 6 ay sonra **dayanıklılık 2x**.",
-        "action": "Bugün **30 dakika Zone 2 kardiyo** yap. **Konuşabildiğin yoğunluk** — yürüyüş tempolu / hafif jog.",
-        "reflectionPrompt": "**Zone 2** ne kadar **yavaş** geldi? 'Daha hızlı gideyim' dürtüsü kaç kez geldi?",
-        "proTip": "**Apple Watch / Garmin** = zone monitor. Yoksa: **konuşabiliyorsan = Zone 2**.",
+        "title": "Kardiyo Yoğunluğunu Ayarlama",
+        "teaching": "Kardiyo yoğunluğunu yalnızca saat üzerindeki bölgeye göre seçmek gerekmez. Konuşma testi ve algılanan efor, çoğu günlük egzersiz için anlaşılır geri bildirim sağlar.\n\nRahat tempoda tam cümle kurabilirsin. Daha yoğun bölümde konuşmak zorlaşır. Her iki düzeyin de yeri olabilir; amaç her seansı tükenme yarışına çevirmemektir.\n\nÇoğu çalışmayı sürdürebileceğin bir tempoda yap. Yoğunluğu artıracaksan kısa bir bölüm ekle ve sonraki gün nasıl toparlandığını gözlemle.\n\nGöğüs ağrısı, olağandışı nefes darlığı, bayılma hissi veya düzensiz çarpıntıda dur. Bilinen bir durumun varsa yoğunluk planını sağlık ekibinle konuş.",
+        "action": "Bugün konuşabildiğin rahat tempoda kısa bir yürüyüş veya bisiklet çalışması yap.",
+        "reflectionPrompt": "Rahat tempo ile gereğinden fazla zorlandığın tempo arasındaki işaret ne?",
         "quiz": [
           {
-            "q": "Zone 2 ne demek?",
+            "q": "Kardiyo Yoğunluğunu Ayarlama konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "Sprint",
-              "Konuşabildiğin tempo",
-              "Maksimum",
-              "Yürüyüş"
+              "Yoğunluğu konuşma ve toparlanma sinyalleriyle ayarlamak",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 1,
-            "explain": "Konuşabildiğin orta yoğunluk."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Yoğunluğu konuşma ve toparlanma sinyalleriyle ayarlamak."
           },
           {
-            "q": "Çoğu insan hangi zone'da?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "1",
-              "2",
-              "3-4 takılı",
-              "5"
+              "Ciddi uyarı belirtisinde çalışmayı bırakmak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 2,
-            "explain": "Etkisiz orta bölge."
+            "correct": 0,
+            "explain": "Güvenli sınır: Ciddi uyarı belirtisinde çalışmayı bırakmak."
           }
         ]
       },
       "14": {
-        "title": "Mobilite Çalışması",
-        "teaching": "Sabah yataktan kalkıyorsun → **omuz çıtırdıyor**. Pantolon giyerken **eğilmek zor**. Çoraplar **sıkıntılı**. Ama daha 35'sin. Sebep: **mobilite kaybı**.\n\n**Esneklik ≠ mobilite**. Karıştırılır:\n- **Esneklik** = pasif uzanma. Yardımla ne kadar uzanırsın? (Stretching test)\n- **Mobilite** = **aktif + kontrollü** hareket aralığı. Kendiliğinden ne kadar hareket edebilirsin?\n\nKelly Starrett (**Becoming a Supple Leopard**, mobilite pioneer): 'Modern hayatın **#1 fiziksel hatası** = mobilite ihmal. 30+ yaşta günlük omuz/kalça/ayak bileği mobilitesi yapmazsan, 50'de hareket **kısıtlanır** — ve geri dönüş yıllar sürer.'\n\n**Kritik 3 eklem**:\n1. **Omuz** — gün boyu öne kambur = kapsül daralır\n2. **Kalça** — 8 saat oturma = kalça fleksörleri kısalır\n3. **Ayak bileği** — esnek olmalı (squat, koşu için kritik)\n\nMekanizma: eklem **kıkırdağı** hareketle beslenir (sinovial sıvı pompalama). Hareketsiz eklem = beslenme kesilir = kıkırdak **incelir** = osteoartrit.\n\n**5 dakika günlük** = uzun vade büyük fark:\n- Kol daireleri (her yön 10)\n- Kalça açılışı (90/90 stretch, butterfly)\n- Ayak bileği rotasyonu + kalkma-inme\n- Boyun + üst sırt rotasyonu\n\nSabah duş sonrası **optimum** — kaslar ısınmış, kapsül yumuşamış.",
-        "action": "Bugün **5 dakika mobilite** yap. Omuz, kalça, ayak bileği. Yumuşak hareketler.",
-        "reflectionPrompt": "Hangi eklem **en kısıtlı** geldi? Sürpriz oldu mu?",
-        "proTip": "**Sabah duştan sonra** yap. Kaslar ısınmış = mobilite optimum + sakatlık riski sıfır.",
+        "title": "Hareket Alanı Rutini",
+        "teaching": "Hareket alanı, bir eklemi kontrol edebildiğin rahat sınırlar içinde kullanabilmektir. Daha uzağa gitmek her zaman daha iyi değildir; kontrol ve rahatlık daha önemlidir.\n\nOmuz, kalça ve ayak bileğini gün içinde farklı yönlerde kullanmak sertlik hissini azaltmaya yardımcı olabilir. Küçük ve düzenli tekrarlar agresif esnetmeden daha yönetilebilirdir.\n\nYavaş daireler, kontrollü uzanma ve destekli çömelme gibi birkaç hareket seç. Isındıkça aralığı hafifçe artır; sıçrama veya zorla bastırma yapma.\n\nKeskin ağrı, şişlik, yakın zamanda yaralanma veya eklemde kilitlenme varsa genel rutin uygulama. Önce uygun değerlendirme al.",
+        "action": "Bugün omuz, kalça ve ayak bileği için beş dakikalık rahat hareket rutini yap.",
+        "reflectionPrompt": "Hangi eklem gün içinde daha fazla kontrollü harekete ihtiyaç duyuyor?",
         "quiz": [
           {
-            "q": "Mobilite vs esneklik?",
+            "q": "Hareket Alanı Rutini konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "Aynı",
-              "Mobilite kontrollü hareket",
-              "Esneklik aktif",
-              "Bilinmez"
+              "Rahat aralıkta yavaş ve kontrollü hareket etmek",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 1,
-            "explain": "Mobilite = kontrollü hareket."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Rahat aralıkta yavaş ve kontrollü hareket etmek."
           },
           {
-            "q": "30+ yaş mobilite?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Yok",
-              "Günlük şart",
-              "Haftalık",
-              "Aylık"
+              "Yaralanma veya kilitlenmede değerlendirme almak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 1,
-            "explain": "Günlük 5 dk yeterli."
+            "correct": 0,
+            "explain": "Güvenli sınır: Yaralanma veya kilitlenmede değerlendirme almak."
           }
         ]
       },
       "15": {
-        "title": "Öğün Zamanlaması",
-        "teaching": "Akşam 22:00 yemek yedin, 23:30 yattın. **'Niye uyuyamadım?'**. Çünkü beden **sindirim modunda**, uyku modu değil. Geç yemek = uyku kalitesi **dramatik düşüş** + sabah yorgun + kilo alma riski.\n\nSatchin Panda (Salk Institute) — kronobiyolog: 'Ne yediğin kadar **ne zaman yediğin** önemli. Beden sirkadiyen — sindirim sistemi **gündüz** çalışır, **gece** dinlenir.'\n\nKlinik kanıt:\n- **Geç yemek** → uyku kalitesi **%30 düşüş**\n- **Kalori aynı**, geç yiyen kişiler **%50 daha fazla** kilo alır (Garaulet 2013)\n- **GERD** (reflü), sindirim sorunları artar\n- **HGH (büyüme hormonu)** uyku başında pikine ulaşır — geç yemek bunu **engeller** = toparlanma az\n\nMekanizma: yemek = **insülin spike** = melatonin **bastırılır**. Beden 'gündüz' moduna geçer. Yatış sırasında bu çatışma = yüzeysel uyku.\n\n**Kural**: son öğün **yatmadan 3 saat önce**. 22:00 yatış → **19:00 son öğün**.\n\n3 saat sırasında:\n- Mide boşalır\n- İnsülin baseline'a düşer\n- Glikoz stabilize olur\n- Yatış parasempatik dominant\n\n**Yan etki**: erken yemek = akşam atıştırma riski **düşer** (kavurma şişerse atıştırma akıllılığı zayıflar). 'Aç yatmak' diye korkma — 3 saat boşluk **açlık değil**, **sindirim tamamlanması**.",
-        "action": "Bugün **son öğünü 19:00'dan sonraya bırakma**.",
-        "reflectionPrompt": "Erken son öğün **uykuna nasıl etki etti**? Daha derin mi uyudun?",
-        "proTip": "**Erken yiyorsan** akşam atıştırma riski düşer. Aç yatma — 3 saat boşluk **sindirim**, açlık değil.",
+        "title": "Öğün ve Uyku Aralığı",
+        "teaching": "Geç saatte ağır bir öğün bazı kişilerde uykuya geçişi, reflüyü veya rahatlığı etkileyebilir. Fakat herkes için geçerli tek bir akşam yemeği saati yoktur.\n\nAmaç yatağa çok dolu ya da rahatsız edici derecede aç girmeden sana uyan bir düzen bulmaktır. Öğünün büyüklüğü, içeriği ve kişisel sindirim deneyimin önemlidir.\n\nBir hafta boyunca son öğün saatinle uykuya geçişini birlikte not et. Sorun görürsen akşam öğününü biraz erkene çek veya daha hafif bir seçenek dene.\n\nReflü, diyabet, gebelik, yeme bozukluğu öyküsü veya özel beslenme planında genel kurallar yeterli değildir. Kişisel öneriyi sağlık uzmanından al.",
+        "action": "Bu akşam son öğün saatini ve yatarken nasıl hissettiğini kısa biçimde kaydet.",
+        "reflectionPrompt": "Akşam öğününün saati ve büyüklüğü uykunu nasıl etkiliyor?",
         "quiz": [
           {
-            "q": "Son öğün yatma arası?",
+            "q": "Öğün ve Uyku Aralığı konusunda en sağlam yaklaşım hangisi?",
             "options": [
-              "1h",
-              "2h",
-              "3h",
-              "5h"
+              "Kendi sindirim ve uyku deneyimine göre düzen kurmak",
+              "Tek bir sayıyı herkes için zorunlu saymak",
+              "Rahatsızlık sinyallerini görmezden gelmek",
+              "Planı her gün rastgele değiştirmek"
             ],
-            "correct": 2,
-            "explain": "3 saat ideal."
+            "correct": 0,
+            "explain": "Temel yaklaşım: Kendi sindirim ve uyku deneyimine göre düzen kurmak."
           },
           {
-            "q": "Geç yemek etkisi?",
+            "q": "Hangi güvenlik sınırı bu dersle uyumludur?",
             "options": [
-              "Yok",
-              "Uyku düşüşü",
-              "Daha iyi",
-              "Pozitif"
+              "Özel sağlık durumunda kişisel öneri almak",
+              "Zorluğu hemen iki katına çıkarmak",
+              "Keskin ağrıyı ilerleme işareti saymak",
+              "Başkasının planını aynen kopyalamak"
             ],
-            "correct": 1,
-            "explain": "Uyku kalitesi düşüşü."
+            "correct": 0,
+            "explain": "Güvenli sınır: Özel sağlık durumunda kişisel öneri almak."
           }
         ]
       },
@@ -6392,312 +6382,302 @@
         "proTip": "Bu genel eğitimdir, kişisel finans danışmanlığı değildir. Ürün ve hesap seçerken yerel koşulları ve uzman görüşünü değerlendir."
       },
       "6": {
-        "title": "Net Servet Tarama",
-        "teaching": "Birisi sordu: '**Ne kadar zenginsiniz**?' Cevap vermek **zor** çünkü hiç hesaplamadın. Aslında **çoğu insan** kendi servetini bilmez. Bu = **göz bağlı uçmak**.\n\n**Net servet formülü** (basit ama güçlü):\n\n**Net Servet = Varlık - Borç**\n\n**Varlık**:\n- Nakit (banka hesapları)\n- Yatırımlar (hisse, fon, kripto, altın)\n- Gayrimenkul (ev değeri, arazi)\n- Araba (gerçek değer, alış değer değil)\n- Değerli eşyalar (saat, mücevher)\n- İşletme payı\n\n**Borç**:\n- Mortgage kalan\n- Kredi kartı borcu\n- Bireysel kredi\n- Araba kredisi\n- Borçlar (özel kişilere)\n\nÖrnek: 500K ev + 100K yatırım + 50K nakit + 100K araba = **750K varlık**. 300K mortgage + 50K kredi = **350K borç**. **Net servet = 400K**.\n\nMekanizma: net servet = **gerçek finansal hayatın**. Maaş tek başına yanıltıcı (yüksek maaş + yüksek harcama = düşük net servet). Net servet = **birikmiş değer**.\n\nThomas Stanley (**The Millionaire Next Door**): 'Gerçek milyonerler **maaş değil, net servet** ile ölçülür. Çoğu \"zengin görünen\" düşük net servete sahip — borçla yaşıyor.'\n\n**Aylık takip** = kişisel skor kartı. Yıl başı ↔ yıl sonu fark = **gerçek finansal büyümeni** gösterir.",
-        "action": "Bugün **net servetini hesapla**. Excel'e yaz, fotoğrafını çek.",
-        "reflectionPrompt": "Net servetin **beklediğinden ne kadar farklı** çıktı? Sürpriz yön?",
-        "proTip": "**Aylık net servet takibi** yap. **Yıllık değişim = gerçek gelişiminin göstergesi**.",
+        "title": "Net Servet Fotoğrafı",
+        "teaching": "Net servet, sahip olduğun varlıkların güncel tahmini değerinden borçlarını çıkardığında kalan tablodur. Maaştan farklıdır; belirli bir tarihteki finansal konumunu gösterir.\n\nNakit ve kolay doğrulanan hesaplar nettir. Ev, araç veya özel varlıkların değeri ise tahmindir; alış fiyatını gerçek piyasa değeri gibi kullanmak tabloyu yanıltabilir.\n\nVarlıkları ve borçları ayrı sütunlara yaz, aynı para birimini kullan ve belirsiz değerleri açıkça işaretle. Aylık yerine üç aylık güncelleme çoğu kişi için yeterlidir.\n\nBu sayı kişisel değerini ölçmez ve yatırım önerisi değildir. Ortak mülkiyet, vergi veya karmaşık borçlarda bir finans uzmanından destek almak daha sağlıklıdır.",
+        "action": "Bugün varlık ve borçlarını iki sütunda, yaklaşık değerleri işaretleyerek listele.",
+        "reflectionPrompt": "Finansal tablonun hangi kalemi şu anda en belirsiz?",
         "quiz": [
           {
-            "q": "Net servet hesaplaması?",
+            "q": "Net Servet Fotoğrafı için en sağlam ilke hangisi?",
             "options": [
-              "Sadece nakit",
-              "Varlık - Borç",
-              "Sadece maaş",
-              "Cari kar"
+              "Varlık ve borçları aynı tarihte gerçekçi değerlerle karşılaştırmak",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "Varlık - Borç = net servet."
+            "correct": 0,
+            "explain": "Temel ilke: Varlık ve borçları aynı tarihte gerçekçi değerlerle karşılaştırmak."
           },
           {
-            "q": "Ne sıklıkla takip?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Yıllık",
-              "Aylık",
-              "Asla",
-              "Günlük"
+              "Belirsiz değerleri kesin rakam gibi göstermemek",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "Aylık takip = aylık görünüm."
+            "correct": 0,
+            "explain": "Uygun kontrol: Belirsiz değerleri kesin rakam gibi göstermemek."
           }
         ]
       },
       "7": {
         "title": "Abonelik Denetimi",
-        "teaching": "Ders 1'de görünmez harcama tehlikesini tanıdın. Bu **derin tarama**: **abonelik denetimi**.\n\nİstatistik (West Monroe Partners 2021): ortalama yetişkin **7-12 aktif abonelik** öder. **%69'u** ödeme miktarını **abartıyor sanıyor** ama gerçek **daha çok**.\n\n**Tipik abonelikler** (her kategoriden):\n- **Streaming**: Netflix, Spotify, Disney+, Amazon Prime, BluTV (3-6 farklı)\n- **App**: Notion, Adobe, iCloud storage, ChatGPT, password manager (5-10)\n- **Gym/sağlık**: salon, online fitness, meditation app, beslenme tracker\n- **Dergi/news**: BBC, Bloomberg, Medium, Substack\n- **Premium servis**: iyzico+, getir+, restoran kulübü\n- **Profesyonel**: LinkedIn Premium, Canva Pro, Notion Plus\n\n**Yıllık tutar**: ortalama ₺5,000-15,000.\n\n**%50'sini gerçekten kullanmıyorsun**. Niçin? Çünkü:\n- 'Şimdi iptal edersem yine ihtiyacım olur' korku\n- Endüstri tasarımı: iptal süreci **zor**\n- 'Bu kadar mı ki' küçük gibi gelir\n- 'Lüks değil, gerek' rasyonelize ederiz\n\nMekanizma: **sunk cost fallacy** + **status quo bias**. Beyin 'iptal' kararını **risk** olarak görür, sürdürme **rahat**.\n\n**Eylem**: son 3 ay kart ekstresi. **Tek tek** geç. 4 kategori:\n1. **Aktif kullanıyorum** → tut\n2. **Bazen kullanıyorum** → 1 ay dene iptal\n3. **Hiç kullanmıyorum** → iptal **şu an**\n4. **Unutmuştum** → iptal + suçluluk yok",
-        "action": "Bugün **son 3 ayın kart ekstresini** incele. **Tüm abonelikleri listele**.",
-        "reflectionPrompt": "Şaşırtan **kaç tane 'uyuyan' abonelik** buldun?",
-        "proTip": "**Truebill, Bobby** gibi uygulamalar otomatik bulup iptal eder. Türkiye için manuel inceleme yeter.",
+        "teaching": "Tekrarlayan ödemeler küçük göründüğü için gözden kaçabilir. Sorun aboneliğin varlığı değil, kullandığın değer ile ödediğin tutarın artık uyuşmamasıdır.\n\nSon birkaç aylık banka ve kart hareketlerini tarayarak uygulama, medya, spor, depolama ve üyelik ödemelerini tek listede topla. Yıllık yenilenenleri de ekle.\n\nHer kaleme son kullanım tarihi, yenileme günü ve iptal koşulu yaz. Aktif kullandığını tut; belirsiz olanı takvime al; kullanmadığını yenilemeden önce kapat.\n\nİptal ederken erişeceğin dosya veya hizmetleri kontrol et. İş, sağlık ya da güvenlik için gerekli bir servisi yalnızca ucuzlama hedefiyle kaldırma.",
+        "action": "Son üç aylık hareketlerden tüm tekrarlayan ödemeleri tek listede topla.",
+        "reflectionPrompt": "Hangi aboneliğin değeri ile maliyeti artık uyuşmuyor?",
         "quiz": [
           {
-            "q": "Ortalama abonelik sayısı?",
+            "q": "Abonelik Denetimi için en sağlam ilke hangisi?",
             "options": [
-              "1-2",
-              "7-12",
-              "30+",
-              "50+"
+              "Tekrarlayan ödemeleri kullanım ve değer üzerinden değerlendirmek",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "7-12 farkında olmadan ödenir."
+            "correct": 0,
+            "explain": "Temel ilke: Tekrarlayan ödemeleri kullanım ve değer üzerinden değerlendirmek."
           },
           {
-            "q": "Yıllık tutar tahmini?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "1K",
-              "5-15K TL",
-              "50K",
-              "100K"
+              "İptal öncesi veri ve hizmet kaybını kontrol etmek",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "Yıllık 5.000-15.000 TL."
+            "correct": 0,
+            "explain": "Uygun kontrol: İptal öncesi veri ve hizmet kaybını kontrol etmek."
           }
         ]
       },
       "8": {
-        "title": "Latte Faktörü",
-        "teaching": "Sabah Starbucks: 50 TL. **'Sadece bir kahve'**. Akşam: 'çok yorgunum, eve yemek söyleyelim' → 250 TL Yemeksepeti. Hafta sonu sinema → 200 TL. Bu küçük harcamalar **fark edilmiyor** ama matematik **brutal**.\n\nDavid Bach (**The Automatic Millionaire**, 'Latte Factor' kavramı):\n- Günde 50 TL kahve\n- × 30 gün = 1,500 TL/ay\n- × 12 ay = 18,000 TL/yıl\n- × 30 yıl = **540,000 TL** (faiz hariç)\n- × **bileşik faiz %10/yıl yatırırsan**: **~1,500,000 TL** (1.5 milyon)\n\nBir kahve **emekliliğinin yarısı**. Çoğu kişi için 'küçük lüksler' = emekliliğin yokluğu.\n\nMekanizma: küçük günlük harcamalar = **hedonik adaptasyon**. Beyin 'normal' kabul eder, **görmez**. Ama bileşik faiz **acımasız** matematiktir.\n\nKritik **nüans**: **hepsini kesme**. Kahve seviyorsan, hayatın küçük zevki — sıkı kesme = sürdürülemez. **1 lüksü değiştir**:\n- Starbucks → ev kahvesi (ekstra: tat daha iyi makinesi al)\n- Yemeksepeti → meal prep pazar\n- Sinema → arkadaş evi + Netflix\n\n**1 değişiklik × 30 yıl × bileşik = hayat değiştiren para**.\n\nWarren Buffett: 'Bileşik faiz dünyanın 8. harikası. Anlayanlar **kazanır**, anlamayanlar **öder**.'",
-        "action": "Bugün **otomatik küçük harcamalarını listele**. Toplam aylık?\nBileşik faiz hesaplayıcı = 30 yıl sonrası gör.",
-        "reflectionPrompt": "Hangi 'küçük' harcama **aslında büyüktü**? 30 yıl etkisi şaşırttı mı?",
-        "proTip": "**Hepsini kesme — 1'ini değiştir**. Sürdürülebilir değişim > sıkı kemer sıkma.",
+        "title": "Küçük Harcama Deseni",
+        "teaching": "Küçük ve sık harcamalar bütçede görünmez hale gelebilir. Ama amaç kahveyi ya da keyfi suçlamak değil; toplam maliyeti bilinçli bir tercihe dönüştürmektir.\n\nBir harcamanın aylık toplamını görmek, onu gerçekten ne kadar önemsediğini değerlendirmeyi kolaylaştırır. Gelecek değer hesapları ise varsayımlara bağlı senaryolardır, kesin sonuç değildir.\n\nBir hafta boyunca yalnızca tekrar eden küçük harcamaları işaretle. En az değer veren kalemi azalt, yerine daha ucuz veya daha seyrek bir seçenek dene.\n\nTemel ihtiyaçları keserek veya gerçekçi olmayan yatırım getirisi bekleyerek plan kurma. Bütçe, hayat kalitesiyle finansal hedef arasında sürdürülebilir denge kurmalıdır.",
+        "action": "Bu hafta tekrar eden küçük harcamaları işaretle ve bir tanesine alternatif seç.",
+        "reflectionPrompt": "Hangi küçük harcama sana maliyetinden daha az değer veriyor?",
         "quiz": [
           {
-            "q": "50 TL/gün × 30 yıl?",
+            "q": "Küçük Harcama Deseni için en sağlam ilke hangisi?",
             "options": [
-              "100K",
-              "540K + faiz",
-              "50K",
-              "1M"
+              "Küçük harcamayı suçlulukla değil toplam değerle değerlendirmek",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "540K + faiz dahil daha fazla."
+            "correct": 0,
+            "explain": "Temel ilke: Küçük harcamayı suçlulukla değil toplam değerle değerlendirmek."
           },
           {
-            "q": "Latte faktörü çözüm?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Hepsini kes",
-              "1'ini değiştir",
-              "Daha çok kahve",
-              "İlgisiz"
+              "Gelecek getirisini kesin sonuç gibi kabul etmemek",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "1 değişiklik etkili."
+            "correct": 0,
+            "explain": "Uygun kontrol: Gelecek getirisini kesin sonuç gibi kabul etmemek."
           }
         ]
       },
       "9": {
-        "title": "Tek Hesap Stratejisi",
-        "teaching": "Cüzdanını açtın: **8 kart**. Telefonda **5 banka uygulaması**. Her birinin **farklı şifresi**, farklı yıllık ücreti, farklı özellikleri. **Tam karmaşa**. Para nerede? Belirsiz. Hangi karta hangisi? Karışık.\n\n**Çoklu hesap = kafa karışıklığı** = karar yorgunluğu = kötü finansal kararlar.\n\nRamit Sethi (**I Will Teach You To Be Rich**) — minimum sistem:\n- **1 ana hesap** (gelir + günlük harcama)\n- **1 tasarruf hesabı** (acil fon, ayrı banka)\n- **1 yatırım hesabı** (uzun vade)\n\n**Toplam: 3 hesap**. Daha fazla = aldatıcı **'çeşitlilik'**.\n\n**Kart**: 1 günlük + 1 yedek (yurt dışı, acil). Toplam **2 kart**. Daha fazla = yıllık ücret + karar yorgunluğu + güvenlik riski.\n\nMekanizma: tek sistem → **tek dashboard** → tek tarama → tek karar. Karmaşık sistem → tarama maliyeti yüksek → 'sonra bakarım' → asla bakmaz.\n\nNassim Taleb (**Antifragile**): 'Karmaşıklık = fragilite. Sadelik = sağlamlık.'\n\n**Gereksiz hesabın işaretleri**:\n- 6 aydır kullanmadın\n- Yıllık ücret ödedin ama avantajı net değil\n- Hangi kart'a hangi avantaj hatırlamıyorsun\n- Promosyon için açıldı, sonra unutuldu\n- Aynı bankada **birden fazla** hesap\n\n**Eylem**: tüm hesapları listele → **net olmayan 1'i kapat**.",
-        "action": "Bugün **tüm hesaplarını listele**. Gerekmeyen **1'i kapat**.",
-        "reflectionPrompt": "Hesap sadeliği **mental yer** açtı mı? Hangi 'çatışma' azaldı?",
-        "proTip": "Birden fazla bankada gereksiz hesap = **şifre yorgunluğu + yıllık ücret katmanları**.",
+        "title": "Hesapları Sadeleştirme",
+        "teaching": "Çok sayıda hesap takip yükünü artırabilir; fakat herkes için tek banka ya da sabit hesap sayısı doğru değildir. İş, vergi, para birimi ve güvenlik ihtiyaçları değişir.\n\nHer hesabın amacını, ücretini, otomatik ödemelerini ve erişim yöntemini yaz. Amacı belirsiz hesaplar gereksiz karmaşa ve unutulan masraf oluşturabilir.\n\nKapatmadan önce bakiye, bekleyen işlem, otomatik ödeme ve hesap ekstresini kontrol et. Gerekli kayıtları indir, yönlendirmeleri tamamla ve sonra kapatma adımına geç.\n\nMevduat koruması, kredi geçmişi ve kapatma sonucu ülkeye göre farklıdır. Önemli bir hesabı değiştirmeden önce bankanın koşullarını doğrula.",
+        "action": "Tüm hesaplarına amaç ve ücret etiketi koy; amacı belirsiz bir hesabı incele.",
+        "reflectionPrompt": "Hangi hesabın amacı tek cümleyle açıklanamıyor?",
         "quiz": [
           {
-            "q": "Optimum hesap sayısı?",
+            "q": "Hesapları Sadeleştirme için en sağlam ilke hangisi?",
             "options": [
-              "1",
-              "3",
-              "10",
-              "20"
+              "Her hesaba açık bir amaç ve maliyet atamak",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "1 ana + 1 tasarruf + 1 yatırım = 3."
+            "correct": 0,
+            "explain": "Temel ilke: Her hesaba açık bir amaç ve maliyet atamak."
           },
           {
-            "q": "Tek karta neden?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Şıklık",
-              "1 günlük + 1 yedek",
-              "Avantaj",
-              "Etkisiz"
+              "Kapatmadan önce ödeme, kayıt ve yerel koşulları kontrol etmek",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "2 kart yeter."
+            "correct": 0,
+            "explain": "Uygun kontrol: Kapatmadan önce ödeme, kayıt ve yerel koşulları kontrol etmek."
           }
         ]
       },
       "10": {
         "title": "Otomatik Tasarruf",
-        "teaching": "Aysonu: 'Bu ay tasarruf edemedim.' **Her ay aynı**. Niyet var, yapamıyorsun. Çünkü **irade gücüne güveniyorsun** — irade tükenir.\n\n**Çözüm: irade değil, otomasyon**. Charles Duhigg (**The Power of Habit**): 'En güçlü davranış sistemleri **iradeyi by-pass eder** — karar an'ı **otomatikleştirir**.'\n\n**Otomatik tasarruf**:\n- Maaş geldiğinde **önce %20 otomatik** tasarruf hesabına geçsin\n- Sen **kalan %80'i** yaşa\n- **Görmediğin para = harcamadığın para**\n\nSir John Templeton (efsanevi yatırımcı): 'Erken kariyerimden beri **maaşımın %50'sini** otomatik yatırıma koydum. Geri kalanı yaşadım. 80 yaşında milyarder oldum. Sırrı: **otomasyon + zaman**.'\n\n**Niye işliyor**: para banka hesabına **hiç görünmeden** transfer olur. Beyin 'bu para benim' olarak kayıt etmez. Geriye kalan %80'le yaşamayı **otomatik adapte** olur (hedonik adaptasyon **tersi yönde** çalışır).\n\nMatematik:\n- 20K aylık × %20 = **4K/ay tasarruf**\n- × 12 ay = **48K/yıl**\n- × 30 yıl × bileşik %8 = **5.4 milyon TL**\n\nİrade 'belki tasarruf' = sıfır. Otomasyon 'kesin tasarruf' = milyon.\n\n**Tasarruf hesabı = farklı banka**. Aynı banka = 'kolayca al' tehlikesi. Friksiyon önemli.",
-        "action": "Bugün **maaşının %20'sini otomatik transfer** ayarla. Maaş günü, ayın 1'i, sabit.",
-        "reflectionPrompt": "Otomatik kesintinin **hayatına etkisi** nasıl olur? Korktuğun kadar zor mu?",
-        "proTip": "Tasarruf hesabını **başka bankada** aç. Aynı bankada = 'kolayca al' tehlikesi.",
+        "teaching": "Otomatik transfer, tasarruf kararını her ay yeniden vermek zorunda kalmamanı sağlar. Doğru tutar ise gelire, zorunlu giderlere ve borç yüküne göre değişir.\n\nSabit yüksek bir oranla başlamak hesabı eksiye düşürebilir. Önce temel giderleri, yaklaşan ödemeleri ve küçük bir tamponu gördükten sonra sürdürülebilir tutarı seç.\n\nMaaş veya gelir gününden hemen sonrasına küçük bir transfer kur. Bir ay izle; zorlanmadan gerçekleşiyorsa tutarı aşamalı olarak gözden geçir.\n\nYüksek maliyetli borç, düzensiz gelir veya acil nakit ihtiyacında öncelik sırası farklı olabilir. Karmaşık durumda bağımsız finansal danışmanlık düşün.",
+        "action": "Bir sonraki gelir gününe bütçene uyan küçük bir otomatik transfer planla.",
+        "reflectionPrompt": "Hangi transfer tutarı bütçeni bozmadan düzenli kalabilir?",
         "quiz": [
           {
-            "q": "Otomatik tasarruf %?",
+            "q": "Otomatik Tasarruf için en sağlam ilke hangisi?",
             "options": [
-              "%5",
-              "%10",
-              "%20",
-              "%50"
+              "Tasarruf tutarını gerçek nakit akışına göre otomatikleştirmek",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 2,
-            "explain": "%20 = ideal hedef."
+            "correct": 0,
+            "explain": "Temel ilke: Tasarruf tutarını gerçek nakit akışına göre otomatikleştirmek."
           },
           {
-            "q": "Tasarruf hesabı nerede?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Aynı banka",
-              "Farklı banka",
-              "Yastık",
-              "Cüzdan"
+              "Transferin hesabı eksiye düşürmediğini kontrol etmek",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "Farklı banka = erişim zorlukı."
+            "correct": 0,
+            "explain": "Uygun kontrol: Transferin hesabı eksiye düşürmediğini kontrol etmek."
           }
         ]
       },
       "11": {
-        "title": "Önce Kendine Öde",
-        "teaching": "Maaş aldın. **Sırayla**: kira → elektrik → market → benzin → eğlence → ... → 'kaldıysa **tasarruf**'. **Kalmadı**. Her ay aynı sahne.\n\nSorun: **yanlış sıralama**. Önce başkalarına ödüyorsun (ev sahibi, elektrik şirketi, market), **kalanı sen alıyorsun** — ki çoğu zaman kalmıyor.\n\n**Doğru sıralama**: **'Önce kendine öde'** prensibi (Pay Yourself First — George S. Clason, **The Richest Man in Babylon** 1926).\n\n**Yeni sıralama**:\n1. **Önce kendine öde** (tasarruf + yatırım — %20)\n2. **Sonra zorunlu** (kira, fatura, market — %50)\n3. **Kalanı istek** (eğlence, hobi, lüks — %30)\n\nFark: sen 'son sırada' değil, **birinci öncelik**.\n\nNiye işliyor:\n- Tasarruf **sabit** = otomatik 'kazanılır'\n- Harcama **kalanla** = adapte olur\n- Stres az = hedef belirli\n\n**Tek değişiklik = 10 yıl içinde milyonluk fark**.\n\nMekanizma: **psikolojik öncelik** + **otomatik sistem** (Ders 10). 'Kendine ilk fatura' kes — kendine **vermek bir hak**, yıl sonu hesap değil.\n\nClason: 'Ne kadar kazanırsan kazan, **en az %10'u kendine ödememezsen** her zaman fakir kalırsın. %10 kuralı **evrensel**.'",
-        "action": "Bugün **geliri alır almaz**: önce tasarrufa, sonra harcamalara dağıt.",
-        "reflectionPrompt": "Sıralama değişikliği **zihninde** hangi cümleyi değiştirdi?",
-        "proTip": "Maaş gününde **'kendi maaşını öde'** — kendine **ilk fatura**, kalan başkalarına.",
+        "title": "Kendine Öncelik Vermek",
+        "teaching": "Kendine önce ödeme fikri, gelecekteki hedeflerini bütçede görünür bir kalem yapmaktır. Temel ihtiyaçları ya da zorunlu borç ödemelerini atlamak anlamına gelmez.\n\nKira, gıda, sağlık, ulaşım ve asgari borç ödemeleri netleştikten sonra birikim için gerçekçi bir pay ayırabilirsin. Payın büyüklüğü yaşam dönemine göre değişebilir.\n\nBirikimi ayrı bir hedef hesabına aktar ve ne için olduğunu adlandır. Küçük ama düzenli bir tutar, her ay kalan parayı beklemekten daha takip edilebilir olabilir.\n\nGelirin yetmediği ayda transferi azaltmak planın bozulduğu anlamına gelmez. Önce güvenliği koru, sonra koşullar düzeldiğinde sistemi yeniden ayarla.",
+        "action": "Bütçene gelecekteki bir hedef için ayrı ve gerçekçi bir birikim satırı ekle.",
+        "reflectionPrompt": "Şu an hangi gelecek hedefi bütçende görünür değil?",
         "quiz": [
           {
-            "q": "Önce ne öde?",
+            "q": "Kendine Öncelik Vermek için en sağlam ilke hangisi?",
             "options": [
-              "Faturalar",
-              "Kendine",
-              "Gıda",
-              "Eğlence"
+              "Gelecek hedefini zorunlu giderlerden sonra bütçeye eklemek",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "Önce kendine = tasarruf öncelik."
+            "correct": 0,
+            "explain": "Temel ilke: Gelecek hedefini zorunlu giderlerden sonra bütçeye eklemek."
           },
           {
-            "q": "Sıralama etkisi?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Yok",
-              "Onyıllık fark",
-              "Aynı",
-              "Negatif"
+              "Temel ihtiyaçları birikim uğruna riske atmamak",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "10 yıl = milyonluk fark."
+            "correct": 0,
+            "explain": "Uygun kontrol: Temel ihtiyaçları birikim uğruna riske atmamak."
           }
         ]
       },
       "12": {
-        "title": "Borç Çığ Yöntemi",
-        "teaching": "**4 borcun var**: kredi kartı (%45), tüketici kredisi (%30), ihtiyaç kredisi (%20), arkadaş borcu (%0). Her birine **eşit ödeme** yapıyorsun. Ama bu **matematiksel olarak en kötü** strateji.\n\n**Borç çığı (Debt Avalanche)** = **en yüksek faizli borca odaklan**, diğerlerine sadece **minimum öde**. En yüksek bitince → sıradakine. Devam.\n\nMatematik:\n- Kredi kartı %45 = ayda %3.75 faiz birikiyor\n- İhtiyaç kredisi %20 = ayda %1.67 faiz\n- Aynı miktar ödeme → kart **3x daha hızlı** azalır\n\nNiye 'çığ'? Çünkü en yüksek faizli bittiğinde → onun ödemesi sonraki borca **katlanır**. Her bitiş = daha hızlı sonraki bitiş. Çığ etkisi.\n\nAlternatif: **Snowball** (Dave Ramsey). Küçük borçtan büyüğe ödeme. Matematiksel olarak **yavaş** ama psikolojik **güçlü** (sık 'zafer' = motivasyon).\n\n- **Avalanche** = matematik kazanır (toplam faiz az)\n- **Snowball** = psikoloji kazanır (motivasyon yüksek)\n\nKendine sor: matematik mi motivasyon mu daha çok ihtiyacın? **İkisi de işler** — sadece **birini seç**, ikilemde kalma.\n\nMekanizma: tek odaklı sistem > paralel ödeme. Paralel = her borç yavaş azalır → motivasyon kaybı + toplam daha pahalı.\n\n**Eylem**: tüm borçları listele → faiz oranı + bakiye + minimum ödeme. Sırala. Plan yap.",
-        "action": "Bugün **tüm borçlarını faiz oranına göre listele**. **Çığ planı** yap.",
-        "reflectionPrompt": "**En yüksek faizli** borcunu görmek nasıl hissettirdi? Şaşırdın mı?",
-        "proTip": "**Snowball** (küçükten büyüğe) psikolojik. **Avalanche** (yüksek faize) matematiksel. **İkisi de işler — 1'ini seç**.",
+        "title": "Borç Öncelik Planı",
+        "teaching": "Borç çığı yönteminde tüm zorunlu ödemeler sürerken ek para maliyeti en yüksek borca yönelir. Amaç zaman içinde ödenen toplam finansman maliyetini azaltmaktır.\n\nFaiz oranı tek ayrıntı değildir. Gecikme, erken ödeme cezası, değişken oran, vergi etkisi ve teminat riski de kararın parçası olabilir.\n\nHer borç için bakiye, etkin maliyet, minimum ödeme ve vade yaz. Sonra ek ödemenin gideceği tek borcu seç ve bitince sıradakine aktar.\n\nMinimumları karşılayamıyor veya tahsilat baskısı yaşıyorsan tek başına optimizasyon yapma. Güvenilir borç danışmanlığı ya da hukuki destek ara.",
+        "action": "Borçlarını bakiye, etkin maliyet, minimum ödeme ve vade bilgisiyle listele.",
+        "reflectionPrompt": "Borç planında faiz dışında hangi koşul önemli?",
         "quiz": [
           {
-            "q": "Çığ yöntemi nedir?",
+            "q": "Borç Öncelik Planı için en sağlam ilke hangisi?",
             "options": [
-              "Tüm borç eşit",
-              "Yüksek faiz önce",
-              "Küçük borç önce",
-              "Random"
+              "Ek ödemeyi maliyeti yüksek borca planlı biçimde yöneltmek",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "Yüksek faize odaklan."
+            "correct": 0,
+            "explain": "Temel ilke: Ek ödemeyi maliyeti yüksek borca planlı biçimde yöneltmek."
           },
           {
-            "q": "Snowball ile çığ?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Aynı",
-              "Snow psikolojik / çığ matematik",
-              "Çığ daha yavaş",
-              "Snow daha pahalı"
+              "Minimum ödeme sorunu varsa nitelikli destek aramak",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "İkisi de işler, mantığı farklı."
+            "correct": 0,
+            "explain": "Uygun kontrol: Minimum ödeme sorunu varsa nitelikli destek aramak."
           }
         ]
       },
       "13": {
         "title": "Kredi Kartı Disiplini",
-        "teaching": "Kredi kartı 'kötü' mi? **Hayır, enstrüman**. Kötü kullanılırsa **kelepçe**, iyi kullanılırsa **kaldıraç**. Fark: **disiplin**.\n\nABD istatistik: kredi kartı borcunu **tam ödemeyen** ailelerin ortalama faiz ödemesi yıllık **₺25,000+**. Yani **30 yılda 750,000 TL** sadece faize — hayat sigortası kıymetinden fazla.\n\n**Karşıt**: tam ödeyen + mile/puan/cashback kullananlar yıllık **₺5,000-15,000 kazanır** (uçak bileti, otel, indirim).\n\n**Aynı kart**, **farklı kullanıcı**, **farklı sonuç**: zenginlik vs yoksulluk.\n\n**Disiplin kuralları**:\n\n1. **Sadece zaten alacağın şeylere kullan** — kart 'fazla harcatma' aracı değil\n2. **Tam miktarda öde** her ay (min ödeme = tuzak)\n3. **Asla faiz ödeme** — faiz başlarsa = sen kaybediyorsun\n4. **Yapamazsan kart kapat** — disiplinsiz kart = kelepçe\n\nMekanizma: kredi kartı = **friksiyonsuz harcama**. Beyin nakit gibi 'acı' hissetmez. Nakit araştırma: kart kullanıcıları **%12-18 daha çok** harcar (aynı alımda) — McKinsey.\n\nDun & Bradstreet araştırması: 'Kart cüzdanda taşımayan kişiler **harcamayı %15 azaltır**.' Friksiyon = bilinç.\n\nKart **araç**. Disiplin **mecburi**. İkisi olmazsa = kelepçe.",
-        "action": "Bugün **kredi kartı bakiyeni** harcamalarınla **eşleştir**. Açık var mı?",
-        "reflectionPrompt": "Kart kullanımın **disiplinli** mi yoksa **sömürüye açık** mı?",
-        "proTip": "Kredi kartını **yanına alma** — sadece bilinçli alışveriş için. Cüzdanda taşımamak **%15 az harcama**.",
+        "teaching": "Kredi kartı, ödemeyi erteleyen bir araçtır; ek gelir değildir. Harcama anında hesabındaki parayı görmemek bütçe sınırını aşmayı kolaylaştırabilir.\n\nEkstre tarihi, son ödeme, faiz, ücret ve taksit koşullarını bil. Mümkünse planlanmış harcamayı yap ve ekstre borcunu vadesinde karşılayacak nakdi önceden ayır.\n\nBildirimleri aç, düşük bir kişisel limit belirle ve haftalık hareket kontrolü yap. Şüpheli işlemde bankayla hemen iletişim kur.\n\nKartı kapatmanın kredi geçmişi ve ücret sonucu ülkeye göre değişebilir. Ödeyemediğin bakiye büyüyorsa bankanın yapılandırma seçeneklerini veya bağımsız danışmanlığı değerlendir.",
+        "action": "Kartının son ödeme tarihini, ücretini ve güncel bakiyesini bugün doğrula.",
+        "reflectionPrompt": "Kart kullanımında seni en çok hangi an bütçeden uzaklaştırıyor?",
         "quiz": [
           {
-            "q": "Kredi kartı kuralı?",
+            "q": "Kredi Kartı Disiplini için en sağlam ilke hangisi?",
             "options": [
-              "Sınırsız harca",
-              "Tam öde + faizsiz",
-              "Min öde",
-              "Hep yan"
+              "Kart harcamasını mevcut bütçe ve ödeme planıyla sınırlandırmak",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "Tam öde, faiz yapma."
+            "correct": 0,
+            "explain": "Temel ilke: Kart harcamasını mevcut bütçe ve ödeme planıyla sınırlandırmak."
           },
           {
-            "q": "Cüzdan dışı kart?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Etkisiz",
-              "%15 az harcama",
-              "Daha fazla",
-              "Aynı"
+              "Büyüyen bakiyede erken destek ve yapılandırma aramak",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "Yanında olmayan kart = bilinçli alım."
+            "correct": 0,
+            "explain": "Uygun kontrol: Büyüyen bakiyede erken destek ve yapılandırma aramak."
           }
         ]
       },
       "14": {
-        "title": "Tutumlu Sevinç",
-        "teaching": "'Tutumluluk' kelimesi → kafanda **yoksulluk, sıkıntı, mahrumiyet**. Bütün sevinçlerin **paralı** olmak zorunda gibi geliyor. Aslında bu **endüstri tasarımı** — tüketmen için sevincini paraya bağlamış.\n\nMr. Money Mustache (Peter Adeney): 'Yüksek harcama = yüksek sevinç, **mit**. Bilim: hedonik adaptasyon — pahalı şeyler **kısa süreli** mutluluk verir, sonra baseline'a döner. Düşük maliyetli **deneyimler** = uzun süreli mutluluk.'\n\n**Tutumlu sevinç = ucuza yapabildiğin keyifleri keşfet**. Bunlar **gerçek deneyim**, status değil.\n\n**0 TL aktiviteler**:\n- Park yürüyüşü\n- Plaj / orman / dağ yürüyüşü\n- Eski arkadaşla telefon konuşması\n- Eve gel yemek hazırla + dizi\n- Kütüphane kitabı + ev kahvesi\n- Müze (çoğu pazar günleri ücretsiz)\n- Açık hava spor (parkta basket, koşu)\n- YouTube'da konser/film\n- Aile / arkadaş ev sohbeti\n- Yıldız izleme (şehir dışı sessiz yer)\n\n**50 TL altı**:\n- Sinema (matinee)\n- Ev konseri arkadaşlarla\n- Eski plak çalar + müzik\n- Bisiklet turu\n- Picnic\n\nMekanizma: pahalı şeyler **'sevinç olduğu sanılan'** alışkanlık. Beyin alternatif görmediği için 'normal' sanır. **30 alternatif liste** = harcama refleksi **kırılır**.\n\nKarşıt deney: bir hafta sadece **0-50 TL** sevinçlerle yaşa. Anlarsın: çoğu pahalı sevinç **status sembolü**, gerçek sevinç değil.",
-        "action": "Bugün **0 TL'lik 1 büyük keyif** yap.",
-        "reflectionPrompt": "Para harcamadan **en keyifli neyi** yaptın? Şaşırttı mı?",
-        "proTip": "**Listele**: 0 TL aktiviteler, 50 TL altı, 100 TL altı. **30 alternatif görmek = harcama refleksini kırar**.",
+        "title": "Tutumlu Keyif",
+        "teaching": "Tutumluluk bütün keyifleri kaldırmak değildir. Sana gerçekten iyi gelen deneyimleri korurken, yalnızca alışkanlık veya görünüş için yapılan harcamaları ayırt etmektir.\n\nMaliyeti düşük bir etkinlik de bağlantı, merak veya dinlenme sağlayabilir. Değer, fiyat etiketinden çok deneyimin sende bıraktığı etkiye bağlıdır.\n\nÜcretsiz veya düşük maliyetli beş seçenek yaz: yürüyüş, evde yemek, kütüphane, arkadaş buluşması ya da yerel etkinlik gibi. Bu hafta birini takvime koy.\n\nTasarrufu sosyal izolasyona veya sürekli mahrumiyet hissine dönüştürme. Bütçede küçük bir keyif alanı bırakmak planın sürdürülebilirliğini destekler.",
+        "action": "Bu hafta için düşük maliyetli ve gerçekten istediğin bir etkinliği takvime koy.",
+        "reflectionPrompt": "Hangi pahalı alışkanlığın yerine daha anlamlı bir deneyim gelebilir?",
         "quiz": [
           {
-            "q": "Frugality ≠ ?",
+            "q": "Tutumlu Keyif için en sağlam ilke hangisi?",
             "options": [
-              "Tutumluluk",
-              "Yoksulluk",
-              "Plan",
-              "Disiplin"
+              "Keyfi fiyat yerine kişisel değerle değerlendirmek",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
-            "correct": 1,
-            "explain": "Tutumlu ≠ yoksul."
+            "correct": 0,
+            "explain": "Temel ilke: Keyfi fiyat yerine kişisel değerle değerlendirmek."
           },
           {
-            "q": "Tutumlu sevinç örneği?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Lüks restoran",
-              "Park yürüyüşü",
-              "Yeni telefon",
-              "Akşam bara"
+              "Tasarrufu sürekli mahrumiyete dönüştürmemek",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "0 TL keyif örnekleri."
+            "correct": 0,
+            "explain": "Uygun kontrol: Tasarrufu sürekli mahrumiyete dönüştürmemek."
           }
         ]
       },
       "15": {
-        "title": "Bir Kez Kalite Al",
-        "teaching": "**200 TL ayakkabı** aldın. 1 yıl sonra: parçalandı. Yeni aldın → 200 TL. 5 yıl sonra: **toplam 1,000 TL** harcadın, **5 ayakkabı** kullandın.\n\nAlternatif: **1,000 TL kaliteli ayakkabı**. **20 yıl** giyilir. Aynı süre içinde **fark = 0** kişi yine 5x ödedi.\n\nMatematik karşılaştırma:\n- Ucuz × 5 yıl = **1,000 TL** + 5 kez **alışveriş zamanı + stres**\n- Pahalı × 1 = **1,000 TL** + 1 kez alışveriş + 20 yıl rahat\n\n**Aynı para**, **20x rahat**.\n\nTerry Pratchett (**'Boots theory of socioeconomic unfairness'**, **Discworld**): 'Zenginler ucuza kullanır çünkü kaliteli alır, fakirler pahalıya kullanır çünkü ucuz alır.'\n\nBu **paradoks**: tasarruf eden kişi (ucuz alarak) uzun vade **daha çok harcar**. Yatırım yapan kişi (kalite alarak) uzun vade **daha az harcar**.\n\n**Hangi kategorilerde 'bir kez kalite al' önemli**:\n- Ayakkabı, palto, takım\n- Çamaşır makinesi, fırın, buzdolabı\n- Yatak (uyku 8 saat × 30 yıl = ömrün 1/3)\n- Çalışma sandalyesi (8 saat günlük)\n- Telefon, bilgisayar (üretkenlik aracı)\n- Mutfak aletleri (tencere, bıçak)\n\n**Tam tersine ucuz tut**: moda (1 yıl sonra eskir), tek seferlik kullanım, hızlı değişen teknoloji.\n\n**Buy It For Life (BIFL)** Reddit subreddit = 1 milyon kullanıcı, hayat boyu ürün önerileri.",
-        "action": "Bugün **bozulmaya yakın 1 ürünü** daha kaliteli alternatife terfi et.",
-        "reflectionPrompt": "Kaliteli alternatif **uzun vadede ne kadar tasarruf** eder?",
-        "proTip": "**Buy-it-for-life (BIFL)** Reddit topluluğuna bak. Sınırsız öneri.",
+        "title": "Toplam Sahip Olma Maliyeti",
+        "teaching": "Ucuz ürün her zaman ekonomik, pahalı ürün de kendiliğinden kaliteli değildir. Doğru karşılaştırma alış fiyatıyla birlikte kullanım süresi, bakım ve onarım maliyetini içerir.\n\nSık kullandığın ve arızası ciddi sorun yaratacak ürünlerde dayanıklılık, satış sonrası kapsam, yedek parça ve tamir edilebilirlik daha fazla önem taşır.\n\nSatın almadan önce kullanım sıklığını tahmin et, bağımsız yorumları oku ve yıllık yaklaşık maliyeti karşılaştır. Nadir kullanılacak üründe kiralama veya ikinci el seçeneğini düşün.\n\nBorçlanarak premium ürün almak kalite hesabını bozabilir. Kararı bütçe, gerçek ihtiyaç ve doğrulanabilir ürün bilgisi birlikte belirlemelidir.",
+        "action": "Bir sonraki büyük alışverişin için fiyat, ömür, bakım ve onarım sütunları aç.",
+        "reflectionPrompt": "Hangi ürün kategorisinde yalnızca alış fiyatına bakıyorsun?",
         "quiz": [
           {
-            "q": "Ucuz × 5 = ?",
+            "q": "Toplam Sahip Olma Maliyeti için en sağlam ilke hangisi?",
             "options": [
-              "Pahalı",
-              "Daha ucuz",
-              "Aynı",
-              "Bilinmez"
+              "Alış fiyatı yerine toplam kullanım maliyetini karşılaştırmak",
+              "Tek bir oranı herkese uygulamak",
+              "Belirsiz tahmini kesin sonuç saymak",
+              "Koşulları okumadan hızlı karar vermek"
             ],
             "correct": 0,
-            "explain": "Toplamda pahalıya çıkar."
+            "explain": "Temel ilke: Alış fiyatı yerine toplam kullanım maliyetini karşılaştırmak."
           },
           {
-            "q": "Buy-it-for-life nedir?",
+            "q": "Hangi kontrol adımı bu dersle uyumludur?",
             "options": [
-              "Pahalı",
-              "Bir kez al",
-              "Sonsuz",
-              "Genç"
+              "Kalite varsayımıyla bütçeyi aşmamak",
+              "Temel giderleri görmezden gelmek",
+              "Gelecek getirisini kesin kabul etmek",
+              "Kayıtları kontrol etmeden hesabı kapatmak"
             ],
-            "correct": 1,
-            "explain": "1 kez al, ömür boyu."
+            "correct": 0,
+            "explain": "Uygun kontrol: Kalite varsayımıyla bütçeyi aşmamak."
           }
         ]
       },

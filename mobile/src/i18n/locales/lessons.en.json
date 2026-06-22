@@ -4840,312 +4840,302 @@
         "proTip": "Judge sleep over a weekly pattern, not one night. Seek clinical advice for persistent problems."
       },
       "6": {
-        "title": "Bedtime: 22:00",
-        "teaching": "Circadian rhythm strengthens with fixed sleep time. 22:00 = natural melatonin peak. Weekday/weekend doesn't matter. Flexible bedtime drops sleep quality 40% (Walker research).",
-        "action": "Tonight be in bed by 22:00. Phone in another room.",
-        "reflectionPrompt": "How is 22:00 bed time different from yesterday?",
-        "proTip": "Blue-light filter + warm night-lamp after 21:00. Body prepares for 22.",
+        "title": "A Consistent Bedtime",
+        "teaching": "A useful sleep routine is not built around one magical clock time. It starts with a window that fits your wake time, responsibilities, and natural pattern.\n\nSlowing down at a similar time can make the end of the day more predictable. Lower light, calmer activity, and less stimulating content support that transition.\n\nChoose a realistic bedtime window by working backward from when you need to wake. Protect the final half hour with a simple routine and fewer phone interruptions.\n\nOne late night is not failure. Return to your normal window instead of forcing extreme compensation, and seek clinical guidance for persistent sleep difficulty.",
+        "action": "Choose a realistic bedtime window tonight and keep the final half hour screen-free.",
+        "reflectionPrompt": "Which evening habit most often delays your transition to sleep?",
         "quiz": [
           {
-            "q": "Optimum bedtime?",
+            "q": "What is the soundest approach to a consistent bedtime?",
             "options": [
-              "20:00",
-              "22:00",
-              "00:00",
-              "02:00"
+              "Build a consistent window that fits your real schedule",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 1,
-            "explain": "22:00 = melatonin natural peak."
+            "correct": 0,
+            "explain": "The core approach is to build a consistent window that fits your real schedule."
           },
           {
-            "q": "Flexible bedtime sleep drop?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "None",
-              "10%",
-              "40%",
-              "80%"
+              "Get professional help for persistent sleep difficulty",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 2,
-            "explain": "40% sleep quality drop."
+            "correct": 0,
+            "explain": "The appropriate boundary is to get professional help for persistent sleep difficulty."
           }
         ]
       },
       "7": {
-        "title": "Hydration: 2 Liters",
-        "teaching": "Body is 60% water. 2% dehydration = 20% cognitive drop. Most people chronically dehydrated. Solution: 2L = ~8 glasses. Morning, before-noon, after-noon 0.5L blocks.",
-        "action": "Today drink 2L water. 1L morning, 1L afternoon. Visible bottle.",
-        "reflectionPrompt": "When did you feel full hydration in your body?",
-        "proTip": "First drink water. Hydration starts 90 min before coffee.",
+        "title": "A Hydration Routine",
+        "teaching": "Fluid needs vary with body size, weather, activity, food, medication, and health conditions. One fixed amount is not an appropriate target for every person.\n\nThirst, dry mouth, and unusually dark urine can help you notice your pattern, but no single sign should be treated as a diagnosis.\n\nKeep water visible and easy to reach. Drinking around meals and after activity is often more manageable than forcing a large amount at once.\n\nHeart, kidney, and medication-related conditions can change fluid guidance. Follow your individual care plan when a clinician has given you a restriction.",
+        "action": "Keep water visible today and drink during three natural breaks in your routine.",
+        "reflectionPrompt": "At what point in the day do you most often forget to drink?",
         "quiz": [
           {
-            "q": "Optimum daily water?",
+            "q": "What is the soundest approach to a hydration routine?",
             "options": [
-              "500ml",
-              "1L",
-              "2L",
-              "5L"
+              "Adjust intake to personal conditions and body signals",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 2,
-            "explain": "2 liters = ~8 glasses."
+            "correct": 0,
+            "explain": "The core approach is to adjust intake to personal conditions and body signals."
           },
           {
-            "q": "2% dehydration effect?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "None",
-              "5% drop",
-              "20% drop",
-              "50%"
+              "Follow an individual care plan when fluids are restricted",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 2,
-            "explain": "Cognitive 20% drop."
+            "correct": 0,
+            "explain": "The appropriate boundary is to follow an individual care plan when fluids are restricted."
           }
         ]
       },
       "8": {
-        "title": "10,000 Steps a Day",
-        "teaching": "Step counting looks trendy but science is firm: 7-10K daily = 30% lower mortality (Lancet 2023). Constant sitting equals cancer risk. Movement = medicine.",
-        "action": "Today reach 10,000 steps. Phone has a counter.",
-        "reflectionPrompt": "How did 10K steps shape your day?",
-        "proTip": "Walk meetings. Walk while on calls. Stairs over elevator.",
+        "title": "A Daily Movement Target",
+        "teaching": "Step counts are useful feedback, but there is no single correct number for everyone. Your starting point, mobility, and daily environment should shape the target.\n\nThe practical goal is to break up long periods of sitting and build more total movement over time. Short walks can accumulate across the day.\n\nMeasure three ordinary days first. Then choose a modest increase and attach it to a stable cue such as lunch or a phone call.\n\nStop for chest discomfort, dizziness, or unusual shortness of breath. Discuss an appropriate target with a qualified professional when health or mobility limits apply.",
+        "action": "Measure your normal steps today and add one short, comfortable walk.",
+        "reflectionPrompt": "Which fixed break in your day could reliably hold a short walk?",
         "quiz": [
           {
-            "q": "Daily steps target?",
+            "q": "What is the soundest approach to a daily movement target?",
             "options": [
-              "1K",
-              "5K",
-              "10K",
-              "50K"
+              "Progress gradually from your own starting point",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 2,
-            "explain": "7-10K = optimum."
+            "correct": 0,
+            "explain": "The core approach is to progress gradually from your own starting point."
           },
           {
-            "q": "Steps and mortality?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "Same",
-              "30% lower",
-              "80% higher",
-              "Unknown"
+              "Stop at warning symptoms and get appropriate guidance",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 1,
-            "explain": "30% lower mortality."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop at warning symptoms and get appropriate guidance."
           }
         ]
       },
       "9": {
-        "title": "Resistance Training Intro",
-        "teaching": "Cardio is good, but resistance training (weight, bodyweight) adds 30% more lifespan. Muscle = second heart. After 30, muscle loss is 1%/year — without training, you don't stand straight at 50.",
-        "action": "Today do 3 basics × 3 sets: squat, push-up, plank. 10 reps each.",
-        "reflectionPrompt": "How was your energy after resistance work?",
-        "proTip": "3 days/week is enough. Mon-Wed-Fri 20 min home workout.",
+        "title": "Starting Resistance Training",
+        "teaching": "Resistance training asks muscles to work against a controlled load. Bodyweight, bands, or suitable weights can all work, so a gym is not required to begin.\n\nA balanced starting plan may include pushing, pulling, squatting, and trunk stability. Each movement should match your current skill and physical limitations.\n\nChoose an easy variation, perform a few controlled repetitions, and stop before form breaks. Give the trained muscles time to recover before loading them again.\n\nSharp pain, numbness, or joint instability is not a normal training signal. Stop and seek qualified guidance when those signs appear.",
+        "action": "Try easy squat, wall push-up, and short plank variations with controlled form today.",
+        "reflectionPrompt": "Which basic movement would benefit most from careful instruction?",
         "quiz": [
           {
-            "q": "Resistance training lifespan?",
+            "q": "What is the soundest approach to starting resistance training?",
             "options": [
-              "None",
-              "+10%",
-              "+30%",
-              "+200%"
+              "Start with easy variations and controlled form",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 2,
-            "explain": "30% more years."
+            "correct": 0,
+            "explain": "The core approach is to start with easy variations and controlled form."
           },
           {
-            "q": "Muscle loss after 30?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "None",
-              "1%/year",
-              "5%/year",
-              "10%"
+              "Stop when sharp pain or instability appears",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 1,
-            "explain": "Yearly 1%, untrained."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop when sharp pain or instability appears."
           }
         ]
       },
       "10": {
-        "title": "Daily Push-Ups",
-        "teaching": "One move = added years. Chinese study: men 40+ who do >40 push-ups have 96% lower heart disease risk. Cost: 5 minutes.",
-        "action": "Today do 20 push-ups. Even split across the day, total 20.",
-        "reflectionPrompt": "How hard is daily push-up progress?",
-        "proTip": "5 push-ups after brushing teeth. Stack = 500 in 100 days.",
+        "title": "Safe Push-Up Progression",
+        "teaching": "A push-up trains the chest, shoulders, arms, and trunk together. Its value comes from clean repetitions at the right level, not from chasing a large number.\n\nA wall, high counter, knees, and the floor provide different difficulty levels. Start where you can keep a balanced line through the movement.\n\nComplete a short set and stop with a few good repetitions still available. When that feels easy, add a small amount of work before changing the variation.\n\nDo not train through sharp wrist or shoulder pain. Adjust the angle or hand position and get guidance if the problem continues.",
+        "action": "Do two comfortable sets using the push-up variation that preserves your form.",
+        "reflectionPrompt": "What tells you that your push-up form is beginning to break down?",
         "quiz": [
           {
-            "q": "Push-ups & heart risk?",
+            "q": "What is the soundest approach to safe push-up progression?",
             "options": [
-              "No effect",
-              "40+ = -96%",
-              "10+ = -50%",
-              "100+ = same"
+              "Put movement quality ahead of repetition count",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 1,
-            "explain": "40+ push-ups = 96% lower risk."
+            "correct": 0,
+            "explain": "The core approach is to put movement quality ahead of repetition count."
           },
           {
-            "q": "Stack technique?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "None",
-              "After brushing 5",
-              "100 set",
-              "Random"
+              "Reduce difficulty or stop for joint pain",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 1,
-            "explain": "Brush + push-up = automatic."
+            "correct": 0,
+            "explain": "The appropriate boundary is to reduce difficulty or stop for joint pain."
           }
         ]
       },
       "11": {
-        "title": "Daily Squat",
-        "teaching": "Squat = whole-body. Quads, glutes, core, balance. Want easy stand-up at 50? Squat at 30. Joint-friendly, no equipment, effective.",
-        "action": "Today do 30 squats. Splits ok: 3x10. Form > count.",
-        "reflectionPrompt": "How was paying attention to form?",
-        "proTip": "Push hips back, knees behind toes. Mirror or video yourself.",
+        "title": "Squat Mechanics",
+        "teaching": "A squat practices sitting, standing, and producing force from the floor. Hip, knee, and ankle structure differs, so one visual shape does not fit every body.\n\nA sound repetition keeps the feet supported, lets the knees follow the direction of the feet, and stays within a comfortable range. Depth can vary.\n\nBegin with a controlled sit-to-stand from a chair. Lower the chair or reduce assistance only after the current version feels steady.\n\nReduce the range or stop for sharp knee, hip, or back pain. Ongoing pain deserves an appropriate assessment instead of more forced repetitions.",
+        "action": "Practice two comfortable sets of controlled sit-to-stands from a chair.",
+        "reflectionPrompt": "At what point in the squat do you begin to lose balance?",
         "quiz": [
           {
-            "q": "Squat form?",
+            "q": "What is the soundest approach to squat mechanics?",
             "options": [
-              "Knees forward",
-              "Hips back",
-              "Stiff",
-              "Fast"
+              "Move with balance through a comfortable range",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 1,
-            "explain": "Push hips back."
+            "correct": 0,
+            "explain": "The core approach is to move with balance through a comfortable range."
           },
           {
-            "q": "Squat scope?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "Legs only",
-              "Full body",
-              "Core",
-              "Back"
+              "Reduce range or stop for sharp pain",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 1,
-            "explain": "Full body move."
+            "correct": 0,
+            "explain": "The appropriate boundary is to reduce range or stop for sharp pain."
           }
         ]
       },
       "12": {
-        "title": "Plank Discipline",
-        "teaching": "Weak core = leaks in every move. Plank = passive core training. 60-sec plank = more effective than 100 sit-ups. 80% of back pain is weak core.",
-        "action": "Today plank for 30 seconds. Tomorrow 35, then 40. Build to 60.",
-        "reflectionPrompt": "What ran through your mind holding the plank?",
-        "proTip": "Don't hold breath. Slow exhale keeps core engaged.",
+        "title": "Trunk Stability",
+        "teaching": "Trunk training is not only about visible abdominal muscles. The practical skill is creating controlled support around the spine and pelvis while continuing to breathe.\n\nA plank is one option, not a required test. Wall planks, elevated planks, and short loaded carries may offer a more suitable starting point.\n\nHold a good position briefly without holding your breath. End the set when the low back drops, the shoulders pinch, or breathing becomes restricted.\n\nCore exercise does not explain or treat every back problem. Persistent, spreading, or disabling pain needs professional assessment.",
+        "action": "Use a plank variation that lets you breathe comfortably for two short sets.",
+        "reflectionPrompt": "Does your breathing or your position break down first during trunk work?",
         "quiz": [
           {
-            "q": "Plank starter?",
+            "q": "What is the soundest approach to trunk stability?",
             "options": [
-              "10s",
-              "30s",
-              "5 min",
-              "1h"
+              "Create controlled stability while breathing",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 1,
-            "explain": "Start 30s."
+            "correct": 0,
+            "explain": "The core approach is to create controlled stability while breathing."
           },
           {
-            "q": "Back pain cause?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "Age",
-              "Weak core",
-              "Genes",
-              "Luck"
+              "Assess persistent or spreading pain",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 1,
-            "explain": "80% of back pain = weak core."
+            "correct": 0,
+            "explain": "The appropriate boundary is to assess persistent or spreading pain."
           }
         ]
       },
       "13": {
-        "title": "Cardio Zones",
-        "teaching": "Not all cardio equal. Zone 2 (moderate, conversational) = mitochondria growth, fat burn, endurance. Zone 5 (sprint) = peak power. Most stuck in 3-4 — ineffective middle.",
-        "action": "Today do 30 min zone 2 cardio. Brisk walk / light jog. Speak-able pace.",
-        "reflectionPrompt": "How slow did zone 2 feel?",
-        "proTip": "Apple Watch / Garmin show zones. None: if you can talk, you're zone 2.",
+        "title": "Choosing Cardio Intensity",
+        "teaching": "You do not need a watch-defined zone for every cardio session. The talk test and perceived effort provide useful feedback for many everyday workouts.\n\nAt an easy pace you can speak in full sentences. Speech becomes harder as intensity rises. Both levels can be useful without turning every session into exhaustion.\n\nKeep most work at a pace you can sustain. When adding intensity, use a short interval and observe how well you recover afterward.\n\nStop for chest pain, unusual breathlessness, faintness, or irregular palpitations. Discuss intensity with your care team when you have a known condition.",
+        "action": "Take a short walk or ride today at a pace that still allows conversation.",
+        "reflectionPrompt": "What signal separates your sustainable pace from an unnecessarily hard one?",
         "quiz": [
           {
-            "q": "Zone 2 means?",
+            "q": "What is the soundest approach to choosing cardio intensity?",
             "options": [
-              "Sprint",
-              "Speakable pace",
-              "Maximum",
-              "Walk"
+              "Use conversation and recovery to guide intensity",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 1,
-            "explain": "Conversational moderate."
+            "correct": 0,
+            "explain": "The core approach is to use conversation and recovery to guide intensity."
           },
           {
-            "q": "Most people in zone?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "1",
-              "2",
-              "3-4 stuck",
-              "5"
+              "Stop for serious warning symptoms",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 2,
-            "explain": "Ineffective middle."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop for serious warning symptoms."
           }
         ]
       },
       "14": {
-        "title": "Mobility Work",
-        "teaching": "Flexibility ≠ mobility. Flexibility = passive stretch. Mobility = controlled range of motion. After 30, daily shoulder/hip/ankle mobility prevents range loss at 50.",
-        "action": "Today do 5 min mobility. Arm circles, hip openers, ankle rotations.",
-        "reflectionPrompt": "Which joint felt most restricted?",
-        "proTip": "Do post-shower morning. Muscles warm, mobility optimum.",
+        "title": "A Mobility Routine",
+        "teaching": "Mobility is the ability to use a joint through a comfortable range with control. Reaching farther is not automatically better; comfort and control matter more.\n\nMoving the shoulders, hips, and ankles in different directions can help address stiffness from repetitive positions. Small regular sessions are easier to manage than aggressive stretching.\n\nChoose slow circles, controlled reaches, and supported squats. Increase the range slightly as you warm up without bouncing or forcing the joint.\n\nSkip a general routine when there is sharp pain, swelling, recent injury, or locking. Get an appropriate assessment first.",
+        "action": "Do five minutes of comfortable shoulder, hip, and ankle movement today.",
+        "reflectionPrompt": "Which joint needs more controlled movement during your typical day?",
         "quiz": [
           {
-            "q": "Mobility vs flexibility?",
+            "q": "What is the soundest approach to a mobility routine?",
             "options": [
-              "Same",
-              "Mobility = controlled motion",
-              "Flexibility active",
-              "Unknown"
+              "Move slowly and with control in a comfortable range",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 1,
-            "explain": "Mobility = controlled motion."
+            "correct": 0,
+            "explain": "The core approach is to move slowly and with control in a comfortable range."
           },
           {
-            "q": "30+ mobility?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "None",
-              "Daily required",
-              "Weekly",
-              "Monthly"
+              "Assess injury, swelling, or joint locking first",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 1,
-            "explain": "Daily 5 min suffices."
+            "correct": 0,
+            "explain": "The appropriate boundary is to assess injury, swelling, or joint locking first."
           }
         ]
       },
       "15": {
-        "title": "Meal Timing",
-        "teaching": "What you eat matters; when you eat matters too. Late dinner = sleep loss, slow digestion. Last meal 3h before bed. 19:00 dinner, 22:00 sleep = ideal.",
-        "action": "Today don't eat after 19:00.",
-        "reflectionPrompt": "How did early dinner affect sleep?",
-        "proTip": "Earlier dinner = less evening snacking. Find balance: not starving, not full.",
+        "title": "Meal and Sleep Timing",
+        "teaching": "A large late meal can affect comfort, reflux, or sleep onset for some people. There is no universal dinner time that works for every schedule and body.\n\nThe goal is to avoid going to bed uncomfortably full or overly hungry. Meal size, content, and your own digestive experience all matter.\n\nFor one week, note your final meal time beside your sleep experience. If a pattern appears, try moving dinner a little earlier or choosing a lighter option.\n\nReflux, diabetes, pregnancy, eating-disorder history, and prescribed diets need individualized guidance rather than a general timing rule.",
+        "action": "Record your final meal time and how you feel at bedtime tonight.",
+        "reflectionPrompt": "How do the timing and size of dinner affect your sleep comfort?",
         "quiz": [
           {
-            "q": "Last meal to bed gap?",
+            "q": "What is the soundest approach to meal and sleep timing?",
             "options": [
-              "1h",
-              "2h",
-              "3h",
-              "5h"
+              "Build timing around your own digestion and sleep experience",
+              "Treat one number as mandatory for everyone",
+              "Ignore discomfort and warning signals",
+              "Change the plan randomly every day"
             ],
-            "correct": 2,
-            "explain": "3 hours ideal."
+            "correct": 0,
+            "explain": "The core approach is to build timing around your own digestion and sleep experience."
           },
           {
-            "q": "Late meal effect?",
+            "q": "Which safety boundary fits this lesson?",
             "options": [
-              "None",
-              "Sleep drop",
-              "Better",
-              "Positive"
+              "Use individualized guidance for relevant health conditions",
+              "Double the difficulty immediately",
+              "Treat sharp pain as progress",
+              "Copy another person's plan exactly"
             ],
-            "correct": 1,
-            "explain": "Sleep quality drops."
+            "correct": 0,
+            "explain": "The appropriate boundary is to use individualized guidance for relevant health conditions."
           }
         ]
       },
@@ -6392,312 +6382,302 @@
         "proTip": "This is general education, not personal financial advice. Consider local rules and qualified guidance when choosing products."
       },
       "6": {
-        "title": "Net Worth Audit",
-        "teaching": "Most people don't know their own wealth. Net worth = assets (cash, investments, real estate) - liabilities (loans, cards). This number is your real financial life. Year-over-year: growing or shrinking?",
-        "action": "Today calculate your net worth. Excel it, screenshot it.",
-        "reflectionPrompt": "How different was the result from your guess?",
-        "proTip": "Track monthly. Yearly change = real progress meter.",
+        "title": "A Net Worth Snapshot",
+        "teaching": "Net worth is the estimated current value of assets minus outstanding liabilities. Unlike salary, it describes your financial position on one specific date.\n\nCash and account balances are clear. Homes, vehicles, and private assets require estimates, so using the original purchase price may distort the picture.\n\nList assets and debts in separate columns, use one currency, and mark uncertain values. Updating quarterly is enough for many personal planning needs.\n\nThis number does not measure personal worth and is not investment advice. Shared property, tax, or complex debt may require qualified financial guidance.",
+        "action": "List assets and debts in two columns today, marking every estimated value.",
+        "reflectionPrompt": "Which part of your current financial picture is least certain?",
         "quiz": [
           {
-            "q": "Net worth = ?",
+            "q": "What is the soundest principle for a net worth snapshot?",
             "options": [
-              "Cash only",
-              "Assets - Debts",
-              "Salary only",
-              "Profit"
+              "Compare realistic asset and debt values from the same date",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "Assets - Debts = net worth."
+            "correct": 0,
+            "explain": "The core principle is to compare realistic asset and debt values from the same date."
           },
           {
-            "q": "Track frequency?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "Yearly",
-              "Monthly",
-              "Never",
-              "Daily"
+              "Label estimates instead of presenting them as exact",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "Monthly = monthly view."
+            "correct": 0,
+            "explain": "The appropriate control is to label estimates instead of presenting them as exact."
           }
         ]
       },
       "7": {
-        "title": "Subscription Audit",
-        "teaching": "Average person pays 7-12 forgotten subscriptions: streaming, app, gym, magazine, premium service. 1 year = $200-500. 50% you don't use. Cancel.",
-        "action": "Today review last 3 months of card statements. List all subscriptions.",
-        "reflectionPrompt": "How many \"sleeping\" subscriptions surprised you?",
-        "proTip": "Apps like Truebill / Bobby auto-find and cancel them.",
+        "title": "A Subscription Audit",
+        "teaching": "Recurring payments can disappear into the background. The problem is not having subscriptions; it is paying when the service no longer matches the value you receive.\n\nReview recent bank and card activity and collect app, media, fitness, storage, and membership charges in one list. Include annual renewals.\n\nRecord the last use, renewal date, and cancellation terms for each item. Keep what you actively use, schedule uncertain reviews, and cancel unused services before renewal.\n\nCheck what files or access will disappear after cancellation. Do not remove a work, health, or security service solely to make the list shorter.",
+        "action": "Collect every recurring charge from recent statements into one list today.",
+        "reflectionPrompt": "Which subscription no longer gives value that matches its cost?",
         "quiz": [
           {
-            "q": "Average subscriptions?",
+            "q": "What is the soundest principle for a subscription audit?",
             "options": [
-              "1-2",
-              "7-12",
-              "30+",
-              "50+"
+              "Judge recurring charges by current use and value",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "7-12 paid unaware."
+            "correct": 0,
+            "explain": "The core principle is to judge recurring charges by current use and value."
           },
           {
-            "q": "Yearly cost?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "$50",
-              "$200-500",
-              "$2000",
-              "$5000"
+              "Check data and service loss before cancelling",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "$200-500 yearly."
+            "correct": 0,
+            "explain": "The appropriate control is to check data and service loss before cancelling."
           }
         ]
       },
       "8": {
-        "title": "Latte Factor",
-        "teaching": "$5 daily coffee = $150/month = $1,800/year = $54,000 in 30 years (no interest). Invested = ~$160K. Tiny daily \"luxuries\" eat your retirement.",
-        "action": "Today list automatic small expenses. Total monthly?",
-        "reflectionPrompt": "Which \"small\" expense was actually big?",
-        "proTip": "Don't cut all — change 1. Big effect.",
+        "title": "Small Spending Patterns",
+        "teaching": "Small frequent purchases can become invisible in a budget. The goal is not to shame coffee or enjoyment; it is to turn the total cost into a conscious choice.\n\nSeeing a monthly total helps you decide how much the habit matters. Future-value calculators are scenarios built on assumptions, not certain outcomes.\n\nMark only recurring small purchases for one week. Reduce the item that gives the least value and test a cheaper or less frequent alternative.\n\nDo not cut essentials or build a plan around unrealistic investment returns. A useful budget balances quality of life with financial priorities.",
+        "action": "Track recurring small purchases this week and choose one practical alternative.",
+        "reflectionPrompt": "Which small expense gives you the least value for its cost?",
         "quiz": [
           {
-            "q": "$5/day × 30 yrs?",
+            "q": "What is the soundest principle for small spending patterns?",
             "options": [
-              "$10K",
-              "$54K + interest",
-              "$5K",
-              "$200K"
+              "Evaluate small spending by total value rather than guilt",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "$54K + interest more."
+            "correct": 0,
+            "explain": "The core principle is to evaluate small spending by total value rather than guilt."
           },
           {
-            "q": "Latte solution?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "Cut all",
-              "Change 1",
-              "More coffee",
-              "Irrelevant"
+              "Treat projected returns as assumptions, not certainty",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "1 change effective."
+            "correct": 0,
+            "explain": "The appropriate control is to treat projected returns as assumptions, not certainty."
           }
         ]
       },
       "9": {
-        "title": "Single Account Strategy",
-        "teaching": "Many accounts = mental noise. 1 main (income + daily), 1 savings (untouched), 1 investment (long-term). Cards: 1 daily, 1 backup. More = clutter.",
-        "action": "Today list all accounts. Close 1 unnecessary.",
-        "reflectionPrompt": "What mental space did account simplicity open?",
-        "proTip": "Multiple banks for unused accounts = login fatigue + annual fee layers.",
+        "title": "Simplifying Accounts",
+        "teaching": "Many accounts can increase tracking effort, but one bank or a fixed account count is not right for everyone. Business, tax, currency, and security needs differ.\n\nWrite down each account purpose, fees, automatic payments, and access method. Accounts without a clear job can create forgotten costs and unnecessary complexity.\n\nBefore closing one, check its balance, pending activity, direct payments, and statements. Download required records and move every dependency first.\n\nDeposit protection, credit history, and closure effects vary by country. Verify the institution terms before changing an important account.",
+        "action": "Label every account by purpose and fee, then review one unclear account.",
+        "reflectionPrompt": "Which account cannot be explained with one clear purpose?",
         "quiz": [
           {
-            "q": "Optimum accounts?",
+            "q": "What is the soundest principle for simplifying accounts?",
             "options": [
-              "1",
-              "3",
-              "10",
-              "20"
+              "Give each account a clear purpose and known cost",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "1 main + 1 savings + 1 invest = 3."
+            "correct": 0,
+            "explain": "The core principle is to give each account a clear purpose and known cost."
           },
           {
-            "q": "Why 2 cards?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "Style",
-              "1 daily + 1 backup",
-              "Bonus",
-              "No effect"
+              "Check payments, records, and local terms before closure",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "2 cards enough."
+            "correct": 0,
+            "explain": "The appropriate control is to check payments, records, and local terms before closure."
           }
         ]
       },
       "10": {
-        "title": "Automate Savings",
-        "teaching": "Don't trust willpower. Trust automation. When salary lands, 20% auto-transfers to savings. You live the rest. Money you don't see = money you don't spend.",
-        "action": "Today set 20% auto-transfer of salary to savings.",
-        "reflectionPrompt": "How would auto-deduction change your life?",
-        "proTip": "Open savings at a different bank. Same bank = \"easy access\" risk.",
+        "title": "Automating Savings",
+        "teaching": "An automatic transfer removes the need to repeat the same savings decision each month. The right amount depends on income, essential costs, and current debt.\n\nStarting with a fixed high rate can create overdrafts. Review upcoming bills and keep a practical buffer before choosing a sustainable amount.\n\nSchedule a small transfer just after income arrives. Observe one full cycle and adjust gradually when the transfer completes without disrupting essentials.\n\nHigh-cost debt, irregular income, or urgent cash needs may change the priority. Consider independent financial guidance when the tradeoffs are complex.",
+        "action": "Schedule a small automatic transfer that fits your next income cycle.",
+        "reflectionPrompt": "What transfer amount can remain regular without disrupting essentials?",
         "quiz": [
           {
-            "q": "Auto-savings %?",
+            "q": "What is the soundest principle for automating savings?",
             "options": [
-              "5%",
-              "10%",
-              "20%",
-              "50%"
+              "Automate an amount based on real cash flow",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 2,
-            "explain": "20% = ideal target."
+            "correct": 0,
+            "explain": "The core principle is to automate an amount based on real cash flow."
           },
           {
-            "q": "Savings account where?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "Same bank",
-              "Different bank",
-              "Mattress",
-              "Wallet"
+              "Check that the transfer does not cause an overdraft",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "Different bank = harder access."
+            "correct": 0,
+            "explain": "The appropriate control is to check that the transfer does not cause an overdraft."
           }
         ]
       },
       "11": {
-        "title": "Pay Yourself First",
-        "teaching": "Most people: spend first, save what's left. Wrong order. Correct: pay yourself first (savings/investing), then expenses. One change = millions difference in 10 years.",
-        "action": "Today on receiving income, route to savings first, expenses second.",
-        "reflectionPrompt": "How did the order shift change your inner sentence?",
-        "proTip": "On payday, \"pay your own salary\" — first invoice to yourself.",
+        "title": "Paying Your Future Self",
+        "teaching": "Paying yourself first means making future goals visible in the budget. It does not mean skipping essential needs or required debt payments.\n\nAfter housing, food, health, transport, and minimum payments are clear, choose a realistic amount for savings. That amount may change across life stages.\n\nMove it to a named goal account so its purpose is visible. A small regular contribution may be easier to track than waiting for money left at month end.\n\nReducing the transfer during a difficult month is not failure. Protect immediate safety, then restore the system when conditions improve.",
+        "action": "Add one realistic line for a future goal to your current budget.",
+        "reflectionPrompt": "Which future goal is currently invisible in your budget?",
         "quiz": [
           {
-            "q": "Pay first?",
+            "q": "What is the soundest principle for paying your future self?",
             "options": [
-              "Bills",
-              "Yourself",
-              "Food",
-              "Fun"
+              "Budget for a future goal after essential obligations",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "Pay yourself first = priority."
+            "correct": 0,
+            "explain": "The core principle is to budget for a future goal after essential obligations."
           },
           {
-            "q": "Order effect?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "None",
-              "Decade difference",
-              "Same",
-              "Negative"
+              "Do not put basic needs at risk for savings",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "10 years = millions diff."
+            "correct": 0,
+            "explain": "The appropriate control is to do not put basic needs at risk for savings."
           }
         ]
       },
       "12": {
-        "title": "Debt Avalanche",
-        "teaching": "Multiple debts? Focus on highest-interest first, minimum on others. When done → next highest. Called \"avalanche.\" Mathematically the fastest.",
-        "action": "Today list all debts by interest rate. Plan the avalanche.",
-        "reflectionPrompt": "How did seeing the highest-interest debt feel?",
-        "proTip": "Snowball (smallest first) is psychological. Avalanche (highest interest) is math. Both work — pick one.",
+        "title": "A Debt Priority Plan",
+        "teaching": "The debt avalanche directs extra money to the highest-cost debt while required payments continue on the others. Its aim is to reduce total financing cost over time.\n\nThe stated interest rate is not the only detail. Late fees, prepayment penalties, variable rates, tax effects, and collateral risk may also matter.\n\nList balance, effective cost, minimum payment, and term for each debt. Select one target for extra payments, then move to the next after it closes.\n\nIf minimum payments are unaffordable or collection pressure is rising, seek reputable debt or legal guidance instead of optimizing alone.",
+        "action": "List each debt with balance, effective cost, minimum payment, and term.",
+        "reflectionPrompt": "Which condition besides interest changes your debt priority?",
         "quiz": [
           {
-            "q": "Avalanche method?",
+            "q": "What is the soundest principle for a debt priority plan?",
             "options": [
-              "All debts equal",
-              "Highest interest first",
-              "Smallest first",
-              "Random"
+              "Direct planned extra payments toward higher-cost debt",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "Focus highest interest."
+            "correct": 0,
+            "explain": "The core principle is to direct planned extra payments toward higher-cost debt."
           },
           {
-            "q": "Snowball vs avalanche?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "Same",
-              "Snow=psych / aval=math",
-              "Aval slower",
-              "Snow more expensive"
+              "Seek qualified help when minimum payments are unaffordable",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "Both work, different logic."
+            "correct": 0,
+            "explain": "The appropriate control is to seek qualified help when minimum payments are unaffordable."
           }
         ]
       },
       "13": {
         "title": "Credit Card Discipline",
-        "teaching": "Credit card = instrument. Misused = handcuff, used right = leverage. Rule: 1) Only on already-planned purchases, 2) Pay full, 3) No interest. Can't? Close it.",
-        "action": "Today match credit card balance with expenses. Any gap?",
-        "reflectionPrompt": "Are you disciplined or exposed to exploitation?",
-        "proTip": "Don't carry it — only for intentional purchases. Out-of-wallet cuts spending 15%.",
+        "teaching": "A credit card delays payment; it does not create income. Not seeing cash leave at purchase time can make it easier to cross a budget limit.\n\nKnow the statement date, due date, interest terms, fees, and installment conditions. Reserve cash for planned purchases before the bill arrives.\n\nEnable alerts, choose a personal spending limit, and review activity weekly. Contact the issuer promptly when a transaction looks unfamiliar.\n\nClosing a card can affect fees and credit history differently by country. If a balance keeps growing, review issuer hardship options or independent guidance early.",
+        "action": "Verify your card balance, due date, fees, and available payment cash today.",
+        "reflectionPrompt": "Which card-use moment most often pulls you away from your budget?",
         "quiz": [
           {
-            "q": "Credit card rule?",
+            "q": "What is the soundest principle for credit card discipline?",
             "options": [
-              "Spend unlimited",
-              "Pay full + no interest",
-              "Min pay",
-              "Carry"
+              "Keep card spending inside an existing payment plan",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "Pay full, no interest."
+            "correct": 0,
+            "explain": "The core principle is to keep card spending inside an existing payment plan."
           },
           {
-            "q": "Out-of-wallet card?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "No effect",
-              "15% less spending",
-              "More",
-              "Same"
+              "Seek support early when the balance keeps growing",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "No card = intentional buying."
+            "correct": 0,
+            "explain": "The appropriate control is to seek support early when the balance keeps growing."
           }
         ]
       },
       "14": {
-        "title": "Frugal Joy",
-        "teaching": "Frugality ≠ poverty. Unsustainable frugality = short-lived. Frugal joy: discover cheap pleasures. Park walk, home cooking, library book, home concert. Expensive ≠ joyful.",
-        "action": "Today do 1 big enjoyment that costs $0.",
-        "reflectionPrompt": "What gave you joy without cost?",
-        "proTip": "List 30 alternatives: $0, <$5, <$10. Seeing options breaks spending reflex.",
+        "title": "Frugal Enjoyment",
+        "teaching": "Frugality does not require removing every pleasure. It separates experiences that genuinely matter from spending driven mainly by habit or appearance.\n\nA low-cost activity can still provide connection, curiosity, or rest. Its value comes from the experience, not the price attached to it.\n\nWrite five free or low-cost options such as a walk, home meal, library visit, friend meetup, or local event. Put one on this week's calendar.\n\nDo not turn saving into isolation or constant deprivation. Leaving a modest enjoyment category can make the larger plan easier to sustain.",
+        "action": "Schedule one low-cost activity you genuinely want to do this week.",
+        "reflectionPrompt": "Which expensive habit could be replaced by a more meaningful experience?",
         "quiz": [
           {
-            "q": "Frugality ≠ ?",
+            "q": "What is the soundest principle for frugal enjoyment?",
             "options": [
-              "Saving",
-              "Poverty",
-              "Plan",
-              "Discipline"
+              "Evaluate enjoyment by personal value instead of price",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
-            "correct": 1,
-            "explain": "Frugal ≠ poor."
+            "correct": 0,
+            "explain": "The core principle is to evaluate enjoyment by personal value instead of price."
           },
           {
-            "q": "Frugal joy example?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "Fancy restaurant",
-              "Park walk",
-              "New phone",
-              "Bar night"
+              "Do not turn saving into constant deprivation",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "$0 joy examples."
+            "correct": 0,
+            "explain": "The appropriate control is to do not turn saving into constant deprivation."
           }
         ]
       },
       "15": {
-        "title": "Buy Quality Once",
-        "teaching": "Cheap × 5 = expensive. Expensive × 1 = looks pricey but cheaper. $40 shoes lasting 5 years vs $200 shoes lasting 20. Calculate, choose quality.",
-        "action": "Today upgrade 1 about-to-break item to a higher-quality alternative.",
-        "reflectionPrompt": "How much does quality save long-term?",
-        "proTip": "Check Buy-It-For-Life (BIFL) communities. Reddit has endless suggestions.",
+        "title": "Total Cost of Ownership",
+        "teaching": "A cheap product is not automatically economical, and an expensive one is not automatically durable. Compare purchase price with expected use, maintenance, and repair.\n\nFor frequently used or high-impact items, warranty terms, spare parts, and repairability may matter more than branding or a premium finish.\n\nEstimate usage, read independent reviews, and compare approximate annual cost before buying. Consider renting or buying used for an item you rarely need.\n\nBorrowing for a premium option can erase the expected benefit. Let budget, actual need, and verifiable product information guide the decision together.",
+        "action": "Add price, useful life, maintenance, and repair columns to your next comparison.",
+        "reflectionPrompt": "Which product category do you judge only by purchase price?",
         "quiz": [
           {
-            "q": "Cheap × 5 = ?",
+            "q": "What is the soundest principle for total cost of ownership?",
             "options": [
-              "Expensive",
-              "Cheaper",
-              "Same",
-              "Unknown"
+              "Compare total use cost instead of purchase price alone",
+              "Apply one fixed rate to everyone",
+              "Treat an estimate as an exact result",
+              "Decide quickly without checking terms"
             ],
             "correct": 0,
-            "explain": "Total ends up expensive."
+            "explain": "The core principle is to compare total use cost instead of purchase price alone."
           },
           {
-            "q": "Buy-it-for-life is?",
+            "q": "Which control step fits this lesson?",
             "options": [
-              "Expensive",
-              "One-time buy",
-              "Eternal",
-              "Young"
+              "Do not exceed the budget based on a quality assumption",
+              "Ignore essential expenses",
+              "Assume a future return is certain",
+              "Close an account before checking records"
             ],
-            "correct": 1,
-            "explain": "Buy once, last lifetime."
+            "correct": 0,
+            "explain": "The appropriate control is to do not exceed the budget based on a quality assumption."
           }
         ]
       },
