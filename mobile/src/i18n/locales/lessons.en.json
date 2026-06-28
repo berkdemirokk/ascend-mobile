@@ -340,313 +340,303 @@
       },
       "11": {
         "title": "Change the Environment",
-        "teaching": "Willpower is a finite battery. In behavior change, environment matters more than willpower. If chocolate is in the fridge, you'll eat it. If your phone is on the bed, you'll check it.\n\nPhysical distance = willpower savings. You don't think about what you don't see. You don't want what you don't think about.\n\nToday we clean the environment of enemy triggers.",
-        "action": "Look around your home. Pick 5 dopamine triggers and physically remove them: home-screen apps, junk food, alcohol, gaming console — whatever they are.",
-        "reflectionPrompt": "Which trigger did you think would be hardest to keep 'out of sight'? Why?",
+        "teaching": "Stop treating willpower like a hero. Change the stage instead. The snack on the counter, the icon on the home screen, and the controller in sight all start the decision before you do.\n\nToday is not about defeating yourself. It is about removing traps. A phone in another room creates fewer negotiations. Food out of sight creates a quieter evening.\n\nA cleaner environment gives the mind less to defend against. A blank home screen, a clear desk, and closed notifications send one message: return to the chosen task.\n\nMake the change physical. Delete, move, hide, unplug. A decision is weak in your head and strong in your room.",
+        "action": "Pick five triggers. Delete one, move one away, and hide three from sight.",
+        "reflectionPrompt": "Which trigger created the most negotiation when you tried to remove it?",
         "quiz": [
           {
-            "q": "Strongest trigger?",
+            "q": "What does environment do?",
             "options": [
-              "Thought",
-              "Environment",
-              "Person",
-              "Hunger"
+              "Makes choices easier",
+              "Only decorates",
+              "Solves everything",
+              "Does nothing"
             ],
-            "correct": 1,
-            "explain": "Same setting = same behavior."
+            "correct": 0,
+            "explain": "A better setting starts the right behavior with less debate."
           },
           {
-            "q": "Solution?",
+            "q": "First move?",
             "options": [
-              "Will",
-              "Change environment",
-              "Try harder",
-              "None"
+              "Resist harder",
+              "Remove the trigger",
+              "Blame yourself",
+              "Wait"
             ],
             "correct": 1,
-            "explain": "Environment shift = behavior shift."
+            "explain": "Removing triggers protects attention."
           }
-        ],
-        "proTip": "Environment = strongest trigger. Same setting = same behavior."
+        ]
       },
       "12": {
-        "title": "Embrace Boredom Again",
-        "teaching": "In the first week you met boredom. Now it's time to love it. Boredom is the empty space your brain needs to form new connections.\n\nDopamine deficiency is the emergence of mental space. In that space, you ask real questions: 'What do I want in life?' 'Am I happy in this job?'\n\nBefore, those questions were drowned out by phone scrolling. Now you face them.",
-        "action": "Spend 60 minutes bored on purpose today. Walk alone, sit in a room, stare at the ceiling. No phone, no music, no book.",
-        "reflectionPrompt": "What big question surfaced while you were bored?",
+        "title": "Stay With Boredom",
+        "teaching": "Boredom is not the enemy. It is the sound of open space. When the screen goes quiet, peace may not arrive first. Restlessness may arrive first, and that is allowed.\n\nYou used to fill that space with tiny escapes: a short video, a message check, a new tab, a random song. Each one delayed being alone with yourself.\n\nDo not solve boredom today. Watch it. Where does your mind run? Which topic does it avoid? Which urge keeps coming back?\n\nA person who can stay with empty space is harder to control. They do not need to run outside themselves every time nothing happens.",
+        "action": "Sit or walk for thirty phone-free minutes. No music, no book, only observation.",
+        "reflectionPrompt": "What thought returned first when the space got quiet?",
         "quiz": [
           {
-            "q": "Boredom = ?",
+            "q": "Boredom can be?",
             "options": [
-              "Sickness",
-              "Empty space signal",
-              "Hunger",
-              "Fatigue"
+              "Open-space signal",
+              "A failure",
+              "A command",
+              "Entertainment"
             ],
-            "correct": 1,
-            "explain": "Brain wants empty space."
+            "correct": 0,
+            "explain": "Boredom can show that the mind has room to notice."
           },
           {
-            "q": "Second boredom wave?",
+            "q": "Today’s goal?",
             "options": [
-              "Day 1-3",
-              "Day 14-17",
-              "Day 25-30",
-              "None"
+              "Escape",
+              "Observe",
+              "Fill it",
+              "Sleep"
             ],
             "correct": 1,
-            "explain": "Around halfway."
+            "explain": "Observation makes the urge easier to handle."
           }
-        ],
-        "proTip": "Second boredom wave hits day 14-17. It passes."
+        ]
       },
       "13": {
-        "title": "Single-Task Discipline",
-        "teaching": "Multitasking is a myth. The brain can't truly do two tasks in parallel — it switches fast. Each switch drops performance by 40% and increases errors.\n\nReal deep work happens with a single task. Phone off, single tab open, music off (if it distracts).\n\nThis is training. Day 1, 25 minutes of single-focus is hard. A week later, 90 minutes feels natural.",
-        "action": "Do one 90-minute single-task block today. Pick one task. Phone in another room. Only one tab open. 90 minutes only that.",
-        "reflectionPrompt": "How much more did you finish in 90 minutes? In 'multitask' mode, how long would the same task have taken?",
+        "title": "Single-Task Lock",
+        "teaching": "Looking busy is easy. Tabs are open, messages arrive, music plays, and your hand keeps drifting toward the phone. That crowd often feels productive, but it is usually escape.\n\nSingle-tasking starts dull because it leaves no side door. One file, one page, one conversation, one goal. The mind complains first, then finds rhythm.\n\nToday, value is not measured by intensity. It is measured by finished work. One completed task leaves a cleaner mark than touching ten tasks.\n\nBuild a single-task lock: clear time, clear work, distractions closed. When the block ends, you should be able to name what moved forward.",
+        "action": "Choose one task. Work sixty minutes with one window, one goal, phone away.",
+        "reflectionPrompt": "Which escape urge showed up during the single-task block?",
         "quiz": [
           {
-            "q": "Single-task = ?",
+            "q": "Single-tasking creates?",
             "options": [
-              "Slow",
-              "Discipline test",
-              "Useless",
-              "Modern"
+              "Clear progress",
+              "More tabs",
+              "Escape",
+              "Noise"
             ],
-            "correct": 1,
-            "explain": "Hardest brain discipline."
+            "correct": 0,
+            "explain": "One target makes finished work visible."
           },
           {
-            "q": "Multitask productivity?",
+            "q": "Block rule?",
             "options": [
-              "2x",
-              "Same",
-              "40% lower",
-              "200%"
+              "Keep everything open",
+              "Choose one target",
+              "Watch alerts",
+              "Leave time vague"
             ],
-            "correct": 2,
-            "explain": "Multi = 40% loss."
+            "correct": 1,
+            "explain": "Clear borders help the mind settle."
           }
-        ],
-        "proTip": "Single-task = discipline test. Brain unfamiliar, but power lives here."
+        ]
       },
       "14": {
-        "title": "Cut Artificial Stimulation",
-        "teaching": "Caffeine, sugar, fast music, aggressive video games — all are artificial dopamine spikes. They create stimulation above the natural baseline.\n\nIn the short term, feeling 'energetic' is normal. Long-term, the brain pulls baseline up — meaning normal life feels increasingly 'flat.'\n\nIf you reduce artificial tools during detox, natural motivation comes back. You may seem less energetic, but more sustainable.",
-        "action": "Cut caffeine in half today (one coffee). Skip sugar entirely. Work in silence. Spend the day on natural energy only.",
-        "reflectionPrompt": "Without artificial stimulation, what was my energy level? How did it feel?",
+        "title": "Lower Artificial Stimulus",
+        "teaching": "When the day stacks stimulus on stimulus, simple moments start to look dull. Coffee, sugar, fast music, endless screens, and constant alerts all knock on the same door: more, now.\n\nYou do not need to turn this into a punishment list. Today is not about being harsh. It is about lowering the volume so your real energy is easier to hear.\n\nQuiet work may feel strange at first. Your hand may reach for music, snacks, or the phone. Do not fill the space immediately.\n\nA lower-stimulus day gives you information. What do you actually need, and what is only familiar support?",
+        "action": "Reduce caffeine, skip packaged sweets, and do one work block in silence.",
+        "reflectionPrompt": "When stimulus dropped, did energy fall or did the mind settle?",
         "quiz": [
           {
-            "q": "Music = ?",
+            "q": "Today’s aim?",
             "options": [
-              "Calm",
-              "Stimulus",
-              "Passive",
-              "Silence"
+              "Lower the volume",
+              "Ban everything",
+              "Punish yourself",
+              "Add stimulus"
             ],
-            "correct": 1,
-            "explain": "Even music is stim."
+            "correct": 0,
+            "explain": "Lower volume makes real needs easier to see."
           },
           {
-            "q": "Silence benefit?",
+            "q": "Quiet block?",
             "options": [
-              "None",
-              "Brain medicine",
-              "Boring",
-              "No effect"
+              "Observation space",
+              "Punishment",
+              "Empty work",
+              "Escape"
             ],
-            "correct": 1,
-            "explain": "Silent minutes = deep processing."
+            "correct": 0,
+            "explain": "Silence gives the urge room to become visible."
           }
-        ],
-        "proTip": "Even music is stimulation. Silent minutes = brain medicine."
+        ]
       },
       "15": {
         "title": "Return to Real Connection",
-        "teaching": "The detox isn't about isolation. It's about replacing fake connections (social media, message threads) with real ones.\n\nA 10-minute deep conversation is more nourishing than 10 hours of DMs. Digital communication is like food with zero calories — you eat but don't get full.\n\nReturn to real connection today.",
-        "action": "Call (not message) someone you care about today. Talk for at least 15 minutes. The topic doesn't matter — the connection does.",
-        "reflectionPrompt": "What did real voice-to-voice feel like compared to texting?",
+        "teaching": "This process is not for isolation. It is for making room for real contact by reducing fake contact. Likes, short messages, and fast reactions can look like connection while staying on the surface.\n\nReal connection is slower. You hear tone, notice pauses, and listen without rushing to your turn. It is less shiny and more filling.\n\nToday, meet one person as a person, not as content to consume. Ask a real question. Do not interrupt. Do not prepare your answer while they speak.\n\nWhen you leave the screen, social life does not end. It can become more chosen, honest, and warm.",
+        "action": "Call someone you care about. Listen for fifteen minutes and ask one real question.",
+        "reflectionPrompt": "What did voice contact leave behind that texting usually does not?",
         "quiz": [
           {
-            "q": "Human contact vs screen?",
+            "q": "The process is for?",
             "options": [
-              "Same",
-              "100x more nourishing",
-              "Less",
-              "No effect"
+              "Isolation",
+              "Real connection",
+              "More messages",
+              "Escape"
             ],
             "correct": 1,
-            "explain": "Human bond 100x more valuable."
+            "explain": "The aim is to replace shallow contact with real contact."
           },
           {
-            "q": "Loneliness solution?",
+            "q": "A better question?",
             "options": [
-              "Phone",
-              "Real contact",
-              "More screen",
-              "Music"
+              "How are you?",
+              "What has been on your mind?",
+              "Answer fast",
+              "Never mind"
             ],
             "correct": 1,
-            "explain": "Real bond solves loneliness."
+            "explain": "A more open question starts a more real conversation."
           }
-        ],
-        "proTip": "Human contact = 100x more nourishing than screen consumption."
+        ]
       },
       "16": {
-        "title": "Past Halfway — Acknowledgment",
-        "teaching": "Today is day 16. You crossed the half. Two inner voices are now clearer:\n\n(1) Old you: Wants fast dopamine back. Looks for excuses. 'What's one break?'\n\n(2) New you: Calm, decided, less reactive. Loves the empty space.\n\n14 days left. The hardest part is behind you.",
-        "action": "Buy yourself a gift today — but not ordinary. A book, quality meal, nature walk. Low dopamine, high meaning.",
-        "reflectionPrompt": "Between the two yous (old and new), which was stronger today?",
+        "title": "Past Halfway",
+        "teaching": "Today is not just another mark on the calendar. The opening excitement is gone, and the character of continuing has begun. This point makes you the owner of the process.\n\nOld habits may still talk. They may say, 'Relax a little,' 'You can restart later,' or 'This is enough.' You do not need to argue with that voice. Return to the plan.\n\nThe new side is quieter. It does not perform. It keeps small promises, closes the screen, finishes the work, and goes to bed on time.\n\nCelebrate today, but not with the old escape. Choose a calm reward that fits the person you are building.",
+        "action": "Give yourself a calm reward: a walk, good meal, book, or early sleep.",
+        "reflectionPrompt": "Which voice felt more convincing today: the old habit or the new side?",
         "quiz": [
           {
-            "q": "Past halfway?",
+            "q": "This point shows?",
             "options": [
-              "Harder",
-              "Hardest done",
-              "Same",
-              "Tired"
+              "Ownership",
+              "Quitting",
+              "Luck",
+              "A break"
             ],
-            "correct": 1,
-            "explain": "Hardest part done."
+            "correct": 0,
+            "explain": "Continuing after the start takes ownership."
           },
           {
-            "q": "Affirmation importance?",
+            "q": "Reward should be?",
             "options": [
-              "No effect",
-              "Continuation fuel",
-              "Luxury",
-              "Reminder"
-            ],
-            "correct": 1,
-            "explain": "Affirmation = motivation."
-          }
-        ],
-        "proTip": "Past halfway = no stab in the back. The hardest part is done."
-      },
-      "17": {
-        "title": "Breath Discipline",
-        "teaching": "When stressed, the search for dopamine increases. Stress = urge to escape. The brain reaches for the phone.\n\nBreathing breaks this loop. The 4-7-8 technique: inhale 4 sec, hold 7, exhale 8. 4 rounds = 1 minute. The brain shifts to parasympathetic mode.\n\nThis is the alternative that replaces the phone. In moments of stress: breath, not phone.",
-        "action": "Do 4-7-8 breathing 3 times today. After waking, at lunch break, before sleep.",
-        "reflectionPrompt": "What did you notice after the breath? Did the urge to grab the phone change?",
-        "quiz": [
-          {
-            "q": "4-7-8 breath?",
-            "options": [
-              "Random",
-              "4 in, 7 hold, 8 out",
-              "Fast",
-              "Slow"
-            ],
-            "correct": 1,
-            "explain": "Classic instant-calm technique."
-          },
-          {
-            "q": "Effect?",
-            "options": [
-              "None",
-              "Instant calm",
-              "Fatigue",
-              "Stress"
-            ],
-            "correct": 1,
-            "explain": "Parasympathetic activation."
-          }
-        ],
-        "proTip": "4-7-8 breath: 4 in, 7 hold, 8 out. Instant calm."
-      },
-      "18": {
-        "title": "Digital Minimalism",
-        "teaching": "Cal Newport's concept: delete every digital tool you don't need. If it doesn't add real value to your life = it's exploiting you.\n\n10 apps are enough for most people. Messaging, navigation, banking, camera, calendar, music, podcasts, email, weather, shopping.\n\nThe rest are enemies. Social media, games, unnecessary shopping apps — they pull a minute at a time.",
-        "action": "Review EVERY app on your phone. Delete every one you haven't opened in the last 30 days. Delete every one you hesitate on. You can re-install if needed — you won't need to.",
-        "reflectionPrompt": "How many apps did you delete? Which was the hardest to delete?",
-        "quiz": [
-          {
-            "q": "Digital minimalism?",
-            "options": [
-              "Unlimited",
-              "Essentials only",
-              "Modern",
-              "Expensive"
-            ],
-            "correct": 1,
-            "explain": "Necessities + productive only."
-          },
-          {
-            "q": "Cal Newport thesis?",
-            "options": [
-              "Speed",
-              "Less but deep",
-              "More shallow",
+              "Old escape",
+              "Calm and chosen",
+              "Unlimited screen",
               "Random"
             ],
             "correct": 1,
-            "explain": "Less but deep consumption."
+            "explain": "The reward should strengthen the new identity."
           }
-        ],
-        "proTip": "Digital minimalism = essentials + productivity. Everything else, gone."
+        ]
+      },
+      "17": {
+        "title": "Breath Break",
+        "teaching": "When stress arrives, your hand may reach for the phone. The phone offers a short escape. The problem is that stress often remains when the escape ends.\n\nA breath break cuts that chain. It is not a grand ritual. It is a one-minute pause. Inhale, hold, exhale slowly. Lower the body’s speed, then choose.\n\nActing straight from the urge is easy. Placing breath between urge and action is like taking the steering wheel back.\n\nPractice breathing in calm moments too. Then the tool is ready when a harder moment appears.",
+        "action": "Do 4-7-8 breathing three times today. Four rounds each time is enough.",
+        "reflectionPrompt": "After breathing, how did the urge to check the phone change?",
+        "quiz": [
+          {
+            "q": "Breath break does what?",
+            "options": [
+              "Cuts the chain",
+              "Increases escape",
+              "Delays forever",
+              "Opens alerts"
+            ],
+            "correct": 0,
+            "explain": "A short pause creates distance between urge and action."
+          },
+          {
+            "q": "When to practice?",
+            "options": [
+              "Only crisis",
+              "Calm moments too",
+              "Never",
+              "Not when tired"
+            ],
+            "correct": 1,
+            "explain": "Calm practice prepares the tool for hard moments."
+          }
+        ]
+      },
+      "18": {
+        "title": "Digital Minimalism",
+        "teaching": "Is your phone a tool or a storage unit? A tool does its job and closes. A storage unit shows hundreds of icons, options, and tiny invitations every time you open it.\n\nDigital minimalism is not about having no apps. It is about knowing each app’s job. Maps for routes, notes for ideas, messages for people. An unclear app steals time.\n\nToday, arrange your phone like a clean desk. Move the useful things close and remove the things that scatter you.\n\nFewer options mean fewer negotiations. When you know why you opened the phone, closing it becomes easier too.",
+        "action": "Scan your phone. Delete or remove five apps with unclear jobs.",
+        "reflectionPrompt": "Which app had the least clear purpose?",
+        "quiz": [
+          {
+            "q": "Minimalism means?",
+            "options": [
+              "Clear purpose",
+              "Delete everything",
+              "New phone",
+              "More folders"
+            ],
+            "correct": 0,
+            "explain": "Every app should have a reason to stay."
+          },
+          {
+            "q": "Fewer options?",
+            "options": [
+              "Less negotiation",
+              "More escape",
+              "More noise",
+              "No effect"
+            ],
+            "correct": 0,
+            "explain": "Fewer choices make intentional use easier."
+          }
+        ]
       },
       "19": {
         "title": "Slow Down",
-        "teaching": "The fast-dopamine habit creates the expectation that 'everything must happen now.' Waiting in line is unbearable. Cooking takes too long. Reading is slow.\n\nThe detox is rewriting these expectations. Slow things bring pleasure again.\n\nToday: slow down. Refuse the rush. Take an hour for what would have been 30 minutes.",
-        "action": "Eat one meal slowly today — no phone, no screen. Chew each bite for 20 seconds. Enjoy the food.",
-        "reflectionPrompt": "Which flavors came back when you ate slowly? Did you feel fuller?",
+        "teaching": "The habit of speed creates impatience. Waiting in line, cooking, reading, or listening to someone can feel too long. Yet the valuable part of life is often slow.\n\nSlowing down is not laziness. It is a choice of control. When you stop rushing something, you start noticing it.\n\nToday, lower your speed on purpose. Do not finish the meal quickly. Do not put headphones on the moment you walk. Do not pull the phone out in line.\n\nDiscomfort may arrive first. Then small details return: taste, breath, surroundings, faces, thought. That is the life you were rushing past.",
+        "action": "Eat one meal slowly. No screen. Put the fork down between bites.",
+        "reflectionPrompt": "Which detail returned when you slowed down?",
         "quiz": [
           {
-            "q": "Slowing = ?",
+            "q": "Slowing down is?",
             "options": [
-              "Lazy",
-              "Visual discipline",
-              "Backward",
-              "No effect"
+              "A control choice",
+              "Laziness",
+              "Falling behind",
+              "Wasted time"
             ],
-            "correct": 1,
-            "explain": "Slow = controlled."
+            "correct": 0,
+            "explain": "Slowing down means choosing where attention goes."
           },
           {
-            "q": "Fast life?",
+            "q": "First discomfort?",
             "options": [
-              "Ideal",
-              "Uncontrolled",
-              "Productive",
-              "Discipline"
+              "Normal",
+              "Means quit",
+              "A failure",
+              "Permanent"
             ],
-            "correct": 1,
-            "explain": "Fast = control loss."
+            "correct": 0,
+            "explain": "A new pace can feel unfamiliar at first."
           }
-        ],
-        "proTip": "Slowing = visual form of discipline. Fast = uncontrolled."
+        ]
       },
       "20": {
-        "title": "Day 20 — New Baseline",
-        "teaching": "Your brain may have recalibrated dopamine receptors. The 'flat' feeling is actually the new normal. Did you notice life doesn't suffer without stimulation?\n\nMost people are surprised at this point: 'Less is actually better.' That's a big teacher.\n\n10 days left. Now you'll learn how to harden this new baseline.",
-        "action": "Celebrate day 20 — but not with a dopamine bomb. Do a quiet activity with a loved one. Walk, eat together, nature.",
-        "reflectionPrompt": "What's the biggest difference between the 'you' 20 days ago and now?",
+        "title": "Day 20: New Balance",
+        "teaching": "Day twenty is not for proving yourself. It is for noticing balance. Maybe empty space is no longer as frightening. Maybe a simple walk actually feels good.\n\nDo not try to force this change larger. Just see it. You can live with less stimulus, and in some moments you may feel better that way.\n\nThe final section is not about becoming severe. It is about building a rhythm that can last. Which screens return? Which ones stay out? Which hours are protected?\n\nCelebrate today in a way that does not break the new balance. Choose something quiet, chosen, and meaningful.",
+        "action": "Celebrate simply: walk, real conversation, or early sleep. No screen marathon.",
+        "reflectionPrompt": "What felt normal twenty days ago but feels excessive now?",
         "quiz": [
           {
-            "q": "New baseline?",
+            "q": "New balance means?",
             "options": [
-              "Old",
-              "30-days-ago boredom = now normal",
-              "Worse",
-              "Same"
+              "Living with less stimulus",
+              "Dropping everything",
+              "Being bored",
+              "Escaping"
             ],
-            "correct": 1,
-            "explain": "Brain set new standard."
+            "correct": 0,
+            "explain": "Balance means simple moments can still feel okay."
           },
           {
-            "q": "Science backing?",
+            "q": "Final section goal?",
             "options": [
-              "None",
-              "7-30 day adaptation",
-              "1 year",
-              "Never"
+              "Lasting rhythm",
+              "Severity",
+              "Old habits",
+              "Randomness"
             ],
-            "correct": 1,
-            "explain": "7-30 day adaptation window."
+            "correct": 0,
+            "explain": "A lasting rhythm decides life after the reset."
           }
-        ],
-        "proTip": "New baseline = 30 days ago boredom is now normal."
+        ]
       },
       "21": {
         "title": "Recognize Your Triggers",

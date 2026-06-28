@@ -340,313 +340,303 @@
       },
       "11": {
         "title": "Ortamı Değiştir",
-        "teaching": "Diyet yapan biri buzdolabına çikolata dolduruyorsa, irade yokluğu değil — **mantık yokluğu**. Aynı şekilde sigara bıraktığını söyleyen biri çakmağı cebinde taşıyorsa, irade testinden geçemiyor; testten KAÇMASI gereken yere kendini koyuyor.\n\nİrade pili sınırlı. Davranış bilimi son 20 yıldır şunu net gösteriyor: **davranış değişiminde irade değil, ortam belirleyici.** Stanford'da BJ Fogg'un Tiny Habits modeli, James Clear'ın Atomic Habits kitabının ana tezi de bu. Buzdolabında çikolata varsa yiyeceksin. Telefon yastığın yanındaysa kontrol edeceksin. 'Bu sefer dirençli olacağım' diyerek geceyi geçirip sabah çikolatayı bulduğunda iradenin tükendiği o anda zaten kaybetmişsindir.\n\n**Fiziksel mesafe = irade tasarrufu.** Görmediğini düşünmezsin. Düşünmediğini istemezsin. İstemediğini de yapmazsın.\n\nDuke Üniversitesi 2014 araştırması net: günlük davranışların %43'ü **bilinçsiz alışkanlık** — düşünmeden yaparsın. Bu davranışları irade ile değiştirmeye çalışmak, bilinç-altı bir motoru bilinçli koltuktan yönetmeye çalışmak gibi. Yapmaz. Onun yerine motoru söküp başka yere koyman gerekir.\n\nBugün düşman tetikleyicilerden ortamını temizliyoruz. Telefon yatak odasından çıktı zaten (gün 6). Sosyal medya app'leri silinmişti (gün 9). Şimdi geri kalanı: oyun konsolu odanda mı? Çıkar. Junk food dolapta mı? Çöpe at — atmak israf değil, atmamak israf. Sigara/alkol görünür yerde mi? Görünmez yere koy.\n\n**Görünmezse var değil.** Bu basit kural davranış mühendisliğinin temelidir.",
-        "action": "Evine bak. **5 dopamin tetikleyicisi** seç ve fiziksel olarak uzaklaştır: ekran ana ekrandaki app'ler, junk food, alkol, oyun konsolu, atıştırmalık paketleri — ne varsa. 'Saklamak' değil, 'silmek/atmak/uzaklaştırmak'.",
-        "reflectionPrompt": "Hangi tetikleyici en zor 'gözden uzak' olur diye düşündün? Niye? Bu, o tetikleyicinin sende ne kadar güçlü olduğunun ölçüsü.",
+        "teaching": "İradeyi kahraman gibi kullanmaya çalışma. Kahramanlık yerine sahneyi değiştir. Gözünün önündeki paket, ana ekrandaki ikon, açık duran oyun kolu kararını senden önce başlatır.\n\nBugün amaç kendini yenmek değil, tuzakları azaltmak. Telefon başka odada durunca karar sayısı düşer. Atıştırmalık dolaptan çıkınca akşam pazarlığı kısalır.\n\nOrtam sadeleşince zihin daha az savunma yapar. Boş ana ekran, temiz masa, kapalı bildirimler sana tek mesaj verir: şimdi seçtiğin işe dön.\n\nKüçük başla ama fiziksel yap. Sil, kaldır, uzaklaştır, görünmez yap. Değişim düşüncede kalırsa zayıf; odanın düzenine girerse güçlü olur.",
+        "action": "Beş tetikleyici seç. Birini sil, birini uzaklaştır, üçünü görünmez yap.",
+        "reflectionPrompt": "Hangi tetikleyiciyi kaldırmak en fazla pazarlık çıkardı? Bu sana ne söylüyor?",
         "quiz": [
           {
-            "q": "En güçlü tetikleyici?",
+            "q": "Ortam ne yapar?",
             "options": [
-              "Düşünce",
-              "Ortam",
-              "İnsan",
-              "Açlık"
+              "Kararı kolaylaştırır",
+              "Sadece süs olur",
+              "Her şeyi çözer",
+              "Etkisiz kalır"
             ],
-            "correct": 1,
-            "explain": "Davranış %43 bilinçsiz alışkanlık (Duke 2014). Aynı ortamda aynı davranış — düşünmeden tekrar eder. Ortamı değiştirmek davranışı değiştirmenin en hızlı yoludur."
+            "correct": 0,
+            "explain": "İyi ortam doğru davranışı daha az pazarlıkla başlatır."
           },
           {
-            "q": "Çözüm?",
+            "q": "İlk hamle?",
             "options": [
-              "İrade",
-              "Ortamı değiştir",
-              "Daha çok dene",
-              "Yok"
+              "Daha çok diren",
+              "Tetikleyiciyi kaldır",
+              "Kendini suçla",
+              "Bekle"
             ],
             "correct": 1,
-            "explain": "İrade sınırlı pil. Ortam sınırsız iz. Ortam değişimi = davranış değişimi. James Clear, BJ Fogg, behavior science: hepsi tek noktada birleşiyor."
+            "explain": "Tetikleyiciyi azaltmak iradeyi korur."
           }
-        ],
-        "proTip": "Ortam = en güçlü tetikleyici. Aynı çevrede aynı davranış. Görünmezse var değil."
+        ]
       },
       "12": {
-        "title": "Yeniden Sıkılmayı Kucakla",
-        "teaching": "İlk hafta sıkılmayı **tanımıştın**. Şimdi onu **sevme** zamanı. Bu garip gelir — sıkılmak kim sever? Cevap: derin işin, gerçek yaratıcılığın ve içsel netliğin tohumu sıkıntıdır.\n\nBugün ilk gün — yeniden. Çünkü 12. günde beyin alıştı sandığın boşluğa yeni bir form geliyor: artık 'phantom reaching' kalktı, ama yerine zihinsel **sıkıştırma** geliyor. Hâlâ hızlı dopamin istiyorsun ama bu sefer 'sebep' bilemiyorsun. Belirgin bir sıkıntı değil, **belirsiz bir rahatsızlık**.\n\nBu rahatsızlığın adı **dopamin yetersizliği** — zihinsel boşluğun yüzeye çıkmasıdır. Bu boşlukta gerçek sorular sorulur:\n- 'Bu hayatta ne istiyorum?'\n- 'Bu işten mutlu muyum?'\n- 'Şu insanı gerçekten seviyor muyum yoksa alışkanlık mı?'\n- 'Babamla aram niye böyle?'\n\nÖnceden bu sorular telefon scroll'uyla bastırılıyordu. Reels, dizi, Twitter tartışmaları... Hepsi bu boşluğa dökülen dolgu malzemesiydi. Şimdi yüzleşeceksin.\n\nVe burası kritik: bu yüzleşmeye **dayanırsan**, hayatının en derin değişimleri başlar. İnsanlar 'sıkıldım' dediklerinde aslında 'kendimle baş başa kalmaktan korkuyorum' diyorlar. 12. gün, bu korkuya **bilinçli** olarak teslim olduğun gündür.\n\nBeyin yeni bağlantıları **boş alanda** kurar. Default Mode Network sadece uyaran-yokluğunda devreye girer. Yani sıkıldığın 60 dakika, en yaratıcı 60 dakikan olabilir — yeter ki telefona kaçma.",
-        "action": "Bugün 60 dakika sıkıntılı geçir — **bilerek**. Tek başına yürü, odada otur, tavana bak, gözlerini kapat. Telefonsuz, müziksiz, kitapsız. Sıkıntıdan kaçma — onu izle. Onun seninle ne konuşacağına bak.",
-        "reflectionPrompt": "Sıkıntıdayken zihninde hangi büyük soru belirdi? Bu soruyu kaç gündür/yıldır kaçıyordun?",
+        "title": "Sıkıntıyla Kal",
+        "teaching": "Sıkıntı düşman değil, boş alanın sesidir. Ekranı kapatınca ilk gelen huzur olmayabilir; bazen huzursuzluk gelir. Bu, bir şeyin yanlış olduğu anlamına gelmez.\n\nNormalde o boşluğu küçük kaçışlarla dolduruyordun. Kısa video, mesaj kontrolü, yeni sekme, rastgele müzik. Hepsi aynı işi yapıyordu: kendinle baş başa kalmanı ertelemek.\n\nBugün sıkıntıyı çözmeye çalışma. Onu izle. Zihnin nereye koşuyor, hangi konudan kaçıyor, hangi isteği tekrar tekrar getiriyor?\n\nSıkıntıyla kalabilen kişi daha az yönetilir. Çünkü her boşlukta dışarıya koşmak zorunda değildir. Bu sakin güçtür.",
+        "action": "Otuz dakika telefonsuz otur veya yürü. Müzik yok, kitap yok, sadece gözlem.",
+        "reflectionPrompt": "Boşlukta ilk hangi düşünce geri geldi? Ondan kaçıyor muydun?",
         "quiz": [
           {
-            "q": "Sıkıntı = ?",
+            "q": "Sıkıntı ne olabilir?",
             "options": [
-              "Hastalık",
               "Boş alan sinyali",
-              "Açlık",
-              "Yorgunluk"
+              "Hata",
+              "Başarısızlık",
+              "Zorunlu eğlence"
             ],
-            "correct": 1,
-            "explain": "Beyin **boş alan istiyor**. Default Mode Network sadece uyaran-yokluğunda devreye girer — yaratıcı bağlantılar, çözümler ve içgörüler burada doğar."
+            "correct": 0,
+            "explain": "Sıkıntı bazen zihnin boş alan istediğini gösterir."
           },
           {
-            "q": "İkinci sıkıntı dalgası?",
+            "q": "Bugünkü hedef?",
             "options": [
-              "1-3. gün",
-              "14-17. gün",
-              "25-30. gün",
-              "Yok"
+              "Kaçmak",
+              "İzlemek",
+              "Doldurmak",
+              "Uyumak"
             ],
             "correct": 1,
-            "explain": "Yarıyol civarı 2. dalga gelir — phantom reaching değil ama belirsiz rahatsızlık. Beyin dopamin baseline'a oturmaya çalışıyor, yeni normali kuruyor."
+            "explain": "İzlemek, dürtüyü yönetilebilir hale getirir."
           }
-        ],
-        "proTip": "İkinci sıkıntı dalgası 14-17. günler arası gelir. Geçer. Dalgayı sörfle, ondan kaçma."
+        ]
       },
       "13": {
-        "title": "Tek Görev Disiplini",
-        "teaching": "Bir e-posta yazıyorsun. Aynı anda Slack mesajları geliyor, telefonun titriyor, tarayıcıda 14 sekme açık, arka planda podcast çalıyor. 'Multitasking yapıyorum' diyorsun. Aslında **hiçbir şey yapmıyorsun** — sürekli iş değiştiriyorsun.\n\n**Multitasking efsanedir.** Stanford'da Clifford Nass'ın 2009 araştırması net (ve yıllar boyu doğrulandı): beyin gerçekten iki işi paralel yapamaz. Hızlı geçiş yapar — buna **task-switching** denir. Her geçişte:\n- Performans **%40 düşer**\n- Hata oranı 2-3x artar\n- Yeni işe tam dikkati vermek 23 dakika sürer (Gloria Mark, UC Irvine)\n- Yorgunluk hızlanır (her geçiş bilinç enerjisi tüketir)\n\nİronik gerçek: kendini 'iyi multitasker' sanan insanlar testlerde **en kötü** sonuçları veriyorlar. Çünkü sürekli context-switch yapan beyin, **bireysel görevlerde de** odaklanmayı unutmuş oluyor.\n\nGerçek **deep work** tek görevle olur. Cal Newport'un Deep Work kitabının tezi: bilgi işçileri için en değerli kapasite, derin odaklanma. Ve bu kapasite kullanılmazsa **körelir** — kas gibi. Sürekli multitask yapan kişi, isteyse bile 90 dakika tek konuya odaklanamaz hale gelir.\n\nİyi haber: bu antrenmandır. İlk gün 25 dakika tek odak zor gelir. Bir hafta sonra 60 dakika doğal. Bir ay sonra 90-120 dakika 'flow' kıvamında çalışırsın.\n\n**Pomodoro tekniği** burada başlangıç: 25 dakika tek görev, 5 dakika mola. Ama detoks sürecinin 13. gününde, beyin daha temizlenmiş — direkt 60-90 dakika blokuna girebilirsin.",
-        "action": "Bugün **90 dakikalık tek-görev bloku** yap. Bir iş seç (yazı, çalışma, kod, kitap okuma — fark etmez). Telefon başka odada. Bilgisayarda sadece o iş için açık sekme. 90 dakika sadece o. Mola, dikkat dağıtma, kontrol yok.",
-        "reflectionPrompt": "90 dakikada ne kadar daha çok bitirdin? Önceden 'multitask' modunda olsaydın aynı işi kaç saatte yapardın? Verimsizliğin ölçüsünü hisset.",
+        "title": "Tek Görev Kilidi",
+        "teaching": "Çok iş yapıyormuş gibi görünmek kolaydır. Sekmeler açık, mesajlar geliyor, müzik çalıyor, elin telefona gidiyor. Ama bu kalabalık çoğu zaman ilerleme değil, kaçaktır.\n\nTek görev sıkıcı başlar çünkü kaçacak yer bırakmaz. Bir dosya, bir sayfa, bir konuşma, bir hedef. Zihin önce itiraz eder, sonra ritim bulur.\n\nBugün değerin ölçüsü yoğunluk değil, tamamlanmış iştir. Bir işi bitirmek, on işe dokunmaktan daha temiz bir iz bırakır.\n\nTek görev kilidi kur: süre belli, iş belli, dikkat dağıtanlar kapalı. Blok bitince ne yaptığını net görebilmelisin.",
+        "action": "Bir iş seç. Altmış dakika tek pencere, tek hedef, telefon başka odada çalış.",
+        "reflectionPrompt": "Tek görevde hangi kaçış isteği yükseldi? Onu izleyince ne oldu?",
         "quiz": [
           {
-            "q": "Tek görev = ?",
+            "q": "Tek görev ne sağlar?",
             "options": [
-              "Yavaş",
-              "Disiplin testi",
-              "Etkisiz",
-              "Modern"
+              "Net ilerleme",
+              "Daha çok sekme",
+              "Kaçış",
+              "Dağınıklık"
             ],
-            "correct": 1,
-            "explain": "Beyin için en zor disiplin — multitask'a alışmış zihinler için. Ama gerçek değerli iş (Cal Newport'un 'deep work'ü) sadece bu kasta yapılır."
+            "correct": 0,
+            "explain": "Tek hedef, tamamlanan işi görünür yapar."
           },
           {
-            "q": "Çoklu görev verim?",
+            "q": "Blok kuralı?",
             "options": [
-              "2x",
-              "Aynı",
-              "%40 düşük",
-              "%200"
+              "Her şeyi açık tut",
+              "Tek hedef seç",
+              "Bildirimleri izle",
+              "Süreyi belirsiz bırak"
             ],
-            "correct": 2,
-            "explain": "Clifford Nass (Stanford 2009): çoklu görev = **%40 verim kaybı**, hata oranı 2-3x. Sürekli yapan beyin tek-göreve dönmek için bile efor harcar."
+            "correct": 1,
+            "explain": "Sınır net olunca zihin daha hızlı yerleşir."
           }
-        ],
-        "proTip": "Tek görev disiplin testi. Beyin alışmamış, ama gerçek değerli iş gücün buradan gelir."
+        ]
       },
       "14": {
-        "title": "Yapay Stimülasyonu Azalt",
-        "teaching": "Sabah uyandın. İlk iş: kahve makinesi. Üç fincan kafein. Trafikte agresif müzik. İş yerinde sürekli mesajlar, ekranlar, sekmeler. Öğlen tatlı bir şey 'enerji için'. Akşam dizi maratonu veya video oyunu. Yatağa kadar uyaran, sonra sıfır — uyumakta zorlanıyorsun.\n\nKafein, şeker, hızlı müzik, agresif video oyunları, sürekli ekran — hepsi **yapay dopamin/adrenalin atışı**. Doğal seviyenin üstünde stimülasyon yaratıyor.\n\nKısa vadede 'enerjik' hissetmen normal. Yapay stimülasyon almışsın, vücut da yapay enerjiyle cevap veriyor. Ama Anna Lembke'in **Dopamine Nation** kitabında detaylandırdığı gibi: beyin homeostaz arar. Yukarı doğru her atış, eşit bir aşağı doğru sapma yaratır. Yani kafein peak'i = öğleden sonra çöküş. Şeker peak'i = 1 saat sonra hipoglisemi. Yoğun müzik 2 saat = sonrasında sessizliğe tahammülsüzlük.\n\nUzun vadede beyin **baseline'ı yukarı çekiyor**. Bu çok kritik bir kavram: 'normal' sürekli yükseliyor. Önceden sade kahveyle yetinen kişi, şimdi triple shot espresso istiyor. Önceden sessiz çalışan, şimdi sürekli müzik altında. Hepsi **tolerans gelişimi** — bağımlılığın bilimsel adı.\n\nVe en kötüsü: normal yaşam giderek **'düz' geliyor**. Park yürüyüşü sıkıcı. Sade yemek tatsız. Sessizce oturmak imkansız. Çünkü baseline'ın gerçek yaşamın üzerinde.\n\nDetoks sırasında bu yapay araçları azaltırsan, doğal motivasyon geri gelir. İlk 3-4 gün daha az enerjili görünürsün — çünkü beyin yapay yakıtını kesti, doğala dönüyor. Bir hafta sonra **daha sürdürülebilir** enerji, daha derin uyku, daha az anksiyete.",
-        "action": "Bugün **kafein yarıya düşür** (sabah 1 fincan kahve). **Şekeri tamamen kes** (paketlenmiş tatlı, gazoz, çikolata yok). **Sessiz çalış** (müzik yok). Sadece doğal enerjiyle gün geçir, ne hissettiğine bak.",
-        "reflectionPrompt": "Yapay stimülasyon olmadan enerji seviyem ne kadardı? Ne hissettim — eksiklik mi, sakin bir doluluk mu?",
+        "title": "Yapay Uyaranı Kıs",
+        "teaching": "Gün boyunca üst üste uyaran alırsan sade anlar renksiz gelmeye başlar. Kahve, şeker, hızlı müzik, sonsuz ekran ve sürekli bildirim aynı kapıyı çalar: şimdi daha fazlası lazım.\n\nBunu tamamen yasak listesine çevirmene gerek yok. Bugün amaç kendini cezalandırmak değil, sesi kısmak. Ses azalınca gerçek enerji daha net duyulur.\n\nSessiz çalışmak ilk dakikalarda garip gelebilir. Elin müziğe, atıştırmalığa veya telefona gidebilir. Bu boşluğu hemen doldurma.\n\nDaha düşük uyaranla geçen bir gün sana ölçü verir. Neye gerçekten ihtiyacın var, ne sadece alışılmış destek?",
+        "action": "Bugün kafeini azalt, paketli tatlıyı geç, bir çalışma bloğunu sessiz yap.",
+        "reflectionPrompt": "Uyaran azalınca enerji mi düştü, yoksa zihin mi sakinleşti?",
         "quiz": [
           {
-            "q": "Müzik = ?",
+            "q": "Bugünkü amaç?",
             "options": [
-              "Sakinlik",
-              "Uyarı",
-              "Pasif",
-              "Sessizlik"
+              "Sesi kısmak",
+              "Her şeyi yasaklamak",
+              "Kendini cezalandırmak",
+              "Daha çok uyaran"
             ],
-            "correct": 1,
-            "explain": "Müzik bile **uyarıdır** — beyni belli bir frekansa kilitler. Sürekli müzik = sessizliğe tahammülsüzlük gelişir. Sessiz dakikalar düşünmenin temelidir."
+            "correct": 0,
+            "explain": "Sesi kısmak gerçek ihtiyacı görünür yapar."
           },
           {
-            "q": "Sessizliğin faydası?",
+            "q": "Sessiz blok?",
             "options": [
-              "Yok",
-              "Beyin için ilaç",
-              "Sıkıcı",
-              "Etkisiz"
+              "Gözlem alanı",
+              "Ceza",
+              "Boş iş",
+              "Kaçış"
             ],
-            "correct": 1,
-            "explain": "Sessiz dakikalar = **beyin için ilaç**. Default Mode Network bu boşlukta devreye girer, derin işlem yapılır, içsel ses duyulur."
+            "correct": 0,
+            "explain": "Sessizlik, dürtüyü fark etmek için alan açar."
           }
-        ],
-        "proTip": "Müzik bile uyarıdır. Sessiz dakikalar = beyin için ilaç. Dopamine Nation: baseline yükseldikçe gerçek hayat tatsızlaşır."
+        ]
       },
       "15": {
-        "title": "Bağ Kurmaya Geri Dön",
-        "teaching": "Detoks sürerken bir korku oluşabilir: 'Yalnız mı kalıyorum? Arkadaşlarımı kaybediyor muyum?' WhatsApp'ı silmediğin halde, sosyal medya'dan çıkmak bile böyle bir his veriyor. Bu his değerli bir veridir: sana 'sosyal bağ' adı altında yıllardır **yapay bağ tükettiğini** gösteriyor.\n\nDetoksun amacı **izolasyon değil**. Yapay bağlantıları (sosyal medya beğenileri, mesaj zincirleri, story tepkileri) **gerçek bağlantılarla** değiştirmek.\n\nHarvard'ın 84 yıllık **Grant Study** (insanlık tarihinin en uzun süreli mutluluk çalışması) net bir sonuç verdi: hayatın geç dönemindeki mutluluk, mali durum veya başarı değil, **derin ilişkilerin kalitesi** ile en güçlü korelasyona sahip. Tek bir derin ilişki, 1000 yüzeysel ilişkiden değerli.\n\n10 dakikalık **derin sohbet** (göz teması, dinlemek, gerçek soru sormak), 10 saatlik DM'den daha besleyicidir. Sebebi nörobiyolojik: gerçek insan teması **oksitosin** salgılar (bağ kimyasalı), kortizol düşürür, vagal sinir sistemini aktive eder (sakinleşme). Mesajlaşmak bunların hiçbirini vermiyor.\n\nDijital iletişim aslında **kalori sayısı 0 olan bir yiyecek** gibi — yiyorsun ama doymuyorsun. 4 saat sosyal medya yapan kişi 'sosyal' olduğunu sanır ama yalnızlık duygusu artar (NYU 2017 çalışması). Çünkü beyin sadece **gerçek temas**ı 'doluluk' olarak okuyor.\n\nBugün gerçek bağa dön. Bir kişi, bir telefon araması, 15 dakika dikkatli dinlemek. Bu, ekrana harcadığın 4 saat'ten daha çok hayatına dolduracak.",
-        "action": "Bugün **önemsediğin bir kişiye telefon et** (mesaj değil, gerçek arama). En az 15 dakika konuş. Konu önemli değil — bağ önemli. 'Nasılsın?' yerine 'Son zamanlarda ne düşünüyorsun?' gibi gerçek bir soru sor.",
-        "reflectionPrompt": "Mesajlaşmak yerine sesli konuşmak ne hissettirdi? O sırada hangi 'içerik tüketme' dürtüsünü kaçırmadın?",
+        "title": "Gerçek Bağa Dön",
+        "teaching": "Bu süreç yalnızlaşmak için değil. Tam tersi: sahte temasları azaltıp gerçek temaslara yer açmak için. Beğeni, kısa mesaj ve hızlı tepki bazen bağ gibi görünür ama çoğu zaman yüzeyde kalır.\n\nGerçek bağ daha yavaştır. Ses tonu duyulur, duraklama fark edilir, kişi gerçekten dinlenir. Bu yüzden daha az parlak ama daha doyurucudur.\n\nBugün birini tüketilecek içerik gibi değil, görülecek insan gibi karşıla. Soru sor, cevabı bölme, kendi sıranı bekleme.\n\nEkrandan çıkınca sosyal hayat bitmez. Daha seçilmiş, daha dürüst ve daha sıcak hale gelir.",
+        "action": "Önemsediğin birini ara. On beş dakika sadece dinle ve gerçek bir soru sor.",
+        "reflectionPrompt": "Sesli konuşma, mesajdan farklı olarak sende ne bıraktı?",
         "quiz": [
           {
-            "q": "İnsan teması ekrana göre?",
+            "q": "Süreç ne için?",
             "options": [
-              "Aynı",
-              "100x besleyici",
-              "Daha az",
-              "Etkisiz"
+              "İzolasyon",
+              "Gerçek bağ",
+              "Daha çok mesaj",
+              "Kaçış"
             ],
             "correct": 1,
-            "explain": "İnsan bağı **100x değerli**. Oksitosin salgılar (bağ kimyasalı), kortizol düşürür. Dijital iletişim bunların hiçbirini yapmıyor — boş kalori."
+            "explain": "Amaç sahte teması azaltıp gerçek bağa yer açmak."
           },
           {
-            "q": "Yalnızlık çözümü?",
+            "q": "İyi soru?",
             "options": [
-              "Telefon",
-              "Gerçek temas",
-              "Daha çok ekran",
-              "Müzik"
+              "Nasılsın?",
+              "Son günlerde ne düşünüyorsun?",
+              "Hızlı cevap ver",
+              "Boşver"
             ],
             "correct": 1,
-            "explain": "Gerçek bağ yalnızlığı çözer — paradoksal olarak, daha çok sosyal medya kullanmak yalnızlığı **artırır** (NYU 2017). Çözüm offline, fiziksel veya sesli temas."
+            "explain": "Açık soru daha gerçek bir konuşma başlatır."
           }
-        ],
-        "proTip": "İnsan teması ekran tüketiminden 100x besleyici. Harvard Grant Study: mutluluğun en güçlü göstergesi ilişki derinliği."
+        ]
       },
       "16": {
-        "title": "Yarıyı Geçtin — Onay",
-        "teaching": "Bugün 16. gün. **Yarının üstüne çıktın.** Bu hafif görünür ama büyük bir veridir — istatistiksel olarak, davranış değişimi yapanların %78'i ilk iki haftada vazgeçer. Sen bu istatistiğin dışına çıktın. Bu bir karakter işareti, geçici motivasyon değil.\n\nŞimdi içinde iki yön belirginleşti:\n\n**(1) Eski sen:** Hızlı dopamin geri istiyor. Bahaneler arıyor. 'Bir gün ara verirsem ne olur?', 'Aslında dengeli kullanım daha sağlıklı', 'Bu işten haber almam lazım'... Bu cümleler eski 'sen'in son nefesleri. Yumuşak görünen ama saldırgan. Beyin homeostaz'a dönmek istiyor — bilinçaltında detoks'u sonlandırmak için entelektüel kılıflar üretiyor.\n\n**(2) Yeni sen:** Sakin, kararlı, daha az reaktif. Telefonu açmadığında **mahrum** hissetmiyor — özgür hissediyor. Boşluğa tahammül ediyor, hatta seviyor. Bu, beyin baseline'ının normale dönmeye başladığının somut işareti.\n\nKim daha güçlü, hangisi galip gelecek — bu sonraki 14 gün belirleyecek.\n\nİyi haber: nörobiyolojik olarak **en zor kısım geride**. Beyin yeni baseline'ı kurmaya başladı. 17-22 gün arası 'netlik fazı' — burada yaratıcılık, derin uyku, içsel sakinlik yerleşir. 23-30 gün arası 'kabul fazı' — eski hayat sana **uzak** ve **garip** gelir.\n\nKendine bugün özel davran. Ama bu 'özel'lik **eski tarz** olmamalı — yani 4 saat dizi, sürekli yemek, junk içerik değil. Yeni-sen ödülleri: bir saatlik kaliteli yürüyüş, sevdiğin yemekten **bilinçli olarak** yemek (önüne koyup yemek, telefonla değil), iyi bir kitabın 30 sayfası. **Düşük dopamin, yüksek anlam.**",
-        "action": "Bugün kendine bir hediye al — ama **sıradan değil**. Kitap, kaliteli yemek, doğa yürüyüşü, müzik dinleyerek bir saat oturmak. Düşük dopamin, yüksek anlam. 'Eskiden bana ödül gibi gelmeyen' bir şey seç bilinçli olarak.",
-        "reflectionPrompt": "İki kişilik (eski ve yeni) arasında bugün hangisi daha güçlüydü? Hangisi sana 'gerçek sen' gibi geliyor?",
+        "title": "Yarıyı Geçtin",
+        "teaching": "Bugün sadece takvimde bir gün değil. Artık başlangıç heyecanı bitti, devam etme karakteri başladı. Bu nokta seni sürecin sahibi yapar.\n\nEski alışkanlıklar hâlâ konuşabilir. 'Biraz gevşe', 'sonra toparlarsın', 'bu kadar yeter' diyebilir. Bu seslerle tartışmana gerek yok; planına dönmen yeter.\n\nYeni tarafın daha sessizdir. Kendini kanıtlamaya çalışmaz. Sadece küçük sözleri tutar, ekranı kapatır, işi bitirir, yatağa zamanında gider.\n\nBugün kendini kutla ama eski kaçışla değil. Yeni kimliğe yakışan sakin bir ödül seç.",
+        "action": "Kendine sakin bir ödül ver: yürüyüş, iyi yemek, kitap veya erken uyku.",
+        "reflectionPrompt": "Bugün eski ses mi, yeni tarafın mı daha ikna ediciydi?",
         "quiz": [
           {
-            "q": "Yarıyolu geçince?",
+            "q": "Bu nokta neyi gösterir?",
             "options": [
-              "Daha zor",
-              "En zor geçti",
-              "Aynı",
-              "Yorgunluk"
+              "Sahiplenme",
+              "Bırakma",
+              "Şans",
+              "Mola"
             ],
-            "correct": 1,
-            "explain": "Davranış değişimi araştırmalarında ilk 2 hafta en zor. Sen o eşiği geçtin — istatistiksel olarak vazgeçenlerin %78'inin dışındasın."
+            "correct": 0,
+            "explain": "Başlangıçtan sonra devam etmek sahiplenme ister."
           },
           {
-            "q": "Onay önemi?",
+            "q": "Ödül nasıl olmalı?",
             "options": [
-              "Etkisiz",
-              "Sürdürme yakıtı",
-              "Lüks",
-              "Hatırlatıcı"
+              "Eski kaçış",
+              "Sakin ve seçilmiş",
+              "Sınırsız ekran",
+              "Rastgele"
             ],
             "correct": 1,
-            "explain": "Onay = **devam motivasyonu**. Beyin küçük zaferleri kayıt eder ve bir sonrakini daha kolay yapar. Kendini onaylama disiplinin bir parçası."
+            "explain": "Ödül yeni kimliği güçlendirmeli."
           }
-        ],
-        "proTip": "Yarıyı geçtin = arkadan vurulmaz. En zor kısım geçti. 14 gün — kal."
+        ]
       },
       "17": {
-        "title": "Nefes Disiplini",
-        "teaching": "Trafik sıkıştı. Patron mail attı, gerginleştin. Bir tartışma yaşadın. Sıkıldın. Bu beş farklı an, beyninde tek bir refleks tetikliyor: **telefon**. Çünkü beyin 'rahatsızlık' → 'kaçış' bağlantısını kurmuş.\n\nStresli olduğunda dopamin arayışı artar. Stress = kaçma isteği. Telefonsuz bir hayatta bu istek geldiğinde **ne yapacaksın?** Detoks 17. gün, bu sorunun cevabını öğreneceksin.\n\nCevap: **nefes**.\n\nDr. Andrew Weil'in 4-7-8 nefes tekniği bu döngüyü kırar:\n- **4 saniye** al (burundan, derin)\n- **7 saniye** tut (akciğer dolu)\n- **8 saniye** ver (ağızdan, yavaş)\n- **4 round** = 1 dakika\n\nBu spesifik ritim **vagal sinir sistemini** aktive eder. Vagal sinir vücuttaki en büyük parasempatik sinir — yani 'sakinleşme modunun' aracısı. 60 saniyede beyin **fight-or-flight'tan rest-and-digest'e** geçer. Kalp atışı düşer, kortizol salınımı yavaşlar, prefrontal korteks (mantıklı karar verme) yeniden devreye girer.\n\nDr. Stanford'da Andrew Huberman'ın **physiological sigh** araştırması da bu mekanizmaya dayanır: iki kısa nefes al, uzun nefes ver — 30 saniyede kalp ritmini düşürür.\n\nBu telefon yerine geçen **alternatif kaçış**tır. Stres anında nefes — telefon değil. Ve nefesin avantajı: yanında her zaman var, ücretsiz, bağımlılık yapmıyor.\n\nİlk birkaç gün garip gelir (refleks telefondu, şimdi nefes). Ama 1 hafta sonra otomatik olur. Stres geldiğinde el cebine değil, içeri gider.",
-        "action": "Bugün **3 ayrı zamanda** 4-7-8 nefes yap (her birinde 4 round). Sabah uyanınca, öğle aralığında, yatmadan önce. Zorunda olmasan da yap — alışkanlık inşası.",
-        "reflectionPrompt": "Nefes sonrası ne fark ettin? Telefon arzusu değişti mi? Veya beden farklı mı hissettin?",
+        "title": "Nefes Arası",
+        "teaching": "Stres geldiğinde elin telefona gidebilir. Çünkü telefon kısa bir kaçış sunar. Sorun şu: kaçış bittiğinde stres çoğu zaman yerinde durur.\n\nNefes arası bu zinciri keser. Büyük bir ritüel değil; bir dakikalık bilinçli duraktır. İçeri al, tut, yavaş ver. Bedenin hızını düşür, sonra karar ver.\n\nDürtü varken doğrudan davranmak kolaydır. Araya nefes koymak, direksiyonu tekrar eline almak gibidir.\n\nBugün nefesi sadece kriz anında değil, sakin anlarda da çalış. Böylece zor an geldiğinde araç hazır olur.",
+        "action": "Günde üç kez 4-7-8 nefesi yap. Her seferinde dört tur yeter.",
+        "reflectionPrompt": "Nefes sonrası telefon isteği nasıl değişti?",
         "quiz": [
           {
-            "q": "4-7-8 nefesi?",
+            "q": "Nefes arası ne yapar?",
             "options": [
-              "Random",
-              "4 al, 7 tut, 8 ver",
-              "Hızlı",
-              "Yavaş"
+              "Zinciri keser",
+              "Kaçışı büyütür",
+              "İşi erteler",
+              "Bildirim açar"
             ],
-            "correct": 1,
-            "explain": "Dr. Andrew Weil tekniği — vagal sinir aktivasyonu için spesifik ritim. 60 saniyede fight-or-flight'tan rest-and-digest'e geçiş."
+            "correct": 0,
+            "explain": "Kısa durak dürtü ile davranış arasına mesafe koyar."
           },
           {
-            "q": "Etkisi?",
+            "q": "Ne zaman çalışılır?",
             "options": [
-              "Yok",
-              "Anlık sakinlik",
-              "Yorgunluk",
-              "Stres"
+              "Sadece kriz",
+              "Sakin anda da",
+              "Asla",
+              "Yorgunken değil"
             ],
             "correct": 1,
-            "explain": "**Parasempatik aktivasyon** — kalp atışı düşer, kortizol yavaşlar, prefrontal korteks devreye girer. Bilimsel olarak ölçülmüş."
+            "explain": "Sakin pratik zor an için hazırlık yapar."
           }
-        ],
-        "proTip": "4-7-8 nefesi: 4 al, 7 tut, 8 ver. Anlık sakinlik. Telefonsuz hayatın yeni reflexi."
+        ]
       },
       "18": {
         "title": "Dijital Minimalizm",
-        "teaching": "Telefonunun ana ekranına bak. Ardından klasörlere gir, ikinci sayfaya, üçüncü sayfaya. Toplam kaç uygulama var? Çoğu insanda 80-150 arası. Şimdi gerçek soru: **son 30 günde** kaçını açtın? Cevap muhtemelen 15-20 civarı. Geri kalan 100+ uygulama dijital **bagaj** — telefonu açıp ana ekranı görmek görsel kirlilik yapıyor, beyin sürekli 'belki birini açmalıyım' moduna sokulmuş oluyor.\n\nCal Newport'un **Dijital Minimalizm** kitabı bu kavramı netleştirdi: ihtiyacın olmayan her dijital aracı sil. Hayatına **gerçek değer katmıyorsa** = sömürüyor. Hiçbir uygulama nötr değil — ya değer katar ya zaman çalar. Orta yok.\n\nNewport'un tezi: 10-15 uygulama yeter çoğu insana. Tipik liste:\n- **İletişim:** Mesaj, WhatsApp, telefon\n- **Navigasyon:** Maps\n- **Ödeme:** Banka uygulaması\n- **Kayıt:** Kamera, Notlar, Takvim\n- **İş aracı:** E-posta, Slack (gerekirse)\n- **Eğlence/araç:** Müzik (Spotify), Podcast, Kindle\n- **Sağlık:** Hava durumu, sağlık takip\n\nGeri kalanı **düşman**. Sosyal medya, oyun, alışveriş app'leri, lifestyle app'leri, news app'leri — her biri günde birer dakika çekiyor. 100 app × 1 dakika = 100 dakika kayıp her gün.\n\nMinimal telefon size **zaman geri verir, ama daha önemlisi: dikkat geri verir**. Ana ekranı temiz görünce, beyin 'kontrol bende' sinyalini alıyor. Açtığında **niyetli** kullanım reflexi gelişiyor.\n\nDeneme: 30 gün uygulamasız yaşa. Çoğu insan birkaç gün içinde **özlemediğini** fark eder. Geri yüklediği app'lerin %80'i şuanda silinmiş.",
-        "action": "Telefonundaki **TÜM uygulamaları** gözden geçir. Son 30 günde açmadığın hepsini sil. Tereddüt ettiklerini sil. Geri yüklersin gerekirse — ama gerek olmayacağını göreceksin. Hedef: 15 uygulamada in.",
-        "reflectionPrompt": "Kaç uygulama sildin? Hangisini en zor sildin — niye? O zorluğun arkasında ne var?",
+        "teaching": "Telefonun araç mı, depo mu? Araçsa işini yapar ve kapanır. Depoysa her açtığında yüzlerce ihtimal, simge ve küçük davet seni başka yere çeker.\n\nDijital minimalizm az uygulama kullanmak değil; her uygulamanın görevini bilmek demektir. Harita yol için, not defteri fikir için, mesaj insan için. Belirsiz uygulama zaman çalar.\n\nBugün telefonunu sade bir çalışma masası gibi düzenle. Sık kullandığın ama seni dağıtan şeyleri ana ekrandan çıkar.\n\nAz seçenek daha az pazarlık demektir. Telefonu açınca ne yapacağını bilmek, kapatmayı da kolaylaştırır.",
+        "action": "Telefonunu tara. Görevi belirsiz beş uygulamayı sil veya ana ekrandan çıkar.",
+        "reflectionPrompt": "Hangi uygulamanın gerçek görevi belirsiz kaldı?",
         "quiz": [
           {
-            "q": "Dijital minimalizm?",
+            "q": "Minimalizm ne demek?",
             "options": [
-              "Sınırsız",
-              "Olmazsa olmazlar",
-              "Modern",
-              "Pahalı"
+              "Görev netliği",
+              "Her şeyi silmek",
+              "Yeni telefon",
+              "Daha çok klasör"
             ],
-            "correct": 1,
-            "explain": "Cal Newport: **olmazsa olmaz + üretici** uygulamalar. Geri kalan dijital bagaj — görsel kirlilik ve niyetsiz kullanım tetikleyicisi."
+            "correct": 0,
+            "explain": "Her uygulamanın neden durduğunu bilmek gerekir."
           },
           {
-            "q": "Cal Newport tezi?",
+            "q": "Az seçenek?",
             "options": [
-              "Hız",
-              "Az ama derin",
-              "Çok ama yüzeyi",
-              "Random"
+              "Daha az pazarlık",
+              "Daha çok kaçış",
+              "Karmaşa",
+              "Etkisiz"
             ],
-            "correct": 1,
-            "explain": "Az ama derin tüketim. Hiçbir uygulama nötr değil — ya değer katar ya zaman çalar. Orta yok."
+            "correct": 0,
+            "explain": "Seçenek azalınca niyetli kullanım kolaylaşır."
           }
-        ],
-        "proTip": "Dijital minimalizm = 'olmazsa olmaz' + 'verimlilik' haricinde her şey gider."
+        ]
       },
       "19": {
         "title": "Yavaşla",
-        "teaching": "Marketin kasasında sıraya girdin. 3 kişi var önünde. Refleks: telefon çıkar. 60 saniye boşluğu doldur. Sonra eve git, yemek pişir — 'çok zaman alıyor', yarısını mikrodalga yap. Akşam kitap aç — 5 sayfa sonra 'sıkıcı', bırak diziyi aç. Her şey bir saniye **bekleyemez** hale gelmiş.\n\nHızlı dopamin alışkanlığı 'her şey hemen olmalı' beklentisini yaratır. Bu beklenti hayatı yaşanmaz hale getirir çünkü hayatın çoğu **yavaş**:\n- Yemek pişirmek 30-45 dakika\n- Kaliteli sohbet yarım saat\n- Kitap okumak saatler\n- İlişki kurmak yıllar\n- Bir alışkanlık edinmek 21-90 gün\n- İyi olmak ömür boyu\n\nSıkı dopaminin sömürdüğü beyin bunlara tahammül edemez. Mikrodalga yemek yer, scroll'la sohbet eder, özetle kitap okur (YouTube 'kitabı 5 dakikada anlattım'), Tinder'la ilişki kurar... Hızla yaşar, ama **gerçekten yaşamaz**.\n\nDetoks bu beklentileri yeniliyor. 19. günde, beyin yavaşlığa **yeniden tahammül** ediyor. Hatta — burası şaşırtıcı — **zevk almaya başlıyor**. Yavaş yemek tadı geri geliyor. Sayfa çevirmek meditatif hissediyor. Sıraya girmek 'aman ne yapayım' yerine 'sakin bir an' oluyor.\n\nKarl Honoré'nin **In Praise of Slow** kitabı: Slow Movement, modern Batı kültürünün 'her şey hemen' takıntısına karşı bilinçli direniş. Slow food, slow travel, slow reading, slow living — hepsi aynı tezde birleşir: **yavaş = derin = anlamlı**.\n\nHızlı yaşam = kontrolsüz yaşam. Yavaşlama = disiplinin **görsel formu**. Yemek yerken telefon kullanmayan kişi, hayatın geri kalanında da kontrol sahibidir.",
-        "action": "Bugün bir öğünü **yavaş ye** — telefon yok, ekran yok, konuşma yok. Her lokmayı 20 saniye çiğne. Tadına bak. Yemek bittiğinde 5 dakika otur, ne hissettiğine bak.",
-        "reflectionPrompt": "Yavaş yemek hangi tatları geri getirdi? Daha tok mu hissettin? Eskiden bu yemeği nasıl yiyordun?",
+        "teaching": "Hız alışkanlığı sabırsızlık üretir. Sıra beklemek, yemek yapmak, kitap okumak veya birini dinlemek gereksiz uzun görünür. Oysa hayatın değerli kısmı çoğu zaman yavaştır.\n\nYavaşlamak tembellik değil, kontrol seçimidir. Bir şeyi aceleye getirmediğinde onu gerçekten fark etmeye başlarsın.\n\nBugün hızını bilinçli düşür. Yemeği hızlı bitirme, yürürken hemen kulaklık takma, sırada beklerken telefonu çıkarma.\n\nBaşta rahatsızlık gelebilir. Sonra küçük ayrıntılar geri döner: tat, nefes, çevre, yüzler, düşünce. Bunlar hayatın kendisidir.",
+        "action": "Bir öğünü yavaş ye. Ekran yok. Lokmalar arasında çatalı bırak.",
+        "reflectionPrompt": "Yavaşladığında hangi ayrıntı geri geldi?",
         "quiz": [
           {
-            "q": "Yavaşlama = ?",
+            "q": "Yavaşlamak ne?",
             "options": [
+              "Kontrol seçimi",
               "Tembellik",
-              "Disiplinin görsel formu",
-              "Geri",
-              "Etkisiz"
+              "Geri kalmak",
+              "Zaman kaybı"
             ],
-            "correct": 1,
-            "explain": "Yavaş = **kontrollü**. Sıkı dopaminin sömürdüğü beyin yavaşlığa tahammül edemez — yavaşlama tahammülü, disiplin gücünün ölçüsüdür."
+            "correct": 0,
+            "explain": "Yavaşlamak, dikkati nereye vereceğini seçmektir."
           },
           {
-            "q": "Hızlı yaşam?",
+            "q": "İlk rahatsızlık?",
             "options": [
-              "İdeal",
-              "Kontrolsüzlük",
-              "Verimli",
-              "Disiplin"
+              "Normaldir",
+              "Bırak demektir",
+              "Hata",
+              "Başarısızlık"
             ],
-            "correct": 1,
-            "explain": "Hız = **kontrol kaybı**. Modern 'her şey hemen olsun' takıntısı, hayatın gerçek anlamlarını (yavaş şeyleri) yaşanmaz hale getirir."
+            "correct": 0,
+            "explain": "Yeni tempo başta yabancı hissettirebilir."
           }
-        ],
-        "proTip": "Yavaşlama = disiplinin görsel formu. Hızlı = kontrolsüz. Slow Movement bu ilkenin felsefesi."
+        ]
       },
       "20": {
         "title": "20. Gün: Yeni Denge",
-        "teaching": "Bugün 20. gün. **Detoks'un üçte ikisi bitti.** Beyin dopamin reseptörlerini yeniden kalibre etmiş olabilir. Şu fenomeni fark ettiysen, kanıttır:\n\n'Düz' olarak hissettiğin durum aslında **yeni normal**. Stimülasyon olmadan hayatın acı çekmediğini fark ettin mi? Yatağa girip 10 dakika sessiz uyumak için bekleyebiliyor musun? Bir kahve içerken telefon olmadan sıkılmıyor musun? Bir sohbete tamamen mevcut olarak girebiliyor musun? Bunlar nörobiyolojik göstergelerdir.\n\nÇoğu kişi bu noktada şaşırır: **'Daha az aslında daha iyi.'** Bu büyük bir öğretmen. Bağımlılık döneminde aklın bu fikre tahammül edemezdi — sürekli daha fazla, daha hızlı, daha parlak isterdi. Şimdi sade bir yemek tatmin ediyor. Sıradan bir yürüyüş besliyor. Eski 'eğlenceli' şeyler (4 saat dizi maratonu, sürekli atıştırma + telefon) artık **yorucu** geliyor.\n\nBilimsel olarak: 7-30 günlük 'dopamin fasting' (Stanford Dr. Cameron Sepah'ın araştırma alanı) reseptör hassasiyetini sıfırlar. Beyin **doğal ödüllere** yeniden hassaslaşır. Bir gün önce sıkıcı gelen şey bir gün sonra zevkli olabilir.\n\n**10 gün kaldı.** Bu son 10 gün 'sertleştirme' bölümü — yeni baseline'ı kalıcı yapma. Çünkü detoks bittiğinde tehlike geri dönüş. İrade rahatlar, beyin 'bir kerelik' diyebilir. Son 10 günde **yeni kim** olmak istediğine karar vereceksin.\n\nBu gün özel. Ama kutlama da yeni-sen ile uyumlu olmalı. Eski-sen 'bir kasa bira + 6 saat dizi + Domino's' diyebilirdi. Yeni-sen sessiz bir yürüyüş, kaliteli bir akşam yemeği, sevdiğin biriyle gerçek sohbet diyor. **Düşük dopamin, yüksek anlam** — bu yeni hayatın slogan'ı.",
-        "action": "20 günü kutla — ama dopamin bombası ile **değil**. Sevdiğin biriyle birlikte sessiz bir aktivite yap. Doğa yürüyüşü, kaliteli yemek, derin sohbet. Bu kutlama yeni-sen'in protokolü.",
-        "reflectionPrompt": "20 gün önceki 'sen' ile şu anki 'sen' arasındaki en büyük fark ne? Birine anlatsan en çok hangisi şaşırtırdı?",
+        "teaching": "Yirminci gün, kendini ispat günü değil; dengeyi fark etme günü. Belki artık boşluk eskisi kadar korkutucu değildir. Belki sade bir yürüyüş gerçekten iyi geliyordur.\n\nBu değişimi büyütmeye çalışma. Sadece gör. Daha az uyaranla da yaşayabildiğini, hatta bazı anlarda daha iyi hissettiğini fark et.\n\nSon bölümde amaç sertleşmek değil, kalıcı bir ritim kurmak. Hangi ekran geri dönecek, hangisi dönmeyecek? Hangi saatler korunacak?\n\nBugün kutlama yap ama yeni dengeyi bozmayacak şekilde. Sessiz, seçilmiş, anlamlı bir şey seç.",
+        "action": "Bugünü sade kutla: yürüyüş, iyi sohbet veya erken uyku. Ekran maratonu yok.",
+        "reflectionPrompt": "Yirmi gün önce normal gelen hangi şey bugün fazla geliyor?",
         "quiz": [
           {
-            "q": "Yeni baseline?",
+            "q": "Yeni denge ne?",
             "options": [
-              "Eski",
-              "30 gün önceki sıkıntı = şimdi normal",
-              "Daha kötü",
-              "Aynı"
+              "Daha az uyaranla yaşamak",
+              "Her şeyi bırakmak",
+              "Sıkılmak",
+              "Kaçmak"
             ],
-            "correct": 1,
-            "explain": "Beyin yeni standarta oturdu. Eskiden tahammülsüz olduğun durumlar (sıkıntı, sessizlik, yavaşlık) şimdi normal — hatta hoş."
+            "correct": 0,
+            "explain": "Denge, sade anlarda da iyi kalabilmektir."
           },
           {
-            "q": "Bilim onayı?",
+            "q": "Son bölüm hedefi?",
             "options": [
-              "Yok",
-              "7-30 gün adaptasyon",
-              "1 yıl",
-              "Asla"
+              "Kalıcı ritim",
+              "Sertleşmek",
+              "Eskiye dönmek",
+              "Rastgelelik"
             ],
-            "correct": 1,
-            "explain": "Stanford Dr. Cameron Sepah araştırması: **7-30 günlük dopamine fasting** reseptör hassasiyetini sıfırlar. Beyin doğal ödüllere yeniden hassaslaşır."
+            "correct": 0,
+            "explain": "Kalıcı ritim, detoks sonrası davranışı belirler."
           }
-        ],
-        "proTip": "Yeni baseline = 30 gün öncenin sıkıntısı şimdi normal. Düşük dopamin, yüksek anlam — yeni sloganın."
+        ]
       },
       "21": {
         "title": "Tetikleyicileri Tanı",
