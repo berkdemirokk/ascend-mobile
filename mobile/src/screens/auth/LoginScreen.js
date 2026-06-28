@@ -18,12 +18,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { MaterialIcons } from '@expo/vector-icons';
 import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../services/supabase';
 import { LT } from '../../config/lightTheme';
 
 export default function LoginScreen({ navigation }) {
   const { t } = useTranslation();
-  const { signIn } = useAuth();
+  const { resendConfirmation, signIn } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -41,8 +40,14 @@ export default function LoginScreen({ navigation }) {
       return;
     }
     setLoading(true);
-    const { error } = await signIn({ email, password });
-    setLoading(false);
+    let error = null;
+    try {
+      ({ error } = await signIn({ email, password }));
+    } catch (e) {
+      error = e;
+    } finally {
+      setLoading(false);
+    }
     if (error) {
       const msg = error.message || '';
       // Special-case "email not confirmed" — the user just needs to
@@ -64,7 +69,8 @@ export default function LoginScreen({ navigation }) {
               ),
               onPress: async () => {
                 try {
-                  await supabase.auth.resend({ type: 'signup', email });
+                  const { error: resendError } = await resendConfirmation(email);
+                  if (resendError) throw resendError;
                   Alert.alert(
                     t('common.done', 'Tamam'),
                     t('auth.resendSent', 'Doğrulama maili yeniden gönderildi.'),
@@ -72,7 +78,7 @@ export default function LoginScreen({ navigation }) {
                 } catch (e) {
                   Alert.alert(
                     t('common.error', 'Hata'),
-                    e?.message || t('common.tryAgain', 'Tekrar dene'),
+                    getAuthErrorMessage(t, e, 'common.tryAgain'),
                   );
                 }
               },

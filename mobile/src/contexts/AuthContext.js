@@ -14,16 +14,57 @@ import { unlinkPurchaseUser } from '../services/purchases';
 // to the Welcome screen on slow networks (~5s is common on cellular).
 export const withTimeout = (promise, ms) =>
   Promise.race([
-    promise.then((value) => ({ ...value, timedOut: false })),
+    promise.then((value) => (
+      value && typeof value === 'object'
+        ? { ...value, timedOut: false }
+        : { data: value ?? null, timedOut: false }
+    )),
     new Promise((resolve) =>
       setTimeout(() => resolve({ data: null, timedOut: true }), ms),
     ),
   ]);
 
 const AuthContext = createContext(null);
+export const AUTH_REQUEST_TIMEOUT_MS = 12000;
 
 const makeAuthError = (code, message) =>
   Object.assign(new Error(message || code), { code });
+
+const normalizeAuthError = (error) => {
+  if (error?.code) return error;
+  const message = error?.message || '';
+  if (/network|fetch|dns|offline|timed?\s*out|request\s+failed/i.test(message)) {
+    return makeAuthError('ASCEND_AUTH_REQUEST_FAILED', message);
+  }
+  if (message) return error;
+  if (typeof error === 'string') return makeAuthError('ASCEND_AUTH_REQUEST_FAILED', error);
+  return makeAuthError(
+    'ASCEND_AUTH_REQUEST_FAILED',
+    'Authentication request failed.',
+  );
+};
+
+export const runAuthRequest = async (
+  requestFactory,
+  timeoutMs = AUTH_REQUEST_TIMEOUT_MS,
+) => {
+  try {
+    const result = await withTimeout(Promise.resolve().then(requestFactory), timeoutMs);
+    if (result?.timedOut) {
+      return {
+        data: null,
+        error: makeAuthError(
+          'ASCEND_AUTH_TIMEOUT',
+          'Authentication service did not respond in time.',
+        ),
+        timedOut: true,
+      };
+    }
+    return result || { data: null, error: null };
+  } catch (error) {
+    return { data: null, error: normalizeAuthError(error) };
+  }
+};
 
 export const getAuthErrorMessage = (
   t,
@@ -35,6 +76,18 @@ export const getAuthErrorMessage = (
     return t(
       'auth.serviceNotConfigured',
       'Bulut bağlantısı hazır değil. Misafir olarak devam edebilir veya biraz sonra tekrar deneyebilirsin.',
+    );
+  }
+  if (code === 'ASCEND_AUTH_TIMEOUT') {
+    return t(
+      'auth.serviceTimeout',
+      'Bulut bağlantısı cevap vermedi. İnternetini kontrol edip tekrar dene veya misafir olarak devam et.',
+    );
+  }
+  if (code === 'ASCEND_AUTH_REQUEST_FAILED') {
+    return t(
+      'auth.serviceUnavailable',
+      'Bulut bağlantısına ulaşılamıyor. Biraz sonra tekrar dene veya misafir olarak devam et.',
     );
   }
   if (code === 'ASCEND_APPLE_MODULE_UNAVAILABLE') {
@@ -147,13 +200,13 @@ export function AuthProvider({ children }) {
         ),
       };
     }
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await runAuthRequest(() => supabase.auth.signUp({
       email: email.trim().toLowerCase(),
       password,
       options: {
         data: { name: name?.trim() || null },
       },
-    });
+    }));
     return { data, error };
   }, []);
 
@@ -166,10 +219,10 @@ export function AuthProvider({ children }) {
         ),
       };
     }
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await runAuthRequest(() => supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
       password,
-    });
+    }));
     return { data, error };
   }, []);
 
@@ -205,9 +258,24 @@ export function AuthProvider({ children }) {
     // complete the flow from. The scheme handler is wired in App.js.
     // If the user opens the link on a desktop, they'll still land on
     // Supabase's web reset page and can change password there.
-    const { data, error } = await supabase.auth.resetPasswordForEmail(
+    const { data, error } = await runAuthRequest(() => supabase.auth.resetPasswordForEmail(
       email.trim().toLowerCase(),
       { redirectTo: 'ascend://reset-password' },
+    ));
+    return { data, error };
+  }, []);
+
+  const resendConfirmation = useCallback(async (email) => {
+    if (!SUPABASE_CONFIGURED) {
+      return {
+        error: makeAuthError(
+          'ASCEND_AUTH_NOT_CONFIGURED',
+          'Authentication service is not configured.',
+        ),
+      };
+    }
+    const { data, error } = await runAuthRequest(() =>
+      supabase.auth.resend({ type: 'signup', email: email.trim().toLowerCase() }),
     );
     return { data, error };
   }, []);
@@ -272,18 +340,18 @@ export function AuthProvider({ children }) {
         };
       }
 
-      const { data, error } = await supabase.auth.signInWithIdToken({
+      const { data, error } = await runAuthRequest(() => supabase.auth.signInWithIdToken({
         provider: 'apple',
         token: credential.identityToken,
         nonce: rawNonce,
-      });
+      }));
 
       return { data, error };
     } catch (e) {
       if (e?.code === 'ERR_REQUEST_CANCELED') {
         return { canceled: true };
       }
-      return { error: e };
+      return { error: normalizeAuthError(e) };
     }
   }, []);
 
@@ -299,6 +367,7 @@ export function AuthProvider({ children }) {
     signInWithApple,
     signOut,
     resetPassword,
+    resendConfirmation,
     continueAsGuest,
   };
 

@@ -101,6 +101,8 @@
     "tagline": "Less talk. One piece of proof every day.",
     "notConfigured": "Cloud connection is off — guest mode only",
     "serviceNotConfigured": "Cloud connection is not ready. Continue as guest or try again in a moment.",
+    "serviceTimeout": "Cloud connection did not respond. Check your internet and try again, or continue as guest.",
+    "serviceUnavailable": "Cloud connection is unreachable. Try again in a moment, or continue as guest.",
     "welcomeBack": "Welcome back",
     "welcomeBackSub": "Your next task is ready where you left it.",
     "createAccount": "Create account",

@@ -42,8 +42,15 @@ export default function SignupScreen({ navigation }) {
       return;
     }
     setLoading(true);
-    const { data, error } = await signUp({ email, password, name });
-    setLoading(false);
+    let data = null;
+    let error = null;
+    try {
+      ({ data, error } = await signUp({ email, password, name }));
+    } catch (e) {
+      error = e;
+    } finally {
+      setLoading(false);
+    }
     if (error) {
       Alert.alert(
         t('common.error'),

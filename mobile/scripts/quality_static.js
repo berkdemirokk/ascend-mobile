@@ -518,6 +518,12 @@ run('startup fail-open guards', () => {
   assert(getSessionCalls.length === 1, `auth bootstrap must reuse one session request, found ${getSessionCalls.length}`);
   assert(/if \(result\?\.timedOut\)\s*{\s*setLoading\(false\)/s.test(authSource), 'auth timeout must release the launch screen');
   assert(/sessionRequest\s*\.then/.test(authSource), 'late auth restoration must reuse the original request');
+  assert(/AUTH_REQUEST_TIMEOUT_MS\s*=\s*12000/.test(authSource), 'interactive auth requests must have a bounded timeout');
+  assert(authSource.includes('export const runAuthRequest'), 'interactive auth requests must share the bounded auth wrapper');
+  const unboundedAuthCalls = authSource.match(
+    /await\s+supabase\.auth\.(signUp|signInWithPassword|resetPasswordForEmail|resend|signInWithIdToken)\(/g,
+  ) || [];
+  assert(!unboundedAuthCalls.length, `unbounded interactive auth calls: ${unboundedAuthCalls.join(', ')}`);
   assert(notificationSource.includes('shouldShowBanner: true'), 'notification handler must use the current iOS banner behavior');
   assert(notificationSource.includes('shouldShowList: true'), 'notification handler must use the current iOS list behavior');
 });

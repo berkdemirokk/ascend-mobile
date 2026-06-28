@@ -185,13 +185,24 @@ const main = async () => {
   });
   await assertRejects(() => restoreOffline.restorePurchases(), /restore offline/, 'restore network failure must throw');
 
-  const { withTimeout } = loadModule(path.join(ROOT, 'src/contexts/AuthContext.js'));
+  const { runAuthRequest, withTimeout } = loadModule(path.join(ROOT, 'src/contexts/AuthContext.js'));
   const immediateAuth = await withTimeout(Promise.resolve({ data: { session: 'session' } }), 20);
   assert(immediateAuth.timedOut === false, 'resolved auth request reported a timeout');
   assert(immediateAuth.data.session === 'session', 'resolved auth session was not preserved');
   const timedOutAuth = await withTimeout(new Promise(() => {}), 5);
   assert(timedOutAuth.timedOut === true, 'stalled auth request did not fail open');
   assert(timedOutAuth.data === null, 'timed-out auth request must not invent a session');
+  const scalarAuth = await withTimeout(Promise.resolve('ok'), 20);
+  assert(scalarAuth.data === 'ok' && scalarAuth.timedOut === false, 'scalar auth response was not tagged safely');
+  const boundedAuth = await runAuthRequest(() => Promise.resolve({ data: { user: 'u1' }, error: null }), 20);
+  assert(boundedAuth.data.user === 'u1' && !boundedAuth.error, 'bounded auth request lost a successful response');
+  const boundedTimeout = await runAuthRequest(() => new Promise(() => {}), 5);
+  assert(boundedTimeout.error?.code === 'ASCEND_AUTH_TIMEOUT', 'bounded auth request did not return timeout error');
+  const boundedNetwork = await runAuthRequest(() => { throw new Error('dns failed'); }, 20);
+  assert(
+    boundedNetwork.error?.code === 'ASCEND_AUTH_REQUEST_FAILED',
+    'bounded auth request did not normalize network failure',
+  );
 
   const { appReducer, initialState, ACTION_TYPES } = loadModule(
     path.join(ROOT, 'src/contexts/AppContext.js'),

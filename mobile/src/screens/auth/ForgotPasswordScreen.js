@@ -34,8 +34,14 @@ export default function ForgotPasswordScreen({ navigation }) {
       return;
     }
     setLoading(true);
-    const { error } = await resetPassword(email);
-    setLoading(false);
+    let error = null;
+    try {
+      ({ error } = await resetPassword(email));
+    } catch (e) {
+      error = e;
+    } finally {
+      setLoading(false);
+    }
     if (error) {
       Alert.alert(
         t('common.error'),

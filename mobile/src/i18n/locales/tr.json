@@ -101,6 +101,8 @@
     "tagline": "Daha az söz. Her gün bir kanıt.",
     "notConfigured": "Bulut bağlantısı yok — sadece misafir modu çalışır",
     "serviceNotConfigured": "Bulut bağlantısı hazır değil. Misafir olarak devam edebilir veya biraz sonra tekrar deneyebilirsin.",
+    "serviceTimeout": "Bulut bağlantısı cevap vermedi. İnternetini kontrol edip tekrar dene veya misafir olarak devam et.",
+    "serviceUnavailable": "Bulut bağlantısına ulaşılamıyor. Biraz sonra tekrar dene veya misafir olarak devam et.",
     "welcomeBack": "Tekrar hoşgeldin",
     "welcomeBackSub": "Kaldığın yer hazır. Bugünün görevini bitir.",
     "createAccount": "Hesap oluştur",
