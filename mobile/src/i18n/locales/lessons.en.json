@@ -640,313 +640,303 @@
       },
       "21": {
         "title": "Recognize Your Triggers",
-        "teaching": "Every dopamine craving has a trigger. Boredom, sadness, loneliness, fatigue, sense of failure — these create the 'escape' urge. The escape usually goes to the phone.\n\nKnowing your trigger is power. Once you know it, you break the automatic response. 'I'm bored' becomes 'I'm reaching for the phone because I'm bored, but my real need is to sit with the boredom.'",
-        "action": "Today, every time a dopamine urge hits, write one sentence: 'Right now I feel X, I want the phone.' Look at the list at night.",
-        "reflectionPrompt": "Which trigger repeated most? What does that emotion really want?",
+        "teaching": "When an urge arrives, your first job is not to crush it. Name it first. What has no name can steer you from the inside.\n\nThe phone urge rarely arrives alone. Behind it may be boredom, fatigue, loneliness, delay, or uncertainty. The screen is only the quick exit door.\n\nToday, act like a detective. Do not attack yourself when the urge appears. Record where you were, what you felt, and what you wanted to do.\n\nAt night, the list will show a pattern. That pattern is your personal map. Without the map, boundaries are random.",
+        "action": "At each urge, write one sentence: “I feel X, and I want the phone.”",
+        "reflectionPrompt": "Which feeling repeated most on your list tonight?",
         "quiz": [
           {
-            "q": "Recognize trigger how?",
+            "q": "First step?",
             "options": [
-              "Ignore",
-              "Written log",
-              "Remember",
-              "No effect"
+              "Name it",
+              "Blame yourself",
+              "Escape fast",
+              "Ignore it"
             ],
-            "correct": 1,
-            "explain": "Written = conscious."
+            "correct": 0,
+            "explain": "Naming makes the urge easier to handle."
           },
           {
-            "q": "Most common trigger?",
+            "q": "The list gives?",
             "options": [
-              "Hunger",
-              "Boredom",
-              "Fatigue",
-              "Joy"
+              "A personal map",
+              "Punishment",
+              "More screen time",
+              "Confusion"
             ],
-            "correct": 1,
-            "explain": "Boredom = main trigger."
+            "correct": 0,
+            "explain": "You see the patterns that keep returning."
           }
-        ],
-        "proTip": "Track triggers in writing: \"what situation made me reach for the phone?\""
+        ]
       },
       "22": {
-        "title": "Replacement Strategy",
-        "teaching": "Just deleting a bad habit isn't enough. What will you replace it with?\n\nBreath replaces the phone. Walking replaces scrolling. Cold shower replaces breakfast scrolling. Books replace bingeing.\n\nWhat prevents post-detox relapse: new behaviors taking root. What will you put in place today?",
-        "action": "Write a replacement list for the next 5 hours: when the phone urge comes, what will you do? (E.g., 4-7-8 breath, 10 squats, drink water, go outside.)",
-        "reflectionPrompt": "Which replacement worked? Which felt fake?",
+        "title": "Replacement Plan",
+        "teaching": "If you only remove a habit, the mind returns to the old road. Empty space needs a plan. Today is not about another ban. It is about replacement.\n\nYou should know what to do before the urge arrives. Bored? Take a short walk. Tired? Drink water and stretch. Lonely? Call someone. Unsure? Write three options on paper.\n\nThe replacement does not need to be impressive. It must be small, clear, and immediately doable. Otherwise the mind returns to the easy door.\n\nMake the plan visible. Keep it on your desk, pocket, or lock screen. In the urge moment, we want action, not thinking.",
+        "action": "Write four urges and four replacements. Keep the list visible all day.",
+        "reflectionPrompt": "Which replacement actually worked today?",
         "quiz": [
           {
-            "q": "Replacement strategy?",
+            "q": "Empty space needs?",
             "options": [
-              "None",
-              "Alternative for reflex",
-              "Hold",
-              "Wait"
+              "A plan",
+              "Panic",
+              "More bans",
+              "Forgetting"
             ],
-            "correct": 1,
-            "explain": "Offer alternative behavior."
+            "correct": 0,
+            "explain": "Removed behavior needs a clear next move."
           },
           {
-            "q": "Example alternatives?",
+            "q": "Good replacement?",
             "options": [
-              "Phone",
-              "Breath/push-up/water",
-              "More phone",
-              "Unknown"
+              "Small and clear",
+              "Complex",
+              "Vague",
+              "Far away"
             ],
-            "correct": 1,
-            "explain": "Healthy reflex options."
+            "correct": 0,
+            "explain": "It must be easy during the urge."
           }
-        ],
-        "proTip": "Replacement = instead of phone reflex: deep breath / 5 push-ups / water."
+        ]
       },
       "23": {
-        "title": "Negative Visualization",
-        "teaching": "The Stoics practiced 'premeditatio malorum' — imagine the bad in advance. 'What would it feel like to lose this detox?'\n\nImagine 1 hour back in your old life: scrolling, junk food, random video. Then compare it to where you are now in this detox.\n\nLoss aversion is twice as powerful as gain. Use it as a weapon.",
-        "action": "Close your eyes for 5 minutes. Imagine a 24-hour day where you weren't on this detox — old phone habits, old fatigue. Then return to now.",
-        "reflectionPrompt": "What did imagining the old day feel like?",
+        "title": "See the Old Day",
+        "teaching": "Sometimes you need to remember the old day to see progress. Not to shame yourself, but to make your choice clearer.\n\nPicture an old day: screen immediately after waking, scattered work, constant checking, late night. Remember the taste that day left in your body and mind.\n\nThen return to today. You are not the same person. Maybe not perfect, but you now see the options more clearly.\n\nThis exercise is not for fear. It is for direction. The old day says: returning is easy, staying is more valuable.",
+        "action": "Imagine one old day for five minutes. Then write three differences today.",
+        "reflectionPrompt": "What feeling appeared when you imagined returning to the old day?",
         "quiz": [
           {
-            "q": "Negative visualization?",
+            "q": "Purpose?",
             "options": [
-              "Think positive",
-              "\"What do I lose?\"",
-              "Ignore",
-              "Speed up"
+              "See direction",
+              "Feel shame",
+              "Exaggerate",
+              "Escape"
             ],
-            "correct": 1,
-            "explain": "Visualize the loss."
+            "correct": 0,
+            "explain": "Remembering the old day clarifies today’s choice."
           },
           {
-            "q": "Stoic philosophy?",
+            "q": "Final step?",
             "options": [
-              "None",
-              "Premeditatio malorum",
-              "Hedonism",
-              "Modern"
+              "Write the difference",
+              "Open the screen",
+              "Judge yourself",
+              "Quit"
             ],
-            "correct": 1,
-            "explain": "Classic Stoic technique."
+            "correct": 0,
+            "explain": "Writing makes the change concrete."
           }
-        ],
-        "proTip": "Negative visualization: \"If I check this phone, what do I lose?\""
+        ]
       },
       "24": {
         "title": "Make the Phone a Tool",
-        "teaching": "The phone is a tool. You use it; it doesn't use you. After the detox, this should be your relationship.\n\nWhen it's a tool: you open it intentionally (I'll do X), do it, close it. You don't open it for entertainment. You don't open it from boredom.\n\nAfter the detox you can re-install some things. But with the new rule: intentional use.",
-        "action": "Today, before opening the phone, say out loud 'I'm going to do X.' When done, close it. No entertainment.",
-        "reflectionPrompt": "How did intentional use compare to 'just looking' use?",
+        "teaching": "The phone does not have to be bad. The problem is opening it without intent and getting lost inside it. A tool is used and put down; a toy starts using you.\n\nToday, every opening needs a sentence. “I will check the map.” “I will answer that message.” “I will check the calendar.” No sentence, no opening.\n\nClosing is part of the protocol too. Starting with intent is not enough. You also need to end with intent.\n\nThis practice does not make the phone an enemy. It puts it back in its place. You decide; the device follows.",
+        "action": "Before opening the phone, say the purpose. When done, close it immediately.",
+        "reflectionPrompt": "How many times did no clear purpose stop you from opening it?",
         "quiz": [
           {
-            "q": "Phone as tool?",
+            "q": "Tool rule?",
             "options": [
-              "Always on",
-              "Ask intent",
-              "Auto",
-              "None"
+              "Open with purpose",
+              "Open empty",
+              "Get lost",
+              "Wait"
             ],
-            "correct": 1,
-            "explain": "Intent check before opening."
+            "correct": 0,
+            "explain": "A tool starts with intent and closes after the job."
           },
           {
-            "q": "Aimless opening effect?",
+            "q": "No sentence?",
             "options": [
-              "No effect",
-              "Hours lost",
-              "Productive",
-              "Positive"
+              "Do not open",
+              "Open and browse",
+              "No delay",
+              "Find alerts"
             ],
-            "correct": 1,
-            "explain": "Aimless = scroll loss."
+            "correct": 0,
+            "explain": "No purpose means no opening."
           }
-        ],
-        "proTip": "Phone as tool: ask \"what is my intent on opening it?\""
+        ]
       },
       "25": {
         "title": "Final Sprint Begins",
-        "teaching": "Last 5 days. The most critical phase of the sprint. The brain needs to finish this last week to settle into the new baseline. Otherwise you have a 'half-detox' and easy relapse.\n\nYou may feel difficulty rise this week. The thought 'It's done, I made it' often leads to early surrender.\n\nThe finish line is day 30. 25, 26, 27, 28, 29, 30. Finish.",
-        "action": "Write your last-5-days commitment today: Which habits will you keep permanently? Which apps will you NEVER reinstall?",
-        "reflectionPrompt": "Which app, even though the detox is over, will you not reinstall? Why?",
+        "teaching": "Near the end, the mind wants to declare victory early. It says, “I already did it.” That sentence is risky because the old road can look attractive near the finish line.\n\nDo not underestimate the remaining days. This section is practice for the new order. Which rules stay after the reset? Which ones soften? Which ones never return?\n\nDo not leave the answer to the last day. The last day will be emotional. Today you are steadier, so write the decisions now.\n\nA written decision holds you. A vague intention dissolves on the first hard day.",
+        "action": "Write three rules you will keep and three habits that will not return.",
+        "reflectionPrompt": "Which permanent rule will be hardest to keep?",
         "quiz": [
           {
-            "q": "Final sprint?",
+            "q": "Risky sentence?",
             "options": [
-              "Easy",
-              "Hardest 5 days",
-              "No effect",
-              "Random"
+              "I already did it",
+              "I have a plan",
+              "I write today",
+              "Continue"
             ],
-            "correct": 1,
-            "explain": "Brain wants \"complete\" signal."
+            "correct": 0,
+            "explain": "Early victory can reopen the old road."
           },
           {
-            "q": "Sprint solution?",
+            "q": "Decision time?",
             "options": [
-              "Quit",
-              "Sustain + focus",
-              "Speed up",
-              "Slow"
+              "Today",
+              "Last minute",
+              "Whenever",
+              "Never"
             ],
-            "correct": 1,
-            "explain": "Last sprint = sustain."
+            "correct": 0,
+            "explain": "A steady day makes stronger decisions."
           }
-        ],
-        "proTip": "Final sprint = hardest 5 days. Brain wants the \"complete\" signal."
+        ]
       },
       "26": {
-        "title": "Social Immunity",
-        "teaching": "When the detox ends, the environment will pull you back to old habits. Friends are on the phone. Family is in WhatsApp groups. Social media topics are everywhere.\n\nFor immunity, two things: (1) Don't forget why you started. (2) Inform your circle — 'I've cut down on phone use, if I reply late it's normal.'\n\nPeople will respect it. Those who don't belong to your old life — not your new one.",
-        "action": "Today, message 3 important people: 'I'm in the last week of a detox, my phone is mostly away. Don't worry if I reply late.'",
-        "reflectionPrompt": "How did people respond? As you expected?",
+        "title": "Social Boundary",
+        "teaching": "If people do not know your new rhythm, they expect the old speed. They may worry or feel ignored when you reply late. That is why the boundary should be visible.\n\nExplaining a boundary is not defending yourself. It is short, clear information: my phone is away most of the time, so I may answer late.\n\nA real relationship can understand that. A bond that demands instant replies may already be squeezing you.\n\nTeach your circle how you work now. Not everyone will accept it, but you learn to protect your rhythm.",
+        "action": "Message three people: “My phone is away, so I may reply late.”",
+        "reflectionPrompt": "Did saying this boundary create guilt or relief?",
         "quiz": [
           {
-            "q": "Social immunity?",
+            "q": "Explaining a boundary?",
             "options": [
-              "Loneliness",
-              "\"Everyone does it\" resistance",
-              "Social media",
-              "None"
+              "Giving information",
+              "Starting a fight",
+              "Disappearing",
+              "Showing ego"
             ],
-            "correct": 1,
-            "explain": "Resist herd pressure."
+            "correct": 0,
+            "explain": "Short calm information makes the relationship clearer."
           },
           {
-            "q": "Majority always?",
+            "q": "New rhythm?",
             "options": [
-              "Right",
-              "Maybe wrong",
-              "No effect",
-              "Unknown"
+              "Can be taught",
+              "Must be hidden",
+              "Is shameful",
+              "Must break"
             ],
-            "correct": 1,
-            "explain": "Majority = herd, not always right."
+            "correct": 0,
+            "explain": "People understand your rhythm when they can see it."
           }
-        ],
-        "proTip": "Social immunity = resistance to \"everyone does it\" judgment."
+        ]
       },
       "27": {
         "title": "Permanent Boundaries",
-        "teaching": "The detox is temporary, the boundaries are permanent. This weekend the detox ends — but what rules will stay?\n\nSome should be permanent: notifications off. No phone in the bedroom. Don't touch in the first hour. Social media once a day for 15 minutes.\n\nThese aren't 'rules for your life' — they're 'limits for your brain.' Science says: maintain at least a year and the new baseline becomes permanent.",
-        "action": "Write 5 permanent boundaries. Very specific: 'After 9pm phone is in another room charging,' 'I will never use TikTok,' etc.",
-        "reflectionPrompt": "Which of the 5 will be hardest to maintain?",
+        "teaching": "A temporary rule is easy: do it for thirty days and drop it. A permanent boundary is more serious because it protects your future self.\n\nA vague boundary does not work. “I will use it less” is a soft wish. “After 9:30, the phone charges in another room” is behavior.\n\nWrite boundaries today without escape holes. Time, place, app, and exception should be clear. If there is no exception, write that too.\n\nPermanent boundaries do not remove freedom. They remove constant negotiation. The day feels lighter when you already know the rule.",
+        "action": "Write five permanent boundaries. Each must include time, place, or app.",
+        "reflectionPrompt": "Which boundary would reduce the most negotiation?",
         "quiz": [
           {
-            "q": "Permanent boundary?",
+            "q": "Good boundary?",
             "options": [
-              "Temp",
-              "Lasts past day 30",
-              "Flexible",
-              "None"
+              "Clear behavior",
+              "Soft wish",
+              "Vague idea",
+              "Secret"
             ],
-            "correct": 1,
-            "explain": "Long-term discipline."
+            "correct": 0,
+            "explain": "A clear boundary names time, place, or app."
           },
           {
-            "q": "Flexible boundary = ?",
+            "q": "Boundary reduces?",
             "options": [
-              "Discipline",
-              "No boundary",
-              "No effect",
-              "Modern"
+              "Negotiation",
+              "Freedom",
+              "Sleep",
+              "Relationships"
             ],
-            "correct": 1,
-            "explain": "Flex = boundless = loss."
+            "correct": 0,
+            "explain": "The decision is already made."
           }
-        ],
-        "proTip": "Permanent boundary = discipline lasting past day 30."
+        ]
       },
       "28": {
         "title": "Practice Meaning",
-        "teaching": "Dopamine = momentary pleasure. Meaning = lasting fulfillment. Exploitative dopamine is forgotten in an hour, meaning is carried for years.\n\nDopamine is reduced after detox; now fill it with meaning. Meaning: purposeful work, real bonds, skill acquisition, service.\n\nMeaningful things don't give 'fast pleasure' but at the end of the day make you say 'it was worth it.'",
-        "action": "Do something meaningful today: Help someone (a neighbor's groceries, call an elderly relative). No gift, expectation, photo. Just the act.",
-        "reflectionPrompt": "How did the meaningful act feel? Not dopamine — what was it?",
+        "teaching": "Fast stimulus pulls attention toward the self: what do I want, how do I feel, how can I feel better now? Meaning moves attention outward.\n\nYou do not need a grand act today. A small real contribution is enough. Call someone, lighten a task, make one thing easier for another person.\n\nDo not do it for posting. No photo, story, applause, or return. Meaning settles inside even when nobody sees it.\n\nWhen you step outside yourself and touch someone’s day, the weight of your own day changes. It is a quieter kind of satisfaction than the screen gives.",
+        "action": "Help someone quietly today. Do not post, explain, or expect anything back.",
+        "reflectionPrompt": "What did helping without return leave in you?",
         "quiz": [
           {
-            "q": "Meaning practice?",
+            "q": "Meaning moves attention?",
             "options": [
-              "None",
-              "\"Why?\" question",
-              "Joy",
-              "Luck"
+              "Outward",
+              "To more screen",
+              "To display",
+              "Nowhere"
             ],
-            "correct": 1,
-            "explain": "Why = motivation source."
+            "correct": 0,
+            "explain": "Meaning reduces constant focus on your own urge."
           },
           {
-            "q": "Meaningless discipline?",
+            "q": "The help should be?",
             "options": [
-              "Sustainable",
-              "Fades",
-              "Strong",
-              "Modern"
+              "Quiet",
+              "Showy",
+              "Forced",
+              "Transactional"
             ],
-            "correct": 1,
-            "explain": "Meaningless = unsustainable."
+            "correct": 0,
+            "explain": "Quiet contribution leaves a cleaner mark."
           }
-        ],
-        "proTip": "Meaning practice = daily answer to \"why am I doing this?\""
+        ]
       },
       "29": {
-        "title": "Tomorrow Is the Last Day",
-        "teaching": "Day 29. Tomorrow is 30. Could you have sustained 30 days of discipline before this journey?\n\nMost people can't. You did. This isn't just dopamine detox — it's proof of discipline.\n\nTomorrow is the end day, not the start. You enter your new life with this hardened mind.",
-        "action": "Write today the last 29 days — short: 'For 29 days I did dopamine detox. These changed: ...' Save it. One day you'll come back to read it.",
-        "reflectionPrompt": "Could the you of 29 days ago have written this sentence?",
+        "title": "The Day Before Finish",
+        "teaching": "Tomorrow is the finish day. Today is the record day. If you leave the process to memory alone, the details will blur quickly.\n\nWrite a short letter to yourself. Where was it hard? What changed? Which rule worked? What do you not want back? Do not make it pretty.\n\nAn honest record helps your future self. One day, if the old habit calls again, today’s note can stand there as a real answer.\n\nThe note is not a trophy. It is a road sign. It shows where you have been and warns you when you want to turn back.",
+        "action": "Write a short letter: three changes and three things you will protect.",
+        "reflectionPrompt": "What warning do you want to leave for your future self?",
         "quiz": [
           {
-            "q": "Tomorrow last day = ?",
+            "q": "Today is for?",
             "options": [
-              "Wait",
-              "Today last sprint",
-              "Skip",
-              "Postpone"
+              "Recording",
+              "Finishing",
+              "Escaping",
+              "Forgetting"
             ],
-            "correct": 1,
-            "explain": "Don't leave for tomorrow."
+            "correct": 0,
+            "explain": "A record makes the process useful later."
           },
           {
-            "q": "Postponement risk?",
+            "q": "The letter is?",
             "options": [
-              "No effect",
-              "Discipline loss",
-              "Productive",
-              "Positive"
+              "A road sign",
+              "A trophy",
+              "An ad",
+              "Punishment"
             ],
-            "correct": 1,
-            "explain": "Postpone = enemy of discipline."
+            "correct": 0,
+            "explain": "It answers the old habit later."
           }
-        ],
-        "proTip": "Tomorrow last day = today last sprint. Don't leave for tomorrow."
+        ]
       },
       "30": {
-        "title": "Complete — New You",
-        "teaching": "30 days. It's done. But really, just begun.\n\nYour brain has recalibrated. Your dopamine baseline has dropped — meaning small things give pleasure again. You tolerate boredom. The phone no longer controls you — you control it.\n\nThis hardness is yours now. No one can take it.",
-        "action": "Today, celebrate the whole sprint. Meaningfully — not with a big meal but with a real meeting with loved ones. Phone in bag, off.",
-        "reflectionPrompt": "After 30 days, what's the MOST IMPORTANT change for you? How will you protect it?",
+        "title": "Complete: New Protocol",
+        "teaching": "Today is not only an ending. It is a handoff. The thirty-day order can stop being a temporary campaign and become a new protocol.\n\nCelebrate. But if celebration becomes the old escape, the message gets mixed. The reward you choose today should show who you want to be tomorrow.\n\nChoose which tools return with intention. Close the habits that do not return. Keep those decisions in writing, not only in your head.\n\nMake the new protocol simple: protect morning, protect night, open the phone with purpose, and keep real contact alive. Now carry it into life.",
+        "action": "Write your protocol: one rule for morning, night, phone, and relationships.",
+        "reflectionPrompt": "Which identity will you protect after these thirty days?",
         "quiz": [
           {
-            "q": "Complete = ?",
+            "q": "Today is?",
             "options": [
-              "Done",
-              "New you",
-              "Same",
-              "Negative"
+              "A handoff",
+              "Old return",
+              "Empty day",
+              "Cutoff"
             ],
-            "correct": 1,
-            "explain": "Switched to sustaining identity."
+            "correct": 0,
+            "explain": "The process transfers into a new protocol."
           },
           {
-            "q": "After transition?",
+            "q": "Protocol should be?",
             "options": [
-              "Immediately",
-              "3-day rest",
-              "1-month wait",
-              "Never"
+              "Simple and written",
+              "Hidden",
+              "Complex",
+              "Only spoken"
             ],
-            "correct": 1,
-            "explain": "3 days rest, then continue."
+            "correct": 0,
+            "explain": "Simple written rules are easier to keep."
           }
-        ],
-        "proTip": "Complete ≠ finished. Complete = this is who you are now."
+        ]
       },
       "31": {
         "title": "Replacement Habits",
