@@ -794,7 +794,10 @@ run('domain invariants', () => {
 });
 
 run('Supabase policy idempotency', () => {
-  const sql = fs.readFileSync(path.join(ROOT, 'supabase/schema.sql'), 'utf8');
+  const supabaseRoot = path.join(ROOT, 'supabase');
+  const sqlFiles = walk(supabaseRoot, '.sql');
+  const sql = sqlFiles.map((file) => fs.readFileSync(file, 'utf8')).join('\n\n');
+  const sqlWithoutComments = sql.replace(/--.*$/gm, '');
   const creates = [...sql.matchAll(/CREATE\s+POLICY\s+"([^"]+)"\s+ON\s+([\w.]+)/gi)];
   const missingDrops = creates.filter((match) => {
     const escaped = match[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -802,6 +805,16 @@ run('Supabase policy idempotency', () => {
     return !new RegExp(`DROP\\s+POLICY\\s+IF\\s+EXISTS\\s+"${escaped}"\\s+ON\\s+${table}`, 'i').test(sql);
   });
   assert(!missingDrops.length, `missing DROP POLICY: ${missingDrops.map((match) => match[1]).join(', ')}`);
+  assert(/set\s+search_path\s*=\s*public,\s*pg_temp/i.test(sql), 'trigger functions must pin search_path');
+  assert(/revoke\s+execute\s+on\s+function\s+public\.rls_auto_enable\(\)\s+from\s+public/i.test(sql), 'public SECURITY DEFINER helper execute must be revoked');
+  assert(/analytics_events_user_idx[\s\S]*on\s+public\.analytics_events\s*\(user_id/i.test(sql), 'analytics_events.user_id foreign key needs a covering index');
+  assert(/squad_member_progress_user_idx[\s\S]*on\s+public\.squad_member_progress\s*\(user_id/i.test(sql), 'squad_member_progress.user_id foreign key needs a covering index');
+  assert(!/create\s+policy\s+"referrals: redeemer can mark redemption"/i.test(sqlWithoutComments), 'referral UPDATE policies must be merged');
+  assert(!/create\s+policy\s+"referrals: owner can mark reward paid"/i.test(sqlWithoutComments), 'referral UPDATE policies must be merged');
+  assert(/create\s+policy\s+"referrals: update own redemption state"/i.test(sqlWithoutComments), 'merged referral UPDATE policy missing');
+  const directAuthCalls = [...sqlWithoutComments.matchAll(/auth\.(uid|role)\(\)/g)]
+    .filter((match) => !sqlWithoutComments.slice(Math.max(0, match.index - 12), match.index).endsWith('(select '));
+  assert(!directAuthCalls.length, `RLS auth calls must use (select auth.*()): ${directAuthCalls.map((match) => match[0]).join(', ')}`);
 });
 
 if (failures.length) {

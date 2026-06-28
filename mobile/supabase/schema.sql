@@ -20,7 +20,8 @@ begin
   new.updated_at := now();
   return new;
 end;
-$$ language plpgsql;
+$$ language plpgsql
+set search_path = public, pg_temp;
 
 drop trigger if exists user_state_set_updated_at on public.user_state;
 create trigger user_state_set_updated_at
@@ -35,23 +36,23 @@ alter table public.user_state enable row level security;
 drop policy if exists "user_state: select own" on public.user_state;
 create policy "user_state: select own"
   on public.user_state for select
-  using (auth.uid() = user_id);
+  using ((select auth.uid()) = user_id);
 
 drop policy if exists "user_state: insert own" on public.user_state;
 create policy "user_state: insert own"
   on public.user_state for insert
-  with check (auth.uid() = user_id);
+  with check ((select auth.uid()) = user_id);
 
 drop policy if exists "user_state: update own" on public.user_state;
 create policy "user_state: update own"
   on public.user_state for update
-  using (auth.uid() = user_id)
-  with check (auth.uid() = user_id);
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
 
 drop policy if exists "user_state: delete own" on public.user_state;
 create policy "user_state: delete own"
   on public.user_state for delete
-  using (auth.uid() = user_id);
+  using ((select auth.uid()) = user_id);
 
 -- ──────────────────────────────────────────────────────────────────────────────
 -- Table: analytics_events
@@ -78,7 +79,7 @@ alter table public.analytics_events enable row level security;
 drop policy if exists "events: insert own" on public.analytics_events;
 create policy "events: insert own"
   on public.analytics_events for insert
-  with check (auth.uid() = user_id or user_id is null);
+  with check ((select auth.uid()) = user_id or user_id is null);
 
 -- No select / update / delete policies — events are write-only from the client.
 -- The owner reads them via service-role from a dashboard or via Supabase UI.
@@ -101,8 +102,8 @@ alter table public.push_tokens enable row level security;
 drop policy if exists "push: insert/update own" on public.push_tokens;
 create policy "push: insert/update own"
   on public.push_tokens for all
-  using (auth.uid() = user_id)
-  with check (auth.uid() = user_id);
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
 
 -- ──────────────────────────────────────────────────────────────────────────────
 -- referrals — viral / word-of-mouth growth loop
@@ -147,27 +148,20 @@ create policy "referrals: read all" on public.referrals
   for select using (true);
 drop policy if exists "referrals: owner can insert" on public.referrals;
 create policy "referrals: owner can insert" on public.referrals
-  for insert with check (auth.uid() = owner_user_id);
+  for insert with check ((select auth.uid()) = owner_user_id);
 drop policy if exists "referrals: redeemer can mark redemption" on public.referrals;
-create policy "referrals: redeemer can mark redemption" on public.referrals
-  for update using (
-    -- Only allow the redeeming user to mark `redeemed_by = self` on an
-    -- otherwise-unredeemed row.
-    redeemed_by is null and auth.uid() <> owner_user_id
-  ) with check (
-    auth.uid() = redeemed_by and redeemed_at is not null
-  );
-
--- Owner-side reward marking — the inviter (owner) marks their own rows
--- as rewarded after the local grant fires. Without this policy the
--- checkReferralRewards UPDATE would fail under RLS and the owner-side
--- reward would never persist. Idempotent — re-running drop+create is fine.
 drop policy if exists "referrals: owner can mark reward paid" on public.referrals;
-create policy "referrals: owner can mark reward paid" on public.referrals
+drop policy if exists "referrals: update own redemption state" on public.referrals;
+create policy "referrals: update own redemption state" on public.referrals
   for update using (
-    auth.uid() = owner_user_id and redeemed_by is not null
+    -- Redeemers may claim an unredeemed code; owners may mark their own
+    -- reward as paid after a redemption exists. One policy avoids multiple
+    -- permissive UPDATE policies for the same role/action.
+    ((select auth.uid()) <> owner_user_id and redeemed_by is null)
+    or ((select auth.uid()) = owner_user_id and redeemed_by is not null)
   ) with check (
-    auth.uid() = owner_user_id
+    ((select auth.uid()) = redeemed_by and redeemed_at is not null)
+    or ((select auth.uid()) = owner_user_id)
   );
 
 grant select, insert, update on public.referrals to authenticated;
