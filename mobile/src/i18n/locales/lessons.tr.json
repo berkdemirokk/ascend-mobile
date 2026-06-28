@@ -940,311 +940,301 @@
       },
       "31": {
         "title": "Yer Değiştirme",
-        "teaching": "Detoks bitti. Telefon hala kontrolünde. Ama bir an gelir — sıkıldın, yorgunsun, üzgünsün — refleks geri gelir. Eli telefon ister. Eski cue tetiklenir. **Şu an** ne yapacaksın?\n\nBu sorunun cevabı, davranış değişiminin sırrı. **Bağımlılığı kırmak için yasaklamak yetmez** — yerine bir şey koymak lazım. Charles Duhigg'in **The Power of Habit** (2012) kitabındaki temel kavram: cue + routine + reward = alışkanlık. Routine'i çıkarırsan, cue + reward yine kalıyor — beyin yeni bir routine bulup oraya koyar. Genelde de o yeni routine eski kadar kötü olur (sigara → şeker, alkol → ekran).\n\nÇözüm: **yer değiştirme**. Aynı cue, aynı reward, **yeni routine**.\n\nÖrnek:\n- **Sıkıldım** → telefon (eski) → **3 dk yürüyüş** (yeni)\n- **Yorgunum** → scroll (eski) → **su iç + esneme** (yeni)\n- **Üzgünüm** → reels (eski) → **defter yaz** (yeni)\n- **Stresli** → atıştırma (eski) → **5 squat** (yeni)\n\nBeyin **'yokluk' kabul etmez** — vakum doldurur. Ama **'değişim' kabul eder** — yeni rutin de cue'yu çözüyorsa, beyin razı olur. James Clear (Atomic Habits): 'Kötü alışkanlık silmek değil, daha iyisiyle değiştirmektir.'\n\nBugünün işi: refleks geldiğinde 3 dakika başka şey yap. Sonra ne hissettiğine bak — büyük ihtimalle refleks geçmiş.",
-        "action": "Bugün her telefon refleksinde **3 dakika başka bir şey yap**: 5 squat, su, esneme, pencereden bakma, defter yaz, 4-7-8 nefes. Refleksi engelleme — yerine yeni rutin koy.",
-        "reflectionPrompt": "Hangi alternatifler gerçekten işe yaradı? Hangisi sahte geldi? Bu sana ne söylüyor?",
-        "proTip": "Liste tut: 5 hızlı alternatif (5 squat, 1 sayfa kitap, su, esneme, ailenle 1 cümle). Cue geldiğinde listeyi aç.",
+        "teaching": "Refleksin gücünü hafife alma. Elin telefona giderken çoğu zaman karar vermiyorsun; eski yol kendi kendine başlıyor.\n\nBugün refleksi zorla yok etmeye çalışma. Onu başka yere taşı. Telefon isteği geldiğinde üç dakikalık küçük bir hareket seç: su iç, esne, pencereye bak, kısa not yaz.\n\nBu hareket büyük olmak zorunda değil. Önemli olan aynı anda iki şeyin olamayacağını anlamak: ya eski yolu beslersin ya yeni yolu başlatırsın.\n\nHer küçük yer değiştirme, zihne yeni bir seçenek öğretir. Zamanla refleks tek kapılı olmaktan çıkar.",
+        "action": "Telefon refleksinde üç dakika başka bir şey yap: su, esneme, not veya yürüyüş.",
+        "reflectionPrompt": "Hangi küçük hareket telefonu unutturmayı en çok kolaylaştırdı?",
         "quiz": [
           {
-            "q": "Yer değiştirme nedir?",
+            "q": "Refleks nasıl kırılır?",
             "options": [
-              "Yasak",
-              "Alternatif koyma",
-              "İhmal",
-              "Saklamak"
+              "Yer değiştirerek",
+              "Kendini suçlayarak",
+              "Daha hızlı açarak",
+              "Beklemeden"
             ],
-            "correct": 1,
-            "explain": "**Eski cue → yeni routine.** Duhigg'in 'The Power of Habit' kavramı. Beyin yokluk değil, değişim kabul eder."
+            "correct": 0,
+            "explain": "Yeni küçük hareket eski yolu keser."
           },
           {
-            "q": "En güçlü alternatif?",
+            "q": "Hareket nasıl olmalı?",
             "options": [
-              "Telefon",
-              "Hareket/yaratıcılık",
-              "Yemek",
-              "Uyku"
+              "Küçük ve hemen",
+              "Uzun ve zor",
+              "Belirsiz",
+              "Ekranlı"
             ],
-            "correct": 1,
-            "explain": "**Hareket + yaratıcılık** dopamini sağlıklı yükseltir. Sigara → yemek değişimi başarısız (yine bağımlılık), sigara → spor başarılı."
+            "correct": 0,
+            "explain": "Dürtü anında kolay başlayan davranış gerekir."
           }
         ]
       },
       "32": {
         "title": "Sıkıntıya Hakimiyet",
-        "teaching": "İlk gün 'sıkıldım' = panik. Beyin uyaran arıyor, telefon istiyor, sabırsızlanıyor. 30 gün sonra 'sıkıldım' = farklı duygu. Hafif bir rahatsızlık var ama panik yok. Hatta belki bir merak — 'şimdi ne olacak?' Bu fark **kas büyümesinin** somut işareti.\n\n**Sıkıntı bir kastır.** Çalıştıkça güçlenir, kullanılmazsa körelir. Kingo Inoue (Tokyo Üniversitesi) 2018 fMRI çalışması: sıkıntıya tahammülü yüksek kişilerin prefrontal korteks aktivitesi belirgin yüksek — yaratıcılık, problem çözme ve karar verme kapasiteleri ölçülebilir şekilde daha güçlü.\n\nSüreç:\n- **Gün 1-7:** Sıkıntı = düşman. Patlama riski.\n- **Gün 8-21:** Sıkıntı = rahatsızlık. Tolere ediliyor.\n- **Gün 22-30:** Sıkıntı = nötr. Kabul.\n- **Gün 30+:** Sıkıntı = dost. **Yaratıcılığın doğum yeri.**\n\nSen 30. günü geçtin. Bu noktada sıkıntıya **alan vermek** = derin işin temeli. Beyin sıkıntıyı çözmek için harcadığı enerjiyi bırakırsa, problem çözmek için bambaşka bir kaynağa erişebilir: Default Mode Network'ün gerçek değeri.\n\nNassim Taleb (Antifragile): 'Sessiz kalmayı bilmeyen, derin düşünemez.' Bugün sessizliğe tam izin ver. Hiçbir şey yapma, sadece otur. Önemli düşünceler **sırf bekleyene** gelir.",
-        "action": "Bugün **20 dakika** hiçbir şey yapmadan otur. Telefonsuz, müziksiz, kitapsız. Pencereye bak, bedeni gözle, düşünceleri yargılamadan izle. 20 dk dolu olmasın — boş olsun.",
-        "reflectionPrompt": "20 dakika sonunda zihninde hangi düşünce belirdi? O düşünce nereden geldi sence — yoksa hep oradaydı sen mi duymuyordun?",
-        "proTip": "Pencereye bak. Bedeni gözle. Düşünceleri yargılamadan izle. Antifragile: sessizlik = derin düşünme zemini.",
+        "teaching": "Sıkıntıyla oturmak pasif görünür, ama aslında aktif bir seçimdir. Çünkü her boşlukta kaçmama kasını çalıştırırsın.\n\nBugün hiçbir şey yapmama süresi koyacaksın. Bu sürede başarı üretmeyeceksin, yeni fikir aramayacaksın, kendini geliştirmeye bile çalışmayacaksın.\n\nSadece otur. Bedenin ne yapıyor, zihin hangi kapıya koşuyor, zaman nasıl uzuyor? Bunları yargılamadan izle.\n\nHakimiyet, sıkıntının bitmesi değildir. Sıkıntı sürerken sakin kalabilmektir. Bu beceri ekran dışında da hayatını taşır.",
+        "action": "Yirmi dakika hiçbir şey yapmadan otur. Telefon, müzik, kitap yok.",
+        "reflectionPrompt": "Sıkıntı sırasında en güçlü kaçış kapısı neydi?",
         "quiz": [
           {
-            "q": "Sıkıntı nedir?",
+            "q": "Hakimiyet ne?",
             "options": [
-              "Hastalık",
-              "Bir kas",
-              "Ödül",
-              "Kaza"
+              "Sakin kalmak",
+              "Hiç sıkılmamak",
+              "Kaçmak",
+              "Uyumak"
             ],
-            "correct": 1,
-            "explain": "**Sıkıntı bir kastır** — çalıştıkça güçlenir, kullanılmazsa körelir. Kingo Inoue 2018: tahammül yüksek olanlar daha yaratıcı."
+            "correct": 0,
+            "explain": "Sıkıntı varken sakin kalabilmek beceridir."
           },
           {
-            "q": "Sıkıntı ne kadarda dostlaşır?",
+            "q": "Bugün ne yok?",
             "options": [
-              "1 hafta",
-              "30 gün",
-              "6 ay",
-              "Asla"
+              "Telefon",
+              "Gözlem",
+              "Nefes",
+              "Oturmak"
             ],
-            "correct": 1,
-            "explain": "**~30 gün** sonra dostluk başlar. Sen bu eşiği geçtin — şimdi sıkıntı senin yaratıcılık zeminin."
+            "correct": 0,
+            "explain": "Ekransız boşluk pratik edilir."
           }
         ]
       },
       "33": {
         "title": "Tek Akıl Odağı",
-        "teaching": "Steve Jobs **yürüyerek toplantı** yapardı. Nietzsche önemli felsefe çıkışlarını yürürken yazardı: 'Tüm büyük düşünceler yürürken doğar.' Aristotle'in Lyceum'u **Peripatos** (yürüyen okul) olarak biliniyordu. **Yürüyerek tek konu düşünme**, batılı düşüncenin 2500 yıllık aracı.\n\n**Düşünmek değer üretir.** Ama dağınık düşünce **gürültü** üretir. Tek mesele üzerinde 1 saat odaklan, 10 mesele üzerinde 1 saatten daha fazla iş çıkarırsın. Çünkü beyin **paralel düşünmez** — sürekli geçiş yapar, her geçişte derinlik kaybeder.\n\nStanford 2014 araştırması (Marily Oppezzo): yürüyen kişilerin yaratıcı düşünme skorları, oturan kişilere göre **%60 yüksek**. Yürüme, beyinde Default Mode Network'ü tetikler — yaratıcı bağlantıların kurulduğu ağ. Aynı zamanda BDNF (Brain-Derived Neurotrophic Factor) salgısı artar — nöron büyümesi sinyali.\n\nFormül net:\n1. **Bir mesele seç** (önemli bir karar, problem, soru)\n2. **1 saat yürü** (sessiz, telefon yok, müzik yok)\n3. **Sadece o mesele üzerine düşün**\n4. **Geri döndüğünde 5 dakika yaz** — ne keşfettin\n\nDetoksun bu noktasında dikkat süresi uzadığı için, 1 saatlik tek-konu düşünme şimdi mümkün. Bunu yapan kişi 'verimsizlik' gibi algılayabilir — aksine, **derin işin** temel pratiği.",
-        "action": "Bugün **1 saat tek konu** hakkında düşün — tercihen yürüyerek. Telefonsuz, müziksiz, başka bir şey aramadan. Geri döndüğünde 5 dk yaz: ne keşfettin.",
-        "reflectionPrompt": "Tek odak deneyimi nasıldı? Hangi içgörü daha önce gelmemişti? Niye şimdi geldi?",
-        "proTip": "Yürürken yap. Stanford 2014: yürüyen kişiler **%60 daha yaratıcı**. Sokrates, Nietzsche, Jobs aynı yöntem.",
+        "teaching": "Zihin sürekli dışarıdan cevap aramaya alışırsa kendi düşüncesine güveni azalır. Bir sorun gelir, hemen arama kutusu açılır. Bir fikir gelir, hemen başkasının fikri aranır.\n\nBugün bir konu seç ve onunla kal. Cevabı hemen bulmak zorunda değilsin. Ama kaçmadan aynı konuya dönmeyi öğreneceksin.\n\nYürümek bu iş için iyi bir alan olabilir. Hareket bedeni meşgul eder, zihin konunun etrafında daha rahat döner.\n\nBir saat sonunda kesin çözüm değil, netlik arıyoruz. Netlik bazen tek doğru cevap değil, daha iyi soru demektir.",
+        "action": "Bir konu seç. Altmış dakika arama yapmadan düşün, sonra beş dakika yaz.",
+        "reflectionPrompt": "Dışarıdan cevap aramadan hangi soru daha netleşti?",
         "quiz": [
           {
-            "q": "Tek odak süresi öneri?",
+            "q": "Bugünkü hedef?",
             "options": [
-              "10 dk",
-              "1 saat",
-              "8 saat",
-              "Sürekli"
+              "Netlik",
+              "Hızlı cevap",
+              "Daha çok sekme",
+              "Kaçış"
             ],
-            "correct": 1,
-            "explain": "**1 saat tek konu** = derin işlem. Kısa yetmez, uzun yorulur. 1 saat beyin Default Mode Network'ü tam aktif eder."
+            "correct": 0,
+            "explain": "Amaç konuyla kaçmadan kalmak."
           },
           {
-            "q": "Yürüyerek düşünme tekniği?",
+            "q": "Son adım?",
             "options": [
-              "Ok",
-              "En iyi fikirler",
-              "Yorgunluk",
-              "Etkisiz"
+              "Yazmak",
+              "Aramak",
+              "Dağıtmak",
+              "Unutmak"
             ],
-            "correct": 1,
-            "explain": "**En iyi fikirler yürüyüşte gelir.** Stanford %60 yaratıcılık artışı. BDNF salgısı = nöron büyümesi. Aristotle'den Jobs'a süregelen pratik."
+            "correct": 0,
+            "explain": "Yazmak düşünceyi görünür yapar."
           }
         ]
       },
       "34": {
         "title": "Bilgi Diyeti",
-        "teaching": "Sabah uyandın. Twitter aç, 15 dakika. Email kontrolü, podcast'i fonda dinle. İş arası YouTube, akşam Netflix. Yatmadan TikTok. Toplam: 6-8 saatlik **bilgi tüketimi**. Bir hafta sonra hangi 'bilgi' hatırlanıyor? Cevap: hiçbiri.\n\nBilgi de **kalori** gibi. Junk food: lezzetli, doyurucu hisseder, gerçek besin sıfır. Junk içerik aynı: 'düşünüyorum/öğreniyorum' hissi verir, gerçek değer sıfır. Tristan Harris bunu **informational obesity** olarak adlandırıyor — fazla, niteliksiz, sürekli alımdan kaynaklanan zihinsel şişmanlık.\n\nKey insight: **az ama nitelikli, çok ama boş olmaktan üstündür**. 30 sayfalık derin bir kitap, 8 saat YouTube'dan değerli. 1 saatlik gerçek sohbet, 50 newsletter'dan zengin. Nassim Taleb (Antifragile): 'Haber okumak, bilgisizliğin örgütlü hali.'\n\nMIT 2018 araştırması: günlük >4 saat içerik tüketenlerin dikkat süresi, <1 saat tüketenlere göre **%35 daha düşük**. Çünkü beyin yüzeyel-tarama moduna kilitleniyor.\n\nBilgi diyeti formülü: **'Bana hizmet ediyor mu?'** sorusu her kaynağa. Cevap net 'evet' değilse → kanal kapatılır. RSS feed temizliği, podcast unfollow, YouTube unsubscribe, gazete iptal. Sadece **derin değer** üreten kaynaklar kalır.",
-        "action": "Bugün **3 ana bilgi kaynağını** sırala (haber sitesi, podcast, YouTube kanalı, vb.). Her biri için soru: 'Son 1 ayda buradan öğrendiğim bir şey hayatımı değiştirdi mi?' Hayır olan her kanalı **şu an** unfollow et.",
-        "reflectionPrompt": "En büyük 'boş' kaynak hangisi? Niye senden bu kadar zaman almasına izin verdin?",
-        "proTip": "'Bana hizmet ediyor mu?' filtre cümlesi. Hayır olan her kanalı kapat. Taleb: 'Haber okumak bilgisizliğin örgütlü hali.'",
+        "teaching": "Her bilgi kaynağı değer katmaz. Bazıları sadece zihni meşgul eder. Sürekli takip etmek, gerçekten öğrenmekle aynı şey değildir.\n\nBugün kaynaklarını yargılayacaksın. Hangi kanal sana davranış, karar veya bakış açısı kazandırıyor? Hangisi sadece günün boşluğunu dolduruyor?\n\nBir kaynağı bırakmak cahil kalmak değildir. Dikkatini daha iyi kaynaklara ayırmaktır. Az kaynak, daha derin işleme demektir.\n\nListeyi kısa tut. Bilgi akışın sadeleştiğinde zihnin daha az dağılır ve ne öğrendiğini daha iyi hatırlarsın.",
+        "action": "Üç bilgi kaynağını yaz. Değer katmayanı bugün takipten çıkar.",
+        "reflectionPrompt": "Hangi kaynağı bırakmak beklediğinden zor geldi?",
         "quiz": [
           {
-            "q": "Bilgi diyeti filtre cümlesi?",
+            "q": "Takip etmek ne değildir?",
             "options": [
-              "Trend?",
-              "Bana hizmet ediyor mu?",
-              "Popüler mi?",
-              "Yeni mi?"
+              "Öğrenmekle aynı",
+              "Bir seçim",
+              "Zaman harcamak",
+              "Alışkanlık"
             ],
-            "correct": 1,
-            "explain": "**Hayır olan kanal = noise.** Her bilgi kaynağı ya değer üretir ya zaman çalar. Orta yok — popüler/yeni/trend olması fark etmez."
+            "correct": 0,
+            "explain": "Sürekli takip gerçek öğrenme anlamına gelmez."
           },
           {
-            "q": "Az ama nitelikli?",
+            "q": "Az kaynak?",
             "options": [
-              "Yanlış",
-              "İyi diyet",
-              "Risk",
-              "Eski"
+              "Daha derin işlem",
+              "Eksiklik",
+              "Kaos",
+              "Hızlı kaçış"
             ],
-            "correct": 1,
-            "explain": "**Az + nitelikli > çok + boş.** MIT 2018: günlük >4 saat tüketenlerin dikkat süresi %35 düşük. Niteliksiz çokluk = zihinsel obezite."
+            "correct": 0,
+            "explain": "Azaltmak dikkati toplamayı kolaylaştırır."
           }
         ]
       },
       "35": {
         "title": "Zevk Reseti",
-        "teaching": "Çocukluğunda bir buz topu seni mutlu ederdi. Yağmurun sesi şaşırtıcıydı. Babanla yaptığın 15 dakikalık yürüyüş günün en güzel anıydı. Şimdi 6 saat dizi izlersin, hala 'sıkıldım' dersin. Aynı senin ama **zevk eşiği** çok farklı yerde.\n\n**Sürekli stimülasyon = zevk eşiği yüksek.** Anna Lembke'in **Dopamine Nation** (2021) kitabının ana tezi: dopamin yüksek baseline'da kalırsa, beyin küçük zevkleri 'zevk' olarak algılamayı bırakır. Sürekli triple-shot espresso içen bir kişi için sade kahve = tatsız. Sürekli reels izleyen için doğa yürüyüşü = sıkıcı. Sürekli Netflix için bir kitap = yavaş.\n\nDetoksun gizli ödülü: **küçük şeyler tekrar zevk verir**. Sabah kahvesinin kokusu farkedilir. Bir kuş sesinin güzelliği fark edilir. Dost sohbeti besler. Bir film bittiğinde 'oldu' hissi gelir. Çocukluğunun zevk-eşiği geri geldi.\n\nNörobiyolojik mekanizma: dopamin reseptörleri 30 günlük 'dopamin fasting' sonrası **yeniden hassaslaşır**. Aynı tetikleyici (kahve, müzik, sohbet) eskiden ürettiği dopamin seviyesinin 2-3x'i salgılanıyor. Yani sen aynısın ama beynin **artık daha çok zevk alabiliyor**.\n\nBugünün egzersizi: bir küçük şeyden bilinçli zevk al. Telefonsuz, dikkat dağılmadan. Ona tamamen ver dikkati. Sonra fark et: bu zevk önceden de vardı, sen mi duymuyordun?",
-        "action": "Bugün **küçük bir şeyden** zevk al. Telefonsuz, dikkat dağılmadan. Bir kahve, bir yürüyüş, bir sohbet — her ne olursa. Sadece o ana ver kendini.",
-        "reflectionPrompt": "Hangi küçük şey unutulmazdı? Niye o, bütün diğerlerinden ayrıldı?",
-        "proTip": "Akşam yatmadan: günün **3 küçük zevki**ni yaz. Bu pratik şükür reflexini güçlendirir, baseline'ı düşük tutar.",
+        "teaching": "Büyük ödüller aradıkça küçük zevkler sönük görünür. Oysa günlük hayat çoğunlukla küçük anlardan oluşur: sıcak içecek, temiz hava, iyi bir cümle, sakin yürüyüş.\n\nBugün küçük bir şeyi büyütmeyeceksin; sadece tam dikkatle yaşayacaksın. Telefon yok, yan iş yok, acele yok.\n\nDikkat verdiğinde sıradan anın rengi değişir. Aynı kahve, aynı sokak, aynı konuşma daha dolu hissedilebilir.\n\nBu pratik lüks değil. Sade anlardan tat alabilen kişi daha az dış uyarana muhtaç kalır.",
+        "action": "Küçük bir zevk seç. On dakika sadece ona dikkat ver.",
+        "reflectionPrompt": "Tam dikkat verince hangi küçük detay değişti?",
         "quiz": [
           {
-            "q": "Zevk eşiği nasıl yükselir?",
+            "q": "Küçük zevk ne ister?",
             "options": [
-              "Çalışma",
-              "Sürekli stimulasyon",
-              "Açlık",
-              "Spor"
+              "Dikkat",
+              "Ekran",
+              "Acele",
+              "Kalabalık"
             ],
-            "correct": 1,
-            "explain": "**Sürekli yapay yüksek zevkler eşiği büyütür** — Lembke'in Dopamine Nation tezi. Beyin baseline'ı yukarı çekiyor, normal hayat 'düz' geliyor."
+            "correct": 0,
+            "explain": "Dikkat sıradan anı daha dolu yapar."
           },
           {
-            "q": "Reset nasıl olur?",
+            "q": "Bugünkü kural?",
             "options": [
-              "Daha fazla zevk",
-              "Sade hayata dön",
-              "Uyu",
-              "Kork"
+              "Yan iş yok",
+              "Çoklu iş",
+              "Bildirim açık",
+              "Hız"
             ],
-            "correct": 1,
-            "explain": "**Sadelik = küçük zevkler tekrar tatlı.** Dopamin reseptörleri 30 günlük detokstan sonra yeniden hassaslaşır."
+            "correct": 0,
+            "explain": "Tek anı bölmeden yaşarsın."
           }
         ]
       },
       "36": {
-        "title": "Ödül Tahmin Edilemezliği",
-        "teaching": "Las Vegas slot makinesi neden çalışıyor? Adam her seferinde kazanmıyor, hatta çoğu zaman kaybediyor — ama duramıyor. Cevap **rastgelelikte**. Eğer her el kazansaydı, beyin sıkılırdı. Eğer hiç kazanmasa, vazgeçerdi. Ama **bazen** kazanır — bu **tahmin edilemezlik** dopamini patlatır.\n\nB.F. Skinner'ın 1950'lerdeki güvercin deneyleri bu mekanizmayı buldu: **variable ratio reinforcement** (değişken oranlı pekiştirme). En güçlü öğrenme deseni, en güçlü bağımlılık deseni — aynı şey.\n\nSosyal medya bildirim sistemi tam bu mantıkla tasarlandı:\n- **Ne zaman** bildirim gelir bilemezsin (zaman)\n- **Hangi** bildirim gelir bilemezsin (içerik)\n- **Önemli mi** önemsiz mi bilemezsin (değer)\n\nBu üç belirsizlik = slot makinesinin dijital versiyonu. Telefon cebinde **titremediği** halde 'titremiş gibi' hissedersin — buna **phantom vibration syndrome** denir, ABD üniversite öğrencilerinin %68'inde gözlemlendi (Indiana University 2012).\n\nÇözüm: **tahmin edilebilirlik yarat**. Bildirimleri kapat, kontrolü **kendin** yap, **sabit saatlerde**. Örneğin: 09:00, 12:00, 17:00, 20:00 — günde 4 kez mesaj/email kontrolü. Diğer zamanlarda telefon görünmez.\n\nNörobiyolojik etki: beyin 'ne zaman?' beklemeyi bırakır. Dopamin baseline'ı düşük seviyede sabit kalır. Anksiyete düşer (tomografik olarak ölçülmüş).",
-        "action": "Bugün **bildirimleri kapatılı tut**. Mesaj/email kontrolü için **sabit saatler** belirle (örnek: 9, 12, 17, 20). Sadece o saatlerde kontrol et. Diğer zamanlar telefon başka odada.",
-        "reflectionPrompt": "Beklenti hissi en çok hangi an geldi? O an gerçek bir şey mi bekliyordun yoksa otomatik refleks miydi?",
-        "proTip": "Sabit kontrol saatleri = tahmin edilebilirlik = dopamin sakin. Skinner'ın güvercinleri tersinden uygulanır.",
+        "title": "Sabit Kontrol Saatleri",
+        "teaching": "Bildirim açıkken zamanın sana ait değildir. Her ses, her titreşim, her kırmızı nokta günün yönünü değiştirebilir.\n\nBugün kontrolü geri almak için saat belirleyeceksin. Mesaj ve e-posta rastgele değil, belirli aralıklarda bakılacak. Böylece gün sürekli bölünmez.\n\nBaşta kaçırıyormuş gibi hissedebilirsin. Bu duygu normaldir. Ama çoğu kontrol acil değildir; sadece alışılmıştır.\n\nSabit saatler ilişkileri bitirmez. Tam tersine, cevap verdiğinde daha net ve daha sakin olmanı sağlar.",
+        "action": "Mesaj ve e-posta için dört kontrol saati seç. Aralarda bildirim kapalı kalsın.",
+        "reflectionPrompt": "Sabit saatler gününü daha sakin mi, daha gergin mi yaptı?",
         "quiz": [
           {
-            "q": "Slot makinesi neden bağımlılık?",
+            "q": "Bildirim açıkken?",
             "options": [
-              "Şans",
-              "Tahmin edilemez ödül",
-              "Para",
-              "Renk"
+              "Zaman bölünür",
+              "Odak artar",
+              "Gün sadeleşir",
+              "Her şey acil olur"
             ],
-            "correct": 1,
-            "explain": "**Beklenti dopamini patlatır.** Skinner 1950: variable ratio reinforcement, en güçlü davranış öğrenme/bağımlılık deseni. Slot ve sosyal medya = aynı mantık."
+            "correct": 0,
+            "explain": "Bildirimler günü dışarıdan böler."
           },
           {
             "q": "Çözüm?",
             "options": [
-              "Sürekli kontrol",
-              "Sabit kontrol saatleri",
-              "Hiç bakma",
-              "Telefonu kır"
+              "Sabit saat",
+              "Rastgele bakış",
+              "Sürekli ekran",
+              "Daha çok uyarı"
             ],
-            "correct": 1,
-            "explain": "**Sabit zaman = tahmin edilebilir = sakin.** Beyin 'ne zaman?' beklemeyi bırakınca dopamin baseline düşer, anksiyete düşer."
+            "correct": 0,
+            "explain": "Belirli saatler kontrolü geri verir."
           }
         ]
       },
       "37": {
-        "title": "Dopamin Programlaması",
-        "teaching": "Vücudun yıllar boyunca evrimleşmiş bir **kimyasal saat** taşıyor. Sabah uyandığında kortizol piki, dopamin yüksek — gün başlatma modu. Öğle vakti dopamin düşer, kortizol düşer — verimli iş modu. Akşam serotonin/melatonin yükselir, dopamin orta — sosyal/dinlenme modu. Geç akşam melatonin zirvede, uyku için hazırlık.\n\nBu **circadian dopamin akışı** — uzmanlık alanı: Stanford'da Dr. Andrew Huberman'ın araştırma odağı. İçinde milyonlarca yıl evrim var.\n\nModern hayat bu akışı **bozuyor**:\n- Sabah ilk telefon = dopamin baseline'ı yapay yükselt\n- Öğle TikTok/scroll = düşmesi gereken anda yükselt\n- Akşam Netflix maratonu + parlak ekran = melatonin baskıla, uyku sinyali bloke et\n- Gece yarısı son Instagram = dopamin akşam zirvesi, ertesi sabah çöküş\n\nSonuç: gün boyu sürekli düz, yapay dopamin. Akşam doğal yorgunluk yok. Sabah doğal enerji yok. Vücut hangi kimyasalı **ne zaman** salgılayacağını şaşırıyor.\n\nDoğal akışa saygı = **uzun vade enerji**. Sabah enerjik uyanırsın, öğleden sonra verimli, akşam sakin, gece kolay uyursun. İlaç değil — vücudun zaten bilen sistemi geri yüklemek.\n\n**Anahtar kural: 18:00 sonrası ekran azaltma.** Mavi ışık melatonini baskılar, uyku evreleri bozulur. Akşam = sıcak ışık, kitap, sohbet, yürüyüş. Ekran değil.",
-        "action": "Bugün **18:00 sonrası ekran yok**. Telefon başka odada, TV kapalı, bilgisayar kapalı. Akşamı doğal ritmle yaşa — sıcak ışık, kitap, sohbet, yürüyüş.",
-        "reflectionPrompt": "Akşam ekransız nasıl hissettin? Uyku kalitesi değişti mi? Sabah daha enerjik mi uyandın?",
-        "proTip": "Akşam mavi ışık filtre + sıcak ışık (2700K). Beyin 'uyku' sinyali alır, melatonin doğal salgılanır.",
+        "title": "Akşam Programı",
+        "teaching": "Akşam saatleri günün frenidir. Freni ekranla doldurursan zihin kapanmak yerine tekrar açılır.\n\nBugün akşamı sadeleştireceksin. Telefon başka odada, büyük ekran kapalı, ışık yumuşak, tempo düşük. Amaç sıkılmak değil, günü indirmek.\n\nBu boşluğu iyi şeylerle doldurabilirsin: kısa yürüyüş, yemek hazırlığı, kitap, sohbet, esneme. Hepsi ekrandan daha sessiz bir kapanış sağlar.\n\nAkşam programı sabahını korur. Gece ne kadar temiz kapanırsa, ertesi gün o kadar az dağınık başlar.",
+        "action": "Saat 18.00 sonrası büyük ekran yok. Telefon başka odada şarj olsun.",
+        "reflectionPrompt": "Ekransız akşam sabah enerjini nasıl etkiledi?",
         "quiz": [
           {
-            "q": "Dopamin doğal akışı?",
+            "q": "Akşam ne?",
             "options": [
-              "Akşam zirve",
-              "Sabah yüksek-akşam orta",
-              "Sürekli aynı",
-              "Rastgele"
+              "Günün freni",
+              "Yeni yarış",
+              "Sınırsız ekran",
+              "Kaos"
             ],
-            "correct": 1,
-            "explain": "**Sabah yüksek, öğle düşük, akşam orta.** Huberman araştırmaları: circadian dopamin akışı milyonlarca yıllık evrim. Modern hayat bu akışı bozuyor."
+            "correct": 0,
+            "explain": "Akşam tempo düşürmek içindir."
           },
           {
-            "q": "Saat 18 sonra ne yap?",
+            "q": "Telefon nerede?",
             "options": [
-              "Daha çok ekran",
-              "Ekran kıs",
-              "Kahve iç",
-              "Çalış"
+              "Başka odada",
+              "Yastıkta",
+              "Masada açık",
+              "Elde"
             ],
-            "correct": 1,
-            "explain": "**Akşam doğal akış için ekran kıs.** Mavi ışık melatonin baskılar, uyku kalitesini parçalar. Sıcak ışık + kitap = doğal uyku sinyali."
+            "correct": 0,
+            "explain": "Fiziksel mesafe akşamı korur."
           }
         ]
       },
       "38": {
-        "title": "Zihin Görselleştirme",
-        "teaching": "Olimpiyat altın madalyalı kayakçı Michael Phelps'in en güçlü antrenmanı havuzda değildi — **gözleri kapalı kanepede**. Her sabah yarış öncesi 30 dakika, dakika dakika yarışı zihninde yaşardı. Hareket, su sesi, finiş çizgisi, podyum. Sonra havuza girer — beyin **'zaten yapmış'** hissiyle yarışırdı.\n\nMichigan Üniversitesi 2014 araştırması: zihin görselleştirme yapan kayakçıların performans skoru, sadece fiziksel antrenman yapanlara göre **%23 yüksek**. Niye? **Beyin gerçek ile hayal arasında pek fark yapmaz.**\n\nfMRI çalışmaları: gözünü kapatıp 'tenis topuna vuruyorum' diye düşündüğünde, motor korteksindeki aktivite **gerçekten** topuna vurduğundakinin %80'ine yakın. Beyin için 'düşünce' ve 'eylem' arasındaki sınır bizim sandığımızdan çok ince.\n\nPratik uygulama:\n1. **Sabah, yatakta, 5 dakika** — beyin teta dalgalarında, en sünger-modunda\n2. **Hedefi detaylı görselleştir** — sadece sonucu değil, süreci: hisset, gör, duy, kokla\n3. **'Olmuş gibi'** hisset — gelecek zaman değil, şimdiki an\n4. **Bitir, kalk**\n\nGörselleştirme = ücretsiz, anında pratik. Sporcular, performans sanatçıları, askerler kullanır. Sen de kullan.\n\nOnemli: '*Sadece görselleştirmek* yetmez', tabii ki gerçek pratik gerekli. Ama görselleştirme **pratiğin verimliliğini katlar**, beyni hazırlar.",
-        "action": "Bugün **5 dakika** hedefini görselleştir. Detaylı, duyusal — sadece görüntü değil, ses, koku, his. Telefonu uzakta. Gözleri kapalı.",
-        "reflectionPrompt": "Hangi detaylar görselleştirmeyi güçlendirdi? Bunu yaptıktan sonra gerçek pratiğin daha mı kolaydı?",
-        "proTip": "**Sabah yatakta yap.** Beyin teta dalgalarında, en algılı modda. Uyandığında zaten 'başarmış' hisseder.",
+        "title": "Zihin Provası",
+        "teaching": "Bir hedef sadece kelime olarak kalırsa uzak görünür. Onu zihinde prova ettiğinde davranış daha somut hale gelir.\n\nBugün kendini istediğin günün içinde hayal edeceksin. Sabah nasıl başlıyor, çalışma nasıl ilerliyor, telefon nerede duruyor, akşam nasıl kapanıyor?\n\nProva süslü olmak zorunda değil. Sadece ayrıntılı olsun. Görüntü, ses, beden hissi, ortam ve ilk küçük hareket.\n\nZihin provası tek başına yeterli değildir. Ama davranışa başlamadan önce yönü belirler. Sonra küçük adımı atarsın.",
+        "action": "Beş dakika ideal gününü prova et. Sonra ilk küçük adımı yaz.",
+        "reflectionPrompt": "Provanın en net sahnesi hangisiydi?",
         "quiz": [
           {
-            "q": "Görselleştirme süresi?",
+            "q": "Prova ne sağlar?",
             "options": [
-              "1 dk",
-              "5 dk",
-              "1 saat",
-              "24 saat"
+              "Yön",
+              "Sihir",
+              "Kaçış",
+              "Bitiş"
             ],
-            "correct": 1,
-            "explain": "**5 dakika yeter.** Sporcular kullanır — Phelps, Federer, Curry. Michigan 2014: %23 performans artışı sadece görselleştirmeyle."
+            "correct": 0,
+            "explain": "Prova davranıştan önce yön verir."
           },
           {
-            "q": "Beyin gerçek-hayal farkı?",
+            "q": "Prova sonrası?",
             "options": [
-              "Net",
-              "Az",
-              "Çok büyük",
-              "Yok"
+              "Küçük adım",
+              "Uyku",
+              "Ekran",
+              "Erteleme"
             ],
-            "correct": 1,
-            "explain": "Beyin pek fark etmez — fMRI: hayalde tenis topu vuruşunda motor korteks aktivitesi gerçek hareketin %80'ine yakın. **Pratik etkisi gerçek.**"
+            "correct": 0,
+            "explain": "Görüntü eyleme bağlanmalıdır."
           }
         ]
       },
       "39": {
         "title": "Dürtü Sörfü",
-        "teaching": "Bağımlılık tedavisinde sigara bırakanları gözleyen Dr. Alan Marlatt (University of Washington), 1980'lerde net bir gözlem yaptı: sigara dürtüsü ortalama **10-20 dakika** sürüyor. Eğer kişi o dakikalarda **eylem** yapmazsa, dürtü kendiliğinden geçiyor. Marlatt buna **urge surfing** adını verdi.\n\nAna fikir: dürtüye **karşı çıkmak yerine üzerine sörf yap**. Dalga gibi. Dalgayı durdurmazsın — yükselir, doruğa ulaşır, **iner**, geçer. Aynı şekilde dürtü:\n- 0-3 dakika: hızlı yükselir, zirve\n- 3-10 dakika: tepe, en zor an\n- 10-15 dakika: iniş\n- 15-20 dakika: kayboldu\n\nÇoğu insan zirve anında pes eder ('dayanılmaz!') ve eyleme geçer — telefon, sigara, atıştırma. Halbuki **5 dakika daha** dayansa, iniş başlayacak.\n\nMindfulness-Based Relapse Prevention (Sarah Bowen, 2010) programı bu kavramı bağımlılık tedavisinde standartlaştırdı. Sigarayı bırakanlar arasında relapse oranı sadece urge surfing ile **%54 düşüyor**.\n\nUygulama:\n1. Telefon dürtüsü geldi\n2. **'Bir dalga geliyor'** de kendine\n3. Bedenle ne hissediyorsun, izle (göğüs sıkışıyor mu? eller titriyor mu?)\n4. Nefes al — 4-7-8 ritmiyle\n5. **Hareket etmeden** dakikaları say\n6. Dalga geçer\n\nBu hem detoks korumasıdır, hem yaşam boyu kullanılabilir bir araç. Tüm bağımlılık dürtüleri aynı şablonu izler — yiyecek, ekran, uyuşturucu, alkol, sigara. **Geçer.**",
-        "action": "Bugün bir **telefon dürtüsünü 10 dakika izle**. Yapma — geçmesini bekle. Bedenle dürtüye temas et: nerede hissediyorsun, nasıl bir his?",
-        "reflectionPrompt": "Dalga ne zaman zirve yaptı? Geçtiğinde ne hissettin — kayıp mı, rahatlama mı?",
-        "proTip": "Nefesle birlikte say: 4-7-8. **Dürtü nefesle erir.** Mindfulness-Based Relapse Prevention'ın temel tekniği.",
+        "teaching": "Dürtü geldiğinde sonsuza kadar sürecek gibi hissedebilir. Oysa çoğu dürtü dalga gibidir: yükselir, kalır, sonra azalır.\n\nBugün dalganın üstünde kalmayı deneyeceksin. Telefonu alma. Dürtünün bedende nerede olduğunu fark et: el, göğüs, çene, mide, omuz.\n\nDürtüyle savaşmak yerine onu tarif et. Sıcak mı, sıkı mı, hızlı mı, hafif mi? Tarif ettikçe mesafe açılır.\n\nSörf etmek, hiç istememek değildir. İstek varken davranmamayı öğrenmektir. Bu çok pratik bir özgürlüktür.",
+        "action": "Bir telefon dürtüsünü on dakika izle. Yapma, sadece tarif et.",
+        "reflectionPrompt": "Dürtü bedende nerede ve nasıl hissedildi?",
         "quiz": [
           {
-            "q": "Urge sörfü nedir?",
+            "q": "Dürtü neye benzer?",
             "options": [
-              "Direnç",
-              "Üzerine sörf yap",
-              "Engelle",
-              "Yok say"
+              "Dalga",
+              "Duvar",
+              "Emir",
+              "Kimlik"
             ],
-            "correct": 1,
-            "explain": "**Dalga gibi: yükselir-zirve-geçer.** Alan Marlatt (1980) kavramı — direnme/engelleme yerine **izleyerek** geçirmek. Direnirsen büyür."
+            "correct": 0,
+            "explain": "Yükselir, kalır ve azalır."
           },
           {
-            "q": "Tipik dürtü süresi?",
+            "q": "Sörf etmek?",
             "options": [
-              "1 dk",
-              "10-20 dk",
-              "1 saat",
-              "1 gün"
+              "İstek varken davranmamak",
+              "İsteği yok etmek",
+              "Hemen açmak",
+              "Kaçmak"
             ],
-            "correct": 1,
-            "explain": "**10-20 dakika** sonra dürtü erir. Bowen 2010 MBRP araştırması: bu süreyi izleyerek geçirmek relapse'i %54 düşürüyor."
+            "correct": 0,
+            "explain": "Özgürlük, dürtüye rağmen seçim yapmaktır."
           }
         ]
       },
       "40": {
-        "title": "Bildirim Auditi v2",
-        "teaching": "İlk gün bildirimleri kapadın. Tertemiz, sessiz telefon. Üç hafta sonra bir uygulama indirdin (yemek siparişi mesela), izin verdin 'bir kerelik'. Sonra eski bir WhatsApp grup canlandı, otomatik aktif. Sonra Apple update sonrası bazı bildirim ayarları resetlendi. **30 günde bildirimler tekrar birikti.**\n\nBu doğal bir 'sızıntı'. Sistemler entropi seviyor — düzen kaybeder. Cal Newport (Deep Work): 'Dijital minimalizm tek seferlik bir hareket değil, sürekli pratiği gerektiren bir disiplin.'\n\nÇözüm: **aylık audit**. Takvime hatırlatıcı kur — ayın 1'i, 5 dakika. Settings → Bildirimler → tek tek bak. Yeni gelmiş olanları kapat. Eski refleksleri tekrar canlandıran herhangi bir izin gözden geçir.\n\nBu tek dakikalık bakımla 30 günlük disiplin kaybını engellersin. Bağımlılık geri dönüşünün en yaygın sebebi: **küçük sızıntılar büyür**. Bir bildirim → sonra iki → sonra eski kaos. Audit bu zinciri kırar.",
-        "action": "Bugün **tüm bildirimleri tekrar gözden geçir**. Yeni gelenler kapat. Sonra takvime kur: ayda 1, 5 dakika audit hatırlatıcısı.",
-        "reflectionPrompt": "Hangi yeni 'sızıntı' buldun? Bunu fark etmemiş olman ne söylüyor?",
-        "proTip": "Takvim hatırlatıcısı: ayda 1, 5 dakika audit. Disiplinin küçük bakımı.",
+        "title": "Bildirim Auditi",
+        "teaching": "Bildirimleri bir kez kapatmak yetmez. Yeni uygulamalar, yeni izinler ve eski ayarlar zamanla geri sızar.\n\nBugün ikinci audit günü. Tüm bildirim listesini baştan sona aç. Hangi uygulama gerçekten hemen haber vermeli? Hangisi sadece dikkat istiyor?\n\nKural basit: İnsan, takvim ve güvenlik dışındaki çoğu bildirim kapalı kalabilir. Uygulama seni çağırmasın; sen gerektiğinde aç.\n\nAudit’i takvime bağla. Ayda birkaç dakika ayırmak, yıl boyunca dikkatini korur.",
+        "action": "Tüm bildirimleri tara. Gereksizleri kapat ve aylık audit hatırlatıcısı kur.",
+        "reflectionPrompt": "Hangi yeni bildirim fark etmeden geri gelmişti?",
         "quiz": [
           {
-            "q": "Audit ne sıklıkla?",
+            "q": "Audit neden tekrar?",
             "options": [
-              "1 kez",
-              "Aylık",
-              "Yıllık",
-              "Asla"
+              "Ayarlar geri sızar",
+              "Eğlence için",
+              "Boşuna",
+              "Zorunlu değil"
             ],
-            "correct": 1,
-            "explain": "**Bildirimler 30 günde tekrar birikir.** Yeni uygulamalar, iOS update'leri, eski grup reaktivasyonları. Aylık 5 dk audit zinciri kırar."
+            "correct": 0,
+            "explain": "Yeni izinler zamanla dikkatini bölebilir."
           },
           {
-            "q": "Audit süresi?",
+            "q": "Uygulama ne yapmalı?",
             "options": [
-              "1 saat",
-              "5 dakika",
-              "1 gün",
-              "0"
+              "Sen açınca çalışmalı",
+              "Seni çağırmalı",
+              "Sürekli ses çıkarmalı",
+              "Gizlenmeli"
             ],
-            "correct": 1,
-            "explain": "**5 dakika yeter.** Settings → Bildirimler → liste. Yeni gelenler kapat, bitti."
+            "correct": 0,
+            "explain": "Kontrol sende kalmalı."
           }
         ]
       },

@@ -940,311 +940,301 @@
       },
       "31": {
         "title": "Replacement Habits",
-        "teaching": "Breaking addiction needs replacement, not just prohibition. When phone urge hits: walk, drink water, journal. Brain doesn't accept \"absence\" — it accepts \"swap.\"",
-        "action": "Today, on phone reflex, do something else for 3 minutes.",
-        "reflectionPrompt": "Which alternatives worked?",
-        "proTip": "List 5 quick alternatives (5 squats, 1 page book, 1 sentence to family).",
+        "teaching": "Do not underestimate reflex. When your hand moves toward the phone, you may not be deciding anymore. The old road has already started.\n\nDo not try to destroy the reflex by force today. Move it somewhere else. When the phone urge appears, choose a three-minute action: drink water, stretch, look out the window, write a short note.\n\nThe action does not need to be big. What matters is that two paths cannot run at the same time. You either feed the old path or start a new one.\n\nEach small replacement teaches the mind another option. Over time, the reflex stops having only one door.",
+        "action": "On phone reflex, do three minutes of water, stretching, notes, or walking.",
+        "reflectionPrompt": "Which small action made forgetting the phone easiest?",
         "quiz": [
           {
-            "q": "Replacement habit means?",
+            "q": "How is reflex changed?",
             "options": [
-              "Ban",
-              "Substitute",
-              "Ignore",
-              "Hide"
+              "Replacement",
+              "Self-blame",
+              "Opening faster",
+              "No pause"
             ],
-            "correct": 1,
-            "explain": "Brain accepts swap, not absence."
+            "correct": 0,
+            "explain": "A new small action interrupts the old road."
           },
           {
-            "q": "Strongest alternative?",
+            "q": "Action should be?",
             "options": [
-              "Phone",
-              "Movement/creativity",
-              "Food",
-              "Sleep"
+              "Small and immediate",
+              "Long and hard",
+              "Vague",
+              "Screen-based"
             ],
-            "correct": 1,
-            "explain": "Movement + creative = healthy dopamine."
+            "correct": 0,
+            "explain": "It must start easily during the urge."
           }
         ]
       },
       "32": {
         "title": "Boredom Mastery",
-        "teaching": "Boredom is a muscle. Trains stronger. First 30 days hard — now boredom is your friend. Give it space, not medicine. Creativity is born there.",
-        "action": "Today sit doing nothing for 20 minutes.",
-        "reflectionPrompt": "What appeared at minute 20?",
-        "proTip": "Look at a window. Watch your body. Observe thoughts without judging.",
+        "teaching": "Sitting with boredom looks passive, but it is an active choice. You train the ability to not escape every empty space.\n\nToday, set a period for doing nothing. You are not producing, hunting ideas, or even trying to improve yourself.\n\nJust sit. Notice what the body does, which door the mind runs toward, and how time stretches. Watch without judging.\n\nMastery does not mean boredom disappears. It means you can stay calm while boredom is still there. That skill carries into life outside the screen.",
+        "action": "Sit for twenty minutes doing nothing. No phone, music, or book.",
+        "reflectionPrompt": "What was the strongest escape door during boredom?",
         "quiz": [
           {
-            "q": "Boredom is?",
+            "q": "Mastery means?",
             "options": [
-              "Sickness",
-              "A muscle",
-              "Reward",
-              "Accident"
+              "Staying calm",
+              "Never bored",
+              "Escaping",
+              "Sleeping"
             ],
-            "correct": 1,
-            "explain": "Trains stronger."
+            "correct": 0,
+            "explain": "Calm during boredom is the skill."
           },
           {
-            "q": "When does boredom befriend?",
+            "q": "What is absent today?",
             "options": [
-              "1 week",
-              "~30 days",
-              "6 months",
-              "Never"
+              "Phone",
+              "Observation",
+              "Breath",
+              "Sitting"
             ],
-            "correct": 1,
-            "explain": "~30 days for friendship."
+            "correct": 0,
+            "explain": "You practice empty space without screen."
           }
         ]
       },
       "33": {
         "title": "Single-Mind Focus",
-        "teaching": "Thinking creates value. Scattered thinking creates noise. Focus 1 hour on one issue, you'll get more done than 1 hour on 10 issues.",
-        "action": "Today think on one topic for 1 hour. Don't search anything.",
-        "reflectionPrompt": "How was the single-focus experience?",
-        "proTip": "Do it walking. Best ideas come during walks.",
+        "teaching": "When the mind always searches outside for answers, trust in its own thinking gets weaker. A problem appears, and the search box opens. An idea appears, and someone else’s idea is requested.\n\nChoose one topic today and stay with it. You do not need the answer immediately. You are learning to return to the same topic without running away.\n\nWalking can help. Movement occupies the body while the mind circles the question more easily.\n\nAfter one hour, we are not looking for a perfect solution. We are looking for clarity. Sometimes clarity is not an answer; it is a better question.",
+        "action": "Choose one topic. Think for sixty minutes without searching, then write five minutes.",
+        "reflectionPrompt": "Which question became clearer without outside answers?",
         "quiz": [
           {
-            "q": "Single focus duration?",
+            "q": "Today’s aim?",
             "options": [
-              "10 min",
-              "1 hour",
-              "8 hours",
-              "Always"
+              "Clarity",
+              "Fast answer",
+              "More tabs",
+              "Escape"
             ],
-            "correct": 1,
-            "explain": "1 hour = deep processing."
+            "correct": 0,
+            "explain": "Stay with the topic without running."
           },
           {
-            "q": "Walking + thinking?",
+            "q": "Final step?",
             "options": [
-              "No",
-              "Best ideas",
-              "Tired",
-              "No effect"
+              "Write",
+              "Search",
+              "Scatter",
+              "Forget"
             ],
-            "correct": 1,
-            "explain": "Best ideas come walking."
+            "correct": 0,
+            "explain": "Writing makes thought visible."
           }
         ]
       },
       "34": {
         "title": "Information Diet",
-        "teaching": "Information is like calories. Few but quality > many but empty. 80% of info you consume today: forgotten in a week. Filter.",
-        "action": "Today list 3 main info sources. What does each teach you?",
-        "reflectionPrompt": "Biggest \"empty\" source?",
-        "proTip": "\"Does it serve me?\" — filter sentence. Close any \"no.\"",
+        "teaching": "Not every information source adds value. Some only keep the mind busy. Following constantly is not the same as learning.\n\nToday, judge your sources. Which channel changes your behavior, decisions, or perspective? Which one only fills empty space?\n\nLeaving a source does not make you uninformed. It gives attention back to better sources. Fewer sources can mean deeper processing.\n\nKeep the list short. When the flow is cleaner, the mind scatters less and remembers more of what it chose.",
+        "action": "Write three information sources. Unfollow one that adds no value today.",
+        "reflectionPrompt": "Which source was harder to leave than expected?",
         "quiz": [
           {
-            "q": "Info diet filter sentence?",
+            "q": "Following is not always?",
             "options": [
-              "Trend?",
-              "Does it serve me?",
-              "Popular?",
-              "New?"
+              "Learning",
+              "A choice",
+              "Time use",
+              "Habit"
             ],
-            "correct": 1,
-            "explain": "Any \"no\" = noise."
+            "correct": 0,
+            "explain": "Constant input does not equal learning."
           },
           {
-            "q": "Few but quality?",
+            "q": "Fewer sources?",
             "options": [
-              "Wrong",
-              "Good diet",
-              "Risk",
-              "Old"
+              "Deeper processing",
+              "Lack",
+              "Chaos",
+              "Fast escape"
             ],
-            "correct": 1,
-            "explain": "Few + quality > many + empty."
+            "correct": 0,
+            "explain": "Reduction makes attention easier to gather."
           }
         ]
       },
       "35": {
         "title": "Pleasure Reset",
-        "teaching": "Constant stimulation = high pleasure threshold. Returning to simple = small things become joys again. Morning coffee, bird sounds, friendship — taste returns.",
-        "action": "Today enjoy a small thing. Phoneless, focused.",
-        "reflectionPrompt": "Which small thing was unforgettable?",
-        "proTip": "Before bed: write 3 small joys of the day.",
+        "teaching": "When you chase large rewards, small pleasures can look dull. Yet daily life is mostly small moments: a warm drink, clean air, a good sentence, a calm walk.\n\nToday, do not make a small thing bigger. Just give it full attention. No phone, side task, or rush.\n\nAttention changes the color of an ordinary moment. The same coffee, street, or conversation can feel fuller.\n\nThis practice is not luxury. A person who can enjoy simple moments needs less outside noise to feel alive.",
+        "action": "Choose one small pleasure. Give it ten minutes of full attention.",
+        "reflectionPrompt": "Which small detail changed when you gave full attention?",
         "quiz": [
           {
-            "q": "How does pleasure threshold rise?",
+            "q": "Small pleasure needs?",
             "options": [
-              "Work",
-              "Constant stimulation",
-              "Hunger",
-              "Sport"
+              "Attention",
+              "Screen",
+              "Rush",
+              "Crowd"
             ],
-            "correct": 1,
-            "explain": "Constant artificial peaks raise threshold."
+            "correct": 0,
+            "explain": "Attention makes an ordinary moment fuller."
           },
           {
-            "q": "Reset by?",
+            "q": "Today’s rule?",
             "options": [
-              "More pleasure",
-              "Return to simple",
-              "Sleep",
-              "Fear"
+              "No side task",
+              "Many tasks",
+              "Alerts on",
+              "Speed"
             ],
-            "correct": 1,
-            "explain": "Simplicity = small pleasures sweet again."
+            "correct": 0,
+            "explain": "You live one moment without splitting it."
           }
         ]
       },
       "36": {
-        "title": "Reward Unpredictability",
-        "teaching": "Why are slot machines addictive? Reward isn't every time — anticipation pumps dopamine. Social media is the same. Unpredictability = addiction. Know and limit.",
-        "action": "Today keep notifications off, set fixed check times.",
-        "reflectionPrompt": "When did the anticipation feeling come most?",
-        "proTip": "Fixed check times = predictable = dopamine calm.",
+        "title": "Fixed Check Times",
+        "teaching": "When notifications are open, your time is not fully yours. Every sound, vibration, and red dot can redirect the day.\n\nChoose check times today to take control back. Messages and email are checked at set times, not at random. The day stops being chopped into pieces.\n\nAt first, it may feel like you are missing something. That feeling is normal. Most checks are not urgent; they are familiar.\n\nFixed times do not end relationships. They help you reply with more clarity and less reaction.",
+        "action": "Choose four message and email check times. Keep alerts off between them.",
+        "reflectionPrompt": "Did fixed times make your day calmer or tenser?",
         "quiz": [
           {
-            "q": "Why slot machine addictive?",
+            "q": "With alerts on?",
             "options": [
-              "Luck",
-              "Unpredictable reward",
-              "Money",
-              "Color"
+              "Time gets split",
+              "Focus rises",
+              "Day simplifies",
+              "All is urgent"
             ],
-            "correct": 1,
-            "explain": "Anticipation pumps dopamine."
+            "correct": 0,
+            "explain": "Alerts divide the day from outside."
           },
           {
             "q": "Solution?",
             "options": [
-              "Always check",
-              "Fixed check times",
-              "Never check",
-              "Break phone"
+              "Fixed times",
+              "Random checks",
+              "Constant screen",
+              "More alerts"
             ],
-            "correct": 1,
-            "explain": "Fixed time = predictable = calm."
+            "correct": 0,
+            "explain": "Set times return control."
           }
         ]
       },
       "37": {
-        "title": "Dopamine Schedule",
-        "teaching": "Dopamine's natural flow: morning high, afternoon low, evening medium. Artificial peaks disrupt the flow. Respecting the flow = long-term energy.",
-        "action": "Today no screens after 18:00. Let body return to natural rhythm.",
-        "reflectionPrompt": "How did screen-free evening feel?",
-        "proTip": "Evening blue-light filter + warm light. Brain reads \"sleep.\"",
+        "title": "Evening Program",
+        "teaching": "Evening is the brake of the day. If you fill the brake with screens, the mind opens again instead of closing.\n\nTonight, simplify the evening. Phone in another room, big screen off, softer light, lower pace. The goal is not boredom. The goal is landing the day.\n\nYou can fill the space with good things: a short walk, cooking, reading, conversation, stretching. Each gives a quieter close than the screen.\n\nThe evening program protects the morning. The cleaner the night closes, the less scattered tomorrow begins.",
+        "action": "No big screen after 18:00. Charge the phone in another room.",
+        "reflectionPrompt": "How did a screen-free evening affect your morning energy?",
         "quiz": [
           {
-            "q": "Dopamine natural flow?",
+            "q": "Evening is?",
             "options": [
-              "Evening peak",
-              "Morning high - evening medium",
-              "Always same",
-              "Random"
+              "The day’s brake",
+              "A new race",
+              "Unlimited screen",
+              "Chaos"
             ],
-            "correct": 1,
-            "explain": "Morning high, noon low, evening medium."
+            "correct": 0,
+            "explain": "Evening is for lowering pace."
           },
           {
-            "q": "After 18:00 do?",
+            "q": "Phone location?",
             "options": [
-              "More screen",
-              "Reduce screen",
-              "Coffee",
-              "Work"
+              "Another room",
+              "Pillow",
+              "Open desk",
+              "In hand"
             ],
-            "correct": 1,
-            "explain": "Evening reduce screen for natural flow."
+            "correct": 0,
+            "explain": "Physical distance protects the evening."
           }
         ]
       },
       "38": {
-        "title": "Mental Imagery",
-        "teaching": "Brain barely separates real from imagined. 5 min of seeing yourself succeed = practice-equivalent. Athletes use it — you can too.",
-        "action": "Today visualize your goal for 5 min. Detailed, sensory.",
-        "reflectionPrompt": "Which details strengthened the imagery?",
-        "proTip": "Do it in bed in morning. Brain wakes already \"succeeded.\"",
+        "title": "Mental Rehearsal",
+        "teaching": "If a goal stays only as words, it can feel far away. Rehearsing it in the mind makes the behavior more concrete.\n\nToday, imagine yourself inside the day you want. How does morning begin? How does work move? Where is the phone? How does evening close?\n\nThe rehearsal does not need to be fancy. It should be detailed: image, sound, body feeling, setting, and the first small move.\n\nMental rehearsal is not enough by itself. But it sets direction before action. Then you take the small step.",
+        "action": "Rehearse your ideal day for five minutes. Then write the first small step.",
+        "reflectionPrompt": "Which scene in the rehearsal was clearest?",
         "quiz": [
           {
-            "q": "Visualization duration?",
+            "q": "Rehearsal gives?",
             "options": [
-              "1 min",
-              "5 min",
-              "1 hour",
-              "24 hours"
+              "Direction",
+              "Magic",
+              "Escape",
+              "Finish"
             ],
-            "correct": 1,
-            "explain": "5 min enough, athletes use it."
+            "correct": 0,
+            "explain": "Rehearsal points action before it starts."
           },
           {
-            "q": "Brain real-imagined gap?",
+            "q": "After rehearsal?",
             "options": [
-              "Clear",
-              "Small",
-              "Huge",
-              "None"
+              "Small step",
+              "Sleep",
+              "Screen",
+              "Delay"
             ],
-            "correct": 1,
-            "explain": "Brain barely separates — practice effect."
+            "correct": 0,
+            "explain": "The image should connect to action."
           }
         ]
       },
       "39": {
         "title": "Urge Surfing",
-        "teaching": "Don't fight urges — surf them. You can't stop a wave — it rises, peaks, passes. Typical urge = 10-20 min. It passes.",
-        "action": "Today watch a phone urge for 10 min. Don't act — wait it out.",
-        "reflectionPrompt": "When did the wave peak?",
-        "proTip": "Count with breath: 4-7-8. Urge dissolves with breath.",
+        "teaching": "When an urge arrives, it can feel endless. Most urges are more like waves: they rise, stay for a while, and then fall.\n\nToday, stay on the wave. Do not pick up the phone. Notice where the urge lives in the body: hand, chest, jaw, stomach, shoulder.\n\nDescribe the urge instead of fighting it. Is it warm, tight, fast, light? As you describe it, distance opens.\n\nSurfing does not mean never wanting. It means learning not to act while wanting. That is a very practical form of freedom.",
+        "action": "Watch one phone urge for ten minutes. Do not act; only describe it.",
+        "reflectionPrompt": "Where and how did the urge feel in your body?",
         "quiz": [
           {
-            "q": "Urge surfing means?",
+            "q": "Urge is like?",
             "options": [
-              "Resist",
-              "Surf the wave",
-              "Block",
-              "Ignore"
+              "Wave",
+              "Wall",
+              "Command",
+              "Identity"
             ],
-            "correct": 1,
-            "explain": "Like a wave: rises, peaks, passes."
+            "correct": 0,
+            "explain": "It rises, stays, and falls."
           },
           {
-            "q": "Typical urge duration?",
+            "q": "Surfing means?",
             "options": [
-              "1 min",
-              "10-20 min",
-              "1 hour",
-              "1 day"
+              "Not acting while wanting",
+              "Removing all desire",
+              "Opening fast",
+              "Escaping"
             ],
-            "correct": 1,
-            "explain": "Urge dissolves in 10-20 min."
+            "correct": 0,
+            "explain": "Freedom is choosing despite the urge."
           }
         ]
       },
       "40": {
-        "title": "Notification Audit v2",
-        "teaching": "Notifications creep back in 30 days. New downloads, old reactivations. Monthly audit needed. The WhatsApp group you muted in March returns in April.",
-        "action": "Today review all notifications again. Close new ones.",
-        "reflectionPrompt": "What new \"leak\" did you find?",
-        "proTip": "Calendar reminder: monthly, 5-min audit.",
+        "title": "Notification Audit",
+        "teaching": "Turning notifications off once is not enough. New apps, new permissions, and old settings leak back over time.\n\nToday is the second audit. Open the full notification list. Which app truly needs to reach you immediately? Which one only wants attention?\n\nA simple rule helps: people, calendar, and safety can stay close. Most other alerts can stay off. The app should not call you; you open it when needed.\n\nPut the audit on the calendar. A few minutes each month can protect attention all year.",
+        "action": "Review every notification. Turn off extras and set a monthly audit reminder.",
+        "reflectionPrompt": "Which new notification had returned without you noticing?",
         "quiz": [
           {
-            "q": "How often audit?",
+            "q": "Why repeat audit?",
             "options": [
-              "Once",
-              "Monthly",
-              "Yearly",
-              "Never"
+              "Settings leak back",
+              "For fun",
+              "No reason",
+              "It is impossible"
             ],
-            "correct": 1,
-            "explain": "Notifications creep back in 30 days."
+            "correct": 0,
+            "explain": "New permissions can split attention again."
           },
           {
-            "q": "Audit duration?",
+            "q": "App should work when?",
             "options": [
-              "1 hour",
-              "5 minutes",
-              "1 day",
-              "0"
+              "You open it",
+              "It calls you",
+              "It makes noise",
+              "It hides"
             ],
-            "correct": 1,
-            "explain": "5 min suffices."
+            "correct": 0,
+            "explain": "Control should stay with you."
           }
         ]
       },
