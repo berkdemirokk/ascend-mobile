@@ -1696,312 +1696,302 @@
         "proTip": "Write an observable finish line. Replace “work on it” with what will be complete."
       },
       "6": {
-        "title": "Morning Light: 10 Minutes",
-        "teaching": "Brain resets circadian rhythm via blue-green light hitting the retina. 10 min outside in morning = deeper sleep at night. Glass blocks it — direct sky needed. Even cloudy days deliver 100x more lux than indoors.",
-        "action": "Today, within 30 min of waking, get 10 min of direct outdoor light. No phone.",
-        "reflectionPrompt": "What shifted internally when you saw direct sky?",
-        "proTip": "If you work in an office, take a second 10 min dose at lunch. The afternoon dose is even stronger.",
+        "title": "Morning Light",
+        "teaching": "If the first minutes begin with the phone, the tone of the day comes from outside. One alert, one headline, or one message can redirect you before you are fully awake.\n\nTake the tone from the real world today. Balcony, window, street, or doorway is enough. This is not a grand routine; it is contact with the day.\n\nDo not try to solve anything while you look. Notice air, color, sound, surface, and movement.\n\nThis small pause is the doorway into the day. You enter deliberately instead of rushing in.",
+        "action": "After waking, stand phone-free outside or near a window for ten minutes.",
+        "reflectionPrompt": "How did screen-free morning light change the day’s tone?",
         "quiz": [
           {
-            "q": "How does circadian rhythm reset?",
+            "q": "Morning tone from?",
             "options": [
-              "Blue-green light",
-              "Music",
-              "Food",
-              "Phone"
+              "Real world",
+              "Alerts",
+              "Headlines",
+              "Randomness"
             ],
             "correct": 0,
-            "explain": "Morning light hitting retina = primary circadian signal."
+            "explain": "You begin with surroundings instead of the screen."
           },
           {
-            "q": "Lux difference even cloudy?",
+            "q": "The aim?",
             "options": [
-              "Same",
-              "10x",
-              "50x",
-              "100x outdoor"
+              "Notice",
+              "Solve",
+              "Rush",
+              "Post"
             ],
-            "correct": 3,
-            "explain": "Cloudy outdoors ~100x brighter than indoors."
+            "correct": 0,
+            "explain": "Brief observation opens the morning deliberately."
           }
         ]
       },
       "7": {
-        "title": "First Water: 300ml",
-        "teaching": "Body is dehydrated 6-8 hours from sleep. Coffee first = stacking on already-peaking cortisol. Water first, coffee 90+ min later. Water = energy, focus, hunger control.",
-        "action": "Today drink 300ml water on waking. Wait at least 60 min before coffee.",
-        "reflectionPrompt": "What was the first physical change you noticed after drinking?",
-        "proTip": "Leave a glass at your bedside the night before — no morning decision needed.",
+        "title": "First Water",
+        "teaching": "The first morning choice looks small. But small choices shape the direction of the day. Before phone, coffee, or rushing, choose a simple care move.\n\nA glass of water is symbolic for that reason. It is a plain way to tell the body, we are starting. It does not need to become a big claim.\n\nDo nothing else while drinking. Stand or sit, take a few slow sips, and enter the day.\n\nThe power of routines is simplicity. What is easy gets repeated, and what repeats builds morning identity.",
+        "action": "Drink one glass of water after waking. Do not open the phone until it is done.",
+        "reflectionPrompt": "How did beginning with a simple care move feel?",
         "quiz": [
           {
-            "q": "First morning drink should be?",
+            "q": "First water represents?",
             "options": [
-              "Coffee",
-              "Water",
-              "Tea",
-              "Milk"
+              "Care move",
+              "Hard target",
+              "Punishment",
+              "Display"
             ],
-            "correct": 1,
-            "explain": "Cortisol already peaks — water, not coffee."
+            "correct": 0,
+            "explain": "It gives the morning a simple calm start."
           },
           {
-            "q": "Min wait before coffee?",
+            "q": "Phone when?",
             "options": [
-              "0 min",
-              "15 min",
-              "60 min",
-              "180 min"
+              "After water",
+              "Immediately",
+              "In bed",
+              "Before everything"
             ],
-            "correct": 2,
-            "explain": "At least 60 min for hydration."
+            "correct": 0,
+            "explain": "The first decision belongs to you before the screen."
           }
         ]
       },
       "8": {
         "title": "Cold Splash",
-        "teaching": "Full cold shower is intense — but 30 sec of cold water on your face delivers 80% of the benefit. Sympathetic nervous system fires, dopamine jumps 250%, focus lasts 2 hours. Free, fast, no marketing.",
-        "action": "Today splash cold water on your face for 30 seconds. Add wrists if you can.",
-        "reflectionPrompt": "How was your mental clarity right after the shock?",
-        "proTip": "If 30 sec is too much, start with 10. Add 5 sec each day.",
+        "teaching": "Morning can start blurry. The mind is still in bed, the body is slow, and the hand is close to the phone. A small physical signal can make the transition clearer.\n\nWashing your face with cool water is one such signal. It does not need to be harsh. Keep it short and safe. Use only mildly cool water if that is better.\n\nThe goal is not toughness. The goal is to make waking conscious instead of automatic.\n\nWhen the water is done, do not rush to the screen. Wait a few breaths and notice the body’s changed state.",
+        "action": "Wash your face with cool water. Then wait for three breaths.",
+        "reflectionPrompt": "How did this small physical transition affect you?",
         "quiz": [
           {
-            "q": "Cold face wash duration?",
+            "q": "The goal is not?",
             "options": [
-              "10s",
-              "30s",
-              "60s",
-              "180s"
+              "A display",
+              "Transition",
+              "Awareness",
+              "Pause"
             ],
-            "correct": 1,
-            "explain": "30 seconds = 80% of the benefit."
+            "correct": 0,
+            "explain": "This is a small transition signal, not a test."
           },
           {
-            "q": "Cold shock effect on dopamine?",
+            "q": "After water?",
             "options": [
-              "-10%",
-              "+50%",
-              "+150%",
-              "+250%"
+              "Wait three breaths",
+              "Open screen",
+              "Rush",
+              "Check messages"
             ],
-            "correct": 3,
-            "explain": "250% rise lasts 2 hours."
+            "correct": 0,
+            "explain": "You notice the body’s new state."
           }
         ]
       },
       "9": {
         "title": "Posture Discipline",
-        "teaching": "Slumped posture = low testosterone, high cortisol. 2 minutes of upright stance shifts hormone profile (Amy Cuddy research). Mirror check: shoulders back, chest open, chin parallel. This stance carries the day.",
-        "action": "Today stand tall for 5 min (standing or sitting). Hourly 30-sec posture check.",
-        "reflectionPrompt": "How did you feel internally once you fixed your posture?",
-        "proTip": "Hold your phone at eye level, not down. This alone reduces neck strain by 70%.",
+        "teaching": "The shape of the body sends a message to the mind. A collapsed, rushed posture can make the entrance to the day feel scattered too.\n\nPosture discipline is not military stiffness. Relax the shoulders a little, lift the head, and feel the feet on the floor.\n\nUse posture as a reminder, not a performance. You tell the body, I am here. Sometimes that sentence works faster through the body than through thought.\n\nShort checks are enough. The point is not holding tension for a long time; it is returning again and again.",
+        "action": "Sit or stand tall for five minutes. Do three short posture checks today.",
+        "reflectionPrompt": "How did adjusting posture shift your mind?",
         "quiz": [
           {
-            "q": "Slumped posture distorts which hormones?",
+            "q": "Posture discipline is?",
             "options": [
-              "Insulin",
-              "Test/cortisol",
-              "Thyroid",
-              "Adrenaline"
+              "Reminder",
+              "Stiffness",
+              "Display",
+              "Pain"
             ],
-            "correct": 1,
-            "explain": "Low T, high cortisol = slump signature."
+            "correct": 0,
+            "explain": "The body gives the mind an “I am here” message."
           },
           {
-            "q": "Time for posture to shift hormones?",
+            "q": "What matters?",
             "options": [
-              "10s",
-              "2 min",
-              "20 min",
-              "2h"
+              "Returning",
+              "Tensing",
+              "Exaggerating",
+              "Forgetting"
             ],
-            "correct": 1,
-            "explain": "Cuddy research — 2 min suffices."
+            "correct": 0,
+            "explain": "Short returns are more usable than strain."
           }
         ]
       },
       "10": {
-        "title": "Stretch Routine: 5 Minutes",
-        "teaching": "Sleep contracts muscles, fascia stiffens. Morning stretch = launching the day in a flexible body. 3 moves are enough: arms up (shoulders), forward bend (back-leg), side rotation (spine). 30 sec × 3 sets each.",
-        "action": "Today stretch 5 min. Stop at the stretch point, not the pain point.",
-        "reflectionPrompt": "Which body part loosened up the most?",
-        "proTip": "Sync stretch with breath. Deepen on the exhale of each move.",
+        "title": "Five-Minute Stretch",
+        "teaching": "Morning movement does not need to be big. Five minutes can be enough: neck, shoulders, back, hips, legs. The point is to wake the body, not force it.\n\nThere is no race in stretching. Do not chase pain. Notice the stretch and stay soft at the edge.\n\nThis brief routine brings you back to the body before reaching for the phone. The day begins from inside, not from the screen.\n\nBecause the time is short, excuses are fewer. Five minutes becomes the sign that you returned to yourself.",
+        "action": "Stretch gently for five minutes. Look for soft stretch, not pain.",
+        "reflectionPrompt": "Which area became more noticeable after stretching?",
         "quiz": [
           {
-            "q": "Min stretch moves needed?",
+            "q": "Stretching aim?",
             "options": [
-              "1",
-              "3",
-              "7",
-              "15"
+              "Wake the body",
+              "Force it",
+              "Race",
+              "Find pain"
             ],
-            "correct": 1,
-            "explain": "3 main moves: shoulder, back-leg, side rotation."
+            "correct": 0,
+            "explain": "Gentle movement returns attention to the body."
           },
           {
-            "q": "Stop point of stretch?",
+            "q": "The edge?",
             "options": [
-              "Pain",
-              "Stretch sensation",
-              "Burn",
-              "Crack"
+              "Soft stretch",
+              "Sharp pain",
+              "Strain",
+              "Speed"
             ],
-            "correct": 1,
-            "explain": "Stretch point, not pain point."
+            "correct": 0,
+            "explain": "Stay in a safe and gentle range."
           }
         ]
       },
       "11": {
-        "title": "Box Breath: 4-4-4-4",
-        "teaching": "Box breathing (Navy SEAL technique): 4 sec in, 4 hold, 4 out, 4 hold. 5 minutes = parasympathetic activation, cortisol drop, focus boost. Science-proven, warriors used it, you can too.",
-        "action": "Today after waking do 5 min of box breathing. Sitting, upright posture.",
-        "reflectionPrompt": "What is the speed of your mind after the practice?",
-        "proTip": "If counting feels hard, use fingers. 4 closed, 4 hold, etc.",
+        "title": "Box Breath",
+        "teaching": "Counting breath gives the morning a simple frame. Even if thoughts are scattered, numbers can act like a small track.\n\nThe rhythm is simple: inhale, hold, exhale, hold. Each part is equal. If you lose count, nothing is broken; return to the next breath.\n\nThis practice does not need to create perfect calm. Its job is to gather attention around one thing in the first minutes.\n\nDo not judge yourself when attention wanders. Returning is the practice. Each return gives a little more of the morning back to you.",
+        "action": "Do five minutes of box breathing: inhale, hold, exhale, hold.",
+        "reflectionPrompt": "Where did the mind run most while counting?",
         "quiz": [
           {
-            "q": "Box breath rhythm?",
+            "q": "Counting breath gives?",
             "options": [
-              "4-4-4-4",
-              "5-2-7-2",
-              "4-7-8",
-              "Random"
+              "Frame",
+              "Race",
+              "Perfection",
+              "Noise"
             ],
             "correct": 0,
-            "explain": "4 in, 4 hold, 4 out, 4 hold."
+            "explain": "Numbers create a small track for attention."
           },
           {
-            "q": "Box breath activates?",
+            "q": "When distracted?",
             "options": [
-              "Sympathetic",
-              "Parasympathetic",
-              "Endocrine",
-              "Digestive"
+              "Return to breath",
+              "Quit",
+              "Get angry",
+              "Open phone"
             ],
-            "correct": 1,
-            "explain": "Parasympathetic = calm."
+            "correct": 0,
+            "explain": "Returning is the practice."
           }
         ]
       },
       "12": {
         "title": "Three Gratitudes",
-        "teaching": "Gratitude trains brain to produce dopamine/serotonin. Write 3 specific things: different from yesterday, for today. \"I'm healthy\" doesn't hit — \"I had my mom's warm bread at breakfast\" does. Detail = effect.",
-        "action": "Today write 3 specific gratitudes. Concrete, not abstract.",
-        "reflectionPrompt": "Which entry was the hardest to write? Why?",
-        "proTip": "Do gratitude bedside, journal at hand. Each evening read yesterday's.",
+        "teaching": "Gratitude becomes weak when it stays general. “Thanks for everything” is easy to say, but the mind moves past it quickly.\n\nWrite three specific things today. A sentence someone said, the light on your desk, a small task finished yesterday, a warm cup of tea. The more concrete, the better.\n\nThis practice is not denial of problems. It simply opens another window for the mind.\n\nWhen you write it in the morning, the day starts with more selection. You begin to see what exists, not only what is missing.",
+        "action": "Write three concrete gratitudes. No general lines; include detail.",
+        "reflectionPrompt": "What did the smallest item change in you?",
         "quiz": [
           {
-            "q": "Gratitude entry should be?",
+            "q": "Gratitude should be?",
             "options": [
-              "Generic",
-              "Specific + new",
-              "Same daily",
-              "Short"
+              "Concrete",
+              "General",
+              "Vague",
+              "Copied"
             ],
-            "correct": 1,
-            "explain": "Specific + different from yesterday = effect."
+            "correct": 0,
+            "explain": "Concrete details stay clearer in the mind."
           },
           {
-            "q": "Gratitude triggers which chemicals?",
+            "q": "It is not?",
             "options": [
-              "Cortisol",
-              "Dopamine/serotonin",
-              "Adrenaline",
-              "Melatonin"
+              "Problem denial",
+              "Opening a window",
+              "Noticing",
+              "Writing"
             ],
-            "correct": 1,
-            "explain": "Positive emotion chemistry fires."
+            "correct": 0,
+            "explain": "Problems can exist while you also see what is present."
           }
         ]
       },
       "13": {
         "title": "Three of the Day",
-        "teaching": "Trying to do everything = doing nothing. Pick 3 priorities at sunrise: only 3. If all done by night, day is a win. Rest is bonus.",
-        "action": "Today write 3 priorities at the start. Tick them by night.",
-        "reflectionPrompt": "Which 7 items did you cut to land on 3?",
-        "proTip": "Finish one before 11am. Early win = energy all day.",
+        "teaching": "Starting the day with ten tasks can look strong, but it often scatters attention. The mind tries to carry all of them and enters none fully.\n\nChoose three priorities today. More than three can be a list, but not the spine of the day.\n\nKeep priorities small and finishable. Not “fix my life,” but “send the report,” “walk twenty minutes,” or “call my mother.”\n\nAt night, look honestly. Mark what is done, move what remains, or delete it. This makes control of the day visible.",
+        "action": "Write three priorities in the morning. Mark completed ones at night.",
+        "reflectionPrompt": "Did the limit of three simplify your day?",
         "quiz": [
           {
-            "q": "How many priorities a day?",
+            "q": "Why three?",
             "options": [
-              "1",
-              "3",
-              "7",
-              "15"
+              "Build a spine",
+              "Do everything",
+              "Scatter",
+              "Delay"
             ],
-            "correct": 1,
-            "explain": "3 = doable + focused."
+            "correct": 0,
+            "explain": "Few priorities give the day direction."
           },
           {
-            "q": "When should first priority finish?",
+            "q": "Priority should be?",
             "options": [
-              "7am",
-              "11am",
-              "PM",
-              "Evening"
+              "Finishable",
+              "Huge",
+              "Vague",
+              "Endless"
             ],
-            "correct": 1,
-            "explain": "Early win = energy."
+            "correct": 0,
+            "explain": "Finishable work can be seen at night."
           }
         ]
       },
       "14": {
         "title": "Body Scan",
-        "teaching": "Body carries accumulated stress. Morning body scan = \"what am I carrying\" awareness. Head to toe: clenched jaw, raised shoulders, tight stomach? Notice = release.",
-        "action": "Today on waking, do a 3-min body scan. Send breath into each tense area.",
-        "reflectionPrompt": "Which body part was tightest? What might it be telling you?",
-        "proTip": "Jaw is the most ignored. Place tongue on roof of mouth — jaw releases.",
+        "teaching": "Morning does not start only with thought. The body also gives information: tense shoulder, tight jaw, heavy legs, easy breath.\n\nA body scan is for hearing that information. It is not treatment, only a short check. Move slowly from head to toe and notice what is there.\n\nIf one area is tense, do not force it to change. Give it soft attention with the breath. Sometimes noticing is enough for a beginning.\n\nThis practice brings you back to the body. You begin the day not only from the head, but with your whole state.",
+        "action": "Scan from head to toe for three minutes. Give tense areas soft attention.",
+        "reflectionPrompt": "Which part of the body spoke the loudest?",
         "quiz": [
           {
-            "q": "Body scan duration?",
+            "q": "Body scan is?",
             "options": [
-              "30s",
-              "3 min",
-              "15 min",
-              "1h"
-            ],
-            "correct": 1,
-            "explain": "3 min head-to-toe is enough."
-          },
-          {
-            "q": "Most ignored tense area?",
-            "options": [
-              "Jaw",
-              "Foot",
-              "Knee",
-              "Wrist"
+              "Short check",
+              "Treatment",
+              "Race",
+              "Force"
             ],
             "correct": 0,
-            "explain": "Jaw clenches unnoticed all day."
+            "explain": "You notice the information the body gives."
+          },
+          {
+            "q": "Tense area?",
+            "options": [
+              "Notice it",
+              "Force it",
+              "Judge it",
+              "Ignore it"
+            ],
+            "correct": 0,
+            "explain": "Soft attention is the first step."
           }
         ]
       },
       "15": {
         "title": "Inner Greeting",
-        "teaching": "Most mornings start outward: phone, news, message. Inner greeting = \"hello to self.\" Look in the mirror, into your own eyes, say \"good morning [name].\" Not forced — a soft introduction.",
-        "action": "Today say \"good morning\" to yourself in the mirror. 10 sec eye contact.",
-        "reflectionPrompt": "What did you feel from the mirror version of you?",
-        "proTip": "If awkward, end with a smile day one. Brain doesn't separate real from forced.",
+        "teaching": "The way you speak to yourself sets the tone of the morning. Many people begin with the inner critic: you are late, not enough, failed again.\n\nInterrupt that with a small greeting today. Look in the mirror, say your name, and say good morning. If it feels strange, that is normal; you are learning a new language.\n\nThis does not need to become a big self-love moment. Basic respect is enough. Treat yourself as someone beside you, not someone against you.\n\nTen seconds looks short, but it is a strong start. Beginning without attacking yourself softens the next choices too.",
+        "action": "Say good morning to yourself by name in the mirror. Hold eye contact ten seconds.",
+        "reflectionPrompt": "Did respectful self-talk feel strange or relieving?",
         "quiz": [
           {
-            "q": "Inner greeting how?",
+            "q": "Inner greeting interrupts?",
             "options": [
-              "Phone",
-              "10 sec mirror eye contact",
-              "Written",
-              "Fast"
+              "Inner critic",
+              "The day",
+              "Water",
+              "Sleep"
             ],
-            "correct": 1,
-            "explain": "Eye-contact in mirror = inner introduction."
+            "correct": 0,
+            "explain": "It softens the harsh morning voice."
           },
           {
-            "q": "If first day awkward?",
+            "q": "The aim?",
             "options": [
-              "Skip",
-              "End with smile",
-              "Quit",
-              "Speed up"
+              "Basic respect",
+              "Performance",
+              "Perfect feeling",
+              "Self-trick"
             ],
-            "correct": 1,
-            "explain": "Brain doesn't separate forced from real."
+            "correct": 0,
+            "explain": "You treat yourself as someone beside you."
           }
         ]
       },

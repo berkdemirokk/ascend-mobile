@@ -654,6 +654,7 @@ run('first-session content pacing', () => {
 run('reviewed advanced lesson safety', () => {
   const reviewedRanges = {
     'dopamine-detox': [[11, 50]],
+    'silent-morning': [[6, 15]],
     'body-discipline': [[1, 50]],
     'money-discipline': [[1, 50]],
   };

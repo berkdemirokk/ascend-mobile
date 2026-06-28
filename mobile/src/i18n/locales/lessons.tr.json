@@ -1696,312 +1696,302 @@
         "proTip": "Niyet cümlesi sonuç içersin. “Çalışacağım” yerine neyin görünür biçimde tamamlanacağını yaz."
       },
       "6": {
-        "title": "Sabah Işığı: 10 Dakika",
-        "teaching": "Sabah uyandın, perdeler kapalı, ışıklar lojistik (kısık sarı), kahveni mutfakta içiyorsun. Tüm sabah ev içinde — kapalı odada lux miktarı **100-300**. Şimdi pencereden dışarı çıksan: bulutlu günde bile lux **10.000+**. Kapalı oda ile dışarı arasında **30-100x fark**.\n\nBeyin sirkadiyen ritmi göz retinasından gelen **mavi-yeşil ışıkla** sıfırlar. Andrew Huberman (Stanford) araştırmaları net: uyandıktan **30-60 dakika** içinde **10 dakikalık sabah ışığı** = gece daha derin uyku, gün boyu daha yüksek enerji, daha sağlıklı kortizol akışı.\n\nKritik detay: **direkt gökyüzü** gerek. Cam arkasından bakmak yetmez — pencere UV ve mavi ışığın bir kısmını filtreler. Balkona çık, sokağa çık, en azından pencereyi tamamen aç ve önünde 10 dakika geçir.\n\nBulutlu havada bile etkili — beyin mutlak değil göreceli ışığı algılar. Kış aylarında 20 dakikaya çıkarmak gerek (Norveç araştırmaları).",
-        "action": "Bugün **uyandıktan 30 dakika içinde 10 dakika dışarı çık** (balkon, sokak, açık pencere). Telefonsuz. Sadece gökyüzüne ve etrafına bak.",
-        "reflectionPrompt": "Direkt gökyüzü gördüğünde içsel olarak ne değişti? O gün enerji düzeyin akşama kadar nasıldı?",
-        "proTip": "Ofiste çalışıyorsan öğle yemeği molasında 10 dk daha al — ikinci doz daha güçlüdür.",
+        "title": "Sabah Işığı",
+        "teaching": "Sabahın ilk dakikaları telefonla başlarsa günün tonu dışarıdan gelir. Bir bildirim, bir haber, bir mesaj daha uyanmadan yönünü değiştirebilir.\n\nBugün yönü ekrandan değil, gerçek dünyadan al. Balkon, pencere önü, sokak veya kapı önü yeter. Amaç büyük bir rutin değil; güne gözlerinle temas etmek.\n\nIşığa bakarken bir şey çözmeye çalışma. Sadece çevreyi fark et: hava, renk, ses, yüzey, hareket.\n\nBu küçük durak günün giriş kapısıdır. İçeri aceleyle değil, bilerek girersin.",
+        "action": "Uyandıktan sonra on dakika dışarıda veya pencere önünde telefonsuz dur.",
+        "reflectionPrompt": "Ekransız ilk ışık günün tonunu nasıl değiştirdi?",
         "quiz": [
           {
-            "q": "Sirkadiyen ritm nasıl reset olur?",
+            "q": "Sabah tonu nereden gelsin?",
             "options": [
-              "Mavi-yeşil ışıkla",
-              "Müzikle",
-              "Yemekle",
-              "Telefonla"
+              "Gerçek dünyadan",
+              "Bildirimden",
+              "Haberlere göre",
+              "Rastgele"
             ],
             "correct": 0,
-            "explain": "Retinaya çarpan sabah ışığı = ana sirkadiyen sinyal."
+            "explain": "Güne ekran yerine çevreyle temas ederek başlarsın."
           },
           {
-            "q": "Bulutlu havada bile lux farkı?",
+            "q": "Amaç ne?",
             "options": [
-              "Aynı",
-              "10x",
-              "50x",
-              "100x dış"
+              "Fark etmek",
+              "Çözüm bulmak",
+              "Hızlanmak",
+              "Paylaşmak"
             ],
-            "correct": 3,
-            "explain": "Bulutlu dışarı kapalı odadan ~100x daha aydınlıktır."
+            "correct": 0,
+            "explain": "Kısa gözlem sabahı daha bilinçli açar."
           }
         ]
       },
       "7": {
-        "title": "İlk Su: 300ml",
-        "teaching": "8 saat uyudun. Vücut 8 saat **terlemekle ve nefes vermekle** su kaybetti. Sabah uyandığında bedenin **300-500ml dehidrasyon** durumunda. Beyin %75 sudur — dehidrasyon = dikkat dağınıklığı, baş ağrısı, yorgunluk, açlık ile karıştırılan susuzluk.\n\nBu sabah ilk içecek **kahve** olunca: kortizol zaten zirvedeyken (sabah doğal kortizol piki) **yapay olarak daha da yükseltiyorsun**. Sonuç: bir saat sonra crash — yine kahve, yine crash. Adrenal sistem yorulur.\n\nDoğru sıra: **önce su (300ml), sonra kahve (en az 60-90 dakika sonra)**. Andrew Huberman protokolü. Hidratasyon önce hücreye yerleşsin, kortizol baseline doğal düşsün — sonra kafein gelir, doğal akışla.\n\nFaydalar: enerji daha sürdürülebilir, odak daha temiz, **öğleden sonra crash yok**, açlık kontrolü daha iyi (susuzluk genelde 'açlık' olarak yorumlanır).",
-        "action": "Bugün uyanır uyanmaz **300ml su iç**. Kahveden önce minimum 60 dakika geçsin. Tercihen ılık.",
-        "reflectionPrompt": "Su içtiğinde bedeninde fark ettiğin ilk değişiklik ne oldu? Öğleden sonra enerji ne kadar sürdü?",
-        "proTip": "Bardağı gece başucuna bırak. Sabah hatırlatmaya gerek kalmaz.",
+        "title": "İlk Su",
+        "teaching": "Sabah ilk seçim küçük görünür. Ama küçük seçimler günün yönünü kurar. Telefon, kahve veya acele yerine önce basit bir bakım hamlesi seçebilirsin.\n\nBir bardak su bu yüzden semboliktir. Vücuda 'başlıyoruz' demenin sade yoludur. Bunu büyük bir sağlık iddiasına çevirmeye gerek yok.\n\nSuyu içerken başka bir şey yapma. Ayakta veya oturarak, birkaç yavaş yudumla güne gir.\n\nRutinlerin gücü basitliğindedir. Kolay olan şey tekrar edilir; tekrar edilen şey sabah kimliğini kurar.",
+        "action": "Uyanınca bir bardak su iç. Telefonu su bitene kadar açma.",
+        "reflectionPrompt": "Güne basit bir bakım hamlesiyle başlamak ne hissettirdi?",
         "quiz": [
           {
-            "q": "Sabah önce ne içilmeli?",
+            "q": "İlk su neyi temsil eder?",
             "options": [
-              "Kahve",
-              "Su",
-              "Çay",
-              "Süt"
+              "Bakım hamlesi",
+              "Zor hedef",
+              "Ceza",
+              "Gösteriş"
             ],
-            "correct": 1,
-            "explain": "Sabah kortizolü zaten zirvede — kahve değil su."
+            "correct": 0,
+            "explain": "Güne basit ve sakin bir başlangıç verir."
           },
           {
-            "q": "Kahveden önce minimum süre?",
+            "q": "Telefon ne zaman?",
             "options": [
-              "0 dk",
-              "15 dk",
-              "60 dk",
-              "180 dk"
+              "Su bitince",
+              "Hemen",
+              "Yatakta",
+              "Önce bildirim"
             ],
-            "correct": 2,
-            "explain": "Vücut hidratasyonu için en az 60 dk gerekir."
+            "correct": 0,
+            "explain": "İlk karar ekrandan önce sana ait olur."
           }
         ]
       },
       "8": {
         "title": "Soğuk Sıçrama",
-        "teaching": "Wim Hof, soğuk maruziyet adına 26 Guinness rekoru kıran adam. Söylediği şey artık akademik standart: **soğuk şok, beden için en güçlü zihinsel araç**. Buz banyosu zor ama tam soğuk duş bile çoğu insan için fazla — küçük versiyon: **yüze 30 saniye soğuk su sıçratmak**.\n\nKüçük versiyon **%80 faydayı** verir. Mekanizma:\n- Sempatik sinir sistemi devreye girer (uyanma modu)\n- **Dopamin %250 yükselir** (Stanford araştırması, Andrew Huberman tarafından popülerleştirildi)\n- Odak ve enerji **2 saat boyunca** sürer\n- Norepinefrin yükselir = anksiyete düşer (paradoksal)\n- Bağışıklık sistemi aktive olur\n\nÜcretsiz, hızlı (30 saniye), pazarlama yok, kahveden yan etkisiz.\n\nUygulama: yüzü lavabodan soğuk suyla 30 saniye yıka. Mümkünse el bileklerini de sok (vagus siniri ana noktası). Buz suyu daha güçlü ama musluk suyu da yeterli.",
-        "action": "Bugün yüzünü **30 saniye soğuk suyla yıka**. Mümkünse el bileklerini de sok. Sonra hisset.",
-        "reflectionPrompt": "Soğuk şokun ardından zihinsel netliğin nasıldı? Ne kadar sürdü etkisi?",
-        "proTip": "Çok zorlanıyorsan ilk gün 10 saniyeyle başla, her gün 5 saniye ekle.",
+        "teaching": "Sabah bazen bulanık başlar. Zihin hâlâ yatakta, beden hâlâ yavaş, el telefona yakın olabilir. Küçük bir fiziksel işaret geçişi belirginleştirir.\n\nYüzünü soğuk suyla yıkamak bu işaretlerden biridir. Rahatsız edici olmak zorunda değil; kısa ve güvenli olsun. İstemiyorsan sadece serin su kullan.\n\nAmaç dayanıklılık gösterisi değil. Amaç uyanma anını otomatiklikten çıkarıp bilinçli hale getirmek.\n\nSu bittiğinde hemen ekrana koşma. Birkaç nefes bekle ve bedenin değişen halini fark et.",
+        "action": "Yüzünü serin suyla yıka. Sonra üç nefes bekle.",
+        "reflectionPrompt": "Bu küçük fiziksel geçiş seni nasıl etkiledi?",
         "quiz": [
           {
-            "q": "Soğuk yüz yıkama kaç saniye?",
+            "q": "Amaç ne değil?",
             "options": [
-              "10",
-              "30",
-              "60",
-              "180"
+              "Gösteri",
+              "Geçiş",
+              "Farkındalık",
+              "Kısa durak"
             ],
-            "correct": 1,
-            "explain": "30 saniye %80 faydayı verir."
+            "correct": 0,
+            "explain": "Bu küçük bir geçiş işaretidir, zorlama değil."
           },
           {
-            "q": "Soğuk şok dopaminini nasıl etkiler?",
+            "q": "Su sonrası?",
             "options": [
-              "%10 düşürür",
-              "%50 yükseltir",
-              "%150 yükseltir",
-              "%250 yükseltir"
+              "Üç nefes bekle",
+              "Hemen ekran",
+              "Koş",
+              "Mesaj bak"
             ],
-            "correct": 3,
-            "explain": "250% dopamin artışı 2 saat sürer."
+            "correct": 0,
+            "explain": "Bedenin yeni halini fark edersin."
           }
         ]
       },
       "9": {
         "title": "Postür Disiplini",
-        "teaching": "Otobüsteki yorgun yolcuların duruşunu gözle: omuzlar düşmüş, baş öne eğilmiş, sırt yuvarlak. Bu duruş **yorgunluğu yaratan** değil — yorgunluğu **gösteren** bir şey gibi görünür. Ama 2010'larda Harvard'da Amy Cuddy'nin araştırmaları tersine çevirdi: **postür hormonu değiştirir**.\n\nEğri postür = **düşük testosteron, yüksek kortizol**. Dik postür = tam tersi. Sadece 2 dakika 'power pose' (dik, geniş, açık) durmak: testosteron %20 yükselir, kortizol %25 düşer. Hormon profili gerçekten ölçülebilir şekilde değişir.\n\nMekanizma: beyin bedenden de sinyal alır. Dik duruyorsan beyin 'bu kişi güçlü' algılar, ona göre hormon salgılar. Eğri duruyorsan 'bu kişi mağlup' algılar, kortizol artar.\n\nSabah aynaya bak: omuzlar geride, göğüs açık, çene paralel. Bu duruş **gün boyu dayanır** — saat başı kontrol et, eğrildiyse düzelt. Postür disiplin = küçük hareket, büyük etki.",
-        "action": "Bugün **5 dakika dik dur** (ayakta veya otururken). Saat başı 30 saniye postür kontrolü yap.",
-        "reflectionPrompt": "Postürünü düzelttiğinde içsel olarak nasıl hissettin? Birinin sana bakış açısı değişti mi sence?",
-        "proTip": "Telefonu göz hizasında tut, yere değil. Tek başına bu boyun gerginliğini %70 azaltır.",
+        "teaching": "Sabah bedenin şekli zihnine mesaj verir. Dağınık, çökmüş, aceleci bir duruş günün girişini de dağınık yapabilir.\n\nPostür disiplini askeri sertlik değildir. Omuzları biraz rahatlatmak, başı yükseltmek, ayakları yere hissettirmek yeter.\n\nBugün dik durmayı bir performans değil, hatırlatma olarak kullan. Bedenine 'buradayım' dersin. Bu cümle bazen düşünceden daha hızlı çalışır.\n\nKısa kontroller yeterlidir. Uzun süre kasmak değil, gün içinde tekrar tekrar geri dönmek önemlidir.",
+        "action": "Beş dakika dik otur veya dur. Gün içinde üç kısa postür kontrolü yap.",
+        "reflectionPrompt": "Duruşunu düzeltmek zihninde nasıl bir değişiklik yaptı?",
         "quiz": [
           {
-            "q": "Eğri postür hangi hormon profilini bozar?",
+            "q": "Postür disiplini ne?",
             "options": [
-              "İnsülin",
-              "Test/kortizol",
-              "Tiroid",
-              "Adrenalin"
+              "Hatırlatma",
+              "Sertlik",
+              "Gösteriş",
+              "Ağrı"
             ],
-            "correct": 1,
-            "explain": "Düşük test, yüksek kortizol — tipik eğri postür imzası."
+            "correct": 0,
+            "explain": "Beden üzerinden “buradayım” mesajı verir."
           },
           {
-            "q": "Postür hormonları ne kadar sürede değiştirir?",
+            "q": "Önemli olan?",
             "options": [
-              "10 saniye",
-              "2 dakika",
-              "20 dakika",
-              "2 saat"
+              "Geri dönmek",
+              "Kasmak",
+              "Abartmak",
+              "Unutmak"
             ],
-            "correct": 1,
-            "explain": "Cuddy araştırması — 2 dk yeter."
+            "correct": 0,
+            "explain": "Kısa tekrarlar uzun zorlamadan daha uygulanabilir."
           }
         ]
       },
       "10": {
-        "title": "Esneme Rutini: 5 Dakika",
-        "teaching": "Sabah ilk hareket: gözleri açıyorsun ama bedenin gece boyu hareketsiz. 7-8 saatte kaslar **kısalmış**, fasya (kas zarı) **sıkışmış**, dolaşım yavaşlamış. Yataktan kalkıp direkt güne başlamak bedeni 'rampa' olmadan motorize etmek gibi.\n\n**Sabah esneme = günü esnek bedenle başlatma.** Sadece 5 dakika yeter, 3 ana hareket:\n1. **Kollar yukarı** (omuz, sırt üst) — 30 sn × 3\n2. **Öne eğil** (sırt alt, hamstring) — 30 sn × 3\n3. **Yan dönüş** (omurga, oblique) — 30 sn × 3\n\nFizyoterapi araştırmaları: günlük 5 dakika sabah esneme, **kronik sırt ağrısını %40 azaltıyor** (Cochrane 2017 meta-analiz). Plus: dolaşım hızlanır, kortizol baseline daha sağlıklı, postür gün boyu daha iyi.\n\nKritik nokta: **gerilme noktasında dur, acıma noktasında değil**. Acıma = kas zedelenmesi sinyali. Gerilme = sağlıklı esneme. Bu fark başlangıçta öğrenilir.",
-        "action": "Bugün **5 dakika esneme** yap (yatakta veya yer paspasında). 3 ana hareket × 30 saniye × 3 set. Acıma değil gerilme noktasında dur.",
-        "reflectionPrompt": "Esneme sonrası hangi vücut bölgen serbestleşti? Hareket sırasında nefes nasıldı?",
-        "proTip": "Esneme nefesle birleşir. Her hareketin nefes ver fazında derinleştir.",
+        "title": "Beş Dakika Esneme",
+        "teaching": "Sabah hareketi büyük olmak zorunda değil. Bazen beş dakika yeter: boyun, omuz, sırt, kalça, bacak. Amaç bedeni uyandırmak, onu zorlamak değil.\n\nEsneme sırasında yarış yok. Ağrıya gitme. Sadece gerilmeyi fark et ve sınırda yumuşak kal.\n\nBu kısa rutin telefona uzanmadan önce bedene dönmeni sağlar. Gün önce ekrandan değil, içerden başlar.\n\nSüre kısa olduğu için bahanesi azdır. Beş dakika, sabahın 'kendime döndüm' işaretidir.",
+        "action": "Beş dakika nazik esneme yap. Ağrı değil, yumuşak gerilme ara.",
+        "reflectionPrompt": "Esneme sonrası hangi bölge daha fark edilir oldu?",
         "quiz": [
           {
-            "q": "Sabah esneme kaç hareketle yeterli?",
+            "q": "Esneme amacı?",
             "options": [
-              "1",
-              "3",
-              "7",
-              "15"
+              "Uyandırmak",
+              "Zorlamak",
+              "Yarışmak",
+              "Ağrı aramak"
             ],
-            "correct": 1,
-            "explain": "3 ana hareket: omuz, sırt-bacak, yan dönüş."
+            "correct": 0,
+            "explain": "Nazik hareket bedene dönmeyi sağlar."
           },
           {
-            "q": "Esnemenin durulma noktası neresi?",
+            "q": "Sınır neresi?",
             "options": [
-              "Acıma",
-              "Gerilme",
-              "Yanma",
-              "Çıtlama"
+              "Yumuşak gerilme",
+              "Keskin ağrı",
+              "Zorlanma",
+              "Hız"
             ],
-            "correct": 1,
-            "explain": "Gerilme noktasında dur, acıma noktasında değil."
+            "correct": 0,
+            "explain": "Güvenli ve nazik aralıkta kalırsın."
           }
         ]
       },
       "11": {
-        "title": "Kutu Nefesi: 4-4-4-4",
-        "teaching": "Navy SEAL'lerin (ABD özel kuvvetleri) stres altında zihni netleştirmek için kullandığı teknik **box breathing** — kutu nefesi. Savaş senaryosunda kullanılan bir teknik, sabah rutininde de işliyor.\n\nFormül: **4 saniye nefes al, 4 tut, 4 ver, 4 tut**. 4 round = 1 dakika. 5 dakika = 20 round. Çok basit ama güçlü.\n\nMekanizma:\n- **Parasempatik aktivasyon** — vagal sinir devreye girer\n- **Kortizol düşüşü** — stres hormonu baseline'a iner\n- **Odak artışı** — prefrontal korteks aktivitesi yükselir\n- **HRV (Heart Rate Variability) yükselir** — sağlıklı kalp+sinir sistemi göstergesi\n\nMark Divine (eski SEAL komutanı): 'Mücadele anında zihni netleştirmek istiyorsan, kutu nefesi yap. Sürekli yap.' Bilim kanıtladı (Mason et al. 2013), savaşçılar kullandı, sen de kullanabilirsin.\n\nSabah uygulaması: oturarak, dik postürle. Gözler kapalı veya yarı kapalı.",
-        "action": "Bugün uyandıktan sonra **5 dakika kutu nefesi** yap. Oturarak, dik postürle. Sayarken parmak kullanabilirsin.",
-        "reflectionPrompt": "Nefes pratiği sonrası zihninin hızı ne durumda? Düşünce akışı yavaşladı mı?",
-        "proTip": "Saymak zorlanıyorsan parmaklarını kullan: 4 parmak yumru, 4 yum, vs.",
+        "title": "Kutu Nefesi",
+        "teaching": "Nefes saymak sabaha basit bir çerçeve verir. Düşünceler dağınıksa bile sayılar küçük bir ray gibi çalışır.\n\nKutu nefesinde ritim sade: al, bekle, ver, bekle. Her bölüm eşit. Saymayı kaçırırsan sorun değil; sadece bir sonraki nefese dön.\n\nBu pratik mükemmel sakinlik üretmek zorunda değil. Amacı, sabahın ilk dakikasında dikkati tek şeye toplamaktır.\n\nDikkat dağıldığında kendini yargılama. Dönüşün kendisi pratiktir. Her dönüş, sabahın kontrolünü biraz daha sana verir.",
+        "action": "Beş dakika kutu nefesi yap: al, bekle, ver, bekle.",
+        "reflectionPrompt": "Sayarken zihin en çok nereye kaçtı?",
         "quiz": [
           {
-            "q": "Kutu nefesi ritmi?",
+            "q": "Nefes saymak ne verir?",
             "options": [
-              "4-4-4-4",
-              "5-2-7-2",
-              "4-7-8",
-              "Random"
+              "Çerçeve",
+              "Yarış",
+              "Kusursuzluk",
+              "Gürültü"
             ],
             "correct": 0,
-            "explain": "4 sn al, 4 tut, 4 ver, 4 tut."
+            "explain": "Sayılar dikkati toparlayan küçük bir ray olur."
           },
           {
-            "q": "Kutu nefesi hangi sistemi aktif eder?",
+            "q": "Dağılınca?",
             "options": [
-              "Sempatik",
-              "Parasempatik",
-              "Endokrin",
-              "Sindirim"
+              "Nefese dön",
+              "Bırak",
+              "Kız",
+              "Telefon aç"
             ],
-            "correct": 1,
-            "explain": "Parasempatik aktivasyon = sakinleşme."
+            "correct": 0,
+            "explain": "Dönüş pratiğin kendisidir."
           }
         ]
       },
       "12": {
         "title": "Üç Şükran",
-        "teaching": "Şükran pratiğinin **somut bilim**i var. UC Davis'te Robert Emmons'un 20 yıllık şükran araştırmaları net: günlük şükran pratiği yapan kişiler %25 daha mutlu, %23 daha az kortizol salgılar, %19 daha kaliteli uyku yaşar.\n\n**Şükran beyni dopamin/serotonin üretmeye programlar.** Sabah kahvaltıdan önce 5 dakikalık pratik, gün boyu duygu durumunu yukarı çeker.\n\nFormül: **3 spesifik şey yaz** — dünkünden farklı, bugün için.\n\nÖnemli: **detay = etki**. 'Sağlıklıyım' genel — beyne iz bırakmaz. 'Kahvaltıda annemin sıcak ekmeğini yedim' spesifik — beyin canlandırır, gerçek dopamin salgılar.\n\nDuygu kayıt mekanizması: yazılan şükran, **konkret bir an**a bağlanmalı. 'İşim var' yerine 'Dün öğleden sonra Berk arkadaşımla ofiste güldüğümüz an'. Beyin spesifik anılar üzerinden çalışır, soyut beyanlar üzerinden değil.\n\nDaily Stoic kitabının yazarı Ryan Holiday: 'Şükran disiplindir — duygu değil.' Yani bekleyip 'şükran hissetme'yi değil, **yazarak pratiği** yap.",
-        "action": "Bugün **3 spesifik şükran maddesi** yaz. Genel değil, konkret. Bir an, bir kişi, bir detay.",
-        "reflectionPrompt": "En zor yazdığın madde hangisi oldu? Neden — spesifik olmaktan mı korkuyorsun?",
-        "proTip": "Şükranı yatak kenarında yap, defterini başucunda tut. Akşam dünkü maddeleri oku.",
+        "teaching": "Şükran genel kalırsa etkisi zayıflar. 'Her şey için teşekkür' demek kolaydır ama zihin bunu hızla geçer.\n\nBugün üç şeyi spesifik yaz. Bir kişinin söylediği cümle, masandaki ışık, dün bitirdiğin küçük iş, içtiğin sıcak çay. Ne kadar somut, o kadar iyi.\n\nBu pratik sorunları yok saymak değildir. Sadece zihne başka bir pencere açmaktır.\n\nSabah bunu yazınca gün daha seçici başlar. Eksik olanı değil, var olanı da görmeye başlarsın.",
+        "action": "Üç somut şükran yaz. Genel cümle yok, detay olsun.",
+        "reflectionPrompt": "En küçük görünen madde sende neyi değiştirdi?",
         "quiz": [
           {
-            "q": "Şükran maddesi nasıl olmalı?",
+            "q": "Şükran nasıl?",
             "options": [
+              "Somut",
               "Genel",
-              "Spesifik + farklı",
-              "Aynı her gün",
-              "Kısa"
+              "Belirsiz",
+              "Kopya"
             ],
-            "correct": 1,
-            "explain": "Spesifik + dünkünden farklı = etki."
+            "correct": 0,
+            "explain": "Somut detay zihinde daha net kalır."
           },
           {
-            "q": "Şükran beyni hangi kimyasala programlar?",
+            "q": "Amaç ne değil?",
             "options": [
-              "Kortizol",
-              "Dopamin/serotonin",
-              "Adrenalin",
-              "Melatonin"
+              "Sorunu yok saymak",
+              "Pencere açmak",
+              "Fark etmek",
+              "Yazmak"
             ],
-            "correct": 1,
-            "explain": "Pozitif duygu kimyasalları aktif olur."
+            "correct": 0,
+            "explain": "Sorunlar dururken var olanı da görürsün."
           }
         ]
       },
       "13": {
         "title": "Günün Üçü",
-        "teaching": "Sabah listeyi açıyorsun: 17 madde. Akşam listeye bakıyorsun: 3 madde işli, 14 madde hala bekliyor. 'Bugün başarılı miydim?' diye soruyorsun, cevap **muğlak**. Yorgun ama tatmin değilsin.\n\nMatematik basit: **tüm gün her şeyi başarmaya çalışmak = hiçbir şey başaramamak**. Stephen Covey (7 Habits of Highly Effective People): 'Önemli olan acil olanı değil, yapılması gereken olanı yapmaktır.'\n\n**Sabah 3 öncelik seç. Sadece 3.** Gün sonunda hepsi tamamsa = gün başarılı. Geri kalan **bonus**.\n\nÜç olmasının sebepleri:\n- **1 yetersiz** — gün boyu boş zaman bahane olur\n- **5+ fazla** — yine 17'li listenin küçük versiyonu\n- **3 ideal** — odak korunur, gerçek başarı hissedilir\n\nGerry Weinberg: 'Listeden ne çıkardığın, listeye ne koyduğundan daha önemlidir.' 14 maddeyi listeden çıkarmak = zihinsel kapasite kazanmak.\n\nGün sonu metriği basitleşir: 3 ✓ = başarılı, 2 ✓ = orta, 1 ✓ = zayıf. Karmaşık olmayan değerlendirme = sürdürülebilir.",
-        "action": "Bugün gün başında **3 öncelik** yaz. Sadece 3. Akşam tikle. Tamamlanmayanlar yarına devredilir.",
-        "reflectionPrompt": "Üçü seçerken hangi 7 şeyi listeden çıkardın? Çıkardıkların gerçekten dünmü gerek?",
-        "proTip": "Bir tanesini saat 11'e kadar bitir. Erken galibiyet gün boyu enerji verir.",
+        "teaching": "Güne on görevle başlamak güçlü görünür ama çoğu zaman dağıtır. Zihin hepsini taşımaya çalışır ve hiçbirine tam girmez.\n\nBugün üç öncelik seçeceksin. Üçten fazlası liste olabilir ama günün omurgası olamaz.\n\nÖncelikler küçük ve tamamlanabilir olsun. 'Hayatımı düzelt' değil, 'raporu gönder', 'yirmi dakika yürü', 'annemi ara' gibi.\n\nAkşam sadece dürüstçe bak. Tamamlananı işaretle, kalanını taşı veya sil. Günün kontrolü böyle görünür olur.",
+        "action": "Sabah üç öncelik yaz. Akşam tamamlananı işaretle.",
+        "reflectionPrompt": "Üç sınırı gününü sadeleştirdi mi?",
         "quiz": [
           {
-            "q": "Günün önceliği kaç olmalı?",
+            "q": "Neden üç?",
             "options": [
-              "1",
-              "3",
-              "7",
-              "15"
+              "Omurga kurmak",
+              "Her şeyi yapmak",
+              "Dağılmak",
+              "Ertelemek"
             ],
-            "correct": 1,
-            "explain": "3 öncelik = yapılabilir + odaklı."
+            "correct": 0,
+            "explain": "Az öncelik günün yönünü netleştirir."
           },
           {
-            "q": "İlk öncelik ne zaman bitmeli?",
+            "q": "Öncelik nasıl?",
             "options": [
-              "Saat 7",
-              "Saat 11",
-              "Öğleden sonra",
-              "Akşam"
+              "Tamamlanabilir",
+              "Devasa",
+              "Belirsiz",
+              "Sonsuz"
             ],
-            "correct": 1,
-            "explain": "Erken galibiyet = enerji."
+            "correct": 0,
+            "explain": "Tamamlanabilir iş akşam görülebilir."
           }
         ]
       },
       "14": {
         "title": "Vücut Taraması",
-        "teaching": "Akşam dişlerini fırçalarken farkettiğin: çene gergin, kasılmış. 'Ne zaman böyle oldu?' Cevap: tüm gün boyu. Vücut **günden güne biriken stresi taşır** — sen farkında olmadan kaslar kısalır, fasya sertleşir, omuzlar yukarı kalkar.\n\nMindfulness-Based Stress Reduction (MBSR) — Jon Kabat-Zinn 1979'da Massachusetts Üniversitesi'nde geliştirdiği program. Temel uygulama: **vücut taraması**. Sabah 3 dakikalık taramayla başlamak, gün boyu vücut farkındalığı için anchor yaratır.\n\nFormül: tepeden tırnağa sistematik tara.\n- **Baş** — alın gergin mi? Çene kasılmış mı? Dilin damağa yapıştırılmış mı?\n- **Omuzlar** — yukarda mı? Geride mi?\n- **Sırt** — gergin mi? Bel yatkın mı?\n- **Karın** — sıkışık mı? Nefes alış-veriş engelli mi?\n- **Bacaklar** — kalçalar sıkılmış mı? Dizler kilitli mi?\n\nFark et = **serbest bırak**. Sadece dikkat verdiğin gerginlik genellikle kendiliğinden çözülür. Beyne 'orada gerginlik var' sinyali yetiyor — parasempatik sinir gevşemeyi başlatıyor.\n\nKronik gerginlik bölgeleri 'ne' söyler? Çene = bastırılmış öfke. Omuzlar = sorumluluk yüklenmesi. Mide = anksiyete. Vücut beyne mesaj taşır.",
-        "action": "Bugün uyandığında **3 dakika vücut taraması** yap. Tepeden tırnağa sistematik. Her gergin bölgeye nefes gönder.",
-        "reflectionPrompt": "Vücudunun en gergin bölgesi neresiydi? Ne anlatıyor olabilir — duygusal olarak?",
-        "proTip": "Çene en sık ihmal edilen yerdir. Dilini damağa yapıştır, çene gevşesin.",
+        "teaching": "Sabah sadece düşünceyle başlamaz. Beden de gün hakkında bilgi verir: gergin omuz, sıkı çene, ağır bacak, rahat nefes.\n\nVücut taraması bu bilgiyi duymak içindir. Tedavi değil, kısa bir kontrol. Tepeden tırnağa yavaşça gez ve ne var fark et.\n\nBir bölge gerginse onu düzeltmeye çalışma. Sadece nefesle yumuşak dikkat ver. Bazen fark etmek bile yeterli bir başlangıçtır.\n\nBu pratik seni bedene geri getirir. Güne yalnızca kafanın içinden değil, bütün halinle başlarsın.",
+        "action": "Üç dakika tepeden tırnağa bedenini tara. Gergin bölgeye yumuşak dikkat ver.",
+        "reflectionPrompt": "Bedeninde en çok hangi bölge konuştu?",
         "quiz": [
           {
-            "q": "Vücut taraması süresi?",
+            "q": "Tarama ne?",
             "options": [
-              "30 saniye",
-              "3 dakika",
-              "15 dakika",
-              "1 saat"
-            ],
-            "correct": 1,
-            "explain": "3 dakika tepeden tırnağa yeter."
-          },
-          {
-            "q": "En sık ihmal edilen gergin bölge?",
-            "options": [
-              "Çene",
-              "Ayak",
-              "Diz",
-              "Bilek"
+              "Kısa kontrol",
+              "Tedavi",
+              "Yarış",
+              "Zorlama"
             ],
             "correct": 0,
-            "explain": "Çene 24 saat boyunca farkında olmadan kasılır."
+            "explain": "Bedenin verdiği bilgiyi fark edersin."
+          },
+          {
+            "q": "Gergin bölge?",
+            "options": [
+              "Fark et",
+              "Zorla",
+              "Yargıla",
+              "Yok say"
+            ],
+            "correct": 0,
+            "explain": "Yumuşak dikkat ilk adımdır."
           }
         ]
       },
       "15": {
         "title": "İçsel Selam",
-        "teaching": "Sabah ilk 'kiminle' konuşuyorsun? E-posta gönderen, WhatsApp grubu, Twitter feed'i. Çoğu sabah dışsal başlar: telefon, haber, mesaj. **Kendinle** son ne zaman konuştun?\n\n**İçsel selam = 'kendine merhaba.'** Aynaya bak, gözünün içine bak, **'günaydın [adın]'** de. Bu pratik kulağa hafif geliyor ama nörobilim ciddi.\n\nLouise Hay'in 'mirror work' tekniği, son 20 yılda klinik psikolojide self-compassion (öz-şefkat) araştırmalarıyla doğrulandı. Kristin Neff (Texas Üniversitesi) çalışmaları: öz-şefkat pratiği yapan bireyler %40 daha az anksiyete, %35 daha az depresyon yaşıyor.\n\nMekanizma: beyin kendi sesini, kendi yüzünü, kendi adını duyup gördüğünde **aktive olur**. Sabah günü dışarıdan başlatmak yerine **içeriden** başlatmak — günün geri kalanına self-anchor verir.\n\nZorlama değil, yumuşak bir tanışma. İlk gün garip gelir. 5. gün doğal. 30. gün eksikliğini hissedersin. **Beyin yapay-gerçek ayrımı yapmaz** — gülümseyerek başlatırsan beyin 'bu kişi mutlu' bilgisi alır.",
-        "action": "Bugün **aynada kendine 'günaydın'** de. Adınla. **10 saniye gözüne bak**. Garipse, gülümseyerek bitir.",
-        "reflectionPrompt": "Aynadaki kendinden bugün ne hissettin? Bu duygunun adı var mı?",
-        "proTip": "Garipse, ilk günü gülümsemekle bitir. Yapay olabilir; beyin gerçekle yapay arasında ayrım yapmaz.",
+        "teaching": "Kendinle konuşma biçimin sabahın tonunu belirler. Birçok kişi güne iç eleştirmenle başlar: geç kaldın, yetersizsin, yine olmadı.\n\nBugün bunu küçük bir selamla keseceksin. Aynaya bak, adını söyle ve günaydın de. Garip gelirse normal; yeni bir dil öğreniyorsun.\n\nBu öz sevgi gösterisi olmak zorunda değil. Basit saygı yeter. Kendine düşman gibi değil, yanında biri gibi davran.\n\nOn saniye kısa görünür ama güçlü bir başlangıçtır. Güne kendini ezmeden başlamak, diğer seçimleri de yumuşatır.",
+        "action": "Aynada adınla günaydın de. On saniye göz teması kur.",
+        "reflectionPrompt": "Kendine saygılı konuşmak garip mi, rahatlatıcı mı geldi?",
         "quiz": [
           {
-            "q": "İçsel selam nasıl yapılır?",
+            "q": "İçsel selam neyi keser?",
             "options": [
-              "Telefonla",
-              "Aynaya 10 sn bakmak",
-              "Yazılı",
-              "Hızlı"
+              "İç eleştirmeni",
+              "Günü",
+              "Suyu",
+              "Uykuyu"
             ],
-            "correct": 1,
-            "explain": "Aynada gözüne bakmak = içsel tanışma."
+            "correct": 0,
+            "explain": "Sabahın sert iç sesini yumuşatır."
           },
           {
-            "q": "İlk gün garipse ne yap?",
+            "q": "Hedef ne?",
             "options": [
-              "Bırak",
-              "Gülümseyerek bitir",
-              "Atla",
-              "Hızlandır"
+              "Basit saygı",
+              "Gösteri",
+              "Kusursuz duygu",
+              "Kendini kandırma"
             ],
-            "correct": 1,
-            "explain": "Beyin yapay-gerçek ayrımı yapmaz."
+            "correct": 0,
+            "explain": "Kendine yanında biri gibi davranırsın."
           }
         ]
       },
