@@ -5740,467 +5740,452 @@
         ]
       },
       "36": {
-        "title": "Daily Walking Mastery",
-        "teaching": "10K steps good. 12K much better. 15K = elite. Movement is most natural medicine. Don't slouch — upright + brisk.",
-        "action": "Today hit 12K steps.",
-        "reflectionPrompt": "Sleep different at 12K?",
-        "proTip": "Walking meetings. Double your steps.",
+        "title": "Sustainable Walking",
+        "teaching": "A walking goal is not one high step count. Your starting level, mobility, work, and weather should shape the target.\n\nA brisk pace may fit some days, while comfortable walking and short movement breaks still matter. Phone-free walking is optional; environmental safety comes first.\n\nMeasure an ordinary day and add a small walk. Increase time gradually only when you recover well the next day.\n\nStop for chest discomfort, dizziness, unusual breathlessness, or increasing pain. Use individualized guidance for mobility limits.",
+        "action": "Add one short comfortable walk to your normal movement today.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Optimum steps?",
+            "q": "What is the soundest approach to sustainable walking?",
             "options": [
-              "5K",
-              "12K good - 15K elite",
-              "50K",
-              "1K"
+              "Increase walking gradually from a personal baseline",
+              "Apply one number to everyone",
+              "Ignore symptoms",
+              "Assume more is automatically better"
             ],
-            "correct": 1,
-            "explain": "12K good, 15K elite."
+            "correct": 0,
+            "explain": "The core approach is to increase walking gradually from a personal baseline."
           },
           {
-            "q": "Walking style?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Slouched",
-              "Upright + brisk",
-              "Slow",
-              "Random"
+              "Stop for warning symptoms and get suitable support",
+              "Continue through sharp pain",
+              "Override an individual care plan",
+              "Try a risky practice alone"
             ],
-            "correct": 1,
-            "explain": "Posture matters."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop for warning symptoms and get suitable support."
           }
         ]
       },
       "37": {
-        "title": "Cold Mastery",
-        "teaching": "Cold shower 2-min done. Now: ice bath. 1-3 min, 5-10°C. Norepinephrine +500%, depression -29%, immunity 10x. Post-training = quick recovery.",
-        "action": "Today try ice bath (bucket cold + ice).",
-        "reflectionPrompt": "Dominant feeling at temp control?",
-        "proTip": "First 30 sec breath, then relax.",
+        "title": "A Safer Approach to Cold",
+        "teaching": "An ice bath is not required for health or discipline. Sudden cold can rapidly change breathing and circulation and may create serious risk.\n\nHeart, blood-pressure, circulation, nerve, pregnancy, or fainting conditions may make immersion unsuitable. Trying it alone or after alcohol adds risk.\n\nIf curious, begin with briefly cooler but tolerable water at the end of a normal shower. Do not lock the door or force the breath.\n\nExit and warm safely for chest pain, dizziness, numbness, or uncontrolled breathing. Get health clearance before intense cold exposure.",
+        "action": "If desired, try briefly cooler tolerable shower water and stop at any symptom.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Ice bath duration?",
+            "q": "What is the soundest approach to a safer approach to cold?",
             "options": [
-              "10 sec",
-              "1-3 min",
-              "1 hour",
-              "No"
+              "Avoid treating intense cold as a required discipline",
+              "Apply one number to everyone",
+              "Ignore symptoms",
+              "Assume more is automatically better"
             ],
-            "correct": 1,
-            "explain": "1-3 minutes."
+            "correct": 0,
+            "explain": "The core approach is to avoid treating intense cold as a required discipline."
           },
           {
-            "q": "Ice bath temp?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "20°C",
-              "5-10°C",
-              "0°C",
-              "15°C"
+              "Stop cold exposure for symptoms or risk conditions",
+              "Continue through sharp pain",
+              "Override an individual care plan",
+              "Try a risky practice alone"
             ],
-            "correct": 1,
-            "explain": "5-10°C."
+            "correct": 0,
+            "explain": "The appropriate boundary is to stop cold exposure for symptoms or risk conditions."
           }
         ]
       },
       "38": {
-        "title": "Heat Therapy",
-        "teaching": "Sauna 20 min × 4 weeks = -40% heart disease (Finland study). Heat shock proteins = body repair. Else: hot shower 10 min + cold finish.",
-        "action": "Today hot shower 10 min + 30 sec cold.",
-        "reflectionPrompt": "How was hot-cold contrast?",
-        "proTip": "No sauna? Hot bath 40°C, 15 min.",
+        "title": "Use Heat for Comfort",
+        "teaching": "A warm shower may provide temporary comfort, but it does not promise a special therapy result. Hotter and longer is not better.\n\nVery hot water can cause burns, dizziness, and blood-pressure changes. Sensory loss, circulation conditions, pregnancy, or heart conditions require more caution.\n\nChoose a brief shower at a comfortable temperature and observe how you feel. A cold finish is optional.\n\nExit and cool safely for dizziness, palpitations, heavy flushing, or weakness. Get individualized guidance for sauna or intense heat.",
+        "action": "Use a brief comfortable-temperature shower and treat a cold finish as optional.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Sauna minutes?",
+            "q": "What is the soundest approach to use heat for comfort?",
             "options": [
-              "5 min",
-              "20 min",
-              "60 min",
-              "1 min"
+              "Use heat in moderation for comfort",
+              "Apply one number to everyone",
+              "Ignore symptoms",
+              "Assume more is automatically better"
             ],
-            "correct": 1,
-            "explain": "20 min × 4 weeks."
+            "correct": 0,
+            "explain": "The core approach is to use heat in moderation for comfort."
           },
           {
-            "q": "Backup?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No",
-              "Hot shower + cold finish",
-              "Cold",
-              "Sleep"
+              "End the session for dizziness or circulation symptoms",
+              "Continue through sharp pain",
+              "Override an individual care plan",
+              "Try a risky practice alone"
             ],
-            "correct": 1,
-            "explain": "Hot-cold contrast."
+            "correct": 0,
+            "explain": "The appropriate boundary is to end the session for dizziness or circulation symptoms."
           }
         ]
       },
       "39": {
-        "title": "Mindful Eating",
-        "teaching": "20-min rule: brain gets satiety signal after 20 min. Eating less than 20 min = overeating. Fork down, chew, swallow, pause.",
-        "action": "Today extend each meal to 20 min.",
-        "reflectionPrompt": "Did slow eating change satiety?",
-        "proTip": "Chew bite 30 times. Digestion 2x easier.",
+        "title": "Attention During Meals",
+        "teaching": "Mindful eating does not require stretching every meal to a fixed duration. It means noticing hunger, taste, fullness, and pace without judgment.\n\nPutting down a phone or utensil may help some people pay attention. A slowing rule should not create distress or control pressure.\n\nEat the first few bites of one meal with attention to taste, texture, and body signals, then continue normally.\n\nThis exercise may be unsuitable with eating-disorder history, low appetite, or a prescribed nutrition plan. Follow the care team guidance.",
+        "action": "Notice taste, texture, and body signals during the first few bites of one meal.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "20-min rule?",
+            "q": "What is the soundest approach to attention during meals?",
             "options": [
-              "Eat fast",
-              "Satiety signal after 20 min",
-              "No effect",
-              "No"
+              "Observe eating without a rigid time target",
+              "Apply one number to everyone",
+              "Ignore symptoms",
+              "Assume more is automatically better"
             ],
-            "correct": 1,
-            "explain": "Brain signal arrives late."
+            "correct": 0,
+            "explain": "The core approach is to observe eating without a rigid time target."
           },
           {
-            "q": "Chew recommendation?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "1",
-              "30 times",
-              "5 times",
-              "No count"
+              "Follow individualized guidance for eating disorders or prescribed plans",
+              "Continue through sharp pain",
+              "Override an individual care plan",
+              "Try a risky practice alone"
             ],
-            "correct": 1,
-            "explain": "Chew 30 times."
+            "correct": 0,
+            "explain": "The appropriate boundary is to follow individualized guidance for eating disorders or prescribed plans."
           }
         ]
       },
       "40": {
-        "title": "Hydration 3L",
-        "teaching": "2L sufficient = 3L optimum. Body 72% water. 3L = +30% cognitive performance. Light yellow urine = correct.",
-        "action": "Today drink 3L water. 1L morning, 1L pre-noon, 1L afternoon.",
-        "reflectionPrompt": "Mental clarity at 3L?",
-        "proTip": "1L bottle + fill 3x. No counting.",
+        "title": "A Personal Fluid Plan",
+        "teaching": "Daily fluid needs vary with body, weather, activity, food, pregnancy, medication, and health. A fixed three-liter target does not fit everyone.\n\nFluid also comes from food and other drinks. Drinking excessive water quickly can itself be dangerous.\n\nSpread fluids across the day and consider thirst together with your care plan. Plan access before hot or active periods.\n\nHeart, kidney, liver, or electrolyte conditions require individual targets. Do not change a prescribed fluid limit yourself.",
+        "action": "Plan water access and spread fluids across the day without forcing a fixed amount.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Optimum hydration?",
+            "q": "What is the soundest approach to a personal fluid plan?",
             "options": [
-              "1L",
-              "3L",
-              "10L",
-              "500ml"
+              "Spread fluid intake according to personal conditions",
+              "Apply one number to everyone",
+              "Ignore symptoms",
+              "Assume more is automatically better"
             ],
-            "correct": 1,
-            "explain": "3L = optimum."
+            "correct": 0,
+            "explain": "The core approach is to spread fluid intake according to personal conditions."
           },
           {
-            "q": "Urine color check?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Dark yellow",
-              "Light yellow = correct",
-              "Red",
-              "No color"
+              "Do not change a prescribed fluid limit yourself",
+              "Continue through sharp pain",
+              "Override an individual care plan",
+              "Try a risky practice alone"
             ],
-            "correct": 1,
-            "explain": "Light yellow correct."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not change a prescribed fluid limit yourself."
           }
         ]
       },
       "41": {
-        "title": "Strength Discipline",
-        "teaching": "Push-up + squat + plank not enough. 3 days/week weight training = muscle + bone + hormones. Home = resistance band + kettlebell. Gym = optimum.",
-        "action": "Today do 30 min weight training.",
-        "reflectionPrompt": "How did body respond to weights?",
-        "proTip": "5x5 system: 5 moves × 5 sets × 5 reps. Simple + strong.",
+        "title": "Control in Strength Training",
+        "teaching": "Strength training does not begin with heavy weight. The right load allows controlled movement and stable technique.\n\nMachines, bands, bodyweight, and free weights have different access and learning demands. Select movements for the individual.\n\nChoose a few movements, use an easy warm-up set, and stop while several clean repetitions remain. Increase load in small steps.\n\nEnd the set for sharp pain, numbness, chest symptoms, or loss of technical control. Consider instruction when starting.",
+        "action": "Use an easy load for a few controlled movements and stop before form breaks.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "5x5 system?",
+            "q": "What is the soundest approach to control in strength training?",
             "options": [
-              "5 moves",
-              "5 moves × 5 sets × 5 reps",
-              "5 hours",
-              "5 days"
+              "Progress strength work with controlled suitable load",
+              "Apply one number to everyone",
+              "Ignore symptoms",
+              "Assume more is automatically better"
             ],
-            "correct": 1,
-            "explain": "Classic foundation."
+            "correct": 0,
+            "explain": "The core approach is to progress strength work with controlled suitable load."
           },
           {
-            "q": "Weekly training?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "7 days",
-              "3 days",
-              "0",
-              "14 days"
+              "End a set for pain or loss of control",
+              "Continue through sharp pain",
+              "Override an individual care plan",
+              "Try a risky practice alone"
             ],
-            "correct": 1,
-            "explain": "3 days optimum."
+            "correct": 0,
+            "explain": "The appropriate boundary is to end a set for pain or loss of control."
           }
         ]
       },
       "42": {
-        "title": "Posture Mastery",
-        "teaching": "2-min posture reminder isn't enough — constant awareness. Hourly + every sit + every phone. Posture = breath + cortisol + muscle balance.",
-        "action": "Today 1 min posture check every hour.",
-        "reflectionPrompt": "Less back pain in evening?",
-        "proTip": "Phone at eye level. Neck bend = +30 min daily pain.",
+        "title": "Variety in Posture",
+        "teaching": "Posture skill is not staying upright and still all day. The body needs different positions, and forcing one shape may create tension.\n\nScreen height, arm support, foot contact, and tool placement affect workload. A small environment change may help more than constant self-correction.\n\nChange one workstation setting and vary position during natural breaks. Observe comfort rather than appearance.\n\nDo not treat persistent or radiating pain as only a posture fault. Seek suitable health and ergonomic assessment.",
+        "action": "Change one workstation setting and vary position during two natural breaks.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Posture check frequency?",
+            "q": "What is the soundest approach to variety in posture?",
             "options": [
-              "Yearly",
-              "Hourly",
-              "Never",
-              "Monthly"
+              "Treat posture as position variety rather than a fixed shape",
+              "Apply one number to everyone",
+              "Ignore symptoms",
+              "Assume more is automatically better"
             ],
-            "correct": 1,
-            "explain": "Constant awareness."
+            "correct": 0,
+            "explain": "The core approach is to treat posture as position variety rather than a fixed shape."
           },
           {
-            "q": "Phone height?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Down",
-              "Eye level",
-              "Equal",
-              "Side"
+              "Assess persistent or radiating pain",
+              "Continue through sharp pain",
+              "Override an individual care plan",
+              "Try a risky practice alone"
             ],
-            "correct": 1,
-            "explain": "Prevents neck bend."
+            "correct": 0,
+            "explain": "The appropriate boundary is to assess persistent or radiating pain."
           }
         ]
       },
       "43": {
-        "title": "Sleep Restriction",
-        "teaching": "Less sleep, restricted sleep = deep sleep enriched. Target 7 hours. Push 9. Sleeplessness = body alarm.",
-        "action": "Today try sleeping exactly 7 hours.",
-        "reflectionPrompt": "Did 7h feel like 8h?",
-        "proTip": "Solid 7h > fragmented 8h.",
+        "title": "Sufficient Sleep Opportunity",
+        "teaching": "Sleep needs vary by person and life stage. Making exactly seven hours mandatory can mislead someone who needs more or less.\n\nTime in bed and time asleep are not identical. The goal is not hitting one number but creating a regular opportunity that supports daytime function.\n\nChoose a realistic bedtime window from your required wake time. Track sleep opportunity beside daytime function for one week.\n\nSeek assessment for persistent insomnia, snoring, breathing pauses, or severe daytime sleepiness instead of forcing duration alone.",
+        "action": "Track realistic sleep opportunity and daytime function together this week.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Sleep target?",
+            "q": "What is the soundest approach to sufficient sleep opportunity?",
             "options": [
-              "9 hours",
-              "7 hours full",
-              "4 hours",
-              "12 hours"
+              "Evaluate sleep through daytime function and individual need",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "7 hours target."
+            "correct": 0,
+            "explain": "The core approach is to evaluate sleep through daytime function and individual need."
           },
           {
-            "q": "7 full vs 8 fragmented?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "8 better",
-              "7 full better",
-              "Same",
-              "Unknown"
+              "Get assessment for persistent sleep symptoms",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "Solid > fragmented."
+            "correct": 0,
+            "explain": "The appropriate boundary is to get assessment for persistent sleep symptoms."
           }
         ]
       },
       "44": {
-        "title": "Resistance Training Plan",
-        "teaching": "Monday: chest+shoulder. Wednesday: legs. Friday: back+arm. 3 days × 30 min = optimum weekly. Saturday-Sunday: active rest.",
-        "action": "Today write a 3-day training plan.",
-        "reflectionPrompt": "Did plan boost motivation?",
-        "proTip": "Tracking app: Strong (iOS) = free.",
+        "title": "A Personal Resistance Plan",
+        "teaching": "A three-day push-pull-legs split is not the only resistance system. Time, experience, equipment, and recovery should shape the plan.\n\nA smaller number of whole-body sessions may simplify learning for a beginner. Split plans can require more volume and tracking.\n\nChoose the session count that fits your week and include pushing, pulling, knee-hip movement, and trunk control with easy variations.\n\nDo not copy an internet plan directly when injury, chronic conditions, or technique uncertainty applies. Use qualified guidance.",
+        "action": "Plan resistance sessions that fit your week and cover basic movement patterns.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Plan structure?",
+            "q": "What is the soundest approach to a personal resistance plan?",
             "options": [
-              "Random",
-              "Mon-Wed-Fri 3 days",
-              "All days",
-              "No"
+              "Build resistance plans around time, experience, and recovery",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "3-day split."
+            "correct": 0,
+            "explain": "The core approach is to build resistance plans around time, experience, and recovery."
           },
           {
-            "q": "Tracking app?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No",
-              "Strong (iOS)",
-              "Notion",
-              "Email"
+              "Adapt templates to individual conditions",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "Strong free."
+            "correct": 0,
+            "explain": "The appropriate boundary is to adapt templates to individual conditions."
           }
         ]
       },
       "45": {
-        "title": "Recovery Mastery",
-        "teaching": "Training = breakdown. Recovery = build. Less recovery = no progress. Foam roller + 8h sleep + protein + massage. Sat yoga, Sun rest.",
-        "action": "Today 30 min dedicated recovery.",
-        "reflectionPrompt": "Energy after recovery?",
-        "proTip": "Theragun or foam roller = 3x weekly.",
+        "title": "Choose Recovery Tools",
+        "teaching": "Recovery does not require a thirty-minute equipment session. Sleep opportunity, enough energy intake, rest, and suitable load remain the base.\n\nWalking, gentle movement, or massage may provide temporary comfort. Foam rolling does not prove that muscle repair or injury prevention occurred.\n\nTry one easy recovery option and note next-day energy, soreness, and desire to move. Compare value from your own experience.\n\nDo not cover sharp pain, swelling, illness, or persistent decline with more recovery tools. Seek suitable assessment.",
+        "action": "Try one easy recovery option and note next-day energy and soreness.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Recovery essential?",
+            "q": "What is the soundest approach to choose recovery tools?",
             "options": [
-              "No",
-              "Yes, progress required",
-              "Luxury",
-              "Passive"
+              "Keep recovery tools secondary to basic needs",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "Less recovery = no progress."
+            "correct": 0,
+            "explain": "The core approach is to keep recovery tools secondary to basic needs."
           },
           {
-            "q": "Foam roller frequency?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No",
-              "3x weekly",
-              "Yearly",
-              "Never"
+              "Do not hide persistent symptoms with equipment",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "3x weekly."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not hide persistent symptoms with equipment."
           }
         ]
       },
       "46": {
-        "title": "Athletic Identity",
-        "teaching": "\"I exercise\" = behavior. \"I am an athlete\" = identity. Sustainable discipline requires identity. 30 days transforms into \"athlete identity.\"",
-        "action": "Today claim athlete identity.",
-        "reflectionPrompt": "How did athlete identity change behavior?",
-        "proTip": "Mirror: \"I am an athlete. I respect my body.\"",
+        "title": "An Identity That Moves",
+        "teaching": "An athlete identity may motivate one person and create inadequacy in another. Health behavior does not require a specific appearance or performance label.\n\nA flexible statement can describe someone who moves within current conditions and respects the need for rest.\n\nChoose one action you genuinely took recently. Write a short process statement and one small action that supports it this week.\n\nDo not use identity to train through pain, punish food, or compare your body with others.",
+        "action": "Write a flexible movement identity based on one action you genuinely completed.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Behavior or identity?",
+            "q": "What is the soundest approach to an identity that moves?",
             "options": [
-              "Behavior",
-              "Identity permanent",
-              "Same",
-              "Unknown"
+              "Tie movement identity to a real flexible process",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "Identity > behavior."
+            "correct": 0,
+            "explain": "The core approach is to tie movement identity to a real flexible process."
           },
           {
-            "q": "Solidify how?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Think",
-              "Mirror speak",
-              "Write",
-              "Forget"
+              "Do not use identity to force pain or body comparison",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "Daily mirror repeat."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not use identity to force pain or body comparison."
           }
         ]
       },
       "47": {
-        "title": "Training Frequency",
-        "teaching": "Week 3 = beginner. Week 4 = optimum. Week 5+ = excessive, recovery drops. 3-4 weeks + 1 rest week cycle = long-term.",
-        "action": "Today review weekly plan, don't exceed 4 days.",
-        "reflectionPrompt": "Is your recovery time enough?",
-        "proTip": "Every 4 weeks 1 deload (easy) week. Long-term progress.",
+        "title": "Adjust Training Frequency",
+        "teaching": "A four-day weekly ceiling does not fit everyone. Suitable frequency depends on session difficulty, total volume, experience, and recovery.\n\nShort easy sessions may occur more often, while intense sessions may need more recovery. Day count alone does not show quality.\n\nPut two weeks of sessions, effort, soreness, sleep, and performance side by side. Reduce volume or frequency first when recovery is poor.\n\nDo not add days during persistent fatigue, sleep disruption, sharp pain, or performance decline. Consider health and training support.",
+        "action": "Adjust frequency from two weeks of effort and recovery notes.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Optimum weeks?",
+            "q": "What is the soundest approach to adjust training frequency?",
             "options": [
-              "7",
-              "3-4",
-              "14",
-              "1"
+              "Evaluate frequency together with total load and recovery",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "3-4 weeks + deload."
+            "correct": 0,
+            "explain": "The core approach is to evaluate frequency together with total load and recovery."
           },
           {
-            "q": "Deload?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No",
-              "Every 4 weeks easy week",
-              "Always",
-              "Never"
+              "Avoid adding days during fatigue or pain",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "Recovery cycle."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid adding days during fatigue or pain."
           }
         ]
       },
       "48": {
-        "title": "Final Sprint",
-        "teaching": "Last 3 days. 50 days transformed body weak to resilient. This sprint = identity stamp. Tomorrow you are body's boss.",
-        "action": "Today write final-sprint intent.",
-        "reflectionPrompt": "Most-changed physical habit?",
-        "proTip": "Take mirror photo. Compare with 50-days-ago.",
+        "title": "Define Your Continuation Intention",
+        "teaching": "Reaching the final section does not make behavior automatic. Intention becomes useful when the next condition and action are clear.\n\n“I will continue” is vague. Name the behavior, cue, minimum amount, and return plan after a missed day.\n\nChoose one behavior and write: “After this cue, I will do this small action.” Add a backup version.\n\nDo not turn intention into punishment or a rigid promise. Update the plan safely when conditions change.",
+        "action": "Write one intention with a cue, minimum action, and backup plan.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Final sprint?",
+            "q": "What is the soundest approach to define your continuation intention?",
             "options": [
-              "1 day",
-              "3 days",
-              "1 month",
-              "No"
+              "Connect intention to a specific cue and small action",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "Last 3 days."
+            "correct": 0,
+            "explain": "The core approach is to connect intention to a specific cue and small action."
           },
           {
-            "q": "Visual proof?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No",
-              "Mirror photo",
-              "Email",
-              "Memory"
+              "Do not turn intention into self-punishment",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "Before-after compare."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not turn intention into self-punishment."
           }
         ]
       },
       "49": {
-        "title": "49 Days In",
-        "teaching": "In 49 days body is different. Movement automatic, cold a friend, sleep rich, posture upright. New baseline. List 10 changes.",
-        "action": "Today list 10 physical habits that changed in 49 days.",
-        "reflectionPrompt": "Most unforgettable physical change?",
-        "proTip": "Before-after photo. Reminder during slumps.",
+        "title": "Show the Change",
+        "teaching": "Forty-nine days do not require ten changed physical habits. Real progress is clearer through concrete examples than a forced count.\n\nSeparate behavior, result, and interpretation. Walking more is behavior; one energetic day is not a lasting outcome by itself.\n\nWrite three behaviors that changed and add a dated example to each. Mark uncertain changes honestly.\n\nDo not use body measurements or mirror appearance as the only success measure. Function, pain, sleep, and sustainability also matter.",
+        "action": "Write three changed behaviors with dated examples and mark uncertainty honestly.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "New baseline?",
+            "q": "What is the soundest approach to show the change?",
             "options": [
-              "Old",
-              "Automatic body discipline",
-              "Tired",
-              "Passive"
+              "Show progress through concrete examples instead of a forced count",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "Automatic master."
+            "correct": 0,
+            "explain": "The core approach is to show progress through concrete examples instead of a forced count."
           },
           {
-            "q": "Before-after photo?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No effect",
-              "Slump moment reminder",
-              "Risk",
-              "Expensive"
+              "Avoid using appearance as the only success measure",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "Backslide moment proof."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid using appearance as the only success measure."
           }
         ]
       },
       "50": {
-        "title": "Master Complete",
-        "teaching": "50 days. Your body discipline = identity. Movement, sleep, nutrition, cold, mobility — all automatic. You are body's boss.",
-        "action": "Today look in mirror. Greet New You.",
-        "reflectionPrompt": "Would 50-days-ago you want to be now?",
-        "proTip": "Rest 7 days, then money or other path.",
+        "title": "The Path Ends, the System Continues",
+        "teaching": "Completing a path does not create a new body. It helps you see which tools fit your life, and your worth is not tied to before-and-after appearance.\n\nA sustainable system uses a small behavior, clear cue, safe boundary, and regular review. You do not need to keep everything.\n\nKeep one behavior, stop one, and mark one for later review. Put the next review date on the calendar.\n\nThe app is not health care. Seek appropriate care for persistent symptoms, injury, or nutrition problems.",
+        "action": "Keep one behavior, stop one, and schedule the next review date.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Body's boss?",
+            "q": "What is the soundest approach to the path ends, the system continues?",
             "options": [
-              "Genes",
-              "You",
-              "Doctor",
-              "Luck"
+              "Turn completion into a sustainable system choice",
+              "Apply one duration to everyone",
+              "Use appearance as the only success measure",
+              "Copy a template without adaptation"
             ],
-            "correct": 1,
-            "explain": "After 50 days: you."
+            "correct": 0,
+            "explain": "The core approach is to turn completion into a sustainable system choice."
           },
           {
-            "q": "Next path?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Now",
-              "7 days rest",
-              "Never",
-              "1 month"
+              "Do not use program completion instead of health care",
+              "Force persistent symptoms",
+              "Use identity for punishment",
+              "Ignore recovery"
             ],
-            "correct": 1,
-            "explain": "7 days rest."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not use program completion instead of health care."
           }
         ]
       }
@@ -7262,467 +7247,452 @@
         ]
       },
       "36": {
-        "title": "Insurance Mastery",
-        "teaching": "Insurance is boring but life-saving. Must-have: health, life (if family), disability, professional liability. Skip: car kasko, furniture, phone screen.",
-        "action": "Today review your insurance. Missing or excess?",
-        "reflectionPrompt": "Priority insurance?",
-        "proTip": "Yearly compare. Same coverage 30% cheaper possible.",
+        "title": "Map Insurance Coverage",
+        "teaching": "An insurance review starts by defining the loss you want to protect, not asking whether coverage is simply high or low. A policy name is incomplete.\n\nLimits, deductibles, exclusions, waiting periods, renewal, and claim process all matter. Policies may overlap on the same event.\n\nPut each policy on one page with event, coverage, limit, deductible, and end date. Ask the provider about unclear terms.\n\nNeeds vary by country, family, debt, and work. Use licensed transparent support before major coverage changes.",
+        "action": "List each policy by event, coverage, limit, deductible, and end date.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Must-have insurance?",
+            "q": "What is the soundest approach to map insurance coverage?",
             "options": [
-              "Car",
-              "Health+life+disability",
-              "Furniture",
-              "No"
+              "Match insurance to the loss you need to protect",
+              "Treat a product name as full coverage",
+              "Use past results as future outcomes",
+              "Ignore local conditions"
             ],
-            "correct": 1,
-            "explain": "Critical 3 areas."
+            "correct": 0,
+            "explain": "The core approach is to match insurance to the loss you need to protect."
           },
           {
-            "q": "Yearly compare?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No effect",
-              "30% cheaper possible",
-              "Always same",
-              "Risk"
+              "Read exclusions and claim terms before changing coverage",
+              "Put emergency cash at risk",
+              "Decide without reading documents",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Same coverage cheaper."
+            "correct": 0,
+            "explain": "The appropriate boundary is to read exclusions and claim terms before changing coverage."
           }
         ]
       },
       "37": {
-        "title": "Investment Diversification",
-        "teaching": "All eggs 1 basket = risk. Investment: 60% stocks, 20% bonds, 10% real estate, 10% cash. Diversification = less risk + long-term gains.",
-        "action": "Today analyze your investments. Diverse?",
-        "reflectionPrompt": "Which class is missing?",
-        "proTip": "Ray Dalio \"All Weather Portfolio\" = free template.",
+        "title": "See Investment Concentration",
+        "teaching": "Diversification spreads exposure across different risk sources; it does not remove loss. Owning many products is not automatically diversified.\n\nProducts tied to the same country, sector, company, currency, or asset type may move together. Look through labels to the underlying exposure.\n\nWrite the main risk source for each holding. If dependence on one area concerns you, compare options before acting.\n\nThis lesson is not an allocation recommendation. Tax, time, liquidity, and risk capacity may require licensed financial guidance.",
+        "action": "Write the country, sector, currency, and asset risks behind each holding.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Diversification advantage?",
+            "q": "What is the soundest approach to see investment concentration?",
             "options": [
-              "No",
-              "Less risk + long-term",
-              "Expensive",
-              "Complex"
+              "Judge diversification by risk sources rather than product count",
+              "Treat a product name as full coverage",
+              "Use past results as future outcomes",
+              "Ignore local conditions"
             ],
-            "correct": 1,
-            "explain": "Risk management."
+            "correct": 0,
+            "explain": "The core approach is to judge diversification by risk sources rather than product count."
           },
           {
-            "q": "All Weather by?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Bezos",
-              "Ray Dalio",
-              "Buffett",
-              "Musk"
+              "Do not copy a general allocation into a personal portfolio",
+              "Put emergency cash at risk",
+              "Decide without reading documents",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Bridgewater founder."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not copy a general allocation into a personal portfolio."
           }
         ]
       },
       "38": {
-        "title": "Real Estate Awareness",
-        "teaching": "Real estate = own vs rent + rental income + appreciation. 25-yr Turkey average +12% yearly. 3 properties = passive income.",
-        "action": "Today compare buying vs renting.",
-        "reflectionPrompt": "Which more profitable in 5 years?",
-        "proTip": "Buy first home before 30. Compound returns.",
+        "title": "Compare Renting and Buying",
+        "teaching": "There is no universal winner between renting and buying a home. Expected stay, flexibility, financing, and local markets change the result.\n\nBuying includes interest, tax, maintenance, insurance, and transaction costs beyond the deposit. Renting includes increases, moving, and contract terms.\n\nBuild a multiyear total-cost scenario for the same home. Include a difficult income period, maintenance, and a possible move.\n\nProperty law, credit, and tax vary locally. Use current official information and independent financial review before a major decision.",
+        "action": "Build a multiyear total-cost scenario for renting and buying the same home.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Turkey 25-yr real estate avg?",
+            "q": "What is the soundest approach to compare renting and buying?",
             "options": [
-              "2%",
-              "12%",
-              "50%",
-              "0%"
+              "Compare renting and buying through total cost and flexibility",
+              "Treat a product name as full coverage",
+              "Use past results as future outcomes",
+              "Ignore local conditions"
             ],
-            "correct": 1,
-            "explain": "Yearly avg 12%."
+            "correct": 0,
+            "explain": "The core approach is to compare renting and buying through total cost and flexibility."
           },
           {
-            "q": "First home recommendation?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "65 yo",
-              "Before 30",
-              "Never",
-              "50"
+              "Verify local law and financing before deciding",
+              "Put emergency cash at risk",
+              "Decide without reading documents",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Compound gain early."
+            "correct": 0,
+            "explain": "The appropriate boundary is to verify local law and financing before deciding."
           }
         ]
       },
       "39": {
-        "title": "Crypto Awareness",
-        "teaching": "Crypto = volatile but long-term holding potential. Bitcoin 2010 = $0.05, 2024 = $70K. Risk: 5-10% of portfolio max. DCA = monthly small buys.",
-        "action": "Today research crypto, start with 2% portfolio (if testing).",
-        "reflectionPrompt": "How does the risk feel?",
-        "proTip": "Use cold wallet, don't leave on exchange.",
+        "title": "Understand Crypto Risk",
+        "teaching": "Crypto assets can carry high price volatility, technology, custody, fraud, and regulatory risk. Adding them to a portfolio is optional.\n\nEven a small fixed allocation is not a safe number for everyone. Key loss, platform failure, and irreversible transfers are separate from price risk.\n\nBefore funding anything, learn how the asset works, where it is held, total fees, and local tax from official information.\n\nDo not use emergency savings, debt-payment money, or near-term goal funds for speculation. Avoid amounts you cannot afford to lose.",
+        "action": "Compare custody, fee, fraud, and tax risks in writing before funding crypto.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Crypto portfolio max?",
+            "q": "What is the soundest approach to understand crypto risk?",
             "options": [
-              "50%",
-              "5-10%",
-              "100%",
-              "0%"
+              "Evaluate crypto through multiple risks rather than return promises",
+              "Treat a product name as full coverage",
+              "Use past results as future outcomes",
+              "Ignore local conditions"
             ],
-            "correct": 1,
-            "explain": "Risk management."
+            "correct": 0,
+            "explain": "The core approach is to evaluate crypto through multiple risks rather than return promises."
           },
           {
-            "q": "Safest storage?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Exchange",
-              "Cold wallet",
-              "Bank",
-              "Memory"
+              "Keep emergency and debt-payment money out of speculation",
+              "Put emergency cash at risk",
+              "Decide without reading documents",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Cold wallet = offline."
+            "correct": 0,
+            "explain": "The appropriate boundary is to keep emergency and debt-payment money out of speculation."
           }
         ]
       },
       "40": {
-        "title": "Estate Planning",
-        "teaching": "No will = state distributes assets. Family = will mandatory. Life insurance + will + safe deposit. After 30, must-have.",
-        "action": "Today write a simple will. Notarize.",
-        "reflectionPrompt": "Family informed?",
-        "proTip": "Notary 200-500 TL / $50-100, will done.",
+        "title": "Prepare for Estate Planning",
+        "teaching": "Estate planning is not simply writing wishes on paper. Will validity, required shares, and witness rules vary by country.\n\nAn incorrect document may be invalid or create more family difficulty. Notary costs and procedures are not fixed.\n\nStart with a secure inventory of assets, debts, insurance, important documents, and contacts. Plan digital access without leaving exposed passwords.\n\nUse authorized legal support for wills, guardians, health directions, or complex family situations. This lesson does not create a legal document.",
+        "action": "Create a secure inventory of assets, debts, insurance, and important document locations.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "No will means?",
+            "q": "What is the soundest approach to prepare for estate planning?",
             "options": [
-              "Family gets",
-              "State distributes",
-              "Lost",
-              "Equal"
+              "Prepare estate documents under local validity rules",
+              "Treat a product name as full coverage",
+              "Use past results as future outcomes",
+              "Ignore local conditions"
             ],
-            "correct": 1,
-            "explain": "State system."
+            "correct": 0,
+            "explain": "The core approach is to prepare estate documents under local validity rules."
           },
           {
-            "q": "Notary cost?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Expensive",
-              "$50-100",
-              "0",
-              "10K"
+              "Do not assume a self-written note is a valid will",
+              "Put emergency cash at risk",
+              "Decide without reading documents",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Cheap."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not assume a self-written note is a valid will."
           }
         ]
       },
       "41": {
-        "title": "Mindset Shift",
-        "teaching": "\"I have no money\" mindset = leaves you with none. \"I know how to attract money\" = attracts. Rich solved mindset problem first. Head before wallet.",
-        "action": "Today write 5 min \"money is a good tool.\"",
-        "reflectionPrompt": "Old money story?",
-        "proTip": "New story 30 days every morning.",
+        "title": "Treat Money as a Tool",
+        "teaching": "Money can support safety, options, and shared goals, but it is not a measure of character, peace, or success by itself.\n\nBroad statements that money is good or bad can hide details from past experience. Separate the uses that fit your values.\n\nWrite three values you want money to support, such as safety, time, care, learning, or sharing. Connect one decision to one value.\n\nPersistent intense money anxiety may not change through positive writing alone. Financial and psychological support can work together.",
+        "action": "Write three values money should support and connect one decision to one value.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "What changes first?",
+            "q": "What is the soundest approach to treat money as a tool?",
             "options": [
-              "Wallet",
-              "Mind",
-              "Bank",
-              "Salary"
+              "Use money as a tool supporting personal values",
+              "Treat a product name as full coverage",
+              "Use past results as future outcomes",
+              "Ignore local conditions"
             ],
-            "correct": 1,
-            "explain": "Mindset first."
+            "correct": 0,
+            "explain": "The core approach is to use money as a tool supporting personal values."
           },
           {
-            "q": "New story duration?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "1 day",
-              "30 days",
-              "1 year",
-              "No"
+              "Do not use balance as a measure of human worth",
+              "Put emergency cash at risk",
+              "Decide without reading documents",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "30 days every morning."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not use balance as a measure of human worth."
           }
         ]
       },
       "42": {
-        "title": "Emergency Fund Mastery",
-        "teaching": "3 months not enough = 6-month target. 6 months of expenses = unemployment, illness, crisis buffer. Life changes, be ready.",
-        "action": "Today extend emergency fund target to 6 months.",
-        "reflectionPrompt": "Does 6 months feel safer?",
-        "proTip": "High-yield account = inflation loss minimal.",
+        "title": "Build an Emergency Buffer",
+        "teaching": "An emergency fund provides accessible cash for an unexpected essential cost or income interruption. One month count does not fit everyone.\n\nJob stability, household income, health, insurance, debt, and support networks change the target. A very large target can make the first step feel unreachable.\n\nChoose a small first threshold. Keep it separate, accessible, and low risk, then grow it through modest regular transfers.\n\nThe balance between high-cost debt and emergency cash is personal. Locked or high-risk investments should not be labeled emergency funds.",
+        "action": "Choose a small first emergency-buffer target and a regular transfer amount.",
+        "reflectionPrompt": "What small step from this lesson fits your own conditions?",
         "quiz": [
           {
-            "q": "Optimum emergency fund?",
+            "q": "What is the soundest approach to build an emergency buffer?",
             "options": [
-              "1 month",
-              "6 months",
-              "1 week",
-              "No"
+              "Build an accessible buffer gradually from personal risk",
+              "Treat a product name as full coverage",
+              "Use past results as future outcomes",
+              "Ignore local conditions"
             ],
-            "correct": 1,
-            "explain": "6 months = mastery."
+            "correct": 0,
+            "explain": "The core approach is to build an accessible buffer gradually from personal risk."
           },
           {
-            "q": "Where to keep?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Pillow",
-              "High-yield account",
-              "Stock",
-              "Crypto"
+              "Do not keep emergency cash locked or at high risk",
+              "Put emergency cash at risk",
+              "Decide without reading documents",
+              "Borrow for an unclear promise"
             ],
-            "correct": 1,
-            "explain": "Liquid + interest."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not keep emergency cash locked or at high risk."
           }
         ]
       },
       "43": {
-        "title": "Negotiation Mastery",
-        "teaching": "Salary negotiation = $5K-20K yearly difference. \"What's the real number?\" Ask. \"Is this best price?\" opens 5-15% discount. Bills negotiable too.",
-        "action": "Today negotiate one price.",
-        "reflectionPrompt": "Was negotiating hard?",
-        "proTip": "Internet/cable provider negotiation = monthly savings.",
+        "title": "Negotiate the Terms",
+        "teaching": "Negotiation is not only lowering price. Scope, timing, delivery, payment schedule, and renewal terms can change total value.\n\nThe power balance differs with each seller, landlord, or provider. Legal rights, market information, and communication safety matter.\n\nWrite one term you want to change and why. Ask respectfully, listen to the counteroffer, and preserve your right to decline.\n\nDo not use aggressive negotiation when housing, health, or work safety may be threatened. Use authorized local information.",
+        "action": "Write one contract term, your reason, and the acceptable boundary before negotiating.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Salary negotiation yearly?",
+            "q": "What is the soundest approach to negotiate the terms?",
             "options": [
-              "No effect",
-              "$5-20K diff",
-              "$100",
-              "0"
+              "Negotiate price and nonprice terms together",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "Big impact."
+            "correct": 0,
+            "explain": "The core approach is to negotiate price and nonprice terms together."
           },
           {
-            "q": "Magic phrase?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Expensive",
-              "Is this best price?",
-              "No",
-              "Discount"
+              "Do not risk safety or essentials for negotiation",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "5-15% opens."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not risk safety or essentials for negotiation."
           }
         ]
       },
       "44": {
-        "title": "Side Hustle Plan",
-        "teaching": "Side hustle = extra income + career hedge. $500/mo = rent paid. $1K = lifestyle quality. $3K = full-time transition. 1-year plan.",
-        "action": "Today spend 1 hour on side hustle.",
-        "reflectionPrompt": "Easiest to start?",
-        "proTip": "First target: $500/mo. Concrete measurable.",
+        "title": "The First Side-Project Step",
+        "teaching": "Spending an hour on a side project may not produce a result. Turn vague work into one measurable first step.\n\nClarify the problem, reachable person, and small value offered. A logo or long plan need not come before contact with a customer.\n\nChoose one output this week, such as a short offer, three conversations, or a cost estimate. Set a time boundary.\n\nCheck employment terms, tax, licenses, safety, and rest. Do not borrow or overwork for an uncertain idea.",
+        "action": "Set one measurable side-project output and a time boundary for this week.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "First side-hustle target?",
+            "q": "What is the soundest approach to the first side-project step?",
             "options": [
-              "No effect",
-              "$500/mo",
-              "$10K",
-              "0"
+              "Start a side project with one measurable output",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "Concrete start."
+            "correct": 0,
+            "explain": "The core approach is to start a side project with one measurable output."
           },
           {
-            "q": "Advantage?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Stress",
-              "Career hedge",
-              "Tired",
-              "Risk"
+              "Protect primary work and health from an uncertain idea",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "Risk management."
+            "correct": 0,
+            "explain": "The appropriate boundary is to protect primary work and health from an uncertain idea."
           }
         ]
       },
       "45": {
-        "title": "Financial Independence",
-        "teaching": "FIRE = Financial Independence Retire Early. 25x annual spend = independence. Spending $40K/yr → $1M = freedom. 4% withdrawal rule.",
-        "action": "Today calculate your FIRE number.",
-        "reflectionPrompt": "Is the number reachable?",
-        "proTip": "Mr. Money Mustache blog = FIRE community.",
+        "title": "A Financial Independence Scenario",
+        "teaching": "Financial independence is a personal target for assets or income that can support expenses. One multiplier does not produce a reliable result for everyone.\n\nFuture spending, tax, inflation, market movement, health, longevity, and currency all change the calculation. A withdrawal assumption is not certain.\n\nWrite current essential annual spending and the target lifestyle separately. Create a range using several return and inflation assumptions.\n\nThis calculation is not investment advice. Use licensed financial and tax support for major early-retirement decisions.",
+        "action": "Write essential annual spending and build a range from several assumptions.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "FIRE number?",
+            "q": "What is the soundest approach to a financial independence scenario?",
             "options": [
-              "10x spend",
-              "25x annual spend",
-              "100x",
-              "Fixed"
+              "Calculate independence as a range of scenarios",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "4% rule = 25x."
+            "correct": 0,
+            "explain": "The core approach is to calculate independence as a range of scenarios."
           },
           {
-            "q": "FIRE source?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No",
-              "Mr. Money Mustache",
-              "Bank",
-              "Tabloid"
+              "Do not treat one multiplier as a certain retirement result",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "Community + info."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not treat one multiplier as a certain retirement result."
           }
         ]
       },
       "46": {
-        "title": "Retirement Planning",
-        "teaching": "Retirement isn't at 65. Preparation starts at 30. Personal retirement + state + investment = 3 legs. Late starters panic at 60.",
-        "action": "Today open retirement account if not done.",
-        "reflectionPrompt": "Is state retirement enough?",
-        "proTip": "25% state contribution = automatic 25% gain. Never skip.",
+        "title": "Compare Retirement Options",
+        "teaching": "Retirement accounts and plans vary by country, employer, and tax system. Opening a specific product immediately is not right for everyone.\n\nEmployer contributions, fees, fund choices, tax, withdrawal, vesting, and transfer terms all matter.\n\nList existing retirement rights and accounts. Compare contributions, fees, and access in official documents, then ask about missing information.\n\nNear-term cash needs, debt, and relocation can affect the decision. Consider licensed independent support for major choices.",
+        "action": "Compare contribution, fees, tax, and access across retirement options.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Retirement 3 legs?",
+            "q": "What is the soundest approach to compare retirement options?",
             "options": [
-              "1",
-              "Personal+state+investment",
-              "Just state",
-              "Just personal"
+              "Evaluate retirement products by contribution, cost, and access",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "3 systems safe."
+            "correct": 0,
+            "explain": "The core approach is to evaluate retirement products by contribution, cost, and access."
           },
           {
-            "q": "State match?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No",
-              "25%",
-              "10%",
-              "50%"
+              "Do not open a product without considering current cash needs",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "Auto 25% gain."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not open a product without considering current cash needs."
           }
         ]
       },
       "47": {
-        "title": "Wealth Identity Final",
-        "teaching": "Behaviors repeated become identity. 50 days, your money habits changed. Now identity talk: \"I am control. I am planning. I am investing.\"",
-        "action": "Today write your wealth identity in 3 sentences.",
-        "reflectionPrompt": "Strongest sentence?",
-        "proTip": "Write in wallet, read each open.",
+        "title": "A Durable Financial Identity",
+        "teaching": "A wealth identity does not require declaring a high balance. A more durable identity rests on gathering information and updating plans.\n\nIncome loss or an unexpected expense should not erase identity. A flexible process statement leaves room to restart.\n\nChoose one genuine behavior and write a short statement, such as keeping records, reading terms, or asking for help.\n\nDo not use financial position as a measure of character, intelligence, or human worth. Social conditions and luck also affect outcomes.",
+        "action": "Write a flexible process statement based on one genuine financial behavior.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Wealth identity how?",
+            "q": "What is the soundest approach to a durable financial identity?",
             "options": [
-              "Think",
-              "Write 3 sentences",
-              "Remember",
-              "Forget"
+              "Tie financial identity to behavior instead of balance",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "Written clear."
+            "correct": 0,
+            "explain": "The core approach is to tie financial identity to behavior instead of balance."
           },
           {
-            "q": "Where to write?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Computer",
-              "Wallet",
-              "Email",
-              "No"
+              "Do not measure human worth through financial outcomes",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "Read each open."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not measure human worth through financial outcomes."
           }
         ]
       },
       "48": {
-        "title": "Final Sprint",
-        "teaching": "Last 3 days. 50 days transformed money relationship from murky to clear. This sprint = permanent identity. Tomorrow you are money's boss.",
-        "action": "Today write final-sprint intent.",
-        "reflectionPrompt": "Most-changed money habit?",
-        "proTip": "Save your net worth number, compare in 30 days.",
+        "title": "Your Next-Period Intention",
+        "teaching": "Finishing a program does not automate money behavior. Intention needs a specific decision and repeat time.\n\nReplace “I will do better” with which check, which day, and which tool. Define how to return after a missed review.\n\nChoose one behavior and connect it to a real cue such as a calendar event, account alert, or income day for two weeks.\n\nDo not turn intention into a rigid rate or punishment. Update safely when income or required expenses change.",
+        "action": "Connect one money behavior to a real cue and backup plan for two weeks.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Final sprint?",
+            "q": "What is the soundest approach to your next-period intention?",
             "options": [
-              "1 day",
-              "3 days",
-              "1 month",
-              "No"
+              "Tie intention to a specific decision and repeat time",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "Last 3 days."
+            "correct": 0,
+            "explain": "The core approach is to tie intention to a specific decision and repeat time."
           },
           {
-            "q": "Net worth?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No effect",
-              "Save, compare in 30 days",
-              "Never",
-              "Always"
+              "Update rigid targets when conditions change",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "Measurement = motivation."
+            "correct": 0,
+            "explain": "The appropriate boundary is to update rigid targets when conditions change."
           }
         ]
       },
       "49": {
-        "title": "49 Days In",
-        "teaching": "In 49 days: auto-savings, decision frameworks, diversified investments, tax awareness. New baseline = master money. List 10 changes.",
-        "action": "Today list 10 money habits that changed in 49 days.",
-        "reflectionPrompt": "Most unforgettable change?",
-        "proTip": "Net worth chart = motivation.",
+        "title": "Show Financial Change",
+        "teaching": "Forty-nine days do not require ten changed habits. Real change can be shown with dated concrete behavior examples.\n\nOpening an account is intent; using it regularly is behavior. A balance change can also reflect income or expenses.\n\nWrite three behaviors that changed. Add a dated example and one unresolved barrier to each.\n\nBalance and investment return are not the only success measures. Fewer surprises, clear records, and lower stress also matter.",
+        "action": "Write three changed money behaviors with dated examples and remaining barriers.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "New baseline?",
+            "q": "What is the soundest approach to show financial change?",
             "options": [
-              "Old",
-              "Master money",
-              "Passive",
-              "Unknown"
+              "Show financial progress through concrete behavior examples",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "Automatic system."
+            "correct": 0,
+            "explain": "The core approach is to show financial progress through concrete behavior examples."
           },
           {
-            "q": "Net worth chart?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "No effect",
-              "Motivation",
-              "Risk",
-              "Expensive"
+              "Avoid using balance or return as the only success measure",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "Visual progress."
+            "correct": 0,
+            "explain": "The appropriate boundary is to avoid using balance or return as the only success measure."
           }
         ]
       },
       "50": {
-        "title": "Master Complete",
-        "teaching": "50 days. Money no longer worry but tool. Control, plan, diversify, identity. New baseline = financial master. No diploma — net worth grows.",
-        "action": "Today look in mirror. Greet New You.",
-        "reflectionPrompt": "Would 50-days-ago you want to be now?",
-        "proTip": "5 paths complete: month 6 daily lesson from each. Or design own path.",
+        "title": "The Path Ends, the Plan Continues",
+        "teaching": "Completing a financial path does not create a new wealthy self. It shows which tools you have examined and which fit your conditions.\n\nA sound plan uses records, an accessible buffer, clear goals, risk boundaries, and regular review. You need not use every tool.\n\nKeep one practice, stop one, and reassess one with professional support. Put the next money-review date on the calendar.\n\nThe app is not an investment, tax, or legal adviser. Use authorized support for large irreversible decisions.",
+        "action": "Keep one practice, stop one, and schedule the next money review.",
+        "reflectionPrompt": "Which small behavior will you choose sustainably after this lesson?",
         "quiz": [
           {
-            "q": "Master = ?",
+            "q": "What is the soundest approach to the path ends, the plan continues?",
             "options": [
-              "Worry",
-              "Money is tool",
-              "Passive",
-              "Always rich"
+              "Turn completion into a sustainable financial system",
+              "Treat one multiplier as certain",
+              "Open a product without reading terms",
+              "Use balance as human worth"
             ],
-            "correct": 1,
-            "explain": "Money becomes tool."
+            "correct": 0,
+            "explain": "The core approach is to turn completion into a sustainable financial system."
           },
           {
-            "q": "Next step?",
+            "q": "Which boundary fits this lesson?",
             "options": [
-              "Now",
-              "Month 6 if 5 paths complete",
-              "Never",
-              "Vacation"
+              "Do not use the app instead of personal financial advice",
+              "Risk essential needs",
+              "Borrow for an unclear decision",
+              "Dismiss authorized support"
             ],
-            "correct": 1,
-            "explain": "After all paths complete: mix."
+            "correct": 0,
+            "explain": "The appropriate boundary is to do not use the app instead of personal financial advice."
           }
         ]
       }

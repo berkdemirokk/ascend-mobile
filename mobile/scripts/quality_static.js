@@ -647,8 +647,8 @@ run('first-session content pacing', () => {
 
 run('reviewed advanced lesson safety', () => {
   const reviewedRanges = {
-    'body-discipline': [[6, 35]],
-    'money-discipline': [[6, 35]],
+    'body-discipline': [[1, 50]],
+    'money-discipline': [[1, 50]],
   };
   const riskyClaim = /%|\b(?:percent|guarantee|guaranteed|proven|research|studies|study|science|scientific|experts?|mortality|lifespan|y\u00fczde|garanti|kan\u0131tland\u0131|kan\u0131tlanm\u0131\u015f|ara\u015ft\u0131rma(?:lar)?|bilimsel|uzmanlar|mortalite|\u00f6m\u00fcr)\b/i;
   for (const [language, resource] of [['tr', trLessons], ['en', enLessons]]) {
