@@ -1239,312 +1239,302 @@
         ]
       },
       "41": {
-        "title": "Zevk-Acı Dengesi",
-        "teaching": "Pazar sabahı. Sıcak kahve, lezzetli kahvaltı, geç yatağa dönüş. Maksimum konfor. Akşam: huzursuzluk, anlamsız sıkıntı, gece uykusuzluk. Hiçbir şey yapmadın ama kötü hissediyorsun. **Niye?**\n\nAnna Lembke (Stanford psikiyatri profesörü) **Dopamine Nation** kitabında: '**her zevk, eşit miktarda acı borçu yaratır.**' Beyin homeostaz arar — yukarı sapma kadar aşağı sapma yapar. Sürekli zevk = **sürekli huzursuzluk borcu**.\n\nNörobiyoloji: dopamin pikiyle birlikte 'opposing process' devreye girer — beyin baseline'ı yeniden dengelemek için 'demoralizasyon' kimyasallarını salgılar. Yani zevk içeriden acıyı doğuruyor.\n\nÇözüm paradoksal: **bilinçli zorluk** koy hayatına. Soğuk duş, açlık, fiziksel çaba, sıkıntıya tahammül, sessizlik. Beyin bu zorlukları 'acı' olarak kayıt eder → bunun karşılığı olarak baseline'ı yukarı çeker → sonrasında **normal** durumlar dahi zevkli olur.\n\nDavid Goggins, Cameron Hanes, Wim Hof — hepsinin disiplini bu prensipte. Bilinçli zorluk = uzun vadeli zevk. Kolaylık peşindeki hayat = uzun vadeli huzursuzluk.\n\n**Akşam küçük zorluk = sabah büyük keyif.**",
-        "action": "Bugün **küçük bir rahatsızlık** aç bırak: soğuk yüz suyu (1 dakika), 12 saat aç kalma (intermittent fasting), 5 dk sessiz meditasyon, soğuk duş (30 sn).",
-        "reflectionPrompt": "Acı sonrası zevk farklı miydi? Bedenin nasıl tepki verdi sonrasında?",
-        "proTip": "Akşam küçük bir zorluk = sabah büyük bir keyif. Lembke'in Dopamine Nation prensibi.",
+        "title": "Küçük Rahatsızlık",
+        "teaching": "Rahatlık kötü değildir. Sorun, her küçük rahatsızlığı hemen kapatma alışkanlığıdır. Sıkılınca ekran, yorulunca kaçış, bekleyince kontrol.\n\nBugün küçük bir rahatsızlığı güvenli şekilde açık bırakacaksın. Bir dakika beklemek, yüzünü soğuk suyla yıkamak, asansör yerine merdiven, kısa sessizlik.\n\nAmaç kendini zorlamak değil. Amaç şunu hatırlamak: rahatsızlık geldi diye hemen kaçmak zorunda değilsin.\n\nKüçük rahatsızlıklar tolerans alanını büyütür. Gün içinde daha az panik, daha az refleks, daha çok seçim alanı bırakır.",
+        "action": "Güvenli bir küçük rahatsızlık seç: bekle, merdiven çık, soğuk suyla yüzünü yıka.",
+        "reflectionPrompt": "Rahatsızlığı hemen kapatmayınca ne oldu?",
         "quiz": [
           {
-            "q": "Lembke prensibi?",
+            "q": "Amaç ne?",
             "options": [
-              "Zevk hep iyi",
-              "Zevk = acı borçu",
-              "Acı kötü",
-              "Denge yok"
+              "Kaçmamak",
+              "Kendini cezalandırmak",
+              "Abartmak",
+              "Yarışmak"
             ],
-            "correct": 1,
-            "explain": "**Her zevk eşit miktarda acı borçu yaratır.** Beyin homeostaz: dopamin pikinden sonra 'opposing process' baseline'ı düşürür."
+            "correct": 0,
+            "explain": "Küçük rahatsızlık kaçmadan kalmayı öğretir."
           },
           {
-            "q": "Denge örneği?",
+            "q": "Örnek hangisi?",
             "options": [
-              "Sürekli zevk",
-              "Bilinçli zorluk",
-              "Ne yapacağım",
-              "Boş"
+              "Kısa bekleme",
+              "Aşırı zorlama",
+              "Sınırsız ekran",
+              "Uykusuzluk"
             ],
-            "correct": 1,
-            "explain": "**Soğuk duş, açlık, çaba = denge.** Bilinçli zorluk uzun vadede baseline'ı yukarı çekiyor — normal hayat tatlanıyor."
+            "correct": 0,
+            "explain": "Güvenli ve küçük seçim gerekir."
           }
         ]
       },
       "42": {
         "title": "Ortayol Kontrolü",
-        "teaching": "Yolun ortasında bir an dur. **42. gün.** Bedeli neydi, kazanı ne? Bu sorular sentez gerektirir — beyin değişiklikleri otomatik etiketlemez, **bilinçli farkındalık** gerek.\n\nDeğişimi gözlemlemek = değişimi pekiştirmek. UCLA 2008 araştırması (Daniel Siegel): kazanımları yazılı kayıt eden kişilerde, davranış değişikliği kalıcılaşma oranı **%50 daha yüksek**. Çünkü beyin 'eski sen' ile 'yeni sen' arasındaki farkı netleştirdiğinde, geri dönmek için 'eskiye dön' refleksi zayıflar.\n\nÜç boyutta tara:\n\n**Bedensel:** Uyku kalitesi nasıl? Postür değişti mi? Göz altı çukurları kayboldu mu? Enerji daha sürdürülebilir mi?\n\n**Zihinsel:** Dikkat süresi uzadı mı? Kitap okumak yine zevkli mi? Sıkıntıya tahammül arttı mı? Karar verme net mi?\n\n**Sosyal:** Sohbetlerde tam mevcut musun? Yapay bağlar yerine derin bağlar mı arıyorsun? Telefon arada olmayınca ne hissediyorsun?\n\nBu üç boyutta 5 net değişim yaz. Bu liste senin **kanıtın** — geri dönüş baskısı geldiğinde bak, hatırla.\n\nYarıyol kontrolü sadece geriye bakış değil — kalan yola **enerji** veriyor.",
-        "action": "Bugün **5 net değişikliği** yaz — bedensel, zihinsel, sosyal. Telefonun kilit ekranına koy listeyi (screenshot). Geri dönüş anı görsen sen.",
-        "reflectionPrompt": "En şaşırtan değişim hangisi? Niye onu beklemiyordun?",
-        "proTip": "Listeyi telefon kilit ekranına koy. Geri dönüş anı bak — kanıtın hep yanında.",
+        "teaching": "Bazen değişim yavaş olduğu için görünmez olur. Her gün küçük oynar, sonra birden eski halinden uzakta olduğunu fark edersin.\n\nBugün durup orta yolu kontrol edeceksin. Bedende, zihinde, ilişkilerde ve iş düzeninde ne değişti? Küçük farkları da yaz.\n\nBu liste övünmek için değil, yön kaybetmemek için. Geri dönme isteği geldiğinde somut değişimi görmek gerekir.\n\nKendine dürüst ol. Eksik kalanları da yaz. Kontrol noktası hem ilerlemeyi hem de sıradaki ihtiyacı gösterir.",
+        "action": "Beş değişim yaz: beden, zihin, ilişki, iş ve uyku başlıklarından seç.",
+        "reflectionPrompt": "Hangi değişimi fark etmek seni en çok şaşırttı?",
         "quiz": [
           {
-            "q": "Yarıyolda ne yap?",
+            "q": "Kontrol noktası ne gösterir?",
             "options": [
-              "Vazgeç",
-              "Geriye bak + ölç",
-              "Hızlandır",
-              "Aynı"
+              "İlerleme ve ihtiyaç",
+              "Sadece başarı",
+              "Ceza",
+              "Bitiş"
             ],
-            "correct": 1,
-            "explain": "**5 değişikliği yaz, listele.** Daniel Siegel UCLA 2008: yazılı kayıt davranış kalıcılaşmasını %50 artırır."
+            "correct": 0,
+            "explain": "Hem değişimi hem eksik kalan yeri görürsün."
           },
           {
-            "q": "Liste nereye?",
+            "q": "Liste ne için?",
             "options": [
-              "Çek defteri",
-              "Telefon kilit ekranı",
-              "Kafan",
-              "Çöp"
+              "Yön kaybetmemek",
+              "Gösteriş",
+              "Kaçış",
+              "Unutmak"
             ],
-            "correct": 1,
-            "explain": "**Görünür yer = hatırlatma.** Aklımda kalır sanırız, kalmaz. Kilit ekran görsel anchor olur."
+            "correct": 0,
+            "explain": "Somut değişim geri dönüş isteğine karşı hatırlatıcıdır."
           }
         ]
       },
       "43": {
         "title": "Yer Değiştirme Takibi",
-        "teaching": "12 gün önce 'replacement listesi' yapmıştın — telefon dürtüsü gelince yapacağın 5 alternatif. Şimdi sonuçları topla: **hangi alternatif gerçekten işe yaradı? Hangisi sahteydi?**\n\nBeyin **plastik** — sürekli yeni alternatif arar. İlk seçim genelde 'kolay' alternatiflerdir (su iç, esneme, kısa nefes). Ama beyin hızla bunlara da alışır — etkisi azalır. Replacement listesi **statik** değildir, **canlı bir araç**.\n\nÇoğunluğun gözlemi: en güçlü iki kategori:\n\n**1. Hareket (spor / yürüyüş):** Endorfin + BDNF + serotonin salgısı. Dopamin dengesini sağlıklı yükseltir. 10 squat veya 5 dakikalık yürüyüş, telefon refleksini erken zirvede keser.\n\n**2. Yaratıcı iş (yazı / çizim / müzik):** **Flow state** girilir, dikkat dağıtıcı dürtü erir. Mihály Csíkszentmihályi'nin flow araştırması: yaratıcı iş başladıktan 5 dakika sonra zamansal algı değişir, bağımlılık tetikleyicileri kaybolur.\n\nPasif alternatifler (uyku, yemek) **zayıf** — beyin onu da dopamin kaynağı olarak kullanmayı öğrenir, yeni bağımlılık riski yaratır.\n\n**Aylık güncelleme**: işe yarayanı tut, yaramayanı çıkar, yeni 1-2 alternatif ekle. Sürekli bir laboratuvar.",
-        "action": "Bugün **alternatif listesini güncelle**: 1 yeni şey ekle (denenmedik), 1 eski çıkart (etkisini kaybetmiş). Yeni listeyi telefonun arkasına yapıştır.",
-        "reflectionPrompt": "En güçlü alternatif hangisi? Bunun ortak özelliği ne — hareket mi, yaratıcılık mı, dışa açılma mı?",
-        "proTip": "**Spor ve yaratıcı iş = en güçlü alternatifler.** Pasif tüketim (uyku/yemek) zayıf, yeni bağımlılık riski.",
+        "teaching": "İlk yerine koyma listesi sonsuza kadar aynı kalmak zorunda değil. Bazı davranışlar işe yarar, bazıları gücünü kaybeder, bazıları hiç başlamaz.\n\nBugün listeyi güncelleyeceksin. Eski bir karşılığı çıkar, yeni bir karşılık ekle. Böylece plan canlı kalır.\n\nCanlı plan, katı plan demek değildir. Dürtü değiştikçe cevap da gelişir. Önemli olan plansız yakalanmamaktır.\n\nKendine şunu sor: Telefon yerine ne gerçekten kolay başladı? Ne sadece kağıt üzerinde iyi durdu?",
+        "action": "Alternatif listenden bir madde çıkar, bir yeni madde ekle.",
+        "reflectionPrompt": "Hangi alternatif kağıtta iyi göründü ama pratikte çalışmadı?",
         "quiz": [
           {
-            "q": "Alternatif takibi?",
+            "q": "Liste neden güncellenir?",
             "options": [
-              "Sabit",
-              "2 haftada güncelle",
-              "Asla",
-              "1 yıl"
+              "Canlı kalması için",
+              "Süs olsun diye",
+              "Unutmak için",
+              "Ceza için"
             ],
-            "correct": 1,
-            "explain": "**Beyin yeni alternatif arar.** İlk seçimler etkisini kaybeder. Aylık/2-haftalık güncelleme canlı bir laboratuvar tutar."
+            "correct": 0,
+            "explain": "Davranışlar değiştikçe plan da güncellenir."
           },
           {
-            "q": "En güçlü alternatifler?",
+            "q": "Risk ne?",
             "options": [
-              "Pasif tüketim",
-              "Spor + yaratıcılık",
-              "Uyku",
-              "Yemek"
+              "Plansız yakalanmak",
+              "Kısa liste",
+              "Yeni fikir",
+              "Gözlem"
             ],
-            "correct": 1,
-            "explain": "**Aktif + yaratıcı = en güçlü.** Endorfin + BDNF + flow state. Csíkszentmihályi: yaratıcı iş 5 dk sonra dürtüleri kaybeder."
+            "correct": 0,
+            "explain": "Dürtü anında plansız kalmak eski yola döndürür."
           }
         ]
       },
       "44": {
-        "title": "Anti-Dağılma Mimarisi",
-        "teaching": "Diyet yapan bir kişi düşün: buzdolabında çikolata, masada kek, dolapta cips. İrade gücüyle direnmek = imkânsız. Çevre kazanır. Aynı kişi mutfağı temizlerse, çikolatayı eve sokmazsa = irade kullanmadan başarır.\n\n**Çevre = davranış.** James Clear (Atomic Habits): '**Make it invisible, make it impossible.**' Görünmez yap. İmkânsız yap. Tetikleyici yoksa davranış yok.\n\nDijital disiplin için aynı:\n- Telefon görünmezse alma\n- Sosyal medya app silinmişse açma\n- Bildirim yoksa kontrol etme\n- Şarj başka odadaysa yatakta dokunma\n\nMIT 2020 araştırması: fiziksel mesafe **3 metre artırınca** telefon kullanım sıklığı **%40 düşüyor** — irade müdahalesi olmadan, sadece mimari fark.\n\nAnti-dağılma mimarisi = davranış için **trafik mühendisliği** yapmak. Yol işaretleri olmadan trafik kaosa düşer; ortam tetikleyicileri olmadan da disiplin tükenir. İkisi de **mimari** ile çözülür.",
-        "action": "Bugün **1 dağıtıcıyı fiziksel olarak görünmez yap**: telefonu çekmeceye koy, app'i sil, şarj cihazını başka odaya taşı.",
-        "reflectionPrompt": "Görünmez yapınca refleks devam etti mi? Ne kadar zaman sonra azaldı?",
-        "proTip": "Telefonu sırt çantasına koy. Çıkarmak için **kalkmak gerekiyor** — friction = davranış değişimi.",
+        "title": "Dağılma Mimarisi",
+        "teaching": "Dağınıklık sadece zihinde olmaz. Odanın düzeni, şarj kablosunun yeri, ana ekranın hali ve masanın üstü de dikkati yönlendirir.\n\nBugün tek bir dağıtıcıyı fiziksel olarak görünmez yap. Hepsini çözmeye çalışma. Bir seçim yeter: telefon çekmeceye, şarj başka odaya, uygulama silme, masa temizleme.\n\nMimari küçük görünür ama davranışı sessizce iter. Doğru nesne doğru yerdeyse doğru davranış daha kolay başlar.\n\nBu iş estetik değil, işleyiş meselesidir. Düzen güzel görünsün diye değil, seni daha az dağıtsın diye kuruluyor.",
+        "action": "Bir dağıtıcıyı görünmez yap: çekmece, başka oda, silme veya masa temizliği.",
+        "reflectionPrompt": "Hangi fiziksel değişiklik dikkati en hızlı rahatlattı?",
         "quiz": [
           {
-            "q": "Çevre ne yapar?",
+            "q": "Mimari ne yapar?",
             "options": [
-              "Etkisiz",
-              "Davranışı şekillendirir",
-              "Sadece güzel",
-              "Pahalı"
-            ],
-            "correct": 1,
-            "explain": "**Çevre = davranış.** James Clear, BJ Fogg, Atomic Habits — hepsi tek noktada birleşiyor. MIT 2020: 3 metre mesafe = %40 düşüş."
-          },
-          {
-            "q": "Clear formülü?",
-            "options": [
-              "Make it impossible",
-              "Make it visible",
-              "Make it good",
-              "Buy it"
+              "Davranışı iter",
+              "Sadece süsler",
+              "Her şeyi çözer",
+              "Etkisizdir"
             ],
             "correct": 0,
-            "explain": "**Görünmez/imkânsız yap.** Tetikleyici yoksa davranış yok. İrade müdahale etmek zorunda kalmaz."
+            "explain": "Nesnelerin yeri davranışı kolaylaştırır veya zorlaştırır."
+          },
+          {
+            "q": "Bugünkü ölçek?",
+            "options": [
+              "Tek dağıtıcı",
+              "Tüm hayat",
+              "Hiçbir şey",
+              "Sadece düşünce"
+            ],
+            "correct": 0,
+            "explain": "Küçük fiziksel değişim yeterlidir."
           }
         ]
       },
       "45": {
-        "title": "Telefonsuz Yürüyüşler",
-        "teaching": "Yürürken kulaklık, podcast, müzik. Çevre gözden kayboluyor. Yürüyüş bir 'verim' aktivitesine dönüşüyor — bilgi tüketimi + adım sayısı. Ama gerçek yürüyüş ne kazandırır?\n\n**Yürüyüş + telefonsuz = düşünce + görme.** Yürüyüş + telefon = beden olmadan zihin (veya zihin olmadan beden). İkisi tam birlikte = gerçek yürüyüş.\n\nSteve Jobs Apple'da en zor kararları **telefonsuz yürürken** alırdı — onunla yürüyüşe çıkmak bir lütuf olarak görülürdü. Nietzsche: 'Tüm büyük düşünceler yürürken doğar.' Aristotle'in okulunda dersler yürüyerek verilirdi (Peripatos).\n\nStanford 2014: yürüyenlerin yaratıcı düşünme skorları %60 artıyor. Ama kritik şart: **dış uyaran olmamalı**. Müzik dinleyen yürüyüşler bu artışı vermiyor — beyin müzikle meşgul, Default Mode Network devreye giremiyor.\n\nGerçek dünya zaten **zengin**: sokak sesleri, insanların yüzleri, gökyüzü, hava akımı, kokular. Bunlar 'sıkıcı' geliyor sadece sürekli dijital uyaran almışa.",
-        "action": "Bugün **30 dakika telefonsuz yürü**. Kulaklık yok, müzik yok, podcast yok. Sadece sen + sokak + düşünceler.",
-        "reflectionPrompt": "Yürüyüşte hangi düşünce belirdi? Daha önce gelmemiş bir şey miydi?",
-        "proTip": "Sokak seslerini dinle. **Gerçek dünya zaten zengin** — sen dinlemeyi unuttun, dünya hep konuşuyordu.",
+        "title": "Telefonsuz Yürüyüş",
+        "teaching": "Yürüyüş, ekrana taşındığında başka bir tüketim anına dönüşür. Kulaklık, mesaj, kayıt, fotoğraf, rota derken beden yürüyor ama zihin yine içeride kalıyor.\n\nBugün yürüyüşü sade bırak. Telefon yanında olabilir ama görünmez olsun; mümkünse evde kalsın. Kulaklık yok, içerik yok, sadece çevre.\n\nİlk dakikalarda boşluk sert gelebilir. Sonra ritim başlar: adım, nefes, sokak, hava, düşünce.\n\nTelefonsuz yürüyüş hareketten fazlasıdır. Günü sindirme ve zihni toparlama alanıdır.",
+        "action": "Otuz dakika telefonsuz yürü. Kulaklık, müzik ve fotoğraf yok.",
+        "reflectionPrompt": "Yürürken hangi düşünce kendiliğinden toparlandı?",
         "quiz": [
           {
-            "q": "Telefonsuz yürüyüş etkisi?",
+            "q": "Yürüyüş neye dönüşebilir?",
             "options": [
-              "Yok",
-              "Düşünce + görme",
-              "Yorgunluk",
-              "Sıkıntı"
+              "Tüketim anı",
+              "Sessizlik",
+              "Dinlenme",
+              "Hareket"
             ],
-            "correct": 1,
-            "explain": "**Beden + zihin birlikte.** Stanford 2014: yaratıcılık %60 artar — ama sadece dış uyaran olmadığında. Müzikli yürüyüş bu etkiyi vermez."
+            "correct": 0,
+            "explain": "Ekran yürüyüşü yine içerik tüketimine çevirebilir."
           },
           {
-            "q": "Süre?",
+            "q": "Bugünkü kural?",
             "options": [
-              "5 dk",
-              "30 dk",
-              "5 saat",
-              "0"
+              "İçerik yok",
+              "Podcast aç",
+              "Fotoğraf ara",
+              "Mesaj bak"
             ],
-            "correct": 1,
-            "explain": "**30 dakika optimum.** Beyin DMN'e geçmek için 10-15 dk ısınma süresi ister, sonra 15-20 dk verimli düşünme."
+            "correct": 0,
+            "explain": "Çevre ve düşünceyle kalırsın."
           }
         ]
       },
       "46": {
-        "title": "Detoks Kimliği",
-        "teaching": "'Sigara içmiyorum' demek farklı. 'Ben sigara içmem' demek farklı. İlk cümle bir **davranış** tanımıdır — sıkıştırılır, baskı altında çatlar. İkinci cümle bir **kimlik** tanımıdır — kişiliğin parçası, kolay kolay sarsılmaz.\n\nJames Clear (Atomic Habits): '**Davranış unutulur, kimlik dönmez.**' Sürdürülebilir değişimin sırrı kimlik düzeyinde olmasıdır.\n\nDetoks 46. günde, davranış değişimi tamamlandı. Şimdi son adım: bunu **kimliğe** dönüştürmek.\n\nEski etiketler:\n- 'Telefon bağımlıyım'\n- 'Sosyal medya kullanıcısı'\n- 'Sürekli online biri'\n\nYeni etiketler:\n- 'Ben dijital minimalistim'\n- 'Ben derin odak çalışırım'\n- 'Ben mevcut bir insanım'\n- 'Ben sıkıntıyla barışığım'\n\nKimlik değişimi **dil değişimi** ile başlar. Aynaya günde 3 kez bak, yeni etiketi söyle. 30 gün sonra beyin onu kabul eder. Sonra 'eski etikete' geri dönmek absürt gelir — çünkü artık sen 'o' değilsin.\n\nKimlik = uzun vade. Disiplin değil — **kim olduğun**.",
-        "action": "Bugün kendine **1 yeni dijital kimlik etiketi** koy. Yaz, gör. Telefonun arkasına yapışkan not. Aynanın yanına. Sabah uyanır uyanmaz tekrar et.",
-        "reflectionPrompt": "Hangi kimliği seçtin? Bu etiketi 30 gün her gün söylesen, 30 gün sonra nasıl biri olursun?",
-        "proTip": "Aynaya bakıp her sabah söyle: 'Ben ___.' 30 gün sonra beyin onu kabul eder, geri dönüş absürt gelir.",
+        "title": "Yeni Kimlik Cümlesi",
+        "teaching": "Davranışlar kimliği besler. Ama kimlik de davranışa yön verir. Kendine ne dediğin, zor anda hangi seçeneği doğal gördüğünü etkiler.\n\nBugün abartılı bir slogan değil, sade bir kimlik cümlesi yaz. “Telefonu amaçla kullanan biriyim.” “Akşamımı koruyan biriyim.” “Boşlukta kaçmayan biriyim.”\n\nCümle gerçekçi olmalı. Söylediğinde utanmamalı, davranışa dökülebilmeli. Büyük görünmek zorunda değil.\n\nBu cümle zor anda küçük bir pusula olur. Ne yapacağını değil, kim olmak istediğini hatırlatır.",
+        "action": "Bir kimlik cümlesi yaz ve bugün üç kez sesli oku.",
+        "reflectionPrompt": "Hangi cümle sana hem gerçekçi hem güçlü geldi?",
         "quiz": [
           {
-            "q": "Davranış vs kimlik?",
+            "q": "Kimlik cümlesi nasıl?",
             "options": [
-              "Aynı",
-              "Kimlik kalıcı, davranış geçici",
-              "Kimlik daha zayıf",
-              "Yok"
+              "Sade ve gerçekçi",
+              "Abartılı",
+              "Belirsiz",
+              "Utandırıcı"
             ],
-            "correct": 1,
-            "explain": "**Kimlik = uzun vade.** James Clear: davranış unutulur, kimlik dönmez. Sürdürülebilir değişim kimlik düzeyinde olur."
+            "correct": 0,
+            "explain": "Cümle davranışa dökülebilmelidir."
           },
           {
-            "q": "Kimlik nasıl pekişir?",
+            "q": "Zor anda ne sağlar?",
             "options": [
-              "Düşünme",
-              "Tekrar söyle",
-              "Yaz",
-              "Unut"
+              "Pusula",
+              "Baskı",
+              "Kaos",
+              "Kaçış"
             ],
-            "correct": 1,
-            "explain": "**Aynaya günlük tekrar.** Dil değişimi → kimlik değişimi. 30 gün tekrarla beyin kabul eder."
+            "correct": 0,
+            "explain": "Kim olmak istediğini hatırlatır."
           }
         ]
       },
       "47": {
         "title": "Uzun Vade Stratejisi",
-        "teaching": "30 günlük diyet bittiğinde pizza yiyenler, 6 ay içinde eski kilolarına döner. **Sürdürülemez 'detoks' modeli** — geçici çıkıp eski hayata dönmek. 50 gün de aynı tuzağı taşır.\n\n50 gün biter. Sonra ne? **'Eski Ben'** geri dönmek için sabırsız. Beyin homeostaz'a dönmek ister, eski refleksler hala sinapslarda mevcut, sadece güçleri azalmış. Net plan olmazsa **90 gün içinde** eski hayat geri yerleşir.\n\nUzun vade stratejisi = **kural seti**. Sayı az olmalı (5 max), spesifik olmalı, sürdürülebilir olmalı.\n\nÖrnek 5 kural seti:\n1. **TikTok asla geri yüklenmeyecek.**\n2. **Yatak odası telefonu yok — her gece, istisnasız.**\n3. **Sabah ilk 60 dakika telefon yok.**\n4. **Sosyal medya sadece masaüstünden, günde 1 kez, 15 dakika.**\n5. **Aylık 1 dijital sabbath günü — 24 saat ekran yok.**\n\nKurallar **spesifik** — 'daha az kullanacağım' değil, 'tam olarak şu'. Genel olarak yapılan vaatler tutmaz. Stoacılar 2000 yıl önce bunu söylüyorlardı: 'Belirsiz erdem yoktur.'\n\nHafta içi + hafta sonu kurallarını ayrı tut — Pazartesi-Cuma sıkı, hafta sonu hafif esnek. Tamamen sıkı kurallar uzun vade çatlar.",
-        "action": "Bugün **5 kalıcı kural** yaz. Spesifik, sürdürülebilir, hafta içi/sonu ayrımıyla. Telefon arkasına yapıştır.",
-        "reflectionPrompt": "En sürdürülebilir kural hangisi? Hangisini tutmak en zor olur?",
-        "proTip": "'Pazartesi-cuma' + 'hafta sonu' iki kural setini ayrı tut. Tamamen sıkı = uzun vade çatlar.",
+        "teaching": "Süreç bitince boşluğa düşmemek için uzun vade planı gerekir. Plan yoksa eski düzen sessizce geri gelir.\n\nStrateji sert olmak zorunda değil. Sürdürülebilir olmalı. Hafta içi, hafta sonu, iş günü, tatil günü gibi gerçek hayat farklarını düşün.\n\nBeş kural yeter. Sabah, gece, bildirim, sosyal medya ve boş zaman için net karar yaz. Her kural ölçülebilir olsun.\n\nUzun vade stratejisi seni sıkıştırmak için değil, seni belirsizlikten korumak için var. Ne yapacağını bilmek enerjiyi geri verir.",
+        "action": "Sabah, gece, bildirim, sosyal medya ve boş zaman için beş kural yaz.",
+        "reflectionPrompt": "Hangi kural uzun vadede en çok koruma sağlar?",
         "quiz": [
           {
-            "q": "50 gün sonu strateji?",
+            "q": "Plan neden gerekir?",
             "options": [
-              "Bitti",
-              "90 günlük plan",
-              "Hiç",
-              "Tatil"
+              "Eski düzen dönmesin diye",
+              "Daha sert olmak için",
+              "Gösteriş için",
+              "Unutmak için"
             ],
-            "correct": 1,
-            "explain": "**Sonrası kayma riski.** Net plan yoksa 90 günde eski hayat geri yerleşir. Disiplin sürekli pratik gerektirir."
+            "correct": 0,
+            "explain": "Boşluk bırakılırsa eski ritim geri gelebilir."
           },
           {
-            "q": "Optimum kural sayısı?",
+            "q": "Kural nasıl?",
             "options": [
-              "1",
-              "5",
-              "20",
-              "100"
+              "Ölçülebilir",
+              "Belirsiz",
+              "Gizli",
+              "Aşırı"
             ],
-            "correct": 1,
-            "explain": "**5 net kural sürdürülebilir.** Az = unutulur, çok = takip edilemez. 5 hatırlanabilir + uygulanabilir tatlı nokta."
+            "correct": 0,
+            "explain": "Ölçülebilir kural uygulanabilir olur."
           }
         ]
       },
       "48": {
-        "title": "Final Faz Başlıyor",
-        "teaching": "**Son 3 gün.** 47 gün ardına döndün — bayağı uzun bir yol. Şimdi son sprintin başlıyor ve garip bir şey hissedebilirsin: **direnç**. Bedenin 'bitti' sinyali ister, son üç günü atlamak ister.\n\nBu doğal. Yarış metaforuna geri dönersek: maratoncuların %20'si 35-40 km arasında bırakır. Sen 47/50'desin — eşdeğer 39 km, %78. Beyin 'tamamen bitti gibi' sinyali atıyor. Ama tamamen bitti değil — **son sprint, kimliğin kilitlenme noktası**.\n\nNiye? Çünkü 50 gün gerçek bir 'tamamlandı' eşiği. Üst-bilinçaltı 50 sayıyı pekiştirici görür. 47'de bırakan 'neredeyse başardım' duygusuyla yaşar. 50'de bitiren '**başardım**' karakterini taşır.\n\nBu son 3 gün karakter inşasının kritik anı. Steven Pressfield (**War of Art**): '_The Resistance_, en güçlü saldırısını başarıya yaklaştığında yapar.' Yani son sprint = direnç en sertinde.\n\nÇözüm: **niyeti pekiştir**. Niye sürdürmek istiyorsun? Yazılı, görünür, sürekli erişilebilir. Beyin 'niye?' sorusunun cevabını net biliyorsa, direnci kıracak yakıt da net.",
-        "action": "Bugün **son sprintin niyetini yaz**. 'Niye sürdürmek istiyorum?' sorusunun cevabı 3 cümle. Cüzdana koy, telefon arkasına yapıştır.",
-        "reflectionPrompt": "Niyetin ne kadar derin? Sözlerin ardında gerçek bir kararlılık var mı?",
-        "proTip": "**'Niye'yi cüzdana koy.** Geri dönüş anı bak — Pressfield: direnç başarıya yaklaştığında en sertindir.",
+        "title": "Final Niyeti",
+        "teaching": "Final yaklaşınca neden başladığını unutmak kolaydır. Günler görev listesine dönüşür, ilk niyet soluklaşır.\n\nBugün niyeti yenile. Neden sürdürmek istiyorsun? Daha çok zaman mı, daha sakin zihin mi, daha iyi ilişki mi, daha temiz uyku mu?\n\nCevap başkasına iyi görünmek için değil. Sende kalacak kadar dürüst olmalı. Üç cümle yeter.\n\nNiyet yazıldığında final sadece bitiş olmaz. Bir sonraki dönemin kapısı olur. Neyi koruyacağını bilerek geçersin.",
+        "action": "“Sürdürmek istiyorum çünkü...” diye başlayan üç dürüst cümle yaz.",
+        "reflectionPrompt": "Üç cümleden hangisi seni gerçekten hareket ettiriyor?",
         "quiz": [
           {
-            "q": "Final fazda hisset?",
+            "q": "Niyet neyi tazeler?",
             "options": [
-              "Kolay",
-              "Direnç",
-              "Yorgunluk",
-              "Sıkıntı"
+              "Nedeni",
+              "Süslemeyi",
+              "Kaçışı",
+              "Yorgunluğu"
             ],
-            "correct": 1,
-            "explain": "**Beden 'bitti' sinyali ister.** Pressfield'in 'Resistance' kavramı: başarıya yaklaşan en güçlü direnci görür. Bu bir test."
+            "correct": 0,
+            "explain": "Nedenini hatırlamak finali güçlendirir."
           },
           {
-            "q": "Niyet nereye?",
+            "q": "Cevap nasıl?",
             "options": [
-              "Kafa",
-              "Cüzdan / görünür yer",
-              "Hatırla",
-              "Çöp"
+              "Dürüst",
+              "Gösterişli",
+              "Uzun ve karmaşık",
+              "Kopya"
             ],
-            "correct": 1,
-            "explain": "**Görünür = hatırlatma.** Akılda kalır sanırız, kalmaz. Cüzdanda her gün görülen 'niye' direnci kırar."
+            "correct": 0,
+            "explain": "Niyet sende kalacak kadar gerçek olmalı."
           }
         ]
       },
       "49": {
         "title": "49 Gün İçinde",
-        "teaching": "**49 gün.** Yarın 50. Bu 49 günde olan biten somut değişiklikleri sıralamak şaşırtıcı olur. Çünkü insanlar değişimlerini **gündelik** yaşar ama **toplu** olarak bakınca büyüklüğü görür.\n\nNörobiyolojik değişimler (49 gün arasında belgelenmiş):\n- **Dopamin sistemi yeniden kalibre oldu** — reseptör hassasiyeti normale döndü\n- **Sıkıntıya tahammül 10x arttı** — eskiden 5 dakika dayanamadığın durum şimdi rahat\n- **Dikkat süresi uzadı** — kitap okumak yeniden zevkli\n- **Default Mode Network aktif** — yaratıcılık, içgörü, refleksiyon\n- **Uyku kalitesi yükseldi** — derin uyku evreleri artmış\n- **Anlık zevkler artık tatmin etmiyor** — eski 'eğlence' tatsız geliyor\n- **Mevcut anda bulunabiliyorsun** — sohbetlere tam katılım\n- **Tetikleyicileri tanıyor, yönetiyorsun** — meta-farkındalık geliştirdin\n\nBu yeni baseline. **Koru.** Çünkü beyin plastik — geri de gider. Sürekli pratik gerek.\n\nBugün son bilgiyi topla: 49 günde değişen **10 şeyi** yaz. Bu liste senin kanıtın, senin hatıran, senin yarın aynı disiplini sürdürmen için yakıt.",
-        "action": "Bugün **49 günde değişen 10 şeyi yaz**. Bedensel, zihinsel, sosyal, davranışsal. Screenshot al, telefonun arka planı yap.",
-        "reflectionPrompt": "En unutulmaz değişim hangisi? Bunu birine anlatsa, en çok hangisi şaşırtırdı?",
-        "proTip": "Listeyi screenshot al, telefon arka planı yap. Her telefon açışında kanıt görünür.",
+        "teaching": "Sondan bir önceki gün, değişimi sayıdan çıkarıp hikayeye çevirme günüdür. Kaç gün geçtiğini biliyorsun; şimdi ne değiştiğini yaz.\n\nOn madde yaz. Küçük olabilir: daha az kontrol, daha net sabah, daha sakin akşam, daha iyi konuşma, daha temiz masa.\n\nKüçük değişimleri küçümseme. Hayatı değiştiren çoğu şey gösterişli değil, tekrarlı ve sakindir.\n\nBu liste gelecek için yakıt olur. Eski düzen çağırdığında, sadece hisse değil, yazılı değişime bakarsın.",
+        "action": "Değişen on şeyi yaz. Küçük maddeler de kabul.",
+        "reflectionPrompt": "Listede en beklenmedik değişim hangisiydi?",
         "quiz": [
           {
-            "q": "49 günde dopamin?",
+            "q": "Bugün ne yazılır?",
             "options": [
-              "Bozulur",
-              "Kalibre olur",
-              "Aynı",
-              "Bitirilir"
+              "Değişim listesi",
+              "Şikayet",
+              "Bahane",
+              "Alışveriş"
             ],
-            "correct": 1,
-            "explain": "**Sistem yeniden ayarlanır.** Reseptör hassasiyeti, baseline seviyesi, akış ritmi — hepsi normale döndü. Bu yeni baseline koruma gerektirir."
+            "correct": 0,
+            "explain": "Değişimi görünür hale getirirsin."
           },
           {
-            "q": "Sıkıntı toleransı?",
+            "q": "Küçük değişim?",
             "options": [
-              "Düşer",
-              "10x artar",
-              "Aynı",
-              "Yok olur"
+              "Değerlidir",
+              "Önemsizdir",
+              "Silinir",
+              "Saklanmaz"
             ],
-            "correct": 1,
-            "explain": "**Sıkıntıya tahammül büyük artar.** Bu derin işin temeli — sıkıntıyı tolere edemeyen kişi flow state'e giremez."
+            "correct": 0,
+            "explain": "Tekrarlı küçük değişimler ritmi kurar."
           }
         ]
       },
       "50": {
         "title": "Yol Tamamlandı",
-        "teaching": "**50 gün.** Çoğu insan **5 günde** vazgeçer. %78'i 14 günde bırakır. %95'i 30 günde durur. Sen son %5'in içindesin. **Masteri tamamladın.**\n\nBu sayılar abartı değil. Davranış değişimi araştırmaları (Lally 2010, Prochaska 1992, ve onlarca takip çalışması) bu istatistikleri belgeliyor. Bağımlılık kırma + kalıcı disiplin = istatistiksel olarak nadir. Sen istisnasın.\n\n**Yeni Sen kim?**\n- Sıkıntıya **hakim** — eski tetikleyici şimdi dost\n- Dürtüyü **sörfle** — dalga gibi izliyor, geçmesini bekliyor\n- Dijital **minimalist** — telefon araç, arkadaş değil\n- Mevcut bir **insan** — sohbete tam katılıyorsun\n- Derin **işçi** — 90 dakika tek-odakta kalabiliyorsun\n- Kendine kanıtladı**n** — disiplin artık karakterinde\n\nDiploma yok. Sertifika yok. Sadece **ayna**. Aynaya bak — 50 gün öncesinin sen, oraya bakıp şu anki seni görseydi ne hisseder?\n\n50 günde **bağımlılık kırılır**. 90 günde **kalıcılaşır**. 1 yılda **kimlik olur**. Şu noktada karar senin: kalıcı yap mı, yoksa eski hayata yumuşak iniş mi?\n\n**Bir başka path başlat.** 7 gün dinlen — beyin pekiştirme zamanı. Sonra Mind Discipline veya Body Discipline. Disiplin **bulaşıcı** — bir alanda öğrenilen prensipler diğerlerine kolayca taşınır.",
-        "action": "Bugün **aynaya bak**. Yeni Sen'i selamla. 50 gün önceki sen ile karşılaştır. Bu adamı/kadını tanıyor musun?",
-        "reflectionPrompt": "50 gün önceki sen şimdi olmak ister miydi? Bu sorunun cevabı sana ne söylüyor?",
-        "proTip": "**Bir başka path başlat.** 7 gün dinlen, sonra Mind veya Body Discipline. Disiplin bulaşıcı — bir alanda kazanılan diğerine taşınır.",
+        "teaching": "Bugün yolun son dersindesin. Bu, her şey bitti demek değil. Artık öğrendiklerini günlük hayata taşıma zamanı demek.\n\nAynaya bakmak sembolik olabilir ama işe yarar: kendine dışarıdan bakarsın. Bu süreçten geçen kişi kim oldu? Neyi korumak istiyor?\n\nEski halini küçümseme. O kişi bu yolu başlattı. Yeni halini de abartma. O kişi her gün küçük kararlarla korunacak.\n\nBugün saygıyla kapat. Sonra protokole dön: sabahı koru, geceyi koru, telefonu amaçla aç, gerçek bağ kur.",
+        "action": "Aynaya bak. Eski haline teşekkür et, yeni protokolünü bir kez oku.",
+        "reflectionPrompt": "Bu yolun sonunda en çok neyi korumak istiyorsun?",
         "quiz": [
           {
-            "q": "Master ne demek?",
+            "q": "Bugün ne demek?",
             "options": [
-              "Sertifika",
-              "Yeni Sen",
-              "Para",
-              "Ünvan"
+              "Taşıma zamanı",
+              "Her şey bitti",
+              "Eskiye dönüş",
+              "Boşluk"
             ],
-            "correct": 1,
-            "explain": "**Aynadaki yeni sen.** Diploma değil, kimlik. 50 gün önceki kişiden farklı bir insansın artık — bu farkın somut adı 'master'."
+            "correct": 0,
+            "explain": "Öğrenilenler günlük hayata aktarılır."
           },
           {
-            "q": "Sonraki path?",
+            "q": "Kapanış nasıl?",
             "options": [
-              "Hemen",
-              "7 gün dinlen",
-              "1 ay bekle",
-              "Asla"
+              "Saygıyla",
+              "Abartıyla",
+              "Küçümseyerek",
+              "Unutarak"
             ],
-            "correct": 1,
-            "explain": "**7 gün dinlen, sonra devam.** Beyin pekiştirme süresi gerek. Hemen başlamak = yorgunluk. 1 ay bekleme = momentum kaybı."
+            "correct": 0,
+            "explain": "Eski ve yeni halini dengeli görürsün."
           }
         ]
       }

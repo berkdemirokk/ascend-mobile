@@ -1239,312 +1239,302 @@
         ]
       },
       "41": {
-        "title": "Pleasure-Pain Balance",
-        "teaching": "Anna Lembke: \"every pleasure creates equal pain debt.\" Constant pleasure = constant unease. Conscious \"cold shower, hunger, effort\" = balance.",
-        "action": "Today take small discomfort: cold face wash, 12-hour fast, 5-min meditation.",
-        "reflectionPrompt": "Was pleasure different after the pain?",
-        "proTip": "Small evening hardship = bigger morning joy.",
+        "title": "Small Discomfort",
+        "teaching": "Comfort is not bad. The problem is the habit of closing every small discomfort immediately. Bored? Screen. Tired? Escape. Waiting? Check.\n\nToday, leave one safe discomfort open. Wait one minute, wash your face with cold water, take stairs instead of the elevator, or sit in brief silence.\n\nThe goal is not to punish yourself. The goal is to remember that discomfort does not require instant escape.\n\nSmall discomforts expand your tolerance zone. They leave more room for choice and less room for panic reflex.",
+        "action": "Choose safe small discomfort: wait, take stairs, or wash your face cold.",
+        "reflectionPrompt": "What happened when you did not close discomfort immediately?",
         "quiz": [
           {
-            "q": "Lembke principle?",
+            "q": "The aim?",
             "options": [
-              "Pleasure always good",
-              "Pleasure = pain debt",
-              "Pain bad",
-              "No balance"
+              "Not escaping",
+              "Punishment",
+              "Exaggeration",
+              "Competition"
             ],
-            "correct": 1,
-            "explain": "Each pleasure creates pain debt."
+            "correct": 0,
+            "explain": "Small discomfort teaches staying without escape."
           },
           {
-            "q": "Balance example?",
+            "q": "Good example?",
             "options": [
-              "Constant pleasure",
-              "Conscious hardship",
-              "No idea",
-              "Empty"
+              "Brief waiting",
+              "Extreme strain",
+              "Unlimited screen",
+              "No sleep"
             ],
-            "correct": 1,
-            "explain": "Cold shower, hunger, effort = balance."
+            "correct": 0,
+            "explain": "The choice should be safe and small."
           }
         ]
       },
       "42": {
-        "title": "Mid-Path Check",
-        "teaching": "Detox at day 42 — past halfway. Cost vs benefit? 30-days-ago you vs now: which differences are clear?",
-        "action": "Today list 5 changes. Body, mind, social.",
-        "reflectionPrompt": "Most surprising change?",
-        "proTip": "Put list on phone lock screen. Backslide moment: look.",
+        "title": "Midpoint Check",
+        "teaching": "Change can become invisible because it moves slowly. Each day shifts a little, then suddenly you notice you are far from the old state.\n\nPause today for a midpoint check. What changed in body, mind, relationships, and work rhythm? Write small differences too.\n\nThe list is not for bragging. It is for not losing direction. When the urge to return appears, concrete change matters.\n\nBe honest. Write what is still weak too. A check point shows both progress and the next need.",
+        "action": "Write five changes across body, mind, relationships, work, and sleep.",
+        "reflectionPrompt": "Which change surprised you most when you noticed it?",
         "quiz": [
           {
-            "q": "Mid-path do?",
+            "q": "Check point shows?",
             "options": [
-              "Quit",
-              "Look back + measure",
-              "Speed up",
-              "Same"
+              "Progress and need",
+              "Only success",
+              "Punishment",
+              "Finish"
             ],
-            "correct": 1,
-            "explain": "List 5 changes."
+            "correct": 0,
+            "explain": "You see both change and what remains."
           },
           {
-            "q": "List where?",
+            "q": "List is for?",
             "options": [
-              "Drawer",
-              "Phone lock screen",
-              "Head",
-              "Trash"
+              "Keeping direction",
+              "Showing off",
+              "Escape",
+              "Forgetting"
             ],
-            "correct": 1,
-            "explain": "Visible = reminder."
+            "correct": 0,
+            "explain": "Concrete change helps when old habits call."
           }
         ]
       },
       "43": {
         "title": "Replacement Tracking",
-        "teaching": "Which alternative worked? Which didn't? After 2 weeks the list updates itself. Brain seeks new alternatives.",
-        "action": "Today add 1 new alternative, remove 1 old one.",
-        "reflectionPrompt": "Which alternative is strongest?",
-        "proTip": "Sport and creative work = strongest alternatives.",
+        "teaching": "Your first replacement list does not need to stay forever. Some actions work, some lose power, and some never start.\n\nUpdate the list today. Remove one old replacement and add one new one. This keeps the plan alive.\n\nA living plan is not a rigid plan. As urges change, responses can improve. The important thing is not being caught without a next move.\n\nAsk yourself: what was actually easy to start instead of the phone? What only looked good on paper?",
+        "action": "Remove one item from your alternative list and add one new item.",
+        "reflectionPrompt": "Which alternative looked good on paper but failed in practice?",
         "quiz": [
           {
-            "q": "Alternative tracking?",
+            "q": "Why update?",
             "options": [
-              "Fixed",
-              "Update biweekly",
-              "Never",
-              "1 year"
+              "Keep it alive",
+              "Decoration",
+              "Forget it",
+              "Punishment"
             ],
-            "correct": 1,
-            "explain": "Brain seeks new alternatives."
+            "correct": 0,
+            "explain": "Plans should adapt as behavior changes."
           },
           {
-            "q": "Strongest alternatives?",
+            "q": "Main risk?",
             "options": [
-              "Passive consumption",
-              "Sport + creativity",
-              "Sleep",
-              "Food"
+              "No next move",
+              "Short list",
+              "New idea",
+              "Observation"
             ],
-            "correct": 1,
-            "explain": "Active + creative = strongest."
+            "correct": 0,
+            "explain": "No plan during the urge reopens the old road."
           }
         ]
       },
       "44": {
-        "title": "Anti-Distraction Architecture",
-        "teaching": "Environment = behavior. Phone invisible = no grab. Social-media app deleted = no open. Architect your environment, discipline becomes easy. James Clear: \"Make it invisible, make it impossible.\"",
-        "action": "Today make 1 distraction physically invisible.",
-        "reflectionPrompt": "Did the reflex continue when invisible?",
-        "proTip": "Phone in backpack — must stand to grab.",
+        "title": "Distraction Architecture",
+        "teaching": "Distraction does not live only in the mind. Room layout, charger location, home screen, and desk surface all direct attention.\n\nMake one distraction physically invisible today. Do not try to fix everything. One move is enough: phone in drawer, charger in another room, app deleted, desk cleared.\n\nArchitecture looks small, but it quietly pushes behavior. When the right object is in the right place, the right action starts more easily.\n\nThis is not about aesthetics. The room is not being arranged to look nice; it is being arranged to scatter you less.",
+        "action": "Make one distraction invisible: drawer, another room, deletion, or clear desk.",
+        "reflectionPrompt": "Which physical change relaxed attention fastest?",
         "quiz": [
           {
-            "q": "What does environment do?",
+            "q": "Architecture does what?",
             "options": [
-              "No effect",
-              "Shapes behavior",
-              "Just looks",
-              "Costs"
-            ],
-            "correct": 1,
-            "explain": "Environment = behavior."
-          },
-          {
-            "q": "Clear's formula?",
-            "options": [
-              "Make it impossible",
-              "Make it visible",
-              "Make it good",
-              "Buy it"
+              "Pushes behavior",
+              "Only decorates",
+              "Solves all",
+              "Does nothing"
             ],
             "correct": 0,
-            "explain": "Make invisible/impossible."
+            "explain": "Object placement makes behavior easier or harder."
+          },
+          {
+            "q": "Today’s scale?",
+            "options": [
+              "One distraction",
+              "Whole life",
+              "Nothing",
+              "Only thought"
+            ],
+            "correct": 0,
+            "explain": "One physical change is enough."
           }
         ]
       },
       "45": {
-        "title": "Phone-Free Walks",
-        "teaching": "Walk + phoneless = thought + sight. Walk + phone = mind without body. Steve Jobs solved hardest problems phoneless on walks.",
-        "action": "Today take a 30-minute phoneless walk. No earbuds.",
-        "reflectionPrompt": "What thought arose?",
-        "proTip": "Listen to street sounds. The real world is rich.",
+        "title": "Phone-Free Walk",
+        "teaching": "A walk can become another consumption moment when the screen comes with it. Earbuds, messages, recording, photos, route checks: the body walks, but the mind stays indoors.\n\nKeep the walk simple today. The phone may be with you, but invisible; if possible, leave it home. No earbuds, no content, only surroundings.\n\nThe first minutes may feel empty. Then rhythm begins: step, breath, street, air, thought.\n\nA phone-free walk is more than movement. It is a place to digest the day and gather the mind.",
+        "action": "Walk thirty minutes phone-free. No earbuds, music, or photos.",
+        "reflectionPrompt": "Which thought organized itself while you walked?",
         "quiz": [
           {
-            "q": "Phoneless walk effect?",
+            "q": "Walk can become?",
             "options": [
-              "None",
-              "Thought + sight",
-              "Tired",
-              "Boring"
+              "Consumption moment",
+              "Silence",
+              "Rest",
+              "Movement"
             ],
-            "correct": 1,
-            "explain": "Body + mind together."
+            "correct": 0,
+            "explain": "Screens can turn walking into more content intake."
           },
           {
-            "q": "Duration?",
+            "q": "Today’s rule?",
             "options": [
-              "5 min",
-              "30 min",
-              "5 hours",
-              "0"
+              "No content",
+              "Play podcast",
+              "Find photos",
+              "Check messages"
             ],
-            "correct": 1,
-            "explain": "30 min optimum."
+            "correct": 0,
+            "explain": "You stay with surroundings and thought."
           }
         ]
       },
       "46": {
-        "title": "Detox Identity",
-        "teaching": "\"I don't use my phone\" = temporary. \"I am a digital minimalist\" = permanent. Convert to identity. Behavior is forgotten, identity stays.",
-        "action": "Today claim 1 new digital identity label.",
-        "reflectionPrompt": "Which identity?",
-        "proTip": "Speak it in the mirror each morning: \"I am ___.\"",
+        "title": "Identity Sentence",
+        "teaching": "Behavior feeds identity. Identity also guides behavior. What you call yourself affects which choice feels natural in a hard moment.\n\nWrite a simple identity sentence today, not a dramatic slogan. “I use the phone with purpose.” “I protect my evening.” “I do not run from empty space.”\n\nThe sentence should be realistic. You should not feel silly saying it, and it should turn into behavior. It does not need to sound big.\n\nIn a hard moment, this sentence becomes a small compass. It reminds you who you are trying to be.",
+        "action": "Write one identity sentence and read it out loud three times today.",
+        "reflectionPrompt": "Which sentence felt both realistic and strong?",
         "quiz": [
           {
-            "q": "Behavior vs identity?",
+            "q": "Identity sentence?",
             "options": [
-              "Same",
-              "Identity permanent, behavior temp",
-              "Identity weaker",
-              "None"
+              "Simple and realistic",
+              "Dramatic",
+              "Vague",
+              "Embarrassing"
             ],
-            "correct": 1,
-            "explain": "Identity = long-term."
+            "correct": 0,
+            "explain": "It should turn into behavior."
           },
           {
-            "q": "Identity solidifies via?",
+            "q": "In hard moments?",
             "options": [
-              "Thinking",
-              "Repeat speaking",
-              "Writing",
-              "Forget"
+              "Compass",
+              "Pressure",
+              "Chaos",
+              "Escape"
             ],
-            "correct": 1,
-            "explain": "Daily mirror repeat."
+            "correct": 0,
+            "explain": "It reminds you who you want to be."
           }
         ]
       },
       "47": {
         "title": "Long-Term Strategy",
-        "teaching": "50 days end. Then what? Old You is impatient to return. Without a plan, in 90 days you're back. Today write the long-term rules.",
-        "action": "Today write a 90-day plan: 5 permanent rules.",
-        "reflectionPrompt": "Most sustainable rule?",
-        "proTip": "Keep \"weekday\" + \"weekend\" rule sets separate.",
+        "teaching": "You need a long-term plan so the end of the process does not become empty space. Without a plan, the old pattern can return quietly.\n\nThe strategy does not need to be harsh. It needs to be sustainable. Think about weekdays, weekends, workdays, and travel days.\n\nFive rules are enough. Write clear decisions for morning, night, notifications, social media, and free time. Each rule should be measurable.\n\nLong-term strategy is not here to squeeze you. It protects you from uncertainty. Knowing the rule gives energy back.",
+        "action": "Write five rules for morning, night, alerts, social media, and free time.",
+        "reflectionPrompt": "Which rule gives the most long-term protection?",
         "quiz": [
           {
-            "q": "After 50 days strategy?",
+            "q": "Why plan?",
             "options": [
-              "Done",
-              "90-day plan",
-              "Nothing",
-              "Vacation"
+              "Old pattern stays out",
+              "To be harsher",
+              "For display",
+              "To forget"
             ],
-            "correct": 1,
-            "explain": "After-risk: backslide."
+            "correct": 0,
+            "explain": "No plan can let the old rhythm return."
           },
           {
-            "q": "Optimal rule count?",
+            "q": "Rule should be?",
             "options": [
-              "1",
-              "5",
-              "20",
-              "100"
+              "Measurable",
+              "Vague",
+              "Hidden",
+              "Extreme"
             ],
-            "correct": 1,
-            "explain": "5 clear rules sustainable."
+            "correct": 0,
+            "explain": "Measurable rules can be followed."
           }
         ]
       },
       "48": {
-        "title": "Final Phase Begins",
-        "teaching": "Last 3 days. Body wants the \"done\" signal. Resistance. But this last sprint = identity locked-in. Tomorrow you are your own boss.",
-        "action": "Today write the final-sprint intent. Why continue?",
-        "reflectionPrompt": "How deep is your why?",
-        "proTip": "Put the \"why\" in your wallet. Backslide moment: look.",
+        "title": "Final Intent",
+        "teaching": "Near the finish, it is easy to forget why you started. Days become a checklist, and the first reason fades.\n\nRenew the intent today. Why do you want to continue? More time, calmer mind, better relationships, cleaner sleep?\n\nThe answer is not for looking good to others. It should be honest enough to stay with you. Three sentences are enough.\n\nWhen intent is written, the finish is not only an ending. It becomes the door to the next season. You cross it knowing what to protect.",
+        "action": "Write three honest sentences starting with “I want to continue because...”",
+        "reflectionPrompt": "Which of the three sentences actually moves you?",
         "quiz": [
           {
-            "q": "Final phase feeling?",
+            "q": "Intent renews?",
             "options": [
-              "Easy",
-              "Resistance",
-              "Tired",
-              "Bored"
+              "The reason",
+              "Decoration",
+              "Escape",
+              "Fatigue"
             ],
-            "correct": 1,
-            "explain": "Body wants \"done\" signal."
+            "correct": 0,
+            "explain": "Remembering why strengthens the finish."
           },
           {
-            "q": "Intent where?",
+            "q": "Answer should be?",
             "options": [
-              "Head",
-              "Wallet/visible",
-              "Remember",
-              "Trash"
+              "Honest",
+              "Showy",
+              "Long and tangled",
+              "Copied"
             ],
-            "correct": 1,
-            "explain": "Visible = reminder."
+            "correct": 0,
+            "explain": "Intent should feel real to you."
           }
         ]
       },
       "49": {
         "title": "49 Days In",
-        "teaching": "In 49 days the dopamine system has recalibrated. Boredom tolerance up 10x. Instant pleasures no longer satisfy. New baseline. Protect it.",
-        "action": "Today list 10 things that changed in 49 days.",
-        "reflectionPrompt": "Most unforgettable change?",
-        "proTip": "Screenshot the list, set as phone wallpaper.",
+        "teaching": "The day before the end is for turning the number into a story. You know how many days passed. Now write what changed.\n\nWrite ten items. They can be small: fewer checks, clearer morning, calmer evening, better conversation, cleaner desk.\n\nDo not dismiss small changes. Most things that change life are not flashy. They are repeated and quiet.\n\nThis list becomes fuel for the future. When the old pattern calls, you can look at written change, not only a feeling.",
+        "action": "Write ten things that changed. Small items count.",
+        "reflectionPrompt": "Which change on the list was most unexpected?",
         "quiz": [
           {
-            "q": "49-day dopamine?",
+            "q": "Today you write?",
             "options": [
-              "Broken",
-              "Recalibrated",
-              "Same",
-              "Done"
+              "Change list",
+              "Complaint",
+              "Excuse",
+              "Shopping"
             ],
-            "correct": 1,
-            "explain": "System resets."
+            "correct": 0,
+            "explain": "You make change visible."
           },
           {
-            "q": "Boredom tolerance?",
+            "q": "Small change?",
             "options": [
-              "Drops",
-              "Up 10x",
-              "Same",
-              "Gone"
+              "Matters",
+              "Means nothing",
+              "Gets deleted",
+              "Should hide"
             ],
-            "correct": 1,
-            "explain": "Massive tolerance increase."
+            "correct": 0,
+            "explain": "Repeated small changes build rhythm."
           }
         ]
       },
       "50": {
-        "title": "Complete — Master",
-        "teaching": "50 days. Most quit at 5. You finished the master. New You = boredom-master, urge-surfer, digital minimalist. No diploma — just the mirror.",
-        "action": "Today look in the mirror. Greet New You.",
-        "reflectionPrompt": "Would 50-days-ago you want to be now?",
-        "proTip": "Start another path. Rest 7 days, then mind or body discipline.",
+        "title": "Complete: Keep the Standard",
+        "teaching": "Today is the final lesson of this road. It does not mean everything is finished. It means it is time to carry what you learned into daily life.\n\nLooking in the mirror can be symbolic, but useful. You see yourself from the outside. Who did this process build? What do you want to protect?\n\nDo not look down on the old self. That person started the road. Do not exaggerate the new self either. That person is protected by small daily choices.\n\nClose with respect. Then return to the protocol: protect morning, protect night, open the phone with purpose, and build real connection.",
+        "action": "Look in the mirror. Thank the old self and read your new protocol once.",
+        "reflectionPrompt": "At the end of this road, what do you most want to protect?",
         "quiz": [
           {
-            "q": "Master means?",
+            "q": "Today means?",
             "options": [
-              "Certificate",
-              "New You",
-              "Money",
-              "Title"
+              "Carry it forward",
+              "Everything ends",
+              "Old return",
+              "Empty space"
             ],
-            "correct": 1,
-            "explain": "New you in mirror."
+            "correct": 0,
+            "explain": "What you learned moves into daily life."
           },
           {
-            "q": "Next path?",
+            "q": "Closing style?",
             "options": [
-              "Now",
-              "Rest 7 days",
-              "1 month",
-              "Never"
+              "Respectful",
+              "Exaggerated",
+              "Dismissive",
+              "Forgetful"
             ],
-            "correct": 1,
-            "explain": "Rest 7 days, then continue."
+            "correct": 0,
+            "explain": "You see old and new self with balance."
           }
         ]
       }
