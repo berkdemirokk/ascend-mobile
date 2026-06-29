@@ -72,12 +72,12 @@ export default function StreakLostBanner({
         {previousLongest && previousLongest > lost
           ? t(
               'streakLost.bodyWithRecord',
-              'Geri dönenler %47. Sen daha önce {{best}} gün gittin — bu kişi hala sende. Bugün başla.',
+              'Daha önce {{best}} gün gittin. Bu ritim sende var; bugün tek dersle yeniden başla.',
               { best: previousLongest },
             )
           : t(
               'streakLost.body',
-              'Geri dönenler %47. Bugün başla — yarın sayı 2 olur.',
+              'Zincir kırıldı ama sistem bitmedi. Bugün tek dersle yeniden başla; yarın sayı 2 olur.',
             )}
       </Text>
 

@@ -759,7 +759,7 @@
         ]
       },
       "25": {
-        "title": "Final Sprint Begins",
+        "title": "Final Stretch Begins",
         "teaching": "Near the end, the mind wants to declare victory early. It says, “I already did it.” That sentence is risky because the old road can look attractive near the finish line.\n\nDo not underestimate the remaining days. This section is practice for the new order. Which rules stay after the reset? Which ones soften? Which ones never return?\n\nDo not leave the answer to the last day. The last day will be emotional. Today you are steadier, so write the decisions now.\n\nA written decision holds you. A vague intention dissolves on the first hard day.",
         "action": "Write three rules you will keep and three habits that will not return.",
         "reflectionPrompt": "Which permanent rule will be hardest to keep?",
@@ -1996,1087 +1996,1052 @@
         ]
       },
       "16": {
-        "title": "Cold Shower Initiation",
-        "teaching": "Cold shower = physical proof of discipline. Acting when mind says \"don't\" rewires the brain. Start at 30 sec. Norepinephrine spikes, depression risk drops 29% (Wim Hof research).",
-        "action": "Today turn the last 30 seconds of your shower as cold as possible.",
-        "reflectionPrompt": "When the cold hit, what was the first thought?",
-        "proTip": "Don't hold breath. Opposite: deep breath in, controlled out. Shock fades when breath leads.",
+        "title": "Cool Shower Edge",
+        "teaching": "Hard mornings do not need heroic drama. One small edge is enough: make the water a little cooler and remind your body that the day has started.\n\nThe goal is not punishment. Touch the edge of comfort, then keep your breathing slow. Stay in charge of the choice.\n\nCool water becomes a symbol for beginning with intention. A small thing done before you feel ready gives the rest of the day a spine.\n\nToday the attitude matters more than the duration. Notice the moment you stay instead of escaping.",
+        "action": "At the end of your shower, cool the water slightly. Stay for three calm breaths.",
+        "reflectionPrompt": "When the cool water arrived, did you want to escape or stay?",
         "quiz": [
           {
-            "q": "Cold shower starting duration?",
+            "q": "What is the aim?",
             "options": [
-              "5s",
-              "30s",
-              "2 min",
-              "10 min"
+              "Small edge",
+              "Punishment",
+              "Performance",
+              "Force"
             ],
-            "correct": 1,
-            "explain": "30s = sustainable start."
+            "correct": 0,
+            "explain": "You start the day with controlled intention."
           },
           {
-            "q": "Cold shower depression risk drop?",
+            "q": "In the coolness?",
             "options": [
-              "5%",
-              "15%",
-              "29%",
-              "50%"
+              "Breathe slowly",
+              "Panic",
+              "Chase duration",
+              "Force the body"
             ],
-            "correct": 2,
-            "explain": "Wim Hof — 29% drop."
+            "correct": 0,
+            "explain": "Slow breath keeps the choice steady."
           }
         ]
       },
       "17": {
-        "title": "Floor Workout: 5 Minutes",
-        "teaching": "Gym is optional, body workout is mandatory. 5 min = 25 squats + 15 push-ups + 30 sec plank. Indoor, no equipment. Consistency > intensity. Daily 5 min > weekly 1 hour.",
-        "action": "Today do 5 min floor workout. Numbers small, the streak is what matters.",
-        "reflectionPrompt": "Which move was hardest? Why?",
-        "proTip": "Right after brushing teeth. \"Brush + train\" chain becomes automatic.",
+        "title": "Five-Minute Floor Routine",
+        "teaching": "Morning movement does not need to become a gym project. Five minutes on the floor can tell the body that the day is open.\n\nKeep the loop easy and repeatable. Squats, modified push-ups, plank, or stretching can all work if they meet your body where it is.\n\nDo not get lost chasing perfect form. If there is discomfort or pain, make the movement smaller. Discipline is not a fight with the body.\n\nThis routine builds momentum. The first physical move of the morning makes passive drifting harder.",
+        "action": "Do a five-minute floor routine: easy reps, short pause, calm breathing.",
+        "reflectionPrompt": "Which movement woke you up the fastest?",
         "quiz": [
           {
-            "q": "Home workout duration?",
+            "q": "How should it start?",
             "options": [
-              "1 min",
-              "5 min",
-              "30 min",
-              "60 min"
+              "Easy",
+              "Heavy",
+              "Complex",
+              "Long"
             ],
-            "correct": 1,
-            "explain": "5 min suffices — consistency matters."
+            "correct": 0,
+            "explain": "An easy start protects repetition."
           },
           {
-            "q": "Consistency vs intensity?",
+            "q": "If pain appears?",
             "options": [
-              "Intensity",
-              "Consistency",
-              "Equal",
-              "Neither"
+              "Make it smaller",
+              "Force it",
+              "Ignore it",
+              "Speed up"
             ],
-            "correct": 1,
-            "explain": "Daily 5 min > weekly 1 hour."
+            "correct": 0,
+            "explain": "Discipline should not become a body fight."
           }
         ]
       },
       "18": {
-        "title": "Fast Until 12 (Intermittent Fasting)",
-        "teaching": "Breakfast as \"most important meal\" is myth. Most disciplined people fast 12-16 hours. Late breakfast = lower insulin, stable energy, sharper mind. Coffee and water free.",
-        "action": "Today push breakfast to noon. Only water, tea, black coffee.",
-        "reflectionPrompt": "How was your mental performance fasted? Different from expected?",
-        "proTip": "First 3 days are tough. Day 4+ body adapts, hunger softens.",
+        "title": "First Meal Decision",
+        "teaching": "Automatic breakfast is not always hunger. Sometimes it is habit, hurry, or boredom wearing a familiar mask.\n\nThis lesson is not a fasting contest. It is a pause before the first meal. Drink water, listen to the body, then choose.\n\nA rushed breakfast can scatter the tone of the morning. A planned first meal adds a feeling of calm ownership.\n\nChoose what fits your life. Just make the choice from awareness, not from a screen, rush, or restless impulse.",
+        "action": "Before your first meal, drink water and wait two minutes. Then choose with attention.",
+        "reflectionPrompt": "Did your first meal come from habit or real need?",
         "quiz": [
           {
-            "q": "Intermittent fasting hours?",
+            "q": "This lesson is not?",
             "options": [
-              "8h",
-              "12-16h",
-              "24h",
-              "48h"
+              "Fasting contest",
+              "Awareness",
+              "Choice",
+              "Planning"
             ],
-            "correct": 1,
-            "explain": "12-16h = sustainable IF."
+            "correct": 0,
+            "explain": "The aim is to decide with attention."
           },
           {
-            "q": "Allowed during IF?",
+            "q": "The choice should come from?",
             "options": [
-              "Only water",
-              "Water + coffee + tea",
-              "Milk",
-              "Diet coke"
+              "Awareness",
+              "Rush",
+              "Screen",
+              "Boredom"
             ],
-            "correct": 1,
-            "explain": "Calorie-free drinks don't spike insulin."
+            "correct": 0,
+            "explain": "Awareness keeps the morning yours."
           }
         ]
       },
       "19": {
-        "title": "Read 10 Pages",
-        "teaching": "Day starting with social media = head full of someone else's thoughts. Day starting with a book = head full of deep thought. 10 pages × 365 days = 12 books a year. Average person reads 0.",
-        "action": "Today read 10 pages in the morning (paper or e-ink, no social-media device).",
-        "reflectionPrompt": "How would the day start if you opened social media instead?",
-        "proTip": "Book by bedside, phone in another room. Whichever your eyes find first wins.",
+        "title": "Ten Pages Before Noise",
+        "teaching": "The morning mind is not crowded yet. A few pages in that window let you choose the first input of the day.\n\nThe book does not need to be long, heavy, or perfect. What matters is touching a calm text before touching the phone.\n\nThe goal is not finishing. The goal is direction. One sentence can place a cleaner thought inside the day.\n\nThis practice moves the morning away from consumption. Before entering someone else’s feed, you give your own mind a clean start.",
+        "action": "Read ten pages before the phone. Underline or note one sentence.",
+        "reflectionPrompt": "Which sentence changed the tone of your day?",
         "quiz": [
           {
-            "q": "10 pages × 365 days = ?",
+            "q": "What comes first?",
             "options": [
-              "2 books",
-              "6 books",
-              "12 books",
-              "50 books"
+              "Reading before phone",
+              "Finishing the book",
+              "Speed",
+              "Sharing"
             ],
-            "correct": 2,
-            "explain": "~12 books a year."
+            "correct": 0,
+            "explain": "You choose the first input."
           },
           {
-            "q": "Average yearly books read?",
+            "q": "Reading gives?",
             "options": [
-              "12",
-              "6",
-              "3",
-              "0"
+              "Direction",
+              "Rush",
+              "Noise",
+              "Clutter"
             ],
-            "correct": 3,
-            "explain": "Most read 0 a year."
+            "correct": 0,
+            "explain": "One good sentence can organize the morning."
           }
         ]
       },
       "20": {
-        "title": "Journal: 5 Minutes",
-        "teaching": "Thoughts circle in the head and become real. Written down, they exit and lose force. 5 min brain dump in morning = cleaner rest of day. No judging. Write.",
-        "action": "Today write 5 minutes of whatever comes. No editing, no censoring.",
-        "reflectionPrompt": "What was the most surprising thing you wrote?",
-        "proTip": "\"Three pages free-write\" (Julia Cameron) — morning pages have 30 years of test.",
+        "title": "Five-Minute Journal",
+        "teaching": "Journaling does not need to become a long confession. Five morning minutes are enough to place the knots on the table.\n\nStart with three lines: what matters today, what could scatter me, and how I want to behave. Short answers are often more honest.\n\nWriting catches thought. What feels huge in the head often looks more manageable on the page.\n\nThis practice becomes a compass. A small note to yourself gives you a center you can return to later.",
+        "action": "Write for five minutes: what matters, what may scatter you, how you choose to act.",
+        "reflectionPrompt": "Which thought became smaller or clearer after writing?",
         "quiz": [
           {
-            "q": "Morning journal rule?",
+            "q": "How does it start?",
             "options": [
-              "Be perfect",
-              "Write without judging",
-              "Censor",
-              "Digital"
+              "Three short lines",
+              "Long confession",
+              "Perfect wording",
+              "Delay"
             ],
-            "correct": 1,
-            "explain": "Write without judging — empty the brain."
+            "correct": 0,
+            "explain": "Short answers fit the morning."
           },
           {
-            "q": "Who developed morning pages?",
+            "q": "Writing does what?",
             "options": [
-              "James Clear",
-              "Cal Newport",
-              "Julia Cameron",
-              "Tim Ferriss"
+              "Catches thought",
+              "Ends the day",
+              "Hides problems",
+              "Adds rush"
             ],
-            "correct": 2,
-            "explain": "Cameron — 30 years of testing."
+            "correct": 0,
+            "explain": "The page makes thought visible."
           }
         ]
       },
       "21": {
-        "title": "10-Min Walk",
-        "teaching": "Walk = brain's most natural therapy. Hippocampus grows, BDNF rises, depression risk drops 47%. Morning walk plus sunlight = double effect. No music, no phone — just steps.",
-        "action": "Today take a 10 min walk. One loop around your block.",
-        "reflectionPrompt": "What was the cleanest thought that arrived while walking?",
-        "proTip": "When stuck, stop thinking and walk. Most creative breakthroughs happen walking (Jobs, Darwin, Nietzsche).",
+        "title": "Silent Walk",
+        "teaching": "A morning walk is not a performance. It is a transition from home into the day, from sleep into awareness, from clutter into direction.\n\nWalking without headphones may feel empty at first. In that space, you notice the environment, the breath, and the speed of thought.\n\nDistance is not important. The front door, the end of the street, or a short loop is enough. Rhythm builds as you move.\n\nThis walk gives the day room. You return with a mind that has settled through motion.",
+        "action": "Walk ten minutes without headphones. Name three details around you.",
+        "reflectionPrompt": "Did silence on the walk feel calming or uncomfortable?",
         "quiz": [
           {
-            "q": "Walk depression risk drop?",
+            "q": "The walk is a?",
             "options": [
-              "5%",
-              "15%",
-              "47%",
-              "80%"
-            ],
-            "correct": 2,
-            "explain": "47% drop science-proven."
-          },
-          {
-            "q": "Walking raises which protein?",
-            "options": [
-              "BDNF",
-              "Insulin",
-              "Cortisol",
-              "Adrenaline"
+              "Transition",
+              "Performance",
+              "Distance race",
+              "Escape"
             ],
             "correct": 0,
-            "explain": "BDNF = neuron growth."
+            "explain": "It helps you enter the day cleanly."
+          },
+          {
+            "q": "No headphones helps you?",
+            "options": [
+              "Notice",
+              "Add noise",
+              "Speed up",
+              "Perform"
+            ],
+            "correct": 0,
+            "explain": "You hear the environment and the mind."
           }
         ]
       },
       "22": {
-        "title": "Music or Silence?",
-        "teaching": "Music gives motivation but takes mental space. Silence makes room for thought. Morning music listeners often live someone else's emotion. Morning silence = facing your own.",
-        "action": "Today spend the first hour in silence. No music, podcast, video.",
-        "reflectionPrompt": "Did silence feel uncomfortable? When?",
-        "proTip": "Even in traffic. Roll down a window — let the street sound replace music.",
+        "title": "Sound Choice",
+        "teaching": "Morning sound does not control your whole mood, but it shapes the ground. What you hear first can set the speed of the mind.\n\nBefore playing anything automatically, decide. Would silence, one calm song, or one short recording serve the morning better?\n\nDo not choose sound to escape a feeling. Choose it to carry the day. On some mornings, silence is the braver choice.\n\nThis decision looks small. Still, it shows that you are not handing the morning wheel to a random playlist.",
+        "action": "Choose the first sound intentionally: silence, calm music, or one short recording.",
+        "reflectionPrompt": "Did your chosen sound speed up your mind or gather it?",
         "quiz": [
           {
-            "q": "Morning music effect?",
+            "q": "Sound should be chosen?",
             "options": [
-              "Takes mental space",
-              "Always good",
-              "Neutral",
-              "Unknown"
+              "Intentionally",
+              "Automatically",
+              "Randomly",
+              "To escape"
             ],
             "correct": 0,
-            "explain": "Music takes mental space — silence makes thinking room."
+            "explain": "You choose the pace of the morning."
           },
           {
-            "q": "First-hour silence challenging?",
+            "q": "Some mornings need?",
             "options": [
-              "Never",
-              "Maybe",
-              "Yes",
-              "No"
+              "Silence",
+              "Noise",
+              "Rush",
+              "Playlist drift"
             ],
-            "correct": 2,
-            "explain": "Discomfort with silence is normal, passes."
+            "correct": 0,
+            "explain": "Silence can keep you present."
           }
         ]
       },
       "23": {
-        "title": "No Phone Until 9",
-        "teaching": "Morning's golden 90 minutes = peak willpower. Spending it on the phone = selling the day's quality. Phoneless until 9 → 3x productivity 9-12.",
-        "action": "Today no phone until 9am (alarm aside). Real emergencies still reach you.",
-        "reflectionPrompt": "How did the time before 9 feel — as expected?",
-        "proTip": "Airplane mode all night, off at 9. Batched notifications = less effort than one-by-one.",
+        "title": "Screenless Until Nine",
+        "teaching": "The first hour can easily become someone else’s agenda. Messages, news, and feeds begin speaking before you do.\n\nStaying screenless until nine is not a harsh ban. It is a boundary test. You meet your own rhythm before outside input.\n\nIf the phone is necessary, do the necessary task and close it. Once empty scrolling begins, the owner of the morning changes.\n\nThis boundary protects attention. Less input early makes the important choices of the day easier to see.",
+        "action": "Until nine, avoid empty scrolling. Do necessary phone tasks and close them.",
+        "reflectionPrompt": "Did a screenless morning give you time or restlessness?",
         "quiz": [
           {
-            "q": "Peak willpower in morning?",
+            "q": "The boundary protects?",
             "options": [
-              "Evening",
-              "Noon",
-              "First 90 min",
-              "Never"
+              "Attention",
+              "Scrolling",
+              "Noise",
+              "Avoidance"
             ],
-            "correct": 2,
-            "explain": "First 90 min = golden window."
+            "correct": 0,
+            "explain": "You meet your own rhythm first."
           },
           {
-            "q": "Phoneless to 9am productivity?",
+            "q": "Empty scrolling does what?",
             "options": [
-              "None",
-              "50%",
-              "3x",
-              "10x"
+              "Scatters the morning",
+              "Builds focus",
+              "Clarifies plans",
+              "Strengthens limits"
             ],
-            "correct": 2,
-            "explain": "3x productivity 9-12."
+            "correct": 0,
+            "explain": "The feed takes over the pace."
           }
         ]
       },
       "24": {
-        "title": "Breakfast Strategy",
-        "teaching": "If you eat breakfast: high protein, low sugar. 30g protein = 4 hours of fullness + focus. Bread-honey-tea = 1-hour crash. Eggs-avocado-greens = clear head until lunch.",
-        "action": "Today eat protein-based breakfast (eggs, cheese, legumes). Sugar-free.",
-        "reflectionPrompt": "How was your energy until lunch on this breakfast?",
-        "proTip": "Prep breakfast the night before. Morning decisions = willpower drain.",
+        "title": "First Meal Plan",
+        "teaching": "When food is unplanned, decision energy can leak early. Even thinking about what to eat may add unnecessary friction.\n\nSimplify the first meal ahead of time. What is at home, what would you choose outside, and what time fits your morning?\n\nThe plan does not need to be rigid. Reducing options leaves a cleaner mind for the rest of the day.\n\nA good morning routine is not only movement. It gathers the body, time, and attention around one table.",
+        "action": "Choose tomorrow’s first meal now. Write the time, place, and simple option.",
+        "reflectionPrompt": "Which morning friction did meal planning reduce?",
         "quiz": [
           {
-            "q": "Best morning breakfast?",
+            "q": "Planning reduces?",
             "options": [
-              "Sweet",
-              "High protein",
-              "Coffee only",
-              "Bread-honey"
+              "Friction",
+              "Ownership",
+              "Clarity",
+              "Calm"
             ],
-            "correct": 1,
-            "explain": "Protein = 4-hour fullness."
+            "correct": 0,
+            "explain": "Fewer early decisions lighten the morning."
           },
           {
-            "q": "30g protein delivers?",
+            "q": "The plan should be?",
             "options": [
-              "Weight",
-              "4h fullness",
-              "Sugar",
-              "Thirst"
+              "Simple",
+              "Rigid",
+              "Complex",
+              "Hidden"
             ],
-            "correct": 1,
-            "explain": "4h fullness + focus."
+            "correct": 0,
+            "explain": "Simple plans are easier to use."
           }
         ]
       },
       "25": {
         "title": "Sunday Reset",
-        "teaching": "Weekdays = routine, Sunday = reset. Sunday morning = weekly review + intent. What worked last week, what didn't? Which one discipline next week? 30 min is enough.",
-        "action": "This Sunday do a 30-min weekly review. Written, concrete.",
-        "reflectionPrompt": "Strongest and weakest day last week? Difference?",
-        "proTip": "Sunday morning, not Sunday night. Tired review goes shallow.",
+        "teaching": "Sunday does not have to be only rest or panic. A short reset lets you enter the week with less loose mental noise.\n\nRead the past week instead of judging it. What worked, what scattered you, and which morning rhythm carried you best?\n\nThen choose one morning focus for the week. Too many large decisions make the system heavy before it starts.\n\nSunday reset is a small control panel. It does not rebuild your life; it reminds you that your hands are on the wheel.",
+        "action": "Write for fifteen minutes: what worked, what scattered you, one morning focus.",
+        "reflectionPrompt": "Which small decision shaped your mornings most this week?",
         "quiz": [
           {
-            "q": "Sunday reset duration?",
+            "q": "Sunday reset helps you?",
             "options": [
-              "5 min",
-              "30 min",
-              "2h",
-              "1 day"
-            ],
-            "correct": 1,
-            "explain": "30 min suffices."
-          },
-          {
-            "q": "Sunday reset when?",
-            "options": [
-              "Morning",
-              "Night",
-              "Evening",
-              "Anytime"
+              "Enter cleanly",
+              "Judge yourself",
+              "Add weight",
+              "Delay"
             ],
             "correct": 0,
-            "explain": "Morning = clear review."
+            "explain": "You start the week with clearer direction."
+          },
+          {
+            "q": "How many main focuses?",
+            "options": [
+              "One",
+              "Five",
+              "Ten",
+              "None"
+            ],
+            "correct": 0,
+            "explain": "One focus keeps the system light."
           }
         ]
       },
       "26": {
-        "title": "Habit Stacking",
-        "teaching": "A new habit alone is weak — tied to an existing habit, it's strong. James Clear: \"After I brush my teeth, I will ___\" (1 pushup, 1 min breath, 3 gratitudes). Old + new = stronger chain.",
-        "action": "Today stack a new micro-habit on an existing habit.",
-        "reflectionPrompt": "Which existing habit got which new addition?",
-        "proTip": "Write the stack down. \"After I brush my teeth, I do 5 pushups.\"",
+        "title": "Routine Chain",
+        "teaching": "A new habit can be forgotten if it floats alone. When it attaches to something you already do, it has a place in the morning flow.\n\nDrink water after brushing teeth, open the journal before coffee, or breathe after opening the window. Build small chains.\n\nThe value is not in being fancy. The value is in being a reminder. One action calls the next.\n\nDo not reinvent your whole morning today. Add one meaningful behavior behind something that already happens.",
+        "action": "Attach one tiny new behavior to an existing morning behavior.",
+        "reflectionPrompt": "Which existing behavior became the best reminder?",
         "quiz": [
           {
-            "q": "Habit stacking by whom?",
+            "q": "A chain attaches to?",
             "options": [
-              "BJ Fogg",
-              "James Clear",
-              "Cal Newport",
-              "Tim Ferriss"
+              "Existing behavior",
+              "Chance",
+              "Evening",
+              "Notifications"
             ],
-            "correct": 1,
-            "explain": "Atomic Habits — James Clear."
+            "correct": 0,
+            "explain": "Old behavior calls the new one."
           },
           {
-            "q": "Stack formula?",
+            "q": "The value is?",
             "options": [
-              "New alone",
-              "Old + new",
-              "Only new",
-              "3 new"
+              "Reminder",
+              "Decoration",
+              "Length",
+              "Difficulty"
             ],
-            "correct": 1,
-            "explain": "Old habit + new = strong chain."
+            "correct": 0,
+            "explain": "Remembering makes action easier."
           }
         ]
       },
       "27": {
-        "title": "The 100-Day Test",
-        "teaching": "First 30 days: hard. 30-60: get used to it. 60-100: become it. After day 100, no return. Morning routine after 100 days = \"I've always done this.\" Reach that point.",
-        "action": "Today write your 100-day commitment. Which one morning discipline for 100 days?",
-        "reflectionPrompt": "Who is \"future you\" after 100 days? What do they do?",
-        "proTip": "Mark a calendar tick after each day. Visual chain — breaking it after 21 days physically hurts.",
+        "title": "Hundred-Day Lens",
+        "teaching": "It is easy to dismiss one morning as tiny. Repeated for a long stretch, the same behavior starts changing the language of identity.\n\nThe hundred-day lens is not for making today dramatic. It is for seeing the direction of today’s vote.\n\nDo not make grand promises. Treat this morning as one clean piece of evidence for the person you are becoming.\n\nThis lens builds patience. Instead of chasing a result, you keep voting for someone calm, clear, and self-owned.",
+        "action": "Write today’s single morning behavior and the identity it votes for.",
+        "reflectionPrompt": "Which identity did today’s behavior strengthen?",
         "quiz": [
           {
-            "q": "After 100 days?",
+            "q": "The lens shows?",
             "options": [
-              "Boredom",
-              "Hard to stop",
-              "Same",
-              "Unknown"
+              "Direction",
+              "Perfection",
+              "Speed",
+              "Performance"
             ],
-            "correct": 1,
-            "explain": "After 100 no return."
+            "correct": 0,
+            "explain": "You see where the choice points."
           },
           {
-            "q": "60-100 day phase?",
+            "q": "Behavior becomes?",
             "options": [
-              "Strain",
-              "Adapt",
-              "Become it",
-              "Tire"
+              "Identity evidence",
+              "Punishment",
+              "Accident",
+              "Burden"
             ],
-            "correct": 2,
-            "explain": "Become it — identity shift."
+            "correct": 0,
+            "explain": "Small choices feed identity."
           }
         ]
       },
       "28": {
-        "title": "Identity Shift",
-        "teaching": "\"I am someone who exercises\" is 10x stronger than \"I am trying to exercise.\" Discipline = not behavior, identity. \"I am a morning person\" — saying it makes early rising automatic.",
-        "action": "Today claim a new identity label. \"I am someone who ___.\"",
-        "reflectionPrompt": "Which identity did you pick? What proof will support it?",
-        "proTip": "Repeat the identity 3x daily. Brain believes repetition, not truth.",
+        "title": "Identity Evidence",
+        "teaching": "Discipline is not only a task list. Every completed small behavior adds evidence to the story you tell yourself.\n\nThat is why the morning routine matters. Before the day makes demands, you support the sentence: I keep small promises.\n\nThe evidence can be tiny: make the bed, drink water, write three lines, take a short walk. Tiny does not mean weak.\n\nToday the aim is not to feel huge. The aim is to keep the smallest promise cleanly.",
+        "action": "Make one tiny morning promise to yourself and complete it cleanly today.",
+        "reflectionPrompt": "What small evidence did you give yourself today?",
         "quiz": [
           {
-            "q": "\"I am\" vs \"I try\" power?",
+            "q": "Discipline adds?",
             "options": [
-              "Same",
-              "2x",
-              "5x",
-              "10x"
+              "Identity evidence",
+              "Noise",
+              "Excuses",
+              "Clutter"
             ],
-            "correct": 3,
-            "explain": "Identity 10x stronger."
+            "correct": 0,
+            "explain": "Behavior feeds your self-story."
           },
           {
-            "q": "Discipline = ?",
+            "q": "The promise should be?",
             "options": [
-              "Behavior",
-              "Identity",
-              "Plan",
-              "Motivation"
+              "Tiny and clear",
+              "Large and vague",
+              "Hidden",
+              "Delayed"
             ],
-            "correct": 1,
-            "explain": "Discipline = identity > behavior."
+            "correct": 0,
+            "explain": "Clear promises can be kept."
           }
         ]
       },
       "29": {
-        "title": "Final Sprint Day",
-        "teaching": "Day 29 = last sprint. Tomorrow you \"complete.\" But today matters: remember who did these 30 days. Don't look at the past — remember the result. Next thing to do: keep going.",
-        "action": "Today write your 3 strongest moments of the past 30 days. These are now your proof.",
-        "reflectionPrompt": "Hardest moment? How did you push through?",
-        "proTip": "Put those 3 lines on your phone's lock screen. You'll see them when you start drifting.",
+        "title": "Final Turn",
+        "teaching": "Near the end of a routine, the mind may bargain. I already did enough, I can loosen up, today does not count.\n\nThe final turn is not about adding more. It is about protecting the base you built and finishing without drifting.\n\nReduce the morning to three parts: wake, clean up, write your direction. If more happens, fine; if not, the system still works.\n\nThe quality of the finish matters. Completing something calmly carries trust into the next beginning.",
+        "action": "Reduce the morning to three parts: wake, clean up, write one direction line.",
+        "reflectionPrompt": "Which bargain appeared most strongly near the finish?",
         "quiz": [
           {
-            "q": "On final day do?",
+            "q": "Final turn protects?",
             "options": [
-              "Plan future",
-              "Look at past",
-              "Write proof",
-              "Rest"
+              "The base",
+              "More tasks",
+              "Drifting",
+              "Bargaining"
             ],
-            "correct": 2,
-            "explain": "3 strong moments = your proof."
+            "correct": 0,
+            "explain": "A simple finish keeps the system intact."
           },
           {
-            "q": "Tomorrow brings?",
+            "q": "The morning has?",
             "options": [
-              "New start",
-              "Completion",
-              "End",
-              "Nothing"
+              "Three parts",
+              "Seven parts",
+              "Ten parts",
+              "No parts"
             ],
-            "correct": 1,
-            "explain": "Day 30 = completion."
+            "correct": 0,
+            "explain": "Wake, clean up, write direction."
           }
         ]
       },
       "30": {
-        "title": "Complete — New Morning",
-        "teaching": "30 days ago your mornings were chaos. Now they're systematic. 30 days ago you were reactive. Now proactive. You changed — your morning changed because of it. This morning isn't ordinary. This morning is proof: you can.",
-        "action": "Today write the 3 disciplines that worked over 30 days. These are the new baseline.",
-        "reflectionPrompt": "Which discipline will you carry forward? Why?",
-        "proTip": "Rest 3 days before starting another path. Consistency = permanence. Rushing = regression.",
+        "title": "New Morning Contract",
+        "teaching": "At day thirty, the point is not only earning a badge. You can now see which morning behaviors actually belong to you.\n\nYou do not have to keep everything. Choose the three core habits that stayed useful and make them your new normal.\n\nKeep the contract short. I start my morning with this, I limit that, and if I drift I return here.\n\nThis ending is also a beginning. The routine is no longer only an app task; it becomes ground you choose.",
+        "action": "Write your morning contract: I start, I limit, I return.",
+        "reflectionPrompt": "Which three morning habits should stay with you?",
         "quiz": [
           {
-            "q": "After 30 days, difference?",
+            "q": "After thirty days choose?",
             "options": [
-              "None",
-              "Proactive vs reactive",
-              "Same",
-              "Worse"
+              "Core habits",
+              "Everything",
+              "Nothing",
+              "Random tasks"
             ],
-            "correct": 1,
-            "explain": "Reactive to proactive shift."
+            "correct": 0,
+            "explain": "You carry forward what truly works."
           },
           {
-            "q": "Switching to next path?",
+            "q": "The contract should be?",
             "options": [
-              "Immediately",
-              "Rest 3 days",
-              "Wait month",
-              "Never"
+              "Short",
+              "Complex",
+              "Hidden",
+              "Heavy"
             ],
-            "correct": 1,
-            "explain": "Rest 3 days, then move on."
+            "correct": 0,
+            "explain": "Short contracts stay usable."
           }
         ]
       },
       "31": {
-        "title": "Walking Meditation",
-        "teaching": "Sitting meditation is hard. Walking meditation is natural. Each step = breath. Each step = awareness. 10 min morning walking meditation = 1 hour sitting equivalent.",
-        "action": "Today do 10 min walking meditation. Count each step.",
-        "reflectionPrompt": "Was walking meditation different from sitting?",
-        "proTip": "Inhale through nose, exhale mouth. One breath every 4 steps.",
+        "title": "Attention Walk",
+        "teaching": "While walking, the mind may run to the past or rush into the day. Attention walking uses the body as an anchor.\n\nYou do not need to count every step. Notice the soles of the feet, the shoulders, and where your eyes keep going.\n\nIf thoughts appear, nothing is wrong. Do not debate them. Return to the walk. Every return counts as practice.\n\nThis morning move joins motion with calm. You come back having gathered attention, not only covered distance.",
+        "action": "Walk ten minutes. When attention drifts, return to the soles of your feet.",
+        "reflectionPrompt": "At what moment did you gather your attention best?",
         "quiz": [
           {
-            "q": "Walking vs sitting meditation?",
+            "q": "The anchor is?",
             "options": [
-              "Same",
-              "Walking more natural",
-              "Walking weak",
-              "Unknown"
+              "The body",
+              "Phone",
+              "Rush",
+              "Commentary"
             ],
-            "correct": 1,
-            "explain": "Movement + awareness combined."
+            "correct": 0,
+            "explain": "The body brings attention back to now."
           },
           {
-            "q": "Duration?",
+            "q": "If thoughts appear?",
             "options": [
-              "1 min",
-              "10 min = 1 hour",
-              "1 hour",
-              "5 min"
+              "Return",
+              "Argue",
+              "Get angry",
+              "Quit"
             ],
-            "correct": 1,
-            "explain": "10 walk = 1 hour sitting equivalent."
+            "correct": 0,
+            "explain": "Returning is the practice."
           }
         ]
       },
       "32": {
-        "title": "Stillness 10 Min",
-        "teaching": "Movement is half of discipline. Other half is stillness. 10 minutes of full stillness — no move, no thought, no doing. Body and mind reset.",
-        "action": "Today sit fully still for 10 min.",
-        "reflectionPrompt": "How hard was stillness?",
-        "proTip": "Sit fully upright, eyes 30% open. Use a back cushion.",
+        "title": "Ten Minutes Still",
+        "teaching": "Stillness can look like doing nothing. In practice, it is a deliberate pause inside the automatic speed of morning.\n\nSit down, set a timer, and make the environment simple. Eyes open or closed both work; the point is not searching for new input.\n\nBoredom is not failure. When it appears, name it: waiting, restlessness, planning, wanting stimulation.\n\nDo not expect a huge feeling after ten minutes. Take the small evidence that you can stay without rushing.",
+        "action": "Sit quietly for ten minutes. Name the feeling and avoid new input.",
+        "reflectionPrompt": "Which feeling was strongest in stillness?",
         "quiz": [
           {
-            "q": "Stillness means?",
+            "q": "Stillness is a?",
             "options": [
-              "Movement",
-              "Fully still",
-              "Tired",
-              "Passive"
+              "Deliberate pause",
+              "Escape",
+              "Noise",
+              "Punishment"
             ],
-            "correct": 1,
-            "explain": "No thought, no doing."
+            "correct": 0,
+            "explain": "You pause the morning’s automatic speed."
           },
           {
-            "q": "Duration?",
+            "q": "If boredom comes?",
             "options": [
-              "1 min",
-              "10 min",
-              "1 hour",
-              "All day"
+              "Name it",
+              "Escape",
+              "Open a screen",
+              "Judge it"
             ],
-            "correct": 1,
-            "explain": "10 min reset."
+            "correct": 0,
+            "explain": "Naming helps you stay."
           }
         ]
       },
       "33": {
-        "title": "Cold Plunge",
-        "teaching": "Cold shower is start. Cold plunge is master. 1-2 min in 10°C water = +500% norepinephrine, -29% depression risk (Wim Hof). Body 10x stronger.",
-        "action": "Today extend cold shower to 1 minute.",
-        "reflectionPrompt": "What did body learn in 1 minute?",
-        "proTip": "Enter with breath control. Shock makes you hold breath; do opposite: deep slow breath.",
+        "title": "Cool Water Ritual",
+        "teaching": "A cool water practice does not need to be dramatic. Washing the face, rinsing the wrists, or ending a shower slightly cooler can be enough.\n\nThe aim is not to shock the body. It is to offer a gentle signal of wakefulness. Listen carefully to your edge.\n\nWhen repeated, the ritual becomes a morning signature. The water tells the mind: now we begin.\n\nChoose an edge that fits you today. Small, safe, and repeatable coolness will carry better than intensity.",
+        "action": "Rinse your face or wrists with cool water. Then take three calm breaths.",
+        "reflectionPrompt": "What kind of beginning did the cool water create?",
         "quiz": [
           {
-            "q": "Cold plunge duration?",
+            "q": "The aim is not?",
             "options": [
-              "10 sec",
-              "1-2 min",
-              "10 min",
-              "1 hour"
+              "Shock",
+              "Wakefulness",
+              "Ritual",
+              "Listening"
             ],
-            "correct": 1,
-            "explain": "1-2 min master level."
+            "correct": 0,
+            "explain": "You give a signal without forcing."
           },
           {
-            "q": "Norepinephrine increase?",
+            "q": "A good edge is?",
             "options": [
-              "10%",
-              "500%",
-              "None",
-              "Negative"
+              "Repeatable",
+              "Extreme",
+              "Dramatic",
+              "Vague"
             ],
-            "correct": 1,
-            "explain": "500% rise (Wim Hof)."
+            "correct": 0,
+            "explain": "Repeatable practice carries farther."
           }
         ]
       },
       "34": {
-        "title": "Sun Salutation Variations",
-        "teaching": "Sun salutation = 12 moves, full-body stretch + strength. 5 min in morning = warm-up + stretch + shoulder opener. Not yoga — discipline.",
-        "action": "Today do 5 sun salutations.",
-        "reflectionPrompt": "Which pose was hardest?",
-        "proTip": "YouTube \"5 min sun salutation\" video. First week with video, then memorize.",
+        "title": "Flow Stretch",
+        "teaching": "Morning stretching is for persuading the body, not impressing anyone. If there is stiffness, do not treat it as an enemy.\n\nChoose three movements and slow down with the breath. Neck, shoulders, hips, or back can lead depending on what the body asks for.\n\nFlow links movements without turning them into a race. As you move from one shape to the next, attention softens too.\n\nThis practice gives the day a calmer entry. As the body opens, the mind gets room to leave rush mode.",
+        "action": "Choose three gentle stretches. Stay for three breaths in each one.",
+        "reflectionPrompt": "Where did your body ask for the most space today?",
         "quiz": [
           {
-            "q": "Sun salutation moves?",
+            "q": "Stretching is for?",
             "options": [
-              "3",
-              "12",
-              "50",
-              "100"
+              "Persuading",
+              "Impressing",
+              "Racing",
+              "Forcing"
             ],
-            "correct": 1,
-            "explain": "12-move sequence."
+            "correct": 0,
+            "explain": "You relate to the body gently."
           },
           {
-            "q": "Duration?",
+            "q": "Flow does what?",
             "options": [
-              "30 sec",
-              "5 min",
-              "1 hour",
-              "No"
+              "Links movement",
+              "Adds rush",
+              "Chases pain",
+              "Performs"
             ],
-            "correct": 1,
-            "explain": "5 min suffices."
+            "correct": 0,
+            "explain": "Transitions soften attention."
           }
         ]
       },
       "35": {
-        "title": "Single-Page Journal",
-        "teaching": "3-page morning pages is hard. Single page is doable. Same single page each morning: today's intent, what I learned yesterday, today's top 3.",
-        "action": "Today write a single-page journal. No judging.",
-        "reflectionPrompt": "What changed mentally after one page?",
-        "proTip": "Use fixed format: intent / learning / priority. Reduces decision fatigue.",
+        "title": "One-Page Journal",
+        "teaching": "A one-page journal turns the morning mind into a cleaner table. Do not squeeze yourself just to fill the page.\n\nThree sections are enough: what is inside me, what will I serve today, and which one behavior keeps me on track.\n\nThis is not a hole for endless self-analysis. It is a tool for simplifying direction before entering the day.\n\nWhen the page is done, do not hunt for perfect sentences. One crumb of clarity can carry the next hours.",
+        "action": "Write one page: what is inside, what you serve, the behavior that keeps you on track.",
+        "reflectionPrompt": "What single clarity remained at the end of the page?",
         "quiz": [
           {
-            "q": "Single page format?",
+            "q": "The page helps?",
             "options": [
-              "Vague",
-              "Intent/learning/priority",
-              "Random",
-              "Empty"
+              "Simplify direction",
+              "Overanalyze",
+              "Perform",
+              "Rush"
             ],
-            "correct": 1,
-            "explain": "Fixed format = less decision fatigue."
+            "correct": 0,
+            "explain": "It clears the morning before the day begins."
           },
           {
-            "q": "Advantage?",
+            "q": "At the end?",
             "options": [
-              "Expensive",
-              "Consistent",
-              "Tiring",
-              "No effect"
+              "Take the clarity",
+              "Search for flaws",
+              "Tear it up",
+              "Delay"
             ],
-            "correct": 1,
-            "explain": "Consistency = long-term."
+            "correct": 0,
+            "explain": "Small clarity is enough."
           }
         ]
       },
       "36": {
-        "title": "Affirmation Practice",
-        "teaching": "Affirmations = words to self. \"I am disciplined. I am focused. I persist.\" 5 min repetition. Brain believes repetition, not truth.",
-        "action": "Today repeat 3 affirmations for 5 min.",
-        "reflectionPrompt": "Which affirmation hit hardest?",
-        "proTip": "Speak aloud in mirror. Effect 3x stronger.",
+        "title": "Strong Sentence",
+        "teaching": "The sentence you tell yourself in the morning can act like a command for the day. Choose one that is true, not decorative.\n\nA strong sentence should be realistic. I will take the first right step today carries better than I will conquer everything.\n\nSaying it out loud brings it closer to behavior. Then support it immediately with one small action.\n\nThis is not empty motivation. It is a short morning key that turns language, attention, and behavior in the same direction.",
+        "action": "Choose one realistic strong sentence, say it, and support it with one action.",
+        "reflectionPrompt": "How did your sentence affect your behavior?",
         "quiz": [
           {
-            "q": "Affirmation duration?",
+            "q": "A strong sentence should be?",
             "options": [
-              "1 sec",
-              "5 min",
-              "1 hour",
-              "No"
+              "Realistic",
+              "Decorative",
+              "Exaggerated",
+              "Vague"
             ],
-            "correct": 1,
-            "explain": "5 min practice."
+            "correct": 0,
+            "explain": "A realistic line can be carried."
           },
           {
-            "q": "Mirror speaking?",
+            "q": "After the sentence comes?",
             "options": [
-              "No effect",
-              "3x power",
-              "Risk",
-              "Expensive"
+              "Small action",
+              "Waiting",
+              "Posting",
+              "Bargaining"
             ],
-            "correct": 1,
-            "explain": "Mirror = 3x effect."
+            "correct": 0,
+            "explain": "Language is backed by behavior."
           }
         ]
       },
       "37": {
-        "title": "Visualization 3 Min",
-        "teaching": "Take visualization lesson and make it a 3-min daily ritual. See goal as if achieved — emotions, sounds, smells. Brain says \"I succeeded.\"",
-        "action": "Today visualize goal for 3 min, first thing in morning.",
-        "reflectionPrompt": "Most vivid detail in visualization?",
-        "proTip": "Do it in bed. Eyes closed, sit upright, deep breath.",
+        "title": "Three-Minute Rehearsal",
+        "teaching": "Imagining the day is not escaping into the future. Seeing a hard moment calmly can prepare choice instead of reaction.\n\nThree minutes are enough. Pick the most important scene: a meeting, class, workout, conversation, or hour alone.\n\nDo not make yourself flawless. Watch yourself pause, breathe, and choose the next right step.\n\nThis rehearsal makes the morning more deliberate. When the scene arrives, it does not feel completely foreign.",
+        "action": "Rehearse today’s hard moment for three minutes. Choose the calm response and first step.",
+        "reflectionPrompt": "Which hard moment felt more manageable after rehearsal?",
         "quiz": [
           {
-            "q": "Visualization duration?",
+            "q": "Rehearsal prepares?",
             "options": [
-              "1 min",
-              "3 min",
-              "1 hour",
-              "0"
+              "Choice",
+              "Escape",
+              "Flawlessness",
+              "Performance"
             ],
-            "correct": 1,
-            "explain": "3 min suffices."
+            "correct": 0,
+            "explain": "You practice how to respond."
           },
           {
-            "q": "Best place?",
+            "q": "The rehearsal should be?",
             "options": [
-              "Street",
-              "Bed",
-              "Office",
-              "Bus"
+              "Calm",
+              "Exaggerated",
+              "Long",
+              "Vague"
             ],
-            "correct": 1,
-            "explain": "In bed, eyes closed."
+            "correct": 0,
+            "explain": "Short and calm is enough."
           }
         ]
       },
       "38": {
-        "title": "Daily Goal Review",
-        "teaching": "Writing yearly goal then forgetting = zero effect. 30 sec daily reading = constant awareness. Goal lives in pocket — every small decision supports it.",
-        "action": "Today read your main goal for 30 sec in morning.",
-        "reflectionPrompt": "Did priorities shift after reading the goal?",
-        "proTip": "Goal as phone lock screen. You'll see it 50x daily.",
+        "title": "Goal Page Check",
+        "teaching": "A goal becomes decoration when it is written once and forgotten. A short morning look turns it back into a living choice.\n\nOpen your goal page and focus on one line only. How does this line become a behavior today?\n\nThe big goal should not crush you. When you shrink it into one small morning move, it gives direction instead of weight.\n\nThis check is the bridge between the day and the goal. You remember what you want, then translate it into today.",
+        "action": "Pick one line from your goal page. Write its small behavior for today.",
+        "reflectionPrompt": "Which small behavior did the big goal become today?",
         "quiz": [
           {
-            "q": "Goal review duration?",
+            "q": "A forgotten goal becomes?",
             "options": [
-              "30 sec",
-              "1 hour",
-              "1 week",
-              "Never"
+              "Decoration",
+              "Behavior",
+              "Bridge",
+              "Direction"
             ],
             "correct": 0,
-            "explain": "30 sec sufficient."
+            "explain": "A goal must be revisited to live."
           },
           {
-            "q": "Optimal place?",
+            "q": "A big goal is carried by?",
             "options": [
-              "Journal",
-              "Phone lock screen",
-              "Wallet",
-              "Memory"
+              "Small move",
+              "Weight",
+              "Delay",
+              "Decoration"
             ],
-            "correct": 1,
-            "explain": "See it 50x daily."
+            "correct": 0,
+            "explain": "Small behavior brings it into today."
           }
         ]
       },
       "39": {
-        "title": "Energy Audit",
-        "teaching": "Morning energy != 10/10 has reasons. Late bedtime, alcohol, heavy dinner, stress. Score 1-10 each morning. Analyze low days.",
-        "action": "Today write morning energy score + reason.",
-        "reflectionPrompt": "Common cause of low-energy days?",
-        "proTip": "Do 7 days, pattern emerges. Optimum-learning lifestyle.",
+        "title": "Energy Ledger",
+        "teaching": "Morning energy does not arrive the same way every day. Instead of treating that as personal weakness, read it as information.\n\nRecord three things: your state on waking, attention in the first hour, and the pace your body seems to ask for. Keep it brief.\n\nThe aim is not scoring yourself. It is slowly noticing which morning setup carries you best.\n\nAn energy ledger becomes a mirror for better choices. Understanding today helps you design tomorrow with less guesswork.",
+        "action": "Write three lines: waking state, first-hour attention, body pace.",
+        "reflectionPrompt": "What morning setup did today’s energy suggest?",
         "quiz": [
           {
-            "q": "Energy audit scale?",
+            "q": "Energy is read as?",
             "options": [
-              "No",
-              "1-10 score",
-              "0-1",
-              "Color"
+              "Information",
+              "Weakness",
+              "Punishment",
+              "Excuse"
             ],
-            "correct": 1,
-            "explain": "Score out of 10."
+            "correct": 0,
+            "explain": "You observe your state before choosing."
           },
           {
-            "q": "Pattern emerges?",
+            "q": "The aim is not?",
             "options": [
-              "1 day",
-              "7 days",
-              "1 month",
-              "1 year"
+              "Scoring yourself",
+              "Noticing",
+              "Mirroring",
+              "Choosing"
             ],
-            "correct": 1,
-            "explain": "7 days = pattern."
+            "correct": 0,
+            "explain": "Observation replaces judgment."
           }
         ]
       },
       "40": {
-        "title": "Sleep Cycle Tracking",
-        "teaching": "8 hours = myth. What matters is cycle count. 1 cycle = 90 min. 4-5 ideal. Bedtime / 1.5 = wake time. 22:00 → 5:30 = 5 cycles.",
-        "action": "Today sleep with cycle math. 22:00 → 05:30.",
-        "reflectionPrompt": "Was sleep different with cycle math?",
-        "proTip": "Apple Watch / Whoop = auto-track. Else manual.",
+        "title": "Sleep Prep Note",
+        "teaching": "A good morning often begins the night before. If mornings feel difficult, inspect the evening closing, not only the alarm.\n\nSend a note from today’s morning to tonight. What can you simplify this evening so tomorrow starts with less friction?\n\nClothes, desk, bag, first task, or phone location can all count. One small preparation reduces early resistance.\n\nThis lesson reminds you that the morning routine is not isolated. Evening closing lightens the first decision of tomorrow.",
+        "action": "Choose one prep for tonight: clothes, desk, bag, first task, or phone location.",
+        "reflectionPrompt": "Which evening prep would lighten tomorrow most?",
         "quiz": [
           {
-            "q": "1 sleep cycle?",
+            "q": "A good morning may begin?",
             "options": [
-              "30 min",
-              "90 min",
-              "4 hours",
-              "8 hours"
+              "The night before",
+              "Randomly",
+              "On a screen",
+              "In a rush"
             ],
-            "correct": 1,
-            "explain": "90 min = 1 cycle."
+            "correct": 0,
+            "explain": "Evening closing affects morning friction."
           },
           {
-            "q": "Optimal cycles?",
+            "q": "Prep reduces?",
             "options": [
-              "1",
-              "4-5",
-              "10",
-              "20"
+              "Friction",
+              "Clarity",
+              "Ownership",
+              "Simplicity"
             ],
-            "correct": 1,
-            "explain": "4-5 cycles ideal."
+            "correct": 0,
+            "explain": "Fewer first decisions make starting easier."
           }
         ]
       },
       "41": {
-        "title": "Wake Without Alarm",
-        "teaching": "Alarm wake = brain shock. After 30 days regular sleep, body wakes alarm-less. Alarm at 6:00, you wake at 5:55 = master.",
-        "action": "Today try waking 5 min before alarm.",
-        "reflectionPrompt": "How did alarm-less wake feel?",
-        "proTip": "Sleep at same time — body clock sharpens.",
+        "title": "No-Alarm Rehearsal",
+        "teaching": "Waking without an alarm may not fit everyone. But you can rehearse a softer relationship with the moment of waking.\n\nKeep the alarm as a backup, then clearly picture the time you want to wake. Write the first move you will make.\n\nThe aim is not defeating the alarm. The aim is making the waking moment more deliberate and less panicked.\n\nRehearsal sends a simple message: morning does not have to attack me; it can be a transition I prepared.",
+        "action": "Keep the alarm as backup. Before bed, write your wake time and first move.",
+        "reflectionPrompt": "Did planning the waking moment change how morning felt?",
         "quiz": [
           {
-            "q": "Wake without alarm?",
+            "q": "The alarm is a?",
             "options": [
-              "Impossible",
-              "After 30 days regular",
-              "Always",
-              "Never"
+              "Backup",
+              "Enemy",
+              "Punishment",
+              "Ban"
             ],
-            "correct": 1,
-            "explain": "Body clock adjusts."
+            "correct": 0,
+            "explain": "You prepare the transition without removing support."
           },
           {
-            "q": "Key?",
+            "q": "The plan reduces?",
             "options": [
-              "Sleep early",
-              "Same bedtime",
-              "Late",
-              "Random"
+              "Panic",
+              "Ownership",
+              "Clarity",
+              "Preparation"
             ],
-            "correct": 1,
-            "explain": "Fixed bed = fixed wake."
+            "correct": 0,
+            "explain": "The wake moment becomes more deliberate."
           }
         ]
       },
       "42": {
-        "title": "Morning Mantra",
-        "teaching": "One sentence. First thought every morning. \"Today disciplined. Today focused. Today grateful.\" Each repetition = brain programming.",
-        "action": "Today write your mantra, repeat 10 times.",
-        "reflectionPrompt": "Which mantra did you pick?",
-        "proTip": "Stick mantra on bathroom mirror. Morning auto-arrives.",
+        "title": "Morning Line",
+        "teaching": "A morning line is a short anchor you can return to when the day gets messy. If it is long, you will not remember it.\n\nChoose one line today: I begin slowly, I open the first task, I let the screen wait, or I keep the promise small.\n\nThe line is not for making yourself impressive. It is for gathering behavior. If you drift, return to the same words.\n\nA good morning line is simple and usable. It does not shame you; it points you.",
+        "action": "Choose one morning line. If you drift today, return to the same sentence.",
+        "reflectionPrompt": "At what moment did your morning line help?",
         "quiz": [
           {
-            "q": "Mantra format?",
+            "q": "A morning line should be?",
             "options": [
-              "List",
-              "Single sentence",
-              "Novel",
-              "Song"
+              "Simple",
+              "Long",
+              "Fake",
+              "Heavy"
             ],
-            "correct": 1,
-            "explain": "Single sentence, repeat."
+            "correct": 0,
+            "explain": "A memorable line is easier to use."
           },
           {
-            "q": "Repeat count?",
+            "q": "If you drift?",
             "options": [
-              "1",
-              "10",
-              "100",
-              "1000"
+              "Return to it",
+              "Quit",
+              "Get angry",
+              "Hide"
             ],
-            "correct": 1,
-            "explain": "10 reps enough."
+            "correct": 0,
+            "explain": "The line gives direction again."
           }
         ]
       },
       "43": {
-        "title": "5-AM Protocol",
-        "teaching": "Robin Sharma \"5 AM Club\": wake at 5, first hour: 20 min movement / 20 min practice / 20 min reflection. 30 days = \"the 1 percent.\"",
-        "action": "Today wake at 5, try the 60-20-20-20.",
-        "reflectionPrompt": "Which 60-min block was strongest?",
-        "proTip": "Step gradually: first 7, then 6:30, 6, 5:30, 5.",
+        "title": "Early Hour Plan",
+        "teaching": "Waking early is not achievement by itself. If the early hour has no purpose, empty time can still scatter.\n\nWrite one purpose for the early hour. Quiet work, walking, reading, preparation, or simply a calm start can all count.\n\nKeep the plan short. Instead of controlling every minute, name the direction of the first half hour.\n\nThe early hour gains value when owned. Waking is less important than what you protect after waking.",
+        "action": "Write one purpose for tomorrow’s first half hour. Put it somewhere visible.",
+        "reflectionPrompt": "What makes the early hour feel meaningful for you?",
         "quiz": [
           {
-            "q": "5-AM Club author?",
+            "q": "Early waking alone is not?",
             "options": [
-              "Naval",
-              "Robin Sharma",
-              "James Clear",
-              "Tim Ferriss"
-            ],
-            "correct": 1,
-            "explain": "Robin Sharma book."
-          },
-          {
-            "q": "60-20-20-20?",
-            "options": [
-              "Sport + practice + reflect",
-              "Only sport",
-              "Only reading",
-              "No"
+              "Achievement",
+              "Choice",
+              "Waking",
+              "Planning"
             ],
             "correct": 0,
-            "explain": "20 movement + 20 practice + 20 reflection."
+            "explain": "The hour needs a purpose."
+          },
+          {
+            "q": "The plan should be?",
+            "options": [
+              "Short",
+              "Minute by minute",
+              "Vague",
+              "Hidden"
+            ],
+            "correct": 0,
+            "explain": "Direction is enough for the first half hour."
           }
         ]
       },
       "44": {
-        "title": "Advanced Breath",
-        "teaching": "Wim Hof method: 30 deep breaths + breath-hold + 15 sec hold + repeat. 3 rounds = immunity strengthens, depression drops, endurance up.",
-        "action": "Today do 1 round Wim Hof.",
-        "reflectionPrompt": "Did breath control change your mind?",
-        "proTip": "YouTube \"Wim Hof basic\" + try after 1 week of practice.",
+        "title": "Calm Breath Sequence",
+        "teaching": "Breath practice is not a trick for controlling the whole morning. It is a simple way to send the body a slower beginning.\n\nDo not search for a complex technique today. Take four slow breaths, drop the shoulders, and soften the jaw each time.\n\nIf the mind wanders, do not try to fix the breath. Just meet the next breath a little more calmly.\n\nThis sequence helps you own the first minute. A small pause keeps you from handing yourself automatically to rush.",
+        "action": "Take four slow breaths. With each breath, drop your shoulders and soften your jaw.",
+        "reflectionPrompt": "How did the breath sequence affect morning rush?",
         "quiz": [
           {
-            "q": "Wim Hof basics?",
+            "q": "Breath practice is a?",
             "options": [
-              "Slow breath",
-              "30 deep + hold",
-              "Exercise",
-              "Cold"
+              "Slower beginning",
+              "Trick",
+              "Race",
+              "Performance"
             ],
-            "correct": 1,
-            "explain": "30 breaths + hold + repeat."
+            "correct": 0,
+            "explain": "It signals a calmer start."
           },
           {
-            "q": "Round count?",
+            "q": "If the mind wanders?",
             "options": [
-              "1",
-              "3",
-              "10",
-              "100"
+              "Return to next breath",
+              "Get angry",
+              "Force it",
+              "Quit"
             ],
-            "correct": 1,
-            "explain": "3 rounds optimum."
+            "correct": 0,
+            "explain": "Returning is enough."
           }
         ]
       },
       "45": {
-        "title": "Cold Mastery",
-        "teaching": "Cold for body = sero-norepi-dopa explosion. Daily cold = immunity 10x. Goal: under 2 min at 10°C, 30 days sustained.",
-        "action": "Today do 2-min cold shower.",
-        "reflectionPrompt": "Mental clarity after 2 min?",
-        "proTip": "First 30 sec control breath — rest gets easier.",
+        "title": "Acclimate to Coolness",
+        "teaching": "Reducing comfort can be useful for discipline, but dose matters. A small cool edge can wake morning will without becoming harsh.\n\nOpen a window briefly, rinse the face with cool water, or stand in a light breeze. Any gentle version can work.\n\nListen to your boundary instead of proving toughness. If the body says no, reduce it or stop. Discipline is not mindless stubbornness.\n\nThis practice teaches one thing: when discomfort appears, you do not have to escape instantly; you can stay conscious.",
+        "action": "Choose one safe cool edge. Stay one minute and keep breathing calm.",
+        "reflectionPrompt": "Which impulse did coolness reveal?",
         "quiz": [
           {
-            "q": "Cold target duration?",
+            "q": "Dose matters for?",
             "options": [
-              "10 sec",
-              "2 min",
-              "10 min",
-              "1 hour"
+              "Safety",
+              "Performance",
+              "Intensity",
+              "Stubbornness"
             ],
-            "correct": 1,
-            "explain": "2 min master."
+            "correct": 0,
+            "explain": "Listening to the edge keeps practice sane."
           },
           {
-            "q": "First 30 sec?",
+            "q": "Discipline is not?",
             "options": [
-              "Passive",
-              "Breath control",
-              "Scream",
-              "Exit"
+              "Mindless stubbornness",
+              "Choice",
+              "Boundary",
+              "Awareness"
             ],
-            "correct": 1,
-            "explain": "Soften with breath."
+            "correct": 0,
+            "explain": "You stay conscious instead of forcing."
           }
         ]
       },
       "46": {
-        "title": "Movement Snacks",
-        "teaching": "Hourly 30 sec movement = sitting effect neutralized. 10 squats, shoulder circles, neck stretch. Do it during work hourly.",
-        "action": "Today move for 30 sec every hour.",
-        "reflectionPrompt": "Was your evening energy different?",
-        "proTip": "Hourly reminder. After 7 days becomes automatic.",
+        "title": "Movement Breaks",
+        "teaching": "After the morning routine ends, the body can lock up again. Short movement breaks carry morning energy into the rest of the day.\n\nNo large workout is required. Walk for one minute, roll the shoulders, squat once, or stretch gently.\n\nAttach the break to transitions, not willpower. After coffee, before a meeting, or when opening the computer, choose one movement.\n\nThen morning discipline spreads through the day. The routine stops being one block and becomes a set of small reminders.",
+        "action": "Attach one-minute movement breaks to three transitions today.",
+        "reflectionPrompt": "Which transition was the most natural place for movement?",
         "quiz": [
           {
-            "q": "Movement snack duration?",
+            "q": "Movement breaks carry?",
             "options": [
-              "1 sec",
-              "30 sec",
-              "5 min",
-              "1 hour"
+              "Morning energy",
+              "Fatigue",
+              "Noise",
+              "Avoidance"
             ],
-            "correct": 1,
-            "explain": "Hourly 30 sec."
+            "correct": 0,
+            "explain": "The morning rhythm spreads into the day."
           },
           {
-            "q": "Effect?",
+            "q": "Breaks attach to?",
             "options": [
-              "No",
-              "Neutralizes sitting",
-              "Tired",
-              "Pain"
+              "Transitions",
+              "Chance",
+              "Delay",
+              "Notifications"
             ],
-            "correct": 1,
-            "explain": "Erases sitting damage."
+            "correct": 0,
+            "explain": "Transitions are natural reminders."
           }
         ]
       },
       "47": {
-        "title": "Identity Mantra",
-        "teaching": "\"I wake early\" is temporary. \"I am a morning person\" is permanent. Identity mantra = repetition of identity, not behavior. Brain says \"this is me\" and behavior follows.",
-        "action": "Today write identity mantra, say each morning for 30 days.",
-        "reflectionPrompt": "How does identity vs behavior feel different?",
-        "proTip": "Start with \"I am ___.\" Present tense.",
+        "title": "Identity Line",
+        "teaching": "An identity line does not need grand language. It works better when it stays close to behavior.\n\nInstead of I am disciplined, try I open my first task in the morning. Identity comes down to earth through action.\n\nChoose your line and place it somewhere visible. Then perform the smallest morning move that supports it.\n\nThis is not self-deception. It is a short label that reminds you which behavior you repeat.",
+        "action": "Write one behavior-based identity line and support it with one tiny move.",
+        "reflectionPrompt": "Which behavior did your identity line make easier?",
         "quiz": [
           {
-            "q": "Identity mantra start?",
+            "q": "The line works when?",
             "options": [
-              "Will be",
-              "I am ___",
-              "Maybe",
-              "Won't"
+              "Close to behavior",
+              "Grand",
+              "Hidden",
+              "Exaggerated"
             ],
-            "correct": 1,
-            "explain": "\"I am\" = present."
+            "correct": 0,
+            "explain": "Clear behavior grounds identity."
           },
           {
-            "q": "Behavior or identity?",
+            "q": "The line gives?",
             "options": [
-              "Behavior",
-              "Identity permanent",
-              "Same",
-              "Unknown"
+              "Reminder label",
+              "Deception",
+              "Pressure",
+              "Excuse"
             ],
-            "correct": 1,
-            "explain": "Identity = long-term."
+            "correct": 0,
+            "explain": "It reminds you what to repeat."
           }
         ]
       },
       "48": {
-        "title": "Final Sprint",
-        "teaching": "Last 3 days. 50 days transformed mornings from chaos to systematic. This last sprint = locked-in. Tomorrow you are master.",
-        "action": "Today write final-sprint intent.",
-        "reflectionPrompt": "Is your intent sustainable?",
-        "proTip": "Photo the intent, save in phone.",
+        "title": "Final Week Rhythm",
+        "teaching": "The final week is not the time to decorate the system. It is the time to protect what works and drop extra weight.\n\nChoose three columns for the morning: body, mind, direction. Put one small behavior under each column.\n\nThis rhythm should carry you without draining you. Even if you want to do more, finish the core first.\n\nThe quality of the final week shows what can continue. You are not looking for a shiny day; you are looking for a repeatable morning.",
+        "action": "Write three columns: body, mind, direction. Choose one behavior for each.",
+        "reflectionPrompt": "Which column gathered your morning most?",
         "quiz": [
           {
-            "q": "Final sprint duration?",
+            "q": "The final week protects?",
             "options": [
-              "1 day",
-              "3 days",
-              "1 month",
-              "No"
+              "The core",
+              "Decoration",
+              "Extra weight",
+              "Drifting"
             ],
-            "correct": 1,
-            "explain": "Last 3 = master locking."
+            "correct": 0,
+            "explain": "Useful parts stay protected."
           },
           {
-            "q": "Intent where?",
+            "q": "The three columns are?",
             "options": [
-              "Head",
-              "Phone photo",
-              "Trash",
-              "Forget"
+              "Body mind direction",
+              "Speed money screen",
+              "Work force rush",
+              "Sound light road"
             ],
-            "correct": 1,
-            "explain": "Photo = visible."
+            "correct": 0,
+            "explain": "The morning becomes simple and complete."
           }
         ]
       },
       "49": {
-        "title": "49 Days In",
-        "teaching": "In 49 days mornings are undeniable strength. Early rising no longer forced. Silence is now peace. Make a 10-change list.",
-        "action": "Today list 10 morning rituals that changed in 49 days.",
-        "reflectionPrompt": "Most unforgettable change?",
-        "proTip": "Write list as profile picture, reminder.",
+        "title": "Trace of Forty-Nine Days",
+        "teaching": "Forty-nine days is a good threshold for looking back. Which mornings were easy, which scattered, and where did you return?\n\nDo not measure success only by an unbroken line. The deeper trace is being able to reopen the system after drifting.\n\nWrite three pieces of evidence: what I start faster, what I limit better, and what I now notice.\n\nThese traces become material for the next season. You see yourself through real behavior, not abstract praise.",
+        "action": "Write three evidence lines: start faster, limit better, now notice.",
+        "reflectionPrompt": "Where did the most real change appear in forty-nine days?",
         "quiz": [
           {
-            "q": "49-day changes?",
+            "q": "The deeper trace is?",
             "options": [
-              "None",
-              "10+ rituals",
-              "1 thing",
-              "Invisible"
+              "Returning",
+              "Unbroken line",
+              "Performance",
+              "Hiding"
             ],
-            "correct": 1,
-            "explain": "Many changes."
+            "correct": 0,
+            "explain": "Reopening the system matters."
           },
           {
-            "q": "List location?",
+            "q": "Evidence should come from?",
             "options": [
-              "Drawer",
-              "Profile picture",
-              "Head",
-              "Trash"
+              "Behavior",
+              "Abstract praise",
+              "Guessing",
+              "Others"
             ],
-            "correct": 1,
-            "explain": "Visible reminder."
+            "correct": 0,
+            "explain": "Real behavior makes change visible."
           }
         ]
       },
       "50": {
-        "title": "Master Complete",
-        "teaching": "50 mornings. Each one proof. You changed — your mornings changed because of it. New baseline: systematic, silent, intent. Discipline = identity now.",
-        "action": "Today look in mirror. Greet New You.",
-        "reflectionPrompt": "Would 50-mornings-ago you want to be now?",
-        "proTip": "Rest 7 days, then mind or body discipline path.",
+        "title": "Owner of the Path",
+        "teaching": "At day fifty, the point is not simply finishing the app. The point is seeing that you can design your morning with more awareness.\n\nThis path showed which parts truly work for you: silence, walking, writing, water, movement, or screen boundaries.\n\nNow comes ownership. Turn the app’s tasks into your own morning system. Drop the extra weight and protect the core.\n\nClose the path today, but do not get trapped in the feeling of an ending. The new morning can be chosen from inside.",
+        "action": "Write your morning system: three parts you keep and one weight you drop.",
+        "reflectionPrompt": "What does owning your morning mean after this path?",
         "quiz": [
           {
-            "q": "New baseline?",
+            "q": "Day fifty is about?",
             "options": [
-              "Old",
-              "Systematic+silent+intent",
-              "Tired",
-              "Unknown"
+              "Ownership",
+              "Only finishing",
+              "Performance",
+              "Escape"
             ],
-            "correct": 1,
-            "explain": "Master morning profile."
+            "correct": 0,
+            "explain": "You choose your own morning system."
           },
           {
-            "q": "Discipline = ?",
+            "q": "What stays?",
             "options": [
-              "Behavior",
-              "Identity",
-              "Plan",
-              "Motivation"
+              "The core",
+              "Extra weight",
+              "Rush",
+              "Vagueness"
             ],
-            "correct": 1,
-            "explain": "Now identity = discipline."
+            "correct": 0,
+            "explain": "Useful parts remain."
           }
         ]
       }
@@ -3238,1397 +3203,1352 @@
         "proTip": "Set an end time for the check window too, so messages do not turn into a feed."
       },
       "6": {
-        "title": "Single-Task Discipline",
-        "teaching": "Multitasking myth: high-IQ people multitask better. Wrong. Multitaskers lose 10 IQ points (Stanford). One thing at a time = deep processing. Same hour, 2x output, 5x quality.",
-        "action": "Today do important work in one go. Close tabs, phone, music.",
-        "reflectionPrompt": "Productivity difference shifting from multi to single?",
-        "proTip": "If multi-tab is a habit, close them with Cmd+W (Mac) or Ctrl+W (Windows) one by one.",
+        "title": "Single-Task Field",
+        "teaching": "Single-Task Field opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is holding one important task at a time.\n\nPrepare the work area for one task: one tab, one file, one intention. Treat this step like clearing the desk, not like chasing motivation.\n\nBefore starting, close loose ends or place them in a capture note. If attention drifts, do not scold yourself; return to the point you marked.\n\nA single-task field leaves the mind with fewer bargains. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Start one task on one screen today. Put loose ends in a capture note.",
+        "reflectionPrompt": "Which attention leak did the single-task field reveal?",
         "quiz": [
           {
-            "q": "Multitasker IQ drop?",
+            "q": "What does Single-Task Field build first?",
             "options": [
-              "None",
-              "5",
-              "10 pts",
-              "20 pts"
+              "Space for one task",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 2,
-            "explain": "Stanford — 10 IQ point loss."
+            "correct": 0,
+            "explain": "When the field is simple, attention returns more easily."
           },
           {
-            "q": "Single-task productivity gain?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Same",
-              "20%",
-              "2x",
-              "10x"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 2,
-            "explain": "2x productivity, 5x quality."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "7": {
-        "title": "Notification Detox",
-        "teaching": "Phone delivers ~80 notifications/day. Each = 23 min focus loss. Total = 2 hours of no focus. Solution: turn them all off. Real emergencies will call. Rest was useless anyway.",
-        "action": "Today turn off all notifications (Apple/Google maps included). Only direct call/SMS allowed.",
-        "reflectionPrompt": "How did the first notification-free day feel? Missing or full?",
-        "proTip": "Social media first, shopping next, app last. 3 minutes total.",
+        "title": "Notification Boundary",
+        "teaching": "Notification Boundary opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is choosing when the outside world enters your mind.\n\nDo not treat the phone as the enemy. Decide who is allowed to open the interruption door. Treat this step like clearing the desk, not like chasing motivation.\n\nLeave a clear channel for important people and move the rest to a check window. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe boundary protects the mind from sudden calls for attention. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Turn off nonessential notifications today. Keep calls and important people available.",
+        "reflectionPrompt": "Did the notification boundary create space or restlessness?",
         "quiz": [
           {
-            "q": "Refocus time per notification?",
+            "q": "What does Notification Boundary build first?",
             "options": [
-              "1 min",
-              "5 min",
-              "10 min",
-              "23 min"
+              "Control over interruptions",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 3,
-            "explain": "23 min full refocus."
+            "correct": 0,
+            "explain": "The boundary stops every sound from entering the mind."
           },
           {
-            "q": "Average daily notifications?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "10",
-              "40",
-              "80",
-              "200"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 2,
-            "explain": "~80 notifications/day."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "8": {
-        "title": "Pomodoro Technique",
-        "teaching": "25 min focus + 5 min break = 1 pomodoro. After 4 pomodoros, 30-min long break. Brain can't sustain focus continuously; with rhythm, it can. Tested since 1992.",
-        "action": "Today work 1 pomodoro: 25 min focus, 5 min break. Visible timer.",
-        "reflectionPrompt": "Of what you wanted in 25 min, how much got done?",
-        "proTip": "No phone in break. Look out window, drink water, stretch. Break = brain reset.",
+        "title": "Focus Loop",
+        "teaching": "Focus Loop opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is making start, work, stop, and return steps clear.\n\nUse the timer as a frame for attention, not as pressure. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose a short work block, take a small break, then return deliberately. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe loop stops work from feeling like an endless load. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Run one focus loop: twenty-five minutes work, five minutes break, then decide.",
+        "reflectionPrompt": "Which part of the loop helped you most?",
         "quiz": [
           {
-            "q": "1 pomodoro?",
+            "q": "What does Focus Loop build first?",
             "options": [
-              "10/2 min",
-              "15/3 min",
-              "25/5 min",
-              "60/15 min"
+              "A frame for starting and returning",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 2,
-            "explain": "25 focus + 5 break."
+            "correct": 0,
+            "explain": "The loop makes work measurable and returnable."
           },
           {
-            "q": "After 4 pomodoros break?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "None",
-              "10 min",
-              "30 min",
-              "60 min"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 2,
-            "explain": "30 min long break."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "9": {
-        "title": "Time Blocking",
-        "teaching": "To-do lists are naive. Each item \"at least 15 min\" — 10 items = 2.5h. Time blocking is realistic: assign hours on calendar. 10:00-11:30 deep work. 11:30-12:00 email. Hours decide, not you.",
-        "action": "Today block 3 time slots on your calendar. One task per block.",
-        "reflectionPrompt": "Without time blocking, how would today have gone?",
-        "proTip": "First week, double the estimated time. Accurate estimating is a learned skill.",
+        "title": "Time Blocks",
+        "teaching": "Time Blocks opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is turning the day from a vague list into visible spaces.\n\nDo not control every minute. Name what the main blocks are meant to serve. Treat this step like clearing the desk, not like chasing motivation.\n\nDraw rough borders for deep work, messages, food, movement, and open space. If attention drifts, do not scold yourself; return to the point you marked.\n\nBlocks show where the day is going before it disappears. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Draw three time blocks today: deep work, communication, recovery.",
+        "reflectionPrompt": "Which block asked for more space than expected?",
         "quiz": [
           {
-            "q": "Time blocking is?",
+            "q": "What does Time Blocks build first?",
             "options": [
-              "Listing",
-              "Hour blocks",
-              "Deleting tasks",
-              "Reminder"
+              "Visible spaces for the day",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Hours on calendar, not tasks."
+            "correct": 0,
+            "explain": "Blocks reduce vagueness and show direction."
           },
           {
-            "q": "First-week estimate rule?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Half",
-              "Exact",
-              "2x time",
-              "10x"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 2,
-            "explain": "2x estimated time is realistic."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "10": {
-        "title": "Energy Management",
-        "teaching": "Not time but energy management. Everyone gets 24h. But high-energy 4h > low-energy 12h. Morning 9-12: deep work. Noon: shallow. Evening: routine. Know your curve, work to it.",
-        "action": "Today track your energy curve. Score morning-noon-evening 1-10.",
-        "reflectionPrompt": "Which hour was peak? What were you doing?",
-        "proTip": "Track for 1 week. Pattern is clear, plan accordingly.",
+        "title": "Energy Hour",
+        "teaching": "Energy Hour opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is using your clearest mental hour better.\n\nNot everyone is sharp at the same hour. Observe your rhythm and write it down. Treat this step like clearing the desk, not like chasing motivation.\n\nDo not spend the clearest hour on tiny tasks; place valuable work there. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe energy hour helps you place effort where it counts. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Find your clearest hour today and place tomorrow’s key task there.",
+        "reflectionPrompt": "At what hour did your mind feel clearest today?",
         "quiz": [
           {
-            "q": "Time vs energy?",
+            "q": "What does Energy Hour build first?",
             "options": [
-              "Time",
-              "Energy",
-              "Equal",
-              "Neither"
+              "Valuable work in the clearest hour",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "High-energy 4h > low-energy 12h."
+            "correct": 0,
+            "explain": "Putting hard work in the right hour reduces friction."
           },
           {
-            "q": "Morning energy suggestion?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Shallow",
-              "Deep work",
-              "Meeting",
-              "Relax"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Morning = deep work peak."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "11": {
-        "title": "Decision Fatigue",
-        "teaching": "Brain makes ~35,000 decisions/day. Each consumes willpower. Steve Jobs same outfit, Obama same suit color — to reduce decision fatigue. Automate trivial decisions.",
-        "action": "Today automate 3 decisions. Tomorrow's outfit? Breakfast? Evening?",
-        "reflectionPrompt": "How much mental space opened from automating?",
-        "proTip": "Decide for the week on Sunday. Mon-Fri you don't hesitate.",
+        "title": "Decision Simplifier",
+        "teaching": "Decision Simplifier opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is reducing unnecessary choices in the day.\n\nThe mind does not break from each small choice, but scattered choices wear down direction. Treat this step like clearing the desk, not like chasing motivation.\n\nPreselect repeated decisions: clothes, first task, check window, meal option. If attention drifts, do not scold yourself; return to the point you marked.\n\nSimplicity saves attention for decisions that truly matter. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Preselect two repeated decisions today and put them somewhere visible.",
+        "reflectionPrompt": "Which small decision became lighter after simplification?",
         "quiz": [
           {
-            "q": "Decisions per day?",
+            "q": "What does Decision Simplifier build first?",
             "options": [
-              "100",
-              "1000",
-              "10K",
-              "35K"
+              "Fewer unnecessary choices",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 3,
-            "explain": "~35,000 decisions/day."
+            "correct": 0,
+            "explain": "When repeated choices are simpler, the mind has more room."
           },
           {
-            "q": "Why same outfit Steve Jobs?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Style",
-              "Cheap",
-              "Decision fatigue",
-              "Love"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 2,
-            "explain": "Reduce decision fatigue."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "12": {
-        "title": "Inbox Zero",
-        "teaching": "Email inbox = someone else's priority overriding yours. Inbox 0 discipline: process every email by day's end (reply, archive, delete, schedule). No backlog.",
-        "action": "Today zero your inbox. Don't force old 100 emails — last 24h is enough.",
-        "reflectionPrompt": "How did inbox 0 feel? Clearer?",
-        "proTip": "Check inbox 2x/day: 11:00 and 17:00. Never before 09:00.",
+        "title": "Inbox Window",
+        "teaching": "Inbox Window opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is stopping messages from spreading across the whole day.\n\nWhen the inbox stays open, other people’s priorities keep leaking in. Treat this step like clearing the desk, not like chasing motivation.\n\nOpen messages in set windows, answer clearly, note the next step, and leave. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe window turns communication into a managed space instead of constant work. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Set two inbox windows today. Keep the inbox closed between them.",
+        "reflectionPrompt": "Which task started more easily while the inbox was closed?",
         "quiz": [
           {
-            "q": "Inbox 0 goal?",
+            "q": "What does Inbox Window build first?",
             "options": [
-              "Perfection",
-              "No backlog",
-              "Fast reply",
-              "Looks"
+              "Messages collected into windows",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "No backlog = no stress."
+            "correct": 0,
+            "explain": "Windows reduce message spread across the day."
           },
           {
-            "q": "Email checks/day?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Constant",
-              "Hourly",
-              "2x",
-              "Weekly"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 2,
-            "explain": "11:00 + 17:00 = ideal."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "13": {
-        "title": "Meeting Hygiene",
-        "teaching": "Most meetings could have been emails. Rule: 1) Clear agenda? 2) Needed without you? 3) Over 30 min? 3 nos: skip. Hours = expensive currency.",
-        "action": "Today question one meeting on your calendar. No agenda = cancel.",
-        "reflectionPrompt": "Most recent meeting that wasted time? Why did you join?",
-        "proTip": "Standing meetings run 50% shorter. Stand up.",
+        "title": "Meeting Filter",
+        "teaching": "Meeting Filter opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is not accepting every meeting automatically.\n\nBefore a meeting enters the calendar, clarify purpose, decision, and required people. Treat this step like clearing the desk, not like chasing motivation.\n\nIf the purpose is unclear, ask for a short note; if no decision is needed, suggest a written update. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe filter protects time without turning it into a fight. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "For one meeting, write purpose, decision, and required people.",
+        "reflectionPrompt": "Which meeting became clearer after the filter?",
         "quiz": [
           {
-            "q": "Meeting rule?",
+            "q": "What does Meeting Filter build first?",
             "options": [
-              "Always join",
-              "Clear agenda + 30min",
-              "Standing only",
-              "Breakfast"
+              "Purpose and decision clarity",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Clear agenda + max 30 min."
+            "correct": 0,
+            "explain": "Filtered meetings protect time better."
           },
           {
-            "q": "Standing meeting length?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Same",
-              "50% shorter",
-              "200% longer",
-              "None"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Standing = 50% shorter."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "14": {
-        "title": "Deep Work 90 Min",
-        "teaching": "Cal Newport: deep work = the most valuable skill in the economy. 90 uninterrupted min = 8h multitasking. Hard the first week, brain unaccustomed. After 30 days = life's control mechanism.",
-        "action": "Today do 1 deep work block: 90 min, phone in another room, tabs closed.",
-        "reflectionPrompt": "How did your energy feel after 90 min?",
-        "proTip": "Before deep work: drink water, restroom, prep snack. Don't stand once.",
+        "title": "Deep Work Block",
+        "teaching": "Deep Work Block opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is placing hard work inside an uninterrupted space.\n\nDeep work does not have to mean long hours. A protected block and clear start are enough. Treat this step like clearing the desk, not like chasing motivation.\n\nBefore the block, name the output: draft, solution, decision, page, or plan. If attention drifts, do not scold yourself; return to the point you marked.\n\nWhen output is clear, focus stops being an abstract wish. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Open one deep work block today. Write the single output before starting.",
+        "reflectionPrompt": "How did naming the output affect the block?",
         "quiz": [
           {
-            "q": "Deep work block length?",
+            "q": "What does Deep Work Block build first?",
             "options": [
-              "25 min",
-              "60 min",
-              "90 min",
-              "8h"
+              "Hard work in protected space",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 2,
-            "explain": "90 min = optimum."
+            "correct": 0,
+            "explain": "A protected block lets hard work start without scattering."
           },
           {
-            "q": "Cal Newport thesis?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Speed",
-              "Deep work = deep value",
-              "Speed",
-              "Multitask"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Deep work yields deep value."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "15": {
-        "title": "Capture System",
-        "teaching": "Capture every idea in writing. David Allen \"GTD\": uncaptured idea loops in mind, steals attention. Notes app, journal, paper — doesn't matter. Capture = release.",
-        "action": "Today pick 1 capture spot. Use it for 24 hours.",
-        "reflectionPrompt": "How many ideas did you capture in 24h? More or less than expected?",
-        "proTip": "Review your captured list 5 min each evening. Schedule urgent ones tomorrow.",
+        "title": "Capture Notebook",
+        "teaching": "Capture Notebook opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is moving mental loose ends into a trusted place.\n\nIdeas, tasks, and worries that appear during focus do not need immediate action. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose one notebook or note space. Write the item briefly and return to the main work. If attention drifts, do not scold yourself; return to the point you marked.\n\nA capture place stops the mind from answering every reminder. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Use one capture place today. Put loose ends there.",
+        "reflectionPrompt": "Which thought left your mind because of the capture notebook?",
         "quiz": [
           {
-            "q": "GTD by whom?",
+            "q": "What does Capture Notebook build first?",
             "options": [
-              "James Clear",
-              "David Allen",
-              "Cal Newport",
-              "Tim Ferriss"
+              "Loose ends moved to a trusted place",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "David Allen — Getting Things Done."
+            "correct": 0,
+            "explain": "The mind can return to work instead of remembering."
           },
           {
-            "q": "Uncaptured idea does?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Nothing",
-              "Steals attention",
-              "Forgotten",
-              "No effect"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Loops in mind, takes focus."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "16": {
-        "title": "Weekly Review",
-        "teaching": "Daily is tactic. Weekly is strategy. Friday evening or Sunday morning, 30 min: 1) What did I accomplish this week? 2) What did I learn? 3) Top 3 priorities next week? Biggest difference between doers and not.",
-        "action": "This weekend do a 30-min weekly review. Written, concrete.",
-        "reflectionPrompt": "Biggest learning of this week?",
-        "proTip": "Pick a fixed time. Friday 17:00 or Sunday 09:00. Don't flex.",
+        "title": "Weekly Mind Reset",
+        "teaching": "Weekly Mind Reset opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is making scattered work visible once a week.\n\nTasks collected during the week become quiet weight. A short reset puts them on the table. Treat this step like clearing the desk, not like chasing motivation.\n\nList open tasks, mark waiting decisions, and choose one main focus for next week. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe reset rebuilds direction more than it tries to empty the mind. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Spend fifteen minutes on a weekly reset: open tasks, decisions, one main focus.",
+        "reflectionPrompt": "Which quiet weight became visible during the weekly reset?",
         "quiz": [
           {
-            "q": "Weekly review duration?",
+            "q": "What does Weekly Mind Reset build first?",
             "options": [
-              "5 min",
-              "30 min",
-              "2h",
-              "1 day"
+              "Weekly weight made visible",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "30 min suffices."
+            "correct": 0,
+            "explain": "Visible work can be chosen and ordered."
           },
           {
-            "q": "Best review time?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Mon 09",
-              "Fri 17 / Sun 09",
-              "Sat 12",
-              "Mon 18"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Friday 17 or Sunday 09."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "17": {
-        "title": "The \"No\" Discipline",
-        "teaching": "Warren Buffett: successful people say \"no\" to everything. Because time = priority spend. Each \"yes\" = \"no\" to something else. Discipline = clarity on what gets yes/no.",
-        "action": "Today say \"no\" to 1 request. Guilt is normal — passes.",
-        "reflectionPrompt": "Why was \"no\" hard? What fear was there?",
-        "proTip": "Soft \"no\": \"Accepting this isn't right for me.\" No explanation needed.",
+        "title": "Clean No",
+        "teaching": "Clean No opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is stating a boundary without creating a fight.\n\nSaying no does not have to sound harsh. A short, respectful, clear sentence is enough. Treat this step like clearing the desk, not like chasing motivation.\n\nLong explanations invite bargaining. Keep the sentence short and offer an alternative if useful. If attention drifts, do not scold yourself; return to the point you marked.\n\nA clean no returns energy to the work you actually chose. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write one boundary line today: I cannot take this now; I can return then.",
+        "reflectionPrompt": "What changed when you shortened your no?",
         "quiz": [
           {
-            "q": "\"No\" = ?",
+            "q": "What does Clean No build first?",
             "options": [
-              "Rude",
-              "Yes to your priority",
-              "Loss",
-              "Mistake"
+              "A short and clear boundary",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Each no = yes to your own."
+            "correct": 0,
+            "explain": "A short boundary reduces unnecessary bargaining."
           },
           {
-            "q": "Soft \"no\"?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "No",
-              "\"Not right for me\"",
-              "Silence",
-              "Hang up"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "No explanation needed."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "18": {
-        "title": "Boredom as Resource",
-        "teaching": "Boredom = brain signaling \"I want empty space.\" Most people grab phones — silencing the signal. Allow boredom. 5 min in, creativity returns.",
-        "action": "Today allow 10 min of boredom. No phone, music, anything.",
-        "reflectionPrompt": "What thought arose after the boredom?",
-        "proTip": "If phone reflex hits, pocket your hands. Block the reflex.",
+        "title": "Stay With Boredom",
+        "teaching": "Stay With Boredom opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is practicing not escaping the moment emptiness appears.\n\nBoredom is often not danger; it is the sound of a mind looking for input. Treat this step like clearing the desk, not like chasing motivation.\n\nOpen nothing for two minutes. Name the feeling, notice where it sits in the body, and stay. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe space you can stay in becomes a place where attention gathers again. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "When bored today, open no screen for two minutes. Name the feeling and wait.",
+        "reflectionPrompt": "What desire appeared behind boredom when you stayed?",
         "quiz": [
           {
-            "q": "Boredom is?",
+            "q": "What does Stay With Boredom build first?",
             "options": [
-              "Disease",
-              "Empty space signal",
-              "Hunger",
-              "Fatigue"
+              "Staying instead of escaping",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Brain wants empty space."
+            "correct": 0,
+            "explain": "A short wait reveals the automatic escape."
           },
           {
-            "q": "Boredom allowance time?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "1 min",
-              "10 min",
-              "1h",
-              "1 day"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "10 min suffices."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "19": {
-        "title": "Default App Discipline",
-        "teaching": "Home screen icons = daily triggers. Each social media you remove = hours of focus regained. Each productive app you add = daily nudge. Home screen = personal slot machine.",
-        "action": "Today move 3 social media icons to page 2 or remove. Add 3 productive apps.",
-        "reflectionPrompt": "What new behavior emerged from the new home screen?",
-        "proTip": "Keep 6 icons only. Rest in App Library / Drawer.",
+        "title": "Default Apps",
+        "teaching": "Default Apps opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is choosing the first paths your phone opens.\n\nApps on the home screen are behavior invitations. The nearest icon often becomes the fastest habit. Treat this step like clearing the desk, not like chasing motivation.\n\nMove distracting apps to a second screen and leave useful tools on a simple first page. If attention drifts, do not scold yourself; return to the point you marked.\n\nDefault layout changes the environment before willpower gets involved. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Simplify your home screen. Keep only useful apps on the first page today.",
+        "reflectionPrompt": "Which automatic behavior decreased after simplifying the home screen?",
         "quiz": [
           {
-            "q": "Home screen icons = ?",
+            "q": "What does Default Apps build first?",
             "options": [
-              "Decoration",
-              "Trigger",
-              "Function",
-              "Reminder"
+              "Changing the first path",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Trigger = daily check."
+            "correct": 0,
+            "explain": "When the environment is simpler, automatic choices shift."
           },
           {
-            "q": "Optimal home screen icons?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "1",
-              "6",
-              "20",
-              "50"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "6 icons enough, rest in App Library."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "20": {
-        "title": "Information Diet",
-        "teaching": "Too much info = analysis paralysis. Consume: what solves your problems. Skip: trends, gossip, \"interesting\" but useless. 1 area deep > 10 areas shallow.",
-        "action": "Today ask: which 3 sources do I consume from? Do they serve me?",
-        "reflectionPrompt": "Which source to remove? Which to add?",
-        "proTip": "\"Does it serve me?\" filter. Anything no = noise.",
+        "title": "Information Gate",
+        "teaching": "Information Gate opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is choosing before letting content into the mind.\n\nInformation can be useful, but endless input can scatter the direction of the day. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose three main sources today. Leave the rest outside the gate or save them for later. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe gate does not kill curiosity; it gives curiosity time and shape. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write the three information sources you will use today. Save the rest for later.",
+        "reflectionPrompt": "Which unnecessary input stayed outside the gate?",
         "quiz": [
           {
-            "q": "Info diet filter?",
+            "q": "What does Information Gate build first?",
             "options": [
-              "Trend",
-              "\"Does it serve me?\"",
-              "Popularity",
-              "Novelty"
+              "Choosing input deliberately",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "No = noise."
+            "correct": 0,
+            "explain": "The gate separates curiosity from endless feed."
           },
           {
-            "q": "Optimum depth vs breadth?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "10 areas shallow",
-              "1 area deep",
-              "Equal",
-              "Random"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "1 area deep."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "21": {
-        "title": "Reading Strategy",
-        "teaching": "Reading = low effort, high return. But how matters. Passive reading = forgotten. Active reading: take notes, question, apply. 1 page active > 20 passive.",
-        "action": "Today read 5 pages of a book. Margin notes. Summarize in one sentence.",
-        "reflectionPrompt": "How different did active feel from passive?",
-        "proTip": "Right after: out loud 30-sec summary. Where you don't understand = re-read.",
+        "title": "Reading Intention",
+        "teaching": "Reading Intention opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is linking reading to a question instead of random consumption.\n\nBefore opening the book, write why you are reading. One question ties attention to the page. Treat this step like clearing the desk, not like chasing motivation.\n\nDo not collect every sentence. When you find a relevant idea, note it and return to reading. If attention drifts, do not scold yourself; return to the point you marked.\n\nIntention turns reading from collecting into thinking. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write one question before reading. Note only ideas that serve that question.",
+        "reflectionPrompt": "Which note became more useful because of your reading intention?",
         "quiz": [
           {
-            "q": "Active vs passive reading?",
+            "q": "What does Reading Intention build first?",
             "options": [
-              "Same",
-              "5x diff",
-              "20x diff",
-              "Unknown"
+              "Reading tied to a question",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 2,
-            "explain": "1 active page > 20 passive."
+            "correct": 0,
+            "explain": "A question gives direction through the pages."
           },
           {
-            "q": "Active reading tools?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Silence",
-              "Notes + questioning",
-              "Music",
-              "Speed"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Take notes, question, apply."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "22": {
-        "title": "Note System",
-        "teaching": "Brain = processor, not warehouse. It tires carrying every thought. A note system (Apple Notes, Notion, journal) = brain extension. Written = unforgettable.",
-        "action": "Today pick 1 note system, use it. Confusion = ineffective system.",
-        "reflectionPrompt": "What mental load lifted writing things down?",
-        "proTip": "Apple Notes = simple + sync. Add complex (Notion, Obsidian) later.",
+        "title": "Note Link",
+        "teaching": "Note Link opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is making notes usable instead of leaving them isolated.\n\nA note becomes easier to use when it connects to another thought. Treat this step like clearing the desk, not like chasing motivation.\n\nUnder each important note today, write one link: which task, question, or decision does it support? If attention drifts, do not scold yourself; return to the point you marked.\n\nLinks stop the notebook from becoming storage only. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Add links to three notes today: task, question, or decision.",
+        "reflectionPrompt": "Which note became more usable after adding a link?",
         "quiz": [
           {
-            "q": "Brain = ?",
+            "q": "What does Note Link build first?",
             "options": [
-              "Storage",
-              "Processor",
-              "Vault",
-              "Engine"
+              "Notes made usable",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Processor, not storage."
+            "correct": 0,
+            "explain": "A link shows what the note serves."
           },
           {
-            "q": "Note system starter?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Notion",
-              "Apple Notes",
-              "Obsidian",
-              "Journal"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Simple + sync first."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "23": {
-        "title": "Deep vs Shallow",
-        "teaching": "Shallow work: email, meeting, message, reporting. Deep work: creativity, analysis, strategy, learning. Shallow is easy and seductive — but produces no value. Defend deep work.",
-        "action": "Today reserve first 90 min for deep work. Shallow after.",
-        "reflectionPrompt": "Starting with deep work, how did the rest of the day shape?",
-        "proTip": "Morning = deepest work. Brain shallows after 11am.",
+        "title": "Deep and Shallow",
+        "teaching": "Deep and Shallow opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is separating work instead of treating every task the same.\n\nNot every task asks for the same attention. Some need thinking; others need quick handling. Treat this step like clearing the desk, not like chasing motivation.\n\nWrite today’s tasks in two columns: deep thinking and quick handling. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe split reduces spending valuable mental space on small tasks. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Split today’s tasks into two columns: deep work and shallow handling.",
+        "reflectionPrompt": "Which task had you placed in the wrong column?",
         "quiz": [
           {
-            "q": "Deep work example?",
+            "q": "What does Deep and Shallow build first?",
             "options": [
-              "Email",
-              "Creativity",
-              "Meeting",
-              "Message"
+              "Tasks split by attention level",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Creativity, analysis, strategy."
+            "correct": 0,
+            "explain": "The split creates the right space for hard work."
           },
           {
-            "q": "Morning first?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Email",
-              "Deep work",
-              "Meeting",
-              "Social"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Brain is deep in morning."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "24": {
-        "title": "Walk + Think",
-        "teaching": "Steve Jobs solved hard problems walking. Darwin walked the same path 3x daily. Stanford study: creativity rises 60% walking. When stuck: stop sitting, walk.",
-        "action": "Today think on a problem 15 min while walking. Take notes.",
-        "reflectionPrompt": "What problem did walking solve that sitting couldn't?",
-        "proTip": "Walk without phone. Even music narrows thinking space.",
+        "title": "Walk and Think",
+        "teaching": "Walk and Think opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is moving hard thinking away from the screen and into motion.\n\nSome problems get stuck at the desk. A short walk gives thought a different tempo. Treat this step like clearing the desk, not like chasing motivation.\n\nLeave with one question. Put answers into a short note after returning, not during the walk. If attention drifts, do not scold yourself; return to the point you marked.\n\nMotion helps you see the mental knot with more calm. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Walk ten minutes with one question. After returning, write three sentences.",
+        "reflectionPrompt": "How did the problem change while walking?",
         "quiz": [
           {
-            "q": "Walk creativity boost?",
+            "q": "What does Walk and Think build first?",
             "options": [
-              "None",
-              "+30%",
-              "+60%",
-              "+200%"
+              "Thought moved into motion",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 2,
-            "explain": "Stanford — +60%."
+            "correct": 0,
+            "explain": "Walking lets you handle a hard question more calmly."
           },
           {
-            "q": "When stuck do?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Sit",
-              "Walk",
-              "Sleep",
-              "Eat"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Walk = creativity reset."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "25": {
-        "title": "Brain Dump",
-        "teaching": "47 thoughts in your head = unprocessed load. Brain dump: write what comes for 10 min. All. Then sort: doable / delete / later.",
-        "action": "Today brain dump for 10 min. No censoring, no editing.",
-        "reflectionPrompt": "What % of what you wrote was actually important?",
-        "proTip": "Morning brain dump = clean start. Evening brain dump = better sleep.",
+        "title": "Mental Unload",
+        "teaching": "Mental Unload opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is making the open tabs in your head visible.\n\nThe mind struggles when it must remember and work deeply at the same time. Treat this step like clearing the desk, not like chasing motivation.\n\nFor five minutes, write every task, worry, and waiting decision that appears. If attention drifts, do not scold yourself; return to the point you marked.\n\nUnloading does not solve the load, but it makes it visible and orderable. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Unload your mind for five minutes. Then mark only the first three items.",
+        "reflectionPrompt": "Which loose end took the most space after unloading?",
         "quiz": [
           {
-            "q": "Brain dump?",
+            "q": "What does Mental Unload build first?",
             "options": [
-              "List",
-              "Write without judging",
-              "Censor",
-              "Plan"
+              "Open tabs made visible",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Write what comes, no censor."
+            "correct": 0,
+            "explain": "Visible load can be ordered better."
           },
           {
-            "q": "Brain dump length?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "1 min",
-              "10 min",
-              "1h",
-              "1 day"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "10 min optimum."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "26": {
         "title": "Phone-Free Zones",
-        "teaching": "Bedroom = sleep + sex (Matthew Walker). Dining table = food + conversation. Restroom = restroom. Clear no-phone zones shrink phone time naturally.",
-        "action": "Today declare 1 phone-free zone. Bedroom is the strongest start.",
-        "reflectionPrompt": "How did phone-free time in that zone feel?",
-        "proTip": "Drop phone at the door. Pick it up only when leaving.",
+        "teaching": "Phone-Free Zones opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is making space work for attention.\n\nIf the phone is everywhere, every place becomes a small escape door. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose one zone: bed, table, bathroom, or work corner. Keep the phone outside it. If attention drifts, do not scold yourself; return to the point you marked.\n\nA space boundary stops you from remaking the decision every time. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Declare one phone-free zone today. Charge the phone outside that zone.",
+        "reflectionPrompt": "Which behavior became easier in the phone-free zone?",
         "quiz": [
           {
-            "q": "Bedroom rule?",
+            "q": "What does Phone-Free Zones build first?",
             "options": [
-              "Work",
-              "Sleep only",
-              "Phone",
-              "Food"
+              "Space arranged for attention",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Sleep + sex only (Walker)."
+            "correct": 0,
+            "explain": "When the phone stays out, the purpose of the space gets stronger."
           },
           {
-            "q": "Phone where?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Bed",
-              "Door",
-              "Kitchen",
-              "Bath"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Door = boundary."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "27": {
         "title": "Priority Funnel",
-        "teaching": "100 opportunities = paralysis. 3 priorities = progress. Eisenhower Matrix: 1) Urgent + Important (do), 2) Important not urgent (plan), 3) Urgent not important (delegate), 4) Neither (delete). 3-4 = lost hours.",
-        "action": "Today matrix your task list. Delete 3 items from category 4.",
-        "reflectionPrompt": "Which category-4 tasks did you delete? Why started?",
-        "proTip": "Do weekly. Constantly shifting priorities = strategic drift.",
+        "teaching": "Priority Funnel opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is reducing many tasks into one important move.\n\nA long list often creates bargaining, not clarity. Treat this step like clearing the desk, not like chasing motivation.\n\nWrite all tasks, reduce them to three, then choose the one task that carries the day. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe funnel pulls important work out of the crowd. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write the list. Reduce to three. Choose the one task that carries the day.",
+        "reflectionPrompt": "After choosing the key task, which task could wait?",
         "quiz": [
           {
-            "q": "Eisenhower Matrix categories?",
+            "q": "What does Priority Funnel build first?",
             "options": [
-              "1",
-              "2",
-              "4",
-              "10"
+              "Many tasks reduced to one move",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 2,
-            "explain": "4 categories: urgent/important combos."
+            "correct": 0,
+            "explain": "The funnel separates importance from crowding."
           },
           {
-            "q": "Category 4 means?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Do",
-              "Plan",
-              "Delegate",
-              "Delete"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 3,
-            "explain": "Not urgent + not important = delete."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "28": {
-        "title": "One-Year Goal",
-        "teaching": "10 goals = 0 goals. 1 goal = focus. A year = average 1 big thing accomplished. What's your biggest 1-year goal? Not \"exercise\" — \"begin strength training, bench-press 50kg in 1 year.\"",
-        "action": "Today write your 1-year, 1-goal. Measurable, concrete, timed.",
-        "reflectionPrompt": "What's the real \"why\" beneath this goal?",
-        "proTip": "Keep it visible: phone lock screen, desk.",
+        "title": "One-Year Line",
+        "teaching": "One-Year Line opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is linking the long goal to today’s decision.\n\nA one-year goal can disconnect from daily behavior when it is written too large. Treat this step like clearing the desk, not like chasing motivation.\n\nReduce the goal to one line and write the smallest move that serves it today. If attention drifts, do not scold yourself; return to the point you marked.\n\nOne line brings the distant goal onto today’s desk. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write your yearly goal in one line. Add today’s small version.",
+        "reflectionPrompt": "Which small decision did the long goal become today?",
         "quiz": [
           {
-            "q": "Optimal annual goals?",
+            "q": "What does One-Year Line build first?",
             "options": [
-              "1",
-              "5",
-              "10",
-              "20"
+              "Long goal tied to today",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
             "correct": 0,
-            "explain": "1 goal = focus."
+            "explain": "One line brings the goal closer to behavior."
           },
           {
-            "q": "\"Exercise more\" goal is?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Perfect",
-              "Too vague",
-              "Fine",
-              "Good"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Vague = unmeasurable = fail."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "29": {
         "title": "Final Discipline",
-        "teaching": "You practiced mental discipline 29 days. Tomorrow you \"complete.\" But discipline doesn't end with tomorrow. Final test: post-30-day, which 1 discipline daily? The fabric of your life.",
-        "action": "Today pick the strongest 1 discipline of past 30 days. Do it 100 more days.",
-        "reflectionPrompt": "Which one did you pick? Why that?",
-        "proTip": "Stack it tonight on an existing habit. Stack = automation.",
+        "teaching": "Final Discipline opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is keeping the system simple while finishing.\n\nNear the end, it is tempting to seek a new tool, method, or goal. Treat this step like clearing the desk, not like chasing motivation.\n\nAdd nothing new today. Finish one important task in the current system and write a short closing note. If attention drifts, do not scold yourself; return to the point you marked.\n\nFinal discipline teaches completion without scattering. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Add no new method today. Finish one key task and write a short closing note.",
+        "reflectionPrompt": "How did adding nothing new affect your focus?",
         "quiz": [
           {
-            "q": "Final discipline test?",
+            "q": "What does Final Discipline build first?",
             "options": [
-              "Speed",
-              "Which 1 after 30?",
-              "Fatigue",
-              "Satisfaction"
+              "The system stays simple at the finish",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Which 1 discipline continues?"
+            "correct": 0,
+            "explain": "Simplicity near the end strengthens completion."
           },
           {
-            "q": "Discipline auto how?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Alone",
-              "With stack",
-              "Tiredness",
-              "Never"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Stack onto existing habit."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "30": {
-        "title": "Complete — New Mind",
-        "teaching": "You're not the same as 30 days ago. You learned focus, deep work, saying \"no.\" From multi-task to single-task, from reactive to proactive. These 30 days = your new baseline.",
-        "action": "Today summarize 30 days: 3 learned, 3 to keep, 3 not to forget.",
-        "reflectionPrompt": "With this new mind, what big thing will you accomplish?",
-        "proTip": "Rest 3 days before next path. Consistency = long term. Rush = regress.",
+        "title": "New Mind Contract",
+        "teaching": "New Mind Contract opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is turning useful attention rules into a lasting system.\n\nAfter thirty days, you do not need to carry every practice. Choose the core that worked. Treat this step like clearing the desk, not like chasing motivation.\n\nWrite three rules: I protect attention, I limit input, and when I drift I return here. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe contract turns app tasks into a personal system. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write your mind contract: I protect, I limit, I return.",
+        "reflectionPrompt": "Which three attention rules should stay with you?",
         "quiz": [
           {
-            "q": "Rest after transition?",
+            "q": "What does New Mind Contract build first?",
             "options": [
-              "None",
-              "3 days",
-              "1 week",
-              "1 month"
+              "Attention rules turned into a system",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "3 days rest, then move on."
+            "correct": 0,
+            "explain": "The contract turns tasks into personal choice."
           },
           {
-            "q": "30-day summary?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "None",
-              "3+3+3",
-              "Random",
-              "List"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "3 learned, 3 to keep, 3 not to forget."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "31": {
-        "title": "Ultradian Rhythm",
-        "teaching": "Brain works in 90-120 min cycles. End of cycle = focus drops. Solution: 90 min deep work + 20 min real break. Pomodoro's big brother.",
-        "action": "Today work in 90-20 rhythm.",
-        "reflectionPrompt": "How did you feel after 90 minutes?",
-        "proTip": "Real break = no phone, no screen. Look out window, drink water.",
+        "title": "Energy Cycle",
+        "teaching": "Energy Cycle opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is making mental work and recovery part of the same plan.\n\nThe mind does not work at the same intensity forever. Short recovery breaks belong in the plan. Treat this step like clearing the desk, not like chasing motivation.\n\nAfter one intense block, choose water, walking, or a quiet pause instead of another screen. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe cycle makes output more sustainable without forcing it. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "After one intense block, take five screenless minutes for recovery.",
+        "reflectionPrompt": "How did the recovery break affect the next block?",
         "quiz": [
           {
-            "q": "Ultradian cycle duration?",
+            "q": "What does Energy Cycle build first?",
             "options": [
-              "25 min",
-              "90-120 min",
-              "8 hours",
-              "Always"
+              "Work and recovery connected",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Brain runs in 90-120 min."
+            "correct": 0,
+            "explain": "The cycle avoids forcing the mind at one speed."
           },
           {
-            "q": "Break recommendation?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "5 min",
-              "20 min real break",
-              "0",
-              "1 hour"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "20 min phoneless break."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "32": {
-        "title": "Default Mode Network",
-        "teaching": "Brain \"empty\" time = DMN active. This mode produces creativity + self-awareness. Constant stimulation = DMN off = no creativity. 30 min screen-free essential.",
-        "action": "Today 30 min no screens.",
-        "reflectionPrompt": "What appeared without screens?",
-        "proTip": "Walk + screen-free = max DMN. Observe.",
+        "title": "Open Mind Gap",
+        "teaching": "Open Mind Gap opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is giving thought room without adding input.\n\nIf you open content the moment space appears, the mind cannot hear itself. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose two small gaps today: elevator, line, walk, or waiting for coffee. If attention drifts, do not scold yourself; return to the point you marked.\n\nAn input-free gap lets scattered thoughts settle by themselves. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "In two gaps today, do not open the phone. Just wait and listen.",
+        "reflectionPrompt": "Which thought appeared on its own in the open gap?",
         "quiz": [
           {
-            "q": "DMN active when?",
+            "q": "What does Open Mind Gap build first?",
             "options": [
-              "Stimulation",
-              "Empty time",
-              "Phone",
-              "Work"
+              "Input-free space",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Brain \"empty\" = DMN on."
+            "correct": 0,
+            "explain": "The gap lets the mind hear itself."
           },
           {
-            "q": "Creativity born here?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "No",
-              "Yes",
-              "No effect",
-              "Unknown"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "DMN = creativity + self-awareness."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "33": {
-        "title": "Mental Models",
-        "teaching": "Charlie Munger: \"Learn 100 mental models, you understand the world.\" First principles, opportunity cost, second-order effects. Each week, 1 new model.",
-        "action": "Today research 1 mental model.",
-        "reflectionPrompt": "Which model did you pick?",
-        "proTip": "Farnam Street blog = hundreds of mental models.",
+        "title": "Thinking Models",
+        "teaching": "Thinking Models opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is not looking at a problem from only one angle.\n\nHard decisions often get trapped inside the first view. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose one problem and open three windows: what is true, what is missing, what appears from the reverse. If attention drifts, do not scold yourself; return to the point you marked.\n\nA model moves thought in a more ordered way. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write one problem through three windows: true, missing, reverse view.",
+        "reflectionPrompt": "How did the three windows change the problem?",
         "quiz": [
           {
-            "q": "Mental model source?",
+            "q": "What does Thinking Models build first?",
             "options": [
-              "Unknown",
-              "Farnam Street",
-              "Tabloid",
-              "Social media"
+              "More than one angle",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Best source."
+            "correct": 0,
+            "explain": "A model helps you move beyond the first view."
           },
           {
-            "q": "Munger formula?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "10 models",
-              "100 models",
-              "1000",
-              "No"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "100 mental models = solve world."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "34": {
-        "title": "First Principles",
-        "teaching": "Elon Musk: \"Start from physics, not assumptions.\" For each problem: what are the basic truths? Question accepted norms. Rocket prices dropped 90% this way.",
-        "action": "Today question one assumption. \"Why this way?\"",
-        "reflectionPrompt": "Which assumption broke?",
-        "proTip": "Ask \"why?\" 5 times. You reach the root.",
+        "title": "First Principle Question",
+        "teaching": "First Principle Question opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is separating assumptions and returning to the basic truth.\n\nWhen a problem looks complex, it may be carrying extra assumptions. Treat this step like clearing the desk, not like chasing motivation.\n\nAsk: what do I know here, what am I assuming, and what is the smallest next step? If attention drifts, do not scold yourself; return to the point you marked.\n\nThis question brings the problem down to simpler ground. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "For one problem, write what is known, assumed, and the smallest next step.",
+        "reflectionPrompt": "Which assumption was making the problem larger?",
         "quiz": [
           {
-            "q": "First principles by?",
+            "q": "What does First Principle Question build first?",
             "options": [
-              "Naval",
-              "Musk",
-              "Buffett",
-              "Munger"
+              "Assumption separated from knowledge",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Elon Musk approach."
+            "correct": 0,
+            "explain": "The split makes the next step simpler."
           },
           {
-            "q": "Why? count?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "1",
-              "5 in row",
-              "100",
-              "0"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "5 whys = root."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "35": {
-        "title": "Cathedral Effect",
-        "teaching": "High ceilings → creative thinking. Low ceilings → detail thinking. Space = mind state. For creative work, high-ceiling cafe.",
-        "action": "Today work 1 hour in a high-ceiling spot.",
-        "reflectionPrompt": "How did the space change your mind?",
-        "proTip": "Park, library, museum cafe = creative spots.",
+        "title": "Space Effect",
+        "teaching": "Space Effect opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is arranging the workspace in favor of mental work.\n\nSpace is not neutral. Desk, light, sound, and visible objects invite behavior. Treat this step like clearing the desk, not like chasing motivation.\n\nSimplify one work area today: remove one unnecessary object and place the needed tool forward. If attention drifts, do not scold yourself; return to the point you marked.\n\nWhen space becomes clearer, the bargain before starting gets smaller. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Remove one distraction from your workspace and place the first work tool forward.",
+        "reflectionPrompt": "How did the space change the feeling of starting?",
         "quiz": [
           {
-            "q": "High ceiling effect?",
+            "q": "What does Space Effect build first?",
             "options": [
-              "Detail",
-              "Creative thinking",
-              "Tired",
-              "Sound"
+              "Space set up for work",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "High = creative."
+            "correct": 0,
+            "explain": "The visible environment calls behavior more easily."
           },
           {
-            "q": "Creative spot?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Office",
-              "Park/library",
-              "Bed",
-              "Unknown"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "High ceiling/open space."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "36": {
         "title": "Single-Task Mastery",
-        "teaching": "Multitask is myth. Single task = single win. No notifications, single tab, instrumental music. 90 min full single-task = a week of work.",
-        "action": "Today 90 min full single-task.",
-        "reflectionPrompt": "How much did productivity rise?",
-        "proTip": "\"Do not disturb\" on phone + Mac. Only urgent gets through.",
+        "teaching": "Single-Task Mastery opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is making return to one task a repeatable skill.\n\nMastery is not never drifting. It is noticing sooner and returning. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose one task today, mark each drift lightly, and return to the same task. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe marks create an attention map, not guilt. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "On one task, mark each drift lightly. Then return to the same task.",
+        "reflectionPrompt": "Did marking drift judge you or inform you?",
         "quiz": [
           {
-            "q": "Single-task duration?",
+            "q": "What does Single-Task Mastery build first?",
             "options": [
-              "10 min",
-              "90 min",
-              "8 hours",
-              "No"
+              "Returning as a skill",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "90 min full focus."
+            "correct": 0,
+            "explain": "Mastery is noticing and returning to the task."
           },
           {
-            "q": "DND mode?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "No effect",
-              "Phone+Mac off",
-              "Just silent",
-              "No"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "All devices."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "37": {
         "title": "Attention Residue",
-        "teaching": "Sophie Leroy: switching tasks leaves 33% of attention on previous one. Solution: finish completely, then move on. Don't leave half-done.",
-        "action": "Today finish each task fully before moving on.",
-        "reflectionPrompt": "What did full-finishing do mentally?",
-        "proTip": "30 sec deep breath between transitions clears residue.",
+        "teaching": "Attention Residue opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is clearing the mental trace left between tasks.\n\nIf you switch before closing a task, the old task keeps talking in the mind. Treat this step like clearing the desk, not like chasing motivation.\n\nBefore switching, write a closing line: where I stopped, next step, when I return. If attention drifts, do not scold yourself; return to the point you marked.\n\nClosure gives the next task a cleaner entry. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "When switching tasks, write: stopped here, next step, return time.",
+        "reflectionPrompt": "How did the closing line affect entry into the next task?",
         "quiz": [
           {
-            "q": "Attention residue?",
+            "q": "What does Attention Residue build first?",
             "options": [
-              "5%",
-              "33%",
-              "80%",
-              "None"
+              "The trace between tasks cleared",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Leroy measured 33%."
+            "correct": 0,
+            "explain": "Closure reduces the old task staying open in the mind."
           },
           {
-            "q": "Solution?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Switch fast",
-              "Finish fully",
-              "Multitask",
-              "Leave half"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Finish then move."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "38": {
-        "title": "4-Hour Workday",
-        "teaching": "Tim Ferriss: \"8h work = 4h emptying time.\" Most brains produce 4 hours of deep work. Hour 5 = low return. 4 hours focused, rest: sport, social, rest.",
-        "action": "Today work 4 fully focused hours, then stop.",
-        "reflectionPrompt": "How did you feel after 4 hours?",
-        "proTip": "Hours 09-13 or 10-14. Brain sharper in morning.",
+        "title": "Fewer Hours, Clear Output",
+        "teaching": "Fewer Hours, Clear Output opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is placing output, not hours, at the center.\n\nLong work can look like progress. But when output is vague, time spreads easily. Treat this step like clearing the desk, not like chasing motivation.\n\nFor one task today, write the deliverable instead of the duration: draft, decision, list, or solution. If attention drifts, do not scold yourself; return to the point you marked.\n\nClear output gives the work block a finish line. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "For one task, replace the time target with a clear deliverable.",
+        "reflectionPrompt": "How did the output target change your sense of time?",
         "quiz": [
           {
-            "q": "4-hour workday by?",
+            "q": "What does Fewer Hours, Clear Output build first?",
             "options": [
-              "Sharma",
-              "Ferriss",
-              "Newport",
-              "Clear"
+              "Output at the center",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Tim Ferriss concept."
+            "correct": 0,
+            "explain": "Clear output gives work a finish line."
           },
           {
-            "q": "Optimal hours?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "18-22",
-              "09-13",
-              "00-04",
-              "12-16"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Morning brain sharp."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "39": {
         "title": "Boredom Tolerance",
-        "teaching": "Digital generation can't tolerate boredom — instant phone grab. Boredom tolerance = mental strength. Allow 30 min boredom daily.",
-        "action": "Today practice 30 min boredom.",
-        "reflectionPrompt": "Mental clarity after boredom?",
-        "proTip": "No phone in bathroom. 5 min start.",
+        "teaching": "Boredom Tolerance opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is not instantly answering the mind’s demand for stimulation.\n\nOpening the phone when boredom arrives is easy. That moment is the edge where attention trains. Treat this step like clearing the desk, not like chasing motivation.\n\nFor three minutes, add nothing. Notice breath, surroundings, and restlessness in the body. If attention drifts, do not scold yourself; return to the point you marked.\n\nAs tolerance grows, the mind stops treating empty space like an enemy. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "During one boredom moment today, wait three minutes. Open no screen.",
+        "reflectionPrompt": "Which automatic escape did the three-minute wait stop?",
         "quiz": [
           {
-            "q": "Boredom tolerance?",
+            "q": "What does Boredom Tolerance build first?",
             "options": [
-              "Old",
-              "Mental strength",
-              "Tired",
-              "Passive"
+              "No instant answer to stimulation",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Tolerance = strength."
+            "correct": 0,
+            "explain": "Waiting makes automatic screen opening visible."
           },
           {
-            "q": "Practice duration?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "1 min",
-              "30 min",
-              "1 hour",
-              "0"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Daily 30 min."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "40": {
-        "title": "Cognitive Off-Ramps",
-        "teaching": "When brain tires, don't insist. Recognize the right exit: walk, shower, food. 15-min off-ramp = hours of saved productivity.",
-        "action": "Today take an off-ramp when stuck, return in 15 min.",
-        "reflectionPrompt": "How did the off-ramp help?",
-        "proTip": "Don't think during exit — just body movement. Brain solves in background.",
+        "title": "Mental Output",
+        "teaching": "Mental Output opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is turning consumed input into a small output.\n\nReading, watching, and listening can create the feeling of progress on their own. Treat this step like clearing the desk, not like chasing motivation.\n\nAfter one piece of content today, create one output: three-line summary, decision, question, or next action. If attention drifts, do not scold yourself; return to the point you marked.\n\nOutput stops information from staying as fog in the mind. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "After one content piece, write three output lines: summary, decision, or step.",
+        "reflectionPrompt": "How did the information change after writing output?",
         "quiz": [
           {
-            "q": "Off-ramp duration?",
+            "q": "What does Mental Output build first?",
             "options": [
-              "1 hour",
-              "15 min",
-              "1 min",
-              "No"
+              "Input turned into output",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "15 min suffices."
+            "correct": 0,
+            "explain": "Output shows what the information is for."
           },
           {
-            "q": "During off-ramp do?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Think",
-              "Body movement",
-              "Work",
-              "Phone"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Brain solves in background."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "41": {
-        "title": "Decision Frameworks",
-        "teaching": "Brain makes ~35K daily decisions = willpower drain. Framework = pre-decision. \"No alcohol weekdays.\" No decision — execute.",
-        "action": "Today write 3 decision frameworks, apply 30 days.",
-        "reflectionPrompt": "Which areas needed framework?",
-        "proTip": "Keep frameworks written. Memory unreliable.",
+        "title": "Decision Frame",
+        "teaching": "Decision Frame opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is moving a decision out of emotional fog.\n\nHard decisions often grow because the question is not clear. Treat this step like clearing the desk, not like chasing motivation.\n\nWrite the decision under three headings: options, cost, way back. Then choose the smallest forward step. If attention drifts, do not scold yourself; return to the point you marked.\n\nA frame moves thinking out of an endless loop. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "For one decision, write options, cost, and way back.",
+        "reflectionPrompt": "Which fear looked smaller after framing the decision?",
         "quiz": [
           {
-            "q": "Framework is?",
+            "q": "What does Decision Frame build first?",
             "options": [
-              "Decision moment",
-              "Pre-decision",
-              "Result",
-              "Stress"
+              "Decision split into headings",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Decided in advance."
+            "correct": 0,
+            "explain": "Headings make a foggy decision more visible."
           },
           {
-            "q": "Advantage?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Tired",
-              "Willpower save",
-              "More decisions",
-              "No effect"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Reduces decision fatigue."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "42": {
-        "title": "80/20 Mind",
-        "teaching": "Pareto: 20% input = 80% output. Of 10 tasks today, find the most critical 2, cut the rest. Apply 80/20 weekly.",
-        "action": "Today choose 2 of 10 tasks, defer or delegate the rest.",
-        "reflectionPrompt": "Which 2 were critical?",
-        "proTip": "Friday evening 80/20 for next week. Monday sharp start.",
+        "title": "Highest-Leverage Piece",
+        "teaching": "Highest-Leverage Piece opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is choosing the most useful piece instead of spreading effort.\n\nNot every task carries the same result. Some small moves unlock much of the day. Treat this step like clearing the desk, not like chasing motivation.\n\nChoose from the list with one question: if this is done, which three things get easier? If attention drifts, do not scold yourself; return to the point you marked.\n\nThe high-leverage piece gathers effort into the center instead of scattering it. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Ask your list: if this is done, which three things get easier? Choose one.",
+        "reflectionPrompt": "Which tasks felt lighter after choosing the highest-leverage piece?",
         "quiz": [
           {
-            "q": "Pareto 80/20?",
+            "q": "What does Highest-Leverage Piece build first?",
             "options": [
-              "Equal",
-              "20% input 80% output",
-              "Reverse",
-              "No"
+              "Effort gathered into the center",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Few do most."
+            "correct": 0,
+            "explain": "The right piece indirectly lightens many tasks."
           },
           {
-            "q": "80/20 frequency?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "No",
-              "Weekly",
-              "Yearly",
-              "Never"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Weekly applied."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "43": {
-        "title": "Inversion Thinking",
-        "teaching": "Munger: \"Tell me where I'll die so I don't go there.\" Instead of reaching the goal, prevent failure. Think reverse.",
-        "action": "Today list 5 failure causes for your goal.",
-        "reflectionPrompt": "Riskiest cause?",
-        "proTip": "Premortem method: \"1 year later I failed, why?\"",
+        "title": "Inversion",
+        "teaching": "Inversion opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is strengthening the plan by seeing failure first.\n\nSometimes the best plan appears after writing what could break it. Treat this step like clearing the desk, not like chasing motivation.\n\nFor today’s goal, ask: how would I ruin this? Then plan the opposite behavior. If attention drifts, do not scold yourself; return to the point you marked.\n\nInversion reveals blind spots earlier. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "For one goal, write: how would I ruin this? Then choose the opposite behavior.",
+        "reflectionPrompt": "Which risk appeared quickly after inversion?",
         "quiz": [
           {
-            "q": "Inversion?",
+            "q": "What does Inversion build first?",
             "options": [
-              "Goal",
-              "Prevent failure",
-              "Speed",
-              "Old"
+              "Breaking behavior seen early",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Think reverse."
+            "correct": 0,
+            "explain": "The reverse question reveals the blind spot."
           },
           {
-            "q": "Premortem?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Autopsy",
-              "1-year-failed cause?",
-              "Medicine",
-              "No"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Pre-analyze future."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "44": {
         "title": "Mental Subtraction",
-        "teaching": "Stoic technique: what if I lost something? Mental subtraction = trains gratitude muscle. See what you have as valuable again.",
-        "action": "Today mentally experience losing 1 thing you have.",
-        "reflectionPrompt": "Which possession became more valuable?",
-        "proTip": "1 min evening: visualize 3 good things that happened today.",
+        "teaching": "Mental Subtraction opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is reducing unnecessary weight instead of adding more.\n\nImprovement sometimes means removing friction, not adding a new thing. Treat this step like clearing the desk, not like chasing motivation.\n\nRemove one item from today’s plan. If it is not necessary, protect the open space. If attention drifts, do not scold yourself; return to the point you marked.\n\nSubtraction gives attention to fewer and better-chosen tasks. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Remove one unnecessary item from today’s plan and protect the space.",
+        "reflectionPrompt": "Which task became stronger after removing something?",
         "quiz": [
           {
-            "q": "Mental subtraction?",
+            "q": "What does Mental Subtraction build first?",
             "options": [
-              "Gratitude muscle",
-              "Fear",
-              "Negative",
-              "Tired"
+              "Unnecessary weight reduced",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
             "correct": 0,
-            "explain": "Trains gratitude."
+            "explain": "Removing creates room for the better task."
           },
           {
-            "q": "Practice?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "As if not owning",
-              "Want more",
-              "Compare",
-              "No"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
             "correct": 0,
-            "explain": "Simulate loss."
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "45": {
         "title": "Daily Mind Map",
-        "teaching": "Mind map = brain's natural structure. Center + branches instead of linear notes. Make complex ideas coherent in 30 sec.",
-        "action": "Today solve 1 problem with mind map.",
-        "reflectionPrompt": "Did mind map strengthen intuition?",
-        "proTip": "Blank paper + colored pens. Mind-map apps tire.",
+        "teaching": "Daily Mind Map opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is linking scattered ideas on one page.\n\nA list does not always show the links between thoughts. A map shows the center and branches together. Treat this step like clearing the desk, not like chasing motivation.\n\nWrite the main question in the center. Around it, connect tasks, blockers, people, and next steps. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe map turns mental crowding into shape. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Draw one mind map: center question, tasks, blockers, next steps.",
+        "reflectionPrompt": "Which connection in the map surprised you?",
         "quiz": [
           {
-            "q": "Mind map structure?",
+            "q": "What does Daily Mind Map build first?",
             "options": [
-              "Linear",
-              "Center+branches",
-              "Table",
-              "Text"
+              "Ideas linked on one page",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Brain's natural structure."
+            "correct": 0,
+            "explain": "A map makes relationships more visible than a list."
           },
           {
-            "q": "Best tool?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "App",
-              "Blank paper+pen",
-              "Tablet",
-              "No"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Paper = frictionless."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "46": {
-        "title": "Memory Palace",
-        "teaching": "Ancient technique: place what you want to remember in a familiar space. Childhood home = palace. 5 rooms × 5 ideas = remembered for a week.",
-        "action": "Today place 5 ideas in your memory palace.",
-        "reflectionPrompt": "Will you remember tomorrow?",
-        "proTip": "Funny + exaggerated images stick best.",
+        "title": "Memory Room",
+        "teaching": "Memory Room opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is linking what you need to remember to a familiar place.\n\nAbstract information can float away. A familiar room or route gives memory a stage. Treat this step like clearing the desk, not like chasing motivation.\n\nPlace three items you want to remember in three spots at home and imagine the route. If attention drifts, do not scold yourself; return to the point you marked.\n\nPlace carries information through image instead of dry repetition. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Place three things you want to remember into three familiar spots in your mind.",
+        "reflectionPrompt": "Which place carried memory most easily?",
         "quiz": [
           {
-            "q": "Memory palace?",
+            "q": "What does Memory Room build first?",
             "options": [
-              "Modern",
-              "Ancient technique",
-              "Expensive",
-              "App"
+              "Information linked to place",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Ancient classic."
+            "correct": 0,
+            "explain": "A familiar place gives memory a stage."
           },
           {
-            "q": "Image type?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Serious",
-              "Funny+exaggerated",
-              "Colored",
-              "Abstract"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Funny sticks."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "47": {
-        "title": "Spaced Repetition",
-        "teaching": "Spaced repetition = optimum learning. 1 day, 3, 7, 14, 30. Repeating at these intervals = long-term memory. Anki app is gold standard.",
-        "action": "Today briefly review what you learned in last 7 days.",
-        "reflectionPrompt": "Which learning was already forgotten?",
-        "proTip": "Anki 5 min daily = enough for retention.",
+        "title": "Spaced Recall",
+        "teaching": "Spaced Recall opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is not leaving learning inside one session.\n\nUnderstanding something once does not mean it will be usable later. Treat this step like clearing the desk, not like chasing motivation.\n\nSplit one important note into three short returns: today, tomorrow, and at the end of the week. If attention drifts, do not scold yourself; return to the point you marked.\n\nSpaced return moves information from passive reading into active recall. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "For one note, write three return times: today, tomorrow, weekend.",
+        "reflectionPrompt": "What changed when you recalled instead of rereading?",
         "quiz": [
           {
-            "q": "Spaced rep intervals?",
+            "q": "What does Spaced Recall build first?",
             "options": [
-              "Always",
-              "1-3-7-14-30 days",
-              "1 month",
-              "1 year"
+              "Learning moved into active recall",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Optimum spacing."
+            "correct": 0,
+            "explain": "Spaced return asks you to call the information back."
           },
           {
-            "q": "Best app?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Notion",
-              "Anki",
-              "Notes",
-              "Word"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Anki gold standard."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "48": {
-        "title": "Final Sprint",
-        "teaching": "Last 3 days. 50 days transformed your mind from scattered to master. This sprint = lock-in. Tomorrow your essence shifts.",
-        "action": "Today write final-sprint intent.",
-        "reflectionPrompt": "Most-changed mental habit?",
-        "proTip": "Print intent, hang in workspace. 30 days reach point.",
+        "title": "Final Stretch",
+        "teaching": "Final Stretch opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is protecting focus and reducing drift in the final stage.\n\nNear the end, the mind may act as if the work is already done. This moment asks for attention. Treat this step like clearing the desk, not like chasing motivation.\n\nReduce today’s finish to the smallest closing step and add no other goal. If attention drifts, do not scold yourself; return to the point you marked.\n\nThe final stretch teaches closing work without leaving loose ends. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write today’s closing step. Finish it without adding another goal.",
+        "reflectionPrompt": "Which attention trap appeared in the final stretch?",
         "quiz": [
           {
-            "q": "Final sprint?",
+            "q": "What does Final Stretch build first?",
             "options": [
-              "1 day",
-              "3 days",
-              "1 month",
-              "No"
+              "Closing step protected",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Last 3 = lock-in."
+            "correct": 0,
+            "explain": "One closing step reduces drift at the end."
           },
           {
-            "q": "Intent where?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Memory",
-              "Pinned/visible",
-              "Trash",
-              "Email"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Visible."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "49": {
-        "title": "49 Days In",
-        "teaching": "In 49 days, single focus, deep work, 80/20, mental models are automatic. New baseline = master brain. List 10 changes.",
-        "action": "Today list 10 mental habits that changed in 49 days.",
-        "reflectionPrompt": "Most unforgettable change?",
-        "proTip": "Write list on a single A4. Pin at desk.",
+        "title": "Forty-Nine-Day Mind",
+        "teaching": "Forty-Nine-Day Mind opens a small practice field for using the mind with less clutter. The aim is not a dramatic personality trial; it is seeing how your attention system changed over time.\n\nForty-nine days is not only for asking whether you continued. Treat this step like clearing the desk, not like chasing motivation.\n\nLook for three traces: work I start faster, input I limit better, drift I notice sooner. If attention drifts, do not scold yourself; return to the point you marked.\n\nThis view shows progress through behavioral traces instead of vague feeling. By the end of the day, the win is not perfect focus. It is a clearer sense of direction.",
+        "action": "Write three traces: start faster, limit better, notice sooner.",
+        "reflectionPrompt": "Where is the clearest change in your attention system?",
         "quiz": [
           {
-            "q": "New baseline?",
+            "q": "What does Forty-Nine-Day Mind build first?",
             "options": [
-              "Old",
-              "Master brain",
-              "Tired",
-              "Passive"
+              "Change shown through behavior traces",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Techniques became automatic."
+            "correct": 0,
+            "explain": "Traces make progress more concrete."
           },
           {
-            "q": "List location?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Memory",
-              "A4 at desk",
-              "Trash",
-              "App"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "Visible."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       },
       "50": {
-        "title": "Master Complete",
-        "teaching": "50 days. Most minds scattered. Yours master. Boredom is your friend, deep work your language, mental models your weapons. Discipline = new IQ.",
-        "action": "Today look in mirror. Greet New You.",
-        "reflectionPrompt": "Would 50-days-ago you want to be now?",
-        "proTip": "Rest 7 days, then body or money discipline.",
+        "title": "Owner of Your Mind",
+        "teaching": "Owner of Your Mind is the closing practice for your attention system. The aim is simple: keep the rules that actually helped.\n\nAt day fifty, finishing tasks is not the whole point. You are choosing how to manage attention after the path ends.\n\nWrite the three rules that stay: how I start, what I limit, where I return when I drift. Keep them short enough to use.\n\nOwnership means the system can live outside the app. The win is not perfect focus; it is a clearer way back.",
+        "action": "Write your attention system: start rule, boundary rule, return rule.",
+        "reflectionPrompt": "Which rule begins your ownership of attention from here?",
         "quiz": [
           {
-            "q": "Discipline = ?",
+            "q": "What does Owner of Your Mind build first?",
             "options": [
-              "IQ diff",
-              "New IQ",
-              "Test",
-              "Speed"
+              "Ownership of the attention system",
+              "Scattered reaction",
+              "Delay",
+              "Automatic screen use"
             ],
-            "correct": 1,
-            "explain": "Discipline = new IQ."
+            "correct": 0,
+            "explain": "The system becomes personal choice, not an outside task."
           },
           {
-            "q": "Next path?",
+            "q": "If attention drifts, what is the best move?",
             "options": [
-              "Now",
-              "7 days rest",
-              "Never",
-              "1 month"
+              "Return to the marked point",
+              "Scold yourself",
+              "Drop everything",
+              "Open a new tab"
             ],
-            "correct": 1,
-            "explain": "7 days rest."
+            "correct": 0,
+            "explain": "Returning is part of the practice."
           }
         ]
       }

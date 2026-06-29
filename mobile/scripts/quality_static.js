@@ -654,7 +654,8 @@ run('first-session content pacing', () => {
 run('reviewed advanced lesson safety', () => {
   const reviewedRanges = {
     'dopamine-detox': [[11, 50]],
-    'silent-morning': [[6, 15]],
+    'silent-morning': [[6, 50]],
+    'mind-discipline': [[6, 50]],
     'body-discipline': [[1, 50]],
     'money-discipline': [[1, 50]],
   };
@@ -817,6 +818,29 @@ run('Supabase policy idempotency', () => {
   const directAuthCalls = [...sqlWithoutComments.matchAll(/auth\.(uid|role)\(\)/g)]
     .filter((match) => !sqlWithoutComments.slice(Math.max(0, match.index - 12), match.index).endsWith('(select '));
   assert(!directAuthCalls.length, `RLS auth calls must use (select auth.*()): ${directAuthCalls.map((match) => match[0]).join(', ')}`);
+});
+
+run('stale content seed scripts stay removed', () => {
+  const scriptDir = path.join(ROOT, 'scripts');
+  const staleSeeds = fs.readdirSync(scriptDir)
+    .filter((name) => /^seed_.*\.js$/.test(name))
+    .sort();
+  assert(!staleSeeds.length, `stale seed scripts can reintroduce unsafe copy: ${staleSeeds.join(', ')}`);
+});
+
+run('public copy avoids unsupported motivation stats', () => {
+  const files = [
+    'src/components/StreakLostBanner.js',
+    'src/data/dailyDecks.js',
+    'src/i18n/locales/tr.json',
+    'src/i18n/locales/en.json',
+  ];
+  const banned = /(?:Monk Mode|%47|47%|%80|%90|science-proven|kanıtlandı|kanıtlanmış|Matthew Walker|Stanford|Wim Hof|Default Mode Network|Ultradian|Intermittent Fasting)/i;
+  const issues = files.flatMap((file) => {
+    const source = fs.readFileSync(path.join(ROOT, file), 'utf8');
+    return banned.test(source) ? [file] : [];
+  });
+  assert(!issues.length, `unsupported or stale public copy in: ${issues.join(', ')}`);
 });
 
 if (failures.length) {

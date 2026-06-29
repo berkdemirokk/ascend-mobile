@@ -793,8 +793,8 @@
   "streakLost": {
     "label": "ZİNCİRİN KIRILDI",
     "title": "{{count}} günlük zincirini kaybettin.",
-    "body": "Geri dönenler %47. Bugün başla — yarın sayı 2 olur.",
-    "bodyWithRecord": "Geri dönenler %47. Sen daha önce {{best}} gün gittin — bu kişi hala sende. Bugün başla.",
+    "body": "Zincir kırıldı ama sistem bitmedi. Bugün tek dersle yeniden başla; yarın sayı 2 olur.",
+    "bodyWithRecord": "Daha önce {{best}} gün gittin. Bu ritim sende var; bugün tek dersle yeniden başla.",
     "cta": "YENİDEN BAŞLA",
     "repairCta": "REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN"
   },

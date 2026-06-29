@@ -82,8 +82,8 @@ export const DAILY_DECKS = [
     context:
       'Naval AngelList\'i kurdu, 200+ startup\'a yatırım yaptı. Twitter\'da "How to Get Rich" thread\'i 100M+ kez okundu — yorumun temasıydı: leverage.',
     application:
-      'Bugün yaptığın işin %20\'si %80 sonucu üretiyor. Geri kalan %80\'i kessen ne kaybedersin? Cevap genelde: hiçbir şey.',
-    microQuestion: 'Bugün yaptığın hangi 1 iş %80 değerli?',
+      'Bugün yaptığın işlerin küçük bir kısmı asıl sonucu taşıyor. Geri kalanları kessen ne kaybedersin? Cevabı dürüstçe yaz.',
+    microQuestion: 'Bugün yaptığın hangi tek iş en yüksek değerli?',
     microAction: 'Yarın o işe gün başında 90 dakika ayır.',
   },
   // AUDIT NOTE: Three TR-author decks (Cemil Meriç, Doğan Cüceloğlu,
@@ -245,7 +245,7 @@ export const DAILY_DECKS = [
     application:
       'Şu an en büyük 1 engelin ne? Onu bir 30-gün öğrenme projesine çevir. Engel = ders.',
     microQuestion: 'Bugün seni en çok bloklayan engel nedir?',
-    microAction: 'O engele dair 1 saatlik ilk araştırma adımını planla.',
+    microAction: 'O engele dair 1 saatlik ilk inceleme adımını planla.',
   },
   {
     id: 'newport-shallow',
@@ -271,7 +271,7 @@ export const DAILY_DECKS = [
     context:
       'Ferriss\'in 2017 TED konuşmasından: "Fear-Setting". Bir kararı ertelerken kararın geri çevrilebilirliğini ölçme prensibi.',
     application:
-      'Erttelediğin 1 kararı yaz. Sonra sor: en kötü senaryoda ne olur? %90 reversible.',
+      'Ertelediğin 1 kararı yaz. Sonra sor: en kötü senaryoda ne olur, hangi kısmı geri alınabilir?',
     microQuestion: 'Ertelediğin karar geri çevrilebilir mi?',
     microAction: 'Bugün küçük bir adım at — en kötü senaryo: 1 hafta kaybedersin.',
   },
@@ -314,7 +314,7 @@ export const DAILY_DECKS = [
       'Buffett\'in "Circle of Competence" kavramı. 1996 mektubunda formel ifade. Yatırımcılığın ötesinde her karara uygulanabilir.',
     application:
       'Bugün bilmediğin bir konuda hızlı yorum yapma. "Bu benim dairemin dışında" demek = güç işareti.',
-    microQuestion: 'Hangi konuda sürekli yorum yapıyorsun ama aslında uzman değilsin?',
+    microQuestion: 'Hangi konuda sık yorum yapıyorsun ama aslında tam bilmiyorsun?',
     microAction: 'Bu hafta o konuda 1 kez "bilmiyorum" demeyi taahhüt et.',
   },
   {
@@ -475,7 +475,7 @@ export const DAILY_DECKS = [
     id: 'holiday-stillness',
     archetypes: ['zen-master'],
     author: 'Ryan Holiday',
-    authorMeta: '"Stillness Is the Key" — 2019',
+    authorMeta: 'Ryan Holiday kitabı, 2019',
     quote:
       'Hareket her zaman ilerleme değildir. Bazen durmak, en hızlı ileri gitmektir.',
     context:
