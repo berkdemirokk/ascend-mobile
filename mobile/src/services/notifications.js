@@ -177,7 +177,10 @@ export const setupNotifResponseListener = () => {
         // card from there to enter their next lesson. We don't deep-
         // link directly to a specific lesson because the notification
         // doesn't carry path/lesson context, and Home → Path is one tap.
-        navigateFromAnywhere('MainTabs', { screen: 'Home' });
+        const target = ['MainTabs', { screen: 'Home' }];
+        if (navigateFromAnywhere(...target)) return;
+        setTimeout(() => navigateFromAnywhere(...target), 800);
+        setTimeout(() => navigateFromAnywhere(...target), 2000);
       },
     );
   } catch (e) {

@@ -24,6 +24,8 @@ import {
   PATHS,
   getPathById,
   getCurrentLesson,
+  getLessonById,
+  getLessonAccessState,
 } from '../data/paths';
 import LightTopAppBar from '../components/LightTopAppBar';
 import StreakInfoModal from '../components/StreakInfoModal';
@@ -54,6 +56,7 @@ import {
   loadRewarded,
   showRewarded,
   isAdsReady,
+  isRewardedReady,
 } from '../services/ads';
 import {
   getDailyChallenge,
@@ -121,6 +124,7 @@ export default function HomeScreen({ navigation }) {
   // modal, and only navigate after the user either watches an ad,
   // upgrades, or hearts auto-refill.
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+  const [streakRepairLoading, setStreakRepairLoading] = useState(false);
 
   /**
    * Centralised navigate-to-lesson handler used by every Home entry
@@ -136,12 +140,27 @@ export default function HomeScreen({ navigation }) {
    */
   const attemptStartLesson = (pathId, lessonId) => {
     if (!pathId || !lessonId) return false;
-    const completed = pathProgress?.[pathId]?.completed || [];
-    if (completed.includes(lessonId)) {
+    const lesson = getLessonById(lessonId);
+    const accessState = getLessonAccessState(lesson, pathProgress, isPremium);
+    if (accessState === 'completed') {
       // The card / banner that triggered this is stale. Best UX is to
       // simply do nothing — the user will see the path/home re-render
       // with a fresh next-lesson CTA on the next frame, since the
       // momentum loop already advanced.
+      return false;
+    }
+    if (accessState === 'premium') {
+      navigation.navigate('Paywall', { source: 'home_locked_lesson' });
+      return false;
+    }
+    if (accessState === 'locked') {
+      Alert.alert(
+        t('path.lockedTitle', 'Bu ders henuz kilitli'),
+        t(
+          'path.lockedBody',
+          'Once siradaki aktif dersi bitir. Yol adim adim acilir.',
+        ),
+      );
       return false;
     }
     if (!isPremium && (hearts || 0) <= 0) {
@@ -150,6 +169,18 @@ export default function HomeScreen({ navigation }) {
     }
     navigation.navigate('Lesson', { pathId, lessonId });
     return true;
+  };
+
+  const waitForRewardedAd = async () => {
+    if (isAdsReady() && isRewardedReady()) return true;
+    try { await loadRewarded(); } catch {}
+    for (let i = 0; i < 12; i += 1) {
+      if (isAdsReady() && isRewardedReady()) return true;
+      // Give the native SDK a short chance to emit LOADED.
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    }
+    return isAdsReady() && isRewardedReady();
   };
 
   // Today's pseudo-random challenge — same for everyone on the same date.
@@ -515,7 +546,8 @@ export default function HomeScreen({ navigation }) {
         {_streakLostInfo ? (
           <StreakLostBanner
             info={_streakLostInfo}
-            repairAvailable={!isPremium && isAdsReady()}
+            repairAvailable={!isPremium}
+            repairLoading={streakRepairLoading}
             onRestart={() => {
               clearStreakLostInfo();
               if (currentLesson) {
@@ -523,17 +555,45 @@ export default function HomeScreen({ navigation }) {
               }
             }}
             onRepair={async () => {
+              if (streakRepairLoading) return;
+              setStreakRepairLoading(true);
               try {
+                const ready = await waitForRewardedAd();
+                if (!ready) {
+                  Alert.alert(
+                    t('ads.notReadyTitle', 'Reklam hazirlaniyor'),
+                    t(
+                      'streakLost.repairAdNotReady',
+                      'Odullu reklam henuz hazir degil. Birazdan tekrar dene ya da bugunku dersi baslat.',
+                    ),
+                  );
+                  return;
+                }
                 const earned = await showRewarded();
                 if (earned) {
                   restoreStreakFromRepair();
                   // Reload a fresh rewarded ad for the next eligible
                   // moment (other surfaces or another lost-streak event).
                   loadRewarded().catch(() => {});
+                } else {
+                  Alert.alert(
+                    t('ads.rewardNotEarnedTitle', 'Odul alinmadi'),
+                    t(
+                      'streakLost.repairAdNoReward',
+                      'Zinciri geri almak icin reklam tamamlanmis olmali.',
+                    ),
+                  );
                 }
               } catch {
-                // Ad failure is silent — the regular "Yeniden Başla"
-                // CTA still works; user hasn't lost any option.
+                Alert.alert(
+                  t('ads.notReadyTitle', 'Reklam hazirlaniyor'),
+                  t(
+                    'streakLost.repairAdNotReady',
+                    'Odullu reklam henuz hazir degil. Birazdan tekrar dene ya da bugunku dersi baslat.',
+                  ),
+                );
+              } finally {
+                setStreakRepairLoading(false);
               }
             }}
             onDismiss={clearStreakLostInfo}
@@ -1120,7 +1180,10 @@ export default function HomeScreen({ navigation }) {
       <StreakInfoModal
         visible={streakInfoVisible}
         onClose={() => setStreakInfoVisible(false)}
-        currentStreak={currentStreak}
+        streak={currentStreak}
+        freezes={streakFreezes}
+        isPremium={isPremium}
+        onPaywall={() => navigation.navigate('Paywall', { source: 'home_streak_info' })}
       />
 
       {/* Commitment-Device pledge — opened only from the optional card.

@@ -133,7 +133,17 @@
     "sendResetLink": "Send reset link",
     "backToLogin": "Back to login",
     "showPassword": "Show password",
-    "hidePassword": "Hide password"
+    "hidePassword": "Hide password",
+    "newPasswordTitle": "Set a new password",
+    "newPasswordSub": "Choose a password you can remember. It must be at least 6 characters.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "passwordMismatch": "Passwords do not match",
+    "updatePassword": "Update password",
+    "passwordUpdatedTitle": "Password updated",
+    "passwordUpdatedBody": "You can continue with your new password.",
+    "resetPreparing": "Checking your reset link...",
+    "resetLinkInvalid": "This reset link is expired or incomplete. Send yourself a new link."
   },
   "error": {
     "title": "Something went wrong",
@@ -141,7 +151,7 @@
     "tryAgain": "Try Again",
     "contactSupport": "Contact Support",
     "loopWarn": "The error keeps repeating — try closing and reopening the app, or contact support.",
-    "devLabel": "ERROR (dev only)"
+    "devLabel": "ERROR DETAIL"
   },
   "home": {
     "streak": "{{count}} day streak",
@@ -774,11 +784,18 @@
     "outTitle": "Out of Hearts",
     "outSubtitle": "You need a heart to continue. Watch an ad to earn 1 heart or go Premium for unlimited.",
     "refillIn": "Auto refill in {{mins}}",
-    "watchAd": "WATCH AD, REFILL HEARTS",
-    "adLoading": "LOADING AD...",
+    "watchAd": "WATCH AD, EARN +1 HEART",
+    "adLoading": "PREPARING AD...",
+    "adTryingHint": "Preparing the ad. This can take a few seconds.",
+    "adReadyHint": "Ad ready. Watching adds 1 heart.",
+    "adPreparingHint": "If the ad is not ready, we'll try briefly. You can also come back later.",
     "goPremium": "GO PREMIUM — UNLIMITED HEARTS",
     "adNotReadyTitle": "Ad failed to load",
-    "adNotReadyBody": "No ad came back from the network. Try again in a few seconds or go Premium for ad-free + unlimited hearts."
+    "adNotReadyBody": "No ad came back from the network. Try again in a few seconds, wait for refill, or go Premium for ad-free + unlimited hearts."
+  },
+  "ads": {
+    "notReadyTitle": "Preparing ad",
+    "rewardNotEarnedTitle": "Reward not earned"
   },
   "heatmap": {
     "title": "LAST 30 DAYS",
@@ -796,7 +813,10 @@
     "body": "The streak broke, but the system is not gone. Restart with one lesson today; tomorrow becomes day 2.",
     "bodyWithRecord": "Your best was {{best}} days. That rhythm is still available; restart with one lesson today.",
     "cta": "START AGAIN",
-    "repairCta": "WATCH AD → RESTORE YOUR STREAK"
+    "repairCta": "WATCH AD → RESTORE YOUR STREAK",
+    "repairLoading": "PREPARING AD...",
+    "repairAdNotReady": "Rewarded ad is not ready yet. Try again soon or start today's lesson.",
+    "repairAdNoReward": "The ad must be completed to restore your streak."
   },
   "dailyDeck": {
     "empty": "Today's deck couldn't load.",

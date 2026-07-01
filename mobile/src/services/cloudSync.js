@@ -1,6 +1,22 @@
 import { supabase, SUPABASE_CONFIGURED } from './supabase';
 
 const TABLE = 'user_state';
+const CLOUD_REQUEST_TIMEOUT_MS = 12000;
+
+const withCloudTimeout = (promise, label) => (
+  Promise.race([
+    promise,
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          data: null,
+          error: new Error(`${label} timed out`),
+          timedOut: true,
+        });
+      }, CLOUD_REQUEST_TIMEOUT_MS);
+    }),
+  ])
+);
 
 // Fields persisted to cloud. Skip transient/UI/premium (premium = store-authoritative).
 const SYNCED_KEYS = [
@@ -67,11 +83,18 @@ export async function pullState(userId) {
   if (!SUPABASE_CONFIGURED) return null;
   if (!userId) return null;
   try {
-    const { data, error } = await supabase
-      .from(TABLE)
-      .select('payload, updated_at')
-      .eq('user_id', userId)
-      .maybeSingle();
+    const { data, error, timedOut } = await withCloudTimeout(
+      supabase
+        .from(TABLE)
+        .select('payload, updated_at')
+        .eq('user_id', userId)
+        .maybeSingle(),
+      'cloud pull',
+    );
+    if (timedOut) {
+      console.warn('[cloudSync] pull timeout');
+      return null;
+    }
     if (error) {
       console.warn('[cloudSync] pull error:', error.message);
       return null;
@@ -91,14 +114,21 @@ export async function pushState(userId, state) {
   if (!userId) return null;
   try {
     const payload = pickSyncableState(state);
-    const { error } = await supabase.from(TABLE).upsert(
-      {
-        user_id: userId,
-        payload,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: 'user_id' },
+    const { error, timedOut } = await withCloudTimeout(
+      supabase.from(TABLE).upsert(
+        {
+          user_id: userId,
+          payload,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'user_id' },
+      ),
+      'cloud push',
     );
+    if (timedOut) {
+      console.warn('[cloudSync] push timeout');
+      return new Error('cloud push timed out');
+    }
     if (error) {
       console.warn('[cloudSync] push error:', error.message);
     }
@@ -133,6 +163,12 @@ function mergePathProgress(local = {}, cloud = {}) {
       quizCorrect[lessonId] = Math.max(quizCorrect[lessonId] || 0, n || 0);
     });
     out[pathId] = { completed, reflections, quizCorrect };
+    if (l.reflectionAudio && Object.keys(l.reflectionAudio).length > 0) {
+      // Audio files are local-only and intentionally stripped before cloud
+      // push. Keep local file:// references when merging a cloud payload
+      // back into this device so recorded reflections do not disappear.
+      out[pathId].reflectionAudio = l.reflectionAudio;
+    }
   }
   return out;
 }

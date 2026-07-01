@@ -27,7 +27,7 @@ import { useApp } from '../contexts/AppContext';
 import {
   PATHS,
   getPathLessons,
-  getLessonState,
+  getLessonAccessState,
   getPathProgress,
   getPathById,
 } from '../data/paths';
@@ -48,6 +48,7 @@ export default function PathScreen({ navigation }) {
     setActivePath,
     isPremium,
     currentStreak,
+    streakFreezes,
     hearts,
     heartsRefillAt,
     gainHeart,
@@ -243,11 +244,7 @@ export default function PathScreen({ navigation }) {
         {/* Lesson Cards */}
         <View style={styles.cardsContainer}>
           {lessons.map((lesson) => {
-            const state = getLessonState(lesson, pathProgress);
-            const isLockedByPremium =
-              !isPremium && lesson.order > (activePath.freeLessons || 5);
-            const finalState =
-              isLockedByPremium && state !== 'completed' ? 'premium' : state;
+            const finalState = getLessonAccessState(lesson, pathProgress, isPremium);
             return (
               <LessonCard
                 key={lesson.id}
@@ -287,7 +284,10 @@ export default function PathScreen({ navigation }) {
       <StreakInfoModal
         visible={streakInfoVisible}
         onClose={() => setStreakInfoVisible(false)}
-        currentStreak={currentStreak}
+        streak={currentStreak}
+        freezes={streakFreezes}
+        isPremium={isPremium}
+        onPaywall={() => navigation.navigate('Paywall', { source: 'path_streak_info' })}
       />
 
       {/* Off-screen certificate captured for share image */}

@@ -84,12 +84,14 @@ export default function OutOfHeartsModal({
         if (earned) {
           onRefill?.();
           onClose?.();
-          // No early return — fall through to setWatching(false) in
-          // the finally block below. The old code returned here
-          // without resetting `watching`, so the next time the modal
-          // re-opened the button was permanently stuck in
-          // "REKLAM YÜKLENİYOR..." with no way to recover.
+          // Return from the success path so the not-ready alert below
+          // does not fire after the user already earned the reward.
+          return;
         }
+        // The ad showed but no reward was earned, usually because the
+        // viewer closed it early. Keep the modal open and let the
+        // finally block re-enable the button.
+        return;
       } else {
         // Slow path — kick off a load and poll. AdMob usually
         // serves a fresh ad in 1-3s on production traffic. We give
@@ -112,8 +114,9 @@ export default function OutOfHeartsModal({
           if (earned) {
             onRefill?.();
             onClose?.();
-            // Fall through to finally — no early return.
+            return;
           }
+          return;
         }
       }
       // Still no ad after the wait, or the user dismissed early.
@@ -249,6 +252,22 @@ export default function OutOfHeartsModal({
               )}
             </View>
           </TouchableOpacity>
+          <Text style={styles.adHint}>
+            {watching
+              ? t(
+                'hearts.adTryingHint',
+                'Reklam hazırlanıyor. Birkaç saniye sürebilir.',
+              )
+              : rewardedReady
+                ? t(
+                  'hearts.adReadyHint',
+                  'Reklam hazır. İzleyince 1 kalp eklenir.',
+                )
+                : t(
+                  'hearts.adPreparingHint',
+                  'Reklam hazır değilse kısa süre deneyeceğiz. İstersen sonra dönebilirsin.',
+                )}
+          </Text>
 
           {/* Premium CTA — primary red */}
           <TouchableOpacity
@@ -370,6 +389,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '900',
     letterSpacing: 1,
+  },
+  adHint: {
+    color: LT.onSurfaceVariant,
+    fontSize: 11,
+    fontWeight: '600',
+    lineHeight: 15,
+    textAlign: 'center',
+    marginBottom: 14,
+    paddingHorizontal: 8,
   },
 
   premiumBtn: {

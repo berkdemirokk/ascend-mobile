@@ -34,6 +34,7 @@ export default function InsightsScreen({ navigation }) {
     pathProgress,
     totalXP,
     currentStreak,
+    streakFreezes,
     longestStreak,
     level,
     isPremium,
@@ -338,7 +339,10 @@ export default function InsightsScreen({ navigation }) {
       <StreakInfoModal
         visible={streakInfoVisible}
         onClose={() => setStreakInfoVisible(false)}
-        currentStreak={currentStreak}
+        streak={currentStreak}
+        freezes={streakFreezes}
+        isPremium={isPremium}
+        onPaywall={() => navigation.navigate('Paywall', { source: 'stats_streak_info' })}
       />
     </SafeAreaView>
   );

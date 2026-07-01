@@ -24,6 +24,9 @@ export default function StreakInfoModal({
   onPaywall,
 }) {
   const { t } = useTranslation();
+  const safeStreak = Number.isFinite(streak) ? streak : 0;
+  const safeFreezes = Number.isFinite(freezes) ? freezes : 0;
+
   return (
     <Modal
       visible={visible}
@@ -61,7 +64,7 @@ export default function StreakInfoModal({
           </Text>
 
           <Text style={styles.streakBig}>
-            <Text style={styles.streakNumber}>{streak}</Text>
+            <Text style={styles.streakNumber}>{safeStreak}</Text>
             <Text style={styles.streakUnit}>
               {' '}{t('streak.days', 'gün')}
             </Text>
@@ -85,11 +88,11 @@ export default function StreakInfoModal({
                   {t('streak.freezeTitle', 'Seri Donduruculari')}
                 </Text>
                 <Text style={styles.freezeBody}>
-                  {freezes > 0
+                  {safeFreezes > 0
                     ? t(
                         'streak.freezeAvailable',
                         '{{count}} adet kullanılabilir. Bir gün atlarsan otomatik kullanılır.',
-                        { count: freezes },
+                        { count: safeFreezes },
                       )
                     : t(
                         'streak.freezeEmpty',
@@ -97,11 +100,11 @@ export default function StreakInfoModal({
                       )}
                 </Text>
               </View>
-              <Text style={styles.freezeCount}>{freezes}</Text>
+              <Text style={styles.freezeCount}>{safeFreezes}</Text>
             </View>
           </View>
 
-          {!isPremium && freezes === 0 ? (
+          {!isPremium && safeFreezes === 0 ? (
             <TouchableOpacity
               onPress={() => {
                 onClose?.();

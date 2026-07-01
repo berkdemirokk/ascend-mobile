@@ -33,7 +33,8 @@ export default function StreakLostBanner({
   onRestart,
   onDismiss,
   onRepair,
-  repairAvailable, // false = ad SDK not ready; hide the repair CTA
+  repairAvailable, // false = hide the repair CTA for this user/context
+  repairLoading = false,
 }) {
   const { t } = useTranslation();
   if (!info || !info.lost) return null;
@@ -87,13 +88,23 @@ export default function StreakLostBanner({
           the lost streak back as if yesterday had been completed. */}
       {repairAvailable ? (
         <TouchableOpacity
-          style={styles.repairCta}
+          style={[styles.repairCta, repairLoading && styles.repairCtaDisabled]}
           onPress={onRepair}
+          disabled={repairLoading}
           activeOpacity={0.85}
         >
-          <MaterialIcons name="restore" size={16} color={LT.primary} />
-          <Text style={styles.repairCtaText}>
-            {t(
+          <MaterialIcons
+            name={repairLoading ? 'hourglass-empty' : 'restore'}
+            size={16}
+            color={repairLoading ? LT.onSurfaceVariant : LT.primary}
+          />
+          <Text
+            style={[
+              styles.repairCtaText,
+              repairLoading && styles.repairCtaTextDisabled,
+            ]}
+          >
+            {repairLoading ? t('streakLost.repairLoading', 'PREPARING AD...') : t(
               'streakLost.repairCta',
               'REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN',
             )}
@@ -190,5 +201,13 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0.6,
     color: LT.primary,
+  },
+  repairCtaDisabled: {
+    borderColor: LT.outlineVariant,
+    backgroundColor: LT.surfaceContainer,
+    opacity: 0.75,
+  },
+  repairCtaTextDisabled: {
+    color: LT.onSurfaceVariant,
   },
 });

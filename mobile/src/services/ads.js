@@ -2,6 +2,7 @@
 // users + RevenueCat subscription for premium.
 import { Platform } from 'react-native';
 import { ADMOB_IDS } from '../config/constants';
+import { track } from './analytics';
 
 // ─── Module state ────────────────────────────────────────────────────────────
 // We lazy-require `react-native-google-mobile-ads` so the rest of the app keeps
@@ -230,6 +231,10 @@ export const showInterstitial = async () => {
   if (!adsReady || !interstitialLoaded || !interstitial) return false;
   try {
     await interstitial.show();
+    track({
+      event: 'ad_impression',
+      props: { kind: 'interstitial' },
+    });
     interstitialLoaded = false;
     // Preload the next one in the background so the following completion is
     // ready to show immediately.
@@ -237,6 +242,10 @@ export const showInterstitial = async () => {
     return true;
   } catch (e) {
     console.warn('Show interstitial error:', e?.message);
+    track({
+      event: 'ad_show_failed',
+      props: { kind: 'interstitial', message: e?.message || String(e) },
+    });
     return false;
   }
 };
@@ -336,6 +345,10 @@ export const showRewarded = async () => {
       gma.RewardedAdEventType.EARNED_REWARD,
       () => {
         earned = true;
+        track({
+          event: 'rewarded_earned',
+          props: { kind: 'rewarded' },
+        });
       },
     );
     const offClosed = rewarded.addAdEventListener(
@@ -344,6 +357,10 @@ export const showRewarded = async () => {
         offEarned?.();
         offClosed?.();
         rewardedLoaded = false;
+        track({
+          event: 'ad_impression',
+          props: { kind: 'rewarded', earned },
+        });
         // Preload the next rewarded ad for the next reward moment.
         loadRewarded().catch(() => {});
         resolve(earned);
@@ -351,6 +368,10 @@ export const showRewarded = async () => {
     );
     rewarded.show().catch((e) => {
       console.warn('Show rewarded error:', e?.message);
+      track({
+        event: 'ad_show_failed',
+        props: { kind: 'rewarded', message: e?.message || String(e) },
+      });
       offEarned?.();
       offClosed?.();
       resolve(false);

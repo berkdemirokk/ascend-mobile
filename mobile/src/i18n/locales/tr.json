@@ -133,7 +133,17 @@
     "sendResetLink": "Sıfırlama linki gönder",
     "backToLogin": "Girişe dön",
     "showPassword": "Şifreyi göster",
-    "hidePassword": "Şifreyi gizle"
+    "hidePassword": "Şifreyi gizle",
+    "newPasswordTitle": "Yeni şifre belirle",
+    "newPasswordSub": "Hatırlayabileceğin yeni bir şifre seç. En az 6 karakter olmalı.",
+    "newPassword": "Yeni şifre",
+    "confirmPassword": "Şifreyi onayla",
+    "passwordMismatch": "Şifreler eşleşmiyor",
+    "updatePassword": "Şifreyi güncelle",
+    "passwordUpdatedTitle": "Şifre güncellendi",
+    "passwordUpdatedBody": "Yeni şifrenle devam edebilirsin.",
+    "resetPreparing": "Sıfırlama linkin kontrol ediliyor...",
+    "resetLinkInvalid": "Bu sıfırlama linki eksik ya da süresi dolmuş. Kendine yeni bir link gönder."
   },
   "error": {
     "title": "Bir şeyler ters gitti",
@@ -141,7 +151,7 @@
     "tryAgain": "Tekrar Dene",
     "contactSupport": "Destek ile İletişim",
     "loopWarn": "Hata tekrar ediyor — uygulamayı kapatıp açman gerekebilir, ya da destek ekibine yaz.",
-    "devLabel": "HATA (dev only)"
+    "devLabel": "HATA DETAYI"
   },
   "home": {
     "streak": "{{count}} günlük seri",
@@ -772,13 +782,20 @@
   },
   "hearts": {
     "outTitle": "Kalpler Bitti",
-    "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyerek kalplerini doldur veya Premium'a geç.",
+    "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyip 1 kalp kazanabilir veya Premium'a geçebilirsin.",
     "refillIn": "Yenilenme: {{mins}}",
-    "watchAd": "REKLAM İZLE, KALPLERİ DOLDUR",
-    "adLoading": "REKLAM YÜKLENİYOR...",
+    "watchAd": "REKLAM İZLE, +1 KALP KAZAN",
+    "adLoading": "REKLAM HAZIRLANIYOR...",
+    "adTryingHint": "Reklam hazırlanıyor. Birkaç saniye sürebilir.",
+    "adReadyHint": "Reklam hazır. İzleyince 1 kalp eklenir.",
+    "adPreparingHint": "Reklam hazır değilse kısa süre deneyeceğiz. İstersen sonra dönebilirsin.",
     "goPremium": "PREMIUM İLE SINIRSIZ KALPLER",
     "adNotReadyTitle": "Reklam yüklenemedi",
-    "adNotReadyBody": "Şu an reklam servisinden cevap gelmedi. Bir kaç saniye sonra tekrar dene veya Premium'a geçerek reklamsız + sınırsız kalp al."
+    "adNotReadyBody": "Şu an reklam servisinden cevap gelmedi. Birkaç saniye sonra tekrar dene, yenilenmeyi bekle veya Premium'a geçerek reklamsız + sınırsız kalp al."
+  },
+  "ads": {
+    "notReadyTitle": "Reklam hazırlanıyor",
+    "rewardNotEarnedTitle": "Ödül alınmadı"
   },
   "heatmap": {
     "title": "SON 30 GÜN",
@@ -796,7 +813,10 @@
     "body": "Zincir kırıldı ama sistem bitmedi. Bugün tek dersle yeniden başla; yarın sayı 2 olur.",
     "bodyWithRecord": "Daha önce {{best}} gün gittin. Bu ritim sende var; bugün tek dersle yeniden başla.",
     "cta": "YENİDEN BAŞLA",
-    "repairCta": "REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN"
+    "repairCta": "REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN",
+    "repairLoading": "REKLAM HAZIRLANIYOR...",
+    "repairAdNotReady": "Ödüllü reklam henüz hazır değil. Birazdan tekrar dene ya da bugünkü dersi başlat.",
+    "repairAdNoReward": "Zinciri geri almak için reklamın tamamlanmış olması gerekiyor."
   },
   "dailyDeck": {
     "empty": "Bugünün destesi yüklenemedi.",

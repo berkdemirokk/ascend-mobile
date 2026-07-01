@@ -9,6 +9,7 @@ import {
   Easing,
   Image,
   StatusBar,
+  Alert,
 } from 'react-native';
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
@@ -20,7 +21,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 
 import { useApp } from '../contexts/AppContext';
-import { getPathById, getLessonById, getQuizForLesson } from '../data/paths';
+import {
+  getPathById,
+  getLessonById,
+  getLessonAccessState,
+  getQuizForLesson,
+} from '../data/paths';
 import { showInterstitial, shouldShowAd } from '../services/ads';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import ConfettiBurst from '../components/ConfettiBurst';
@@ -52,6 +58,7 @@ const STEP = {
 };
 
 const REFLECTION_MAX = 250;
+const NO_AD_GRACE_LESSONS = 3;
 
 export default function LessonScreen({ navigation, route }) {
   const { t } = useTranslation();
@@ -211,6 +218,18 @@ export default function LessonScreen({ navigation, route }) {
   // `now` state + every-30s setInterval was redundant.
 
   const alreadyCompleted = pathProgress?.[pathId]?.completed?.includes(lessonId);
+  const lessonAccessState = useMemo(
+    () => getLessonAccessState(lesson, pathProgress, isPremium),
+    [lesson, pathProgress, isPremium],
+  );
+
+  const completedLessonsCountForAds = () => {
+    const completedCount = Object.values(pathProgress || {}).reduce(
+      (sum, p) => sum + (p?.completed?.length || 0),
+      0,
+    );
+    return alreadyCompleted ? completedCount : completedCount + 1;
+  };
 
   // Mount-time hearts guard: if a free user lands on a Lesson with 0
   // hearts (e.g. tapped Home "next lesson" card, deep-linked from
@@ -224,7 +243,23 @@ export default function LessonScreen({ navigation, route }) {
   // binding was initialized. Refactor-safe order: derive value first,
   // then reference it from the effect.
   useEffect(() => {
+    if (!path || !lesson) return;
     if (alreadyCompleted) return; // re-visiting a finished lesson is OK
+    if (lessonAccessState === 'premium') {
+      navigation.replace('Paywall', { source: 'lesson_guard_premium' });
+      return;
+    }
+    if (lessonAccessState === 'locked') {
+      Alert.alert(
+        t('path.lockedTitle', 'Bu ders henuz kilitli'),
+        t(
+          'path.lockedBody',
+          'Once siradaki aktif dersi bitir. Yol adim adim acilir.',
+        ),
+        [{ text: t('common.ok', 'Tamam'), onPress: () => navigation.goBack() }],
+      );
+      return;
+    }
     if (isInGracePeriod) return; // grace period — hearts not enforced
     if (!isPremium && (hearts || 0) <= 0) {
       setOutOfHeartsVisible(true);
@@ -615,7 +650,6 @@ export default function LessonScreen({ navigation, route }) {
     // finished their FIRST discipline lesson and immediately gets an
     // ad in the face is the textbook D1 churn moment. Let them feel
     // the win first; revenue can wait two more sessions.
-    const NO_AD_GRACE_LESSONS = 3;
     if (!isPremium && totalCompleted > NO_AD_GRACE_LESSONS && shouldShowAd(false)) {
       try { await showInterstitial(); } catch {}
     }
@@ -636,7 +670,11 @@ export default function LessonScreen({ navigation, route }) {
       handleCelebrationContinue();
       return;
     }
-    if (!isPremium && shouldShowAd(false)) {
+    if (
+      !isPremium
+      && completedLessonsCountForAds() > NO_AD_GRACE_LESSONS
+      && shouldShowAd(false)
+    ) {
       try { await showInterstitial(); } catch {}
     }
     // replace so the back button goes to PathScreen, not the previous lesson
@@ -645,7 +683,11 @@ export default function LessonScreen({ navigation, route }) {
 
   const handleMilestoneClose = async () => {
     setMilestoneVisible(false);
-    if (!isPremium && shouldShowAd(false)) {
+    if (
+      !isPremium
+      && completedLessonsCountForAds() > NO_AD_GRACE_LESSONS
+      && shouldShowAd(false)
+    ) {
       try { await showInterstitial(); } catch {}
     }
     navigation.goBack();

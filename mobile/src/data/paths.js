@@ -103,6 +103,7 @@ export const getLessonById = (lessonId) => {
 
 // Determine if a lesson is locked given user's progress
 export const getLessonState = (lesson, userProgress) => {
+  if (!lesson) return 'locked';
   const pathProgress = userProgress?.[lesson.pathId] || { completed: [] };
   const path = getPathById(lesson.pathId);
   if (!path) return 'locked';
@@ -118,6 +119,19 @@ export const getLessonState = (lesson, userProgress) => {
 
   if (allPrevDone) return 'current';
   return 'locked';
+};
+
+// Central access state used by every lesson entry point. Keeps path cards,
+// search results, home CTAs, notifications, and direct Lesson routes in sync.
+export const getLessonAccessState = (lesson, userProgress, isPremium = false) => {
+  if (!lesson) return 'locked';
+  const path = getPathById(lesson.pathId);
+  if (!path) return 'locked';
+
+  const baseState = getLessonState(lesson, userProgress);
+  if (baseState === 'completed') return 'completed';
+  if (!isPremium && lesson.order > (path.freeLessons || 0)) return 'premium';
+  return baseState;
 };
 
 export const isPathComplete = (path, userProgress) => {
