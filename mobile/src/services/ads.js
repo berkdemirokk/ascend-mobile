@@ -48,6 +48,7 @@ export const getAdDiagnostics = () => [...adDiagnostics];
 // after AdMob recovers. The timeout lets us reject, record the
 // diagnostic, and let the caller try again.
 const LOAD_TIMEOUT_MS = 12000;
+const REWARDED_SHOW_TIMEOUT_MS = 45000;
 
 // ─── Ad unit resolution ──────────────────────────────────────────────────────
 
@@ -341,7 +342,21 @@ export const showRewarded = async () => {
   }
   return new Promise((resolve) => {
     let earned = false;
-    const offEarned = rewarded.addAdEventListener(
+    let settled = false;
+    let timeoutId = null;
+    let offEarned = null;
+    let offClosed = null;
+    const finish = (value) => {
+      if (settled) return;
+      settled = true;
+      if (timeoutId) clearTimeout(timeoutId);
+      offEarned?.();
+      offClosed?.();
+      rewardedLoaded = false;
+      loadRewarded().catch(() => {});
+      resolve(value);
+    };
+    offEarned = rewarded.addAdEventListener(
       gma.RewardedAdEventType.EARNED_REWARD,
       () => {
         earned = true;
@@ -351,30 +366,37 @@ export const showRewarded = async () => {
         });
       },
     );
-    const offClosed = rewarded.addAdEventListener(
+    offClosed = rewarded.addAdEventListener(
       gma.AdEventType.CLOSED,
       () => {
-        offEarned?.();
-        offClosed?.();
-        rewardedLoaded = false;
         track({
           event: 'ad_impression',
           props: { kind: 'rewarded', earned },
         });
-        // Preload the next rewarded ad for the next reward moment.
-        loadRewarded().catch(() => {});
-        resolve(earned);
+        finish(earned);
       },
     );
+    timeoutId = setTimeout(() => {
+      recordDiag({
+        kind: 'rewarded',
+        status: 'error',
+        code: 'show_timeout',
+        message: `show did not close in ${REWARDED_SHOW_TIMEOUT_MS}ms`,
+        adUnitId: ADMOB_IDS.REWARDED_IOS,
+      });
+      track({
+        event: 'ad_show_failed',
+        props: { kind: 'rewarded', message: 'show_timeout' },
+      });
+      finish(false);
+    }, REWARDED_SHOW_TIMEOUT_MS);
     rewarded.show().catch((e) => {
       console.warn('Show rewarded error:', e?.message);
       track({
         event: 'ad_show_failed',
         props: { kind: 'rewarded', message: e?.message || String(e) },
       });
-      offEarned?.();
-      offClosed?.();
-      resolve(false);
+      finish(false);
     });
   });
 };

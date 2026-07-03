@@ -124,8 +124,7 @@ export default function PaywallScreen({ navigation, route }) {
   };
 
   // Apple guideline 3.1.2(a): the same paywall screen MUST disclose
-  // trial length + the EXACT price that will be charged + billing
-  // period + auto-renewal. The text MUST be visible BEFORE purchase.
+  // the exact price, billing period, and auto-renewal terms before purchase.
   // Build it dynamically from the actual store-fetched price so it
   // matches what StoreKit will charge.
   const selectedPackage =
@@ -140,9 +139,9 @@ export default function PaywallScreen({ navigation, route }) {
     selected === 'yearly'
       ? t('paywall.periodYearly', 'yıllık')
       : t('paywall.periodMonthly', 'aylık');
-  const trialDisclosure = t(
-    'paywall.trialDisclosure',
-    '7 günlük ücretsiz denemenin sonunda, iptal etmezsen {{price}} {{period}} olarak otomatik tahsil edilir. App Store hesabından istediğin zaman iptal edebilirsin.',
+  const subscriptionDisclosure = t(
+    'paywall.subscriptionDisclosure',
+    'İptal etmezsen abonelik {{price}} {{period}} olarak otomatik yenilenir. App Store hesabından istediğin zaman iptal edebilirsin.',
     { price: selectedPriceStr, period: periodLabel },
   );
 
@@ -371,7 +370,7 @@ export default function PaywallScreen({ navigation, route }) {
           <Text style={styles.heroSubtitle}>
             {t(
               variant?.subheadline || 'paywall.subtitle',
-              'Bir aylık veya yıllık abonelik. 7 gün ücretsiz dene.',
+              'Tüm yollar, sınırsız kalp ve reklamsız deneyim.',
             )}
           </Text>
           {variant?.showSocialProof ? (
@@ -401,7 +400,7 @@ export default function PaywallScreen({ navigation, route }) {
           <View style={styles.trustItem}>
             <MaterialIcons name="article" size={20} color={LT.onSurfaceVariant} />
             <Text style={styles.trustLabel}>
-              {t('paywall.trustNoTrack', 'İZLEME YOK')}
+              {t('paywall.trustNoTrack', 'APP STORE')}
             </Text>
           </View>
         </View>
@@ -544,21 +543,21 @@ export default function PaywallScreen({ navigation, route }) {
             ) : (
               <Text style={styles.ctaText}>
                 {packagesReady
-                  ? t(variant?.ctaText || 'paywall.ctaTrial', '7 gün ücretsiz başla')
+                  ? t(variant?.ctaText || 'paywall.ctaTrial', 'Premium ile devam et')
                   : t('paywall.retryPrices', 'Fiyatları tekrar yükle')}
               </Text>
             )}
           </View>
         </TouchableOpacity>
 
-        {/* Apple-required trial disclosure (Guideline 3.1.2(a)).
-            Must state: trial length + actual price after trial +
-            billing period + auto-renewal — all on the same screen as
-            the CTA, before the user taps it. We build this from the
+        {/* Apple-required subscription disclosure (Guideline 3.1.2(a)).
+            Must state: actual price, billing period, and auto-renewal
+            on the same screen as the CTA, before the user taps it.
+            We build this from the
             real StoreKit price so it matches what they'll be charged. */}
         <Text style={styles.footerNote}>
           {packagesReady
-            ? trialDisclosure
+            ? subscriptionDisclosure
             : t(
                 'paywall.autoRenew',
                 'Abonelik otomatik olarak yenilenir. İstediğin zaman ayarlardan veya App Store hesabından iptal edebilirsin.',

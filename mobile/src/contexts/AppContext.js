@@ -183,6 +183,8 @@ const getYesterdayDateString = () => {
 // that to ~75 min, keeping the friction meaningful for free users but
 // preventing the "abandon the app" reflex.
 const HEART_REFILL_MINUTES = 15;
+const MAX_HEARTS = 5;
+const LOCAL_STATE_LOAD_TIMEOUT_MS = 4000;
 
 // Grace period after first install — for the first 24 hours, free users
 // don't lose hearts on wrong answers. This dramatically improves day-1
@@ -193,6 +195,24 @@ const NEW_USER_GRACE_HOURS = 24;
 // Bonus XP awarded when a lesson is finished without losing any hearts.
 // Makes the heart system feel rewarding rather than purely punitive.
 const PERFECT_LESSON_BONUS_XP = 10;
+
+const withTimeout = (promise, ms, label) =>
+  new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(
+      () => reject(new Error(`${label} timeout after ${ms}ms`)),
+      ms,
+    );
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timeoutId);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timeoutId);
+        reject(error);
+      },
+    );
+  });
 
 const normalizeAnonUsername = (value) => {
   if (typeof value !== 'string') return value;
@@ -312,7 +332,7 @@ export function appReducer(state, action) {
         ...state,
         isPremium: !!action.payload,
         // Premium = unlimited hearts effectively
-        hearts: action.payload ? 5 : state.hearts,
+        hearts: action.payload ? MAX_HEARTS : state.hearts,
         // Premium activation grants 12 streak repair tokens (≈ 1/month for a
         // yearly sub). Existing token count is kept if higher so users who
         // already had some don't lose them on re-activation.
@@ -341,6 +361,14 @@ export function appReducer(state, action) {
           return { ...state, lastCompletedDate: yesterday };
         }
         return state;
+      }
+      if (
+        state.vacationUntil
+        && state.vacationUntil === yesterday
+        && state.lastCompletedDate !== today
+        && state.lastCompletedDate !== yesterday
+      ) {
+        return { ...state, lastCompletedDate: yesterday };
       }
       if ((state.streakFreezes || 0) <= 0) return state;
       // No save needed if they're already up-to-date
@@ -621,7 +649,7 @@ export function appReducer(state, action) {
       }
       const newHearts = Math.max(0, state.hearts - 1);
       const refillAt =
-        newHearts < 5 && !state.heartsRefillAt
+        newHearts < MAX_HEARTS && !state.heartsRefillAt
           ? new Date(Date.now() + HEART_REFILL_MINUTES * 60 * 1000).toISOString()
           : state.heartsRefillAt;
       return { ...state, hearts: newHearts, heartsRefillAt: refillAt };
@@ -632,7 +660,7 @@ export function appReducer(state, action) {
       // expires) and explicit "all back" UX (none currently). The OutOfHearts
       // rewarded-ad path is NOT this — that uses GAIN_HEART below to add
       // exactly +1, matching the CTA text "+1 KALP KAZAN".
-      return { ...state, hearts: 5, heartsRefillAt: null };
+      return { ...state, hearts: MAX_HEARTS, heartsRefillAt: null };
 
     case ACTION_TYPES.GAIN_HEART: {
       // Add exactly one heart. Used by the rewarded-ad reward flow so
@@ -640,8 +668,8 @@ export function appReducer(state, action) {
       // back to 5 (which made the heart system feel meaningless — one
       // ad = unlimited hearts back). Cap at 5; if we now have 5, clear
       // the refill timer (no more refills pending).
-      const newHearts = Math.min(5, (state.hearts || 0) + 1);
-      const refillAt = newHearts >= 5 ? null : state.heartsRefillAt;
+      const newHearts = Math.min(MAX_HEARTS, (state.hearts || 0) + 1);
+      const refillAt = newHearts >= MAX_HEARTS ? null : state.heartsRefillAt;
       return { ...state, hearts: newHearts, heartsRefillAt: refillAt };
     }
 
@@ -934,17 +962,21 @@ export function AppProvider({ children }) {
   useEffect(() => {
     (async () => {
       try {
-        const raw = await AsyncStorage.getItem(STORAGE_KEYS.USER_STATE);
+        const raw = await withTimeout(
+          AsyncStorage.getItem(STORAGE_KEYS.USER_STATE),
+          LOCAL_STATE_LOAD_TIMEOUT_MS,
+          'AsyncStorage USER_STATE load',
+        );
         if (raw) {
           const parsed = JSON.parse(raw);
           const today = getTodayDateString();
           const todayCompleted = parsed.lastCompletedDate === today;
 
           // Auto-refill hearts if past refillAt
-          let hearts = parsed.hearts ?? 5;
+          let hearts = parsed.hearts ?? MAX_HEARTS;
           let heartsRefillAt = parsed.heartsRefillAt;
           if (heartsRefillAt && new Date(heartsRefillAt) < new Date()) {
-            hearts = 5;
+            hearts = MAX_HEARTS;
             heartsRefillAt = null;
           }
 
@@ -982,6 +1014,21 @@ export function AppProvider({ children }) {
       payload: generateAnonUsername(),
     });
   }, [state._loaded, state.anonUsername]);
+
+  // Keep heart refill tied to state, not to whichever screen is mounted.
+  // The visible countdown can hit zero while the user stays inside the app;
+  // this dispatch makes the refill actually happen at that moment.
+  useEffect(() => {
+    if (!state._loaded || state.isPremium) return;
+    if ((state.hearts || 0) >= MAX_HEARTS || !state.heartsRefillAt) return;
+    const refillAtMs = new Date(state.heartsRefillAt).getTime();
+    if (Number.isNaN(refillAtMs)) return;
+    const delay = Math.max(0, refillAtMs - Date.now());
+    const timer = setTimeout(() => {
+      dispatch({ type: ACTION_TYPES.REFILL_HEARTS });
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [state._loaded, state.isPremium, state.hearts, state.heartsRefillAt]);
 
   // ── Smart re-engagement notifications ────────────────────────────────────
   // Streak-at-risk: re-evaluated whenever today's completion or streak
@@ -1141,6 +1188,12 @@ export function AppProvider({ children }) {
           // No remote state — still mark pull complete so the push
           // effect can begin (and create the row for this user).
           pullCompletedRef.current = true;
+          const local = { ...state };
+          delete local._loaded;
+          const initialPush = pickSyncableState(local);
+          pushState(userId, initialPush).catch((e) =>
+            console.warn('[AppContext] Initial cloud push failed:', e?.message),
+          );
           return;
         }
 

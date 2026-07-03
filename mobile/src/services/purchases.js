@@ -11,6 +11,26 @@ let lastInitError = null;
 let lastOfferingsError = null;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const RC_CONFIGURE_TIMEOUT_MS = 10000;
+const RC_REQUEST_TIMEOUT_MS = 10000;
+
+const withTimeout = (promise, ms, label) =>
+  new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(
+      () => reject(new Error(`${label} timeout after ${ms}ms`)),
+      ms,
+    );
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timeoutId);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timeoutId);
+        reject(error);
+      },
+    );
+  });
 
 const loadPurchasesModule = async () => {
   if (Purchases) return Purchases;
@@ -49,7 +69,11 @@ export const initPurchases = async () => {
           P.setLogLevel(__DEV__ ? P.LOG_LEVEL.DEBUG : P.LOG_LEVEL.INFO);
         }
       } catch {}
-      await P.configure({ apiKey: REVENUECAT_CONFIG.API_KEY_IOS });
+      await withTimeout(
+        P.configure({ apiKey: REVENUECAT_CONFIG.API_KEY_IOS }),
+        RC_CONFIGURE_TIMEOUT_MS,
+        'RevenueCat configure',
+      );
       isInitialized = true;
       lastInitError = null;
       return true;
@@ -88,7 +112,7 @@ export const linkPurchaseUser = async (appUserID) => {
   try {
     const P = await ensureReady();
     if (!P || typeof P.logIn !== 'function') return false;
-    await P.logIn(appUserID);
+    await withTimeout(P.logIn(appUserID), RC_REQUEST_TIMEOUT_MS, 'RevenueCat logIn');
     currentAppUserID = appUserID;
     return true;
   } catch (e) {
@@ -102,7 +126,7 @@ export const unlinkPurchaseUser = async () => {
   try {
     const P = Purchases;
     if (!P || typeof P.logOut !== 'function') return false;
-    await P.logOut();
+    await withTimeout(P.logOut(), RC_REQUEST_TIMEOUT_MS, 'RevenueCat logOut');
     currentAppUserID = null;
     return true;
   } catch (e) {
@@ -123,7 +147,11 @@ export const checkPremiumStatus = async () => {
   try {
     const P = await ensureReady();
     if (!P) return null;
-    const customerInfo = await P.getCustomerInfo();
+    const customerInfo = await withTimeout(
+      P.getCustomerInfo(),
+      RC_REQUEST_TIMEOUT_MS,
+      'RevenueCat customer info',
+    );
     return hasActiveEntitlement(customerInfo, REVENUECAT_CONFIG.ENTITLEMENT_ID);
   } catch (e) {
     console.warn('Check premium error:', e?.message);
@@ -166,7 +194,11 @@ export const getOfferings = async () => {
   for (let i = 0; i < delays.length; i++) {
     if (delays[i] > 0) await sleep(delays[i]);
     try {
-      const offerings = await P.getOfferings();
+      const offerings = await withTimeout(
+        P.getOfferings(),
+        RC_REQUEST_TIMEOUT_MS,
+        'RevenueCat offerings',
+      );
       const picked = pickOffering(offerings);
       if (picked) {
         lastOfferingsError = null;

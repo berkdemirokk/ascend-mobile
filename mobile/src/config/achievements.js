@@ -90,7 +90,7 @@ export const ACHIEVEMENTS = [
   // ===== LEVEL =====
   { id: 'level_2', title: 'Tırmanışta', description: 'Seviye 2', icon: '🥉', type: 'level', target: 2, rarity: 'common' },
   { id: 'level_5', title: 'Elit', description: 'Seviye 5', icon: '🥈', type: 'level', target: 5, rarity: 'rare' },
-  { id: 'level_8', title: 'Usta', description: 'Seviye 8', icon: '🥇', type: 'level', target: 8, rarity: 'epic', premiumOnly: true },
+  { id: 'level_8', title: 'Usta', description: 'Seviye 7', icon: '🥇', type: 'level', target: 7, rarity: 'epic', premiumOnly: true },
 
   // ===== MYSTERY BOX (hidden until unlocked) =====
   // These never appear in the locked grid — only after they unlock so the

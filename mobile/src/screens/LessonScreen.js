@@ -132,6 +132,9 @@ export default function LessonScreen({ navigation, route }) {
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
   const playbackRef = useRef(null);
+  // Guard against double-firing of the post-lesson sequence. This ref must be
+  // declared before any early return and before the per-lesson reset effect.
+  const postLessonFlowRanRef = useRef(false);
 
   // Async-safe state updates: many things in this screen race against the
   // user navigating away (haptics, sounds, TTS, completion celebration). If a
@@ -264,10 +267,17 @@ export default function LessonScreen({ navigation, route }) {
     if (!isPremium && (hearts || 0) <= 0) {
       setOutOfHeartsVisible(true);
     }
-    // Only check on first mount. Hooks aren't in the dep array so a
-    // mid-lesson hearts change doesn't pop the modal unexpectedly.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    path,
+    lesson,
+    alreadyCompleted,
+    lessonAccessState,
+    isInGracePeriod,
+    isPremium,
+    hearts,
+    navigation,
+    t,
+  ]);
 
   const celebrationScale = useRef(new Animated.Value(0)).current;
   const xpY = useRef(new Animated.Value(0)).current;
@@ -311,8 +321,6 @@ export default function LessonScreen({ navigation, route }) {
     setPathSceneStage(0);
     setSageModeVisible(false);
     setOutOfHeartsVisible(false);
-    setCritBonusXP(0);
-    setCritFlash(0);
     setMirrorQuote(null);
     setRecording(false);
     setRecordingUri(null);
@@ -588,9 +596,7 @@ export default function LessonScreen({ navigation, route }) {
   // Guard against double-firing of the post-lesson sequence — the
   // celebration "Continue" button is the only entry point now, but if
   // the user backgrounds the app between tap and execution we'd risk a
-  // double navigation / double paywall.
-  // Track first run with a ref; subsequent calls become no-ops.
-  const postLessonFlowRanRef = useRef(false);
+  // double navigation / double paywall. Subsequent calls become no-ops.
   const runPostLessonFlow = async () => {
     if (postLessonFlowRanRef.current) return;
     postLessonFlowRanRef.current = true;
@@ -670,6 +676,37 @@ export default function LessonScreen({ navigation, route }) {
       handleCelebrationContinue();
       return;
     }
+
+    const nextLesson = getLessonById(nextLessonId);
+    const nextAccessState = getLessonAccessState(nextLesson, pathProgress, isPremium);
+
+    if (nextAccessState === 'premium') {
+      navigation.replace('Paywall', { source: 'next_lesson_premium' });
+      return;
+    }
+
+    if (nextAccessState === 'locked') {
+      Alert.alert(
+        t('path.lockedTitle', 'Kilitli ders'),
+        t(
+          'path.lockedBody',
+          'Bu derse geçmeden önce sıradaki önceki dersi tamamla.',
+        ),
+        [{ text: t('common.ok', 'Tamam'), onPress: () => navigation.goBack() }],
+      );
+      return;
+    }
+
+    if (
+      !isPremium
+      && nextAccessState !== 'completed'
+      && !isInGracePeriod
+      && (hearts || 0) <= 0
+    ) {
+      setOutOfHeartsVisible(true);
+      return;
+    }
+
     if (
       !isPremium
       && completedLessonsCountForAds() > NO_AD_GRACE_LESSONS

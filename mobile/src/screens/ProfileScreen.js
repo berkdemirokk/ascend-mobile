@@ -64,6 +64,8 @@ export default function ProfileScreen({ navigation }) {
     lessonHistory = {},
     anonUsername = null,
     isPremium = false,
+    completedPathsCount = 0,
+    rank: appRank = null,
   } = appState || {};
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [sharing, setSharing] = useState(false);
@@ -85,13 +87,8 @@ export default function ProfileScreen({ navigation }) {
     );
   }, [pathProgress]);
 
-  const completedPaths = useMemo(() => {
-    return Object.values(pathProgress || {}).filter(
-      (p) => (p?.completed?.length || 0) >= 30,
-    ).length;
-  }, [pathProgress]);
-
-  const rank = useMemo(() => getRank(completedPaths), [completedPaths]);
+  const completedPaths = completedPathsCount;
+  const rank = appRank || getRank(completedPaths);
   const nextRank = useMemo(
     () => getNextRank(completedPaths),
     [completedPaths],

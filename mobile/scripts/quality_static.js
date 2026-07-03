@@ -549,6 +549,46 @@ run('purchase failure semantics', () => {
   assert(!/catch\s*\([^)]*\)[\s\S]*return false/.test(restoreMatch[1]), 'restore errors must not be reported as an empty entitlement');
 });
 
+run('release blocker regression guards', () => {
+  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8');
+  const lessonSource = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');
+  const purchasesSource = fs.readFileSync(path.join(SRC, 'services', 'purchases.js'), 'utf8');
+  const adsSource = fs.readFileSync(path.join(SRC, 'services', 'ads.js'), 'utf8');
+  const achievementsSource = fs.readFileSync(path.join(SRC, 'config', 'achievements.js'), 'utf8');
+  const constantsSource = fs.readFileSync(path.join(SRC, 'config', 'constants.js'), 'utf8');
+
+  assert(!/setCrit(?:BonusXP|Flash)\s*\(/.test(lessonSource), 'LessonScreen must not call removed crit state setters');
+  const postLessonRefIndex = lessonSource.indexOf('const postLessonFlowRanRef = useRef(false)');
+  const lessonEarlyReturnIndex = lessonSource.indexOf('if (!path || !lesson)');
+  assert(postLessonRefIndex >= 0, 'post-lesson ref declaration missing');
+  assert(lessonEarlyReturnIndex >= 0, 'lesson early return guard missing');
+  assert(postLessonRefIndex < lessonEarlyReturnIndex, 'post-lesson ref must be declared before early returns');
+  assert(lessonSource.includes("source: 'next_lesson_premium'"), 'next lesson flow must guard premium lessons');
+  assert(/getLessonAccessState\(nextLesson,\s*pathProgress,\s*isPremium\)/.test(lessonSource), 'next lesson flow must reuse lesson access state');
+
+  assert(appContextSource.includes('LOCAL_STATE_LOAD_TIMEOUT_MS'), 'local state hydrate must have a timeout');
+  assert(appContextSource.includes('ACTION_TYPES.REFILL_HEARTS'), 'heart refill timer must dispatch a real refill');
+  assert(appContextSource.includes('Initial cloud push failed'), 'empty remote sync must create the first cloud row');
+
+  assert(purchasesSource.includes('RevenueCat configure'), 'RevenueCat configure must be timeout bounded');
+  assert(purchasesSource.includes('RevenueCat offerings'), 'RevenueCat offerings must be timeout bounded');
+  assert(adsSource.includes('show_timeout'), 'rewarded ad show must have a hard timeout');
+
+  const noLongerPromised = /first 7 days|7-day (?:premium|free trial)|7 days of premium|7 g[üu]n (?:premium|[üu]cretsiz)|[üu]cretsiz deneme/i;
+  assert(!noLongerPromised.test(JSON.stringify(trMain)), 'TR copy still promises an unbacked 7-day premium gift');
+  assert(!noLongerPromised.test(JSON.stringify(enMain)), 'EN copy still promises an unbacked 7-day premium gift');
+  assert(trMain.paywall.trustNoTrack === 'APP STORE', 'TR paywall trust label must not claim no tracking');
+  assert(enMain.paywall.trustNoTrack === 'APP STORE', 'EN paywall trust label must not claim no tracking');
+
+  const maxLevel = Math.max(
+    ...[...constantsSource.matchAll(/level:\s*(\d+)/g)].map((match) => Number(match[1])),
+  );
+  const invalidLevelAchievements = [...achievementsSource.matchAll(
+    /id:\s*'([^']+)'[\s\S]*?type:\s*'level'[\s\S]*?target:\s*(\d+)/g,
+  )].filter((match) => Number(match[2]) > maxLevel);
+  assert(!invalidLevelAchievements.length, `unreachable level achievements: ${invalidLevelAchievements.map((match) => match[1]).join(', ')}`);
+});
+
 run('deterministic lesson rewards', () => {
   const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8');
   const lessonSource = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');

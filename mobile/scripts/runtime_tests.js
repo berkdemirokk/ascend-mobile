@@ -235,6 +235,29 @@ const main = async () => {
   const afterHeartLoss = appReducer(oldInstall, { type: ACTION_TYPES.LOSE_HEART });
   assert(afterHeartLoss.hearts === 2, 'heart debit did not remove exactly one heart');
   assert(Boolean(afterHeartLoss.heartsRefillAt), 'heart debit did not schedule a refill');
+  const refilled = appReducer(
+    { ...afterHeartLoss, hearts: 0, heartsRefillAt: new Date().toISOString() },
+    { type: ACTION_TYPES.REFILL_HEARTS },
+  );
+  assert(refilled.hearts === 5 && refilled.heartsRefillAt === null, 'heart refill did not restore usable hearts');
+
+  const localDate = (offsetDays) => {
+    const date = new Date();
+    date.setDate(date.getDate() + offsetDays);
+    return [
+      date.getFullYear(),
+      String(date.getMonth() + 1).padStart(2, '0'),
+      String(date.getDate()).padStart(2, '0'),
+    ].join('-');
+  };
+  const vacationBridge = appReducer({
+    ...initialState,
+    currentStreak: 8,
+    lastCompletedDate: localDate(-7),
+    vacationUntil: localDate(-1),
+    streakFreezes: 0,
+  }, { type: ACTION_TYPES.AUTO_APPLY_STREAK_FREEZE });
+  assert(vacationBridge.lastCompletedDate === localDate(-1), 'vacation mode did not bridge the protected return day');
 
   const lessonState = {
     ...initialState,
@@ -338,7 +361,11 @@ const main = async () => {
   console.log(`runtime tests passed: ${assertions} assertions`);
 };
 
-main().catch((error) => {
-  console.error(`runtime tests failed: ${error.message}`);
-  process.exit(1);
-});
+main()
+  .then(() => {
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error(`runtime tests failed: ${error.message}`);
+    process.exit(1);
+  });

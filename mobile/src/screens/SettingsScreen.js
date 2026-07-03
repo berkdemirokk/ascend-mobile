@@ -105,7 +105,7 @@ export default function SettingsScreen({ navigation }) {
         )
       : t(
           'settings.inviteShare',
-          'Disiplin akademisini birlikte yapalım — Ascend\'i indir, ilk 7 gün premium senden 🔥\n{{link}}',
+          'Disiplin akademisini birlikte yapalım — Ascend\'i indir ve günlük disiplin yolunu başlat.\n{{link}}',
           { link },
         );
     try {
@@ -113,6 +113,20 @@ export default function SettingsScreen({ navigation }) {
     } catch {
       // user dismissed or no share UI available
     }
+  };
+
+  const handlePremiumStatusPress = () => {
+    if (!isPremium) {
+      navigation.navigate('Paywall', { source: 'settings_premium_status' });
+      return;
+    }
+    Alert.alert(
+      t('settings.premiumActiveTitle', 'Premium aktif'),
+      t(
+        'settings.premiumActiveBody',
+        'Premium hesabında aktif. Abonelik yönetimi için App Store hesap ayarlarını kullanabilirsin.',
+      ),
+    );
   };
 
   const handleRedeemCode = () => {
@@ -446,12 +460,16 @@ export default function SettingsScreen({ navigation }) {
 
   // EAS manages iOS build numbers remotely. Native values reflect the binary
   // actually installed from TestFlight.
-  const version = Constants?.expoConfig?.version || '1.0.42';
+  const version =
+    Constants?.nativeApplicationVersion ||
+    Constants?.expoConfig?.version ||
+    '1.0.43';
   const buildNumber =
+    Constants?.nativeBuildVersion ||
     Constants?.platform?.ios?.buildNumber ||
     Constants?.manifest?.ios?.buildNumber ||
     Constants?.expoConfig?.ios?.buildNumber ||
-    '46';
+    '112';
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -660,7 +678,7 @@ export default function SettingsScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('Paywall', { source: 'settings_premium_status' })}
+              onPress={handlePremiumStatusPress}
               activeOpacity={0.7}
               style={[styles.row, styles.rowBorder]}
             >
