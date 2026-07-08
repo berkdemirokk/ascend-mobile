@@ -14,7 +14,7 @@ on:
 jobs:
   build-and-upload:
     runs-on: macos-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     defaults:
       run:
         working-directory: mobile
@@ -31,10 +31,8 @@ jobs:
           cache: npm
           cache-dependency-path: mobile/package-lock.json
 
-      - name: Select latest Xcode
+      - name: Show Xcode
         run: |
-          XCODE_APP=$(find /Applications -maxdepth 1 -name "Xcode*.app" | sort -V | tail -n 1)
-          sudo xcode-select -s "$XCODE_APP/Contents/Developer"
           xcodebuild -version
 
       - name: Setup Expo / EAS CLI
@@ -75,7 +73,7 @@ jobs:
             --non-interactive \
             --verbose
 
-      - name: EAS Build (local)
+      - name: EAS Build (cloud)
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.eas_build_id == '' }}
         env:
           EXPO_ASC_API_KEY_PATH: ${{ env.API_KEY_PATH }}
@@ -84,26 +82,32 @@ jobs:
           EXPO_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           EXPO_APPLE_TEAM_TYPE: INDIVIDUAL
         run: |
-          # Build IPA locally using EAS tooling. EAS manages cert + profile.
+          # Build on EAS cloud so the pinned production image in eas.json is used.
+          # Local GitHub macOS images can advance Xcode independently and break
+          # native pods before Expo/React Native have caught up.
+          BUILD_JSON="$RUNNER_TEMP/eas-build.json"
           eas build \
             --platform ios \
             --profile production \
-            --local \
             --non-interactive \
-            --output "$RUNNER_TEMP/ascend.ipa"
+            --wait \
+            --json > "$BUILD_JSON"
+          BUILD_ID=$(BUILD_JSON="$BUILD_JSON" node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync(process.env.BUILD_JSON,'utf8')); const build=Array.isArray(data) ? data[0] : data; if (!build?.id) throw new Error('Missing EAS build id'); console.log(build.id);")
+          echo "EAS_BUILD_ID=$BUILD_ID" >> "$GITHUB_ENV"
+          echo "Built EAS iOS build $BUILD_ID"
 
-      - name: Upload build artifact
+      - name: Submit cloud EAS build to TestFlight
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.eas_build_id == '' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: ios-ipa
-          path: ${{ runner.temp }}/ascend.ipa
-
-      - name: Upload to TestFlight
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.eas_build_id == '' }}
-        uses: apple-actions/upload-testflight-build@v3
-        with:
-          app-path: ${{ runner.temp }}/ascend.ipa
-          issuer-id: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          api-key-id: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
-          api-private-key: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+        env:
+          EXPO_ASC_API_KEY_PATH: ${{ env.API_KEY_PATH }}
+          EXPO_ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          EXPO_ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          EXPO_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          EXPO_APPLE_TEAM_TYPE: INDIVIDUAL
+        run: |
+          eas submit \
+            --platform ios \
+            --profile production \
+            --id "$EAS_BUILD_ID" \
+            --non-interactive \
+            --verbose
