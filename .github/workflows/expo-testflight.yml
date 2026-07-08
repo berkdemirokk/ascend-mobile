@@ -55,6 +55,9 @@ jobs:
           cat > "$API_KEY_PATH" <<'EOF'
           ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
           EOF
+          mkdir -p "$GITHUB_WORKSPACE/mobile/credentials"
+          cp "$API_KEY_PATH" "$GITHUB_WORKSPACE/mobile/credentials/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8"
+          chmod 600 "$API_KEY_PATH" "$GITHUB_WORKSPACE/mobile/credentials/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8"
           echo "API_KEY_PATH=$API_KEY_PATH" >> "$GITHUB_ENV"
 
       - name: Submit existing EAS build to TestFlight
