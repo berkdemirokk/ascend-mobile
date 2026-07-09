@@ -55,6 +55,7 @@ export default function PathScreen({ navigation }) {
   } = useApp();
 
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+  const [pendingLesson, setPendingLesson] = useState(null);
   const [streakInfoVisible, setStreakInfoVisible] = useState(false);
   const [sharingCert, setSharingCert] = useState(false);
   const certCardRef = useRef(null);
@@ -91,10 +92,12 @@ export default function PathScreen({ navigation }) {
       );
       return;
     }
-    if (!isPremium && (hearts || 0) <= 0) {
+    if (!isPremium && (hearts || 0) <= 0 && finalState !== 'completed') {
+      setPendingLesson({ pathId: lesson.pathId, lessonId: lesson.id });
       setOutOfHeartsVisible(true);
       return;
     }
+    setPendingLesson(null);
     navigation.navigate('Lesson', {
       pathId: lesson.pathId,
       lessonId: lesson.id,
@@ -264,11 +267,19 @@ export default function PathScreen({ navigation }) {
 
       <OutOfHeartsModal
         visible={outOfHeartsVisible}
-        onClose={() => setOutOfHeartsVisible(false)}
+        onClose={() => {
+          setOutOfHeartsVisible(false);
+          setPendingLesson(null);
+        }}
         onRefill={() => {
           // +1 kalp, full refill değil — CTA "+1 KALP KAZAN" ile uyumlu.
           gainHeart();
           setOutOfHeartsVisible(false);
+          const target = pendingLesson;
+          setPendingLesson(null);
+          if (target) {
+            navigation.navigate('Lesson', target);
+          }
         }}
         // Without this, the "PREMIUM İLE SINIRSIZ KALPLER" button
         // inside the modal silently no-ops (onPaywall?.() with no
@@ -276,6 +287,7 @@ export default function PathScreen({ navigation }) {
         // would tap the red CTA and see nothing happen.
         onPaywall={() => {
           setOutOfHeartsVisible(false);
+          setPendingLesson(null);
           navigation.navigate('Paywall', { source: 'path_out_of_hearts' });
         }}
         refillAt={heartsRefillAt}

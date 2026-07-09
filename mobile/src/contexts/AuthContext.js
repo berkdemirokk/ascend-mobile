@@ -13,16 +13,26 @@ import { unlinkPurchaseUser } from '../services/purchases';
 // from "couldn't determine yet" so we don't immediately bounce a real user
 // to the Welcome screen on slow networks (~5s is common on cellular).
 export const withTimeout = (promise, ms) =>
-  Promise.race([
-    promise.then((value) => (
-      value && typeof value === 'object'
-        ? { ...value, timedOut: false }
-        : { data: value ?? null, timedOut: false }
-    )),
-    new Promise((resolve) =>
-      setTimeout(() => resolve({ data: null, timedOut: true }), ms),
-    ),
-  ]);
+  new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(
+      () => resolve({ data: null, timedOut: true }),
+      ms,
+    );
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timeoutId);
+        resolve(
+          value && typeof value === 'object'
+            ? { ...value, timedOut: false }
+            : { data: value ?? null, timedOut: false },
+        );
+      },
+      (error) => {
+        clearTimeout(timeoutId);
+        reject(error);
+      },
+    );
+  });
 
 const AuthContext = createContext(null);
 export const AUTH_REQUEST_TIMEOUT_MS = 12000;

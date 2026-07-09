@@ -302,6 +302,24 @@ const main = async () => {
   assert(switched.onboarded && switched._loaded, 'user switch broke onboarding state');
   assert(Object.keys(switched.pathProgress).length === 0 && switched.userProfile === null, 'user switch leaked account data');
 
+  const referralReward = appReducer({
+    ...initialState,
+    streakFreezes: 0,
+    referralOwnerRewardIds: [],
+  }, {
+    type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+    payload: { id: 'ref-row-1' },
+  });
+  assert(referralReward.streakFreezes === 10, 'owner referral reward did not grant freezes');
+  const duplicateReferralReward = appReducer(referralReward, {
+    type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+    payload: { id: 'ref-row-1' },
+  });
+  assert(
+    duplicateReferralReward === referralReward,
+    'duplicate owner referral row granted reward twice',
+  );
+
   const { mergeStates, pickSyncableState } = loadModule(
     path.join(ROOT, 'src/services/cloudSync.js'),
   );
@@ -310,6 +328,7 @@ const main = async () => {
     currentStreak: 2,
     totalXP: 20,
     hearts: 3,
+    referralOwnerRewardIds: ['ref-row-local'],
     pathProgress: {
       'dopamine-detox': {
         completed: ['dopamine-detox-1'],
@@ -323,6 +342,7 @@ const main = async () => {
     currentStreak: 3,
     totalXP: 40,
     hearts: 4,
+    referralOwnerRewardIds: ['ref-row-cloud', 'ref-row-local'],
     pathProgress: {
       'dopamine-detox': {
         completed: ['dopamine-detox-2'],
@@ -335,6 +355,12 @@ const main = async () => {
   assert(merged.pathProgress['dopamine-detox'].completed.length === 2, 'cross-device lesson progress was dropped');
   assert(merged.pathProgress['dopamine-detox'].reflections['dopamine-detox-1'] === 'cloud', 'cloud reflection conflict did not win');
   assert(merged.pathProgress['dopamine-detox'].quizCorrect['dopamine-detox-1'] === 2, 'higher quiz score was not preserved');
+  assert(
+    merged.referralOwnerRewardIds.length === 2
+      && merged.referralOwnerRewardIds.includes('ref-row-local')
+      && merged.referralOwnerRewardIds.includes('ref-row-cloud'),
+    'referral owner reward ids were not merged across devices',
+  );
   const syncable = pickSyncableState({ ...merged, isPremium: true });
   assert(!Object.prototype.hasOwnProperty.call(syncable, 'isPremium'), 'store-authoritative premium state was synced');
   assert(!Object.prototype.hasOwnProperty.call(syncable.pathProgress['dopamine-detox'], 'reflectionAudio'), 'local audio URI was synced');

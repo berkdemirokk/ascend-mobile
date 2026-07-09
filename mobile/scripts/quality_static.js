@@ -883,6 +883,64 @@ run('public copy avoids unsupported motivation stats', () => {
   assert(!issues.length, `unsupported or stale public copy in: ${issues.join(', ')}`);
 });
 
+run('critical flow regression guards', () => {
+  const appContext = fs.readFileSync(path.join(SRC, 'contexts/AppContext.js'), 'utf8');
+  const ads = fs.readFileSync(path.join(SRC, 'services/ads.js'), 'utf8');
+  const home = fs.readFileSync(path.join(SRC, 'screens/HomeScreen.js'), 'utf8');
+  const pathScreen = fs.readFileSync(path.join(SRC, 'screens/PathScreen.js'), 'utf8');
+  const lesson = fs.readFileSync(path.join(SRC, 'screens/LessonScreen.js'), 'utf8');
+  const resetPassword = fs.readFileSync(path.join(SRC, 'screens/auth/ResetPasswordScreen.js'), 'utf8');
+  const cloudSync = fs.readFileSync(path.join(SRC, 'services/cloudSync.js'), 'utf8');
+
+  assert(
+    appContext.includes('resetPendingForUserRef.current === userId')
+      && appContext.includes('userSwitchResetNonce'),
+    'user switch must block cloud pull until reset completes',
+  );
+  assert(
+    appContext.includes('if (userId && !purchaseIdentityReady)')
+      && appContext.includes('purchaseIdentityReady = await linkPurchaseUser(userId)'),
+    'premium check must wait for RevenueCat user identity binding',
+  );
+  assert(
+    appContext.includes('markReferralRewardsPaid(unpaidIds)')
+      && appContext.includes("['invalid', 'own_code', 'already_redeemed', 'already_used_a_code']"),
+    'referral rewards must be crash-safe and pending codes must survive transient errors',
+  );
+  assert(
+    cloudSync.includes("'referralOwnerRewardIds'")
+      && cloudSync.includes('cloudPayload.referralOwnerRewardIds'),
+    'referral owner reward ids must sync and merge across devices',
+  );
+  assert(
+    ads.includes('let rewardedLoadPromise = null')
+      && ads.includes('const nextRewarded = gma.RewardedAd.createForAdRequest')
+      && ads.includes('const adToShow = rewarded'),
+    'rewarded ads must guard concurrent loads and show the loaded instance',
+  );
+  assert(
+    home.includes('const [pendingLesson, setPendingLesson]')
+      && home.includes("navigation.navigate('Lesson', target)"),
+    'Home out-of-hearts refill must resume the tapped lesson',
+  );
+  assert(
+    pathScreen.includes('finalState !== \'completed\'')
+      && pathScreen.includes('const [pendingLesson, setPendingLesson]')
+      && pathScreen.includes("navigation.navigate('Lesson', target)"),
+    'Path out-of-hearts guard must allow completed lessons and resume pending lessons',
+  );
+  assert(
+    lesson.includes('const canonicalPathId = lesson?.pathId || pathId')
+      && lesson.includes('completePathLesson({\n      pathId: canonicalPathId')
+      && lesson.includes("navigation.replace('Lesson', { pathId: canonicalPathId"),
+    'LessonScreen must use the lesson canonical path for content/progress/navigation',
+  );
+  assert(
+    resetPassword.includes('exchangeCodeForSession(params.code)'),
+    'reset-password screen must support Supabase PKCE code recovery links',
+  );
+});
+
 if (failures.length) {
   console.error(`\nquality:static failed (${failures.length} checks)`);
   process.exit(1);

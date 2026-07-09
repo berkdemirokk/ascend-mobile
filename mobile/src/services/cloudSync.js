@@ -28,6 +28,7 @@ const SYNCED_KEYS = [
   'longestStreak',
   'lastCompletedDate',
   'streakFreezes',
+  'referralOwnerRewardIds',
   'unlockedAchievements',
   'hearts',
   'heartsRefillAt',
@@ -254,6 +255,10 @@ export function mergeStates(localState, cloudPayload) {
       localState.streakFreezes || 0,
       cloudPayload.streakFreezes || 0,
     ),
+    referralOwnerRewardIds: Array.from(new Set([
+      ...(localState.referralOwnerRewardIds || []),
+      ...(cloudPayload.referralOwnerRewardIds || []),
+    ])).slice(-200),
     unlockedAchievements: Array.from(
       new Set([
         ...(localState.unlockedAchievements || []),

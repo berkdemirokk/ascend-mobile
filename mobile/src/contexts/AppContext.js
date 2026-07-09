@@ -21,7 +21,11 @@ import { pullState, pushState, mergeStates, pickSyncableState } from '../service
 import { generateAnonUsername } from '../services/anonymousHandle';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
-import { redeemReferralCode, checkReferralRewards } from '../services/referral';
+import {
+  redeemReferralCode,
+  checkReferralRewards,
+  markReferralRewardsPaid,
+} from '../services/referral';
 import {
   cancelAllNotifications,
   scheduleStreakAtRiskReminder,
@@ -102,6 +106,7 @@ export const initialState = {
   // Premium
   isPremium: false,
   streakFreezes: 0,
+  referralOwnerRewardIds: [],
 
   // Achievements
   unlockedAchievements: [],
@@ -551,9 +556,22 @@ export function appReducer(state, action) {
       // attemptReferralRedemption were silently no-op'ing the reward.
       // Capped at 50 to avoid runaway accumulation from any future
       // server-side referral airdrops.
+      const rewardId = action.payload?.id;
+      if (
+        rewardId
+        && (state.referralOwnerRewardIds || []).includes(rewardId)
+      ) {
+        return state;
+      }
       const current = state.streakFreezes || 0;
       const next = Math.min(50, current + 10);
-      return { ...state, streakFreezes: next };
+      const referralOwnerRewardIds = rewardId
+        ? Array.from(new Set([
+            ...(state.referralOwnerRewardIds || []),
+            rewardId,
+          ])).slice(-200)
+        : state.referralOwnerRewardIds || [];
+      return { ...state, streakFreezes: next, referralOwnerRewardIds };
     }
 
     case ACTION_TYPES.ENSURE_ANON_USERNAME: {
@@ -955,6 +973,10 @@ const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
+  const [userSwitchResetNonce, bumpUserSwitchResetNonce] = useReducer(
+    (value) => value + 1,
+    0,
+  );
   const { user, isAuthenticated } = useAuth();
   const userId = user?.id || null;
 
@@ -1154,13 +1176,19 @@ export function AppProvider({ children }) {
   // bleeds into user B's account via merge, then gets pushed back to
   // user B's row. Cross-account data contamination. P0.
   const lastSeenUserIdRef = useRef(null);
+  const resetPendingForUserRef = useRef(null);
   // Set to true once the cloud-pull-and-merge has completed for the
   // current userId. The cloud-push effect waits for this so it doesn't
   // push pre-merge state to the new user's cloud row.
   const pullCompletedRef = useRef(false);
   useEffect(() => {
     if (!state._loaded) return;
-    if (lastSeenUserIdRef.current === userId) return;
+    if (lastSeenUserIdRef.current === userId) {
+      if (resetPendingForUserRef.current === userId) {
+        resetPendingForUserRef.current = null;
+      }
+      return;
+    }
     const previousUserId = lastSeenUserIdRef.current;
     lastSeenUserIdRef.current = userId;
     pullCompletedRef.current = false;
@@ -1171,13 +1199,18 @@ export function AppProvider({ children }) {
     // BUT: if previousUserId was a real id and userId is now null
     // (sign-out) OR a different id (account switch), reset.
     if (previousUserId !== null && previousUserId !== userId) {
+      resetPendingForUserRef.current = userId;
       dispatch({ type: ACTION_TYPES.RESET_FOR_USER_SWITCH });
+      bumpUserSwitchResetNonce();
+      return;
     }
-  }, [state._loaded, userId]);
+    resetPendingForUserRef.current = null;
+  }, [state._loaded, userId, userSwitchResetNonce]);
 
   // ── Cloud pull on first sign-in ─────────────────────────────────────────
   useEffect(() => {
     if (!state._loaded || !isAuthenticated || !userId) return;
+    if (resetPendingForUserRef.current === userId) return;
     let cancelled = false;
 
     (async () => {
@@ -1215,7 +1248,7 @@ export function AppProvider({ children }) {
     return () => {
       cancelled = true;
     };
-  }, [state._loaded, isAuthenticated, userId]);
+  }, [state._loaded, isAuthenticated, userId, userSwitchResetNonce]);
 
   // ── Cloud push debounced ────────────────────────────────────────────────
   useEffect(() => {
@@ -1243,16 +1276,21 @@ export function AppProvider({ children }) {
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      let purchaseIdentityReady = true;
       try {
         if (userId) {
-          await linkPurchaseUser(userId);
+          purchaseIdentityReady = await linkPurchaseUser(userId);
         } else {
           await unlinkPurchaseUser();
         }
       } catch (e) {
+        purchaseIdentityReady = false;
         console.warn('[AppContext] Purchase user link failed:', e?.message);
       }
       if (cancelled) return;
+      if (userId && !purchaseIdentityReady) {
+        return;
+      }
       try {
         const isPremium = await checkPremiumStatus();
         // null = couldn't determine (offline / RC outage). DO NOT
@@ -1290,18 +1328,33 @@ export function AppProvider({ children }) {
   // ── Owner-side referral rewards (close the viral loop) ────────────────
   // For every friend who has redeemed THIS user's code but where the
   // owner-side reward hasn't been paid yet, grant +10 streak freezes.
-  // Fires on every auth + once at app open. The server marks the row
-  // BEFORE we dispatch so an interrupted dispatch can be re-tried
-  // safely (the marker is the source of truth, not the local count).
+  // Fires on every auth + once at app open. We grant locally first and
+  // only mark the server rows paid after the debounced local save window;
+  // otherwise a crash between "server marked" and "local reward saved"
+  // permanently loses the inviter's reward.
   useEffect(() => {
     if (!state._loaded || !userId) return;
     let cancelled = false;
+    let markTimer = null;
     (async () => {
       try {
-        const { granted } = await checkReferralRewards(userId);
+        const { ids = [] } = await checkReferralRewards(userId);
         if (cancelled) return;
-        for (let i = 0; i < granted; i++) {
-          dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+        const unpaidIds = ids.filter(
+          (id) => !(state.referralOwnerRewardIds || []).includes(id),
+        );
+        unpaidIds.forEach((id) => {
+          dispatch({
+            type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+            payload: { id },
+          });
+        });
+        if (unpaidIds.length > 0) {
+          markTimer = setTimeout(() => {
+            markReferralRewardsPaid(unpaidIds).catch((e) =>
+              console.warn('[AppContext] owner referral mark failed:', e?.message),
+            );
+          }, 1500);
         }
       } catch (e) {
         console.warn('[AppContext] owner referral check failed:', e?.message);
@@ -1309,6 +1362,7 @@ export function AppProvider({ children }) {
     })();
     return () => {
       cancelled = true;
+      if (markTimer) clearTimeout(markTimer);
     };
   }, [state._loaded, userId]);
 
@@ -1327,11 +1381,16 @@ export function AppProvider({ children }) {
         if (!pending || cancelled) return;
         const result = await redeemReferralCode(pending, userId);
         if (cancelled) return;
-        // Whether it succeeded or failed (invalid / already-used), drop
-        // the pending code — retrying forever would just spam the server.
-        await AsyncStorage.removeItem('@ascend/pending_referral_code');
+        // Drop only terminal outcomes. Transient network/server errors keep
+        // the pending code so the next signed-in launch can retry.
         if (result?.ok) {
+          await AsyncStorage.removeItem('@ascend/pending_referral_code');
           dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+        } else if (
+          ['invalid', 'own_code', 'already_redeemed', 'already_used_a_code']
+            .includes(result?.reason)
+        ) {
+          await AsyncStorage.removeItem('@ascend/pending_referral_code');
         }
       } catch (e) {
         console.warn('[AppContext] pending referral redeem failed:', e?.message);

@@ -97,11 +97,12 @@ export default function LessonScreen({ navigation, route }) {
     return 0;
   }, [todaySessionLessons]);
 
-  const path = useMemo(() => getPathById(pathId), [pathId]);
   const lesson = useMemo(() => getLessonById(lessonId), [lessonId]);
+  const canonicalPathId = lesson?.pathId || pathId;
+  const path = useMemo(() => getPathById(canonicalPathId), [canonicalPathId]);
   const quiz = useMemo(
-    () => (path && lesson ? getQuizForLesson(t, pathId, lesson.order) : []),
-    [path, lesson, pathId, t],
+    () => (path && lesson ? getQuizForLesson(t, canonicalPathId, lesson.order) : []),
+    [path, lesson, canonicalPathId, t],
   );
 
   const [step, setStep] = useState(STEP.TEACHING);
@@ -149,7 +150,7 @@ export default function LessonScreen({ navigation, route }) {
     track({
       event: 'lesson_started',
       userId: user?.id,
-      props: { pathId, lessonId, lessonOrder: lesson?.order || null },
+      props: { pathId: canonicalPathId, lessonId, lessonOrder: lesson?.order || null },
     });
     return () => {
       mountedRef.current = false;
@@ -207,7 +208,7 @@ export default function LessonScreen({ navigation, route }) {
       // Pass the lesson coordinates so tts.js can attempt the
       // pre-recorded Piper MP3 from the GitHub release. Falls back
       // to system TTS automatically if that MP3 isn't available.
-      pathId,
+      pathId: canonicalPathId,
       lessonOrder: lesson?.order,
       onDone: () => safeSet(setIsSpeaking)(false),
       onError: () => safeSet(setIsSpeaking)(false),
@@ -220,7 +221,7 @@ export default function LessonScreen({ navigation, route }) {
   // modal tick down to zero on its own each second. The old local
   // `now` state + every-30s setInterval was redundant.
 
-  const alreadyCompleted = pathProgress?.[pathId]?.completed?.includes(lessonId);
+  const alreadyCompleted = pathProgress?.[canonicalPathId]?.completed?.includes(lessonId);
   const lessonAccessState = useMemo(
     () => getLessonAccessState(lesson, pathProgress, isPremium),
     [lesson, pathProgress, isPremium],
@@ -354,7 +355,7 @@ export default function LessonScreen({ navigation, route }) {
   // path. Now we compute everything first (using safe fallbacks when
   // lesson is null), then short-circuit-render the error state at
   // the bottom. State hook count stays constant.
-  const i18nBase = lesson ? `lessons.${pathId}.${lesson.order}` : '';
+  const i18nBase = lesson ? `lessons.${canonicalPathId}.${lesson.order}` : '';
   const title = lesson
     ? t(`${i18nBase}.title`, `${lesson.order}`)
     : '';
@@ -510,7 +511,7 @@ export default function LessonScreen({ navigation, route }) {
     }
 
     completePathLesson({
-      pathId,
+      pathId: canonicalPathId,
       lessonId,
       reflection: reflection.trim(),
       reflectionAudioUri: recordingUri || null,
@@ -529,7 +530,7 @@ export default function LessonScreen({ navigation, route }) {
       event: 'lesson_completed',
       userId: user?.id,
       props: {
-        pathId,
+        pathId: canonicalPathId,
         lessonId,
         lessonOrder: lesson?.order || null,
         quizCorrect: correctCount,
@@ -572,7 +573,7 @@ export default function LessonScreen({ navigation, route }) {
       // 30 streak + path lesson 30). UX-wise that's fine — they're
       // sequenced modally.
       const pathCompletedAfter =
-        (pathProgress?.[pathId]?.completed?.length || 0) + 1;
+        (pathProgress?.[canonicalPathId]?.completed?.length || 0) + 1;
       const scene = detectPathSceneStage(pathCompletedAfter);
       if (scene) {
         safeSet(setPathSceneStage)(scene);
@@ -664,7 +665,7 @@ export default function LessonScreen({ navigation, route }) {
 
   const handleNextLesson = async () => {
     // Find the next lesson in the same path that isn't completed
-    const completedSet = new Set(pathProgress?.[pathId]?.completed || []);
+    const completedSet = new Set(pathProgress?.[canonicalPathId]?.completed || []);
     completedSet.add(lessonId); // include the just-completed one
     const sortedLessons = path && path.id
       ? Array.from({ length: path.duration }, (_, i) => `${path.id}-${i + 1}`)
@@ -715,7 +716,7 @@ export default function LessonScreen({ navigation, route }) {
       try { await showInterstitial(); } catch {}
     }
     // replace so the back button goes to PathScreen, not the previous lesson
-    navigation.replace('Lesson', { pathId, lessonId: nextLessonId });
+    navigation.replace('Lesson', { pathId: canonicalPathId, lessonId: nextLessonId });
   };
 
   const handleMilestoneClose = async () => {
@@ -1321,7 +1322,7 @@ export default function LessonScreen({ navigation, route }) {
             modal; both can fire on the same lesson but they're sequenced. */}
         <PathMilestoneScene
           visible={pathSceneVisible}
-          pathId={pathId}
+          pathId={canonicalPathId}
           stage={pathSceneStage}
           onClose={() => setPathSceneVisible(false)}
         />

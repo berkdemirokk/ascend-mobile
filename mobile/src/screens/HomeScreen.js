@@ -124,6 +124,7 @@ export default function HomeScreen({ navigation }) {
   // modal, and only navigate after the user either watches an ad,
   // upgrades, or hearts auto-refill.
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+  const [pendingLesson, setPendingLesson] = useState(null);
   const [streakRepairLoading, setStreakRepairLoading] = useState(false);
 
   /**
@@ -164,9 +165,11 @@ export default function HomeScreen({ navigation }) {
       return false;
     }
     if (!isPremium && (hearts || 0) <= 0) {
+      setPendingLesson({ pathId, lessonId });
       setOutOfHeartsVisible(true);
       return false;
     }
+    setPendingLesson(null);
     navigation.navigate('Lesson', { pathId, lessonId });
     return true;
   };
@@ -1205,16 +1208,25 @@ export default function HomeScreen({ navigation }) {
       <OutOfHeartsModal
         visible={outOfHeartsVisible}
         refillAt={heartsRefillAt}
-        onClose={() => setOutOfHeartsVisible(false)}
+        onClose={() => {
+          setOutOfHeartsVisible(false);
+          setPendingLesson(null);
+        }}
         onRefill={() => {
           // +1 kalp (CTA "+1 KALP KAZAN" ile uyumlu) — refillHearts
           // tüm 5'i geri veriyordu, bu da reklam izlemeyi anlamsız
           // (1 reklam = sınırsız can) yapıyordu.
           gainHeart();
           setOutOfHeartsVisible(false);
+          const target = pendingLesson;
+          setPendingLesson(null);
+          if (target) {
+            navigation.navigate('Lesson', target);
+          }
         }}
         onPaywall={() => {
           setOutOfHeartsVisible(false);
+          setPendingLesson(null);
           navigation.navigate('Paywall', { source: 'home_out_of_hearts' });
         }}
       />

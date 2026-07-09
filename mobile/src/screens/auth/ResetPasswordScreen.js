@@ -111,6 +111,10 @@ export default function ResetPasswordScreen({ navigation, route }) {
           token_hash: params.token_hash || params.token,
           type: 'recovery',
         })));
+      } else if (params.code) {
+        ({ error } = await runAuthRequest(() =>
+          supabase.auth.exchangeCodeForSession(params.code),
+        ));
       } else {
         const result = await runAuthRequest(() => supabase.auth.getSession(), 5000);
         error = result.error;

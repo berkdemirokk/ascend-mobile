@@ -174,12 +174,12 @@ export const getReferralStats = async (userId) => {
  * inviters were silently shortchanged while redeemers got their +10
  * freezes. This function closes that gap.
  *
- * Returns { granted: number } — how many rewards we marked as paid out
- * (caller should dispatch once per item). On any error or no-rows-
- * found, returns { granted: 0 } and never throws.
+ * Returns { granted: number, ids: string[] }. The caller grants locally
+ * first, then marks rows paid after local persistence has had a chance to
+ * complete. On any error or no rows, returns an empty result.
  */
 export const checkReferralRewards = async (userId) => {
-  if (!SUPABASE_CONFIGURED || !userId) return { granted: 0 };
+  if (!SUPABASE_CONFIGURED || !userId) return { granted: 0, ids: [] };
   try {
     // Pull all redeemed rows owned by this user where the owner reward
     // hasn't been marked paid yet.
@@ -193,27 +193,35 @@ export const checkReferralRewards = async (userId) => {
       // Most likely: the owner_rewarded_at column doesn't exist yet on
       // older schemas. Log and bail — don't crash the app.
       console.warn('[referral] reward check fetch error:', fetchErr.message);
-      return { granted: 0 };
+      return { granted: 0, ids: [] };
     }
-    if (!rows || rows.length === 0) return { granted: 0 };
+    if (!rows || rows.length === 0) return { granted: 0, ids: [] };
 
-    // Mark all of them as rewarded in one round-trip. We do this BEFORE
-    // dispatching the local reward so that an interrupted dispatch can
-    // be re-run safely (the marker is the source of truth, not the
-    // local counter).
-    const nowIso = new Date().toISOString();
-    const ids = rows.map((r) => r.id);
-    const { error: updateErr } = await supabase
-      .from(TABLE)
-      .update({ owner_rewarded_at: nowIso })
-      .in('id', ids);
-    if (updateErr) {
-      console.warn('[referral] reward mark error:', updateErr.message);
-      return { granted: 0 };
-    }
-    return { granted: rows.length };
+    // Return row IDs without marking them yet. AppContext grants locally
+    // first, waits for the debounced save window, then marks them paid.
+    const ids = rows.map((r) => r.id).filter(Boolean);
+    return { granted: ids.length, ids };
   } catch (e) {
     console.warn('[referral] checkReferralRewards exception:', e?.message);
-    return { granted: 0 };
+    return { granted: 0, ids: [] };
+  }
+};
+
+export const markReferralRewardsPaid = async (ids = []) => {
+  const cleanIds = Array.from(new Set(ids.filter(Boolean)));
+  if (!SUPABASE_CONFIGURED || cleanIds.length === 0) return false;
+  try {
+    const { error } = await supabase
+      .from(TABLE)
+      .update({ owner_rewarded_at: new Date().toISOString() })
+      .in('id', cleanIds);
+    if (error) {
+      console.warn('[referral] reward mark error:', error.message);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.warn('[referral] markReferralRewardsPaid exception:', e?.message);
+    return false;
   }
 };

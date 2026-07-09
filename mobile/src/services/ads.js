@@ -17,6 +17,7 @@ let interstitialLoaded = false;
 
 let rewarded = null;
 let rewardedLoaded = false;
+let rewardedLoadPromise = null;
 
 // ─── Diagnostics ─────────────────────────────────────────────────────────────
 // Every load attempt records its outcome so the Settings → Debug panel
@@ -254,6 +255,8 @@ export const showInterstitial = async () => {
 // ─── Rewarded ────────────────────────────────────────────────────────────────
 
 export const loadRewarded = async () => {
+  if (rewardedLoaded && rewarded) return true;
+  if (rewardedLoadPromise) return rewardedLoadPromise;
   if (!adsReady || !gma?.RewardedAd || !gma?.RewardedAdEventType) {
     recordDiag({
       kind: 'rewarded',
@@ -261,7 +264,7 @@ export const loadRewarded = async () => {
       code: 'sdk_unavailable',
       message: !adsReady ? 'adsReady=false' : 'native module missing',
     });
-    return;
+    return false;
   }
   const adUnitId = getRewardedId();
   if (!adUnitId) {
@@ -271,64 +274,81 @@ export const loadRewarded = async () => {
       code: 'no_unit_id',
       message: 'getRewardedId returned null (non-iOS or missing config)',
     });
-    return;
+    return false;
   }
-  try {
-    rewarded = gma.RewardedAd.createForAdRequest(adUnitId, {
-      requestNonPersonalizedAdsOnly: !isPersonalizedAdsAllowed(),
-    });
-    await new Promise((resolve, reject) => {
-      let settled = false;
-      const settle = (fn) => (...args) => {
-        if (settled) return;
-        settled = true;
-        clearTimeout(timeoutId);
-        offLoaded?.();
-        offError?.();
-        fn(...args);
-      };
-      const offLoaded = rewarded.addAdEventListener(
-        gma.RewardedAdEventType.LOADED,
-        settle(() => {
-          rewardedLoaded = true;
-          recordDiag({ kind: 'rewarded', status: 'loaded', adUnitId });
-          resolve();
-        }),
-      );
-      const offError = rewarded.addAdEventListener(
-        gma.AdEventType.ERROR,
-        settle((err) => {
-          rewardedLoaded = false;
-          recordDiag({
-            kind: 'rewarded',
-            status: 'error',
-            code: err?.code || 'unknown',
-            message: err?.message || String(err),
-            adUnitId,
-          });
-          reject(err);
-        }),
-      );
-      const timeoutId = setTimeout(
-        settle(() => {
-          rewardedLoaded = false;
-          recordDiag({
-            kind: 'rewarded',
-            status: 'error',
-            code: 'timeout',
-            message: `no response in ${LOAD_TIMEOUT_MS}ms`,
-            adUnitId,
-          });
-          reject(new Error('timeout'));
-        }),
-        LOAD_TIMEOUT_MS,
-      );
-      rewarded.load();
-    });
-  } catch (e) {
-    console.warn('Load rewarded error:', e?.message);
-    rewardedLoaded = false;
-  }
+  const nextRewarded = gma.RewardedAd.createForAdRequest(adUnitId, {
+    requestNonPersonalizedAdsOnly: !isPersonalizedAdsAllowed(),
+  });
+  rewarded = nextRewarded;
+  rewardedLoaded = false;
+  const loadPromise = (async () => {
+    try {
+      await new Promise((resolve, reject) => {
+        let settled = false;
+        let timeoutId = null;
+        let offLoaded = null;
+        let offError = null;
+        const settle = (fn) => (...args) => {
+          if (settled) return;
+          settled = true;
+          if (timeoutId) clearTimeout(timeoutId);
+          offLoaded?.();
+          offError?.();
+          fn(...args);
+        };
+        offLoaded = nextRewarded.addAdEventListener(
+          gma.RewardedAdEventType.LOADED,
+          settle(() => {
+            if (rewarded === nextRewarded) {
+              rewardedLoaded = true;
+              recordDiag({ kind: 'rewarded', status: 'loaded', adUnitId });
+            }
+            resolve();
+          }),
+        );
+        offError = nextRewarded.addAdEventListener(
+          gma.AdEventType.ERROR,
+          settle((err) => {
+            if (rewarded === nextRewarded) rewardedLoaded = false;
+            recordDiag({
+              kind: 'rewarded',
+              status: 'error',
+              code: err?.code || 'unknown',
+              message: err?.message || String(err),
+              adUnitId,
+            });
+            reject(err);
+          }),
+        );
+        timeoutId = setTimeout(
+          settle(() => {
+            if (rewarded === nextRewarded) rewardedLoaded = false;
+            recordDiag({
+              kind: 'rewarded',
+              status: 'error',
+              code: 'timeout',
+              message: `no response in ${LOAD_TIMEOUT_MS}ms`,
+              adUnitId,
+            });
+            reject(new Error('timeout'));
+          }),
+          LOAD_TIMEOUT_MS,
+        );
+        nextRewarded.load();
+      });
+      return true;
+    } catch (e) {
+      console.warn('Load rewarded error:', e?.message);
+      if (rewarded === nextRewarded) rewardedLoaded = false;
+      return false;
+    } finally {
+      if (rewardedLoadPromise === loadPromise) {
+        rewardedLoadPromise = null;
+      }
+    }
+  })();
+  rewardedLoadPromise = loadPromise;
+  return loadPromise;
 };
 
 /**
@@ -340,6 +360,8 @@ export const showRewarded = async () => {
   if (!adsReady || !rewardedLoaded || !rewarded || !gma?.RewardedAdEventType) {
     return false;
   }
+  const adToShow = rewarded;
+  rewardedLoaded = false;
   return new Promise((resolve) => {
     let earned = false;
     let settled = false;
@@ -356,7 +378,7 @@ export const showRewarded = async () => {
       loadRewarded().catch(() => {});
       resolve(value);
     };
-    offEarned = rewarded.addAdEventListener(
+    offEarned = adToShow.addAdEventListener(
       gma.RewardedAdEventType.EARNED_REWARD,
       () => {
         earned = true;
@@ -366,7 +388,7 @@ export const showRewarded = async () => {
         });
       },
     );
-    offClosed = rewarded.addAdEventListener(
+    offClosed = adToShow.addAdEventListener(
       gma.AdEventType.CLOSED,
       () => {
         track({
@@ -390,7 +412,7 @@ export const showRewarded = async () => {
       });
       finish(false);
     }, REWARDED_SHOW_TIMEOUT_MS);
-    rewarded.show().catch((e) => {
+    adToShow.show().catch((e) => {
       console.warn('Show rewarded error:', e?.message);
       track({
         event: 'ad_show_failed',
@@ -438,7 +460,7 @@ export const isAdsReady = () => adsReady;
 // Whether a rewarded ad has been loaded and is ready to show. Used by the
 // OutOfHearts modal to decide whether to expose the "Watch ad" CTA at all,
 // instead of showing it and then silently failing on tap.
-export const isRewardedReady = () => rewardedLoaded;
+export const isRewardedReady = () => adsReady && rewardedLoaded && !!rewarded;
 
 /**
  * Snapshot of the ad-system state for the debug panel. Returns enough
