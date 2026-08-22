@@ -1,7 +1,6 @@
 // AssessmentScreen — the 5-dimension self-assessment surface used
-// both for the onboarding baseline AND every subsequent 30-day
-// re-assessment. Modal-presented from Onboarding (mode='baseline')
-// or from HomeScreen's "Yeniden Değerlendir" CTA (mode='post').
+// both for the initial baseline and every subsequent 30-day
+// re-assessment. Modal-presented from Home in baseline or post mode.
 //
 // UX choices that matter:
 //   - All 5 questions on ONE scrolling screen, not 5 separate steps.
@@ -9,10 +8,8 @@
 //     keep the cognitive frame of "this is a short thing".
 //   - Sliders default to 5 (neutral). Asking "what's your discipline?"
 //     with a slider starting at 0 reads as judgment.
-//   - Single primary CTA. Skip is intentionally not offered for the
-//     baseline — without a baseline there's no delta later, so the
-//     whole report system collapses. For the post-assessment, Skip
-//     exists (you can wait another day) but is visually demoted.
+//   - Single primary CTA. The visible close action keeps baseline optional;
+//     post-assessment also has a demoted "tomorrow" action.
 
 import React, { useState } from 'react';
 import {
@@ -20,12 +17,14 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  SafeAreaView,
-  Pressable,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+  AccessiblePressable as Pressable,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { LT } from '../config/lightTheme';
 import { useApp } from '../contexts/AppContext';
 import {
@@ -46,15 +45,9 @@ export default function AssessmentScreen({ route, navigation }) {
   const { addAssessment, setBaselineAssessment } = useApp();
   const mode = route?.params?.mode || 'baseline';
   const [scores, setScores] = useState(defaultScores());
-  // Track whether the user actually touched the sliders, so we can
-  // distinguish a "tapped through with all-5 defaults" submit from
-  // a real assessment. Defaults-only is still saved (so baseline isn't
-  // lost), but Telemetry can later see how many users engaged for real.
-  const [touchedAny, setTouchedAny] = useState(false);
 
   const setScore = (dimId, value) => {
     setScores((prev) => ({ ...prev, [dimId]: value }));
-    if (!touchedAny) setTouchedAny(true);
   };
 
   const handleSubmit = () => {
@@ -92,11 +85,22 @@ export default function AssessmentScreen({ route, navigation }) {
       >
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.eyebrow}>
-            {mode === 'baseline'
-              ? t('assessment.eyebrowBaseline', 'BAŞLANGIÇ DEĞERLENDİRMESİ')
-              : t('assessment.eyebrowPost', '30 GÜN SONRA — TEKRAR ÖLÇ')}
-          </Text>
+          <View style={styles.headerTop}>
+            <Text style={styles.eyebrow}>
+              {mode === 'baseline'
+                ? t('assessment.eyebrowBaseline', 'BAŞLANGIÇ DEĞERLENDİRMESİ')
+                : t('assessment.eyebrowPost', '30 GÜN SONRA — TEKRAR ÖLÇ')}
+            </Text>
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={styles.closeBtn}
+              accessibilityRole="button"
+              accessibilityLabel={t('common.close', 'Kapat')}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            >
+              <MaterialIcons name="close" size={20} color={LT.onSurfaceVariant} />
+            </TouchableOpacity>
+          </View>
           <Text style={styles.title}>
             {mode === 'baseline'
               ? t(
@@ -149,6 +153,12 @@ export default function AssessmentScreen({ route, navigation }) {
                     <Pressable
                       key={v}
                       onPress={() => setScore(dim.id, v)}
+                      accessibilityRole="radio"
+                      accessibilityState={{ selected: isSelected }}
+                      accessibilityLabel={`${t(
+                        dim.labelKey,
+                        dim.labelFallback,
+                      )}: ${v}/${ASSESSMENT_MAX_PER_DIM}`}
                       style={[
                         styles.scaleDot,
                         isUnder && { backgroundColor: dim.color },
@@ -176,6 +186,7 @@ export default function AssessmentScreen({ route, navigation }) {
           style={styles.submit}
           onPress={handleSubmit}
           activeOpacity={0.85}
+          accessibilityRole="button"
         >
           <Text style={styles.submitText}>
             {mode === 'baseline'
@@ -190,6 +201,7 @@ export default function AssessmentScreen({ route, navigation }) {
             onPress={() => navigation.goBack()}
             style={styles.skip}
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            accessibilityRole="button"
           >
             <Text style={styles.skipText}>
               {t('assessment.skipPost', 'Yarın yaparım')}
@@ -205,12 +217,23 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: LT.background },
   scroll: { padding: 20, paddingBottom: 32 },
   header: { marginBottom: 20 },
+  headerTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
+  closeBtn: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   eyebrow: {
     fontSize: 11,
     fontWeight: '900',
     letterSpacing: 1.6,
     color: LT.primary,
-    marginBottom: 6,
   },
   title: {
     fontSize: 22,
@@ -267,12 +290,13 @@ const styles = StyleSheet.create({
   },
   scaleRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
-    gap: 4,
+    rowGap: 6,
   },
   scaleDot: {
-    flex: 1,
-    height: 32,
+    width: '18%',
+    height: 44,
     borderRadius: 8,
     backgroundColor: LT.surfaceContainer,
     borderWidth: 1,

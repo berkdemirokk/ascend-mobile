@@ -6,10 +6,12 @@ import {
   View,
   Text,
   Modal,
-  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
@@ -22,6 +24,9 @@ export default function StreakInfoModal({
   onPaywall,
 }) {
   const { t } = useTranslation();
+  const safeStreak = Number.isFinite(streak) ? streak : 0;
+  const safeFreezes = Number.isFinite(freezes) ? freezes : 0;
+
   return (
     <Modal
       visible={visible}
@@ -33,9 +38,16 @@ export default function StreakInfoModal({
         activeOpacity={1}
         onPress={onClose}
         style={styles.backdrop}
+        accessible={false}
       >
         <TouchableOpacity activeOpacity={1} style={styles.card}>
-          <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
+          <TouchableOpacity
+            onPress={onClose}
+            style={styles.closeBtn}
+            accessibilityRole="button"
+            accessibilityLabel={t('common.close', 'Kapat')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
             <MaterialIcons name="close" size={20} color={LT.onSurfaceVariant} />
           </TouchableOpacity>
 
@@ -52,7 +64,7 @@ export default function StreakInfoModal({
           </Text>
 
           <Text style={styles.streakBig}>
-            <Text style={styles.streakNumber}>{streak}</Text>
+            <Text style={styles.streakNumber}>{safeStreak}</Text>
             <Text style={styles.streakUnit}>
               {' '}{t('streak.days', 'gün')}
             </Text>
@@ -73,14 +85,14 @@ export default function StreakInfoModal({
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.freezeTitle}>
-                  {t('streak.freezeTitle', 'Seri Donduruculari')}
+                  {t('streak.freezeTitle', 'Seri Dondurucuları')}
                 </Text>
                 <Text style={styles.freezeBody}>
-                  {freezes > 0
+                  {safeFreezes > 0
                     ? t(
                         'streak.freezeAvailable',
                         '{{count}} adet kullanılabilir. Bir gün atlarsan otomatik kullanılır.',
-                        { count: freezes },
+                        { count: safeFreezes },
                       )
                     : t(
                         'streak.freezeEmpty',
@@ -88,11 +100,11 @@ export default function StreakInfoModal({
                       )}
                 </Text>
               </View>
-              <Text style={styles.freezeCount}>{freezes}</Text>
+              <Text style={styles.freezeCount}>{safeFreezes}</Text>
             </View>
           </View>
 
-          {!isPremium && freezes === 0 ? (
+          {!isPremium && safeFreezes === 0 ? (
             <TouchableOpacity
               onPress={() => {
                 onClose?.();
@@ -168,13 +180,13 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 18,
     fontWeight: '900',
-    letterSpacing: -0.3,
+    letterSpacing: 0,
     marginBottom: 6,
   },
   streakBig: {
     fontSize: 36,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     marginBottom: 8,
   },
   streakNumber: {

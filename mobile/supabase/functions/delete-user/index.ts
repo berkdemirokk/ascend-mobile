@@ -10,9 +10,8 @@
 //   (we DO verify JWT manually below; --no-verify-jwt just skips Supabase's
 //   automatic 401 so we can return JSON instead)
 //
-// Env vars (set in Supabase dashboard → Edge Functions → Settings):
-//   SUPABASE_URL                = https://<project>.supabase.co
-//   SUPABASE_SERVICE_ROLE_KEY   = eyJ... (from Project Settings → API)
+// Supabase injects SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY into hosted
+// functions. Never copy the service-role key into the app or repository.
 //
 // Client invocation (from React Native):
 //   const { data, error } = await supabase.functions.invoke('delete-user');
@@ -21,7 +20,7 @@
 // @ts-ignore — Deno runtime
 import { serve } from 'https://deno.land/std@0.224.0/http/server.ts';
 // @ts-ignore — Deno runtime
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.112.3';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',

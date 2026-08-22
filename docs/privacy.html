@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gizlilik Politikası — Ascend Monk Mode</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Gizlilik Politikası — Ascend: Daily Discipline</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.7; }
   h1 { font-size: 1.6rem; }
   h2 { font-size: 1.2rem; margin-top: 2rem; }
   small { color: #666; }
-  table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+  table { border-collapse: collapse; display: block; width: 100%; max-width: 100%; margin-top: 8px; overflow-x: auto; }
   th, td { border: 1px solid #ccc; padding: 8px 10px; text-align: left; vertical-align: top; font-size: 0.95rem; }
   th { background: #f5f5f5; }
   .lang-switch { text-align: right; font-size: 0.9rem; margin-bottom: -16px; }
@@ -22,14 +24,14 @@
 <h1>Gizlilik Politikası</h1>
 <small>Son güncelleme: 3 Mayıs 2026 · Yürürlük: 3 Mayıs 2026</small>
 
-<p>Ascend: Monk Mode ("uygulama"), Berk Demirok ("biz") tarafından geliştirilen bir kişisel disiplin ve alışkanlık uygulamasıdır. Bu politika hangi verileri topladığımızı, nasıl kullandığımızı, kimlerle paylaştığımızı ve haklarınızı açıklar. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
+<p>Ascend: Daily Discipline ("uygulama"), Berk Demirok ("biz") tarafından geliştirilen bir kişisel disiplin ve alışkanlık uygulamasıdır. Bu politika hangi verileri topladığımızı, nasıl kullandığımızı, kimlerle paylaştığımızı ve haklarınızı açıklar. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.</p>
 
 <h2>1. Topladığımız Veriler</h2>
 
 <h3>1.1 Sizin sağladığınız bilgiler</h3>
 <ul>
   <li><strong>Hesap bilgileri:</strong> e-posta, isim (opsiyonel). E-posta/şifre ile veya "Apple ile Giriş Yap" ile sağlanır. Apple ile girişte e-postayı gizleyebilirsiniz; bu durumda sadece Apple'ın ürettiği özel ileti adresi tutulur.</li>
-  <li><strong>Uygulama içi içerik:</strong> seçtiğiniz disiplin yolu, ders ilerlemesi, quiz cevapları, streak (gün serisi), XP, başarımlar, kalp sayısı, opsiyonel olarak yazdığınız ders yansımaları (reflection metinleri).</li>
+  <li><strong>Uygulama içi içerik:</strong> seçtiğiniz disiplin yolu, ders ilerlemesi, quiz cevapları, streak (gün serisi), XP, başarımlar, kalp sayısı, opsiyonel yazılı ders yansımaları ve opsiyonel yerel sesli günlük kayıtları. Ham ses kayıtları cihazınızda kalır ve backend'e yüklenmez.</li>
   <li><strong>Ayar tercihleri:</strong> uygulama dili, ses açık/kapalı, bildirim tercihi.</li>
 </ul>
 
@@ -37,18 +39,19 @@
 <ul>
   <li><strong>Cihaz tanımlayıcıları:</strong> Apple Push Notification token (sadece bildirim izni verirseniz). Apple App Store sandbox subscription kontrol bilgileri.</li>
   <li><strong>Reklam tanımlayıcıları (IDFA):</strong> SADECE App Tracking Transparency (ATT) izniyle "İzin Ver"e basarsanız Google AdMob bu tanımlayıcıyı reklam ölçümü için kullanır. "Reddet"e basarsanız jenerik (kişiselleştirilmemiş) reklam görür ve IDFA paylaşılmaz. Premium kullanıcılarda hiçbir reklam SDK'sı çalışmaz.</li>
-  <li><strong>Tanılama:</strong> Şu an aktif crash reporting veya analytics SDK'sı kullanmıyoruz. İleride eklersek bu politikayı güncelleyeceğiz ve uygulama içinde bildiririz.</li>
+  <li><strong>Kullanım ve tanılama:</strong> ders tamamlama, onboarding/paywall olayları ve JavaScript hata detayları uygulama işlevi, analitik ve hata ayıklama amacıyla Supabase'de tutulabilir. Bu olay kayıtları gerçek adınızı veya e-postanızı içermez.</li>
 </ul>
 
 <h2>2. Toplamadığımız Veriler</h2>
 <ul>
   <li>Konum bilgisi (GPS, IP-tabanlı konum)</li>
   <li>Kişiler / rehber, takvim</li>
-  <li>Fotoğraf, video, kamera, mikrofon</li>
+  <li>Fotoğraf, video, kamera</li>
   <li>Tarama geçmişi, başka uygulamaların verileri</li>
   <li>Hassas finansal bilgi (kart numarası, banka bilgisi). Tüm satın almalar Apple App Store üzerinden yapılır; ödeme bilgilerine erişimimiz yoktur.</li>
   <li>Sağlık verileri</li>
 </ul>
+<p>Mikrofon izni sadece siz sesli günlük kaydı yapmayı seçerseniz kullanılır. Ses dosyası cihazınızda yerel kalır ve cihazlar arasında aktarılmaz.</p>
 
 <h2>3. Verileri Nasıl Kullanırız</h2>
 <ul>

@@ -6,22 +6,20 @@
 // Designed to overlay an existing UI as an "explode" effect — pair it
 // with milestone modals, level-up screens, lesson completions.
 
-import React, { useEffect, useRef, useMemo } from 'react';
-import { View, StyleSheet, Animated, Easing, Dimensions } from 'react-native';
+import React, { useEffect, useMemo } from 'react';
+import { View, StyleSheet, Animated, Easing, useWindowDimensions } from 'react-native';
 
 const COLORS = [
   '#FDE047', // yellow
   '#F97316', // orange
   '#EF4444', // red
   '#EC4899', // pink
-  '#8B5CF6', // violet
+  '#FF5A5F', // light red
   '#3B82F6', // blue
   '#10B981', // emerald
 ];
 
 const NUM_PARTICLES = 22;
-
-const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
 
 /**
  * <ConfettiBurst trigger={someChangingValue} />
@@ -33,6 +31,7 @@ const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
  * cards/modals). Otherwise the particles spread the full screen.
  */
 export default function ConfettiBurst({ trigger, compact = false }) {
+  const { width: screenWidth, height: screenHeight } = useWindowDimensions();
   // useMemo so particle "seeds" stay stable across re-renders within a
   // single burst — we only re-randomize when `trigger` changes.
   const particles = useMemo(() => {
@@ -44,7 +43,7 @@ export default function ConfettiBurst({ trigger, compact = false }) {
       // Initial upward velocity → translated into peak Y.
       peakY: -160 - Math.random() * 80,
       // Final resting Y (gravity pulls them down past start).
-      endY: (compact ? 200 : SCREEN_H * 0.45) + Math.random() * 60,
+      endY: (compact ? 200 : screenHeight * 0.45) + Math.random() * 60,
       delay: Math.random() * 120,
       duration: 1100 + Math.random() * 600,
       size: 6 + Math.floor(Math.random() * 6),
@@ -52,7 +51,7 @@ export default function ConfettiBurst({ trigger, compact = false }) {
       anim: new Animated.Value(0),
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trigger]);
+  }, [trigger, compact, screenHeight]);
 
   useEffect(() => {
     if (!trigger) return undefined;
@@ -74,7 +73,7 @@ export default function ConfettiBurst({ trigger, compact = false }) {
 
   if (!trigger) return null;
 
-  const spread = compact ? 140 : SCREEN_W * 0.5;
+  const spread = compact ? 140 : screenWidth * 0.5;
 
   return (
     <View pointerEvents="none" style={StyleSheet.absoluteFill}>

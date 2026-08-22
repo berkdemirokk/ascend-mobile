@@ -27,25 +27,25 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
   Animated,
-  Dimensions,
   TextInput,
   KeyboardAvoidingView,
   Platform,
   Share,
   Easing,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import * as Haptics from 'expo-haptics';
 import { LT } from '../config/lightTheme';
 import { useApp } from '../contexts/AppContext';
 import { getTodaysDeck } from '../data/dailyDecks';
 import ConfettiBurst from '../components/ConfettiBurst';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const TOTAL_CARDS = 6;
 
 export default function DailyDeckScreen({ navigation }) {
@@ -126,7 +126,7 @@ export default function DailyDeckScreen({ navigation }) {
       await Share.share({
         message: t(
           'dailyDeck.shareMsg',
-          '"{{quote}}" — {{author}}. Bugünün destesinden. Ascend: Monk Mode.',
+          '"{{quote}}" — {{author}}. Bugünün destesinden. Ascend: Daily Discipline.',
           { quote: deck.quote, author: deck.author },
         ),
       });
@@ -161,6 +161,8 @@ export default function DailyDeckScreen({ navigation }) {
         <View style={styles.topBar}>
           {progressDots}
           <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={t('common.close', 'Kapat')}
             onPress={() => navigation.goBack()}
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
           >

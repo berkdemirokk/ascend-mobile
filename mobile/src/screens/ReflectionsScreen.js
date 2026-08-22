@@ -8,11 +8,13 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  SafeAreaView,
-  TouchableOpacity,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
 import { useApp } from '../contexts/AppContext';
 import { PATHS } from '../data/paths';
@@ -87,6 +89,9 @@ export default function ReflectionsScreen({ navigation }) {
         {/* Top bar */}
         <View style={styles.topBar}>
           <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={t('common.back', 'Geri')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             onPress={() => navigation.goBack()}
             style={styles.backBtn}
           >
@@ -200,7 +205,7 @@ export default function ReflectionsScreen({ navigation }) {
                     <View key={lessonId} style={styles.card}>
                       <View style={styles.cardHeader}>
                         <Text style={styles.cardLessonNum}>
-                          DERS {lessonOrder}
+                          {t('path.lessonLabel', 'Ders').toUpperCase()} {lessonOrder}
                         </Text>
                         <Text style={styles.cardLessonTitle} numberOfLines={1}>
                           {lessonTitle}
@@ -423,7 +428,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '900',
     marginBottom: 8,
-    letterSpacing: -0.3,
+    letterSpacing: 0,
   },
   emptyBody: {
     color: LT.onSurfaceVariant,

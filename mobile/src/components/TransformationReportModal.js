@@ -13,18 +13,19 @@ import {
   Modal,
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
   ScrollView,
   Share,
-  SafeAreaView,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
-import { LT } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
-import { hapticImpactMedium, hapticMilestone } from '../services/haptics';
+import { hapticImpactMedium } from '../services/haptics';
 
 export default function TransformationReportModal({
   visible,
@@ -39,7 +40,7 @@ export default function TransformationReportModal({
   const handleShare = async () => {
     hapticImpactMedium();
     const lines = [
-      t('transform.shareIntro', "I'm growing on Ascend: Monk Mode."),
+      t('transform.shareIntro', "I'm making progress with Ascend: Daily Discipline."),
       '',
       `🔥 ${t('transform.statLessons', { count: report.lessonsTotal })}`,
       `📅 ${t('transform.statActiveDays', { days: report.activeDays })}`,
@@ -56,12 +57,17 @@ export default function TransformationReportModal({
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
       <LinearGradient
-        colors={['#0F0A1E', '#1E1B4B', '#3730A3']}
+        colors={['#240001', '#8F0005', '#E31212']}
         style={styles.root}
       >
         <SafeAreaView style={{ flex: 1 }}>
           <View style={styles.topBar}>
-            <TouchableOpacity onPress={onClose} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+            <TouchableOpacity
+              onPress={onClose}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              accessibilityRole="button"
+              accessibilityLabel={t('common.close', 'Kapat')}
+            >
               <MaterialIcons name="close" size={22} color="#FFFFFF" />
             </TouchableOpacity>
             <Text style={styles.topLabel}>
@@ -157,7 +163,7 @@ export default function TransformationReportModal({
                 ) : null}
 
                 <TouchableOpacity onPress={handleShare} style={styles.shareBtn} activeOpacity={0.85}>
-                  <MaterialIcons name="ios-share" size={18} color="#1E1B4B" />
+                  <MaterialIcons name="ios-share" size={18} color="#8F0005" />
                   <Text style={styles.shareBtnText}>
                     {t('transform.shareCta', 'Share my transformation')}
                   </Text>
@@ -189,7 +195,7 @@ export default function TransformationReportModal({
                   <Text style={styles.upgradeBtnText}>
                     {t('transform.unlockCta', 'UNLOCK FULL REPORT')}
                   </Text>
-                  <MaterialIcons name="arrow-forward" size={18} color="#1E1B4B" />
+                  <MaterialIcons name="arrow-forward" size={18} color="#8F0005" />
                 </TouchableOpacity>
               </View>
             )}
@@ -262,7 +268,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '900',
     textAlign: 'center',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     paddingHorizontal: 24,
   },
   heroSub: {
@@ -294,7 +300,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
     marginVertical: 4,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   statLabel: {
     color: '#FDE047',
@@ -356,7 +362,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '900',
     marginTop: 10,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   lockSub: {
     color: '#FFFFFF',
@@ -378,7 +384,7 @@ const styles = StyleSheet.create({
     marginTop: 14,
   },
   upgradeBtnText: {
-    color: '#1E1B4B',
+    color: '#8F0005',
     fontSize: 13,
     fontWeight: '900',
     letterSpacing: 1.0,
@@ -396,7 +402,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   shareBtnText: {
-    color: '#1E1B4B',
+    color: '#8F0005',
     fontSize: 13,
     fontWeight: '900',
     letterSpacing: 0.6,

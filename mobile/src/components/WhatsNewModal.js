@@ -21,11 +21,13 @@ import {
   Modal,
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 
 import { LT_RADIUS } from '../config/lightTheme';
@@ -38,16 +40,43 @@ import { useTheme, useThemedStyles } from '../config/theme';
  * when adding a new release.
  */
 export const WHATS_NEW = {
+  '1.0.42': {
+    icon: 'auto-awesome',
+    titleKey: 'whatsNew.v1_0_42.title',
+    titleDefault: 'Daily Discipline artık daha net',
+    bullets: [
+      {
+        icon: 'task-alt',
+        key: 'whatsNew.v1_0_42.home',
+        default:
+          'Bugünün ana görevi artık Home ekranında net şekilde öne çıkar.',
+      },
+      {
+        icon: 'route',
+        key: 'whatsNew.v1_0_42.flow',
+        default:
+          'İlk ders ve yol akışı sadeleşti; gereksiz otomatik yönlendirmeler kaldırıldı.',
+      },
+      {
+        icon: 'workspace-premium',
+        key: 'whatsNew.v1_0_42.store',
+        default:
+          'Premium fiyat yükleme ve satın alma geri bildirimi daha sağlam.',
+      },
+    ],
+    ctaKey: 'whatsNew.v1_0_42.cta',
+    ctaDefault: 'Tamam',
+  },
   '1.0.32': {
     icon: 'rocket-launch',
     titleKey: 'whatsNew.v1_0_32.title',
     titleDefault: 'Yeni özellikler geldi',
     bullets: [
       {
-        icon: 'dark-mode',
+        icon: 'palette',
         key: 'whatsNew.v1_0_32.dark',
         default:
-          'Karanlık mod — Sistem temasını otomatik takip eder. Geceleri daha rahat.',
+          'Tutarlı kırmızı-beyaz tema — Tüm ekranlar aynı görsel dili kullanır.',
       },
       {
         icon: 'card-giftcard',
@@ -185,7 +214,7 @@ const makeStyles = (T) =>
       fontSize: 22,
       fontWeight: '900',
       textAlign: 'center',
-      letterSpacing: -0.4,
+      letterSpacing: 0,
       marginBottom: 18,
     },
     bulletList: {

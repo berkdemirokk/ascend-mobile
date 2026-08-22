@@ -6,10 +6,12 @@ import {
   View,
   Text,
   Modal,
-  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 import { ACHIEVEMENTS, RARITY_COLORS, isPremiumGated } from '../config/achievements';
 import { useApp } from '../contexts/AppContext';
@@ -75,9 +77,16 @@ export default function AchievementDetailModal({
         activeOpacity={1}
         onPress={onClose}
         style={styles.backdrop}
+        accessible={false}
       >
         <TouchableOpacity activeOpacity={1} style={styles.card}>
-          <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
+          <TouchableOpacity
+            onPress={onClose}
+            style={styles.closeBtn}
+            accessibilityRole="button"
+            accessibilityLabel={t('common.close', 'Kapat')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
             <MaterialIcons name="close" size={20} color={LT.onSurfaceVariant} />
           </TouchableOpacity>
 
@@ -234,7 +243,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 22,
     fontWeight: '900',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     marginBottom: 8,
     textAlign: 'center',
   },

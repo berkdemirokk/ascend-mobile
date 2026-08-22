@@ -1,6 +1,22 @@
 import { supabase, SUPABASE_CONFIGURED } from './supabase';
 
 const TABLE = 'user_state';
+const CLOUD_REQUEST_TIMEOUT_MS = 12000;
+
+const withCloudTimeout = (promise, label) => (
+  Promise.race([
+    promise,
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          data: null,
+          error: new Error(`${label} timed out`),
+          timedOut: true,
+        });
+      }, CLOUD_REQUEST_TIMEOUT_MS);
+    }),
+  ])
+);
 
 // Fields persisted to cloud. Skip transient/UI/premium (premium = store-authoritative).
 const SYNCED_KEYS = [
@@ -12,6 +28,7 @@ const SYNCED_KEYS = [
   'longestStreak',
   'lastCompletedDate',
   'streakFreezes',
+  'referralOwnerRewardIds',
   'unlockedAchievements',
   'hearts',
   'heartsRefillAt',
@@ -28,9 +45,8 @@ const SYNCED_KEYS = [
   'latestAssessment',
   'dailyDeckHistory',
   'lastDailyDeckCompletedDate',
-  // Added after audit found these were being pushed without merge,
-  // causing multi-device drift (letter cooldown wrong, repair count
-  // reset, momentum session phantom on second device).
+  // Added after audit found these were being pushed without merge, causing
+  // multi-device drift in repair counts and momentum session bookkeeping.
   'streakRepairsUsed',
   'todaySessionLessons',
   'lastLessonAtMs',
@@ -39,8 +55,25 @@ const SYNCED_KEYS = [
 export function pickSyncableState(state) {
   const out = {};
   for (const k of SYNCED_KEYS) {
-    if (state[k] !== undefined) out[k] = state[k];
+    if (state[k] === undefined) continue;
+    out[k] = k === 'pathProgress'
+      ? stripLocalOnlyPathProgress(state[k])
+      : state[k];
   }
+  return out;
+}
+
+// Voice journal audio files are local-only; never sync file:// URIs to cloud.
+function stripLocalOnlyPathProgress(pathProgress = {}) {
+  const out = {};
+  Object.entries(pathProgress || {}).forEach(([pathId, progress]) => {
+    if (!progress || typeof progress !== 'object' || Array.isArray(progress)) {
+      out[pathId] = progress;
+      return;
+    }
+    const { reflectionAudio, ...syncableProgress } = progress;
+    out[pathId] = syncableProgress;
+  });
   return out;
 }
 
@@ -51,11 +84,18 @@ export async function pullState(userId) {
   if (!SUPABASE_CONFIGURED) return null;
   if (!userId) return null;
   try {
-    const { data, error } = await supabase
-      .from(TABLE)
-      .select('payload, updated_at')
-      .eq('user_id', userId)
-      .maybeSingle();
+    const { data, error, timedOut } = await withCloudTimeout(
+      supabase
+        .from(TABLE)
+        .select('payload, updated_at')
+        .eq('user_id', userId)
+        .maybeSingle(),
+      'cloud pull',
+    );
+    if (timedOut) {
+      console.warn('[cloudSync] pull timeout');
+      return null;
+    }
     if (error) {
       console.warn('[cloudSync] pull error:', error.message);
       return null;
@@ -75,14 +115,21 @@ export async function pushState(userId, state) {
   if (!userId) return null;
   try {
     const payload = pickSyncableState(state);
-    const { error } = await supabase.from(TABLE).upsert(
-      {
-        user_id: userId,
-        payload,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: 'user_id' },
+    const { error, timedOut } = await withCloudTimeout(
+      supabase.from(TABLE).upsert(
+        {
+          user_id: userId,
+          payload,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'user_id' },
+      ),
+      'cloud push',
     );
+    if (timedOut) {
+      console.warn('[cloudSync] push timeout');
+      return new Error('cloud push timed out');
+    }
     if (error) {
       console.warn('[cloudSync] push error:', error.message);
     }
@@ -117,6 +164,12 @@ function mergePathProgress(local = {}, cloud = {}) {
       quizCorrect[lessonId] = Math.max(quizCorrect[lessonId] || 0, n || 0);
     });
     out[pathId] = { completed, reflections, quizCorrect };
+    if (l.reflectionAudio && Object.keys(l.reflectionAudio).length > 0) {
+      // Audio files are local-only and intentionally stripped before cloud
+      // push. Keep local file:// references when merging a cloud payload
+      // back into this device so recorded reflections do not disappear.
+      out[pathId].reflectionAudio = l.reflectionAudio;
+    }
   }
   return out;
 }
@@ -202,6 +255,10 @@ export function mergeStates(localState, cloudPayload) {
       localState.streakFreezes || 0,
       cloudPayload.streakFreezes || 0,
     ),
+    referralOwnerRewardIds: Array.from(new Set([
+      ...(localState.referralOwnerRewardIds || []),
+      ...(cloudPayload.referralOwnerRewardIds || []),
+    ])).slice(-200),
     unlockedAchievements: Array.from(
       new Set([
         ...(localState.unlockedAchievements || []),

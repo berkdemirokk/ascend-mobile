@@ -5,24 +5,27 @@
 // Backup: ProfileScreen.legacy.js
 
 import React, { useMemo, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import {
+  useTranslation } from 'react-i18next';
 import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
   Alert,
   StatusBar,
   Share,
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import Svg, { Circle } from 'react-native-svg';
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
-import { LEVEL_THRESHOLDS, getNextLevel } from '../config/constants';
+import { LEGAL, LEVEL_THRESHOLDS, getNextLevel } from '../config/constants';
 import { ACHIEVEMENTS, getEarnedIdentityBadges } from '../config/achievements';
 import StreakHeatmap from '../components/StreakHeatmap';
 import CharacterHero from '../components/CharacterHero';
@@ -42,7 +45,7 @@ import LightTopAppBar from '../components/LightTopAppBar';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function ProfileScreen({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const appState = useApp();
   // ALL fields defaulted — without defaults, the very first render
@@ -61,6 +64,8 @@ export default function ProfileScreen({ navigation }) {
     lessonHistory = {},
     anonUsername = null,
     isPremium = false,
+    completedPathsCount = 0,
+    rank: appRank = null,
   } = appState || {};
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const [sharing, setSharing] = useState(false);
@@ -82,13 +87,8 @@ export default function ProfileScreen({ navigation }) {
     );
   }, [pathProgress]);
 
-  const completedPaths = useMemo(() => {
-    return Object.values(pathProgress || {}).filter(
-      (p) => (p?.completed?.length || 0) >= 30,
-    ).length;
-  }, [pathProgress]);
-
-  const rank = useMemo(() => getRank(completedPaths), [completedPaths]);
+  const completedPaths = completedPathsCount;
+  const rank = appRank || getRank(completedPaths);
   const nextRank = useMemo(
     () => getNextRank(completedPaths),
     [completedPaths],
@@ -107,7 +107,7 @@ export default function ProfileScreen({ navigation }) {
 
   const identityBadges = useMemo(
     () => getEarnedIdentityBadges(pathProgress, PATHS, getCurrentLanguage?.() || 'tr'),
-    [pathProgress],
+    [pathProgress, i18n.resolvedLanguage],
   );
 
   const recentAchievements = useMemo(() => {
@@ -121,11 +121,11 @@ export default function ProfileScreen({ navigation }) {
     ];
   }, [unlockedAchievements]);
 
-  const username = user?.email?.split('@')[0] || 'StoicMonk';
+  const username = user?.email?.split('@')[0] || 'Ascender';
 
   const handleSharePublicProfile = async () => {
-    const handle = anonUsername || 'monk';
-    const link = `https://ascend.app/u/${encodeURIComponent(handle)}`;
+    const handle = anonUsername || 'ascender';
+    const link = `${LEGAL.PUBLIC_APP_URL}?profile=${encodeURIComponent(handle)}`;
     const message = t(
       'profile.publicShareMessage',
       "Ascend'de profilim 🔥\n{{streak}} gün streak · {{xp}} XP · seviye {{level}}\n{{link}}",
@@ -142,10 +142,10 @@ export default function ProfileScreen({ navigation }) {
     try {
       const message =
         currentStreak > 0
-          ? t('share.streakActive', '{{streak}} gün — monk mode sürüyor 🔥', {
+          ? t('share.streakActive', 'Ascend: Daily Discipline serim {{streak}} gündür sürüyor.', {
               streak: currentStreak,
             })
-          : t('share.streakStart', 'Monk mode başlatıyorum 🔥');
+          : t('share.streakStart', 'Ascend: Daily Discipline ile ilk günümü başlatıyorum.');
       await new Promise((r) => setTimeout(r, 60));
       const ok = await captureAndShare({
         viewRef: shareCardRef,
@@ -175,7 +175,9 @@ export default function ProfileScreen({ navigation }) {
             onPress={handleShareStreak}
             disabled={sharing}
             style={styles.shareBtn}
+            accessibilityRole="button"
             accessibilityLabel={t('share.streakAria', 'Streak paylaş')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             activeOpacity={0.7}
           >
             <MaterialIcons
@@ -219,7 +221,9 @@ export default function ProfileScreen({ navigation }) {
           <StatCard
             icon="bolt"
             label={t('profile.totalXp', 'TOPLAM XP')}
-            value={(totalXP ?? 0).toLocaleString('en-US')}
+            value={(totalXP ?? 0).toLocaleString(
+              i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR',
+            )}
           />
           <StatCard
             icon="local-fire-department"
@@ -474,7 +478,7 @@ export default function ProfileScreen({ navigation }) {
         onClose={() => setSelectedAchievement(null)}
         achievementId={selectedAchievement?.id}
         unlocked={selectedAchievement && !selectedAchievement.locked}
-        onUpgrade={() => navigation.navigate('Paywall')}
+        onUpgrade={() => navigation.navigate('Paywall', { source: 'achievement_detail' })}
       />
 
       {/* Transformation Report — full-screen modal with personal
@@ -488,7 +492,7 @@ export default function ProfileScreen({ navigation }) {
         onClose={() => setReportVisible(false)}
         onUpgradeTap={() => {
           setReportVisible(false);
-          navigation.navigate('Paywall');
+          navigation.navigate('Paywall', { source: 'transformation_report' });
         }}
       />
 
@@ -499,7 +503,7 @@ export default function ProfileScreen({ navigation }) {
           streak={currentStreak || 0}
           longestStreak={longestStreak || 0}
           lessonsCompleted={completedLessonsTotal || 0}
-          title={t('share.title', 'Monk Mode 🔥')}
+          title={t('share.title', 'Ascend: Daily Discipline')}
           subtitle={t('profile.shareSubtitle', 'Disiplin. Odak. Tekrar.')}
           streakLabel={t('profile.shareStreakLabel', 'GÜN')}
           longestLabel={t('profile.shareLongestLabel', 'EN UZUN')}
@@ -687,7 +691,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 30,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginBottom: 4,
   },
@@ -739,7 +743,7 @@ const styles = StyleSheet.create({
   statCardValue: {
     fontSize: 30,
     fontWeight: '900',
-    letterSpacing: -0.8,
+    letterSpacing: 0,
     color: LT.onSurface,
   },
   statCardValueAccent: {
@@ -778,7 +782,7 @@ const styles = StyleSheet.create({
   levelTitle: {
     fontSize: 18,
     fontWeight: '900',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginTop: 2,
   },
@@ -789,7 +793,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '900',
     color: LT.primaryContainer,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   levelXPMax: {
     fontSize: 12,
@@ -890,7 +894,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '900',
     color: LT.onSurface,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
 
   // Transformation Report entry CTA — dark gradient card on Profile
@@ -905,7 +909,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 16,
     borderRadius: 16,
-    backgroundColor: '#1E1B4B',
+    backgroundColor: '#B70006',
     borderWidth: 1,
     borderColor: '#FDE047',
   },
@@ -928,7 +932,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '900',
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
 
   // Path Mastery — per-path progress cards. The sunk-cost visualization
@@ -1044,7 +1048,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: LT.onSurface,
     textAlign: 'center',
-    letterSpacing: -0.1,
+    letterSpacing: 0,
   },
   achTitleLocked: {
     color: LT.outline,

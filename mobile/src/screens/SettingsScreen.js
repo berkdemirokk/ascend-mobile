@@ -3,18 +3,20 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   Switch,
   Alert,
   StyleSheet,
-  SafeAreaView,
   Linking,
   StatusBar,
   ActivityIndicator,
   Share,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 
@@ -35,7 +37,7 @@ import {
   getReferralStats,
   codeFromUserId,
 } from '../services/referral';
-import { setMuted, isMuted } from '../services/sounds';
+import { setMuted } from '../services/sounds';
 import {
   getHapticsEnabled,
   setHapticsEnabled as persistHapticsEnabled,
@@ -88,13 +90,13 @@ export default function SettingsScreen({ navigation }) {
   }, [user?.id]);
 
   const handleInvite = async () => {
-    // Prefer the deterministic referral code (MONK-XXXX-YYYY). Falls
+    // Prefer the deterministic referral code (ASCEND-XXXX-YYYY). Falls
     // back to anonUsername for legacy users without a UID — they still
     // get a share-able message, just without a redeemable code.
     const code = (user?.id && codeFromUserId(user.id)) || anonUsername || null;
     const link = code
-      ? `https://ascend.app/?ref=${encodeURIComponent(code)}`
-      : 'https://ascend.app';
+      ? `${LEGAL.PUBLIC_APP_URL}?ref=${encodeURIComponent(code)}`
+      : LEGAL.PUBLIC_APP_URL;
     const message = code
       ? t(
           'settings.inviteShareWithCode',
@@ -103,7 +105,7 @@ export default function SettingsScreen({ navigation }) {
         )
       : t(
           'settings.inviteShare',
-          'Disiplin akademisini birlikte yapalım — Ascend\'i indir, ilk 7 gün premium senden 🔥\n{{link}}',
+          'Disiplin akademisini birlikte yapalım — Ascend\'i indir ve günlük disiplin yolunu başlat.\n{{link}}',
           { link },
         );
     try {
@@ -111,6 +113,20 @@ export default function SettingsScreen({ navigation }) {
     } catch {
       // user dismissed or no share UI available
     }
+  };
+
+  const handlePremiumStatusPress = () => {
+    if (!isPremium) {
+      navigation.navigate('Paywall', { source: 'settings_premium_status' });
+      return;
+    }
+    Alert.alert(
+      t('settings.premiumActiveTitle', 'Premium aktif'),
+      t(
+        'settings.premiumActiveBody',
+        'Premium hesabında aktif. Abonelik yönetimi için App Store hesap ayarlarını kullanabilirsin.',
+      ),
+    );
   };
 
   const handleRedeemCode = () => {
@@ -210,7 +226,7 @@ export default function SettingsScreen({ navigation }) {
           { text: t('common.cancel', 'İptal'), style: 'cancel' },
           {
             text: t('common.goPremium', "Premium'a geç"),
-            onPress: () => navigation.navigate('Paywall'),
+            onPress: () => navigation.navigate('Paywall', { source: 'vacation_mode' }),
           },
         ],
       );
@@ -285,7 +301,13 @@ export default function SettingsScreen({ navigation }) {
         );
       }
     } catch (e) {
-      Alert.alert(t('common.error', 'Hata'), e?.message || t('common.tryAgain'));
+      Alert.alert(
+        t('common.error', 'Hata'),
+        t(
+          'settings.restoreFailedBody',
+          'App Store bağlantısı kurulamadı. İnternetini kontrol edip tekrar dene.',
+        ),
+      );
     } finally {
       setRestoring(false);
     }
@@ -436,12 +458,18 @@ export default function SettingsScreen({ navigation }) {
     );
   };
 
-  // Fallbacks track the current app.json — keep in sync when bumping version.
-  const version = Constants?.expoConfig?.version || '1.0.10';
+  // EAS manages iOS build numbers remotely. Native values reflect the binary
+  // actually installed from TestFlight.
+  const version =
+    Constants?.nativeApplicationVersion ||
+    Constants?.expoConfig?.version ||
+    '1.0.44';
   const buildNumber =
-    Constants?.expoConfig?.ios?.buildNumber ||
+    Constants?.nativeBuildVersion ||
+    Constants?.platform?.ios?.buildNumber ||
     Constants?.manifest?.ios?.buildNumber ||
-    '24';
+    Constants?.expoConfig?.ios?.buildNumber ||
+    '112';
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -450,6 +478,9 @@ export default function SettingsScreen({ navigation }) {
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={t('common.back', 'Geri')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             onPress={() => navigation.goBack()}
             style={styles.headerBack}
           >
@@ -483,6 +514,9 @@ export default function SettingsScreen({ navigation }) {
                   onPress={() => handleChangeLanguage(l.code)}
                   activeOpacity={0.7}
                   style={[styles.row, !isLast && styles.rowBorder]}
+                  accessibilityRole="radio"
+                  accessibilityState={{ selected: active, checked: active }}
+                  accessibilityLabel={l.label}
                 >
                   <View style={styles.rowLeft}>
                     <Text style={styles.flag}>{l.flag}</Text>
@@ -594,8 +628,10 @@ export default function SettingsScreen({ navigation }) {
                           code,
                           tail:
                             referralCount > 0
-                              ? ` · ${referralCount} arkadaşın katıldı`
-                              : ' · ikinize de 10 streak donduru',
+                              ? ` · ${t('settings.inviteJoined', {
+                                  count: referralCount,
+                                })}`
+                              : ` · ${t('settings.inviteReward')}`,
                         },
                       );
                     })()}
@@ -632,7 +668,7 @@ export default function SettingsScreen({ navigation }) {
                   <Text style={styles.rowSub}>
                     {t(
                       'settings.redeemInviteSub',
-                      'Bir arkadaşının kodun varsa, 10 streak donduru kazan',
+                      'Bir arkadaşının kodu varsa, 10 streak donduru kazan',
                     )}
                   </Text>
                 </View>
@@ -645,7 +681,7 @@ export default function SettingsScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('Paywall')}
+              onPress={handlePremiumStatusPress}
               activeOpacity={0.7}
               style={[styles.row, styles.rowBorder]}
             >
@@ -886,7 +922,7 @@ export default function SettingsScreen({ navigation }) {
                 {t('settings.version', 'Versiyon')}
               </Text>
               <Text style={[styles.rowValue, styles.versionText]}>
-                {version} (Build {buildNumber})
+                {version} ({t('settings.build', 'Derleme')} {buildNumber})
               </Text>
             </View>
           </Section>
@@ -895,7 +931,7 @@ export default function SettingsScreen({ navigation }) {
           <View style={styles.footer}>
             <MaterialIcons name="self-improvement" size={56} color={LT.primaryContainer} />
             <Text style={styles.footerText}>
-              MONK MODE • DIGITAL STOICISM
+              {t('auth.tagline', 'Disiplin. Odak. Tekrar.')}
             </Text>
           </View>
 
@@ -941,7 +977,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 20,
     fontWeight: '800',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     marginLeft: 4,
   },
   premiumBadge: {

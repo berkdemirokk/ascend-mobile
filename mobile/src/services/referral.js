@@ -23,21 +23,28 @@
 import { supabase, SUPABASE_CONFIGURED } from './supabase';
 
 const TABLE = 'referrals';
+const REFERRAL_PREFIX = 'ASCEND';
+const LEGACY_REFERRAL_PREFIX = 'MONK';
+
+const suffixFromUserId = (userId) => {
+  if (!userId) return null;
+  const cleaned = String(userId).replace(/-/g, '').toUpperCase();
+  if (cleaned.length < 8) return null;
+  return `${cleaned.slice(0, 4)}-${cleaned.slice(-4)}`;
+};
 
 /**
  * Deterministic code from a user UID. UUID first 4 chars + last 4 chars,
- * uppercase, hyphen-separated, prefixed "MONK-".
- * Example: "MONK-A1B2-9F8E" from UID "a1b2cd34-...-9f8e1234"
+ * uppercase, hyphen-separated, prefixed "ASCEND-".
+ * Example: "ASCEND-A1B2-9F8E" from UID "a1b2cd34-...-9f8e1234"
  *
  * Stable for the lifetime of the account. No randomness — same UID
  * always produces the same code, which matters if a user accidentally
  * opens Invite from two devices (both should see the same code).
  */
 export const codeFromUserId = (userId) => {
-  if (!userId) return null;
-  const cleaned = String(userId).replace(/-/g, '').toUpperCase();
-  if (cleaned.length < 8) return null;
-  return `MONK-${cleaned.slice(0, 4)}-${cleaned.slice(-4)}`;
+  const suffix = suffixFromUserId(userId);
+  return suffix ? `${REFERRAL_PREFIX}-${suffix}` : null;
 };
 
 /**
@@ -50,16 +57,15 @@ export const ensureMyReferral = async (userId) => {
   const code = codeFromUserId(userId);
   if (!code) return null;
   try {
-    // upsert with onConflict on owner_user_id would be cleaner but we
-    // don't have a unique constraint there (intentional — a user could
-    // theoretically rotate codes). For now: select first, insert if
-    // missing.
-    const { data: existing } = await supabase
+    // Keep old MONK-* rows redeemable, but always ensure the current
+    // displayed code is ASCEND-* so new shares match the product brand.
+    const { data: existingCurrent } = await supabase
       .from(TABLE)
       .select('code')
-      .eq('owner_user_id', userId)
+      .eq('code', code)
       .maybeSingle();
-    if (existing?.code) return existing.code;
+    if (existingCurrent?.code) return existingCurrent.code;
+
     const { error } = await supabase.from(TABLE).insert({
       code,
       owner_user_id: userId,
@@ -93,13 +99,24 @@ export const redeemReferralCode = async (rawCode, userId) => {
   if (!code || code.length < 8) return { ok: false, reason: 'invalid' };
 
   try {
-    // Find the row.
-    const { data: row, error: findErr } = await supabase
+    // Find the row. New ASCEND-* codes are preferred; legacy MONK-*
+    // fallback only runs if the new branded row does not exist yet.
+    let { data: row, error: findErr } = await supabase
       .from(TABLE)
       .select('id, owner_user_id, redeemed_by')
       .eq('code', code)
       .maybeSingle();
     if (findErr) return { ok: false, reason: 'error' };
+    if (!row && code.startsWith(`${REFERRAL_PREFIX}-`)) {
+      const legacyCode = `${LEGACY_REFERRAL_PREFIX}-${code.slice(REFERRAL_PREFIX.length + 1)}`;
+      const legacyResult = await supabase
+        .from(TABLE)
+        .select('id, owner_user_id, redeemed_by')
+        .eq('code', legacyCode)
+        .maybeSingle();
+      if (legacyResult.error) return { ok: false, reason: 'error' };
+      row = legacyResult.data;
+    }
     if (!row) return { ok: false, reason: 'invalid' };
     if (row.owner_user_id === userId) return { ok: false, reason: 'own_code' };
     if (row.redeemed_by) return { ok: false, reason: 'already_redeemed' };
@@ -157,12 +174,12 @@ export const getReferralStats = async (userId) => {
  * inviters were silently shortchanged while redeemers got their +10
  * freezes. This function closes that gap.
  *
- * Returns { granted: number } — how many rewards we marked as paid out
- * (caller should dispatch once per item). On any error or no-rows-
- * found, returns { granted: 0 } and never throws.
+ * Returns { granted: number, ids: string[] }. The caller grants locally
+ * first, then marks rows paid after local persistence has had a chance to
+ * complete. On any error or no rows, returns an empty result.
  */
 export const checkReferralRewards = async (userId) => {
-  if (!SUPABASE_CONFIGURED || !userId) return { granted: 0 };
+  if (!SUPABASE_CONFIGURED || !userId) return { granted: 0, ids: [] };
   try {
     // Pull all redeemed rows owned by this user where the owner reward
     // hasn't been marked paid yet.
@@ -176,27 +193,35 @@ export const checkReferralRewards = async (userId) => {
       // Most likely: the owner_rewarded_at column doesn't exist yet on
       // older schemas. Log and bail — don't crash the app.
       console.warn('[referral] reward check fetch error:', fetchErr.message);
-      return { granted: 0 };
+      return { granted: 0, ids: [] };
     }
-    if (!rows || rows.length === 0) return { granted: 0 };
+    if (!rows || rows.length === 0) return { granted: 0, ids: [] };
 
-    // Mark all of them as rewarded in one round-trip. We do this BEFORE
-    // dispatching the local reward so that an interrupted dispatch can
-    // be re-run safely (the marker is the source of truth, not the
-    // local counter).
-    const nowIso = new Date().toISOString();
-    const ids = rows.map((r) => r.id);
-    const { error: updateErr } = await supabase
-      .from(TABLE)
-      .update({ owner_rewarded_at: nowIso })
-      .in('id', ids);
-    if (updateErr) {
-      console.warn('[referral] reward mark error:', updateErr.message);
-      return { granted: 0 };
-    }
-    return { granted: rows.length };
+    // Return row IDs without marking them yet. AppContext grants locally
+    // first, waits for the debounced save window, then marks them paid.
+    const ids = rows.map((r) => r.id).filter(Boolean);
+    return { granted: ids.length, ids };
   } catch (e) {
     console.warn('[referral] checkReferralRewards exception:', e?.message);
-    return { granted: 0 };
+    return { granted: 0, ids: [] };
+  }
+};
+
+export const markReferralRewardsPaid = async (ids = []) => {
+  const cleanIds = Array.from(new Set(ids.filter(Boolean)));
+  if (!SUPABASE_CONFIGURED || cleanIds.length === 0) return false;
+  try {
+    const { error } = await supabase
+      .from(TABLE)
+      .update({ owner_rewarded_at: new Date().toISOString() })
+      .in('id', cleanIds);
+    if (error) {
+      console.warn('[referral] reward mark error:', error.message);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.warn('[referral] markReferralRewardsPaid exception:', e?.message);
+    return false;
   }
 };

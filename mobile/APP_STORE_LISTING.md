@@ -1,461 +1,145 @@
-# App Store Listing — Ascend: Monk Mode
+﻿# App Store Listing - Ascend: Daily Discipline
 
-Hazır kopyala-yapıştır metinler. ASC → My Apps → Ascend → App Store →
-Türkçe / English versiyonlarına yapıştır.
+Current source of truth for App Store Connect metadata.
 
----
+App version: 1.0.44
+Build: managed remotely by EAS
+Bundle ID: com.ascend.growth
+App Store ID: 6761607644
+Languages: Turkish and English
 
-## App Name (max 30 chars)
+## App Name
 
-- **TR:** `Ascend: Monk Mode`
-- **EN:** `Ascend: Monk Mode`
+TR: `Ascend: Daily Discipline`
+EN: `Ascend: Daily Discipline`
 
-## Subtitle (max 30 chars)
+## Subtitle
 
-- **TR:** `Disiplin & alışkanlık rutini` (28 chars — ASO-optimized)
-- **EN:** `Discipline & habit routine` (26 chars)
+TR: `Disiplin ve aliskanlik`
+EN: `Discipline & habit routine`
 
-> ASO audit (May 2026): subtitle hits the search index. "Sprint" and
-> "alev" are creative-copy words — they get no search lift in TR. The
-> long-tail searches that actually convert in this category are
-> `disiplin`, `alışkanlık`, `rutin`, `odak`, `21 gün`. Subtitle now
-> carries the two highest-volume of those (`disiplin` + `alışkanlık`)
-> while still reading as a clean one-line promise.
+## Promotional Text
 
----
-
-## Promotional Text (max 170 chars — değiştirilebilir submission gerek olmadan)
-
-**TR:**
+TR:
 ```
-50 günde yeni sen. 5 yol × 50 ders. Disiplin müfredatı, oyunlaştırılmış. Bugün başla, alev sönmesin. 🔥
+Her gun 5 dakikalik derslerle odak, rutin ve disiplin kasini gelistir. Streakini koru, bugunun dersini bitir.
 ```
 
-**EN:**
+EN:
 ```
-A new you in 50 days. 5 paths × 50 lessons. The discipline curriculum, gamified. Start today, keep the flame alive. 🔥
-```
-
----
-
-## Description (max 4000 chars)
-
-### Türkçe
-
-```
-ASCEND — DİSİPLİN AKADEMİSİ
-
-Modern hayat seni dağıtıyorsa, bu uygulama senin yeniden toplanmanı sağlar.
-
-Ascend: Monk Mode, Duolingo'nun dil öğretme yöntemini stoik disipline taşır. Her gün 5 dakika. Her ders bir alışkanlığı kazanmanı sağlar. Her gün serini koru, alevi söndürme.
-
-🔥 5 YOL, 250 DERS
-
-Disiplin yolculuğun 5 ayrı patikadan oluşur:
-• DOPAMİN DETOKSU — Dijital gürültüden uzaklaş, gerçek dünyaya dön
-• SESSİZ SABAH — Erken kalk, dünya uyurken kazan
-• ZİHİN DİSİPLİNİ — Düşünceleri yönet, odağı kilitle
-• BEDEN DİSİPLİNİ — Hareket, beslenme, uyku temelleri
-• PARA DİSİPLİNİ — Birikim alışkanlığı, akıllı harcama
-
-Her yol 50 ders. Her ders 5 dakika. Toplam 250 ders.
-
-🎯 NASIL ÇALIŞIR?
-
-1) Bir ders aç — kısa öğretim oku (~150 kelime)
-2) 2 quiz sorusunu cevapla
-3) Bugün için bir aksiyon taahhüt et
-4) Yansımanı yaz (opsiyonel)
-5) XP kazan, seviyeni yükselt, rütbeni kazan
-
-🏆 OYUNLAŞTIRMA
-
-• Streak (gün sayısı) — Her gün ders bitir, alev devam etsin
-• Streak Onarım Jetonu — Bir gün kaçırdıysan, jeton seriyi otomatik kurtarır
-• Kalpler — Yanlış cevapta kalp kaybedersin (30 dk'da yenilenir, ya da reklam izle)
-• Seviyeler — XP toplayarak Beginner → Master → Legendary
-• Rütbeler — Yol bitirdikçe açılan rütbeler
-• Başarımlar — 30+ farklı başarım
-
-🎧 SESLİ DİNLE
-
-Yürürken, banyoda, otobüste — her dersin teaching kısmını sesli dinleyebilirsin. Tek tıkla başlar, tek tıkla durur. Cihazın native sesi (ekstra indirme yok).
-
-📊 HAFTALIK ÖZET
-
-Stats sekmesinde son 7 günün özeti: tamamladığın ders sayısı, aktif gün sayısı, en yoğun günün — hepsi tek bakışta.
-
-✨ PREMIUM (opsiyonel)
-
-Ücretsiz: ilk 5 ders açık, reklamlı, bekleyerek kalp dolar
-Premium: tüm 250 ders, reklamsız, sınırsız kalp, 12 streak onarım jetonu/yıl, detaylı istatistikler
-
-🌐 İKİ DİL
-
-Türkçe ve İngilizce tam çeviri. Telefonun diline göre otomatik açılır, ayarlardan değiştirilebilir.
-
-🔒 GİZLİLİK
-
-• Apple Sign-In ile giriş (anonim destekli)
-• Verilerini cihazda + Supabase cloud'da senkronize tutar
-• Hesabını istediğin zaman ayarlardan tamamen sil
-• Reklam takibi izni opsiyonel — reddetsen de uygulama çalışır
-
-✅ App Store guideline 5.1.1(v) ile tam uyumlu hesap silme
-
-DAHA FAZLA SUSMA. BUGÜN BAŞLA.
+Build discipline with 5-minute daily lessons. Protect your streak, finish today's lesson, and keep your routine alive.
 ```
 
-### English
+## Description - Turkish
 
 ```
-ASCEND — THE DISCIPLINE ACADEMY
+Ascend: Daily Discipline, odak ve aliskanlik gelistirmek icin tasarlanmis gunluk ders uygulamasidir.
 
-If modern life is scattering your focus, this app puts you back together.
+Her gun kisa bir ders acarsin, mini quizleri cevaplarsin, bugun icin tek bir aksiyon secersin ve istersen yansimani yazarsin.
 
-Ascend: Monk Mode brings Duolingo's daily-lesson method to stoic discipline. Five minutes a day. One habit at a time. Maintain your streak. Keep the flame alive.
+Neler var?
+- 5 disiplin yolu
+- 250 ders
+- Gunluk streak
+- XP, seviye ve basarimlar
+- Kalp sistemi: yeni kullanıcı koruma süresinden sonra ilk kaybın ardından tüm kalpler 15 dakikada yenilenir
+- Yazili yansimalar
+- Opsiyonel sesli yansima kaydi
+- Turkish ve English destek
 
-🔥 5 PATHS, 250 LESSONS
+Premium ile:
+- Tüm yollar açılır
+- Sinirsiz kalp
+- Reklamsiz deneyim
+- Cihazlar arasi senkron
+- Streak onarim jetonlari
 
-Your discipline journey unfolds across 5 paths:
-• DOPAMINE DETOX — Step away from digital noise, return to the real world
-• SILENT MORNING — Rise early, win while the world sleeps
-• MIND DISCIPLINE — Master your thoughts, lock in your focus
-• BODY DISCIPLINE — Movement, nutrition, sleep — the basics
-• MONEY DISCIPLINE — Savings habit, intentional spending
-
-Each path is 50 lessons. Each lesson takes 5 minutes. 250 lessons total.
-
-🎯 HOW IT WORKS
-
-1) Open a lesson — read short teaching (~150 words)
-2) Answer 2 quiz questions
-3) Commit to one action for today
-4) Write your reflection (optional)
-5) Earn XP, level up, unlock ranks
-
-🏆 GAMIFICATION
-
-• Streak (day counter) — Finish a lesson every day, keep the flame
-• Streak repair token — Miss a day? A token saves your streak automatically
-• Hearts — Lose one on wrong answer (refills in 30 min, or watch an ad)
-• Levels — Beginner → Master → Legendary via XP
-• Ranks — Earn ranks as you complete paths
-• Achievements — 30+ achievements to unlock
-
-🎧 LISTEN ON THE GO
-
-Walking, in the shower, on the bus — every lesson's teaching can be played
-aloud with one tap. Uses your device's native voice (no extra download).
-
-📊 WEEKLY RECAP
-
-The Stats tab shows your last 7 days at a glance: lessons completed,
-active days, your strongest day — all in one card.
-
-✨ PREMIUM (optional)
-
-Free: first 5 lessons unlocked, ads supported, hearts auto-refill
-Premium: all 250 lessons, ad-free, unlimited hearts, 12 streak repair tokens/year, detailed stats
-
-🌐 TWO LANGUAGES
-
-Full Turkish and English translations. Auto-detects your phone's language. Switch anytime in settings.
-
-🔒 PRIVACY
-
-• Sign in with Apple (anonymous accounts supported)
-• Data synced between device and Supabase cloud
-• Delete your account fully from in-app settings, anytime
-• Ad tracking is opt-in — app works whether you allow or decline
-
-✅ Fully compliant with App Store guideline 5.1.1(v) account deletion
-
-STOP SCROLLING. START WALKING THE PATH.
+Ascend bir terapi veya tibbi uygulama degildir. Amaci gunluk rutin, odak ve aliskanlik takibini kolaylastirmaktir.
 ```
 
----
-
-## Keywords (max 100 chars TOTAL, comma-separated, no spaces after commas)
-
-**TR:**
-```
-disiplin,alışkanlık,odak,rutin,sprint,21gün,meditasyon,nofap,stoik,kişisel,gelişim,hedef,seri
-```
-(93 chars) — ASO audit (May 2026):
-- `monk` çıkarıldı: app name'de zaten geçiyor.
-- `duolingo` çıkarıldı: 3rd-party trademark → reject riski.
-- `streak` → `seri`: Türk kullanıcı seri arar.
-- `nofap` + `stoik` + `meditasyon` + `21gün` eklendi: monk-mode kitlesinin
-  uzun-kuyruk gerçek aramaları.
-- `kişiselgelişim` → `kişisel,gelişim` ayrı token (App Store index token
-  bazlı; 2 ayrı match avantajı).
-
-**EN:**
-```
-discipline,habit,stoic,detox,focus,streak,morning,routine,mindful,journal,nofap
-```
-(78 chars) — `monk` çıkarıldı (name'de var), `nofap` eklendi.
-
----
-
-## What's New in This Version (max 4000 chars per locale)
-
-### v1.0.30 (TR) — Latest
+## Description - English
 
 ```
-🎯 Kimlik Arketipleri — Zen Müderris, Sessiz Savaşçı, Demir Disiplinli. Seçimin tüm akışı şekillendirir.
-🃏 Günlük Kart Destesi — Her sabah 3 dakikalık stoik ritüel. Aurelius, Newport, Naval, Munger.
-📊 30 Gün Ölçüm — Başlangıç + post-assessment, gerçek puan farkı. Paylaşılabilir.
-🔥 Momentum Loop — Üst üste ders yaparsan +25/+50/+75/+100 bonus XP.
-💌 Geleceğin Senden Mektup — Nadir bir an. Bir derste rastgele gelir.
-🛡️ Streak Onarım — Reklam izle, zincirini geri kazan.
-🌙 Akşam Özetin — Günün sonunda gerçek ölçüm.
-📖 Çok Sayfalı Ders — Her ders 4 katman (sahne / bilim / mekanizma / pratik).
-🧠 Quiz Derinliği — Her cevabın altında konuya bağlam + nasıl uygula.
-🐛 Performans, sync ve ses oynatma düzeltmeleri.
+Ascend: Daily Discipline is a daily lesson app for focus, routines, and habit-building.
+
+Open one short lesson each day, answer quick quizzes, commit to one action, and optionally write or record a reflection.
+
+Included:
+- 5 discipline paths
+- 250 lessons
+- Daily streaks
+- XP, levels, and achievements
+- Hearts system: after the new-user grace period, all hearts refill 15 minutes after the first loss
+- Written reflections
+- Optional local voice reflections
+- Turkish and English support
+
+With Premium:
+- Unlock all paths
+- Unlimited hearts
+- Ad-free experience
+- Cross-device sync
+- Streak repair tokens
+
+Ascend is not therapy or medical advice. It is a daily routine and habit-training tool.
 ```
 
-### v1.0.30 (EN) — Latest
+## Keywords
 
+TR:
 ```
-🎯 Identity Archetypes — Zen Master, Silent Warrior, Iron Disciplined. Your choice shapes the whole experience.
-🃏 Daily Card Deck — Stoic 3-minute morning ritual. Aurelius, Newport, Naval, Munger.
-📊 30-Day Measurement — Baseline + post-assessment, real score delta. Shareable.
-🔥 Momentum Loop — Stack lessons in a session: +25/+50/+75/+100 bonus XP.
-💌 Letter from Future Self — A rare moment. Appears at random.
-🛡️ Streak Repair — Watch ad, restore your streak.
-🌙 Evening Summary — Real measurement at day's end.
-📖 Multi-Page Lesson — Each lesson now 4 layers (scene / science / mechanism / practice).
-🧠 Quiz Depth — Context + how-to-apply under every answer.
-🐛 Performance, sync, and audio fixes.
+disiplin,aliskanlik,odak,rutin,streak,stoik,hedef,gelisim,sabah,dopamin
 ```
 
-### v1.0.10 (TR)
-
+EN:
 ```
-🎯 Sana özel onboarding — 3 hızlı soruyla kişisel plan
-🛡️ Streak Onarım Jetonu — Bir gün kaçırırsan, jeton seriyi korur
-🎧 Sesli ders — Her dersi tek tıkla dinle (yürürken, banyoda)
-📊 Haftalık özet — Son 7 günün tek bakışta
-🐛 Daha hızlı, daha kararlı, daha sessiz hatalar
+discipline,habit,focus,routine,streak,stoic,goals,morning,detox,journal
 ```
 
-### v1.0.10 (EN)
+## What's New
 
+TR:
 ```
-🎯 Personal onboarding — 3 quick questions for your tailored plan
-🛡️ Streak Repair Token — Miss a day, a token saves your streak
-🎧 Audio lessons — Tap to listen on the go (walking, shower)
-📊 Weekly recap — Your last 7 days at a glance
-🐛 Faster, more stable, quieter errors
+Ascend artik Daily Discipline markasiyla daha net bir gunluk disiplin deneyimi sunuyor. TestFlight release kontrolleri guclendirildi, gizlilik metinleri guncellendi ve paywall/abonelik akisi daha iyi olculur hale getirildi.
 ```
 
-### v1.0.9 (TR)
-
+EN:
 ```
-🎨 Yeni tema: kırmızı + beyaz, brutalist editorial stil
-🏠 Yeni Home tab — günlük dashboard
-📊 Yenilenmiş Stats tab — yol ilerlemesi + rekorlar
-🔥 Streak heatmap — son 8 hafta görsel olarak
-👑 Yeni icon — kırmızı keşiş + ok yukarı
-✅ Hesap silme tam server tarafından (Apple uyumlu)
-🔔 Bildirim izni doğru zamanda istenir (onboarding sonu)
-📜 Paywall'da Gizlilik + Şartlar linkleri
-🐛 Çeşitli iyileştirmeler ve hata düzeltmeleri
+Ascend now uses the clearer Daily Discipline positioning. Release checks are stronger, privacy/support copy is updated, and the paywall/subscription funnel is easier to measure.
 ```
 
-### v1.0.9 (EN)
+## Screenshots Priority
 
-```
-🎨 New theme: red + white, brutalist editorial style
-🏠 New Home tab — daily dashboard
-📊 Refreshed Stats tab — path progress + records
-🔥 Streak heatmap — last 8 weeks visual
-👑 New icon — red monk + arrow up
-✅ Account deletion now fully server-side (Apple compliant)
-🔔 Notification permission requested at the right time (after onboarding)
-📜 Privacy + Terms links on paywall
-🐛 Various improvements and bug fixes
-```
+1. Today screen / next lesson: "Bugunun dersini bitir"
+2. Streak + progress: "Serini koru"
+3. Five paths: "5 disiplin yolu"
+4. Lesson flow: teaching -> quiz -> action
+5. Premium: all paths, unlimited hearts, ad-free
 
----
+## Subscription Products
 
-## App Store Categories
+Monthly: `com.ascend.premium.monthly`
+Yearly: `com.ascend.premium.yearly`
+RevenueCat entitlement: `premium`
+RevenueCat offering: `default`
 
-- **Primary:** Lifestyle
-- **Secondary:** Health & Fitness
+## Privacy Nutrition Notes
 
-ASO audit (May 2026): Health & Fitness TR'de Adidas Running, Yazio,
-Apple Health, Endel, Headspace dominant — yeni app görünürlük şansı
-neredeyse sıfır. Lifestyle TR top 100 çok daha boş (mostly burç +
-dekor app'leri), top 50'ye girme şansı ~10x daha yüksek. Productivity
-(Notion + Forest dominant) mid-tier boş ama Lifestyle daha avantajlı.
-Disiplin = ritüel + kimlik framing'i Lifestyle'a doğal olarak oturur.
+Data linked to user:
+- Email address
+- User ID
+- Purchase history
+- Product interaction
+- Written user content if signed in and sync is enabled
 
----
+Data not linked / tracking:
+- Device ID and advertising data only for ads, subject to ATT.
 
-## Age Rating Questionnaire
+Voice reflections:
+- Optional.
+- Raw audio files stay local on device.
+- Audio is not synced to Supabase.
 
-ASC → App Information → Age Rating → Edit. **12+** olmalı:
+## Review Notes Summary
 
-| Soru | Cevap |
-|------|-------|
-| Cartoon or Fantasy Violence | None |
-| Realistic Violence | None |
-| Sexual Content or Nudity | None |
-| Profanity or Crude Humor | None |
-| Alcohol, Tobacco, or Drug Use References | **Infrequent/Mild** ⚠️ (Alkol dersi yüzünden) |
-| Mature/Suggestive Themes | None |
-| Horror/Fear Themes | None |
-| Medical/Treatment Information | None |
-| Gambling and Contests | None |
-| Unrestricted Web Access | No |
-| Made for Kids | No |
-
-Sonuç: **12+**
-
----
-
-## Privacy Nutrition Labels
-
-ASC → My Apps → Ascend → App Privacy. Şu kategorilerde "Yes" işaretlenmeli:
-
-### Data Collected and Linked to User
-
-- **Identifiers** → User ID (Supabase auth.users.id)
-- **Contact Info** → Email Address (auth)
-- **User Content** → Other User Content (lesson reflections)
-
-### Data Collected and NOT Linked to User
-
-- **Diagnostics** → Crash Data (if you enable Sentry/etc — şu an yok, atla)
-- **Usage Data** → Product Interaction (lesson completions, XP, streaks — saved locally + cloud)
-
-### Data Used to Track You
-
-- **Identifiers** → IDFA (sadece kullanıcı ATT izin verirse, AdMob için)
-
-### Privacy Policy URL
-
-- `https://berkdemirokk.github.io/ascend-ai-growth-coach/privacy.html`
-
----
-
-## Subscription Localizations (ASC → Subscriptions)
-
-### Monthly (`com.ascend.premium.monthly`)
-
-**English (U.S.):**
-- Display Name: `Premium Monthly`
-- Description: `Unlock all 5 paths, remove ads, get streak freezes. Cancel anytime.`
-
-**Turkish:**
-- Display Name: `Premium Aylık`
-- Description: `5 yolun tamamı, reklamsız, streak donduruculari. İstediğin zaman iptal et.`
-
-### Yearly (`com.ascend.premium.yearly`)
-
-**English (U.S.):**
-- Display Name: `Premium Yearly`
-- Description: `Unlock all 5 paths, remove ads, get streak freezes. Save 30% vs monthly.`
-
-**Turkish:**
-- Display Name: `Premium Yıllık`
-- Description: `5 yolun tamamı, reklamsız, streak donduruculari. Aylığa göre %30 tasarruf.`
-
----
-
-## Subscription Group Display Name
-
-- **English:** `Ascend Premium`
-- **Turkish:** `Ascend Premium`
-
----
-
-## Sandbox Tester Setup
-
-ASC → Users and Access → Sandbox → Test Accounts → **+**
-
-| Field | Value |
-|-------|-------|
-| First Name | `Ascend` |
-| Last Name | `Tester` |
-| Email | `ascend.tester.001@icloud.com` (fake — Apple kontrol etmiyor) |
-| Password | (8+ char, harf/rakam/sembol — somewhere kaydet) |
-| Date of Birth | `01/01/1990` |
-| App Store Country | `Turkey` |
-
-iPhone'da:
-1. Settings → App Store → en alta kaydır → **Sandbox Account** → "Sign In"
-2. Yukarıdaki tester ile gir
-3. Apple ID'nle ASLA değil
-
----
-
-## App Review Information (ASC → App Review)
-
-### Sign-In Required
-
-- ✅ Yes — Apple needs to test the app
-
-### Reviewer Demo Account
-
-- Email: `apple.review@ascend.app` (oluştur, Settings → Notifications altında devre dışı bırak)
-- Password: (8+ char, basic)
-
-### Notes for Reviewer
-
-```
-Hi Apple Reviewer,
-
-Thanks for reviewing Ascend: Monk Mode.
-
-GETTING STARTED:
-1. On the Welcome screen, tap "Continue with Email" and use the demo account.
-   (Or "Continue as Guest" — no account needed for evaluation.)
-2. Onboarding: pick any path (we recommend "Mind Discipline" for variety).
-3. Tap the first lesson card to start.
-4. Each lesson = 5 questions, ~3-5 minutes total.
-5. After 1 lesson you'll see the ATT prompt and a possible review prompt.
-
-KEY FEATURES TO TEST:
-- Path screen: 5 paths, 50 lessons each. First 5 lessons free, rest premium.
-- Lesson flow: teaching text → 2 quiz questions → action commit → optional reflection
-- Hearts system: 5 hearts, lose 1 per wrong answer, regenerate over 24h. Free path: watch rewarded ad to refill.
-- Premium paywall (lesson 6+): Monthly $4.99 / Yearly $39.99 (USD equivalent shown for TR locale).
-- Account deletion: Settings → Danger Zone → "Delete Account" — fully server-side via Supabase Edge Function.
-
-THINGS TO NOTE:
-- AdMob: We use Google's test ad unit IDs in development; production submission uses real IDs but a brand-new account may not have inventory yet (showing as "no fill" is expected for first 24-72h).
-- Sandbox testing: Use the sandbox tester credentials below. Real subscriptions in TestFlight don't charge.
-- Apple Sign-In: Available on Welcome screen — if you prefer, use Apple Sign-In with a sandbox Apple ID.
-
-CONTACT:
-Email: berkdemirok@icloud.com
-Response time: <24h
-
-Thank you!
-- Berk Demirok
-```
-
----
-
-## Final Checklist Before Submit
-
-- [ ] App icon: 1024×1024, no transparency ✓ (var)
-- [ ] Screenshots: 5-10 per locale (TR + EN), 6.5"+ ✗ (sen çek Build 24'ten)
-- [ ] App preview video: opsiyonel ✗ (yok, atla)
-- [ ] Privacy policy URL: ✓ (privacy.html)
-- [ ] Terms of service URL: ✓ (terms.html)
-- [ ] Support URL: ✗ (mailto: berkdemirok@icloud.com kullan)
-- [ ] Marketing URL: opsiyonel ✗
-- [ ] Categories: Lifestyle (primary) + Health & Fitness (secondary) ✗ (set et)
-- [ ] Age rating: 12+ ✗ (set et)
-- [ ] Privacy nutrition labels: ✗ (yukarıdakine göre doldur)
-- [ ] In-App Purchases: 2 subs Ready to Submit ✗ (Yearly hala Missing)
-- [ ] Sandbox tester: ✗ (oluştur)
-- [x] Apple Edge Function deployed: ✓ (delete-user ACTIVE v3, 2026-05-11; supabase functions list teyit)
-- [ ] Real device test (Build 24): ✗ (push edilmedi henüz)
-
-User'ın yapacağı: yukarıdaki "✗" işaretli her şey.
+Use `APP_REVIEW_INFO.md` for App Review notes. Use `TEST_PLAN_v1.0.44.md` before submission.

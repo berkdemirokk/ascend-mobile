@@ -21,7 +21,7 @@
       "autoIncrement": true,
       "ios": {
         "resourceClass": "m-medium",
-        "image": "latest"
+        "image": "macos-tahoe-26.5-xcode-26.6"
       }
     }
   },
@@ -30,10 +30,7 @@
       "ios": {
         "appleId": "berkkdemirok@gmail.com",
         "ascAppId": "6761607644",
-        "appleTeamId": "44B88YK392",
-        "ascApiKeyPath": "./credentials/AuthKey_J7J35T25CM.p8",
-        "ascApiKeyIssuerId": "875b8c0f-3adb-4175-b5d4-334257c02837",
-        "ascApiKeyId": "J7J35T25CM"
+        "appleTeamId": "44B88YK392"
       }
     }
   }

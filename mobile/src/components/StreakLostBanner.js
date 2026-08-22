@@ -20,9 +20,11 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 import { LT } from '../config/lightTheme';
 
@@ -31,7 +33,8 @@ export default function StreakLostBanner({
   onRestart,
   onDismiss,
   onRepair,
-  repairAvailable, // false = ad SDK not ready; hide the repair CTA
+  repairAvailable, // false = hide the repair CTA for this user/context
+  repairLoading = false,
 }) {
   const { t } = useTranslation();
   if (!info || !info.lost) return null;
@@ -50,6 +53,8 @@ export default function StreakLostBanner({
           {t('streakLost.label', 'ZİNCİRİN KIRILDI')}
         </Text>
         <TouchableOpacity
+          accessibilityRole="button"
+          accessibilityLabel={t('common.close', 'Kapat')}
           onPress={onDismiss}
           hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
           style={styles.closeBtn}
@@ -68,12 +73,12 @@ export default function StreakLostBanner({
         {previousLongest && previousLongest > lost
           ? t(
               'streakLost.bodyWithRecord',
-              'Geri dönenler %47. Sen daha önce {{best}} gün gittin — bu kişi hala sende. Bugün başla.',
+              'Daha önce {{best}} gün gittin. Bu ritim sende var; bugün tek dersle yeniden başla.',
               { best: previousLongest },
             )
           : t(
               'streakLost.body',
-              'Geri dönenler %47. Bugün başla — yarın sayı 2 olur.',
+              'Zincir kırıldı ama sistem bitmedi. Bugün tek dersle yeniden başla; yarın sayı 2 olur.',
             )}
       </Text>
 
@@ -83,13 +88,23 @@ export default function StreakLostBanner({
           the lost streak back as if yesterday had been completed. */}
       {repairAvailable ? (
         <TouchableOpacity
-          style={styles.repairCta}
+          style={[styles.repairCta, repairLoading && styles.repairCtaDisabled]}
           onPress={onRepair}
+          disabled={repairLoading}
           activeOpacity={0.85}
         >
-          <MaterialIcons name="restore" size={16} color={LT.primary} />
-          <Text style={styles.repairCtaText}>
-            {t(
+          <MaterialIcons
+            name={repairLoading ? 'hourglass-empty' : 'restore'}
+            size={16}
+            color={repairLoading ? LT.onSurfaceVariant : LT.primary}
+          />
+          <Text
+            style={[
+              styles.repairCtaText,
+              repairLoading && styles.repairCtaTextDisabled,
+            ]}
+          >
+            {repairLoading ? t('streakLost.repairLoading', 'PREPARING AD...') : t(
               'streakLost.repairCta',
               'REKLAM İZLE → ZİNCİRİNİ GERİ KAZAN',
             )}
@@ -186,5 +201,13 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0.6,
     color: LT.primary,
+  },
+  repairCtaDisabled: {
+    borderColor: LT.outlineVariant,
+    backgroundColor: LT.surfaceContainer,
+    opacity: 0.75,
+  },
+  repairCtaTextDisabled: {
+    color: LT.onSurfaceVariant,
   },
 });

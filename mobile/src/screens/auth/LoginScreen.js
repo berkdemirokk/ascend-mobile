@@ -3,8 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
   Platform,
@@ -13,15 +11,18 @@ import {
   Alert,
   StatusBar,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
-import { useAuth } from '../../contexts/AuthContext';
-import { supabase } from '../../services/supabase';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
+import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { LT } from '../../config/lightTheme';
 
 export default function LoginScreen({ navigation }) {
   const { t } = useTranslation();
-  const { signIn } = useAuth();
+  const { resendConfirmation, signIn } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -34,13 +35,21 @@ export default function LoginScreen({ navigation }) {
       Alert.alert(t('common.error'), t('auth.invalidEmail', 'Geçerli bir e-posta gir'));
       return;
     }
-    if (password.length < 6) {
-      Alert.alert(t('common.error'), t('auth.passwordTooShort', 'Şifre en az 6 karakter olmalı'));
+    // Do not apply the new-account password policy here: existing users may
+    // still have legacy six-character passwords and must remain able to sign in.
+    if (!password) {
+      Alert.alert(t('common.error'), t('auth.passwordRequired', 'Şifreni gir'));
       return;
     }
     setLoading(true);
-    const { error } = await signIn({ email, password });
-    setLoading(false);
+    let error = null;
+    try {
+      ({ error } = await signIn({ email, password }));
+    } catch (e) {
+      error = e;
+    } finally {
+      setLoading(false);
+    }
     if (error) {
       const msg = error.message || '';
       // Special-case "email not confirmed" — the user just needs to
@@ -62,7 +71,8 @@ export default function LoginScreen({ navigation }) {
               ),
               onPress: async () => {
                 try {
-                  await supabase.auth.resend({ type: 'signup', email });
+                  const { error: resendError } = await resendConfirmation(email);
+                  if (resendError) throw resendError;
                   Alert.alert(
                     t('common.done', 'Tamam'),
                     t('auth.resendSent', 'Doğrulama maili yeniden gönderildi.'),
@@ -70,7 +80,7 @@ export default function LoginScreen({ navigation }) {
                 } catch (e) {
                   Alert.alert(
                     t('common.error', 'Hata'),
-                    e?.message || t('common.tryAgain', 'Tekrar dene'),
+                    getAuthErrorMessage(t, e, 'common.tryAgain'),
                   );
                 }
               },
@@ -79,7 +89,10 @@ export default function LoginScreen({ navigation }) {
         );
         return;
       }
-      Alert.alert(t('common.error'), msg || t('auth.invalidCredentials'));
+      Alert.alert(
+        t('common.error'),
+        getAuthErrorMessage(t, error, 'auth.invalidCredentials'),
+      );
     }
   };
 
@@ -101,6 +114,9 @@ export default function LoginScreen({ navigation }) {
           {/* Top bar */}
           <View style={styles.topBar}>
             <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityLabel={t('common.back', 'Geri')}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               onPress={() => navigation.goBack()}
               style={styles.backBtn}
             >
@@ -167,6 +183,10 @@ export default function LoginScreen({ navigation }) {
                   style={styles.input}
                 />
                 <TouchableOpacity
+                  accessibilityRole="button"
+                  accessibilityLabel={showPassword
+                    ? t('auth.hidePassword', 'Şifreyi gizle')
+                    : t('auth.showPassword', 'Şifreyi göster')}
                   onPress={() => setShowPassword(!showPassword)}
                   hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                 >
@@ -273,7 +293,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 28,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     textAlign: 'center',
     marginBottom: 8,
   },

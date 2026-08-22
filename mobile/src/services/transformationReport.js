@@ -125,7 +125,7 @@ export const buildTransformationReport = (state) => {
     recentMood,
     moodShifted,
 
-    // Time-of-day inference (TODO — needs hour granularity in logs)
+    // Time-of-day inference is hidden until hour-granular lesson logs exist.
     activeHourLabel,
   };
 };

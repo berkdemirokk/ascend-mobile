@@ -3,22 +3,31 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   TextInput,
   StyleSheet,
-  SafeAreaView,
   Animated,
   Easing,
   Image,
   StatusBar,
+  Alert,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import * as Haptics from 'expo-haptics';
+import { RecordingPresets, useAudioRecorder } from 'expo-audio';
 
 import { useApp } from '../contexts/AppContext';
-import { getPathById, getLessonById, getQuizForLesson } from '../data/paths';
+import {
+  getPathById,
+  getLessonById,
+  getLessonAccessState,
+  getQuizForLesson,
+} from '../data/paths';
 import { showInterstitial, shouldShowAd } from '../services/ads';
 import MilestoneModal, { isMilestone } from '../components/MilestoneModal';
 import ConfettiBurst from '../components/ConfettiBurst';
@@ -32,6 +41,7 @@ import { speak as ttsSpeak, stop as ttsStop } from '../services/tts';
 import {
   startRecording,
   stopRecording,
+  cancelRecording,
   playRecording,
 } from '../services/voiceRecording';
 import { getCurrentLanguage } from '../i18n';
@@ -41,7 +51,7 @@ import { maybeTriggerPostLessonPaywall } from '../services/paywallTrigger';
 import { mirrorReflection } from '../services/reflectionMirror';
 import { track } from '../services/analytics';
 import { useAuth } from '../contexts/AuthContext';
-import { LT, LT_RADIUS } from '../config/lightTheme';
+import { LT } from '../config/lightTheme';
 
 const STEP = {
   TEACHING: 'teaching',
@@ -50,11 +60,12 @@ const STEP = {
 };
 
 const REFLECTION_MAX = 250;
+const NO_AD_GRACE_LESSONS = 3;
 
 export default function LessonScreen({ navigation, route }) {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { pathId, lessonId } = route.params || {};
+  const { pathId, lessonId } = route?.params || {};
   const {
     completePathLesson,
     pathProgress,
@@ -70,6 +81,7 @@ export default function LessonScreen({ navigation, route }) {
     baselineAssessment,
     todaySessionLessons,
     _momentumToast,
+    _lessonReward,
     clearMomentumToast,
   } = useApp();
 
@@ -87,11 +99,12 @@ export default function LessonScreen({ navigation, route }) {
     return 0;
   }, [todaySessionLessons]);
 
-  const path = useMemo(() => getPathById(pathId), [pathId]);
   const lesson = useMemo(() => getLessonById(lessonId), [lessonId]);
+  const canonicalPathId = lesson?.pathId || pathId;
+  const path = useMemo(() => getPathById(canonicalPathId), [canonicalPathId]);
   const quiz = useMemo(
-    () => (path && lesson ? getQuizForLesson(t, pathId, lesson.order) : []),
-    [path, lesson, pathId, t],
+    () => (path && lesson ? getQuizForLesson(t, canonicalPathId, lesson.order) : []),
+    [path, lesson, canonicalPathId, t],
   );
 
   const [step, setStep] = useState(STEP.TEACHING);
@@ -114,13 +127,6 @@ export default function LessonScreen({ navigation, route }) {
   // screen — full-screen TTS-guided 15-min experience.
   const [sageModeVisible, setSageModeVisible] = useState(false);
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
-  // Cumulative crit-hit bonus XP accumulated during this lesson's quiz.
-  // Forwarded to completePathLesson on completion so the user actually
-  // sees the bonus on top of their lesson XP. Reset on every mount.
-  const [critBonusXP, setCritBonusXP] = useState(0);
-  // Transient toast for a fresh crit — populated on a critical hit,
-  // cleared 1.4s later. The renderer overlays a "CRITICAL +25 XP" flash.
-  const [critFlash, setCritFlash] = useState(0);
   // Reflection Mirror quote — populated when handleComplete fires, if
   // the user wrote a reflection. Surfaces on celebration screen as
   // "a sage responds to your words". Empathy/voice-of-the-app hook.
@@ -129,6 +135,10 @@ export default function LessonScreen({ navigation, route }) {
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
   const playbackRef = useRef(null);
+  const voiceRecorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
+  // Guard against double-firing of the post-lesson sequence. This ref must be
+  // declared before any early return and before the per-lesson reset effect.
+  const postLessonFlowRanRef = useRef(false);
 
   // Async-safe state updates: many things in this screen race against the
   // user navigating away (haptics, sounds, TTS, completion celebration). If a
@@ -143,11 +153,14 @@ export default function LessonScreen({ navigation, route }) {
     track({
       event: 'lesson_started',
       userId: user?.id,
-      props: { pathId, lessonId, lessonOrder: lesson?.order || null },
+      props: { pathId: canonicalPathId, lessonId, lessonOrder: lesson?.order || null },
     });
     return () => {
       mountedRef.current = false;
       ttsStop().catch(() => {});
+      cancelRecording(voiceRecorder).catch(() => {});
+      playbackRef.current?.unloadAsync?.().catch(() => {});
+      playbackRef.current = null;
     };
     // We intentionally only want this event ONCE on mount, even if user
     // / route changes mid-screen, so deps are empty.
@@ -159,7 +172,7 @@ export default function LessonScreen({ navigation, route }) {
 
   const handleToggleRecord = async () => {
     if (recording) {
-      const uri = await stopRecording();
+      const uri = await stopRecording(voiceRecorder);
       safeSet(setRecording)(false);
       if (uri) safeSet(setRecordingUri)(uri);
       return;
@@ -170,7 +183,7 @@ export default function LessonScreen({ navigation, route }) {
       await ttsStop();
       safeSet(setIsSpeaking)(false);
     }
-    const ok = await startRecording();
+    const ok = await startRecording(voiceRecorder);
     if (ok) safeSet(setRecording)(true);
   };
 
@@ -201,7 +214,7 @@ export default function LessonScreen({ navigation, route }) {
       // Pass the lesson coordinates so tts.js can attempt the
       // pre-recorded Piper MP3 from the GitHub release. Falls back
       // to system TTS automatically if that MP3 isn't available.
-      pathId,
+      pathId: canonicalPathId,
       lessonOrder: lesson?.order,
       onDone: () => safeSet(setIsSpeaking)(false),
       onError: () => safeSet(setIsSpeaking)(false),
@@ -214,7 +227,19 @@ export default function LessonScreen({ navigation, route }) {
   // modal tick down to zero on its own each second. The old local
   // `now` state + every-30s setInterval was redundant.
 
-  const alreadyCompleted = pathProgress?.[pathId]?.completed?.includes(lessonId);
+  const alreadyCompleted = pathProgress?.[canonicalPathId]?.completed?.includes(lessonId);
+  const lessonAccessState = useMemo(
+    () => getLessonAccessState(lesson, pathProgress, isPremium),
+    [lesson, pathProgress, isPremium],
+  );
+
+  const completedLessonsCountForAds = () => {
+    const completedCount = Object.values(pathProgress || {}).reduce(
+      (sum, p) => sum + (p?.completed?.length || 0),
+      0,
+    );
+    return alreadyCompleted ? completedCount : completedCount + 1;
+  };
 
   // Mount-time hearts guard: if a free user lands on a Lesson with 0
   // hearts (e.g. tapped Home "next lesson" card, deep-linked from
@@ -228,15 +253,38 @@ export default function LessonScreen({ navigation, route }) {
   // binding was initialized. Refactor-safe order: derive value first,
   // then reference it from the effect.
   useEffect(() => {
+    if (!path || !lesson) return;
     if (alreadyCompleted) return; // re-visiting a finished lesson is OK
+    if (lessonAccessState === 'premium') {
+      navigation.replace('Paywall', { source: 'lesson_guard_premium' });
+      return;
+    }
+    if (lessonAccessState === 'locked') {
+      Alert.alert(
+        t('path.lockedTitle', 'Bu ders henuz kilitli'),
+        t(
+          'path.lockedBody',
+          'Once siradaki aktif dersi bitir. Yol adim adim acilir.',
+        ),
+        [{ text: t('common.ok', 'Tamam'), onPress: () => navigation.goBack() }],
+      );
+      return;
+    }
     if (isInGracePeriod) return; // grace period — hearts not enforced
     if (!isPremium && (hearts || 0) <= 0) {
       setOutOfHeartsVisible(true);
     }
-    // Only check on first mount. Hooks aren't in the dep array so a
-    // mid-lesson hearts change doesn't pop the modal unexpectedly.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    path,
+    lesson,
+    alreadyCompleted,
+    lessonAccessState,
+    isInGracePeriod,
+    isPremium,
+    hearts,
+    navigation,
+    t,
+  ]);
 
   const celebrationScale = useRef(new Animated.Value(0)).current;
   const xpY = useRef(new Animated.Value(0)).current;
@@ -280,8 +328,6 @@ export default function LessonScreen({ navigation, route }) {
     setPathSceneStage(0);
     setSageModeVisible(false);
     setOutOfHeartsVisible(false);
-    setCritBonusXP(0);
-    setCritFlash(0);
     setMirrorQuote(null);
     setRecording(false);
     setRecordingUri(null);
@@ -292,8 +338,8 @@ export default function LessonScreen({ navigation, route }) {
       celebrationScale.setValue(0);
       xpY.setValue(0);
     } catch {}
-    // Reset the post-letter run guard so next lesson can fire it once.
-    postLetterFlowRanRef.current = false;
+    // Reset the post-lesson run guard so next lesson can fire it once.
+    postLessonFlowRanRef.current = false;
   }, [lessonId]);
 
   useEffect(() => {
@@ -315,7 +361,7 @@ export default function LessonScreen({ navigation, route }) {
   // path. Now we compute everything first (using safe fallbacks when
   // lesson is null), then short-circuit-render the error state at
   // the bottom. State hook count stays constant.
-  const i18nBase = lesson ? `lessons.${pathId}.${lesson.order}` : '';
+  const i18nBase = lesson ? `lessons.${canonicalPathId}.${lesson.order}` : '';
   const title = lesson
     ? t(`${i18nBase}.title`, `${lesson.order}`)
     : '';
@@ -332,18 +378,27 @@ export default function LessonScreen({ navigation, route }) {
   const currentQuestion = hasQuiz ? quiz[quizIndex] : null;
 
   // ── Teaching page splitter ────────────────────────────────────────
-  // Every lesson in lessons.tr.json is authored in the 4-layer
-  // format (sahne → bilim → mekanizma → pratik) with paragraphs
-  // separated by `\n\n`. We split on those separators so each
-  // paragraph renders as its own card. Lessons authored before the
-  // expansion (shorter, one-paragraph) gracefully collapse to a
-  // single page. Always safe — empty teaching → empty array.
+  // Keep every lesson to at most four teaching beats. Older content often
+  // contains 6-12 short paragraphs; showing each as a separate page turns a
+  // five-minute lesson into a tap marathon. Grouping preserves every word
+  // while keeping a predictable situation -> reason -> shift -> try rhythm.
   const teachingPages = useMemo(() => {
     if (!teaching) return [];
-    return teaching
+    const paragraphs = teaching
       .split(/\n\n+/)
       .map((p) => p.trim())
       .filter((p) => p.length > 0);
+    if (paragraphs.length <= 4) return paragraphs;
+
+    const pages = Array.from({ length: 4 }, () => []);
+    paragraphs.forEach((paragraph, index) => {
+      const pageIndex = Math.min(
+        pages.length - 1,
+        Math.floor((index * pages.length) / paragraphs.length),
+      );
+      pages[pageIndex].push(paragraph);
+    });
+    return pages.map((page) => page.join('\n\n'));
   }, [teaching]);
   const [teachingPageIdx, setTeachingPageIdx] = useState(0);
   const isLastTeachingPage =
@@ -393,20 +448,6 @@ export default function LessonScreen({ navigation, route }) {
       setCorrectCount((c) => c + 1);
       playSound('correct').catch(() => {});
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-      // CRITICAL HIT — 5% chance to grant +25 XP bonus on a correct
-      // answer. Variable reward mechanic; nondeterministic surprises
-      // are way more engaging than predictable XP. The bonus is
-      // accumulated and forwarded with the lesson completion.
-      if (Math.random() < 0.05) {
-        setCritBonusXP((b) => b + 25);
-        setCritFlash((c) => c + 1); // re-trigger flash animation
-        playSound('milestone').catch(() => {});
-        Haptics.notificationAsync(
-          Haptics.NotificationFeedbackType.Success,
-        ).catch(() => {});
-        // Auto-clear flash after 1.4s so the next question isn't blocked.
-        setTimeout(() => setCritFlash(0), 1400);
-      }
     } else {
       playSound('wrong').catch(() => {});
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => {});
@@ -476,7 +517,7 @@ export default function LessonScreen({ navigation, route }) {
     }
 
     completePathLesson({
-      pathId,
+      pathId: canonicalPathId,
       lessonId,
       reflection: reflection.trim(),
       reflectionAudioUri: recordingUri || null,
@@ -484,10 +525,7 @@ export default function LessonScreen({ navigation, route }) {
       // Total quiz length is forwarded so the reducer can detect a
       // "perfect lesson" (all quiz correct) and grant the bonus XP.
       quizTotal: quiz.length,
-      // Base XP + any crit-hit bonuses accumulated during the quiz.
-      // critBonusXP is granted as raw bonus, NOT subject to the
-      // multipliers (already a bonus mechanic on its own).
-      xp: 15 + correctCount * 5 + critBonusXP,
+      xp: 15 + correctCount * 5,
     });
 
     // Funnel event — activation moment. Compared against `lesson_started`
@@ -498,7 +536,7 @@ export default function LessonScreen({ navigation, route }) {
       event: 'lesson_completed',
       userId: user?.id,
       props: {
-        pathId,
+        pathId: canonicalPathId,
         lessonId,
         lessonOrder: lesson?.order || null,
         quizCorrect: correctCount,
@@ -541,7 +579,7 @@ export default function LessonScreen({ navigation, route }) {
       // 30 streak + path lesson 30). UX-wise that's fine — they're
       // sequenced modally.
       const pathCompletedAfter =
-        (pathProgress?.[pathId]?.completed?.length || 0) + 1;
+        (pathProgress?.[canonicalPathId]?.completed?.length || 0) + 1;
       const scene = detectPathSceneStage(pathCompletedAfter);
       if (scene) {
         safeSet(setPathSceneStage)(scene);
@@ -558,22 +596,17 @@ export default function LessonScreen({ navigation, route }) {
   // Continue from the celebration screen straight into the post-lesson
   // sequence (ATT prompt → review prompt → paywall pitch → ad → goBack).
   // Previously this branched into a "Letter from Future Self" modal in
-  // ~5% of cases as a variable-reward surface; that surface was removed
-  // because the letters were templates, not user-authored — they read as
-  // fake intimacy and were a trust-erosion risk for the brand.
   const handleCelebrationContinue = async () => {
-    return runPostLetterFlow();
+    return runPostLessonFlow();
   };
 
   // Guard against double-firing of the post-lesson sequence — the
   // celebration "Continue" button is the only entry point now, but if
   // the user backgrounds the app between tap and execution we'd risk a
-  // double navigation / double paywall.
-  // Track first run with a ref; subsequent calls become no-ops.
-  const postLetterFlowRanRef = useRef(false);
-  const runPostLetterFlow = async () => {
-    if (postLetterFlowRanRef.current) return;
-    postLetterFlowRanRef.current = true;
+  // double navigation / double paywall. Subsequent calls become no-ops.
+  const runPostLessonFlow = async () => {
+    if (postLessonFlowRanRef.current) return;
+    postLessonFlowRanRef.current = true;
     const totalCompleted = Object.values(pathProgress || {}).reduce(
       (s, p) => s + (p?.completed?.length || 0),
       0,
@@ -621,7 +654,7 @@ export default function LessonScreen({ navigation, route }) {
     if (shouldShowPostLessonPaywall) {
       // Replace the lesson screen with Paywall so back-button goes Home,
       // not back into the just-completed lesson.
-      navigation.replace('Paywall');
+      navigation.replace('Paywall', { source: 'post_lesson_3' });
       return;
     }
 
@@ -630,7 +663,6 @@ export default function LessonScreen({ navigation, route }) {
     // finished their FIRST discipline lesson and immediately gets an
     // ad in the face is the textbook D1 churn moment. Let them feel
     // the win first; revenue can wait two more sessions.
-    const NO_AD_GRACE_LESSONS = 3;
     if (!isPremium && totalCompleted > NO_AD_GRACE_LESSONS && shouldShowAd(false)) {
       try { await showInterstitial(); } catch {}
     }
@@ -639,7 +671,7 @@ export default function LessonScreen({ navigation, route }) {
 
   const handleNextLesson = async () => {
     // Find the next lesson in the same path that isn't completed
-    const completedSet = new Set(pathProgress?.[pathId]?.completed || []);
+    const completedSet = new Set(pathProgress?.[canonicalPathId]?.completed || []);
     completedSet.add(lessonId); // include the just-completed one
     const sortedLessons = path && path.id
       ? Array.from({ length: path.duration }, (_, i) => `${path.id}-${i + 1}`)
@@ -651,16 +683,55 @@ export default function LessonScreen({ navigation, route }) {
       handleCelebrationContinue();
       return;
     }
-    if (!isPremium && shouldShowAd(false)) {
+
+    const nextLesson = getLessonById(nextLessonId);
+    const nextAccessState = getLessonAccessState(nextLesson, pathProgress, isPremium);
+
+    if (nextAccessState === 'premium') {
+      navigation.replace('Paywall', { source: 'next_lesson_premium' });
+      return;
+    }
+
+    if (nextAccessState === 'locked') {
+      Alert.alert(
+        t('path.lockedTitle', 'Kilitli ders'),
+        t(
+          'path.lockedBody',
+          'Bu derse geçmeden önce sıradaki önceki dersi tamamla.',
+        ),
+        [{ text: t('common.ok', 'Tamam'), onPress: () => navigation.goBack() }],
+      );
+      return;
+    }
+
+    if (
+      !isPremium
+      && nextAccessState !== 'completed'
+      && !isInGracePeriod
+      && (hearts || 0) <= 0
+    ) {
+      setOutOfHeartsVisible(true);
+      return;
+    }
+
+    if (
+      !isPremium
+      && completedLessonsCountForAds() > NO_AD_GRACE_LESSONS
+      && shouldShowAd(false)
+    ) {
       try { await showInterstitial(); } catch {}
     }
     // replace so the back button goes to PathScreen, not the previous lesson
-    navigation.replace('Lesson', { pathId, lessonId: nextLessonId });
+    navigation.replace('Lesson', { pathId: canonicalPathId, lessonId: nextLessonId });
   };
 
   const handleMilestoneClose = async () => {
     setMilestoneVisible(false);
-    if (!isPremium && shouldShowAd(false)) {
+    if (
+      !isPremium
+      && completedLessonsCountForAds() > NO_AD_GRACE_LESSONS
+      && shouldShowAd(false)
+    ) {
       try { await showInterstitial(); } catch {}
     }
     navigation.goBack();
@@ -669,6 +740,8 @@ export default function LessonScreen({ navigation, route }) {
   const renderTopBar = () => (
     <View style={styles.topBar}>
       <TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={t('common.close', 'Kapat')}
         onPress={() => navigation.goBack()}
         style={styles.closeBtn}
         hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
@@ -849,15 +922,6 @@ export default function LessonScreen({ navigation, route }) {
             🧠 {t('lesson.quiz', 'QUIZ')} — {quizIndex + 1}/{quiz.length}
           </Text>
         </View>
-        {/* Critical hit flash — pops in when the user just rolled the
-            5% crit on a correct answer. Variable-reward dopamine spike. */}
-        {critFlash > 0 ? (
-          <View style={styles.critFlash}>
-            <Text style={styles.critFlashText}>
-              {t('lesson.critHit', '⚡ CRITICAL HIT! +25 XP')}
-            </Text>
-          </View>
-        ) : null}
         <Text style={[styles.title, { marginTop: 16 }]}>{currentQuestion.q}</Text>
         <Text style={styles.questionSubtitle}>
           {t('lesson.quizHint', 'Doğru olduğunu düşündüğün cevabı seç.')}
@@ -1264,7 +1328,7 @@ export default function LessonScreen({ navigation, route }) {
             modal; both can fire on the same lesson but they're sequenced. */}
         <PathMilestoneScene
           visible={pathSceneVisible}
-          pathId={pathId}
+          pathId={canonicalPathId}
           stage={pathSceneStage}
           onClose={() => setPathSceneVisible(false)}
         />
@@ -1302,7 +1366,7 @@ export default function LessonScreen({ navigation, route }) {
           }}
           onPaywall={() => {
             setOutOfHeartsVisible(false);
-            navigation.navigate('Paywall');
+            navigation.navigate('Paywall', { source: 'lesson_out_of_hearts' });
           }}
         />
 
@@ -1345,7 +1409,7 @@ export default function LessonScreen({ navigation, route }) {
                   { transform: [{ translateY: xpY }] },
                 ]}
               >
-                +{15 + correctCount * 5} XP
+                +{_lessonReward?.totalXp ?? (15 + correctCount * 5)} XP
               </Animated.Text>
               <Text style={styles.celebrationHeading}>
                 {t('lesson.greatWork', 'Harika iş!')}
@@ -1462,7 +1526,7 @@ export default function LessonScreen({ navigation, route }) {
               <TouchableOpacity
                 onPress={() => {
                   if (!isPremium) {
-                    navigation.navigate('Paywall');
+                    navigation.navigate('Paywall', { source: 'sage_mode' });
                   } else {
                     setSageModeVisible(true);
                   }
@@ -1633,28 +1697,6 @@ const styles = StyleSheet.create({
     fontSize: 11, fontWeight: '900',
     letterSpacing: 2, textTransform: 'uppercase',
   },
-  // Critical hit flash banner — popped when the user lucks into the
-  // 5% crit on a correct quiz answer. Gold/yellow accent so it reads
-  // as "rare". Auto-clears via setTimeout in handleQuizAnswer.
-  critFlash: {
-    marginTop: 12,
-    backgroundColor: '#FDE047',
-    paddingVertical: 10,
-    paddingHorizontal: 14,
-    borderRadius: 10,
-    alignSelf: 'flex-start',
-    shadowColor: '#FBBF24',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.4,
-    shadowRadius: 8,
-    elevation: 4,
-  },
-  critFlashText: {
-    color: '#7C2D12',
-    fontSize: 13,
-    fontWeight: '900',
-    letterSpacing: 0.6,
-  },
   // Cliffhanger — small teaser card on the celebration screen showing
   // tomorrow's lesson title. Drives curiosity-gap return: "what does
   // that mean?" → user opens the app tomorrow to find out.
@@ -1680,7 +1722,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     fontStyle: 'italic',
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   // "Today you learned" takeaway card on the celebration screen. Surfaces
   // the first sentence of the teaching so the user actually walks away
@@ -1708,7 +1750,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     lineHeight: 20,
-    letterSpacing: -0.1,
+    letterSpacing: 0,
   },
   // Reflection Mirror — sage-quote card surfaced on celebration screen
   // after a user submits a reflection. Empathy hook.
@@ -1719,11 +1761,11 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     backgroundColor: 'rgba(139, 92, 246, 0.08)',
     borderLeftWidth: 3,
-    borderLeftColor: '#8B5CF6',
+    borderLeftColor: '#E31212',
     alignSelf: 'stretch',
   },
   mirrorLabel: {
-    color: '#7C3AED',
+    color: '#B70006',
     fontSize: 9,
     fontWeight: '900',
     letterSpacing: 1.4,
@@ -1735,7 +1777,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontStyle: 'italic',
     lineHeight: 20,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   // Sage Mode button — premium-exclusive entry on celebration screen.
   // Gold-tinted, sits above the "Next Lesson" CTA so it's visible but
@@ -1774,7 +1816,7 @@ const styles = StyleSheet.create({
 
   title: {
     color: LT.onSurface, fontSize: 24, fontWeight: '900',
-    marginBottom: 24, lineHeight: 30, letterSpacing: -0.4,
+    marginBottom: 24, lineHeight: 30, letterSpacing: 0,
   },
 
   heroBox: {
@@ -2105,7 +2147,7 @@ const styles = StyleSheet.create({
     color: '#B45309',
     fontSize: 36,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     textShadowColor: 'rgba(253, 224, 71, 0.5)',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
@@ -2116,7 +2158,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '900',
     marginBottom: 8,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   celebrationSubtitle: {
     color: LT.onSurfaceVariant,

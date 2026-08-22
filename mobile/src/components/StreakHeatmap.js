@@ -78,6 +78,12 @@ export default function StreakHeatmap({ lessonHistory }) {
           return (
             <View
               key={cell.key}
+              accessible
+              accessibilityRole="text"
+              accessibilityLabel={t('heatmap.dayAccessibility', {
+                date: cell.dateStr,
+                count: cell.count,
+              })}
               style={[
                 styles.cell,
                 styles[`cell${level}`],
@@ -141,10 +147,10 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   cell0: { backgroundColor: LT.outlineVariant },
-  cell1: { backgroundColor: '#C7D2FE' },
-  cell2: { backgroundColor: '#818CF8' },
-  cell3: { backgroundColor: '#6366F1' },
-  cell4: { backgroundColor: '#4338CA' },
+  cell1: { backgroundColor: '#FCC8C8' },
+  cell2: { backgroundColor: '#F47373' },
+  cell3: { backgroundColor: '#ED2D2D' },
+  cell4: { backgroundColor: '#B70006' },
 
   legend: {
     flexDirection: 'row',

@@ -12,14 +12,11 @@ import json
 import sys
 import os
 
-KEY_ID = "CV8FXZNAR8"
-ISSUER_ID = "875b8c0f-3adb-4175-b5d4-334257c02837"
-KEY_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "..", "credentials", "AuthKey_CV8FXZNAR8.p8"
-)
-APP_ID = "6761607644"
-GROUP_ID = "22025739"
+KEY_ID = os.environ.get("ASC_KEY_ID")
+ISSUER_ID = os.environ.get("ASC_ISSUER_ID")
+KEY_PATH = os.environ.get("ASC_KEY_PATH")
+APP_ID = os.environ.get("ASC_APP_ID", "6761607644")
+GROUP_ID = os.environ.get("ASC_SUBSCRIPTION_GROUP_ID", "22025739")
 
 MONTHLY_PRODUCT_ID = "com.ascend.premium.monthly"
 YEARLY_PRODUCT_ID = "com.ascend.premium.yearly"
@@ -28,6 +25,10 @@ API = "https://api.appstoreconnect.apple.com/v1"
 
 
 def make_token():
+    if not KEY_ID or not ISSUER_ID or not KEY_PATH:
+        raise RuntimeError(
+            "Set ASC_KEY_ID, ASC_ISSUER_ID and ASC_KEY_PATH before running this script."
+        )
     with open(KEY_PATH, 'r') as f:
         private_key = f.read()
     headers = {"alg": "ES256", "kid": KEY_ID, "typ": "JWT"}
@@ -194,7 +195,7 @@ def add_free_trial_offer(token, sub_id, duration="ONE_WEEK", territory="USA"):
 
 # ─── Main flow ────────────────────────────────────────────────────────────────
 def main():
-    print(">>> Configuring App Store Connect for Monk Mode\n")
+    print(">>> Configuring App Store Connect for Ascend: Daily Discipline\n")
     token = make_token()
 
     print("=== STEP 1: Inventory existing subscriptions ===")
@@ -225,16 +226,16 @@ def main():
     LOCALES = [
         {
             "locale": "en-US",
-            "monthly_name": "Monk Mode Premium (Monthly)",
+            "monthly_name": "Daily Discipline Premium (Monthly)",
             "monthly_desc": "Unlimited hearts, all paths, ad-free.",
-            "yearly_name": "Monk Mode Premium (Yearly)",
+            "yearly_name": "Daily Discipline Premium (Yearly)",
             "yearly_desc": "Unlimited hearts, all paths, ad-free. Best value.",
         },
         {
             "locale": "tr",
-            "monthly_name": "Monk Mode Premium (Aylık)",
+            "monthly_name": "Daily Discipline Premium (Aylık)",
             "monthly_desc": "Sınırsız kalp, tüm yollar, reklamsız.",
-            "yearly_name": "Monk Mode Premium (Yıllık)",
+            "yearly_name": "Daily Discipline Premium (Yıllık)",
             "yearly_desc": "Sınırsız kalp, tüm yollar, reklamsız. En iyi fiyat.",
         },
     ]

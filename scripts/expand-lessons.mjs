@@ -60,7 +60,7 @@ const data = JSON.parse(readFileSync(lessonsPath, "utf8"));
 const wordCount = (s) =>
   typeof s === "string" ? s.split(/\s+/).filter(Boolean).length : 0;
 
-const PROMPT_TR = `Sen Ascend: Monk Mode disiplin uygulamasının içerik editörüsün. Türkçe içeriği genişlettiğin format aşağıdaki gibi olmalı.
+const PROMPT_TR = `Sen Ascend: Daily Discipline uygulamasının içerik editörüsün. Türkçe içeriği genişlettiğin format aşağıdaki gibi olmalı.
 
 GÖREV: Verilen lesson'un teaching ve quiz alanlarını 4 katmanlı yapıya genişlet. Mevcut "title", "action", "reflectionPrompt", "proTip" ALANLARINA DOKUNMA — onları aynen koru.
 
@@ -93,7 +93,7 @@ SADECE JSON dön, başka hiçbir şey yazma. Şu yapıda:
 
 q, options, correct değerlerini AYNEN koru. Sadece explain'leri güçlendir.`;
 
-const PROMPT_EN = `You are the content editor for Ascend: Monk Mode discipline app. You're expanding lessons to a 4-layer format.
+const PROMPT_EN = `You are the content editor for the Ascend: Daily Discipline app. You're expanding lessons to a 4-layer format.
 
 TASK: Expand the lesson's teaching and quiz fields into a 4-layer structure. DO NOT touch "title", "action", "reflectionPrompt", or "proTip" — keep them as-is.
 

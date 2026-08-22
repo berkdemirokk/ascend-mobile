@@ -15,13 +15,15 @@ import {
   Modal,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
-  Pressable,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+  AccessiblePressable as Pressable,
+} from './AccessibleControls';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { LT } from '../config/lightTheme';
 
 const MIN_LENGTH = 8; // anything shorter is almost certainly noise
@@ -60,6 +62,7 @@ export default function PledgeModal({
         <Pressable
           style={styles.backdrop}
           onPress={() => {}} // explicit no-op; can't dismiss by tapping outside
+          accessible={false}
         />
         <View style={styles.card}>
           <Text style={styles.label}>

@@ -6,13 +6,18 @@ import Constants from 'expo-constants';
 import i18n from '../i18n';
 import { navigateFromAnywhere } from '../navigation/AppNavigator';
 
-Notifications.setNotificationHandler({
-  handleNotification: async () => ({
-    shouldShowAlert: true,
-    shouldPlaySound: true,
-    shouldSetBadge: true,
-  }),
-});
+try {
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowBanner: true,
+      shouldShowList: true,
+      shouldPlaySound: true,
+      shouldSetBadge: true,
+    }),
+  });
+} catch (e) {
+  console.warn('[notifications] handler setup failed:', e?.message);
+}
 
 // Schedulable trigger shape changed in expo-notifications 0.28+ (SDK 52).
 // Fall back to the legacy shape on older installs so either version works.
@@ -172,7 +177,10 @@ export const setupNotifResponseListener = () => {
         // card from there to enter their next lesson. We don't deep-
         // link directly to a specific lesson because the notification
         // doesn't carry path/lesson context, and Home → Path is one tap.
-        navigateFromAnywhere('MainTabs', { screen: 'Home' });
+        const target = ['MainTabs', { screen: 'Home' }];
+        if (navigateFromAnywhere(...target)) return;
+        setTimeout(() => navigateFromAnywhere(...target), 800);
+        setTimeout(() => navigateFromAnywhere(...target), 2000);
       },
     );
   } catch (e) {
@@ -182,7 +190,10 @@ export const setupNotifResponseListener = () => {
 
 export const requestNotificationPermissions = async () => {
   if (!Device.isDevice) {
-    console.log('Notifications require a physical device');
+    if (__DEV__) {
+      // eslint-disable-next-line no-console
+      console.log('Notifications require a physical device');
+    }
     return false;
   }
   const { status: existing } = await Notifications.getPermissionsAsync();
@@ -274,7 +285,7 @@ export const registerPushToken = async (userId, supabase) => {
 
 /**
  * Schedule a 9 AM daily reminder. Branches title/body on whether the user
- * has an active streak: "Begin monk mode" for first-day users vs.
+ * has an active streak: "Begin Daily Discipline" for first-day users vs.
  * "{n} days — discipline" for users carrying a streak. The previous
  * version passed `{ streak: '' }` which produced "🔥  days — discipline"
  * (double space + dangling word) — visually broken on the lock screen.

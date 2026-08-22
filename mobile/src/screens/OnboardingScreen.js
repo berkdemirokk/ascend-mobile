@@ -1,35 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
   ScrollView,
-  Animated,
-  Easing,
-  Image,
   StatusBar,
 } from 'react-native';
-import Animated2, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-} from 'react-native-reanimated';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useApp } from '../contexts/AppContext';
-import { COLORS } from '../config/constants';
-import { LT, LT_RADIUS } from '../config/lightTheme';
+import { LT } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
 import { ARCHETYPES, DEFAULT_ARCHETYPE_ID, getArchetypeById } from '../data/archetypes';
-import {
-  ASSESSMENT_DIMENSIONS,
-  ASSESSMENT_MAX_PER_DIM,
-  defaultScores,
-} from '../data/assessment';
-import { setLanguage, getCurrentLanguage, SUPPORTED_LANGUAGES } from '../i18n';
 import {
   requestNotificationPermissions,
   scheduleDailyReminder,
@@ -55,18 +42,9 @@ import { useAuth } from '../contexts/AuthContext';
 //     Home + notifications.
 //   - Total taps to land in lesson #1: 3 (personalize → pickPath →
 //     archetype) + optional upsell. Was: 4 mandatory + upsell.
-// Adding the 'assessment' step at the end (just before upsell) means
-// we get the user's baseline numbers AT the moment they're most
-// engaged — they've just committed to a path + archetype. The
-// upsell still fires after; assessment is non-blocking (skippable
-// via the AssessmentScreen) so it doesn't add a hard gate.
-// Onboarding step order — Assessment was here, was moved out.
-// Reason (UX audit): forcing a 5-question subjective slider exercise
-// BEFORE the user has experienced a single lesson hits a 30%+ D0
-// drop because the user hasn't built any reason to invest the
-// minute it takes. The assessment now runs RIGHT AFTER the first
-// lesson's celebration, when the user has felt the loop click and
-// the 'measure my starting point' framing actually makes sense.
+//   - Assessment was moved out of onboarding. Home offers it after the
+//     first completed lesson, so measurement stays optional and the user
+//     has experienced the core loop before investing another minute.
 // Step order. Referral was REMOVED from onboarding (pruning audit
 // May 2026): a brand-new user has no friend network in the app yet,
 // and the field caused measurable D0 churn (~15-25%) without a
@@ -110,10 +88,16 @@ export default function OnboardingScreen({ navigation }) {
     mood: null,
   });
 
-  const buttonScale = useSharedValue(1);
-  const animatedButtonStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: buttonScale.value }],
-  }));
+  useEffect(() => {
+    track({
+      event: 'onboarding_step_viewed',
+      userId: user?.id,
+      props: {
+        step,
+        stepIndex: STEPS.indexOf(step),
+      },
+    });
+  }, [step, user?.id]);
 
   const finishOnboarding = () => {
     setUserProfile({
@@ -126,7 +110,6 @@ export default function OnboardingScreen({ navigation }) {
       answers,
     });
     setActivePath(selectedPath);
-    completeOnboarding();
 
     // Funnel event — top of the activation funnel. Props capture the
     // personalization signal so we can later see e.g. "is the focus goal
@@ -151,17 +134,16 @@ export default function OnboardingScreen({ navigation }) {
     // navigation stack with the lesson route means back-button from
     // the lesson goes to Home, not back into onboarding.
     const firstLesson = `${selectedPath}-1`;
-    setTimeout(() => {
-      try {
-        navigation?.replace?.('Lesson', {
-          pathId: selectedPath,
-          lessonId: firstLesson,
-        });
-      } catch {
-        // If navigation isn't available for any reason, the existing
-        // root navigator will land them on Home — same as before.
-      }
-    }, 250);
+    try {
+      navigation?.replace?.('Lesson', {
+        pathId: selectedPath,
+        lessonId: firstLesson,
+      });
+    } catch {
+      // If navigation isn't available for any reason, the root navigator
+      // will land them on Home after onboarding is marked complete.
+    }
+    completeOnboarding();
 
     // Sequenced post-onboarding flow (Apple-compliant ordering):
     //   1. Notification permission (5.1.1 — ask at meaningful moment)
@@ -180,7 +162,7 @@ export default function OnboardingScreen({ navigation }) {
         const granted = await requestNotificationPermissions();
         if (granted) {
           // New user → currentStreak is 0, so scheduleDailyReminder
-          // will pick the "begin monk mode" variant (not the streak-
+          // will pick the "begin Daily Discipline" variant (not the streak-
           // formatted one). Pass explicitly to keep the API contract
           // clean and obvious.
           // Pass archetype name so the push title rotation can
@@ -232,10 +214,6 @@ export default function OnboardingScreen({ navigation }) {
   };
 
   const handleNext = () => {
-    buttonScale.value = withSpring(0.95, {}, () => {
-      buttonScale.value = withSpring(1);
-    });
-
     if (step === 'personalize') {
       setStep('pickPath');
     } else if (step === 'pickPath') {
@@ -269,11 +247,60 @@ export default function OnboardingScreen({ navigation }) {
       answers,
     });
     setActivePath(selectedPath);
+    // Navigate while the onboarding route is still mounted. If we mark
+    // onboarding complete first, the conditional root stack may unmount
+    // this screen before the Paywall navigation dispatch runs.
+    const firstLesson = `${selectedPath}-1`;
+    try {
+      navigation?.navigate?.('Paywall', {
+        source: 'onboarding_upsell',
+        afterClose: {
+          name: 'Lesson',
+          params: { pathId: selectedPath, lessonId: firstLesson },
+        },
+      });
+    } catch {}
     completeOnboarding();
-    // Same sequenced ATT-then-ads flow as finishOnboarding. Even premium
-    // users go through ATT — they may downgrade later and need consent
-    // already on file.
+
+    // This path also completes onboarding. Without the same activation
+    // event + notification setup as finishOnboarding(), users who tap
+    // "See offer" become invisible in the activation funnel and miss
+    // their first-week reminders if they close the paywall.
+    track({
+      event: 'onboarding_completed',
+      userId: user?.id,
+      props: {
+        path: selectedPath,
+        archetype: selectedArchetype,
+        goal: answers.goal,
+        time: answers.time,
+        mood: answers.mood,
+        isPremium: !!isPremium,
+        next: 'paywall',
+      },
+    });
+
+    // Same sequenced post-onboarding setup as finishOnboarding:
+    // notifications first, then ATT, then ad SDK init.
     (async () => {
+      try {
+        const granted = await requestNotificationPermissions();
+        if (granted) {
+          scheduleDailyReminder({
+            currentStreak: 0,
+            userName: answers.name || '',
+            archetypeName: t(
+              getArchetypeById(selectedArchetype).nameKey,
+              getArchetypeById(selectedArchetype).nameFallback,
+            ),
+            activePathId: selectedPath,
+          }).catch(() => {});
+          scheduleWeeklyRecap().catch(() => {});
+          scheduleFirstWeekHooks({ userName: answers.name || '' }).catch(
+            () => {},
+          );
+        }
+      } catch {}
       try { await requestTrackingPermissionIfNeeded(); } catch {}
       try {
         await initAds();
@@ -281,8 +308,6 @@ export default function OnboardingScreen({ navigation }) {
         loadRewarded().catch(() => {});
       } catch {}
     })();
-    // Navigate to paywall after onboarding completes
-    setTimeout(() => navigation?.navigate?.('Paywall'), 300);
   };
 
   // Personalize step USED to require a goal pick (canAdvance = goal != null).
@@ -316,7 +341,7 @@ export default function OnboardingScreen({ navigation }) {
           <UpsellStep t={t} onSubscribe={handleUpsellSubscribe} />
         )}
 
-        <Animated2.View style={[styles.bottomArea, animatedButtonStyle]}>
+        <View style={styles.bottomArea}>
           {/* Step dots */}
           <View style={styles.dots}>
             {STEPS.map((s, i) => {
@@ -356,124 +381,26 @@ export default function OnboardingScreen({ navigation }) {
           {/* Caption */}
           <Text style={styles.caption}>
             {step === 'personalize'
-              ? t('onboarding.captionPersonalize', 'KİŞİSEL PLAN OLUŞTURULUYOR')
+              ? t('onboarding.captionPersonalize', 'SANA UYAN PLANI KURALIM')
               : step === 'pickPath'
-                ? t('onboarding.captionPickPath', 'YOLUNU SEÇ')
+                ? t('onboarding.captionPickPath', 'ÖNCE TEK BİR ŞEYİ DÜZELT')
                 : step === 'archetype'
-                  ? t('onboarding.captionArchetype', '30 GÜN SONRA NE OLACAKSIN')
-                  : t('onboarding.captionUpsell', 'PREMIUM İLE TAMAM')}
+                  ? t('onboarding.captionArchetype', '30 GÜNLÜK NİYETİNİ SEÇ')
+                  : t('onboarding.captionUpsell', 'RİTMİ KESMEDEN DEVAM ET')}
           </Text>
-        </Animated2.View>
+        </View>
       </View>
     </SafeAreaView>
   );
 }
 
-function WelcomeStep({ t }) {
-  const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
-  const handleChangeLang = async (code) => {
-    await setLanguage(code);
-    setCurrentLang(code);
-  };
-
-  // Subtle pulse on hero
-  const ringSpin = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    const loop = Animated.loop(
-      Animated.timing(ringSpin, {
-        toValue: 1,
-        duration: 60000,
-        easing: Easing.linear,
-        useNativeDriver: true,
-      }),
-    );
-    loop.start();
-    return () => loop.stop();
-  }, [ringSpin]);
-  const spin = ringSpin.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
-
-  return (
-    <ScrollView
-      contentContainerStyle={styles.welcomeContent}
-      showsVerticalScrollIndicator={false}
-    >
-      {/* Hero with progress ring decoration */}
-      <View style={styles.heroWrap}>
-        <Animated.View style={[styles.ringDecor, { transform: [{ rotate: spin }] }]} />
-        <View style={styles.heroCircle}>
-          <Image
-            source={require('../../assets/icon.png')}
-            style={styles.heroImage}
-            resizeMode="cover"
-          />
-        </View>
-      </View>
-
-      {/* Title block */}
-      <Text style={styles.title}>{t('onboarding.title', 'MONK MODE').toUpperCase()}</Text>
-      <Text style={styles.subtitle}>{t('onboarding.subtitle', 'Disiplini seç. Yolu yürü. Kendini dönüştür.')}</Text>
-
-      {/* Card features */}
-      <View style={styles.featuresContainer}>
-        <FeatureCard
-          icon="menu-book"
-          iconColor={LT.primary}
-          tint={LT.surfaceContainerLow}
-          border={LT.outlineVariant}
-          title={t('onboarding.bullet1', 'Her gün tek ders')}
-          subtitle={t('onboarding.bullet1Sub', 'Odaklanmış gelişim için mikro öğrenme.')}
-        />
-        <FeatureCard
-          icon="psychology"
-          iconColor={LT.primaryContainer}
-          tint={LT.surfaceContainerLow}
-          border={LT.outlineVariant}
-          title={t('onboarding.bullet2', 'Quiz ile pekiştir')}
-          subtitle={t('onboarding.bullet2Sub', 'Bilgini anında test et ve kalıcı kıl.')}
-        />
-        <FeatureCard
-          icon="favorite"
-          iconColor={LT.primary}
-          tint={LT.surfaceContainerLow}
-          border={LT.outlineVariant}
-          title={t('onboarding.bullet3', 'Kalpleri kaybetme')}
-          subtitle={t('onboarding.bullet3Sub', 'Serini koru ve ustalık seviyeni yükselt.')}
-        />
-      </View>
-
-      {/* Language picker — minimal */}
-      <View style={styles.langRow}>
-        {SUPPORTED_LANGUAGES.map((l) => {
-          const active = currentLang === l.code;
-          return (
-            <TouchableOpacity
-              key={l.code}
-              onPress={() => handleChangeLang(l.code)}
-              activeOpacity={0.7}
-              style={[styles.langBtn, active && styles.langBtnActive]}
-            >
-              <Text style={styles.langFlag}>{l.flag}</Text>
-              <Text style={[styles.langLabel, active && styles.langLabelActive]}>
-                {l.label}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-    </ScrollView>
-  );
-}
-
 function PersonalizeStep({ t, answers, onAnswer }) {
   const goalOptions = [
-    { id: 'focus', icon: 'center-focus-strong', labelKey: 'onboarding.goalFocus', fallback: 'Daha çok odaklan' },
-    { id: 'morning', icon: 'wb-twilight', labelKey: 'onboarding.goalMorning', fallback: 'Sabah rutinim' },
-    { id: 'fitness', icon: 'fitness-center', labelKey: 'onboarding.goalFitness', fallback: 'Vücut disiplini' },
-    { id: 'money', icon: 'account-balance-wallet', labelKey: 'onboarding.goalMoney', fallback: 'Para disiplini' },
-    { id: 'discipline', icon: 'whatshot', labelKey: 'onboarding.goalGeneral', fallback: 'Genel disiplin' },
+    { id: 'focus', icon: 'center-focus-strong', labelKey: 'onboarding.goalFocus', fallback: 'Dikkatimi geri almak' },
+    { id: 'morning', icon: 'wb-twilight', labelKey: 'onboarding.goalMorning', fallback: 'Sabaha hakim olmak' },
+    { id: 'fitness', icon: 'fitness-center', labelKey: 'onboarding.goalFitness', fallback: 'Enerjimi yükseltmek' },
+    { id: 'money', icon: 'account-balance-wallet', labelKey: 'onboarding.goalMoney', fallback: 'Paramı yönetmek' },
+    { id: 'discipline', icon: 'whatshot', labelKey: 'onboarding.goalGeneral', fallback: 'Başladığımı bitirmek' },
   ];
   const timeOptions = [
     { id: '5', labelKey: 'onboarding.time5', fallback: '5 dk' },
@@ -481,9 +408,9 @@ function PersonalizeStep({ t, answers, onAnswer }) {
     { id: '30', labelKey: 'onboarding.time30', fallback: '30+ dk' },
   ];
   const moodOptions = [
-    { id: 'motivated', icon: 'whatshot', labelKey: 'onboarding.moodMotivated', fallback: 'Yüksek motivasyon' },
-    { id: 'lost', icon: 'help-outline', labelKey: 'onboarding.moodLost', fallback: 'Karışık hissediyorum' },
-    { id: 'fresh', icon: 'auto-awesome', labelKey: 'onboarding.moodFresh', fallback: 'Yeni başlangıç' },
+    { id: 'motivated', icon: 'whatshot', labelKey: 'onboarding.moodMotivated', fallback: 'Hazırım, başlayalım' },
+    { id: 'lost', icon: 'help-outline', labelKey: 'onboarding.moodLost', fallback: 'Dağınığım, yön lazım' },
+    { id: 'fresh', icon: 'auto-awesome', labelKey: 'onboarding.moodFresh', fallback: 'Sıfırdan başlıyorum' },
   ];
 
   return (
@@ -493,7 +420,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
       keyboardShouldPersistTaps="handled"
     >
       <Text style={styles.personalizeIntro}>
-        {t('onboarding.personalizeIntro', 'Sana özel plan için 3 hızlı soru')}
+        {t('onboarding.personalizeIntro', 'Üç kısa cevap ver; ilk görevi sana göre seçelim.')}
       </Text>
 
       {/* Name — optional. Drives personalised push titles + Home greeting.
@@ -515,7 +442,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
 
       {/* Goal */}
       <Text style={styles.personalizeQ}>
-        {t('onboarding.qGoal', 'Ne için buradasın?')}
+        {t('onboarding.qGoal', 'Önce neyi düzeltmek istiyorsun?')}
       </Text>
       <View style={styles.optionList}>
         {goalOptions.map((opt) => {
@@ -547,7 +474,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
 
       {/* Time */}
       <Text style={styles.personalizeQ}>
-        {t('onboarding.qTime', 'Günde ne kadar zaman ayırabilirsin?')}
+        {t('onboarding.qTime', 'Gerçekçi olarak kaç dakikan var?')}
       </Text>
       <View style={styles.optionRow}>
         {timeOptions.map((opt) => {
@@ -569,7 +496,7 @@ function PersonalizeStep({ t, answers, onAnswer }) {
 
       {/* Mood */}
       <Text style={styles.personalizeQ}>
-        {t('onboarding.qMood', 'Şu an nasıl hissediyorsun?')}
+        {t('onboarding.qMood', 'Bugün hangi noktadasın?')}
       </Text>
       <View style={styles.optionList}>
         {moodOptions.map((opt) => {
@@ -602,20 +529,6 @@ function PersonalizeStep({ t, answers, onAnswer }) {
   );
 }
 
-function FeatureCard({ icon, iconColor, tint, border, title, subtitle }) {
-  return (
-    <View style={styles.featureCard}>
-      <View style={[styles.featureIconBox, { backgroundColor: tint, borderColor: border }]}>
-        <MaterialIcons name={icon} size={22} color={iconColor} />
-      </View>
-      <View style={styles.featureText}>
-        <Text style={styles.featureTitle}>{title}</Text>
-        <Text style={styles.featureSubtitle}>{subtitle}</Text>
-      </View>
-    </View>
-  );
-}
-
 function UpsellStep({ t, onSubscribe }) {
   return (
     <ScrollView
@@ -624,19 +537,19 @@ function UpsellStep({ t, onSubscribe }) {
     >
       <Text style={styles.upsellEmoji}>🔥</Text>
       <Text style={styles.upsellTitle}>
-        {t('onboarding.upsellTitle', 'Disiplini hızlandır')}
+        {t('onboarding.upsellTitle', 'İvmeni yarıda kesme')}
       </Text>
 
-      {/* Apple HIG 3.1.2(c): the billed amount must be the most clear and
-          conspicuous pricing element. Free trial info is subordinate. */}
+      {/* No hardcoded local price here. Exact StoreKit price + billing
+          period are shown on PaywallScreen before any purchase starts. */}
       <View style={styles.priceBlock}>
         <Text style={styles.priceAmount}>
-          {t('onboarding.priceMonthly', '₺149,99 / ay')}
+          {t('onboarding.priceMonthly', '7 gün ücretsiz deneme')}
         </Text>
         <Text style={styles.priceTrial}>
           {t(
             'onboarding.priceTrial',
-            'İlk 7 gün ücretsiz, sonra otomatik yenilenir. İstediğin an iptal et.',
+            'Net fiyat ve dönem App Store fiyatları yüklendiğinde gösterilir. Satın almadan önce onaylarsın.',
           )}
         </Text>
       </View>
@@ -672,7 +585,7 @@ function UpsellStep({ t, onSubscribe }) {
         <View style={styles.upsellCta}>
           <MaterialIcons name="auto-awesome" size={18} color={LT.onPrimary} />
           <Text style={styles.upsellCtaText}>
-            {t('onboarding.upsellCta', 'Aboneliği başlat')}
+            {t('onboarding.upsellCta', 'Teklifi gör')}
           </Text>
         </View>
       </TouchableOpacity>
@@ -680,7 +593,7 @@ function UpsellStep({ t, onSubscribe }) {
       <Text style={styles.upsellDisclaimer}>
         {t(
           'onboarding.upsellDisclaimer',
-          '₺149,99/ay — abonelik otomatik yenilenir. App Store\'dan dilediğin an iptal edebilirsin.',
+          'Satın alma başlamadan önce fiyat, dönem ve otomatik yenileme bilgisi aynı ekranda gösterilir.',
         )}
       </Text>
     </ScrollView>
@@ -709,13 +622,13 @@ function ArchetypeStep({ t, selectedArchetype, onSelect }) {
       <Text style={styles.pickTitle}>
         {t(
           'onboarding.archetypeTitle',
-          '30 gün sonra hangisi olacaksın?',
+          '30 gün sonra neyin değişmiş olsun?',
         )}
       </Text>
       <Text style={styles.pickSubtitle}>
         {t(
           'onboarding.archetypeSubtitle',
-          'Bir tane seç. Sonraki 30 gün boyunca bu kişi olarak hareket edeceksin.',
+          'Tek bir yön seç. Planın her gün o yönde küçük bir kanıt üretsin.',
         )}
       </Text>
       <ScrollView
@@ -777,97 +690,14 @@ function ArchetypeStep({ t, selectedArchetype, onSelect }) {
   );
 }
 
-// Baseline Assessment step — collects the 5-dimension self-rating
-// that future ProgressReportScreen will compare against. We use an
-// internal local state so the user can adjust before hitting the
-// onboarding primary CTA; on every change we sync upstream via
-// onSave so leaving mid-step still persists what they chose.
-function BaselineAssessmentStep({ t, onSave }) {
-  const [scores, setScoresLocal] = useState(defaultScores());
-  const setScore = (id, v) => {
-    setScoresLocal((prev) => {
-      const next = { ...prev, [id]: v };
-      onSave(next); // persist on every slider tap; cheap
-      return next;
-    });
-  };
-  // Persist defaults the first render too, so a user who blasts
-  // through with "Devam et" still has a baseline of 5/10 across
-  // the board (not nothing — nothing breaks the delta system).
-  useEffect(() => {
-    onSave(defaultScores());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <View style={styles.assessmentStepContent}>
-      <Text style={styles.pickTitle}>
-        {t(
-          'onboarding.assessmentTitle',
-          'Bugünün senini ölç. 30 gün sonra geri bakacağız.',
-        )}
-      </Text>
-      <Text style={styles.pickSubtitle}>
-        {t(
-          'onboarding.assessmentSubtitle',
-          '5 alanı 1-10 arası işaretle. Mükemmel cevap yok — dürüst cevap var.',
-        )}
-      </Text>
-      <ScrollView
-        contentContainerStyle={styles.assessmentList}
-        showsVerticalScrollIndicator={false}
-      >
-        {ASSESSMENT_DIMENSIONS.map((dim) => (
-          <View key={dim.id} style={styles.assessmentRow}>
-            <View style={styles.assessmentRowHeader}>
-              <View
-                style={[
-                  styles.assessmentIconBox,
-                  { backgroundColor: `${dim.color}22`, borderColor: `${dim.color}55` },
-                ]}
-              >
-                <MaterialIcons name={dim.icon} size={16} color={dim.color} />
-              </View>
-              <Text style={styles.assessmentLabel}>
-                {t(dim.labelKey, dim.labelFallback)}
-              </Text>
-              <Text style={[styles.assessmentValue, { color: dim.color }]}>
-                {scores[dim.id]}
-              </Text>
-            </View>
-            <Text style={styles.assessmentQ}>
-              {t(dim.questionKey, dim.questionFallback)}
-            </Text>
-            <View style={styles.scaleRowOb}>
-              {Array.from({ length: ASSESSMENT_MAX_PER_DIM }, (_, i) => i + 1).map((v) => {
-                const isUnder = scores[dim.id] >= v;
-                return (
-                  <TouchableOpacity
-                    key={v}
-                    onPress={() => setScore(dim.id, v)}
-                    style={[
-                      styles.scaleDotOb,
-                      isUnder && { backgroundColor: dim.color },
-                    ]}
-                  />
-                );
-              })}
-            </View>
-          </View>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
-
 function PickPathStep({ t, selectedPath, onSelect }) {
   return (
     <View style={styles.pickPathContent}>
       <Text style={styles.pickTitle}>
-        {t('onboarding.pickPathTitle', 'Hangi disipline odaklanacaksın?')}
+        {t('onboarding.pickPathTitle', 'Bugün hangi soruna saldırıyoruz?')}
       </Text>
       <Text style={styles.pickSubtitle}>
-        {t('onboarding.pickPathSubtitle', 'Gelişim yolculuğuna başlamak için temel bir yol seç.')}
+        {t('onboarding.pickPathSubtitle', 'Hepsini aynı anda değil. Şimdi en çok canını sıkanı seç.')}
       </Text>
       <ScrollView
         contentContainerStyle={styles.pathGrid}
@@ -903,10 +733,10 @@ function PickPathStep({ t, selectedPath, onSelect }) {
                 <MaterialIcons name={p.materialIcon} size={32} color={isSelected ? LT.primary : LT.onSurfaceVariant} />
               </View>
               <Text style={styles.pathGridName}>
-                {t(`paths.${p.id}.title`, p.id)}
+                {t(`paths.${p.id}.title`)}
               </Text>
               <Text style={styles.pathGridDuration}>
-                {t('path.lessonsCount', '{{count}} ders', { count: p.duration })}
+                {t('path.lessonsCount', { count: p.duration })}
               </Text>
             </TouchableOpacity>
           );
@@ -933,191 +763,8 @@ const styles = StyleSheet.create({
     transform: [{ scale: 1.4 }],
   },
 
-  // Welcome
-  welcomeContent: {
-    paddingHorizontal: 24,
-    paddingTop: 32,
-    paddingBottom: 24,
-    alignItems: 'center',
-    flexGrow: 1,
-  },
-  heroWrap: {
-    width: 220,
-    height: 220,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 24,
-  },
-  ringDecor: {
-    position: 'absolute',
-    width: 220,
-    height: 220,
-    borderRadius: 110,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    borderStyle: 'dashed',
-    opacity: 0.7,
-  },
-  heroCircle: {
-    width: 184,
-    height: 184,
-    borderRadius: 92,
-    overflow: 'hidden',
-    backgroundColor: LT.surfaceContainerLowest,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    shadowColor: LT.primary,
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.18,
-    shadowRadius: 18,
-    elevation: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  heroImage: { width: '100%', height: '100%' },
-
-  title: {
-    fontSize: 32,
-    fontWeight: '900',
-    color: LT.onSurface,
-    textAlign: 'center',
-    letterSpacing: -1,
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 15,
-    color: LT.onSurfaceVariant,
-    textAlign: 'center',
-    lineHeight: 22,
-    marginBottom: 28,
-    paddingHorizontal: 8,
-    fontWeight: '500',
-  },
-
-  // Cards
-  featuresContainer: {
-    width: '100%',
-    gap: 12,
-    marginBottom: 24,
-  },
-  featureCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: LT.surfaceContainerLowest,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    borderRadius: 14,
-    padding: 14,
-    gap: 14,
-  },
-  featureIconBox: {
-    width: 48,
-    height: 48,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-  },
-  featureText: { flex: 1 },
-  featureTitle: {
-    color: LT.onSurface,
-    fontSize: 15,
-    fontWeight: '700',
-    marginBottom: 2,
-  },
-  featureSubtitle: {
-    color: LT.onSurfaceVariant,
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: '500',
-  },
-
-  // Language picker
-  langRow: {
-    flexDirection: 'row',
-    gap: 8,
-    width: '100%',
-    marginTop: 8,
-  },
-  langBtn: {
-    flex: 1,
-    alignItems: 'center',
-    paddingVertical: 10,
-    borderRadius: 10,
-    borderWidth: 1.5,
-    borderColor: LT.outlineVariant,
-    backgroundColor: LT.surfaceContainerLowest,
-  },
-  langBtnActive: {
-    borderColor: LT.primary,
-    backgroundColor: LT.surfaceContainerLow,
-  },
-  langFlag: { fontSize: 18, marginBottom: 2 },
-  langLabel: { fontSize: 11, color: LT.onSurfaceVariant, fontWeight: '600' },
-  langLabelActive: { color: LT.primary, fontWeight: '700' },
-
   // Pick path step
   pickPathContent: { flex: 1, paddingTop: 40 },
-
-  // Baseline assessment — quick inline 5-question form
-  assessmentStepContent: { flex: 1, paddingTop: 40 },
-  assessmentList: {
-    paddingHorizontal: 16,
-    paddingBottom: 24,
-    gap: 14,
-  },
-  assessmentRow: {
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: 14,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-  },
-  assessmentRowHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 8,
-  },
-  assessmentIconBox: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-  },
-  assessmentLabel: {
-    flex: 1,
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 1.2,
-    color: LT.onSurface,
-  },
-  assessmentValue: {
-    fontSize: 18,
-    fontWeight: '900',
-    minWidth: 24,
-    textAlign: 'right',
-  },
-  assessmentQ: {
-    fontSize: 12,
-    color: LT.onSurfaceVariant,
-    lineHeight: 16,
-    marginBottom: 10,
-  },
-  scaleRowOb: {
-    flexDirection: 'row',
-    gap: 3,
-  },
-  scaleDotOb: {
-    flex: 1,
-    height: 18,
-    borderRadius: 4,
-    backgroundColor: LT.surfaceContainer,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-  },
 
   // Archetype step — identity-based framing
   archetypeContent: { flex: 1, paddingTop: 40 },
@@ -1186,7 +833,7 @@ const styles = StyleSheet.create({
     color: LT.primary,
     fontSize: 24,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     textAlign: 'center',
     marginBottom: 14,
   },
@@ -1200,7 +847,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 38,
     fontWeight: '900',
-    letterSpacing: -1.2,
+    letterSpacing: 0,
     marginBottom: 6,
     textAlign: 'center',
   },
@@ -1210,15 +857,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textAlign: 'center',
     lineHeight: 17,
-  },
-  upsellSubtitle: {
-    color: LT.onSurfaceVariant,
-    fontSize: 14,
-    fontWeight: '500',
-    textAlign: 'center',
-    lineHeight: 20,
-    paddingHorizontal: 12,
-    marginBottom: 24,
   },
   upsellFeatures: {
     width: '100%',
@@ -1290,7 +928,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 24,
     marginBottom: 8,
-    letterSpacing: -0.5,
+    letterSpacing: 0,
   },
   pickSubtitle: {
     fontSize: 13,
@@ -1335,7 +973,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '800',
     marginBottom: 4,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   pathGridDuration: {
     color: LT.onSurfaceVariant,
@@ -1423,7 +1061,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     marginBottom: 10,
     marginTop: 14,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   nameInput: {
     backgroundColor: LT.surfaceContainerLowest,

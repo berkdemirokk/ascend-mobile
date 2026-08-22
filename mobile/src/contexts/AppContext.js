@@ -18,18 +18,14 @@ import {
 import { getRank } from '../config/ranks';
 import { getPathById } from '../data/paths';
 import { pullState, pushState, mergeStates, pickSyncableState } from '../services/cloudSync';
-// `generateAnonUsername` is the only export still imported from the old
-// leaderboard module — used as a default handle for the share card and
-// Profile/Settings displays. The public leaderboard surface (screen +
-// push-on-streak-change) was removed because a global ranking contradicts
-// the "Monk Mode" framing of solo, intrinsic discipline. The Squad
-// surface (private 2-5 person rings) was also removed because there was
-// no inviteable user pool — solo users would see an empty squad UI and
-// feel lonelier, not motivated.
-import { generateAnonUsername } from '../services/leaderboard';
+import { generateAnonUsername } from '../services/anonymousHandle';
 import { useAuth } from './AuthContext';
 import { supabase } from '../services/supabase';
-import { redeemReferralCode, checkReferralRewards } from '../services/referral';
+import {
+  redeemReferralCode,
+  checkReferralRewards,
+  markReferralRewardsPaid,
+} from '../services/referral';
 import {
   cancelAllNotifications,
   scheduleStreakAtRiskReminder,
@@ -37,10 +33,11 @@ import {
   cancelComebackReminder,
   registerPushToken,
 } from '../services/notifications';
+import { calendarDaysSince, toLocalDateString } from '../utils/dateOnly';
 
 // ─── Initial State ───────────────────────────────────────────────────────────
 
-const initialState = {
+export const initialState = {
   onboarded: false,
 
   // When the user first opened the app. Used to compute the new-user
@@ -75,6 +72,7 @@ const initialState = {
   lastLessonAtMs: 0,
   todaySessionLessons: 0,
   _momentumToast: null,
+  _lessonReward: null,
 
   // Per-path commitment-device pledges. Behavioural-econ research:
   // a written, self-authored sentence raises adherence ~30% even if
@@ -108,6 +106,7 @@ const initialState = {
   // Premium
   isPremium: false,
   streakFreezes: 0,
+  referralOwnerRewardIds: [],
 
   // Achievements
   unlockedAchievements: [],
@@ -133,8 +132,8 @@ const initialState = {
   pathProgress: {},
   activePathId: 'dopamine-detox',
 
-  // Anonymous handle for the public streak leaderboard. Generated on first
-  // sign-in and re-used across devices via cloudSync.
+  // Anonymous profile handle. Generated on first sign-in and re-used across
+  // devices via cloudSync.
   anonUsername: null,
 
   // Streak Vacation Mode (premium): user can pause their streak for up to
@@ -174,30 +173,20 @@ const initialState = {
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-const getTodayDateString = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
+const getTodayDateString = () => toLocalDateString(new Date());
 
 const getYesterdayDateString = () => {
   const d = new Date();
   d.setDate(d.getDate() - 1);
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+  return toLocalDateString(d);
 };
 
-// Heart refill cadence — halved from 30 → 15 min in v1.0.12 because user
-// feedback was "canlar hemen bitiyo" (hearts deplete too fast). At the
-// previous 30-min rate, fully refilling 5 hearts from empty took 2.5
-// hours, which created a punitive feel that hurt retention. 15-min cuts
-// that to ~75 min, keeping the friction meaningful for free users but
-// preventing the "abandon the app" reflex.
+// Heart refill cadence — after the first lost heart starts the timer,
+// the time-based REFILL_HEARTS action restores the full set. Keep this
+// value aligned with the explicit copy in the hearts locale section.
 const HEART_REFILL_MINUTES = 15;
+const MAX_HEARTS = 5;
+const LOCAL_STATE_LOAD_TIMEOUT_MS = 4000;
 
 // Grace period after first install — for the first 24 hours, free users
 // don't lose hearts on wrong answers. This dramatically improves day-1
@@ -209,9 +198,32 @@ const NEW_USER_GRACE_HOURS = 24;
 // Makes the heart system feel rewarding rather than purely punitive.
 const PERFECT_LESSON_BONUS_XP = 10;
 
+const withTimeout = (promise, ms, label) =>
+  new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(
+      () => reject(new Error(`${label} timeout after ${ms}ms`)),
+      ms,
+    );
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timeoutId);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timeoutId);
+        reject(error);
+      },
+    );
+  });
+
+const normalizeAnonUsername = (value) => {
+  if (typeof value !== 'string') return value;
+  return value.replace(/^monk_/, 'ascender_');
+};
+
 // ─── Reducer ─────────────────────────────────────────────────────────────────
 
-const ACTION_TYPES = {
+export const ACTION_TYPES = {
   LOAD_STATE: 'LOAD_STATE',
   COMPLETE_ONBOARDING: 'COMPLETE_ONBOARDING',
   SET_USER_PROFILE: 'SET_USER_PROFILE',
@@ -248,12 +260,11 @@ const ACTION_TYPES = {
   CLEAR_MILESTONE_TOAST: 'CLEAR_MILESTONE_TOAST',
 };
 
-function appReducer(state, action) {
+export function appReducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.LOAD_STATE: {
       // Whitelist payload keys against initialState's shape — this
-      // prevents fossil fields from prior versions (currentSquadId,
-      // lastLetterShownAt, dailyMysteryBox*) from leaking into the new
+      // prevents fossil fields from prior versions from leaking into the new
       // state and getting pushed back up to the cloud on the next sync.
       // Without this, every cloud push would re-write the dead keys
       // forever, and a multi-device user would see them spread.
@@ -263,6 +274,9 @@ function appReducer(state, action) {
         if (action.payload && Object.prototype.hasOwnProperty.call(action.payload, k)) {
           sanitizedPayload[k] = action.payload[k];
         }
+      }
+      if (Object.prototype.hasOwnProperty.call(sanitizedPayload, 'anonUsername')) {
+        sanitizedPayload.anonUsername = normalizeAnonUsername(sanitizedPayload.anonUsername);
       }
       const next = { ...state, ...sanitizedPayload, _loaded: true };
       // First-launch sentinel — stamp installedAt the very first time
@@ -320,7 +334,7 @@ function appReducer(state, action) {
         ...state,
         isPremium: !!action.payload,
         // Premium = unlimited hearts effectively
-        hearts: action.payload ? 5 : state.hearts,
+        hearts: action.payload ? MAX_HEARTS : state.hearts,
         // Premium activation grants 12 streak repair tokens (≈ 1/month for a
         // yearly sub). Existing token count is kept if higher so users who
         // already had some don't lose them on re-activation.
@@ -349,6 +363,14 @@ function appReducer(state, action) {
           return { ...state, lastCompletedDate: yesterday };
         }
         return state;
+      }
+      if (
+        state.vacationUntil
+        && state.vacationUntil === yesterday
+        && state.lastCompletedDate !== today
+        && state.lastCompletedDate !== yesterday
+      ) {
+        return { ...state, lastCompletedDate: yesterday };
       }
       if ((state.streakFreezes || 0) <= 0) return state;
       // No save needed if they're already up-to-date
@@ -531,14 +553,27 @@ function appReducer(state, action) {
       // attemptReferralRedemption were silently no-op'ing the reward.
       // Capped at 50 to avoid runaway accumulation from any future
       // server-side referral airdrops.
+      const rewardId = action.payload?.id;
+      if (
+        rewardId
+        && (state.referralOwnerRewardIds || []).includes(rewardId)
+      ) {
+        return state;
+      }
       const current = state.streakFreezes || 0;
       const next = Math.min(50, current + 10);
-      return { ...state, streakFreezes: next };
+      const referralOwnerRewardIds = rewardId
+        ? Array.from(new Set([
+            ...(state.referralOwnerRewardIds || []),
+            rewardId,
+          ])).slice(-200)
+        : state.referralOwnerRewardIds || [];
+      return { ...state, streakFreezes: next, referralOwnerRewardIds };
     }
 
     case ACTION_TYPES.ENSURE_ANON_USERNAME: {
       // Generate once, then sticky. cloudSync will replicate the chosen
-      // handle across devices so the user stays the same monk.
+      // handle across devices so the user keeps the same public profile.
       if (state.anonUsername) return state;
       return { ...state, anonUsername: action.payload };
     }
@@ -584,6 +619,7 @@ function appReducer(state, action) {
         lastLessonAtMs: 0,
         todaySessionLessons: 0,
         _momentumToast: null,
+        _lessonReward: null,
         // Streak-repair / milestone bookkeeping is also progress-tied.
         streakRepairsUsed: 0,
         _milestoneToast: null,
@@ -628,7 +664,7 @@ function appReducer(state, action) {
       }
       const newHearts = Math.max(0, state.hearts - 1);
       const refillAt =
-        newHearts < 5 && !state.heartsRefillAt
+        newHearts < MAX_HEARTS && !state.heartsRefillAt
           ? new Date(Date.now() + HEART_REFILL_MINUTES * 60 * 1000).toISOString()
           : state.heartsRefillAt;
       return { ...state, hearts: newHearts, heartsRefillAt: refillAt };
@@ -639,7 +675,7 @@ function appReducer(state, action) {
       // expires) and explicit "all back" UX (none currently). The OutOfHearts
       // rewarded-ad path is NOT this — that uses GAIN_HEART below to add
       // exactly +1, matching the CTA text "+1 KALP KAZAN".
-      return { ...state, hearts: 5, heartsRefillAt: null };
+      return { ...state, hearts: MAX_HEARTS, heartsRefillAt: null };
 
     case ACTION_TYPES.GAIN_HEART: {
       // Add exactly one heart. Used by the rewarded-ad reward flow so
@@ -647,8 +683,8 @@ function appReducer(state, action) {
       // back to 5 (which made the heart system feel meaningless — one
       // ad = unlimited hearts back). Cap at 5; if we now have 5, clear
       // the refill timer (no more refills pending).
-      const newHearts = Math.min(5, (state.hearts || 0) + 1);
-      const refillAt = newHearts >= 5 ? null : state.heartsRefillAt;
+      const newHearts = Math.min(MAX_HEARTS, (state.hearts || 0) + 1);
+      const refillAt = newHearts >= MAX_HEARTS ? null : state.heartsRefillAt;
       return { ...state, hearts: newHearts, heartsRefillAt: refillAt };
     }
 
@@ -674,45 +710,21 @@ function appReducer(state, action) {
       };
       if (current.completed.includes(lessonId)) return state;
 
-      // ── Bonus XP multipliers ──────────────────────────────────────────
-      // Comeback bonus: returning after 3+ days gone gives 2x XP, once.
-      // Random bonus days: Monday + Friday are 2x days. Stacks with
-      // comeback (rare overlap = 4x — that's a feature, not a bug).
+      // Comeback and the visible premium weekend boost are deterministic.
       let xpMultiplier = 1;
       let comebackApplied = false;
       if (state.lastCompletedDate) {
-        const last = new Date(state.lastCompletedDate);
-        const lastMs = last.getTime();
-        // Guard against corrupt persisted state — older builds may have
-        // written non-ISO strings here. NaN check prevents daysSince
-        // becoming NaN which would silently disable comeback bonus.
-        if (!Number.isNaN(lastMs)) {
-          const daysSince = Math.floor((Date.now() - lastMs) / 86400000);
-          if (daysSince >= 3) {
-            xpMultiplier *= 2;
-            comebackApplied = true;
-          }
+        const daysSince = calendarDaysSince(state.lastCompletedDate);
+        if (daysSince !== null && daysSince >= 3) {
+          xpMultiplier *= 2;
+          comebackApplied = true;
         }
       }
       const dow = new Date().getDay();
-      const isBonusDay = dow === 1 || dow === 5; // Mon or Fri
-      if (isBonusDay) xpMultiplier *= 2;
 
-      // PREMIUM WEEKEND BOOST — Saturdays + Sundays grant a 3x
-      // multiplier for premium users only. Visible on Home with a
-      // banner so free users see the perk and feel the upgrade pull.
-      // Stacks with the Mon/Fri 2x (impossible weekday overlap) and
-      // the surprise 20% chance below — premium weekend can easily
-      // hit 6x on a lucky lesson, which is the "wow" moment.
+      // This multiplier is visible on Home before a premium lesson.
       const isWeekend = dow === 0 || dow === 6; // Sun or Sat
       if (isWeekend && state.isPremium) xpMultiplier *= 3;
-
-      // ── Variable rewards (v1.0.12) ────────────────────────────────────
-      // Surprise reward — ~20% chance of an extra 2x. Variable schedules
-      // are the most addictive reinforcement pattern (casino mechanic).
-      // Stacks with the deterministic multipliers above.
-      const isSurpriseDay = Math.random() < 0.2;
-      if (isSurpriseDay) xpMultiplier *= 2;
 
       // Perfect Lesson Bonus — completing every quiz question correctly
       // (i.e., not losing any hearts) earns a flat bonus. Makes the
@@ -814,6 +826,7 @@ function appReducer(state, action) {
       const newSpecials = checkSpecialAchievements({
         now: new Date(),
         unlocked: state.unlockedAchievements,
+        lessonHistory: state.lessonHistory,
       });
 
       // Milestone toast: trigger confetti + haptic on these streak counts.
@@ -821,7 +834,7 @@ function appReducer(state, action) {
       const hitMilestone = MILESTONES.includes(newStreak)
         && state.currentStreak !== newStreak;
       const milestoneToast = hitMilestone
-        ? { streak: newStreak, comebackApplied, isBonusDay, ts: Date.now() }
+        ? { streak: newStreak, comebackApplied, ts: Date.now() }
         : state._milestoneToast;
 
       return {
@@ -869,6 +882,16 @@ function appReducer(state, action) {
         lastLessonAtMs: nowMs,
         todaySessionLessons: sessionLessonsNow,
         _momentumToast: momentumToast,
+        _lessonReward: {
+          totalXp: finalXp,
+          baseXp: xp,
+          multiplier: xpMultiplier,
+          perfectBonus,
+          momentumBonus,
+          comebackApplied,
+          weekendBoostApplied: isWeekend && state.isPremium,
+          ts: nowMs,
+        },
       };
     }
 
@@ -947,6 +970,10 @@ const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
+  const [userSwitchResetNonce, bumpUserSwitchResetNonce] = useReducer(
+    (value) => value + 1,
+    0,
+  );
   const { user, isAuthenticated } = useAuth();
   const userId = user?.id || null;
 
@@ -954,17 +981,21 @@ export function AppProvider({ children }) {
   useEffect(() => {
     (async () => {
       try {
-        const raw = await AsyncStorage.getItem(STORAGE_KEYS.USER_STATE);
+        const raw = await withTimeout(
+          AsyncStorage.getItem(STORAGE_KEYS.USER_STATE),
+          LOCAL_STATE_LOAD_TIMEOUT_MS,
+          'AsyncStorage USER_STATE load',
+        );
         if (raw) {
           const parsed = JSON.parse(raw);
           const today = getTodayDateString();
           const todayCompleted = parsed.lastCompletedDate === today;
 
           // Auto-refill hearts if past refillAt
-          let hearts = parsed.hearts ?? 5;
+          let hearts = parsed.hearts ?? MAX_HEARTS;
           let heartsRefillAt = parsed.heartsRefillAt;
           if (heartsRefillAt && new Date(heartsRefillAt) < new Date()) {
-            hearts = 5;
+            hearts = MAX_HEARTS;
             heartsRefillAt = null;
           }
 
@@ -993,7 +1024,7 @@ export function AppProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state._loaded]);
 
-  // ── Ensure the user has an anon handle for the leaderboard ───────────────
+  // ── Ensure the user has an anonymous profile handle ─────────────────────
   useEffect(() => {
     if (!state._loaded) return;
     if (state.anonUsername) return;
@@ -1002,6 +1033,21 @@ export function AppProvider({ children }) {
       payload: generateAnonUsername(),
     });
   }, [state._loaded, state.anonUsername]);
+
+  // Keep heart refill tied to state, not to whichever screen is mounted.
+  // The visible countdown can hit zero while the user stays inside the app;
+  // this dispatch makes the refill actually happen at that moment.
+  useEffect(() => {
+    if (!state._loaded || state.isPremium) return;
+    if ((state.hearts || 0) >= MAX_HEARTS || !state.heartsRefillAt) return;
+    const refillAtMs = new Date(state.heartsRefillAt).getTime();
+    if (Number.isNaN(refillAtMs)) return;
+    const delay = Math.max(0, refillAtMs - Date.now());
+    const timer = setTimeout(() => {
+      dispatch({ type: ACTION_TYPES.REFILL_HEARTS });
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [state._loaded, state.isPremium, state.hearts, state.heartsRefillAt]);
 
   // ── Smart re-engagement notifications ────────────────────────────────────
   // Streak-at-risk: re-evaluated whenever today's completion or streak
@@ -1063,6 +1109,7 @@ export function AppProvider({ children }) {
     delete toSave._streakFreezeToast;
     delete toSave._milestoneToast;
     delete toSave._momentumToast;
+    delete toSave._lessonReward;
     try {
       AsyncStorage.setItem(
         STORAGE_KEYS.USER_STATE,
@@ -1082,6 +1129,7 @@ export function AppProvider({ children }) {
       delete toSave._streakFreezeToast;
       delete toSave._milestoneToast;
       delete toSave._momentumToast;
+      delete toSave._lessonReward;
       // _streakLostInfo IS persisted: we want the empathy banner to
       // survive an app restart so a user who closes the app right
       // after losing their streak still sees it on the next open.
@@ -1125,13 +1173,19 @@ export function AppProvider({ children }) {
   // bleeds into user B's account via merge, then gets pushed back to
   // user B's row. Cross-account data contamination. P0.
   const lastSeenUserIdRef = useRef(null);
+  const resetPendingForUserRef = useRef(null);
   // Set to true once the cloud-pull-and-merge has completed for the
   // current userId. The cloud-push effect waits for this so it doesn't
   // push pre-merge state to the new user's cloud row.
   const pullCompletedRef = useRef(false);
   useEffect(() => {
     if (!state._loaded) return;
-    if (lastSeenUserIdRef.current === userId) return;
+    if (lastSeenUserIdRef.current === userId) {
+      if (resetPendingForUserRef.current === userId) {
+        resetPendingForUserRef.current = null;
+      }
+      return;
+    }
     const previousUserId = lastSeenUserIdRef.current;
     lastSeenUserIdRef.current = userId;
     pullCompletedRef.current = false;
@@ -1142,13 +1196,18 @@ export function AppProvider({ children }) {
     // BUT: if previousUserId was a real id and userId is now null
     // (sign-out) OR a different id (account switch), reset.
     if (previousUserId !== null && previousUserId !== userId) {
+      resetPendingForUserRef.current = userId;
       dispatch({ type: ACTION_TYPES.RESET_FOR_USER_SWITCH });
+      bumpUserSwitchResetNonce();
+      return;
     }
-  }, [state._loaded, userId]);
+    resetPendingForUserRef.current = null;
+  }, [state._loaded, userId, userSwitchResetNonce]);
 
   // ── Cloud pull on first sign-in ─────────────────────────────────────────
   useEffect(() => {
     if (!state._loaded || !isAuthenticated || !userId) return;
+    if (resetPendingForUserRef.current === userId) return;
     let cancelled = false;
 
     (async () => {
@@ -1159,6 +1218,12 @@ export function AppProvider({ children }) {
           // No remote state — still mark pull complete so the push
           // effect can begin (and create the row for this user).
           pullCompletedRef.current = true;
+          const local = { ...state };
+          delete local._loaded;
+          const initialPush = pickSyncableState(local);
+          pushState(userId, initialPush).catch((e) =>
+            console.warn('[AppContext] Initial cloud push failed:', e?.message),
+          );
           return;
         }
 
@@ -1180,7 +1245,7 @@ export function AppProvider({ children }) {
     return () => {
       cancelled = true;
     };
-  }, [state._loaded, isAuthenticated, userId]);
+  }, [state._loaded, isAuthenticated, userId, userSwitchResetNonce]);
 
   // ── Cloud push debounced ────────────────────────────────────────────────
   useEffect(() => {
@@ -1193,8 +1258,7 @@ export function AppProvider({ children }) {
     const timer = setTimeout(() => {
       // Sanitize before push: `pickSyncableState` keeps only the
       // explicit SYNCED_KEYS allowlist, so fossil fields from removed
-      // features (e.g. currentSquadId after Squad MVP was removed) can
-      // never be re-written to the cloud row.
+      // features can never be re-written to the cloud row.
       const toPush = pickSyncableState(state);
       pushState(userId, toPush).catch((e) =>
         console.warn('[AppContext] Cloud push failed:', e?.message),
@@ -1209,16 +1273,21 @@ export function AppProvider({ children }) {
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      let purchaseIdentityReady = true;
       try {
         if (userId) {
-          await linkPurchaseUser(userId);
+          purchaseIdentityReady = await linkPurchaseUser(userId);
         } else {
           await unlinkPurchaseUser();
         }
       } catch (e) {
+        purchaseIdentityReady = false;
         console.warn('[AppContext] Purchase user link failed:', e?.message);
       }
       if (cancelled) return;
+      if (userId && !purchaseIdentityReady) {
+        return;
+      }
       try {
         const isPremium = await checkPremiumStatus();
         // null = couldn't determine (offline / RC outage). DO NOT
@@ -1256,18 +1325,33 @@ export function AppProvider({ children }) {
   // ── Owner-side referral rewards (close the viral loop) ────────────────
   // For every friend who has redeemed THIS user's code but where the
   // owner-side reward hasn't been paid yet, grant +10 streak freezes.
-  // Fires on every auth + once at app open. The server marks the row
-  // BEFORE we dispatch so an interrupted dispatch can be re-tried
-  // safely (the marker is the source of truth, not the local count).
+  // Fires on every auth + once at app open. We grant locally first and
+  // only mark the server rows paid after the debounced local save window;
+  // otherwise a crash between "server marked" and "local reward saved"
+  // permanently loses the inviter's reward.
   useEffect(() => {
     if (!state._loaded || !userId) return;
     let cancelled = false;
+    let markTimer = null;
     (async () => {
       try {
-        const { granted } = await checkReferralRewards(userId);
+        const { ids = [] } = await checkReferralRewards(userId);
         if (cancelled) return;
-        for (let i = 0; i < granted; i++) {
-          dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+        const unpaidIds = ids.filter(
+          (id) => !(state.referralOwnerRewardIds || []).includes(id),
+        );
+        unpaidIds.forEach((id) => {
+          dispatch({
+            type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+            payload: { id },
+          });
+        });
+        if (unpaidIds.length > 0) {
+          markTimer = setTimeout(() => {
+            markReferralRewardsPaid(unpaidIds).catch((e) =>
+              console.warn('[AppContext] owner referral mark failed:', e?.message),
+            );
+          }, 1500);
         }
       } catch (e) {
         console.warn('[AppContext] owner referral check failed:', e?.message);
@@ -1275,6 +1359,7 @@ export function AppProvider({ children }) {
     })();
     return () => {
       cancelled = true;
+      if (markTimer) clearTimeout(markTimer);
     };
   }, [state._loaded, userId]);
 
@@ -1293,11 +1378,16 @@ export function AppProvider({ children }) {
         if (!pending || cancelled) return;
         const result = await redeemReferralCode(pending, userId);
         if (cancelled) return;
-        // Whether it succeeded or failed (invalid / already-used), drop
-        // the pending code — retrying forever would just spam the server.
-        await AsyncStorage.removeItem('@ascend/pending_referral_code');
+        // Drop only terminal outcomes. Transient network/server errors keep
+        // the pending code so the next signed-in launch can retry.
         if (result?.ok) {
+          await AsyncStorage.removeItem('@ascend/pending_referral_code');
           dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+        } else if (
+          ['invalid', 'own_code', 'already_redeemed', 'already_used_a_code']
+            .includes(result?.reason)
+        ) {
+          await AsyncStorage.removeItem('@ascend/pending_referral_code');
         }
       } catch (e) {
         console.warn('[AppContext] pending referral redeem failed:', e?.message);

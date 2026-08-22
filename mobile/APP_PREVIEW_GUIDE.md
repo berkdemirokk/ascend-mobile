@@ -20,10 +20,10 @@ App Store'da **app preview video**'ları conversion'ı **%15-25 artırır**. App
 **Amaç**: app açılışından 5 sn'de ne yaptığını anlat.
 
 ```
-[0-2s] Yeni app icon zoom-in (low-poly monk)
+[0-2s] Current red-and-white Ascend icon zoom-in
        Voice: "Disiplini öğrenme zamanı"
-[2-6s] Onboarding Welcome → Path picker (5 disiplin)
-       On-screen: "5 yol. 50 ders. Tek hedef: master."
+[2-6s] Onboarding Welcome → Path picker (5 disiplin yolu)
+       On-screen: "5 yol. 250 ders. Her gün ilerle."
 [6-10s] PathScreen zigzag → tap a lesson
        On-screen: "Her gün 5 dakika"
 [10-13s] Quiz screen → A/B/C/D + correct
@@ -34,7 +34,7 @@ App Store'da **app preview video**'ları conversion'ı **%15-25 artırır**. App
 ```
 
 ### Video 2: "Premium Value" — 20 sn
-**Amaç**: Premium'un değerini ve trial'ı vurgula.
+**Amaç**: Premium'un doğrulanmış değerini göster. Trial yalnızca App Store Connect'te aktifse vurgulanır.
 
 ```
 [0-3s] Free user lesson → "Heart bitti" modal
@@ -43,9 +43,9 @@ App Store'da **app preview video**'ları conversion'ı **%15-25 artırır**. App
        On-screen: "Sınırsız kalp"
        On-screen: "50 ders, tüm yollar"
        On-screen: "Reklamsız"
-[7-12s] Yearly card highlight + "EN İYİ FİYAT"
-       On-screen: "İlk 7 gün ücretsiz"
-[12-17s] "7 gün ücretsiz başla" CTA tap → success
+[7-12s] Yearly card highlight + uygulamada görünen doğrulanmış rozet
+       On-screen: StoreKit/RevenueCat tarafından dönen teklif metni
+[12-17s] Doğrulanmış satın alma CTA'sına dokun → success
        On-screen: "Sonsuz disiplin"
 [17-20s] Premium app görünümü (banner yok, kalp ∞)
        Logo + outro
@@ -71,7 +71,7 @@ App Store'da **app preview video**'ları conversion'ı **%15-25 artırır**. App
 
 ### Yöntem A — TestFlight Cihazda Screen Recording (En kolay)
 
-1. **TestFlight'tan v0.8.0'ı yükle**
+1. **TestFlight'tan doğrulanacak 1.0.44 aday build'ini yükle**
 2. iPhone Settings → Control Center → **Screen Recording** ekle
 3. Control Center'dan kayıt başlat
 4. App'i dolaş (script'e göre)
@@ -105,16 +105,16 @@ App Store'da **app preview video**'ları conversion'ı **%15-25 artırır**. App
 
 ### Türkçe Script (15 sn versiyonu)
 ```
-"Disiplini öğrenme zamanı. 5 yol, 50 ders, sınırsız sen.
+"Disiplini öğrenme zamanı. 5 yol, 250 ders, her gün ilerleme.
 Quiz ile pekiştir. Streakini koru. Yeni sen başlasın.
-Monk Mode — şimdi App Store'da."
+Ascend: Daily Discipline — şimdi App Store'da."
 ```
 
 ### English Script
 ```
-"Time to learn discipline. 5 paths, 50 lessons, unlimited you.
+"Time to learn discipline. 5 paths, 250 lessons, daily progress.
 Reinforce with quizzes. Keep your streak. Become the new you.
-Monk Mode — now on App Store."
+Ascend: Daily Discipline — now on App Store."
 ```
 
 **Voice over araçları**:
@@ -124,11 +124,11 @@ Monk Mode — now on App Store."
 
 ## 🎨 On-Screen Text Stili
 
-Stitch tasarımıyla tutarlı:
+Current red-and-white design system ile tutarlı:
 - Font: **Inter** (fallback: SF Pro Display)
 - Boyut: **64-80px** ana title, **40-48px** alt-bilgi
-- Renk: **#FFFFFF** (white) on **#13131b** (dark navy bg)
-- Accent: **#C0C1FF** (M3 primary) for emphasis
+- Renk: **#1A1C1C** metin, **#F9F9F9** veya **#FFFFFF** zemin
+- Accent: **#B70006** primary red; CTA üzerinde **#FFFFFF**
 - Konum: alt 1/3'te, video subject ile çakışmasın
 
 ## 🎵 Müzik
@@ -173,6 +173,6 @@ Apple **review** edebilir (~24h). Reject olursa sebep clear, fix + reupload.
 
 **Bütçe önerisi**: Video başına $50-150 (Fiverr) veya kendi yap (~3 saat × 3 video = 9 saat).
 
-**Ne zaman yap**: TestFlight build stable olunca ve 3 path tamam olunca. Şimdi v0.8.0 yeterli.
+**Ne zaman yap**: 1.0.44 aday build'i kalite kapısından ve gerçek cihaz regresyonundan geçince.
 
 **Yardım**: Video script'i + storyboard hazırsın. Bana "video çekim için yardım" dersen detayları paylaşırım.

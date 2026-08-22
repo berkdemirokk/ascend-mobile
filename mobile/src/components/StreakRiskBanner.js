@@ -10,10 +10,16 @@
 // this evening prompt drives 30-40% of late-day sessions.
 
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
-import { LT } from '../config/lightTheme';
 import { hapticImpactMedium } from '../services/haptics';
 
 // Banner shows from this hour onward, until midnight.
@@ -125,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     marginBottom: 2,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   body: {
     color: '#FFFFFF',

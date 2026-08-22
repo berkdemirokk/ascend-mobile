@@ -1,12 +1,12 @@
-# Ascend — AI Growth Coach
+# Ascend: Daily Discipline
 
-An AI-powered personal growth coach that delivers daily challenges, tracks your progress, and helps you build better habits across every area of life.
+An Expo iOS app for discipline training: 5 paths, 50 lessons each, streaks, hearts, achievements, subscriptions, ads, Supabase auth/cloud sync, and TR/EN localization.
 
 ---
 
-## Screenshots
+## Status
 
-> _Screenshots coming soon._
+TestFlight beta. App Store submission work is tracked in `SUBMIT_CHECKLIST.md`, `APP_REVIEW_INFO.md`, and `../docs/app-store-submission.md`.
 
 ---
 
@@ -16,8 +16,9 @@ An AI-powered personal growth coach that delivers daily challenges, tracks your 
 - **React Native** — cross-platform mobile UI
 - **React Navigation 6** — stack + bottom-tab navigation
 - **RevenueCat** — in-app subscriptions and purchase management
-- **AsyncStorage** — local persistence for user preferences and history
-- **OpenAI / Claude API** — AI-generated coaching challenges
+- **Supabase** — auth, progress cloud sync, edge functions
+- **AdMob** — banner, interstitial, and rewarded ads for free users
+- **AsyncStorage** — local persistence for preferences, progress, and local-only voice recordings
 
 ---
 
@@ -34,19 +35,19 @@ An AI-powered personal growth coach that delivers daily challenges, tracks your 
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-org/ascend-ai-growth-coach.git
+git clone https://github.com/berkdemirokk/ascend-mobile.git
 
 # 2. Navigate to the mobile app directory
-cd ascend-ai-growth-coach/mobile
+cd ascend-mobile/mobile
 
 # 3. Install dependencies
 npm install
 
 # 4. Start the development server
-npx expo start
+npm run start
 ```
 
-Press `i` to open in iOS Simulator, `a` for Android, or scan the QR code with the Expo Go app.
+Most native modules require a development build or TestFlight build. Expo Go is useful only for limited UI checks.
 
 ---
 
@@ -63,8 +64,8 @@ cp .env.example .env
 ```env
 EXPO_PUBLIC_REVENUECAT_IOS_KEY=your_revenuecat_ios_key
 EXPO_PUBLIC_REVENUECAT_ANDROID_KEY=your_revenuecat_android_key
-EXPO_PUBLIC_OPENAI_API_KEY=your_openai_api_key
-EXPO_PUBLIC_API_BASE_URL=https://api.yourdomain.com
+EXPO_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 > Never commit your `.env` file. It is listed in `.gitignore`.
@@ -86,6 +87,14 @@ eas build:configure
 ```bash
 eas build --platform ios
 ```
+
+### Release Checks
+
+```bash
+npm run quality:ci
+```
+
+This runs Expo Doctor, an iOS export, and a critical-level production dependency audit.
 
 ### Android Build
 

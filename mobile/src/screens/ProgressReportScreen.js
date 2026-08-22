@@ -8,19 +8,21 @@
 // baseline-only users who don't have a post yet, this screen
 // shouldn't be reachable.
 
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  SafeAreaView,
   Share,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { LT } from '../config/lightTheme';
 import ConfettiBurst from '../components/ConfettiBurst';
 import { useApp } from '../contexts/AppContext';
@@ -127,7 +129,7 @@ export default function ProgressReportScreen({ navigation }) {
       // the 'before score' that audit flagged as embarrassment.
       const msg = t(
         'progressReport.shareMsg',
-        '{{days}} günde {{lessons}} ders, {{streak}} günlük seri. Kendime göre +{{delta}} puan ilerleme. Ascend: Monk Mode ile takip ediyorum.',
+        '{{days}} günde {{lessons}} ders, {{streak}} günlük seri. Kendime göre +{{delta}} puan ilerleme. Ascend: Daily Discipline ile takip ediyorum.',
         {
           days: daysElapsed,
           lessons: lessonsSinceBaseline,
@@ -353,7 +355,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: LT.onSurface,
     lineHeight: 78,
-    letterSpacing: -2,
+    letterSpacing: 0,
   },
   heroDeltaUnit: {
     fontSize: 12,

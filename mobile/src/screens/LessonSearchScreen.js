@@ -8,21 +8,39 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  SafeAreaView,
   StatusBar,
-  TouchableOpacity,
   FlatList,
   Keyboard,
+  Alert,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
-import { PATHS } from '../data/paths';
+import { useApp } from '../contexts/AppContext';
+import {
+  PATHS,
+  getLessonById,
+  getLessonAccessState,
+} from '../data/paths';
+import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import { LT, LT_RADIUS, LT_SPACING } from '../config/lightTheme';
 
 export default function LessonSearchScreen({ navigation }) {
   const { t, i18n } = useTranslation();
+  const {
+    pathProgress,
+    isPremium,
+    hearts,
+    heartsRefillAt,
+    gainHeart,
+  } = useApp();
   const [query, setQuery] = useState('');
+  const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+  const [pendingLesson, setPendingLesson] = useState(null);
 
   // Build a flat searchable index once per render. ~250 entries — small
   // enough to filter on every keystroke without debouncing.
@@ -62,15 +80,38 @@ export default function LessonSearchScreen({ navigation }) {
       .slice(0, 30);
   }, [query, index]);
 
+  const openLesson = (item) => {
+    const lessonId = `${item.pathId}-${item.order}`;
+    const lesson = getLessonById(lessonId);
+    const accessState = getLessonAccessState(lesson, pathProgress, isPremium);
+
+    if (accessState === 'premium') {
+      navigation.navigate('Paywall', { source: 'search_locked_lesson' });
+      return;
+    }
+    if (accessState === 'locked') {
+      Alert.alert(
+        t('path.lockedTitle', 'Bu ders henuz kilitli'),
+        t(
+          'path.lockedBody',
+          'Once siradaki aktif dersi bitir. Yol adim adim acilir.',
+        ),
+      );
+      return;
+    }
+    if (!isPremium && (hearts || 0) <= 0 && accessState !== 'completed') {
+      setPendingLesson({ pathId: item.pathId, lessonId });
+      setOutOfHeartsVisible(true);
+      return;
+    }
+
+    Keyboard.dismiss();
+    navigation.replace('Lesson', { pathId: item.pathId, lessonId });
+  };
+
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      onPress={() => {
-        Keyboard.dismiss();
-        navigation.replace('Lesson', {
-          pathId: item.pathId,
-          lessonId: `${item.pathId}-${item.order}`,
-        });
-      }}
+      onPress={() => openLesson(item)}
       style={styles.row}
       activeOpacity={0.85}
     >
@@ -95,6 +136,8 @@ export default function LessonSearchScreen({ navigation }) {
 
       <View style={styles.topBar}>
         <TouchableOpacity
+          accessibilityRole="button"
+          accessibilityLabel={t('common.back', 'Geri')}
           onPress={() => navigation.goBack()}
           style={styles.backBtn}
           hitSlop={{ top: 12, left: 12, right: 12, bottom: 12 }}
@@ -119,7 +162,12 @@ export default function LessonSearchScreen({ navigation }) {
           returnKeyType="search"
         />
         {query ? (
-          <TouchableOpacity onPress={() => setQuery('')} hitSlop={8}>
+          <TouchableOpacity
+            onPress={() => setQuery('')}
+            hitSlop={8}
+            accessibilityRole="button"
+            accessibilityLabel={t('search.clear', 'Aramayı temizle')}
+          >
             <MaterialIcons name="close" size={18} color={LT.onSurfaceVariant} />
           </TouchableOpacity>
         ) : null}
@@ -151,6 +199,29 @@ export default function LessonSearchScreen({ navigation }) {
           keyboardShouldPersistTaps="handled"
         />
       )}
+
+      <OutOfHeartsModal
+        visible={outOfHeartsVisible}
+        refillAt={heartsRefillAt}
+        onClose={() => {
+          setOutOfHeartsVisible(false);
+          setPendingLesson(null);
+        }}
+        onRefill={() => {
+          gainHeart();
+          setOutOfHeartsVisible(false);
+          const target = pendingLesson;
+          setPendingLesson(null);
+          if (target) {
+            navigation.replace('Lesson', target);
+          }
+        }}
+        onPaywall={() => {
+          setOutOfHeartsVisible(false);
+          setPendingLesson(null);
+          navigation.navigate('Paywall', { source: 'search_out_of_hearts' });
+        }}
+      />
     </SafeAreaView>
   );
 }
@@ -177,7 +248,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '900',
     color: LT.onSurface,
-    letterSpacing: -0.3,
+    letterSpacing: 0,
   },
 
   searchBox: {

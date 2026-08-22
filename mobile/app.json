@@ -1,24 +1,18 @@
 {
   "expo": {
-    "name": "Ascend: Monk Mode",
+    "name": "Ascend: Daily Discipline",
     "slug": "ascend-level-up",
     "scheme": "ascend",
-    "version": "1.0.41",
+    "version": "1.0.44",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#F9F9F9"
-    },
+    "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.ascend.growth",
-      "buildNumber": "46",
       "usesAppleSignIn": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
@@ -289,6 +283,15 @@
       "package": "com.ascend.growth"
     },
     "plugins": [
+      "@react-native-vector-icons/material-icons",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#F9F9F9"
+        }
+      ],
       [
         "expo-notifications",
         {
@@ -305,7 +308,17 @@
           "userTrackingUsageDescription": "We use your device's advertising ID to show you ads tailored to your interests. You can change this preference anytime in Settings."
         }
       ],
-      "expo-tracking-transparency"
+      "expo-tracking-transparency",
+      "expo-asset",
+      "expo-font",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Ascend uses the microphone only when you choose to record a private voice reflection. Recordings remain on your device."
+        }
+      ],
+      "expo-sharing",
+      "expo-status-bar"
     ],
     "extra": {
       "supabase": {

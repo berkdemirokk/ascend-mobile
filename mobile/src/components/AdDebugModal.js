@@ -26,11 +26,13 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   StyleSheet,
   Share,
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 
 import { getAdSystemStatus, loadInterstitial, loadRewarded } from '../services/ads';
@@ -104,7 +106,13 @@ export default function AdDebugModal({ visible, onClose }) {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>{t('adDebug.title', 'Reklam Tanı')}</Text>
-          <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
+          <TouchableOpacity
+            onPress={onClose}
+            style={styles.closeBtn}
+            accessibilityRole="button"
+            accessibilityLabel={t('common.close', 'Kapat')}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
             <MaterialIcons name="close" size={22} color={T.onSurface} />
           </TouchableOpacity>
         </View>
@@ -311,7 +319,7 @@ const makeStyles = (T) =>
       color: T.onSurface,
       fontSize: 18,
       fontWeight: '800',
-      letterSpacing: -0.3,
+      letterSpacing: 0,
     },
     closeBtn: {
       width: 36,

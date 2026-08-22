@@ -7,27 +7,29 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
   StatusBar,
   Alert,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
 import {
   PATHS,
   getPathById,
-  getPathLessons,
   getCurrentLesson,
+  getLessonById,
+  getLessonAccessState,
 } from '../data/paths';
 import LightTopAppBar from '../components/LightTopAppBar';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
-import LessonQueueCard from '../components/LessonQueueCard';
 // DailyMysteryBox + DailyMoodCheckIn removed in the Home agresif
 // sadeleştirme pass. Daily Deck now covers the variable-reward slot
 // (and is content-rich, not just an XP roll), and the mood signal
@@ -42,7 +44,7 @@ import { POST_ASSESSMENT_INTERVAL_DAYS } from '../data/assessment';
 // WeekendBoost duplicated the Weekend Offer below it (two cards
 // fighting for the same Sat/Sun premium pitch); DailyPlanCard's
 // "smart picks" never paid for the visual real estate it took —
-// LessonQueueCard above it already shows the next lesson chain.
+// the main mission card already shows the next lesson chain.
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 // generateDailyPlan import removed alongside DailyPlanCard. The
 // generator file still exists for now but has no consumers; safe to
@@ -54,6 +56,7 @@ import {
   loadRewarded,
   showRewarded,
   isAdsReady,
+  isRewardedReady,
 } from '../services/ads';
 import {
   getDailyChallenge,
@@ -67,7 +70,8 @@ import {
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function HomeScreen({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR';
   // Hydration gate — see comment near the skeleton render below.
   const {
     _loaded,
@@ -121,6 +125,8 @@ export default function HomeScreen({ navigation }) {
   // modal, and only navigate after the user either watches an ad,
   // upgrades, or hearts auto-refill.
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+  const [pendingLesson, setPendingLesson] = useState(null);
+  const [streakRepairLoading, setStreakRepairLoading] = useState(false);
 
   /**
    * Centralised navigate-to-lesson handler used by every Home entry
@@ -128,7 +134,7 @@ export default function HomeScreen({ navigation }) {
    * blocked it (showed the OutOfHearts modal instead, or input was
    * stale).
    *
-   * Hardened: a memoised LessonQueueCard / StreakLost banner / etc.
+   * Hardened: a memoised banner / stale CTA / etc.
    * may pass a pathId/lessonId that's already completed since the
    * card was rendered. Without validation the user lands on an
    * already-finished lesson and sees the green "✓ Tamamlandı" CTA
@@ -136,20 +142,49 @@ export default function HomeScreen({ navigation }) {
    */
   const attemptStartLesson = (pathId, lessonId) => {
     if (!pathId || !lessonId) return false;
-    const completed = pathProgress?.[pathId]?.completed || [];
-    if (completed.includes(lessonId)) {
+    const lesson = getLessonById(lessonId);
+    const accessState = getLessonAccessState(lesson, pathProgress, isPremium);
+    if (accessState === 'completed') {
       // The card / banner that triggered this is stale. Best UX is to
       // simply do nothing — the user will see the path/home re-render
       // with a fresh next-lesson CTA on the next frame, since the
       // momentum loop already advanced.
       return false;
     }
+    if (accessState === 'premium') {
+      navigation.navigate('Paywall', { source: 'home_locked_lesson' });
+      return false;
+    }
+    if (accessState === 'locked') {
+      Alert.alert(
+        t('path.lockedTitle', 'Bu ders henuz kilitli'),
+        t(
+          'path.lockedBody',
+          'Once siradaki aktif dersi bitir. Yol adim adim acilir.',
+        ),
+      );
+      return false;
+    }
     if (!isPremium && (hearts || 0) <= 0) {
+      setPendingLesson({ pathId, lessonId });
       setOutOfHeartsVisible(true);
       return false;
     }
+    setPendingLesson(null);
     navigation.navigate('Lesson', { pathId, lessonId });
     return true;
+  };
+
+  const waitForRewardedAd = async () => {
+    if (isAdsReady() && isRewardedReady()) return true;
+    try { await loadRewarded(); } catch {}
+    for (let i = 0; i < 12; i += 1) {
+      if (isAdsReady() && isRewardedReady()) return true;
+      // Give the native SDK a short chance to emit LOADED.
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((resolve) => setTimeout(resolve, 250));
+    }
+    return isAdsReady() && isRewardedReady();
   };
 
   // Today's pseudo-random challenge — same for everyone on the same date.
@@ -233,12 +268,9 @@ export default function HomeScreen({ navigation }) {
     };
   }, [pathProgress]);
 
-  // Daily Plan — 3 lessons curated for the user today based on their
-  // active path + reflection-derived focus + onboarding goal. Premium-
-  // only feature; free users see a teaser/upsell version.
-  // dailyPlan memo removed alongside the DailyPlanCard. The "smart
-  // picks" surface never paid for the visual real estate it took —
-  // LessonQueueCard already shows the next lesson in the path.
+  // Daily Plan — removed alongside the DailyPlanCard. The "smart picks"
+  // surface never paid for the visual real estate it took; the main
+  // mission card now owns the next-action slot.
 
   // Personalised daily challenge — uses the user's onboarding goal +
   // reflection-derived dominant category to bias toward challenges
@@ -258,6 +290,7 @@ export default function HomeScreen({ navigation }) {
     });
   }, [todayStr, userProfile, reflectionDominant]);
   const dailyChallengeDone = dailyChallengeCompletedAt === todayStr;
+  const dailyDeckDone = lastDailyDeckCompletedDate === todayDateStr;
 
   // Habit chain: last 7 days as a row of dots — filled = lesson done that
   // day, empty = missed. Loss-aversion visual: a half-broken chain hurts
@@ -324,6 +357,12 @@ export default function HomeScreen({ navigation }) {
 
   const totalLessons = PATHS.reduce((s, p) => s + p.duration, 0);
 
+  const shouldOfferBaseline =
+    totalCompleted >= 1 && !baselineAssessment?.ts;
+  const shouldOfferPledge =
+    !shouldOfferBaseline && !!activePathId
+    && !pathPledges?.[activePathId] && totalCompleted >= 3;
+
   const handleStartLesson = () => {
     if (!currentLesson) return;
     attemptStartLesson(currentLesson.pathId, currentLesson.id);
@@ -350,76 +389,7 @@ export default function HomeScreen({ navigation }) {
     })();
   }, []);
 
-  // One-tap cold open: returning users (3+ day streak who haven't done today's
-  // lesson yet) skip the home tab and land directly in their next lesson.
-  // We only fire once per cold start via a ref so that swiping back from the
-  // lesson screen doesn't re-trigger the route. Hearts gate also applies —
-  // a returning user with 0 hearts shouldn't be auto-bounced into a lesson
-  // they can't make progress on; they should see Home first and decide.
-  // Commitment-device pledge modal. Shown the first time Home renders
-  // for a user whose active path doesn't yet have a pledge. We keep
-  // a per-app-session "asked" flag so a user who taps Skip isn't
-  // re-pestered on the same cold start, but the modal will return on
-  // the next launch until they either write something or the path
-  // changes. The pledge itself persists via pathPledges in AppContext.
   const [pledgeModalVisible, setPledgeModalVisible] = useState(false);
-  const pledgeAskedRef = useRef(false);
-  useEffect(() => {
-    if (pledgeAskedRef.current) return;
-    if (!activePathId) return;
-    if (pathPledges?.[activePathId]) return; // already pledged
-    // Don't pop the commitment-device modal until the user has earned
-    // the right to commit — at least 3 lessons completed across any
-    // path. Asking on cold start before they've felt the loop click
-    // produced ~40% skip rate and zero adherence lift; the audit also
-    // flagged it as a trust-erosion risk ("the app is bossing me
-    // around before I've even tried it"). Now it's an opt-in dialog
-    // that surfaces after they've shown signal that they're staying.
-    const totalLessons = Object.values(pathProgress || {}).reduce(
-      (s, p) => s + (p?.completed?.length || 0),
-      0,
-    );
-    if (totalLessons < 3) return;
-    // Wait a heartbeat so the modal slides in AFTER Home's first paint,
-    // not during it (avoids a "screen flashed for a frame" feel).
-    pledgeAskedRef.current = true;
-    const id = setTimeout(() => setPledgeModalVisible(true), 600);
-    return () => clearTimeout(id);
-  }, [activePathId, pathPledges, pathProgress]);
-
-  const autoRoutedRef = useRef(false);
-  useEffect(() => {
-    if (autoRoutedRef.current) return;
-    if (todayCompleted) return;
-    if (!currentLesson) return;
-    if ((currentStreak || 0) < 3) return;
-    if (!isPremium && (hearts || 0) <= 0) return;
-    // Don't auto-route into a lesson if the user owes a pledge for the
-    // active path. The pledge modal is set on a 600ms timer and the
-    // auto-route runs on 250ms, so checking the boolean `pledgeModalVisible`
-    // is racy — the modal hasn't opened yet on the first render. Gate on
-    // the source of truth instead: do they have a pledge stored?
-    if (activePathId && !pathPledges?.[activePathId]) return;
-    autoRoutedRef.current = true;
-    // Tiny delay so the home screen's first frame paints — avoids a jarring
-    // jump that looks like a glitch.
-    const id = setTimeout(() => {
-      navigation.navigate('Lesson', {
-        pathId: currentLesson.pathId,
-        lessonId: currentLesson.id,
-      });
-    }, 250);
-    return () => clearTimeout(id);
-  }, [
-    todayCompleted,
-    currentLesson,
-    currentStreak,
-    navigation,
-    isPremium,
-    hearts,
-    activePathId,
-    pathPledges,
-  ]);
 
   // Prefer the user's actual name when we have one. Sources, in order:
   //   1. Onboarding profile name (user typed it)
@@ -527,7 +497,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.greetingSubtitle}>
             {t(
               'home.subtitle',
-              'Disiplin yolunda bir gün daha. Hadi başla.',
+              'Motivasyon bekleme. Beş dakikalık görevi bitir ve gününe dön.',
             )}
           </Text>
         </View>
@@ -580,7 +550,8 @@ export default function HomeScreen({ navigation }) {
         {_streakLostInfo ? (
           <StreakLostBanner
             info={_streakLostInfo}
-            repairAvailable={!isPremium && isAdsReady()}
+            repairAvailable={!isPremium}
+            repairLoading={streakRepairLoading}
             onRestart={() => {
               clearStreakLostInfo();
               if (currentLesson) {
@@ -588,17 +559,45 @@ export default function HomeScreen({ navigation }) {
               }
             }}
             onRepair={async () => {
+              if (streakRepairLoading) return;
+              setStreakRepairLoading(true);
               try {
+                const ready = await waitForRewardedAd();
+                if (!ready) {
+                  Alert.alert(
+                    t('ads.notReadyTitle', 'Reklam hazirlaniyor'),
+                    t(
+                      'streakLost.repairAdNotReady',
+                      'Odullu reklam henuz hazir degil. Birazdan tekrar dene ya da bugunku dersi baslat.',
+                    ),
+                  );
+                  return;
+                }
                 const earned = await showRewarded();
                 if (earned) {
                   restoreStreakFromRepair();
                   // Reload a fresh rewarded ad for the next eligible
                   // moment (other surfaces or another lost-streak event).
                   loadRewarded().catch(() => {});
+                } else {
+                  Alert.alert(
+                    t('ads.rewardNotEarnedTitle', 'Odul alinmadi'),
+                    t(
+                      'streakLost.repairAdNoReward',
+                      'Zinciri geri almak icin reklam tamamlanmis olmali.',
+                    ),
+                  );
                 }
               } catch {
-                // Ad failure is silent — the regular "Yeniden Başla"
-                // CTA still works; user hasn't lost any option.
+                Alert.alert(
+                  t('ads.notReadyTitle', 'Reklam hazirlaniyor'),
+                  t(
+                    'streakLost.repairAdNotReady',
+                    'Odullu reklam henuz hazir degil. Birazdan tekrar dene ya da bugunku dersi baslat.',
+                  ),
+                );
+              } finally {
+                setStreakRepairLoading(false);
               }
             }}
             onDismiss={clearStreakLostInfo}
@@ -620,12 +619,152 @@ export default function HomeScreen({ navigation }) {
           ))}
         </View>
 
+        <View style={[styles.ctaCard, todayCompleted && styles.ctaCardDone]}>
+          <View style={styles.ctaCardHeader}>
+            <Text style={styles.ctaCardLabel}>
+              {todayCompleted
+                ? t('home.todayDoneLabel', 'BUGÜN TAMAMLANDI')
+                : t('home.todayCta', 'BUGÜNÜN TEK GÖREVİ')}
+            </Text>
+            <View style={styles.ctaPathBadge}>
+              <MaterialIcons
+                name={activePath.materialIcon}
+                size={12}
+                color={LT.onSurfaceVariant}
+              />
+              <Text style={styles.ctaPathBadgeText}>
+                {t(`paths.${activePath.id}.shortTitle`, activePath.id)}
+              </Text>
+            </View>
+          </View>
+
+          <Text style={styles.ctaTitle}>
+            {todayCompleted
+              ? t('home.todayDoneTitle', 'Bugünün sözü tutuldu')
+              : currentLesson
+                ? t(
+                    `lessons.${currentLesson.pathId}.${currentLesson.order}.title`,
+                    `${t('path.lessonLabel', 'Ders')} ${currentLesson.order}`,
+                  )
+                : t('home.allDone', 'Tum dersleri tamamladin')}
+          </Text>
+
+          <Text style={styles.ctaDescription}>
+            {todayCompleted
+              ? currentLesson
+                ? t(
+                    'home.todayDoneSub',
+                    'Ana görev bitti. Devam etmek istersen sıradaki ders hazır.',
+                  )
+                : t(
+                    'home.allDoneSub',
+                    'Yeni yola geçebilir veya tekrar pratiği yapabilirsin.',
+                  )
+              : currentLesson
+                ? t(
+                    `lessons.${currentLesson.pathId}.${currentLesson.order}.summary`,
+                    t(
+                      'home.ctaGenericSub',
+                      'Beş dakika ayır. Tek bir şeyi gerçekten uygula.',
+                    ),
+                  )
+                : t(
+                    'home.allDoneSub',
+                    'Yeni yola geçebilir veya tekrar pratiği yapabilirsin.',
+                  )}
+          </Text>
+
+          <View style={styles.missionSteps}>
+            <View
+              style={[
+                styles.missionStep,
+                todayCompleted && styles.missionStepDone,
+              ]}
+            >
+              <MaterialIcons
+                name={todayCompleted ? 'check-circle' : 'play-circle-filled'}
+                size={16}
+                color={todayCompleted ? LT.success : LT.primary}
+              />
+              <Text
+                style={[
+                  styles.missionStepText,
+                  todayCompleted && styles.missionStepTextDone,
+                ]}
+              >
+                {todayCompleted
+                  ? t('home.mainLessonDone', 'Ana ders bitti')
+                  : t('home.mainLessonOpen', '1. Ana ders')}
+              </Text>
+            </View>
+            <View
+              style={[
+                styles.missionStep,
+                dailyDeckDone && styles.missionStepDone,
+              ]}
+            >
+              <MaterialIcons
+                name={dailyDeckDone ? 'check-circle' : 'auto-awesome'}
+                size={16}
+                color={dailyDeckDone ? LT.success : LT.tertiary}
+              />
+              <Text
+                style={[
+                  styles.missionStepText,
+                  dailyDeckDone && styles.missionStepTextDone,
+                ]}
+              >
+                {dailyDeckDone
+                  ? t('home.bonusDeckDone', 'Bonus bitti')
+                  : t('home.bonusDeckOpen', '2. Bonus deste')}
+              </Text>
+            </View>
+          </View>
+
+          {currentLesson ? (
+            <TouchableOpacity
+              style={[
+                styles.ctaButton,
+                todayCompleted && styles.ctaButtonSecondary,
+              ]}
+              onPress={handleStartLesson}
+              activeOpacity={0.85}
+            >
+              <Text
+                style={[
+                  styles.ctaButtonText,
+                  todayCompleted && styles.ctaButtonTextSecondary,
+                ]}
+              >
+                {todayCompleted
+                  ? t('home.nextLessonOptional', 'SIRADAKİ DERSİ AÇ')
+                  : t('home.startNow', '5 DAKİKAYI BAŞLAT')}
+              </Text>
+              <MaterialIcons
+                name="arrow-forward"
+                size={20}
+                color={todayCompleted ? LT.primary : LT.onPrimary}
+              />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={[styles.ctaButton, styles.ctaButtonSecondary]}
+              onPress={() => navigation.navigate('Paths')}
+              activeOpacity={0.85}
+            >
+              <Text style={styles.ctaButtonTextSecondary}>
+                {t('home.viewPaths', 'YOLLARA GÖZAT')}
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
+
         {/* Daily Deck CTA — bite-sized morning ritual (~3 minutes
             of 6 micro-cards). Hidden once today's deck is done so
             the user never taps into a stale deck. Sits above the
             reassessment card because it's a daily ritual; reassess
             is monthly. */}
-        {lastDailyDeckCompletedDate !== todayDateStr ? (
+        {!dailyDeckDone ? (
           <TouchableOpacity
             activeOpacity={0.85}
             onPress={() => navigation.navigate('DailyDeck')}
@@ -640,12 +779,12 @@ export default function HomeScreen({ navigation }) {
             </View>
             <View style={{ flex: 1 }}>
               <Text style={styles.deckLabel}>
-                {t('home.deckLabel', 'BUGÜNÜN DESTESİ · ~3 DK')}
+                {t('home.deckLabel', 'BONUS RİTÜEL · ~3 DK')}
               </Text>
               <Text style={styles.deckTitle}>
                 {t(
                   'home.deckTitle',
-                  'Stoik bir alıntı + 1 soru + 1 mikro eylem',
+                  'Bir fikir, dürüst bir soru, küçük bir hamle',
                 )}
               </Text>
             </View>
@@ -663,10 +802,81 @@ export default function HomeScreen({ navigation }) {
               color={LT.onSurfaceVariant}
             />
             <Text style={styles.deckDoneChipText}>
-              {t('home.deckDone', 'Bugünün destesi tamamlandı')}
+              {t('home.deckDone', 'Bonus deste tamamlandı')}
             </Text>
           </View>
         )}
+
+        {shouldOfferBaseline ? (
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={() => navigation.navigate('Assessment', { mode: 'baseline' })}
+            style={styles.pledgeCard}
+            accessibilityRole="button"
+          >
+            <View style={styles.pledgeIconBox}>
+              <MaterialIcons
+                name="insights"
+                size={22}
+                color={LT.tertiary}
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.pledgeCardLabel}>
+                {t('home.baselineLabel', '1 DAKİKALIK BAŞLANGIÇ')}
+              </Text>
+              <Text style={styles.pledgeCardTitle}>
+                {t('home.baselineTitle', 'Başlangıç noktanı kaydet')}
+              </Text>
+              <Text style={styles.pledgeCardBody}>
+                {t(
+                  'home.baselineBody',
+                  'Bugünkü durumunu kaydet; 30 gün sonra değişimi göstereceğiz.',
+                )}
+              </Text>
+            </View>
+            <MaterialIcons
+              name="chevron-right"
+              size={22}
+              color={LT.onSurfaceVariant}
+            />
+          </TouchableOpacity>
+        ) : null}
+
+        {shouldOfferPledge ? (
+          <TouchableOpacity
+            activeOpacity={0.85}
+            onPress={() => setPledgeModalVisible(true)}
+            style={styles.pledgeCard}
+          >
+            <View style={styles.pledgeIconBox}>
+              <MaterialIcons
+                name="edit-note"
+                size={22}
+                color={LT.tertiary}
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.pledgeCardLabel}>
+                {t('pledge.cardLabel', 'İSTEĞE BAĞLI')}
+              </Text>
+              <Text style={styles.pledgeCardTitle}>
+                {t('pledge.cardTitle', 'Bu yol için bir cümle söz ver')}
+              </Text>
+              <Text style={styles.pledgeCardBody}>
+                {t(
+                  'pledge.cardBody',
+                  'Sadece sen göreceksin. Yazarsan Home’da sessizce hatırlatırız.',
+                )}
+              </Text>
+            </View>
+            <MaterialIcons
+              name="chevron-right"
+              size={22}
+              color={LT.onSurfaceVariant}
+            />
+          </TouchableOpacity>
+        ) : null}
 
         {/* Re-assessment due — fires 30 days after baseline (or 30
             days after the latest assessment, whichever is later).
@@ -731,82 +941,6 @@ export default function HomeScreen({ navigation }) {
           </View>
         ) : null}
 
-        {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-            PRIMARY ACTION ZONE — fold-above-the-fold content. The CTA
-            used to be card #13 (out of ~18) on this screen; UX audit
-            flagged it as the single biggest decision-fatigue source.
-            Now: Greeting → Streak → Chain → CTA → Risk/Boost/Queue.
-            Everything below the "BUGÜNÜN EKSTRALARI" divider is
-            secondary and intentionally pushed past the first scroll.
-            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-
-        {/* Today's CTA Card — moved up from card #13 to card #4 */}
-        <View style={styles.ctaCard}>
-          <View style={styles.ctaCardHeader}>
-            <Text style={styles.ctaCardLabel}>
-              {t('home.todayCta', 'BUGÜNÜN GÖREVİ')}
-            </Text>
-            <View style={styles.ctaPathBadge}>
-              <MaterialIcons
-                name={activePath.materialIcon}
-                size={12}
-                color={LT.onSurfaceVariant}
-              />
-              <Text style={styles.ctaPathBadgeText}>
-                {t(`paths.${activePath.id}.shortTitle`, activePath.id)}
-              </Text>
-            </View>
-          </View>
-          <Text style={styles.ctaTitle}>
-            {currentLesson
-              ? t(
-                  `lessons.${currentLesson.pathId}.${currentLesson.order}.title`,
-                  `${t('path.lessonLabel', 'Ders')} ${currentLesson.order}`,
-                )
-              : t('home.allDone', 'Tüm dersleri tamamladın 🎉')}
-          </Text>
-          <Text style={styles.ctaDescription}>
-            {currentLesson
-              ? t(
-                  `lessons.${currentLesson.pathId}.${currentLesson.order}.summary`,
-                  t(
-                    'home.ctaGenericSub',
-                    'Bugünün adımı seni bekliyor. ~5 dakika.',
-                  ),
-                )
-              : t(
-                  'home.allDoneSub',
-                  'Yeni yola geçebilir veya tekrar pratiği yapabilirsin.',
-                )}
-          </Text>
-          {currentLesson ? (
-            <TouchableOpacity
-              style={styles.ctaButton}
-              onPress={handleStartLesson}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.ctaButtonText}>
-                {t('home.startNow', 'PRATİĞE BAŞLA')}
-              </Text>
-              <MaterialIcons
-                name="arrow-forward"
-                size={20}
-                color={LT.onPrimary}
-              />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              style={[styles.ctaButton, styles.ctaButtonSecondary]}
-              onPress={() => navigation.navigate('MainTabs', { screen: 'Paths' })}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.ctaButtonTextSecondary}>
-                {t('home.viewPaths', 'YOLLARA GÖZAT')}
-              </Text>
-            </TouchableOpacity>
-          )}
-        </View>
-
         {/* Streak Risk Banner — loss-aversion prompt shown ONLY when
             (a) user has a streak >= 2, (b) today is not yet done,
             (c) it's 18:00+, (d) not on vacation. Self-gated, so it's
@@ -820,17 +954,6 @@ export default function HomeScreen({ navigation }) {
               attemptStartLesson(currentLesson.pathId, currentLesson.id);
             }
           }}
-        />
-
-        {/* Lesson Queue — direct path-progress surface; tapping a card
-            opens the lesson in one tap. Right under the CTA so users
-            who want to skip ahead can, without scrolling past extras. */}
-        <LessonQueueCard
-          activePathId={activePathId}
-          pathProgress={pathProgress}
-          onPressLesson={(pathId, lessonId) =>
-            attemptStartLesson(pathId, lessonId)
-          }
         />
 
         {/* Past Reflection Memory — investment-feedback surface. After
@@ -882,7 +1005,7 @@ export default function HomeScreen({ navigation }) {
             zero impact on the core habit loop.
             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
         <Text style={styles.extrasHeader}>
-          {t('home.extrasHeader', 'BUGÜNÜN EKSTRALARI')}
+          {t('home.extrasHeader', 'ENERJİN KALDIYSA')}
         </Text>
 
         {/* Daily Mystery Challenge — surfaces ONLY when today's deck
@@ -892,7 +1015,7 @@ export default function HomeScreen({ navigation }) {
             Daily Challenge were the same "today's thing" slot,
             splitting user attention. Now Challenge is the secondary
             extra — a bonus, not a parallel main quest. */}
-        {dailyChallenge && lastDailyDeckCompletedDate === todayDateStr ? (
+        {dailyChallenge && dailyDeckDone ? (
           <TouchableOpacity
             onPress={dailyChallengeDone ? undefined : () => completeDailyChallenge(DAILY_CHALLENGE_BONUS_XP)}
             activeOpacity={dailyChallengeDone ? 1 : 0.85}
@@ -961,7 +1084,7 @@ export default function HomeScreen({ navigation }) {
         {/* Weekend Premium offer — only Sat/Sun, free users only. */}
         {isWeekendOffer && !isPremium ? (
           <TouchableOpacity
-            onPress={() => navigation.navigate('Paywall')}
+            onPress={() => navigation.navigate('Paywall', { source: 'home_weekend_offer' })}
             activeOpacity={0.85}
             style={styles.weekendOffer}
           >
@@ -973,7 +1096,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.weekendOfferText}>
               {t(
                 'home.weekendOfferBody',
-                'Premium ile streak donduruculari, sınırsız kalp, reklamsız.',
+                'Premium ile seri dondurucuları, sınırsız kalp ve reklamsız deneyim.',
               )}
             </Text>
             <MaterialIcons name="arrow-forward" size={18} color={LT.onPrimary} />
@@ -985,7 +1108,7 @@ export default function HomeScreen({ navigation }) {
           <StatCell
             icon="bolt"
             label={t('home.statXp', 'XP')}
-            value={(totalXP ?? 0).toLocaleString('en-US')}
+            value={(totalXP ?? 0).toLocaleString(locale)}
           />
           <View style={styles.statDivider} />
           <StatCell
@@ -1006,7 +1129,7 @@ export default function HomeScreen({ navigation }) {
         {!isPremium && (
           <TouchableOpacity
             style={styles.premiumCard}
-            onPress={() => navigation.navigate('Paywall')}
+            onPress={() => navigation.navigate('Paywall', { source: 'home_premium_card' })}
             activeOpacity={0.9}
           >
             <View style={styles.premiumCardLeft}>
@@ -1019,12 +1142,12 @@ export default function HomeScreen({ navigation }) {
               </View>
               <View style={styles.premiumCardText}>
                 <Text style={styles.premiumCardTitle}>
-                  {t('home.premiumTitle', 'Premium ile sınırları kaldır')}
+                  {t('home.premiumTitle', 'Ritmi kesmeden devam et')}
                 </Text>
                 <Text style={styles.premiumCardSub}>
                   {t(
                     'home.premiumSub',
-                    'Reklamsız · Tüm yollar · Streak donduru · İndirim',
+                    'Reklamsız · Tüm yollar · Seri koruması · Yıllık avantaj',
                   )}
                 </Text>
               </View>
@@ -1061,13 +1184,14 @@ export default function HomeScreen({ navigation }) {
       <StreakInfoModal
         visible={streakInfoVisible}
         onClose={() => setStreakInfoVisible(false)}
-        currentStreak={currentStreak}
+        streak={currentStreak}
+        freezes={streakFreezes}
+        isPremium={isPremium}
+        onPaywall={() => navigation.navigate('Paywall', { source: 'home_streak_info' })}
       />
 
-      {/* Commitment-Device pledge — first Home open per active path.
-          Persisted in pathPledges (synced via cloudSync). Re-opens on
-          subsequent cold starts if the user dismissed without writing,
-          until they either commit or change paths. */}
+      {/* Commitment-Device pledge — opened only from the optional card.
+          Persisted in pathPledges and synced via cloudSync. */}
       <PledgeModal
         visible={pledgeModalVisible}
         pathTitle={t(`paths.${activePathId}.title`, activePathId)}
@@ -1085,17 +1209,26 @@ export default function HomeScreen({ navigation }) {
       <OutOfHeartsModal
         visible={outOfHeartsVisible}
         refillAt={heartsRefillAt}
-        onClose={() => setOutOfHeartsVisible(false)}
+        onClose={() => {
+          setOutOfHeartsVisible(false);
+          setPendingLesson(null);
+        }}
         onRefill={() => {
           // +1 kalp (CTA "+1 KALP KAZAN" ile uyumlu) — refillHearts
           // tüm 5'i geri veriyordu, bu da reklam izlemeyi anlamsız
           // (1 reklam = sınırsız can) yapıyordu.
           gainHeart();
           setOutOfHeartsVisible(false);
+          const target = pendingLesson;
+          setPendingLesson(null);
+          if (target) {
+            navigation.navigate('Lesson', target);
+          }
         }}
         onPaywall={() => {
           setOutOfHeartsVisible(false);
-          navigation.navigate('Paywall');
+          setPendingLesson(null);
+          navigation.navigate('Paywall', { source: 'home_out_of_hearts' });
         }}
       />
     </SafeAreaView>
@@ -1177,7 +1310,7 @@ const styles = StyleSheet.create({
   greetingName: {
     fontSize: 32,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginBottom: 6,
   },
@@ -1374,6 +1507,45 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
     borderLeftColor: LT.outlineVariant,
   },
+  pledgeCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderRadius: 16,
+    padding: 14,
+    marginHorizontal: LT_SPACING.containerMargin,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(55, 65, 225, 0.22)',
+  },
+  pledgeIconBox: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: 'rgba(55, 65, 225, 0.10)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pledgeCardLabel: {
+    fontSize: 10,
+    fontWeight: '900',
+    letterSpacing: 1.2,
+    color: LT.tertiary,
+    marginBottom: 2,
+  },
+  pledgeCardTitle: {
+    fontSize: 14,
+    fontWeight: '900',
+    color: LT.onSurface,
+    marginBottom: 2,
+  },
+  pledgeCardBody: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: LT.onSurfaceVariant,
+    lineHeight: 17,
+  },
 
   // Streak Hero card
   streakHero: {
@@ -1407,7 +1579,7 @@ const styles = StyleSheet.create({
   streakHeroNumber: {
     fontSize: 64,
     fontWeight: '900',
-    letterSpacing: -2.5,
+    letterSpacing: 0,
     color: LT.primaryContainer,
     lineHeight: 64,
   },
@@ -1435,7 +1607,7 @@ const styles = StyleSheet.create({
   streakBest: {
     fontSize: 36,
     fontWeight: '900',
-    letterSpacing: -1.2,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginTop: 2,
   },
@@ -1568,7 +1740,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: LT.onSurface,
     marginBottom: 2,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
   },
   challengeBody: {
     fontSize: 12,
@@ -1625,6 +1797,11 @@ const styles = StyleSheet.create({
     shadowRadius: 18,
     elevation: 6,
   },
+  ctaCardDone: {
+    borderColor: 'rgba(15, 123, 61, 0.35)',
+    shadowColor: LT.success,
+    shadowOpacity: 0.12,
+  },
   ctaCardHeader: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -1657,7 +1834,7 @@ const styles = StyleSheet.create({
   ctaTitle: {
     fontSize: 22,
     fontWeight: '900',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     color: LT.onSurface,
     lineHeight: 28,
     marginBottom: 6,
@@ -1668,6 +1845,36 @@ const styles = StyleSheet.create({
     color: LT.onSurfaceVariant,
     lineHeight: 19,
     marginBottom: 18,
+  },
+  missionSteps: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 16,
+  },
+  missionStep: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    borderRadius: LT_RADIUS.pill,
+    backgroundColor: LT.surfaceContainer,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+  },
+  missionStepDone: {
+    backgroundColor: 'rgba(15, 123, 61, 0.08)',
+    borderColor: 'rgba(15, 123, 61, 0.20)',
+  },
+  missionStepText: {
+    fontSize: 11,
+    fontWeight: '900',
+    color: LT.onSurfaceVariant,
+    letterSpacing: 0.3,
+  },
+  missionStepTextDone: {
+    color: LT.success,
   },
   ctaButton: {
     flexDirection: 'row',
@@ -1730,7 +1937,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '900',
     color: LT.onSurface,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   statValueSub: {
     fontSize: 11,
@@ -1784,7 +1991,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     color: LT.onSurface,
-    letterSpacing: -0.2,
+    letterSpacing: 0,
     marginBottom: 2,
   },
   premiumCardSub: {

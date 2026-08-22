@@ -18,20 +18,21 @@ import {
   Modal,
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
   Animated,
   Easing,
   TextInput,
   ScrollView,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
-import { LT } from '../config/lightTheme';
 import { speak, stop as stopTts } from '../services/tts';
 import { getCurrentLanguage } from '../i18n';
 import {
@@ -184,7 +185,7 @@ export default function SageMode({
   return (
     <Modal visible={visible} animationType="fade" onRequestClose={onClose}>
       <LinearGradient
-        colors={['#0F0A1E', '#1E1B4B', '#312E81']}
+        colors={['#240001', '#8F0005', '#E31212']}
         style={styles.root}
       >
         <SafeAreaView style={{ flex: 1 }}>
@@ -195,6 +196,8 @@ export default function SageMode({
             {/* Close button — always present, but stops TTS first */}
             <View style={styles.topBar}>
               <TouchableOpacity
+                accessibilityRole="button"
+                accessibilityLabel={t('common.close', 'Kapat')}
                 onPress={() => {
                   try { stopTts(); } catch {}
                   if (breathTimer.current) clearInterval(breathTimer.current);
@@ -442,7 +445,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '900',
     marginBottom: 8,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   doneSub: {
     color: '#FDE047',
@@ -457,7 +460,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '900',
     textAlign: 'center',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   bigSub: {
     color: '#FFFFFF',
@@ -498,7 +501,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   primaryBtnText: {
-    color: '#1E1B4B',
+    color: '#8F0005',
     fontSize: 14,
     fontWeight: '900',
     letterSpacing: 0.6,

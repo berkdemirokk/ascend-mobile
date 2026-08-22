@@ -1,5 +1,7 @@
 import { Platform } from 'react-native';
 import { REVENUECAT_CONFIG } from '../config/constants';
+import { getPackageForPeriod } from './purchasePackages';
+import { createPurchaseOperations, hasActiveEntitlement } from './purchaseOperations';
 
 let Purchases = null;
 let isInitialized = false;
@@ -9,6 +11,26 @@ let lastInitError = null;
 let lastOfferingsError = null;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const RC_CONFIGURE_TIMEOUT_MS = 10000;
+const RC_REQUEST_TIMEOUT_MS = 10000;
+
+const withTimeout = (promise, ms, label) =>
+  new Promise((resolve, reject) => {
+    const timeoutId = setTimeout(
+      () => reject(new Error(`${label} timeout after ${ms}ms`)),
+      ms,
+    );
+    Promise.resolve(promise).then(
+      (value) => {
+        clearTimeout(timeoutId);
+        resolve(value);
+      },
+      (error) => {
+        clearTimeout(timeoutId);
+        reject(error);
+      },
+    );
+  });
 
 const loadPurchasesModule = async () => {
   if (Purchases) return Purchases;
@@ -47,7 +69,11 @@ export const initPurchases = async () => {
           P.setLogLevel(__DEV__ ? P.LOG_LEVEL.DEBUG : P.LOG_LEVEL.INFO);
         }
       } catch {}
-      await P.configure({ apiKey: REVENUECAT_CONFIG.API_KEY_IOS });
+      await withTimeout(
+        P.configure({ apiKey: REVENUECAT_CONFIG.API_KEY_IOS }),
+        RC_CONFIGURE_TIMEOUT_MS,
+        'RevenueCat configure',
+      );
       isInitialized = true;
       lastInitError = null;
       return true;
@@ -86,7 +112,7 @@ export const linkPurchaseUser = async (appUserID) => {
   try {
     const P = await ensureReady();
     if (!P || typeof P.logIn !== 'function') return false;
-    await P.logIn(appUserID);
+    await withTimeout(P.logIn(appUserID), RC_REQUEST_TIMEOUT_MS, 'RevenueCat logIn');
     currentAppUserID = appUserID;
     return true;
   } catch (e) {
@@ -100,7 +126,7 @@ export const unlinkPurchaseUser = async () => {
   try {
     const P = Purchases;
     if (!P || typeof P.logOut !== 'function') return false;
-    await P.logOut();
+    await withTimeout(P.logOut(), RC_REQUEST_TIMEOUT_MS, 'RevenueCat logOut');
     currentAppUserID = null;
     return true;
   } catch (e) {
@@ -121,10 +147,12 @@ export const checkPremiumStatus = async () => {
   try {
     const P = await ensureReady();
     if (!P) return null;
-    const customerInfo = await P.getCustomerInfo();
-    return (
-      customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null
+    const customerInfo = await withTimeout(
+      P.getCustomerInfo(),
+      RC_REQUEST_TIMEOUT_MS,
+      'RevenueCat customer info',
     );
+    return hasActiveEntitlement(customerInfo, REVENUECAT_CONFIG.ENTITLEMENT_ID);
   } catch (e) {
     console.warn('Check premium error:', e?.message);
     return null; // unknown — don't downgrade user
@@ -166,7 +194,11 @@ export const getOfferings = async () => {
   for (let i = 0; i < delays.length; i++) {
     if (delays[i] > 0) await sleep(delays[i]);
     try {
-      const offerings = await P.getOfferings();
+      const offerings = await withTimeout(
+        P.getOfferings(),
+        RC_REQUEST_TIMEOUT_MS,
+        'RevenueCat offerings',
+      );
       const picked = pickOffering(offerings);
       if (picked) {
         lastOfferingsError = null;
@@ -182,39 +214,16 @@ export const getOfferings = async () => {
   return null;
 };
 
-export const purchasePremium = async (period = 'monthly') => {
-  try {
-    const offerings = await getOfferings();
-    if (!offerings?.availablePackages?.length) {
-      throw new Error('No packages available');
-    }
-    const P = await ensureReady();
-    if (!P) throw new Error('Purchases module unavailable');
+const purchaseOperations = createPurchaseOperations({
+  getOfferings: () => getOfferings(),
+  ensureReady: () => ensureReady(),
+  entitlementId: REVENUECAT_CONFIG.ENTITLEMENT_ID,
+  unavailableMessage: 'Purchases module unavailable',
+});
 
-    // Pick package by RevenueCat package type or fallback to product id match
-    const pkgs = offerings.availablePackages;
-    let pkg = null;
-    if (period === 'yearly') {
-      pkg = pkgs.find((p) => p.packageType === 'ANNUAL')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_YEARLY);
-    } else {
-      pkg = pkgs.find((p) => p.packageType === 'MONTHLY')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_MONTHLY);
-    }
-    if (!pkg) pkg = pkgs[0];
-
-    const { customerInfo } = await P.purchasePackage(pkg);
-    const unlocked =
-      customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
-    return {
-      status: unlocked ? 'unlocked' : 'pending',
-      customerInfo,
-    };
-  } catch (e) {
-    if (e.userCancelled) return { status: 'cancelled' };
-    throw e;
-  }
-};
+export const purchasePremium = (period = 'monthly') => (
+  purchaseOperations.purchasePremium(period)
+);
 
 export const getAvailablePackages = async () => {
   try {
@@ -222,12 +231,8 @@ export const getAvailablePackages = async () => {
     if (!offerings?.availablePackages?.length) return null;
     const pkgs = offerings.availablePackages;
     return {
-      monthly: pkgs.find((p) => p.packageType === 'MONTHLY')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_MONTHLY)
-        || null,
-      yearly: pkgs.find((p) => p.packageType === 'ANNUAL')
-        || pkgs.find((p) => p.product?.identifier === REVENUECAT_CONFIG.PRODUCT_ID_YEARLY)
-        || null,
+      monthly: getPackageForPeriod(pkgs, 'monthly'),
+      yearly: getPackageForPeriod(pkgs, 'yearly'),
     };
   } catch (e) {
     console.warn('getAvailablePackages error:', e?.message);
@@ -237,12 +242,9 @@ export const getAvailablePackages = async () => {
 
 export const restorePurchases = async () => {
   try {
-    const P = await ensureReady();
-    if (!P) return false;
-    const customerInfo = await P.restorePurchases();
-    return customerInfo?.entitlements?.active?.[REVENUECAT_CONFIG.ENTITLEMENT_ID] != null;
-  } catch (e) {
-    console.warn('Restore error:', e?.message);
-    return false;
+    return await purchaseOperations.restorePurchases();
+  } catch (error) {
+    if (!isInitialized && lastInitError) throw new Error(lastInitError);
+    throw error;
   }
 };

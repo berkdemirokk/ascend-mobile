@@ -21,7 +21,7 @@ npm install -g supabase
 supabase login
 
 # 3. Link the project to this folder (one-time)
-cd "C:\Users\berk\new proje\ascend-ai-growth-coach\mobile"
+cd mobile
 supabase link --project-ref wihkcmgtzmdupxuyavyr
 
 # 4. Deploy the function
@@ -34,17 +34,9 @@ supabase functions deploy delete-user --no-verify-jwt
 
 ## Set environment variables (in Supabase dashboard)
 
-After deploying, go to:
-**Supabase Dashboard → Edge Functions → delete-user → Settings → Secrets**
-
-Add two secrets:
-
-| Name                          | Value                                               |
-| ----------------------------- | --------------------------------------------------- |
-| `SUPABASE_URL`                | `https://wihkcmgtzmdupxuyavyr.supabase.co`          |
-| `SUPABASE_SERVICE_ROLE_KEY`   | (Project Settings → API → `service_role` key — long string starting with `eyJ...`) |
-
-⚠️ The service role key is **secret** — never commit it. It bypasses RLS.
+Hosted Edge Functions receive `SUPABASE_URL` and
+`SUPABASE_SERVICE_ROLE_KEY` automatically. Do not copy the service-role key
+into the app, repository, or a manually managed function secret.
 
 ## Test locally (optional)
 

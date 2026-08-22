@@ -1,161 +1,100 @@
----
-name: Monk Mode
-colors:
-  surface: '#13131b'
-  surface-dim: '#13131b'
-  surface-bright: '#393841'
-  surface-container-lowest: '#0d0d15'
-  surface-container-low: '#1b1b23'
-  surface-container: '#1f1f27'
-  surface-container-high: '#292932'
-  surface-container-highest: '#34343d'
-  on-surface: '#e4e1ed'
-  on-surface-variant: '#c7c4d7'
-  inverse-surface: '#e4e1ed'
-  inverse-on-surface: '#303038'
-  outline: '#908fa0'
-  outline-variant: '#464554'
-  surface-tint: '#c0c1ff'
-  primary: '#c0c1ff'
-  on-primary: '#1000a9'
-  primary-container: '#8083ff'
-  on-primary-container: '#0d0096'
-  inverse-primary: '#494bd6'
-  secondary: '#d0bcff'
-  on-secondary: '#3c0091'
-  secondary-container: '#571bc1'
-  on-secondary-container: '#c4abff'
-  tertiary: '#ffb783'
-  on-tertiary: '#4f2500'
-  tertiary-container: '#d97721'
-  on-tertiary-container: '#452000'
-  error: '#ffb4ab'
-  on-error: '#690005'
-  error-container: '#93000a'
-  on-error-container: '#ffdad6'
-  primary-fixed: '#e1e0ff'
-  primary-fixed-dim: '#c0c1ff'
-  on-primary-fixed: '#07006c'
-  on-primary-fixed-variant: '#2f2ebe'
-  secondary-fixed: '#e9ddff'
-  secondary-fixed-dim: '#d0bcff'
-  on-secondary-fixed: '#23005c'
-  on-secondary-fixed-variant: '#5516be'
-  tertiary-fixed: '#ffdcc5'
-  tertiary-fixed-dim: '#ffb783'
-  on-tertiary-fixed: '#301400'
-  on-tertiary-fixed-variant: '#703700'
-  background: '#13131b'
-  on-background: '#e4e1ed'
-  surface-variant: '#34343d'
-typography:
-  h1:
-    fontFamily: Inter
-    fontSize: 32px
-    fontWeight: '900'
-    lineHeight: '1.1'
-    letterSpacing: -0.04em
-  h2:
-    fontFamily: Inter
-    fontSize: 20px
-    fontWeight: '800'
-    lineHeight: '1.2'
-    letterSpacing: -0.02em
-  body-lg:
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: '600'
-    lineHeight: '1.5'
-  body-sm:
-    fontFamily: Inter
-    fontSize: 14px
-    fontWeight: '500'
-    lineHeight: '1.5'
-  label-caps:
-    fontFamily: Inter
-    fontSize: 12px
-    fontWeight: '700'
-    lineHeight: '1'
-    letterSpacing: 0.08em
-rounded:
-  sm: 0.25rem
-  DEFAULT: 0.5rem
-  md: 0.75rem
-  lg: 1rem
-  xl: 1.5rem
-  full: 9999px
-spacing:
-  unit: 4px
-  margin-page: 20px
-  gutter-card: 12px
-  stack-sm: 8px
-  stack-md: 16px
-  stack-lg: 24px
----
+# Ascend: Daily Discipline — Design System
 
-## Brand & Style
-The design system is engineered to evoke a sense of "digital stoicism" and cosmic focus. Targeted at high-performers and discipline-seekers, the visual language balances the vastness of space with the precision of modern technology.
+This document describes the current red-and-white product identity. Runtime tokens in `src/config/lightTheme.js` remain the implementation source of truth.
 
-The aesthetic follows a **High-Contrast Modern** direction with **Glassmorphism** and **Tactile** accents. It utilizes a "Deep Space" canvas where focus is directed through vibrant indigo and purple glows, while progress and achievements are marked with "Celestial Gold" accents. The interface remains quiet and unobtrusive until action is required, utilizing geometric patterns and a minimalist mascot to provide personality without distraction.
+## Brand direction
 
-## Colors
-The palette is built on a foundation of deep, layered blues and navies to minimize eye strain and maximize the impact of active elements. 
+Ascend should feel focused, energetic, and approachable. The identity uses a vivid red upward/meditation mark on clean neutral surfaces. Avoid all retired dark-cosmic, metallic-flame, glassmorphism, and character-mascot directions.
 
-- **Primary Brand:** Indigo is the core driver of interaction, used for primary actions and active states.
-- **Secondary Brand:** Purple provides depth and is used for secondary progress indicators or habit categories.
-- **Accents:** Gold and Amber are reserved exclusively for "streaks," achievements, and premium highlights to provide a "reward" sensation against the dark backdrop.
-- **Interaction:** Active elements should utilize a subtle 10-15px outer glow using the brand colors to simulate light emitting in a void.
+The product name is always **Ascend: Daily Discipline** in customer-facing copy. Do not reuse earlier product names or visual themes.
+
+## Color tokens
+
+### Light theme — current production baseline
+
+- Background and surface: `#F9F9F9`
+- Lowest/elevated card surface: `#FFFFFF`
+- Muted containers: `#F3F3F4`, `#EEEEEE`, `#E8E8E8`, `#E2E2E2`
+- Primary text: `#1A1C1C`
+- Secondary text: `#5E3F3A`
+- Primary red: `#B70006`
+- Strong red container: `#E31212`
+- Text on red: `#FFFFFF`
+- Optional cobalt accent: `#3741E1`
+- Success: `#0F7B3D`
+- Error: `#BA1A1A`
+
+Red is reserved for primary actions, active progress, and the core brand mark. Cobalt is an occasional supporting accent, not a competing brand color.
+
+### Dark-theme status
+
+Dark tokens exist as a foundation, but most screens still use static light tokens. Do not present dark mode as complete until every screen has passed contrast and real-device review. New UI work must not create a mixed light/dark screen.
 
 ## Typography
-This design system leverages **Inter** for its utilitarian clarity and geometric neutrality. 
 
-Headlines use a "Mega-Bold" approach (900 weight) with tight tracking to create a heavy, authoritative presence. Body text remains legible and firm with 500-600 weights, ensuring that even at smaller sizes, the text stands out against the dark surface. Labels use high letter-spacing and uppercase styling to clearly distinguish metadata from content.
+Use Inter throughout the app.
 
-## Layout & Spacing
-The layout follows a **Fluid Grid** model optimized for mobile constraints. It uses a 4px baseline grid to maintain a strict rhythm.
+- Hero: 64/70, weight 900
+- H1: 32/38, weight 700
+- H2: 24/31, weight 700
+- Large body: 18/28, weight 500
+- Medium body: 16/24, weight 500
+- Body: 14/21, weight 400
+- Uppercase label: 12/12, weight 700, 2px tracking
+- Streak number: 48/48, weight 900
 
-- **Margins:** Standard 20px horizontal page margins to provide breathing room.
-- **Padding:** Internal card padding is set to 16px to 20px to accommodate the large corner radii.
-- **Stacking:** Vertical spacing uses a 1:2:3 ratio (8px, 16px, 24px) to group related habit data and separate global sections.
+Keep copy direct and readable. Do not use uppercase for paragraphs or long labels.
 
-## Elevation & Depth
-Depth is expressed through **Tonal Layers** and **Subtle Glows**. Because the primary background is nearly black, elevation is achieved by lightening the surface color.
+## Spacing and shape
 
-1. **Floor:** `#0B0B14` (Deepest depth).
-2. **Surface:** `#161626` (Cards, navigation bars).
-3. **Elevated:** `#1F1F33` (Modals, popovers, active card states).
+- Base spacing: 4px
+- Common steps: 8, 16, 24, 32, 48px
+- Screen gutter: 16px
+- Page margin: 20px
+- Corner radii: 4, 8, 12, 16px; use pill radius only for chips and compact controls
 
-Avoid traditional black shadows. Instead, use "Indigo Shadows"—low-opacity glows (`#6366F1` at 10-15% opacity) for high-priority active elements. Apply a 1px border (`#2A2A42`) to all cards to maintain crisp definition against the background.
-
-## Shapes
-The shape language is bold and approachable, moving from "Soft" to "Large" roundedness. 
-
-- **Small (8px):** Used for input fields, small chips, and selection indicators.
-- **Medium (12px):** Used for standard habit cards and secondary containers.
-- **Large (18px):** Reserved for primary CTA buttons and main dashboard cards to create a friendly, tactile feel that invites interaction.
+Cards use clean neutral layers and restrained borders or shadows. Avoid decorative glow, frosted-glass effects, and unnecessary gradients.
 
 ## Components
 
 ### Buttons
-- **Primary:** Indigo background, white text, 18px radius. Include a subtle glow on the active state.
-- **Secondary:** Surface elevated background with a 1px border (`#2A2A42`).
-- **Ghost:** No background, Text Secondary, becomes Text Primary on tap.
 
-### Habit Cards
-- Use `Background Surface` with a 1px border. 
-- Left-hand side: Large geometric icon/mascot placeholder.
-- Right-hand side: Progress ring using `Brand Primary` or `Success` colors.
-- Interactive state: Card border transitions to `Brand Primary`.
+- Primary: solid brand red, white label, strong contrast
+- Secondary: neutral surface with a clear border and dark label
+- Destructive: error red and explicit destructive wording
+- Disabled: visibly muted while keeping the label legible
 
-### Input Fields
-- Filled style using `Background Elevated`.
-- Bottom-aligned labels using the `Label-caps` typography style.
-- Focus state: Border changes to Indigo with a 2px glow.
+Every interactive control needs an accessible label, a predictable pressed state, and at least a 44×44pt touch target.
 
-### Progress Indicators
-- **Streaks:** Use Gold (`#FDE047`) with a fire icon or geometric spark.
-- **Daily Rings:** Thin 4px strokes using Indigo for completed segments and Border color for remaining segments.
+### Cards and progress
 
-### Mascot Integration
-- Use geometric, vector-based illustrations of a stylized "Monk" or "Celestial Body."
-- Assets should be monochromatic or use the brand secondary purple to stay in the background.
+- Use white or neutral containers against the light background.
+- Show hierarchy through spacing, typography, and restrained elevation.
+- Use red for current progress and primary completion states.
+- Do not rely on color alone; pair state colors with text, icons, or shape changes.
+
+### Inputs
+
+- Provide persistent labels or clear accessible names.
+- Use neutral filled or outlined fields with visible focus and error states.
+- Keep validation messages next to the affected field.
+
+## Logo and imagery
+
+Use the current red-and-white Ascend icon supplied in `assets/`. Do not substitute earlier flame, celestial, or character artwork. Store screenshots, support pages, social assets, and paywalls must use the same identity.
+
+## Localization and accessibility
+
+- A single screenshot or screen must not mix Turkish and English UI copy.
+- Test Turkish and English separately, including truncation and Dynamic Type.
+- Maintain WCAG-readable contrast and support screen-reader labels and logical focus order.
+- App Store accessibility declarations must match features verified in the shipping build.
+
+## Review checklist
+
+- [ ] Product name is “Ascend: Daily Discipline”.
+- [ ] Current red-and-white icon is used.
+- [ ] No retired visual direction or character artwork remains.
+- [ ] Each localized screen uses one language consistently.
+- [ ] Text, controls, and status messages pass contrast and touch-target checks.
+- [ ] Light and dark appearance are each reviewed on a real device before claiming support.

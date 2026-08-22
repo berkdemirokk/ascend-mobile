@@ -1,4 +1,4 @@
-// Ascend Monk Mode — Discipline Academy
+// Ascend Daily Discipline — Discipline Academy
 // Duolingo-style sequential learning paths.
 //
 // Each path has ordered lessons. Lessons unlock sequentially.
@@ -88,19 +88,22 @@ export const getQuizForLesson = (t, pathId, order) => {
 };
 
 export const getPathLessons = (path) =>
-  Array.from({ length: path.duration }, (_, i) => buildLesson(path.id, i + 1));
+  path ? Array.from({ length: path.duration }, (_, i) => buildLesson(path.id, i + 1)) : [];
 
 export const getPathById = (id) => PATHS.find((p) => p.id === id) || null;
 
 export const getLessonById = (lessonId) => {
-  const [pathId, orderStr] = lessonId.match(/^(.+)-(\d+)$/)?.slice(1) || [];
+  const [pathId, orderStr] = String(lessonId || '').match(/^(.+)-(\d+)$/)?.slice(1) || [];
   if (!pathId) return null;
   const order = parseInt(orderStr, 10);
+  const path = getPathById(pathId);
+  if (!path || order < 1 || order > path.duration) return null;
   return buildLesson(pathId, order);
 };
 
 // Determine if a lesson is locked given user's progress
 export const getLessonState = (lesson, userProgress) => {
+  if (!lesson) return 'locked';
   const pathProgress = userProgress?.[lesson.pathId] || { completed: [] };
   const path = getPathById(lesson.pathId);
   if (!path) return 'locked';
@@ -118,7 +121,21 @@ export const getLessonState = (lesson, userProgress) => {
   return 'locked';
 };
 
+// Central access state used by every lesson entry point. Keeps path cards,
+// search results, home CTAs, notifications, and direct Lesson routes in sync.
+export const getLessonAccessState = (lesson, userProgress, isPremium = false) => {
+  if (!lesson) return 'locked';
+  const path = getPathById(lesson.pathId);
+  if (!path) return 'locked';
+
+  const baseState = getLessonState(lesson, userProgress);
+  if (baseState === 'completed') return 'completed';
+  if (!isPremium && lesson.order > (path.freeLessons || 0)) return 'premium';
+  return baseState;
+};
+
 export const isPathComplete = (path, userProgress) => {
+  if (!path) return false;
   const pathProgress = userProgress?.[path.id];
   if (!pathProgress) return false;
   return pathProgress.completed.length >= path.duration;
@@ -130,6 +147,7 @@ export const getCurrentLesson = (path, userProgress) => {
 };
 
 export const getPathProgress = (path, userProgress) => {
+  if (!path) return { completed: 0, total: 0, percent: 0 };
   const pathProgress = userProgress?.[path.id];
   const completed = pathProgress?.completed?.length || 0;
   return {

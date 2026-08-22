@@ -17,7 +17,7 @@
 // even on day-one before all 250 lessons have been pre-rendered,
 // "Sesli dinle" always plays SOMETHING.
 
-import { Audio } from 'expo-av';
+import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 
 // Tag-versioned release URL — bump the tag (lesson-audio-v2) when we
 // reshoot all the audio (e.g. switching from fahrettin → fettah voice).
@@ -29,8 +29,15 @@ const AUDIO_RELEASE_BASE =
 // Soft cache for the speech module so we don't import-cost it on every
 // "Sesli dinle" tap.
 let speech = null;
-let activeListener = null;
 let activeSound = null;
+let playbackGeneration = 0;
+
+const removeActiveSound = () => {
+  const player = activeSound;
+  activeSound = null;
+  if (!player) return;
+  try { player.remove(); } catch {}
+};
 
 const loadSpeech = async () => {
   if (speech) return speech;
@@ -53,40 +60,39 @@ const loadSpeech = async () => {
  * caching layer. The mobile network stack caches HTTP responses; an
  * already-played lesson plays instantly the second time.
  */
-const tryPlayPreRecorded = async (pathId, lessonOrder, { onDone, onError }) => {
+const tryPlayPreRecorded = async (pathId, lessonOrder, requestId, { onDone, onError }) => {
   if (!pathId || lessonOrder == null) return false;
-  // Stop anything previously playing first.
-  if (activeSound) {
-    try {
-      await activeSound.unloadAsync();
-    } catch {}
-    activeSound = null;
-  }
   const url = `${AUDIO_RELEASE_BASE}/${pathId}-${lessonOrder}.mp3`;
   try {
-    const { sound } = await Audio.Sound.createAsync(
-      { uri: url },
-      // Speech audio benefits from a higher base volume than UI sfx;
-      // ducks fine over background music either way.
-      { shouldPlay: true, volume: 1.0 },
-    );
-    activeSound = sound;
-    activeListener = { onDone, onError };
-    sound.setOnPlaybackStatusUpdate((status) => {
+    await setAudioModeAsync({
+      allowsRecording: false,
+      playsInSilentMode: true,
+      shouldPlayInBackground: false,
+      interruptionMode: 'duckOthers',
+    });
+    if (requestId !== playbackGeneration) return false;
+    // expo-audio creates remote players synchronously and does not expose a
+    // playback-error field. Probe availability first so a missing release
+    // asset still falls back to system speech instead of leaving the UI in a
+    // silent "playing" state.
+    const response = await fetch(url, { method: 'HEAD' });
+    if (!response.ok || requestId !== playbackGeneration) return false;
+    const player = createAudioPlayer({ uri: url });
+    if (requestId !== playbackGeneration) {
+      try { player.remove(); } catch {}
+      return false;
+    }
+    player.volume = 1.0;
+    activeSound = player;
+    player.addListener('playbackStatusUpdate', (status) => {
       if (!status) return;
-      // didJustFinish covers natural-end. error covers mid-stream failures.
       if (status.didJustFinish) {
-        activeListener?.onDone?.();
-        activeListener = null;
-        sound.unloadAsync().catch(() => {});
-        if (activeSound === sound) activeSound = null;
-      } else if (status.error) {
-        activeListener?.onError?.(new Error(status.error));
-        activeListener = null;
-        sound.unloadAsync().catch(() => {});
-        if (activeSound === sound) activeSound = null;
+        if (requestId === playbackGeneration) onDone?.();
+        try { player.remove(); } catch {}
+        if (activeSound === player) activeSound = null;
       }
     });
+    player.play();
     return true;
   } catch (e) {
     // Most common reason: 404 because the workflow hasn't generated
@@ -119,42 +125,43 @@ export const speak = async (
   { lang, pathId, lessonOrder, onDone, onError } = {},
 ) => {
   if (!text || typeof text !== 'string') return false;
+  const requestId = ++playbackGeneration;
+  removeActiveSound();
 
   // Tier 1: pre-recorded Piper TTS MP3 from GitHub release. Only
   // attempted for Turkish for now — the audio generation workflow
   // currently runs against lessons.tr.json.
   if (pathId && lessonOrder != null && (!lang || lang.startsWith('tr'))) {
-    const ok = await tryPlayPreRecorded(pathId, lessonOrder, {
+    const ok = await tryPlayPreRecorded(pathId, lessonOrder, requestId, {
       onDone,
       onError,
     });
+    if (requestId !== playbackGeneration) return false;
     if (ok) return true;
   }
 
   // Tier 2: system TTS (iOS AVSpeechSynthesizer / Android TTS).
   const S = await loadSpeech();
+  if (requestId !== playbackGeneration) return false;
   if (!S || typeof S.speak !== 'function') {
     onError?.(new Error('tts unavailable'));
     return false;
   }
   try {
     if (typeof S.stop === 'function') await S.stop();
-    activeListener = { onDone, onError };
+    if (requestId !== playbackGeneration) return false;
     S.speak(text, {
       language: lang,
       rate: 1.0,
       pitch: 1.0,
       onDone: () => {
-        activeListener?.onDone?.();
-        activeListener = null;
+        if (requestId === playbackGeneration) onDone?.();
       },
       onStopped: () => {
-        activeListener?.onDone?.();
-        activeListener = null;
+        if (requestId === playbackGeneration) onDone?.();
       },
       onError: (err) => {
-        activeListener?.onError?.(err);
-        activeListener = null;
+        if (requestId === playbackGeneration) onError?.(err);
       },
     });
     return true;
@@ -170,14 +177,9 @@ export const speak = async (
  * AND any in-flight system TTS utterance.
  */
 export const stop = async () => {
+  playbackGeneration += 1;
   // Stop the pre-recorded sound, if any.
-  if (activeSound) {
-    try {
-      await activeSound.unloadAsync();
-    } catch {}
-    activeSound = null;
-  }
-  activeListener = null;
+  removeActiveSound();
   // Stop system TTS.
   if (speech && typeof speech.stop === 'function') {
     try {

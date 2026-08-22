@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { View, ActivityIndicator, Linking } from 'react-native';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import {
   NavigationContainer,
   createNavigationContainerRef,
@@ -22,14 +22,20 @@ export const navigationRef = createNavigationContainerRef();
  */
 export const navigateFromAnywhere = (name, params) => {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name, params);
-    return true;
+    try {
+      navigationRef.navigate(name, params);
+      return true;
+    } catch (e) {
+      console.warn('[navigation] navigateFromAnywhere failed:', e?.message);
+      return false;
+    }
   }
   return false;
 };
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
+import { setLastDeepLinkUrl } from '../services/deepLinks';
 
 import OnboardingScreen from '../screens/OnboardingScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -48,11 +54,33 @@ import WelcomeScreen from '../screens/auth/WelcomeScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
 import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
+import ResetPasswordScreen from '../screens/auth/ResetPasswordScreen';
 
 import { LT } from '../config/lightTheme';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const linking = {
+  prefixes: ['ascend://'],
+  async getInitialURL() {
+    const url = await Linking.getInitialURL();
+    setLastDeepLinkUrl(url);
+    return url;
+  },
+  subscribe(listener) {
+    const sub = Linking.addEventListener('url', ({ url }) => {
+      setLastDeepLinkUrl(url);
+      listener(url);
+    });
+    return () => sub.remove();
+  },
+  config: {
+    screens: {
+      ResetPassword: 'reset-password',
+    },
+  },
+};
 
 // Material icon name per tab.
 const TAB_ICONS = {
@@ -150,17 +178,17 @@ function AuthLoading() {
 }
 
 export default function AppNavigator() {
-  const { onboarded } = useApp();
+  const { onboarded, _loaded: appLoaded } = useApp();
   const { isAuthenticated, guestMode, loading: authLoading } = useAuth();
 
-  if (authLoading) {
+  if (authLoading || !appLoaded) {
     return <AuthLoading />;
   }
 
   const needsAuth = !isAuthenticated && !guestMode;
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer ref={navigationRef} linking={linking}>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -196,6 +224,14 @@ export default function AppNavigator() {
             options={{ animation: 'fade' }}
           />
         )}
+        <Stack.Screen
+          name="ResetPassword"
+          component={ResetPasswordScreen}
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
         <Stack.Screen
           name="Paywall"
           component={PaywallScreen}

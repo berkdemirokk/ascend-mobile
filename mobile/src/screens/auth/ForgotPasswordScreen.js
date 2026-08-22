@@ -3,8 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
   Platform,
@@ -13,9 +11,13 @@ import {
   Alert,
   StatusBar,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
-import { useAuth } from '../../contexts/AuthContext';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
+import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { LT } from '../../config/lightTheme';
 
 export default function ForgotPasswordScreen({ navigation }) {
@@ -32,10 +34,19 @@ export default function ForgotPasswordScreen({ navigation }) {
       return;
     }
     setLoading(true);
-    const { error } = await resetPassword(email);
-    setLoading(false);
+    let error = null;
+    try {
+      ({ error } = await resetPassword(email));
+    } catch (e) {
+      error = e;
+    } finally {
+      setLoading(false);
+    }
     if (error) {
-      Alert.alert(t('common.error'), error.message || t('common.tryAgain'));
+      Alert.alert(
+        t('common.error'),
+        getAuthErrorMessage(t, error, 'common.tryAgain'),
+      );
       return;
     }
     setSent(true);
@@ -57,6 +68,9 @@ export default function ForgotPasswordScreen({ navigation }) {
 
           <View style={styles.topBar}>
             <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityLabel={t('common.back', 'Geri')}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               onPress={() => navigation.goBack()}
               style={styles.backBtn}
             >
@@ -205,7 +219,7 @@ const styles = StyleSheet.create({
     color: LT.onSurface,
     fontSize: 28,
     fontWeight: '900',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     textAlign: 'center',
     marginBottom: 8,
     paddingHorizontal: 12,

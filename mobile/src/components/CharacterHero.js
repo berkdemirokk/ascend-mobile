@@ -5,14 +5,13 @@
 // TRANSFORMED through the app, not just earned points.
 //
 // Identity > behavior (James Clear, Atomic Habits). The emoji is the
-// VISUAL proof of identity. When a user sees themselves as "🧘 Monk"
+// VISUAL proof of identity. When a user sees themselves as "🧘 Disciplined"
 // in their profile, they're far less likely to skip a day.
 
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Easing } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import { LT } from '../config/lightTheme';
 import {
   getCharacterStage,
   getNextCharacterStage,
@@ -51,7 +50,7 @@ export default function CharacterHero({ longestStreak }) {
 
   return (
     <LinearGradient
-      colors={['#7C3AED', '#EF4444', '#F59E0B']}
+      colors={['#B70006', '#E31212', '#FF5A5F']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.card}
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     padding: 20,
     borderRadius: 20,
-    shadowColor: '#7C3AED',
+    shadowColor: '#B70006',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.25,
     shadowRadius: 16,
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '900',
     marginBottom: 4,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   subtitle: {
     color: '#FFFFFF',

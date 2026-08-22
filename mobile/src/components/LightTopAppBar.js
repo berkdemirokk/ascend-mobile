@@ -4,8 +4,16 @@
 // Used by: PathScreen, HomeScreen, StatsScreen, ProfileScreen.
 
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
+import { useTranslation } from 'react-i18next';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
 /**
@@ -23,12 +31,15 @@ export default function LightTopAppBar({
   brand = 'ASCEND',
   rightContent = null,
 }) {
+  const { t } = useTranslation();
   return (
     <View style={styles.bar}>
       <TouchableOpacity
         onPress={onAvatarPress}
         style={styles.avatarBtn}
-        accessibilityLabel="Settings"
+        accessibilityRole="button"
+        accessibilityLabel={t('settings.title', 'Ayarlar')}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         activeOpacity={0.7}
       >
         <View style={styles.avatarCircle}>
@@ -48,7 +59,8 @@ export default function LightTopAppBar({
         <TouchableOpacity
           onPress={onStreakPress}
           style={styles.streakBtn}
-          accessibilityLabel={`Streak ${currentStreak}`}
+          accessibilityRole="button"
+          accessibilityLabel={t('home.streak', { count: currentStreak })}
           activeOpacity={0.7}
         >
           <Text style={styles.streakNumber}>{currentStreak}</Text>
@@ -112,6 +124,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '900',
     color: LT.primaryContainer,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
 });

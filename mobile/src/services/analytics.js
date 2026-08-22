@@ -18,32 +18,80 @@
 //     with check (auth.uid() = user_id or user_id is null);
 //
 // PII rule: events here NEVER include the real name, email, or anything
-// that could re-identify the user. Use anon_user_id (the monk_<digits>
+// that could re-identify the user. Use anon_user_id (the ascender_<digits>
 // handle) for cohort analysis.
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
+import { Platform } from 'react-native';
 import { supabase, SUPABASE_CONFIGURED } from './supabase';
 
 const TABLE = 'analytics_events';
+const QUEUE_STORAGE_KEY = '@ascend/analytics_queue_v1';
+const MAX_QUEUE_SIZE = 100;
 
 let queue = [];
-let flushing = false;
+let flushTimer = null;
+let flushPromise = null;
+let hydratePromise = null;
+let hydrated = false;
 
-const flushSoon = () => {
-  if (flushing) return;
-  flushing = true;
-  setTimeout(flush, 200);
+const persistQueue = () => {
+  if (!hydrated) return;
+  AsyncStorage.setItem(
+    QUEUE_STORAGE_KEY,
+    JSON.stringify(queue.slice(-MAX_QUEUE_SIZE)),
+  ).catch(() => {});
 };
 
-const flush = async () => {
-  flushing = false;
-  if (!SUPABASE_CONFIGURED || queue.length === 0) return;
+const hydrateQueue = async () => {
+  if (hydratePromise) return hydratePromise;
+  hydratePromise = (async () => {
+    try {
+      const raw = await AsyncStorage.getItem(QUEUE_STORAGE_KEY);
+      const stored = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(stored) && stored.length) {
+        queue = [...stored, ...queue].slice(-MAX_QUEUE_SIZE);
+      }
+    } catch {}
+    hydrated = true;
+    persistQueue();
+  })();
+  return hydratePromise;
+};
+
+const flushSoon = () => {
+  if (flushTimer) return;
+  flushTimer = setTimeout(() => {
+    flushTimer = null;
+    flushAnalytics().catch(() => {});
+  }, 200);
+};
+
+export const flushAnalytics = async () => {
+  await hydrateQueue();
+  if (!SUPABASE_CONFIGURED || queue.length === 0) return false;
+  if (flushPromise) return flushPromise;
   const batch = queue.splice(0, queue.length);
-  try {
-    await supabase.from(TABLE).insert(batch);
-  } catch (e) {
-    // Re-queue on transient failure but cap at 100 so we don't grow forever.
-    if (queue.length < 100) queue.unshift(...batch.slice(0, 100 - queue.length));
-  }
+  persistQueue();
+  flushPromise = (async () => {
+    let succeeded = false;
+    try {
+      const { error } = await supabase.from(TABLE).insert(batch);
+      if (error) throw error;
+      succeeded = true;
+      persistQueue();
+      return true;
+    } catch {
+      queue = [...batch, ...queue].slice(-MAX_QUEUE_SIZE);
+      persistQueue();
+      return false;
+    } finally {
+      flushPromise = null;
+      if (succeeded && queue.length) flushSoon();
+    }
+  })();
+  return flushPromise;
 };
 
 /**
@@ -52,13 +100,26 @@ const flush = async () => {
  */
 export const track = ({ event, props, userId, anonUserId } = {}) => {
   if (!event) return;
+  let safeProps = null;
+  try {
+    safeProps = props ? JSON.parse(JSON.stringify(props)) : {};
+  } catch {
+    safeProps = { serializationFailed: true };
+  }
   queue.push({
     user_id: userId || null,
     anon_user_id: anonUserId || null,
     event: String(event).slice(0, 80),
-    props: props ? JSON.parse(JSON.stringify(props)) : null,
+    props: {
+      ...safeProps,
+      appVersion: Constants.expoConfig?.version || null,
+      buildVersion: Constants.nativeBuildVersion || null,
+      platform: Platform.OS,
+    },
   });
-  flushSoon();
+  queue = queue.slice(-MAX_QUEUE_SIZE);
+  persistQueue();
+  hydrateQueue().finally(flushSoon);
 };
 
 /**
@@ -75,4 +136,30 @@ export const logError = ({ error, source, userId, anonUserId } = {}) => {
     userId,
     anonUserId,
   });
+};
+
+let removeGlobalErrorHandler = null;
+
+export const installGlobalErrorHandler = () => {
+  if (removeGlobalErrorHandler) return removeGlobalErrorHandler;
+  const errorUtils = globalThis?.ErrorUtils;
+  if (!errorUtils?.getGlobalHandler || !errorUtils?.setGlobalHandler) {
+    return () => {};
+  }
+  const previousHandler = errorUtils.getGlobalHandler();
+  const handler = (error, isFatal) => {
+    try {
+      logError({
+        error,
+        source: isFatal ? 'global_fatal' : 'global_nonfatal',
+      });
+    } catch {}
+    previousHandler?.(error, isFatal);
+  };
+  errorUtils.setGlobalHandler(handler);
+  removeGlobalErrorHandler = () => {
+    errorUtils.setGlobalHandler(previousHandler);
+    removeGlobalErrorHandler = null;
+  };
+  return removeGlobalErrorHandler;
 };

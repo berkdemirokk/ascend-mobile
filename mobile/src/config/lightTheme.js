@@ -1,16 +1,15 @@
 // Vivid Impact Theme — Stitch "Modern Kartlar" / "Klasik Monastik"
-// Bold red primary, light/dark mode aware, Inter typography.
+// Bold red primary, reviewed light-mode palette, Inter typography.
 //
 // The main export `LT` is STATIC and points at the light tokens — kept
 // for backward compatibility with every StyleSheet.create() call that
 // already lives in the codebase (build-time captured, won't react to
 // runtime theme switches).
 //
-// For NEW dynamic surfaces (root backgrounds, status bar tint, splash)
-// import `getThemedLT()` or use the `useDynamicLT()` hook from
-// `./theme.js`. Full dark migration is a separate sprint: this commit
-// only wires the foundation so a system-dark-mode user no longer sees
-// a white splash flash on cold start.
+// Runtime helpers in `./theme.js` intentionally return this same palette
+// for every system appearance. That keeps root chrome, overlays, and the
+// static screen styles visually consistent until dark mode is reviewed
+// and migrated as one complete feature.
 
 export const LT = {
   // Surfaces (light, layered)
@@ -27,7 +26,7 @@ export const LT = {
   onBackground: '#1A1C1C',
   onSurface: '#1A1C1C',
   onSurfaceVariant: '#5E3F3A',
-  outline: '#936E69',
+  outline: '#7A4F49',
   outlineVariant: '#E8BCB6',
 
   // Brand — bold vivid red
@@ -47,9 +46,9 @@ export const LT = {
   success: '#0F7B3D',
 };
 
-// Dark mode counterpart — same brand semantics, dark surfaces. Mirrors
-// `LT` key-for-key so a future runtime swap can drop these in without
-// any consumer needing to rename anything.
+// Candidate dark-mode tokens. They are intentionally not used at
+// runtime yet; keeping the key-for-key draft here makes a future audited
+// migration possible without changing the public token shape.
 export const LT_DARK = {
   // Surfaces (dark, layered)
   background: '#0A0A0B',
@@ -92,19 +91,19 @@ export const LT_TYPE = {
   displayHero: {
     fontSize: 64,
     lineHeight: 70,
-    letterSpacing: -1,
+    letterSpacing: 0,
     fontWeight: '900',
   },
   h1: {
     fontSize: 32,
     lineHeight: 38,
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     fontWeight: '700',
   },
   h2: {
     fontSize: 24,
     lineHeight: 31,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     fontWeight: '700',
   },
   bodyLg: {
@@ -132,7 +131,7 @@ export const LT_TYPE = {
   streakNumber: {
     fontSize: 48,
     lineHeight: 48,
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     fontWeight: '900',
   },
 };

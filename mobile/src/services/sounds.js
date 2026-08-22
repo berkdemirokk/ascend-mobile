@@ -1,11 +1,11 @@
-// Lightweight wrapper around expo-av for short UI sound effects.
+// Lightweight wrapper around expo-audio for short UI sound effects.
 // Lazy-loads modules + assets so missing files don't crash bundler.
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 
 const MUTE_KEY = '@ascend/sounds_muted_v1';
 
-let Audio = null;
 let loaded = false;
 const cache = {};
 let muted = false;
@@ -40,27 +40,19 @@ function getSource(name) {
 }
 
 async function ensureLoaded() {
-  if (loaded) return Audio;
+  if (loaded) return true;
   loaded = true;
   try {
-    const mod = await import('expo-av');
-    Audio = mod.Audio;
-    if (Audio?.setAudioModeAsync) {
-      await Audio.setAudioModeAsync({
-        // Was false — meant any iPhone on silent mode (the majority)
-        // heard NOTHING. User feedback was "ses kötü" partly because
-        // the sounds weren't playing at all. Now they fire even on
-        // silent. Volume is still capped at 0.6 in createAsync() so
-        // they're audible but not jarring.
-        playsInSilentModeIOS: true,
-        staysActiveInBackground: false,
-        shouldDuckAndroid: true,
-      });
-    }
+    await setAudioModeAsync({
+      playsInSilentMode: true,
+      shouldPlayInBackground: false,
+      interruptionMode: 'duckOthers',
+    });
+    return true;
   } catch {
-    Audio = null;
+    loaded = false;
+    return false;
   }
-  return Audio;
 }
 
 // Track concurrent createAsync calls so a burst of rapid taps doesn't
@@ -74,8 +66,7 @@ const inflightLoads = {};
 export async function playSound(name) {
   await ensureMutePersistLoaded();
   if (muted) return;
-  const A = await ensureLoaded();
-  if (!A) return;
+  if (!(await ensureLoaded())) return;
   const src = getSource(name);
   if (!src) return; // file missing — silent no-op
 
@@ -87,9 +78,9 @@ export async function playSound(name) {
     // mid-unload tap would print a red error in dev.
     if (cache[name]) {
       try {
-        const status = await cache[name].getStatusAsync();
-        if (status?.isLoaded) {
-          await cache[name].replayAsync();
+        if (cache[name].isLoaded) {
+          await cache[name].seekTo(0);
+          cache[name].play();
           return;
         }
       } catch {
@@ -106,7 +97,8 @@ export async function playSound(name) {
         await inflightLoads[name];
         if (cache[name]) {
           try {
-            await cache[name].replayAsync();
+            await cache[name].seekTo(0);
+            cache[name].play();
           } catch {}
         }
       } catch {}
@@ -114,19 +106,18 @@ export async function playSound(name) {
     }
 
     const loadPromise = (async () => {
-      const { sound } = await A.Sound.createAsync(src, {
-        shouldPlay: true,
-        volume: 0.6,
-      });
-      cache[name] = sound;
-      sound.setOnPlaybackStatusUpdate((status) => {
+      const player = createAudioPlayer(src, { keepAudioSessionActive: false });
+      player.volume = 0.6;
+      cache[name] = player;
+      player.addListener('playbackStatusUpdate', (status) => {
         if (status?.didJustFinish) {
-          sound.unloadAsync().catch(() => {});
+          try { player.remove(); } catch {}
           // Only delete from cache if this is still the cached
           // instance — avoids deleting a NEWER reload's instance.
-          if (cache[name] === sound) delete cache[name];
+          if (cache[name] === player) delete cache[name];
         }
       });
+      player.play();
     })();
     inflightLoads[name] = loadPromise;
     try {

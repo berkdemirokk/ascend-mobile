@@ -10,21 +10,24 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
   Animated,
   Easing,
   StatusBar,
+  Alert,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from '../components/AccessibleControls';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
 import { useApp } from '../contexts/AppContext';
 import {
   PATHS,
   getPathLessons,
-  getLessonState,
+  getLessonAccessState,
   getPathProgress,
   getPathById,
 } from '../data/paths';
@@ -38,22 +41,24 @@ import { useAuth } from '../contexts/AuthContext';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function PathScreen({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR';
   const {
     pathProgress,
     activePathId,
     setActivePath,
     isPremium,
     currentStreak,
+    streakFreezes,
     hearts,
     heartsRefillAt,
     gainHeart,
   } = useApp();
 
   const [outOfHeartsVisible, setOutOfHeartsVisible] = useState(false);
+  const [pendingLesson, setPendingLesson] = useState(null);
   const [streakInfoVisible, setStreakInfoVisible] = useState(false);
   const [sharingCert, setSharingCert] = useState(false);
-  const autoStartedRef = useRef(false);
   const certCardRef = useRef(null);
   const { user } = useAuth();
 
@@ -73,42 +78,27 @@ export default function PathScreen({ navigation }) {
     [activePath, pathProgress],
   );
 
-  // Auto-start first lesson on initial mount if user has zero progress.
-  useEffect(() => {
-    if (autoStartedRef.current) return;
-    autoStartedRef.current = true;
-    if (!activePath || lessons.length === 0) return;
-    const totalCompleted = Object.values(pathProgress || {}).reduce(
-      (s, p) => s + (p?.completed?.length || 0),
-      0,
-    );
-    if (totalCompleted === 0) {
-      const timer = setTimeout(() => {
-        const firstLesson = lessons[0];
-        if (firstLesson) {
-          navigation.navigate('Lesson', {
-            pathId: firstLesson.pathId,
-            lessonId: firstLesson.id,
-          });
-        }
-      }, 600);
-      return () => clearTimeout(timer);
-    }
-  }, [activePath, lessons, pathProgress, navigation]);
-
   const handleLessonTap = (lesson, finalState) => {
     if (finalState === 'premium') {
-      navigation.navigate('Paywall');
+      navigation.navigate('Paywall', { source: 'path_locked_lesson' });
       return;
     }
     if (finalState === 'locked') {
-      // tapping locked is a no-op (we don't reveal hint via toast for now)
+      Alert.alert(
+        t('path.lockedTitle', 'Bu ders henüz kilitli'),
+        t(
+          'path.lockedBody',
+          'Önce sıradaki aktif dersi bitir. Yol adım adım açılır.',
+        ),
+      );
       return;
     }
-    if (!isPremium && hearts <= 0) {
+    if (!isPremium && (hearts || 0) <= 0 && finalState !== 'completed') {
+      setPendingLesson({ pathId: lesson.pathId, lessonId: lesson.id });
       setOutOfHeartsVisible(true);
       return;
     }
+    setPendingLesson(null);
     navigation.navigate('Lesson', {
       pathId: lesson.pathId,
       lessonId: lesson.id,
@@ -125,6 +115,8 @@ export default function PathScreen({ navigation }) {
         currentStreak={currentStreak}
         rightContent={
           <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityLabel={t('search.title', 'Ders ara')}
             onPress={() => navigation.navigate('LessonSearch')}
             style={styles.searchBtn}
             hitSlop={{ top: 8, left: 8, right: 8, bottom: 8 }}
@@ -170,10 +162,7 @@ export default function PathScreen({ navigation }) {
                 if (sharingCert) return;
                 setSharingCert(true);
                 const today = new Date();
-                // Force en-US so non-Latin locales (AR, FA, HI) don't
-                // emit non-Latin digits that break downstream rendering
-                // or look out of place on a English-styled certificate.
-                const dateStr = today.toLocaleDateString('en-US');
+                const dateStr = today.toLocaleDateString(locale);
                 const userName =
                   (user?.user_metadata?.name || '').trim() ||
                   (user?.email || '').split('@')[0] ||
@@ -256,11 +245,7 @@ export default function PathScreen({ navigation }) {
         {/* Lesson Cards */}
         <View style={styles.cardsContainer}>
           {lessons.map((lesson) => {
-            const state = getLessonState(lesson, pathProgress);
-            const isLockedByPremium =
-              !isPremium && lesson.order > (activePath.freeLessons || 5);
-            const finalState =
-              isLockedByPremium && state !== 'completed' ? 'premium' : state;
+            const finalState = getLessonAccessState(lesson, pathProgress, isPremium);
             return (
               <LessonCard
                 key={lesson.id}
@@ -280,11 +265,19 @@ export default function PathScreen({ navigation }) {
 
       <OutOfHeartsModal
         visible={outOfHeartsVisible}
-        onClose={() => setOutOfHeartsVisible(false)}
+        onClose={() => {
+          setOutOfHeartsVisible(false);
+          setPendingLesson(null);
+        }}
         onRefill={() => {
           // +1 kalp, full refill değil — CTA "+1 KALP KAZAN" ile uyumlu.
           gainHeart();
           setOutOfHeartsVisible(false);
+          const target = pendingLesson;
+          setPendingLesson(null);
+          if (target) {
+            navigation.navigate('Lesson', target);
+          }
         }}
         // Without this, the "PREMIUM İLE SINIRSIZ KALPLER" button
         // inside the modal silently no-ops (onPaywall?.() with no
@@ -292,7 +285,8 @@ export default function PathScreen({ navigation }) {
         // would tap the red CTA and see nothing happen.
         onPaywall={() => {
           setOutOfHeartsVisible(false);
-          navigation.navigate('Paywall');
+          setPendingLesson(null);
+          navigation.navigate('Paywall', { source: 'path_out_of_hearts' });
         }}
         refillAt={heartsRefillAt}
       />
@@ -300,7 +294,10 @@ export default function PathScreen({ navigation }) {
       <StreakInfoModal
         visible={streakInfoVisible}
         onClose={() => setStreakInfoVisible(false)}
-        currentStreak={currentStreak}
+        streak={currentStreak}
+        freezes={streakFreezes}
+        isPremium={isPremium}
+        onPaywall={() => navigation.navigate('Paywall', { source: 'path_streak_info' })}
       />
 
       {/* Off-screen certificate captured for share image */}
@@ -308,7 +305,7 @@ export default function PathScreen({ navigation }) {
         <PathCertificateCard
           ref={certCardRef}
           pathTitle={t(`paths.${activePath.id}.title`, activePath.id)}
-          completedDate={new Date().toLocaleDateString('en-US')}
+          completedDate={new Date().toLocaleDateString(locale)}
           userName={
             (user?.user_metadata?.name || '').trim() ||
             (user?.email || '').split('@')[0] ||
@@ -518,7 +515,7 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: 32,
     fontWeight: '900',
-    letterSpacing: -0.6,
+    letterSpacing: 0,
     lineHeight: 38,
     color: LT.onSurface,
     marginBottom: 6,
@@ -689,7 +686,7 @@ const styles = StyleSheet.create({
     lineHeight: 140,
     color: LT.onSurface,
     opacity: 0.045,
-    letterSpacing: -4,
+    letterSpacing: 0,
   },
   cardBgNumberActive: {
     color: LT.primaryContainer,
@@ -723,7 +720,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     lineHeight: 28,
-    letterSpacing: -0.4,
+    letterSpacing: 0,
     color: LT.onSurface,
     marginBottom: 6,
   },

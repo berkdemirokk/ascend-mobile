@@ -17,12 +17,9 @@ import os
 import json
 import sys
 
-KEY_ID = "CV8FXZNAR8"
-ISSUER_ID = "875b8c0f-3adb-4175-b5d4-334257c02837"
-KEY_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "..", "credentials", "AuthKey_CV8FXZNAR8.p8"
-)
+KEY_ID = os.environ.get("ASC_KEY_ID")
+ISSUER_ID = os.environ.get("ASC_ISSUER_ID")
+KEY_PATH = os.environ.get("ASC_KEY_PATH")
 API = "https://api.appstoreconnect.apple.com/v1"
 
 MONTHLY_ID = "6762008657"
@@ -33,6 +30,10 @@ TERRITORY = "USA"
 
 
 def make_token():
+    if not KEY_ID or not ISSUER_ID or not KEY_PATH:
+        raise RuntimeError(
+            "Set ASC_KEY_ID, ASC_ISSUER_ID and ASC_KEY_PATH before running this script."
+        )
     with open(KEY_PATH) as f:
         pk = f.read()
     return jwt.encode(

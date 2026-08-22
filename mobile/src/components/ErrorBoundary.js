@@ -2,11 +2,13 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
   ScrollView,
   Linking,
 } from 'react-native';
+import {
+  AccessibleTouchableOpacity as TouchableOpacity,
+} from './AccessibleControls';
 import { LT } from '../config/lightTheme';
 import { LEGAL } from '../config/constants';
 import { logError } from '../services/analytics';
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     marginBottom: 10,
     textAlign: 'center',
-    letterSpacing: -0.4,
+    letterSpacing: 0,
   },
   subtitle: {
     color: LT.onSurfaceVariant,

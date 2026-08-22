@@ -1,4 +1,4 @@
-// Daily discipline quotes — rotating Stoic + monk + warrior wisdom shown
+// Daily discipline quotes — rotating Stoic + discipline + warrior wisdom shown
 // on the Home screen. One quote per day (deterministic via date hash so
 // every device shows the same quote on the same day), refreshed every
 // midnight. 35 entries = ~5 weeks of unique quotes before the cycle.

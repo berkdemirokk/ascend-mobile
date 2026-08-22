@@ -6,17 +6,18 @@ import json
 import sys
 import os
 
-KEY_ID = "CV8FXZNAR8"
-ISSUER_ID = "875b8c0f-3adb-4175-b5d4-334257c02837"
-KEY_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "..", "credentials", "AuthKey_CV8FXZNAR8.p8"
-)
-APP_ID = "6761607644"
+KEY_ID = os.environ.get("ASC_KEY_ID")
+ISSUER_ID = os.environ.get("ASC_ISSUER_ID")
+KEY_PATH = os.environ.get("ASC_KEY_PATH")
+APP_ID = os.environ.get("ASC_APP_ID", "6761607644")
 BUNDLE_ID = "com.ascend.growth"
 
 
 def make_token():
+    if not KEY_ID or not ISSUER_ID or not KEY_PATH:
+        raise RuntimeError(
+            "Set ASC_KEY_ID, ASC_ISSUER_ID and ASC_KEY_PATH before running this script."
+        )
     with open(KEY_PATH, 'r') as f:
         private_key = f.read()
     headers = {"alg": "ES256", "kid": KEY_ID, "typ": "JWT"}

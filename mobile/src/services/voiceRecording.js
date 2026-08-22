@@ -1,98 +1,82 @@
-// Lightweight voice-recording wrapper around expo-av.
+// Lightweight voice-recording wrapper around expo-audio.
 // Used during the Reflection step so users can speak their thoughts instead
 // of typing — emotional friction is much lower for voice journals.
 //
 // Recording is local-only: the audio file URI is stored alongside the text
 // reflection in AsyncStorage / cloudSync. We never upload audio to a backend.
 
-import { Platform } from 'react-native';
+import {
+  createAudioPlayer,
+  requestRecordingPermissionsAsync,
+  setAudioModeAsync,
+} from 'expo-audio';
 
-let Audio = null;
-let recording = null;
-
-async function loadAudio() {
-  if (Audio) return Audio;
+const resetPlaybackAudioMode = async () => {
   try {
-    const mod = await import('expo-av');
-    Audio = mod.Audio;
-    return Audio;
-  } catch (e) {
-    console.warn('[voice] expo-av load failed:', e?.message);
-    return null;
-  }
-}
-
-export const isRecordingAvailable = async () => {
-  const A = await loadAudio();
-  return !!A?.Recording;
+    await setAudioModeAsync({ allowsRecording: false, playsInSilentMode: true });
+  } catch {}
 };
 
+export const isRecordingAvailable = async () => true;
+
 export const requestMicPermission = async () => {
-  const A = await loadAudio();
-  if (!A) return false;
   try {
-    const result = await A.requestPermissionsAsync();
-    return result?.status === 'granted';
+    const result = await requestRecordingPermissionsAsync();
+    return result?.granted === true;
   } catch {
     return false;
   }
 };
 
-export const startRecording = async () => {
-  const A = await loadAudio();
-  if (!A) return false;
-  if (recording) return true; // already recording
+export const startRecording = async (recorder) => {
+  if (!recorder) return false;
+  if (recorder.isRecording) return true;
   const granted = await requestMicPermission();
   if (!granted) return false;
+  let started = false;
   try {
-    await A.setAudioModeAsync({
-      allowsRecordingIOS: true,
-      playsInSilentModeIOS: true,
+    await setAudioModeAsync({
+      allowsRecording: true,
+      playsInSilentMode: true,
     });
-    const r = new A.Recording();
-    await r.prepareToRecordAsync(A.RecordingOptionsPresets.HIGH_QUALITY);
-    await r.startAsync();
-    recording = r;
+    await recorder.prepareToRecordAsync();
+    recorder.record();
+    started = true;
     return true;
   } catch (e) {
     console.warn('[voice] startRecording error:', e?.message);
-    recording = null;
     return false;
+  } finally {
+    if (!started) await resetPlaybackAudioMode();
   }
 };
 
 /**
  * Stop the current recording and return the local file URI.
  */
-export const stopRecording = async () => {
-  if (!recording) return null;
+export const stopRecording = async (recorder) => {
+  if (!recorder) return null;
   try {
-    await recording.stopAndUnloadAsync();
-    const uri = recording.getURI();
-    recording = null;
-    // Reset audio mode so playback elsewhere isn't muted by recording session.
-    if (Audio) {
-      try {
-        await Audio.setAudioModeAsync({
-          allowsRecordingIOS: false,
-          playsInSilentModeIOS: true,
-        });
-      } catch {}
-    }
+    await recorder.stop();
+    const uri = recorder.uri;
     return uri || null;
   } catch (e) {
     console.warn('[voice] stopRecording error:', e?.message);
-    recording = null;
     return null;
+  } finally {
+    await resetPlaybackAudioMode();
   }
 };
 
-export const cancelRecording = async () => {
-  if (!recording) return;
+export const cancelRecording = async (recorder) => {
+  if (!recorder) return;
   try {
-    await recording.stopAndUnloadAsync();
-  } catch {}
-  recording = null;
+    if (recorder.isRecording) await recorder.stop();
+  } catch {
+    // Cleanup still needs to restore playback mode when stop fails.
+  } finally {
+    await resetPlaybackAudioMode();
+  }
 };
 
 /**
@@ -101,12 +85,22 @@ export const cancelRecording = async () => {
  */
 export const playRecording = async (uri) => {
   if (!uri) return null;
-  const A = await loadAudio();
-  if (!A) return null;
   try {
-    const { sound } = await A.Sound.createAsync({ uri });
-    await sound.playAsync();
-    return sound;
+    const player = createAudioPlayer({ uri });
+    let removed = false;
+    const remove = () => {
+      if (removed) return;
+      removed = true;
+      try { player.remove(); } catch {}
+    };
+    player.addListener('playbackStatusUpdate', (status) => {
+      if (status?.didJustFinish) remove();
+    });
+    player.play();
+    return {
+      stopAsync: async () => player.pause(),
+      unloadAsync: async () => remove(),
+    };
   } catch (e) {
     console.warn('[voice] playRecording error:', e?.message);
     return null;
