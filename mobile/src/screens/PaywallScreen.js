@@ -377,7 +377,7 @@ export default function PaywallScreen({ navigation, route }) {
             <View style={styles.socialProofPill}>
               <MaterialIcons name="people" size={14} color={LT.primary} />
               <Text style={styles.socialProofText}>
-                {t('paywall.socialProof', '10.000+ disiplinli kullanıcı')}
+                {t('paywall.socialProof', 'Günlük tutarlılık için tasarlandı')}
               </Text>
             </View>
           ) : null}
