@@ -995,7 +995,7 @@ run('critical flow regression guards', () => {
   );
   assert(
     lesson.includes('const canonicalPathId = lesson?.pathId || pathId')
-      && lesson.includes('completePathLesson({\n      pathId: canonicalPathId')
+      && /completePathLesson\(\{\r?\n\s*pathId: canonicalPathId/.test(lesson)
       && lesson.includes("navigation.replace('Lesson', { pathId: canonicalPathId"),
     'LessonScreen must use the lesson canonical path for content/progress/navigation',
   );
