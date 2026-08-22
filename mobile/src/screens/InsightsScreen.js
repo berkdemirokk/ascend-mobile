@@ -20,7 +20,7 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
 import { useApp } from '../contexts/AppContext';
 import { PATHS } from '../data/paths';
@@ -29,7 +29,8 @@ import StreakInfoModal from '../components/StreakInfoModal';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function InsightsScreen({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR';
   const {
     pathProgress,
     totalXP,
@@ -238,7 +239,7 @@ export default function InsightsScreen({ navigation }) {
           <QuickStat
             icon="bolt"
             label={t('insights.statXp', 'TOPLAM XP')}
-            value={(totalXP ?? 0).toLocaleString('en-US')}
+            value={(totalXP ?? 0).toLocaleString(locale)}
           />
           <View style={styles.rowDivider} />
           <QuickStat

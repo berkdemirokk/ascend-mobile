@@ -12,7 +12,7 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useApp } from '../contexts/AppContext';
 import { LT } from '../config/lightTheme';
 import { PATHS } from '../data/paths';
@@ -733,10 +733,10 @@ function PickPathStep({ t, selectedPath, onSelect }) {
                 <MaterialIcons name={p.materialIcon} size={32} color={isSelected ? LT.primary : LT.onSurfaceVariant} />
               </View>
               <Text style={styles.pathGridName}>
-                {t(`paths.${p.id}.title`, p.id)}
+                {t(`paths.${p.id}.title`)}
               </Text>
               <Text style={styles.pathGridDuration}>
-                {t('path.lessonsCount', '{{count}} ders', { count: p.duration })}
+                {t('path.lessonsCount', { count: p.duration })}
               </Text>
             </TouchableOpacity>
           );

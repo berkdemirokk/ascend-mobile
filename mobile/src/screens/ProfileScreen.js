@@ -20,12 +20,12 @@ import {
   AccessibleTouchableOpacity as TouchableOpacity,
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import Svg, { Circle } from 'react-native-svg';
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
-import { LEVEL_THRESHOLDS, getNextLevel } from '../config/constants';
+import { LEGAL, LEVEL_THRESHOLDS, getNextLevel } from '../config/constants';
 import { ACHIEVEMENTS, getEarnedIdentityBadges } from '../config/achievements';
 import StreakHeatmap from '../components/StreakHeatmap';
 import CharacterHero from '../components/CharacterHero';
@@ -45,7 +45,7 @@ import LightTopAppBar from '../components/LightTopAppBar';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function ProfileScreen({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const appState = useApp();
   // ALL fields defaulted — without defaults, the very first render
@@ -107,7 +107,7 @@ export default function ProfileScreen({ navigation }) {
 
   const identityBadges = useMemo(
     () => getEarnedIdentityBadges(pathProgress, PATHS, getCurrentLanguage?.() || 'tr'),
-    [pathProgress],
+    [pathProgress, i18n.resolvedLanguage],
   );
 
   const recentAchievements = useMemo(() => {
@@ -125,7 +125,7 @@ export default function ProfileScreen({ navigation }) {
 
   const handleSharePublicProfile = async () => {
     const handle = anonUsername || 'ascender';
-    const link = `https://ascend.app/u/${encodeURIComponent(handle)}`;
+    const link = `${LEGAL.PUBLIC_APP_URL}?profile=${encodeURIComponent(handle)}`;
     const message = t(
       'profile.publicShareMessage',
       "Ascend'de profilim 🔥\n{{streak}} gün streak · {{xp}} XP · seviye {{level}}\n{{link}}",
@@ -221,7 +221,9 @@ export default function ProfileScreen({ navigation }) {
           <StatCard
             icon="bolt"
             label={t('profile.totalXp', 'TOPLAM XP')}
-            value={(totalXP ?? 0).toLocaleString('en-US')}
+            value={(totalXP ?? 0).toLocaleString(
+              i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR',
+            )}
           />
           <StatCard
             icon="local-fire-department"
@@ -907,7 +909,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 16,
     borderRadius: 16,
-    backgroundColor: '#1E1B4B',
+    backgroundColor: '#B70006',
     borderWidth: 1,
     borderColor: '#FDE047',
   },

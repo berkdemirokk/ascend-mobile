@@ -9,6 +9,7 @@ const { VISITOR_KEYS } = require('@babel/types');
 const transformModules = require('@babel/plugin-transform-modules-commonjs');
 
 const ROOT = path.resolve(__dirname, '..');
+const REPO_ROOT = path.resolve(ROOT, '..');
 const SRC = path.join(ROOT, 'src');
 const failures = [];
 let assertions = 0;
@@ -446,7 +447,7 @@ run('production JSX literals', () => {
 });
 
 run('MaterialIcons names', () => {
-  const glyphs = require('@expo/vector-icons/build/vendor/react-native-vector-icons/glyphmaps/MaterialIcons.json');
+  const glyphs = require('@react-native-vector-icons/material-icons/glyphmaps/MaterialIcons.json');
   const invalid = [];
   for (const file of jsFiles) {
     traverse(getAst(file), {
@@ -482,12 +483,29 @@ run('release toolchain', () => {
       && versionParts.slice(0, index).every((value, prefix) => value === previousApproved[prefix])
     ));
 
-  assert(/^[~^]?54\./.test(dependencies.expo || ''), `production requires Expo SDK 54, found ${dependencies.expo}`);
-  assert(image !== 'latest' && /xcode-26(?:\.|$)/.test(image), `production must pin Xcode 26, found ${image}`);
+  assert(/^[~^]?57\./.test(dependencies.expo || ''), `production requires Expo SDK 57, found ${dependencies.expo}`);
+  assert(image === 'macos-tahoe-26.5-xcode-26.6', `Expo SDK 57 production must pin the reviewed Xcode 26.6 image, found ${image}`);
   assert(/^[~^]?7\./.test(dependencies['@react-navigation/native'] || ''), 'React Navigation 7 is required');
-  assert(appJson.expo?.newArchEnabled === false, 'Legacy Architecture must remain explicit for SDK 54 stability');
+  assert(!Object.prototype.hasOwnProperty.call(appJson.expo || {}, 'newArchEnabled'), 'SDK 55+ removed the Legacy Architecture flag');
   assert(!dependencies['react-native-reanimated'], 'react-native-reanimated is not required by the app');
   assert(!dependencies['react-native-worklets'], 'react-native-worklets is not required by the app');
+  assert(dependencies['expo-audio'], 'expo-audio is required for playback and voice reflections');
+  assert(!dependencies['expo-av'], 'deprecated expo-av must not return');
+  assert(!dependencies['@expo/vector-icons'], 'deprecated @expo/vector-icons wrapper must not return');
+  assert(dependencies['@react-native-vector-icons/material-icons'] === '13.1.2', 'Material Icons must stay on the reviewed exact package version');
+  assert(dependencies['@supabase/supabase-js'] === '2.112.3', 'supabase-js must stay pinned exactly');
+  const ttsSource = fs.readFileSync(path.join(SRC, 'services', 'tts.js'), 'utf8');
+  const voiceSource = fs.readFileSync(path.join(SRC, 'services', 'voiceRecording.js'), 'utf8');
+  const lessonSource = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');
+  assert(!jsFiles.some((file) => fs.readFileSync(file, 'utf8').includes("from 'expo-av'")), 'expo-av imports must not return');
+  assert(ttsSource.includes('playsInSilentMode: true'), 'pre-recorded TTS must play in iOS silent mode');
+  assert(ttsSource.includes('playbackGeneration'), 'TTS must cancel stale async playback requests');
+  assert(voiceSource.includes('finally') && voiceSource.includes('resetPlaybackAudioMode'), 'voice cleanup must always restore playback mode');
+  assert(lessonSource.includes('cancelRecording(voiceRecorder)'), 'lesson unmount must cancel an active voice recording');
+  assert(packageJson.version === releaseVersion, `package/app version mismatch: ${packageJson.version} vs ${releaseVersion}`);
+  assert(appJson.expo?.userInterfaceStyle === 'light', 'the reviewed red-white UI must stay light until a full dark theme ships');
+  assert(appJson.expo?.ios?.supportsTablet === false, 'the iPhone-only release must not advertise untested iPad support');
+  assert(!packageJson.scripts?.web, 'native-only release must not expose an unconfigured web script');
   assert(isNewReleaseTrain, `release version must be newer than 1.0.41, found ${releaseVersion}`);
   assert(!Object.prototype.hasOwnProperty.call(appJson.expo?.ios || {}, 'buildNumber'), 'iOS buildNumber must be managed remotely by EAS');
 
@@ -505,6 +523,50 @@ run('release toolchain', () => {
     });
   }
   assert(!deprecatedSafeAreaImports.length, `deprecated react-native SafeAreaView: ${deprecatedSafeAreaImports.join(', ')}`);
+  assert(!jsFiles.some((file) => fs.readFileSync(file, 'utf8').includes("Dimensions.get('window')")), 'responsive UI must use useWindowDimensions instead of a static window snapshot');
+
+  const welcomeSource = fs.readFileSync(path.join(SRC, 'screens', 'auth', 'WelcomeScreen.js'), 'utf8');
+  const settingsSource = fs.readFileSync(path.join(SRC, 'screens', 'SettingsScreen.js'), 'utf8');
+  const heatmapSource = fs.readFileSync(path.join(SRC, 'components', 'StreakHeatmap.js'), 'utf8');
+  assert(welcomeSource.includes('accessibilityRole="radio"') && welcomeSource.includes('checked: active'), 'welcome language picker must expose its selected radio state');
+  assert(settingsSource.includes('accessibilityRole="radio"') && settingsSource.includes('checked: active'), 'settings language picker must expose its selected radio state');
+  assert(heatmapSource.includes('heatmap.dayAccessibility'), 'streak heatmap days need a non-color accessibility label');
+});
+
+run('release supply-chain and public-link security', () => {
+  const workflowDir = path.join(REPO_ROOT, '.github', 'workflows');
+  const workflowFiles = fs.readdirSync(workflowDir)
+    .filter((name) => /\.ya?ml$/i.test(name))
+    .map((name) => path.join(workflowDir, name));
+  for (const file of workflowFiles) {
+    const workflow = fs.readFileSync(file, 'utf8');
+    const actionRefs = [...workflow.matchAll(/^\s*uses:\s*([^\s#]+)/gm)].map((match) => match[1]);
+    for (const actionRef of actionRefs) {
+      assert(/@[0-9a-f]{40}$/i.test(actionRef), `${path.basename(file)} must pin ${actionRef} to a full commit SHA`);
+    }
+  }
+
+  const docsDir = path.join(REPO_ROOT, 'docs');
+  for (const name of fs.readdirSync(docsDir).filter((entry) => entry.endsWith('.html'))) {
+    const html = fs.readFileSync(path.join(docsDir, name), 'utf8');
+    assert(/Content-Security-Policy/i.test(html), `${name} must define a CSP for GitHub Pages`);
+    assert(/<meta\s+name="referrer"\s+content="no-referrer"/i.test(html), `${name} must suppress outbound referrers`);
+  }
+
+  const productionSource = jsFiles.map((file) => fs.readFileSync(file, 'utf8')).join('\n');
+  assert(!productionSource.includes('https://ascend.app'), 'share links must not use an unrelated ascend.app domain');
+
+  const migrations = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+    .filter((name) => name.endsWith('.sql'))
+    .map((name) => fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', name), 'utf8'))
+    .join('\n');
+  assert(!/auth\.role\s*\(/i.test(migrations), 'RLS policies must use role targets plus ownership checks, not deprecated auth.role()');
+  assert(migrations.includes('private.can_read_squad_members'), 'squad membership reads must remain participant-scoped');
+
+  for (const functionName of ['delete-user', 'broadcast-push']) {
+    const source = fs.readFileSync(path.join(ROOT, 'supabase', 'functions', functionName, 'index.ts'), 'utf8');
+    assert(/@supabase\/supabase-js@\d+\.\d+\.\d+/.test(source), `${functionName} must pin supabase-js exactly`);
+  }
 });
 
 run('startup fail-open guards', () => {
@@ -890,6 +952,8 @@ run('critical flow regression guards', () => {
   const pathScreen = fs.readFileSync(path.join(SRC, 'screens/PathScreen.js'), 'utf8');
   const lesson = fs.readFileSync(path.join(SRC, 'screens/LessonScreen.js'), 'utf8');
   const resetPassword = fs.readFileSync(path.join(SRC, 'screens/auth/ResetPasswordScreen.js'), 'utf8');
+  const signup = fs.readFileSync(path.join(SRC, 'screens/auth/SignupScreen.js'), 'utf8');
+  const login = fs.readFileSync(path.join(SRC, 'screens/auth/LoginScreen.js'), 'utf8');
   const cloudSync = fs.readFileSync(path.join(SRC, 'services/cloudSync.js'), 'utf8');
 
   assert(
@@ -938,6 +1002,14 @@ run('critical flow regression guards', () => {
   assert(
     resetPassword.includes('exchangeCodeForSession(params.code)'),
     'reset-password screen must support Supabase PKCE code recovery links',
+  );
+  assert(
+    signup.includes('password.length < 8') && resetPassword.includes('password.length < 8'),
+    'new and reset passwords must enforce the eight-character minimum available on every plan',
+  );
+  assert(
+    login.includes('if (!password)') && !login.includes('password.length < 8'),
+    'login must not lock out accounts created under the legacy password policy',
   );
 });
 

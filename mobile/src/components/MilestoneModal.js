@@ -60,7 +60,7 @@ export default function MilestoneModal({ visible, streak, onClose }) {
         {visible ? <ConfettiBurst trigger={streak} /> : null}
         <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
           <LinearGradient
-            colors={['#F59E0B', '#EF4444', '#7C3AED']}
+            colors={['#8F0005', '#E31212', '#FF5A5F']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.gradient}

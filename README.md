@@ -1,14 +1,14 @@
-# Ascend: Monk Mode
+# Ascend: Daily Discipline
 
-A Duolingo-style discipline learning app for iOS — 5 paths × 50 lessons each (250 total) to build "monk mode" habits in 50 days.
+A Duolingo-style discipline learning app for iOS — 5 paths × 50 lessons each (250 total) for building consistent focus, routine, and discipline habits.
 
-**Status**: TestFlight beta, App Store submission in progress.
+**Current App Store version**: 1.0.43. The next candidate is 1.0.44; release readiness still requires the automated quality gate and real-device checklist to pass.
 
 ---
 
 ## Stack
 
-- **App**: React Native + Expo SDK 52 (`mobile/`)
+- **App**: React Native + Expo SDK 57 (`mobile/`)
 - **Backend / Auth**: Supabase (auth + cloud sync)
 - **Subscriptions**: RevenueCat + StoreKit (in-app purchases)
 - **Ads**: AdMob (banner + interstitial + rewarded)
@@ -18,7 +18,7 @@ A Duolingo-style discipline learning app for iOS — 5 paths × 50 lessons each 
 ## Project Structure
 
 ```
-ascend-ai-growth-coach/
+ascend-mobile/
 ├── mobile/              # Expo iOS app (active)
 │   ├── src/
 │   │   ├── screens/     # Path, lesson, profile, settings, auth, reports
@@ -48,7 +48,7 @@ ascend-ai-growth-coach/
 
 CI/CD via GitHub Actions:
 - Push tag `mobile-vX.Y.Z` → triggers `expo-testflight.yml`
-- Builds iOS .ipa via EAS Build local on macOS runner
+- Builds the iOS candidate on EAS Cloud using the pinned production image
 - Runs Expo Doctor, iOS export, and critical npm audit before the EAS build
 - Uploads to TestFlight with the App Store Connect API key
 
@@ -58,8 +58,9 @@ Required GitHub secrets:
 - `APP_STORE_CONNECT_ISSUER_ID`
 - `APP_STORE_CONNECT_PRIVATE_KEY` (.p8 contents)
 - `APPLE_TEAM_ID`
-- `KEYCHAIN_PASSWORD`, `P12_PASSWORD`, `BUILD_CERTIFICATE_BASE64`, `BUILD_PROVISION_PROFILE_BASE64`
-- `REVENUECAT_SECRET_API_KEY`
+
+EAS manages signing credentials remotely; certificate and provisioning-profile
+secrets are not part of this workflow.
 
 ## Local Dev
 
@@ -90,7 +91,7 @@ node scripts/seed_mind_31_50.js
 
 ## Key Documents
 
-- `mobile/DESIGN.md` — official design system tokens (M3 dark theme)
+- `mobile/DESIGN.md` — official red-and-white product design system
 - `mobile/MARKETING_KIT.md` — full ad campaign brief
 - `mobile/APP_PREVIEW_GUIDE.md` — App Store preview video production guide
 - `docs/app-store-submission.md` — submission checklist

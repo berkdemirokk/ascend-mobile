@@ -75,7 +75,10 @@ export const initI18n = async () => {
   await i18n.use(initReactI18next).init({
     resources,
     lng,
-    fallbackLng: DEFAULT_LANG,
+    // Both supported locales are kept in strict key parity by the
+    // quality suite. Do not silently fall back to Turkish: that is how
+    // a missing English key can create a mixed-language screen.
+    fallbackLng: false,
     compatibilityJSON: 'v3',
     interpolation: { escapeValue: false },
     returnNull: false,

@@ -15,7 +15,7 @@ Current runtime facts:
 - App name: `Ascend: Daily Discipline`
 - Bundle ID: `com.ascend.growth`
 - App Store ID: `6761607644`
-- iOS build version in `app.json`: `1.0.42`
+- iOS app version in `app.json`: `1.0.44`
 - iOS build number: managed remotely by EAS with production auto-increment
 - Languages enabled in app: Turkish and English
 - Arabic/RTL: not enabled for v1

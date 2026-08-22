@@ -181,12 +181,9 @@ const getYesterdayDateString = () => {
   return toLocalDateString(d);
 };
 
-// Heart refill cadence — halved from 30 → 15 min in v1.0.12 because user
-// feedback was "canlar hemen bitiyo" (hearts deplete too fast). At the
-// previous 30-min rate, fully refilling 5 hearts from empty took 2.5
-// hours, which created a punitive feel that hurt retention. 15-min cuts
-// that to ~75 min, keeping the friction meaningful for free users but
-// preventing the "abandon the app" reflex.
+// Heart refill cadence — after the first lost heart starts the timer,
+// the time-based REFILL_HEARTS action restores the full set. Keep this
+// value aligned with the explicit copy in the hearts locale section.
 const HEART_REFILL_MINUTES = 15;
 const MAX_HEARTS = 5;
 const LOCAL_STATE_LOAD_TIMEOUT_MS = 4000;

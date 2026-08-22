@@ -14,7 +14,7 @@ import {
 } from '../../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { LT } from '../../config/lightTheme';
 import { setLanguage, getCurrentLanguage, SUPPORTED_LANGUAGES } from '../../i18n';
@@ -206,6 +206,9 @@ export default function WelcomeScreen({ navigation }) {
                 onPress={() => handleChangeLang(l.code)}
                 activeOpacity={0.7}
                 style={[styles.langChip, active && styles.langChipActive]}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: active, checked: active }}
+                accessibilityLabel={l.label}
               >
                 <Text style={styles.langFlag}>{l.flag}</Text>
                 <Text

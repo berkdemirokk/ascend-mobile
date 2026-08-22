@@ -65,9 +65,9 @@ const styles = StyleSheet.create({
   wrap: {
     width: '100%',
     alignItems: 'center',
-    backgroundColor: 'rgba(11, 11, 20, 0.85)',
+    backgroundColor: '#F9F9F9',
     borderTopWidth: 1,
-    borderTopColor: 'rgba(70, 69, 84, 0.4)',
+    borderTopColor: '#E8BCB6',
     paddingVertical: 4,
   },
   // While the ad hasn't loaded yet (or failed permanently), collapse the

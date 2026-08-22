@@ -17,7 +17,7 @@ import {
 } from '../../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
 import {
   getAuthErrorMessage,
@@ -151,10 +151,10 @@ export default function ResetPasswordScreen({ navigation, route }) {
       );
       return;
     }
-    if (password.length < 6) {
+    if (password.length < 8) {
       Alert.alert(
         t('common.error', 'Error'),
-        t('auth.passwordTooShort', 'Password must be at least 6 characters'),
+        t('auth.passwordTooShort', 'Password must be at least 8 characters'),
       );
       return;
     }
@@ -228,7 +228,7 @@ export default function ResetPasswordScreen({ navigation, route }) {
                 : sessionReady
                   ? t(
                       'auth.newPasswordSub',
-                      'Choose a password you can remember. It must be at least 6 characters.',
+                      'Choose a password you can remember. It must be at least 8 characters.',
                     )
                   : t(
                       'auth.resetLinkInvalid',
@@ -255,7 +255,7 @@ export default function ResetPasswordScreen({ navigation, route }) {
                   <TextInput
                     value={password}
                     onChangeText={setPassword}
-                    placeholder={t('auth.passwordHint', 'At least 6 characters')}
+                    placeholder={t('auth.passwordHint', 'At least 8 characters')}
                     placeholderTextColor={LT.onSurfaceVariant}
                     secureTextEntry={!showPassword}
                     onFocus={() => setPasswordFocused(true)}

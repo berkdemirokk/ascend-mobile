@@ -16,7 +16,7 @@ import {
 } from '../../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { LT } from '../../config/lightTheme';
 
@@ -35,8 +35,10 @@ export default function LoginScreen({ navigation }) {
       Alert.alert(t('common.error'), t('auth.invalidEmail', 'Geçerli bir e-posta gir'));
       return;
     }
-    if (password.length < 6) {
-      Alert.alert(t('common.error'), t('auth.passwordTooShort', 'Şifre en az 6 karakter olmalı'));
+    // Do not apply the new-account password policy here: existing users may
+    // still have legacy six-character passwords and must remain able to sign in.
+    if (!password) {
+      Alert.alert(t('common.error'), t('auth.passwordRequired', 'Şifreni gir'));
       return;
     }
     setLoading(true);

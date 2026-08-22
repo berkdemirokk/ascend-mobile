@@ -3116,7 +3116,7 @@
         "reflectionPrompt": "45 dakikada ne tamamlandı ve odağını bozmaya en çok hangi düşünce çalıştı?",
         "quiz": [
           {
-            "q": "Deep work günde kaç dakika optimal?",
+            "q": "Derin çalışma için günlük uygun süre kaç dakikadır?",
             "options": [
               "25",
               "60",
@@ -3130,7 +3130,7 @@
             "q": "Cal Newport'un tezi?",
             "options": [
               "Hız önemli",
-              "Deep work = deep value",
+              "Derin çalışma = yüksek değer",
               "Multitask iyidir",
               "E-posta öncelik"
             ],

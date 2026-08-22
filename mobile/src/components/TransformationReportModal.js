@@ -22,7 +22,7 @@ import {
 } from './AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 import { PATHS } from '../data/paths';
 import { hapticImpactMedium } from '../services/haptics';
@@ -57,7 +57,7 @@ export default function TransformationReportModal({
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
       <LinearGradient
-        colors={['#0F0A1E', '#1E1B4B', '#3730A3']}
+        colors={['#240001', '#8F0005', '#E31212']}
         style={styles.root}
       >
         <SafeAreaView style={{ flex: 1 }}>
@@ -163,7 +163,7 @@ export default function TransformationReportModal({
                 ) : null}
 
                 <TouchableOpacity onPress={handleShare} style={styles.shareBtn} activeOpacity={0.85}>
-                  <MaterialIcons name="ios-share" size={18} color="#1E1B4B" />
+                  <MaterialIcons name="ios-share" size={18} color="#8F0005" />
                   <Text style={styles.shareBtnText}>
                     {t('transform.shareCta', 'Share my transformation')}
                   </Text>
@@ -195,7 +195,7 @@ export default function TransformationReportModal({
                   <Text style={styles.upgradeBtnText}>
                     {t('transform.unlockCta', 'UNLOCK FULL REPORT')}
                   </Text>
-                  <MaterialIcons name="arrow-forward" size={18} color="#1E1B4B" />
+                  <MaterialIcons name="arrow-forward" size={18} color="#8F0005" />
                 </TouchableOpacity>
               </View>
             )}
@@ -384,7 +384,7 @@ const styles = StyleSheet.create({
     marginTop: 14,
   },
   upgradeBtnText: {
-    color: '#1E1B4B',
+    color: '#8F0005',
     fontSize: 13,
     fontWeight: '900',
     letterSpacing: 1.0,
@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   shareBtnText: {
-    color: '#1E1B4B',
+    color: '#8F0005',
     fontSize: 13,
     fontWeight: '900',
     letterSpacing: 0.6,

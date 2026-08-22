@@ -3,21 +3,15 @@
     "name": "Ascend: Daily Discipline",
     "slug": "ascend-level-up",
     "scheme": "ascend",
-    "version": "1.0.43",
-    "newArchEnabled": false,
+    "version": "1.0.44",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#F9F9F9"
-    },
+    "userInterfaceStyle": "light",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.ascend.growth",
       "usesAppleSignIn": true,
       "infoPlist": {
@@ -289,6 +283,15 @@
       "package": "com.ascend.growth"
     },
     "plugins": [
+      "@react-native-vector-icons/material-icons",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#F9F9F9"
+        }
+      ],
       [
         "expo-notifications",
         {
@@ -307,7 +310,15 @@
       ],
       "expo-tracking-transparency",
       "expo-asset",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Ascend uses the microphone only when you choose to record a private voice reflection. Recordings remain on your device."
+        }
+      ],
+      "expo-sharing",
+      "expo-status-bar"
     ],
     "extra": {
       "supabase": {

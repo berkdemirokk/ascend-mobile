@@ -17,8 +17,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import * as Haptics from 'expo-haptics';
+import { RecordingPresets, useAudioRecorder } from 'expo-audio';
 
 import { useApp } from '../contexts/AppContext';
 import {
@@ -40,6 +41,7 @@ import { speak as ttsSpeak, stop as ttsStop } from '../services/tts';
 import {
   startRecording,
   stopRecording,
+  cancelRecording,
   playRecording,
 } from '../services/voiceRecording';
 import { getCurrentLanguage } from '../i18n';
@@ -133,6 +135,7 @@ export default function LessonScreen({ navigation, route }) {
   const [recording, setRecording] = useState(false);
   const [recordingUri, setRecordingUri] = useState(null);
   const playbackRef = useRef(null);
+  const voiceRecorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
   // Guard against double-firing of the post-lesson sequence. This ref must be
   // declared before any early return and before the per-lesson reset effect.
   const postLessonFlowRanRef = useRef(false);
@@ -155,6 +158,9 @@ export default function LessonScreen({ navigation, route }) {
     return () => {
       mountedRef.current = false;
       ttsStop().catch(() => {});
+      cancelRecording(voiceRecorder).catch(() => {});
+      playbackRef.current?.unloadAsync?.().catch(() => {});
+      playbackRef.current = null;
     };
     // We intentionally only want this event ONCE on mount, even if user
     // / route changes mid-screen, so deps are empty.
@@ -166,7 +172,7 @@ export default function LessonScreen({ navigation, route }) {
 
   const handleToggleRecord = async () => {
     if (recording) {
-      const uri = await stopRecording();
+      const uri = await stopRecording(voiceRecorder);
       safeSet(setRecording)(false);
       if (uri) safeSet(setRecordingUri)(uri);
       return;
@@ -177,7 +183,7 @@ export default function LessonScreen({ navigation, route }) {
       await ttsStop();
       safeSet(setIsSpeaking)(false);
     }
-    const ok = await startRecording();
+    const ok = await startRecording(voiceRecorder);
     if (ok) safeSet(setRecording)(true);
   };
 
@@ -1755,11 +1761,11 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     backgroundColor: 'rgba(139, 92, 246, 0.08)',
     borderLeftWidth: 3,
-    borderLeftColor: '#8B5CF6',
+    borderLeftColor: '#E31212',
     alignSelf: 'stretch',
   },
   mirrorLabel: {
-    color: '#7C3AED',
+    color: '#B70006',
     fontSize: 9,
     fontWeight: '900',
     letterSpacing: 1.4,

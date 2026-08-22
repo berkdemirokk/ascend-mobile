@@ -76,7 +76,8 @@ create policy "squads: owner can delete"
 drop policy if exists "members: read all authenticated" on public.squad_members;
 create policy "members: read all authenticated"
   on public.squad_members for select
-  using ((select auth.role()) = 'authenticated');
+  to authenticated
+  using (true);
 
 drop policy if exists "members: self join" on public.squad_members;
 create policy "members: self join"

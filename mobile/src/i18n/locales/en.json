@@ -108,8 +108,9 @@
     "createAccount": "Create account",
     "createAccountSub": "Open your first five-minute task free.",
     "namePlaceholder": "Your name",
-    "passwordTooShort": "Password must be at least 6 characters",
-    "passwordHint": "At least 6 characters",
+    "passwordRequired": "Enter your password",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordHint": "At least 8 characters",
     "signupSuccess": "Signup successful",
     "signupSuccessBody": "Check your email and tap the verification link. Then sign in.",
     "legalAgreePrefix": "By signing up, you agree to the ",
@@ -135,7 +136,7 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "newPasswordTitle": "Set a new password",
-    "newPasswordSub": "Choose a password you can remember. It must be at least 6 characters.",
+    "newPasswordSub": "Choose a password you can remember. It must be at least 8 characters.",
     "newPassword": "New password",
     "confirmPassword": "Confirm password",
     "passwordMismatch": "Passwords do not match",
@@ -536,7 +537,7 @@
     },
     "v1_0_32": {
       "title": "New features are live 🎉",
-      "dark": "Dark mode — Automatically follows system theme. Easier on the eyes at night.",
+      "dark": "Consistent red-and-white theme — Every screen uses the same visual language.",
       "referral": "Referral — Send a friend your code; both of you earn 10 streak-freeze tokens.",
       "cta": "Got it"
     }
@@ -785,7 +786,7 @@
   },
   "hearts": {
     "outTitle": "Out of Hearts",
-    "outSubtitle": "You need a heart to continue. Watch an ad to earn 1 heart or go Premium for unlimited.",
+    "outSubtitle": "You need a heart to continue. Hearts fully refill after 15 minutes; watch an ad to earn 1 heart or go Premium for unlimited.",
     "refillIn": "Auto refill in {{mins}}",
     "watchAd": "WATCH AD, EARN +1 HEART",
     "adLoading": "PREPARING AD...",
@@ -803,6 +804,7 @@
   "heatmap": {
     "title": "LAST 30 DAYS",
     "summary": "{{lessons}} lessons · {{days}} active days",
+    "dayAccessibility": "{{date}}: {{count}} lessons",
     "less": "LESS",
     "more": "MORE"
   },

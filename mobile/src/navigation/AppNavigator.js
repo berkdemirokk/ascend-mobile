@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ActivityIndicator, Linking } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import {
   NavigationContainer,
   createNavigationContainerRef,

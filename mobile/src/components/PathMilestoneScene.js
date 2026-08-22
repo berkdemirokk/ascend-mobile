@@ -115,7 +115,7 @@ export default function PathMilestoneScene({ visible, pathId, stage, onClose }) 
         {visible ? <ConfettiBurst trigger={`${pathId}-${stage}`} /> : null}
         <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
           <LinearGradient
-            colors={['#1E1B4B', '#7C3AED', '#EC4899']}
+            colors={['#8F0005', '#E31212', '#FF5A5F']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.gradient}

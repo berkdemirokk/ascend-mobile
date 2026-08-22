@@ -2,7 +2,7 @@
 
 Current source of truth for App Store Connect metadata.
 
-App version: 1.0.42
+App version: 1.0.44
 Build: managed remotely by EAS
 Bundle ID: com.ascend.growth
 App Store ID: 6761607644
@@ -42,7 +42,7 @@ Neler var?
 - 250 ders
 - Gunluk streak
 - XP, seviye ve basarimlar
-- Kalp sistemi
+- Kalp sistemi: yeni kullanıcı koruma süresinden sonra ilk kaybın ardından tüm kalpler 15 dakikada yenilenir
 - Yazili yansimalar
 - Opsiyonel sesli yansima kaydi
 - Turkish ve English destek
@@ -69,7 +69,7 @@ Included:
 - 250 lessons
 - Daily streaks
 - XP, levels, and achievements
-- Hearts system
+- Hearts system: after the new-user grace period, all hearts refill 15 minutes after the first loss
 - Written reflections
 - Optional local voice reflections
 - Turkish and English support
@@ -142,4 +142,4 @@ Voice reflections:
 
 ## Review Notes Summary
 
-Use `APP_REVIEW_INFO.md` for App Review notes. Use `TEST_PLAN_v1.0.42.md` before submission.
+Use `APP_REVIEW_INFO.md` for App Review notes. Use `TEST_PLAN_v1.0.44.md` before submission.

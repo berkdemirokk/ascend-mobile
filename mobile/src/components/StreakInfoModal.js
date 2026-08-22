@@ -11,7 +11,7 @@ import {
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
 } from './AccessibleControls';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 
@@ -85,7 +85,7 @@ export default function StreakInfoModal({
               </View>
               <View style={{ flex: 1 }}>
                 <Text style={styles.freezeTitle}>
-                  {t('streak.freezeTitle', 'Seri Donduruculari')}
+                  {t('streak.freezeTitle', 'Seri Dondurucuları')}
                 </Text>
                 <Text style={styles.freezeBody}>
                   {safeFreezes > 0

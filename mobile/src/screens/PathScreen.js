@@ -21,7 +21,7 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
 import { useApp } from '../contexts/AppContext';
 import {
@@ -41,7 +41,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function PathScreen({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR';
   const {
     pathProgress,
     activePathId,
@@ -161,10 +162,7 @@ export default function PathScreen({ navigation }) {
                 if (sharingCert) return;
                 setSharingCert(true);
                 const today = new Date();
-                // Force en-US so non-Latin locales (AR, FA, HI) don't
-                // emit non-Latin digits that break downstream rendering
-                // or look out of place on a English-styled certificate.
-                const dateStr = today.toLocaleDateString('en-US');
+                const dateStr = today.toLocaleDateString(locale);
                 const userName =
                   (user?.user_metadata?.name || '').trim() ||
                   (user?.email || '').split('@')[0] ||
@@ -307,7 +305,7 @@ export default function PathScreen({ navigation }) {
         <PathCertificateCard
           ref={certCardRef}
           pathTitle={t(`paths.${activePath.id}.title`, activePath.id)}
-          completedDate={new Date().toLocaleDateString('en-US')}
+          completedDate={new Date().toLocaleDateString(locale)}
           userName={
             (user?.user_metadata?.name || '').trim() ||
             (user?.email || '').split('@')[0] ||

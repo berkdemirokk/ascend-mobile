@@ -11,6 +11,7 @@ server/data/
 # ASC API keys - never commit
 mobile/credentials/
 mobile/certs/
+mobile/supabase/.temp/
 mobile/credentials.json
 mobile/*.p8
 mobile/*.p12

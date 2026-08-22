@@ -1,5 +1,12 @@
 name: Expo iOS TestFlight
 
+permissions:
+  contents: read
+
+concurrency:
+  group: expo-ios-testflight
+  cancel-in-progress: false
+
 on:
   workflow_dispatch:
     inputs:
@@ -22,10 +29,10 @@ jobs:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "22"
           cache: npm
@@ -36,10 +43,9 @@ jobs:
           xcodebuild -version
 
       - name: Setup Expo / EAS CLI
-        uses: expo/expo-github-action@v8
+        uses: expo/expo-github-action@eab7a230208c952974db8c3245cfd78402c7b385 # v9
         with:
-          expo-version: latest
-          eas-version: latest
+          eas-version: 22.2.0
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Install dependencies
@@ -48,6 +54,21 @@ jobs:
       - name: Run release quality checks
         run: npm run quality:ci
 
+      - name: Verify release secrets are configured
+        working-directory: ${{ github.workspace }}
+        env:
+          ASC_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          for name in ASC_KEY ASC_KEY_ID ASC_ISSUER_ID APPLE_TEAM_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::error::$name is not configured."
+              exit 1
+            fi
+          done
+
       - name: Write App Store Connect API key file
         working-directory: ${{ github.workspace }}
         run: |
@@ -55,9 +76,11 @@ jobs:
           cat > "$API_KEY_PATH" <<'EOF'
           ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
           EOF
-          mkdir -p "$GITHUB_WORKSPACE/mobile/credentials"
-          cp "$API_KEY_PATH" "$GITHUB_WORKSPACE/mobile/credentials/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8"
-          chmod 600 "$API_KEY_PATH" "$GITHUB_WORKSPACE/mobile/credentials/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8"
+          chmod 600 "$API_KEY_PATH"
+          if ! grep -q "BEGIN PRIVATE KEY" "$API_KEY_PATH"; then
+            echo "::error::App Store Connect private key has an invalid format."
+            exit 1
+          fi
           echo "API_KEY_PATH=$API_KEY_PATH" >> "$GITHUB_ENV"
 
       - name: Submit existing EAS build to TestFlight
@@ -114,3 +137,8 @@ jobs:
             --id "$EAS_BUILD_ID" \
             --non-interactive \
             --verbose
+
+      - name: Remove App Store Connect API key
+        if: ${{ always() }}
+        working-directory: ${{ github.workspace }}
+        run: rm -f "$RUNNER_TEMP/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8"

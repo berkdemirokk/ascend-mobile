@@ -17,7 +17,7 @@ import {
 } from '../../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { getAuthErrorMessage, useAuth } from '../../contexts/AuthContext';
 import { LT } from '../../config/lightTheme';
 import { LEGAL } from '../../config/constants';
@@ -37,8 +37,8 @@ export default function SignupScreen({ navigation }) {
       Alert.alert(t('common.error'), t('auth.invalidEmail', 'Geçerli bir e-posta gir'));
       return;
     }
-    if (password.length < 6) {
-      Alert.alert(t('common.error'), t('auth.passwordTooShort', 'Şifre en az 6 karakter olmalı'));
+    if (password.length < 8) {
+      Alert.alert(t('common.error'), t('auth.passwordTooShort', 'Şifre en az 8 karakter olmalı'));
       return;
     }
     setLoading(true);
@@ -165,7 +165,7 @@ export default function SignupScreen({ navigation }) {
                 ? t('auth.hidePassword', 'Şifreyi gizle')
                 : t('auth.showPassword', 'Şifreyi göster')}
               onRightPress={() => setShowPassword(!showPassword)}
-              hint={t('auth.passwordHint', 'En az 6 karakter')}
+              hint={t('auth.passwordHint', 'En az 8 karakter')}
             />
 
             <TouchableOpacity

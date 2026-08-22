@@ -1,4 +1,4 @@
-# Test Plan - Ascend: Daily Discipline v1.0.42
+# Test Plan - Ascend: Daily Discipline v1.0.44
 
 Walk through this on a real iPhone via TestFlight before submitting a new App Store build.
 

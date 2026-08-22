@@ -16,7 +16,7 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 
@@ -95,8 +95,8 @@ export default function SettingsScreen({ navigation }) {
     // get a share-able message, just without a redeemable code.
     const code = (user?.id && codeFromUserId(user.id)) || anonUsername || null;
     const link = code
-      ? `https://ascend.app/?ref=${encodeURIComponent(code)}`
-      : 'https://ascend.app';
+      ? `${LEGAL.PUBLIC_APP_URL}?ref=${encodeURIComponent(code)}`
+      : LEGAL.PUBLIC_APP_URL;
     const message = code
       ? t(
           'settings.inviteShareWithCode',
@@ -463,7 +463,7 @@ export default function SettingsScreen({ navigation }) {
   const version =
     Constants?.nativeApplicationVersion ||
     Constants?.expoConfig?.version ||
-    '1.0.43';
+    '1.0.44';
   const buildNumber =
     Constants?.nativeBuildVersion ||
     Constants?.platform?.ios?.buildNumber ||
@@ -514,6 +514,9 @@ export default function SettingsScreen({ navigation }) {
                   onPress={() => handleChangeLanguage(l.code)}
                   activeOpacity={0.7}
                   style={[styles.row, !isLast && styles.rowBorder]}
+                  accessibilityRole="radio"
+                  accessibilityState={{ selected: active, checked: active }}
+                  accessibilityLabel={l.label}
                 >
                   <View style={styles.rowLeft}>
                     <Text style={styles.flag}>{l.flag}</Text>

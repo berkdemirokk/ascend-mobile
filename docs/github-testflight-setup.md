@@ -1,60 +1,42 @@
 # GitHub TestFlight Setup
 
-This project is prepared to build on GitHub-hosted macOS runners and upload to
-TestFlight.
+The canonical iOS release is the Expo application under `mobile/`. GitHub
+Actions validates the candidate, creates an EAS cloud build, and submits that
+build to TestFlight.
 
 ## Required GitHub repository secrets
 
-Add these secrets in `Settings > Secrets and variables > Actions` for the repo:
-
+- `EXPO_TOKEN`
 - `APP_STORE_CONNECT_ISSUER_ID`
 - `APP_STORE_CONNECT_KEY_ID`
 - `APP_STORE_CONNECT_PRIVATE_KEY`
-- `BUILD_CERTIFICATE_BASE64`
-- `P12_PASSWORD`
-- `BUILD_PROVISION_PROFILE_BASE64`
-- `KEYCHAIN_PASSWORD`
 - `APPLE_TEAM_ID`
 
-## What each secret is
-
-- `APP_STORE_CONNECT_ISSUER_ID`: Issuer ID from App Store Connect API keys.
-- `APP_STORE_CONNECT_KEY_ID`: Key ID for the App Store Connect API key.
-- `APP_STORE_CONNECT_PRIVATE_KEY`: Entire contents of the `.p8` key file.
-- `BUILD_CERTIFICATE_BASE64`: Base64-encoded Apple Distribution `.p12`.
-- `P12_PASSWORD`: Password used when exporting the `.p12`.
-- `BUILD_PROVISION_PROFILE_BASE64`: Base64-encoded App Store
-  `.mobileprovision` file for `com.ascend.growth`.
-- `KEYCHAIN_PASSWORD`: Any random password used to create the temporary CI
-  keychain.
-- `APPLE_TEAM_ID`: Apple Developer Team ID.
-
-## Base64 conversion examples
-
-On macOS:
-
-```bash
-base64 -i BUILD_CERTIFICATE.p12 | pbcopy
-base64 -i AppStore.mobileprovision | pbcopy
-```
+EAS manages signing credentials remotely. Do not add distribution certificates,
+provisioning profiles, `.p8` files, or temporary keychains to the repository.
 
 ## Workflow
 
-The GitHub Actions workflow lives at:
+The release workflow is `.github/workflows/expo-testflight.yml`.
 
-- `.github/workflows/ios-testflight.yml`
+- A `mobile-vX.Y.Z` tag builds and submits a new candidate.
+- Manual dispatch without a build ID builds and submits a new candidate.
+- Manual dispatch with an existing EAS iOS build ID submits that build.
+- `npm run quality:ci` must pass before build or submission.
+- The App Store Connect key is written only to the runner's temporary directory.
 
-It does the following:
+The production build runs on EAS Cloud using the image pinned in
+`mobile/eas.json`. A successful EAS build is not proof of TestFlight delivery;
+the submit step must also complete successfully.
 
-1. Installs Node dependencies.
-2. Builds the web app and syncs Capacitor iOS.
-3. Installs the Apple distribution certificate and provisioning profile.
-4. Archives the Xcode app on a macOS runner.
-5. Exports an IPA.
-6. Uploads the IPA to TestFlight.
+## Public pages and backend functions
 
-## Notes
+- `.github/workflows/pages.yml` deploys `docs/` to GitHub Pages.
+- `.github/workflows/deploy-functions.yml` deploys the reviewed Supabase Edge
+  Functions and verifies that unauthenticated calls are rejected.
 
-- The bundle ID is `com.ascend.growth`.
-- The workflow assumes the generated archive exports `App.ipa`.
-- The repo must contain the Capacitor iOS project under `ios/`.
+## Identifiers
+
+- Bundle ID: `com.ascend.growth`
+- App Store ID: `6761607644`
+- EAS project ID: `2a44eced-27a4-4ae2-b831-25957422f01b`

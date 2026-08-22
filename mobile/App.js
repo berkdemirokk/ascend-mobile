@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator, AppState, useColorScheme } from 'react-native';
+import { View, ActivityIndicator, AppState } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -32,12 +32,7 @@ const I18N_STARTUP_TIMEOUT_MS = 3000;
 
 export default function App() {
   const [i18nReady, setI18nReady] = useState(false);
-  // System color scheme — used to swap status bar tint + splash
-  // background so a user with system dark mode doesn't get a white
-  // flash on cold start. Full per-screen dark migration is a future
-  // sprint; this is phase 1.
-  const scheme = useColorScheme();
-  const T = getThemedLT(scheme);
+  const T = getThemedLT();
 
   useEffect(() => {
     const removeErrorHandler = installGlobalErrorHandler();
@@ -124,10 +119,7 @@ export default function App() {
         <SafeAreaProvider>
           <AuthProvider>
             <AppProvider>
-              {/* StatusBar tint reacts to system color scheme so the
-                  clock + battery icons stay legible against whichever
-                  background the screens render. */}
-              <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
+              <StatusBar style="dark" />
               <AppNavigator />
               {/* Post-update "Yenilikler" modal. The hook silently
                   no-ops for first-time installs (so it doesn't

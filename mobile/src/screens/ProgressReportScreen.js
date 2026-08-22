@@ -22,7 +22,7 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { LT } from '../config/lightTheme';
 import ConfettiBurst from '../components/ConfettiBurst';
 import { useApp } from '../contexts/AppContext';

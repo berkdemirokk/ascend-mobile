@@ -28,7 +28,6 @@ import {
   Text,
   StyleSheet,
   Animated,
-  Dimensions,
   TextInput,
   KeyboardAvoidingView,
   Platform,
@@ -40,14 +39,13 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import * as Haptics from 'expo-haptics';
 import { LT } from '../config/lightTheme';
 import { useApp } from '../contexts/AppContext';
 import { getTodaysDeck } from '../data/dailyDecks';
 import ConfettiBurst from '../components/ConfettiBurst';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const TOTAL_CARDS = 6;
 
 export default function DailyDeckScreen({ navigation }) {

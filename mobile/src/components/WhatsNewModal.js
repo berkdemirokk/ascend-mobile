@@ -27,7 +27,7 @@ import {
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
 } from './AccessibleControls';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 
 import { LT_RADIUS } from '../config/lightTheme';
@@ -73,10 +73,10 @@ export const WHATS_NEW = {
     titleDefault: 'Yeni özellikler geldi',
     bullets: [
       {
-        icon: 'dark-mode',
+        icon: 'palette',
         key: 'whatsNew.v1_0_32.dark',
         default:
-          'Karanlık mod — Sistem temasını otomatik takip eder. Geceleri daha rahat.',
+          'Tutarlı kırmızı-beyaz tema — Tüm ekranlar aynı görsel dili kullanır.',
       },
       {
         icon: 'card-giftcard',

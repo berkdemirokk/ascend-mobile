@@ -20,6 +20,23 @@ const supabaseMock = {
   auth: {},
   functions: {},
 };
+const audioModeCalls = [];
+const createdAudioPlayers = [];
+const expoAudioMock = {
+  requestRecordingPermissionsAsync: async () => ({ granted: true }),
+  setAudioModeAsync: async (mode) => { audioModeCalls.push(mode); },
+  createAudioPlayer: (source) => {
+    const player = {
+      source,
+      addListener: () => ({ remove: () => {} }),
+      play: () => {},
+      pause: () => {},
+      remove: () => {},
+    };
+    createdAudioPlayers.push(player);
+    return player;
+  },
+};
 const moduleMocks = {
   'react-native': {
     AppState: { addEventListener: () => ({ remove: () => {} }) },
@@ -32,6 +49,7 @@ const moduleMocks = {
     __esModule: true,
     default: { expoConfig: { extra: {} } },
   },
+  'expo-audio': expoAudioMock,
   'react-native-url-polyfill/auto': {},
   '@supabase/supabase-js': { createClient: () => supabaseMock },
   '../services/purchases': {
@@ -100,6 +118,61 @@ const monthly = { packageType: 'MONTHLY', product: { identifier: 'monthly' } };
 const yearly = { packageType: 'ANNUAL', product: { identifier: 'yearly' } };
 
 const main = async () => {
+  const voice = loadModule(path.join(ROOT, 'src/services/voiceRecording.js'));
+  audioModeCalls.length = 0;
+  const failedStart = await voice.startRecording({
+    isRecording: false,
+    prepareToRecordAsync: async () => { throw new Error('prepare failed'); },
+    record: () => {},
+  });
+  assert(!failedStart, 'failed voice prepare must not report recording');
+  assert(
+    audioModeCalls.at(-1)?.allowsRecording === false,
+    'failed voice prepare did not restore playback audio mode',
+  );
+
+  audioModeCalls.length = 0;
+  const failedStop = await voice.stopRecording({
+    stop: async () => { throw new Error('stop failed'); },
+  });
+  assert(failedStop === null, 'failed voice stop must return null');
+  assert(
+    audioModeCalls.at(-1)?.allowsRecording === false,
+    'failed voice stop did not restore playback audio mode',
+  );
+
+  audioModeCalls.length = 0;
+  await voice.cancelRecording({
+    isRecording: true,
+    stop: async () => { throw new Error('cancel failed'); },
+  });
+  assert(
+    audioModeCalls.at(-1)?.allowsRecording === false,
+    'failed voice cancellation did not restore playback audio mode',
+  );
+
+  const tts = loadModule(path.join(ROOT, 'src/services/tts.js'));
+  let resolveHead;
+  const originalFetch = global.fetch;
+  global.fetch = () => new Promise((resolve) => { resolveHead = resolve; });
+  audioModeCalls.length = 0;
+  createdAudioPlayers.length = 0;
+  const pendingSpeech = tts.speak('test', {
+    lang: 'tr-TR',
+    pathId: 'dopamine-detox',
+    lessonOrder: 1,
+  });
+  await Promise.resolve();
+  await tts.stop();
+  resolveHead({ ok: true });
+  assert(!(await pendingSpeech), 'stopped in-flight TTS request reported playback');
+  assert(createdAudioPlayers.length === 0, 'stopped in-flight TTS request created a stale player');
+  assert(
+    audioModeCalls.some((mode) => mode.playsInSilentMode === true),
+    'pre-recorded TTS did not enable iOS silent-mode playback',
+  );
+  global.fetch = originalFetch;
+
   const { createPurchaseOperations, hasActiveEntitlement } = loadModule(
     path.join(ROOT, 'src/services/purchaseOperations.js'),
   );

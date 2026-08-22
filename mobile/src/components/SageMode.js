@@ -31,7 +31,7 @@ import {
 } from './AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 import { speak, stop as stopTts } from '../services/tts';
 import { getCurrentLanguage } from '../i18n';
@@ -185,7 +185,7 @@ export default function SageMode({
   return (
     <Modal visible={visible} animationType="fade" onRequestClose={onClose}>
       <LinearGradient
-        colors={['#0F0A1E', '#1E1B4B', '#312E81']}
+        colors={['#240001', '#8F0005', '#E31212']}
         style={styles.root}
       >
         <SafeAreaView style={{ flex: 1 }}>
@@ -501,7 +501,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   primaryBtnText: {
-    color: '#1E1B4B',
+    color: '#8F0005',
     fontSize: 14,
     fontWeight: '900',
     letterSpacing: 0.6,

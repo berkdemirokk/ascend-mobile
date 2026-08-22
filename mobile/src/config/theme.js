@@ -1,34 +1,24 @@
-// Runtime theme helper — pairs with the static `LT` + `LT_DARK` token
-// sets in `./lightTheme.js`.
+// Runtime theme compatibility helpers.
 //
-// Current scope (intentional): root surfaces + global overlay UI are
-// dark-aware (splash, status bar, navigator background, WhatsNew modal,
-// AdDebug modal, Skeleton loader). The bulk of screens stay on the
-// static `LT.*` light palette — looks fine in light mode, visibly
-// off-brand in dark for content areas.
-//
-// A previous per-screen dark migration was attempted but was reverted on
-// 2026-05-24 because of contrast bugs we couldn't catch without a
-// systematic dark-mode review pass. The hooks below stay exported in
-// case we revisit, but no new screens should adopt them until the brand
-// has a finalized dark palette + we've cleared a contrast/legibility
-// audit. For now: ship light-only content with dark-aware chrome.
+// Ascend currently ships one reviewed visual system: the red-and-white
+// light palette. Most screens use the static `LT` tokens, so switching
+// only the root chrome and a few overlays to dark created a split theme
+// when the device was in dark mode. Keep every consumer on LT until a
+// complete, screen-by-screen dark-mode contrast review is ready.
 
-import { useColorScheme } from 'react-native';
-import { LT, LT_DARK } from './lightTheme';
+import { LT } from './lightTheme';
 
 /**
- * Returns the LT token set matching the current system color scheme.
- * `light` and `null` both return LT (default).
- * `dark` returns LT_DARK.
+ * Returns the reviewed red-and-white light token set.
+ * The hook shape is retained so a future complete dark-mode migration
+ * does not require another call-site refactor.
  *
  * Usage in a component:
  *   const T = useTheme();
  *   return <View style={{ backgroundColor: T.background }} />
  */
 export const useTheme = () => {
-  const scheme = useColorScheme();
-  return scheme === 'dark' ? LT_DARK : LT;
+  return LT;
 };
 
 // Backwards-compatible alias — Phase 1 surfaces used `useDynamicLT`
@@ -57,7 +47,7 @@ export const useDynamicLT = useTheme;
  *   }));
  *
  * Notes:
- *   - Pass any LT.* reference through T.* and dark mode just works.
+ *   - Pass any LT.* reference through T.* to share the active palette.
  *   - StyleSheet.create() wrapping is no longer required; RN treats
  *     a plain object identically for style props.
  *   - For static styles that don't depend on theme (a fixed white
@@ -70,9 +60,8 @@ export const useThemedStyles = (makeStyles) => {
 };
 
 /**
- * Imperative getter for non-React contexts (e.g., status bar setup
- * inside an event handler). Reads system preference once; does not
- * subscribe to changes. Prefer `useTheme` in components.
+ * Imperative counterpart for non-React contexts. `scheme` is accepted
+ * for backwards compatibility but intentionally ignored while the app
+ * is light-only.
  */
-export const getThemedLT = (scheme) =>
-  scheme === 'dark' ? LT_DARK : LT;
+export const getThemedLT = (_scheme) => LT;

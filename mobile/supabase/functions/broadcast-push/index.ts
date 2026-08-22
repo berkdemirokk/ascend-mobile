@@ -14,10 +14,8 @@
 // Deploy:
 //   supabase functions deploy broadcast-push --no-verify-jwt
 //
-// Env vars (Supabase dashboard → Edge Functions → Settings):
-//   SUPABASE_URL                = https://<project>.supabase.co
-//   SUPABASE_SERVICE_ROLE_KEY   = eyJ... (Project Settings → API)
-//   BROADCAST_SECRET            = a long random string you generate
+// Supabase injects SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY into hosted
+// functions. Configure only BROADCAST_SECRET in Edge Function secrets.
 //
 // Manual invocation (from a terminal):
 //   curl -X POST https://<project>.supabase.co/functions/v1/broadcast-push \
@@ -37,7 +35,7 @@
 // @ts-ignore — Deno runtime
 import { serve } from 'https://deno.land/std@0.224.0/http/server.ts';
 // @ts-ignore — Deno runtime
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.112.3';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -48,6 +46,9 @@ const CORS_HEADERS = {
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const BATCH_SIZE = 100; // Expo's documented limit
+const MAX_REQUEST_BYTES = 8 * 1024;
+const MAX_TITLE_LENGTH = 120;
+const MAX_BODY_LENGTH = 500;
 
 interface BroadcastBody {
   title: string;
@@ -73,14 +74,18 @@ serve(async (req) => {
     return json({ error: 'Server not configured (no BROADCAST_SECRET)' }, 500);
   }
   const presented = req.headers.get('X-Broadcast-Secret');
-  if (!presented || presented !== SECRET) {
+  if (!presented || !(await secretsMatch(presented, SECRET))) {
     return json({ error: 'Unauthorized' }, 401);
   }
 
   // 2. Parse + validate body.
   let payload: BroadcastBody;
   try {
-    payload = await req.json();
+    const rawBody = await req.text();
+    if (new TextEncoder().encode(rawBody).byteLength > MAX_REQUEST_BYTES) {
+      return json({ error: 'Request body is too large' }, 413);
+    }
+    payload = JSON.parse(rawBody);
   } catch {
     return json({ error: 'Invalid JSON body' }, 400);
   }
@@ -88,6 +93,9 @@ serve(async (req) => {
   const body = (payload.body || '').toString().trim();
   if (!title || !body) {
     return json({ error: 'title and body are required' }, 400);
+  }
+  if (title.length > MAX_TITLE_LENGTH || body.length > MAX_BODY_LENGTH) {
+    return json({ error: 'title or body is too long' }, 400);
   }
 
   // 3. Fetch all tokens (service-role bypasses RLS).
@@ -181,4 +189,19 @@ function json(payload: Record<string, unknown>, status = 200) {
     status,
     headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
   });
+}
+
+async function secretsMatch(presented: string, expected: string) {
+  const encoder = new TextEncoder();
+  const [presentedHash, expectedHash] = await Promise.all([
+    crypto.subtle.digest('SHA-256', encoder.encode(presented)),
+    crypto.subtle.digest('SHA-256', encoder.encode(expected)),
+  ]);
+  const left = new Uint8Array(presentedHash);
+  const right = new Uint8Array(expectedHash);
+  let difference = 0;
+  for (let i = 0; i < left.length; i += 1) {
+    difference |= left[i] ^ right[i];
+  }
+  return difference === 0;
 }

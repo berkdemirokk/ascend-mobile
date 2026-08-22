@@ -167,7 +167,8 @@ export const PAYWALL_FEATURES = [
 ];
 
 export const LEGAL = {
-  PRIVACY_URL: 'https://berkdemirokk.github.io/ascend-ai-growth-coach/privacy.html',
-  TERMS_URL: 'https://berkdemirokk.github.io/ascend-ai-growth-coach/terms.html',
+  PUBLIC_APP_URL: 'https://berkdemirokk.github.io/ascend-mobile/',
+  PRIVACY_URL: 'https://berkdemirokk.github.io/ascend-mobile/privacy.html',
+  TERMS_URL: 'https://berkdemirokk.github.io/ascend-mobile/terms.html',
   SUPPORT_EMAIL: 'berkdemirok@icloud.com',
 };

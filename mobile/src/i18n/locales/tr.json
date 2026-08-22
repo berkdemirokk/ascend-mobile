@@ -108,8 +108,9 @@
     "createAccount": "Hesap oluştur",
     "createAccountSub": "İlk 5 dakikalık görevini ücretsiz aç.",
     "namePlaceholder": "Adın",
-    "passwordTooShort": "Şifre en az 6 karakter olmalı",
-    "passwordHint": "En az 6 karakter",
+    "passwordRequired": "Şifreni gir",
+    "passwordTooShort": "Şifre en az 8 karakter olmalı",
+    "passwordHint": "En az 8 karakter",
     "signupSuccess": "Kayıt başarılı",
     "signupSuccessBody": "E-postanı kontrol et ve doğrulama linkine tıkla. Sonra giriş yap.",
     "legalAgreePrefix": "Kayıt olarak ",
@@ -135,7 +136,7 @@
     "showPassword": "Şifreyi göster",
     "hidePassword": "Şifreyi gizle",
     "newPasswordTitle": "Yeni şifre belirle",
-    "newPasswordSub": "Hatırlayabileceğin yeni bir şifre seç. En az 6 karakter olmalı.",
+    "newPasswordSub": "Hatırlayabileceğin yeni bir şifre seç. En az 8 karakter olmalı.",
     "newPassword": "Yeni şifre",
     "confirmPassword": "Şifreyi onayla",
     "passwordMismatch": "Şifreler eşleşmiyor",
@@ -536,7 +537,7 @@
     },
     "v1_0_32": {
       "title": "Yeni özellikler geldi 🎉",
-      "dark": "Karanlık mod — Sistem temasını otomatik takip eder. Geceleri daha rahat.",
+      "dark": "Tutarlı kırmızı-beyaz tema — Tüm ekranlar aynı görsel dili kullanır.",
       "referral": "Davet sistemi — Kodunu gönder; ikiniz de 10 seri koruma jetonu kazanın.",
       "cta": "Tamam"
     }
@@ -625,7 +626,7 @@
     "lessons": "{{count}} ders",
     "lessonsLabel": "ders",
     "lessonsCount": "{{count}} ders",
-    "tier": "Tier {{tier}}",
+    "tier": "Kademe {{tier}}",
     "premiumLocked": "Premium ile aç",
     "lockedTitle": "Bu ders henüz kilitli",
     "lockedBody": "Önce sıradaki aktif dersi bitir. Yol adım adım açılır.",
@@ -707,7 +708,7 @@
     "dailyStart12Title": "Disiplin = küçük tekrar",
     "dailyStart12Body": "Bugün küçük. Yarın küçük. Bir ay sonra fark devasa.",
     "dailyStart13Title": "Ders 1 hâlâ kapalı",
-    "dailyStart13Body": "Açmak için 1 tap. Bitirmek için 5 dakika.",
+    "dailyStart13Body": "Açmak için bir dokunuş. Bitirmek için 5 dakika.",
     "dailyStart14Title": "Şu an > Sonra",
     "dailyStart14Body": "Şimdi yapmadığın şey, sonra hiç olmaz. Aç.",
     "dailyStart15Title": "Hangi sen?",
@@ -785,7 +786,7 @@
   },
   "hearts": {
     "outTitle": "Kalpler Bitti",
-    "outSubtitle": "Devam etmek için kalp gerekli. Reklam izleyip 1 kalp kazanabilir veya Premium'a geçebilirsin.",
+    "outSubtitle": "Devam etmek için kalp gerekli. Kalpler 15 dakika sonra tamamen yenilenir; reklam izleyip 1 kalp kazanabilir veya Premium'a geçebilirsin.",
     "refillIn": "Yenilenme: {{mins}}",
     "watchAd": "REKLAM İZLE, +1 KALP KAZAN",
     "adLoading": "REKLAM HAZIRLANIYOR...",
@@ -803,6 +804,7 @@
   "heatmap": {
     "title": "SON 30 GÜN",
     "summary": "{{lessons}} ders · {{days}} aktif gün",
+    "dayAccessibility": "{{date}}: {{count}} ders",
     "less": "AZ",
     "more": "ÇOK"
   },
@@ -958,7 +960,7 @@
     "infoTitle": "Seri Sistemi",
     "days": "gün",
     "howWorks": "Her gün bir ders tamamlayarak serini koru. Bir gün atlarsan seri sıfırlanır.",
-    "freezeTitle": "Seri Donduruculari",
+    "freezeTitle": "Seri Dondurucuları",
     "freezeAvailable": "{{count}} adet kullanılabilir. Bir gün atlarsan otomatik kullanılır.",
     "freezeEmpty": "Henüz dondurucu yok. Premium ile 3 dondurucu kazan.",
     "getFreezes": "PREMIUM İLE 3 DONDURUCU AL"

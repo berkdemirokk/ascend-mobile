@@ -16,7 +16,7 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
@@ -70,7 +70,8 @@ import {
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
 export default function HomeScreen({ navigation }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR';
   // Hydration gate — see comment near the skeleton render below.
   const {
     _loaded,
@@ -1095,7 +1096,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.weekendOfferText}>
               {t(
                 'home.weekendOfferBody',
-                'Premium ile streak donduruculari, sınırsız kalp, reklamsız.',
+                'Premium ile seri dondurucuları, sınırsız kalp ve reklamsız deneyim.',
               )}
             </Text>
             <MaterialIcons name="arrow-forward" size={18} color={LT.onPrimary} />
@@ -1107,7 +1108,7 @@ export default function HomeScreen({ navigation }) {
           <StatCell
             icon="bolt"
             label={t('home.statXp', 'XP')}
-            value={(totalXP ?? 0).toLocaleString('en-US')}
+            value={(totalXP ?? 0).toLocaleString(locale)}
           />
           <View style={styles.statDivider} />
           <StatCell

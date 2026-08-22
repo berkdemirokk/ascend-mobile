@@ -50,7 +50,7 @@ export default function CharacterHero({ longestStreak }) {
 
   return (
     <LinearGradient
-      colors={['#7C3AED', '#EF4444', '#F59E0B']}
+      colors={['#B70006', '#E31212', '#FF5A5F']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
       style={styles.card}
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     padding: 20,
     borderRadius: 20,
-    shadowColor: '#7C3AED',
+    shadowColor: '#B70006',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.25,
     shadowRadius: 16,

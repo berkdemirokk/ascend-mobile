@@ -11,7 +11,7 @@ import {
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
 } from './AccessibleControls';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useTranslation } from 'react-i18next';
 import { ACHIEVEMENTS, RARITY_COLORS, isPremiumGated } from '../config/achievements';
 import { useApp } from '../contexts/AppContext';
