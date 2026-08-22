@@ -1,0 +1,66 @@
+name: Verify App Store Connect
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Verify App Store Connect secrets
+        working-directory: ${{ github.workspace }}
+        env:
+          ASC_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+        run: |
+          for name in ASC_KEY ASC_KEY_ID ASC_ISSUER_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::error::$name is not configured."
+              exit 1
+            fi
+          done
+
+      - name: Write temporary App Store Connect API key
+        working-directory: ${{ github.workspace }}
+        run: |
+          API_KEY_PATH="$RUNNER_TEMP/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8"
+          cat > "$API_KEY_PATH" <<'EOF'
+          ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          EOF
+          chmod 600 "$API_KEY_PATH"
+          if ! grep -q "BEGIN PRIVATE KEY" "$API_KEY_PATH"; then
+            echo "::error::App Store Connect private key has an invalid format."
+            exit 1
+          fi
+          echo "ASC_KEY_PATH=$API_KEY_PATH" >> "$GITHUB_ENV"
+
+      - name: Install pinned verification dependencies
+        run: |
+          python3 -m pip install \
+            --disable-pip-version-check \
+            PyJWT==2.13.0 \
+            cryptography==50.0.0 \
+            requests==2.34.2
+
+      - name: Verify app, subscriptions, and capabilities
+        env:
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          ASC_KEY_PATH: ${{ env.ASC_KEY_PATH }}
+        run: python3 scripts/verify_asc.py
+
+      - name: Remove App Store Connect API key
+        if: ${{ always() }}
+        working-directory: ${{ github.workspace }}
+        run: rm -f "$RUNNER_TEMP/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8"
