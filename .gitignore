@@ -21,6 +21,10 @@ mobile/*.mobileprovision
 mobile/*.cer
 mobile/*.certSigningRequest
 
+# App Store metadata pull includes private App Review credentials
+mobile/store.config.json
+mobile/store/
+
 # Local env (never commit)
 **/.env.local
 .env.local
