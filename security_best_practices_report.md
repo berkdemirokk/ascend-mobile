@@ -1,6 +1,6 @@
 # Security best-practices report
 
-Audit date: 2026-08-22  
+Audit date: 2026-08-22
 Scope: Expo mobile app, GitHub Actions, public legal/support pages, Supabase database policies, and Edge Functions.
 
 ## Summary
@@ -46,4 +46,3 @@ Supabase's breached-password database check remains disabled because the organiz
 - Production dependency audit: zero vulnerabilities.
 - Workflow YAML validation: pass.
 - Supabase RLS policy inspection and hosted Edge Function authorization probes: pass.
-
