@@ -641,6 +641,9 @@ run('release blocker regression guards', () => {
   assert(!noLongerPromised.test(JSON.stringify(enMain)), 'EN copy still promises an unbacked 7-day premium gift');
   assert(trMain.paywall.trustNoTrack === 'APP STORE', 'TR paywall trust label must not claim no tracking');
   assert(enMain.paywall.trustNoTrack === 'APP STORE', 'EN paywall trust label must not claim no tracking');
+  const inflatedSocialProof = /10[.,]?000\+|thousands? of (?:users|members)|binlerce (?:kullanıcı|üye)/i;
+  assert(!inflatedSocialProof.test(JSON.stringify(trMain.paywall)), 'TR paywall contains unsupported social proof');
+  assert(!inflatedSocialProof.test(JSON.stringify(enMain.paywall)), 'EN paywall contains unsupported social proof');
 
   const maxLevel = Math.max(
     ...[...constantsSource.matchAll(/level:\s*(\d+)/g)].map((match) => Number(match[1])),
