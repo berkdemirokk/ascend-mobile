@@ -25,7 +25,7 @@ The app was upgraded to Expo SDK 57 and React Native 0.86.2. `@supabase/supabase
 
 ### SEC-004 — Edge Function dependency and request hardening — High — Resolved
 
-Both functions pin `@supabase/supabase-js@2.112.3` (`mobile/supabase/functions/delete-user/index.ts:23` and `mobile/supabase/functions/broadcast-push/index.ts:38`). Broadcast authorization uses constant-time SHA-256 comparison at lines 197–198 and limits request size/title/body at lines 49–51 and 82–98. Hosted unauthenticated probes return HTTP 401. Deployed versions are `delete-user` v4 and `broadcast-push` v3.
+Both functions pin `@supabase/supabase-js@2.112.3` (`mobile/supabase/functions/delete-user/index.ts:23` and `mobile/supabase/functions/broadcast-push/index.ts:38`). Broadcast authorization uses constant-time SHA-256 comparison at lines 197–198 and limits request size/title/body at lines 49–51 and 82–98. Hosted unauthenticated probes return HTTP 401. The successful main-branch deployment produced active versions `delete-user` v5 and `broadcast-push` v4.
 
 ### SEC-005 — Public-page browser protections absent — Medium — Resolved
 
