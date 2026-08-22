@@ -11,6 +11,8 @@ ISSUER_ID = os.environ.get("ASC_ISSUER_ID")
 KEY_PATH = os.environ.get("ASC_KEY_PATH")
 APP_ID = os.environ.get("ASC_APP_ID", "6761607644")
 BUNDLE_ID = "com.ascend.growth"
+EXPECTED_VERSION = os.environ.get("ASC_EXPECTED_VERSION", "1.0.44")
+EXPECTED_BUILD = os.environ.get("ASC_EXPECTED_BUILD", "124")
 
 
 def make_token():
@@ -36,6 +38,63 @@ def get(path, token):
         headers={"Authorization": f"Bearer {token}"},
     )
     return r.status_code, r.json() if r.text else {}
+
+
+def print_subscription_details(subscription, token):
+    sub_id = subscription["id"]
+    attributes = subscription["attributes"]
+    product_id = attributes.get("productId")
+    print(
+        f"    ✓ Sub: {product_id} | {attributes.get('subscriptionPeriod')} "
+        f"| state={attributes.get('state')} | name={attributes.get('name')}"
+    )
+
+    code, data = get(
+        f"/subscriptions/{sub_id}/subscriptionLocalizations?limit=200", token
+    )
+    if code == 200:
+        locales = sorted(
+            item["attributes"].get("locale") for item in data.get("data", [])
+        )
+        print(f"      Localizations: {', '.join(locales) if locales else 'none'}")
+    else:
+        print(f"      ⚠ Localizations unavailable (HTTP {code})")
+
+    code, data = get(f"/subscriptions/{sub_id}/introductoryOffers?limit=200", token)
+    if code == 200:
+        offers = data.get("data", [])
+        if offers:
+            offer_labels = [
+                f"{item['attributes'].get('offerMode')} "
+                f"{item['attributes'].get('duration')}"
+                for item in offers
+            ]
+            print(f"      Intro offers: {', '.join(offer_labels)}")
+        else:
+            print("      Intro offers: none")
+    else:
+        print(f"      ⚠ Intro offers unavailable (HTTP {code})")
+
+    code, data = get(
+        f"/subscriptions/{sub_id}/prices?filter[territory]=USA"
+        "&include=subscriptionPricePoint&limit=200",
+        token,
+    )
+    if code == 200:
+        customer_prices = sorted(
+            {
+                item["attributes"].get("customerPrice")
+                for item in data.get("included", [])
+                if item.get("type") == "subscriptionPricePoints"
+                and item.get("attributes", {}).get("customerPrice")
+            }
+        )
+        print(
+            "      USA customer price points: "
+            + (", ".join(customer_prices) if customer_prices else "configured")
+        )
+    else:
+        print(f"      ⚠ Pricing unavailable (HTTP {code})")
 
 
 def main():
@@ -69,13 +128,55 @@ def main():
                     if not subs:
                         print(f"    ⚠ No subscriptions in this group yet")
                     for s in subs:
-                        sa = s["attributes"]
-                        print(f"    ✓ Sub: {sa.get('productId')} | {sa.get('subscriptionPeriod')} | name={sa.get('name')}")
+                        print_subscription_details(s, token)
     else:
         print(f"  ✗ HTTP {code}: {data}")
 
-    # 3) Bundle capabilities (Sign in with Apple etc)
-    print("\n=== 3. Bundle ID + Capabilities ===")
+    # 3) Uploaded release build
+    print("\n=== 3. Uploaded release build ===")
+    code, data = get(
+        f"/builds?filter[app]={APP_ID}&filter[version]={EXPECTED_BUILD}"
+        "&include=preReleaseVersion&limit=10",
+        token,
+    )
+    if code == 200:
+        builds = data.get("data", [])
+        if builds:
+            build = builds[0]
+            ba = build["attributes"]
+            print(
+                f"  ✓ Build {EXPECTED_BUILD}: processing={ba.get('processingState')} "
+                f"| expired={ba.get('expired')} | uploaded={ba.get('uploadedDate')}"
+            )
+        else:
+            print(f"  ⚠ Build {EXPECTED_BUILD} is not visible yet")
+    else:
+        print(f"  ⚠ Build lookup unavailable (HTTP {code})")
+
+    # 4) Store version status
+    print("\n=== 4. App Store version ===")
+    code, data = get(
+        f"/apps/{APP_ID}/appStoreVersions?filter[platform]=IOS&limit=200", token
+    )
+    if code == 200:
+        versions = [
+            item
+            for item in data.get("data", [])
+            if item.get("attributes", {}).get("versionString") == EXPECTED_VERSION
+        ]
+        if versions:
+            va = versions[0]["attributes"]
+            print(
+                f"  ✓ Version {EXPECTED_VERSION}: "
+                f"state={va.get('appStoreState')}"
+            )
+        else:
+            print(f"  ⚠ Version {EXPECTED_VERSION} is not visible yet")
+    else:
+        print(f"  ⚠ Version lookup unavailable (HTTP {code})")
+
+    # 5) Bundle capabilities (Sign in with Apple etc)
+    print("\n=== 5. Bundle ID + Capabilities ===")
     code, data = get(f"/bundleIds?filter[identifier]={BUNDLE_ID}", token)
     if code == 200:
         bids = data.get("data", [])
