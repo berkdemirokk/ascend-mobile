@@ -2,6 +2,7 @@ node_modules/
 .expo/
 dist/
 dist-ci/
+dist-runtime-check/
 web-build/
 .env
 .env.local
