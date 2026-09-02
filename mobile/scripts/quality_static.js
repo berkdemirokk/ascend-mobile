@@ -600,6 +600,8 @@ run('release observability', () => {
   assert(analyticsSource.includes('installGlobalErrorHandler'), 'global JS errors must be captured');
   assert(appSource.includes('installGlobalErrorHandler()'), 'App must install the global JS error handler');
   assert(appSource.includes('flushAnalytics()'), 'App lifecycle must flush analytics');
+  assert(appSource.includes("track({ event: 'app_js_started' })"), 'App must report that the JS entrypoint started');
+  assert(appSource.includes("track({ event: 'app_ready' })"), 'App must report when startup providers are ready');
   assert(onboardingSource.includes("event: 'onboarding_step_viewed'"), 'onboarding funnel must record each viewed step');
 });
 

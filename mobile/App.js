@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, ActivityIndicator, AppState } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { AppProvider } from './src/contexts/AppContext';
-import { AuthProvider } from './src/contexts/AuthContext';
+import { AppProvider, useApp } from './src/contexts/AppContext';
+import { AuthProvider, useAuth } from './src/contexts/AuthContext';
 import AppNavigator from './src/navigation/AppNavigator';
 import ErrorBoundary from './src/components/ErrorBoundary';
 import { initPurchases } from './src/services/purchases';
@@ -20,6 +20,7 @@ import WhatsNewModal from './src/components/WhatsNewModal';
 import {
   flushAnalytics,
   installGlobalErrorHandler,
+  track,
 } from './src/services/analytics';
 
 const I18N_STARTUP_TIMEOUT_MS = 3000;
@@ -36,6 +37,10 @@ export default function App() {
 
   useEffect(() => {
     const removeErrorHandler = installGlobalErrorHandler();
+    // This is the earliest durable signal that React Native reached our JS
+    // entrypoint. If a TestFlight launch has no matching event, the failure is
+    // native/bootstrap rather than a React screen or backend request.
+    track({ event: 'app_js_started' });
     const appStateSubscription = AppState.addEventListener('change', (state) => {
       if (state !== 'active') flushAnalytics().catch(() => {});
     });
@@ -119,6 +124,7 @@ export default function App() {
         <SafeAreaProvider>
           <AuthProvider>
             <AppProvider>
+              <StartupTelemetry />
               <StatusBar style="dark" />
               <AppNavigator />
               {/* Post-update "Yenilikler" modal. The hook silently
@@ -132,6 +138,22 @@ export default function App() {
       </GestureHandlerRootView>
     </ErrorBoundary>
   );
+}
+
+function StartupTelemetry() {
+  const { _loaded: appLoaded } = useApp();
+  const { loading: authLoading } = useAuth();
+  const reportedRef = useRef(false);
+
+  useEffect(() => {
+    if (reportedRef.current || authLoading || !appLoaded) return;
+    reportedRef.current = true;
+    // No personal data: analytics.js adds only app/build/platform metadata.
+    // Together with app_js_started, this pinpoints launch-stage failures.
+    track({ event: 'app_ready' });
+  }, [appLoaded, authLoading]);
+
+  return null;
 }
 
 // Thin wrapper that calls the hook + renders the modal. Kept outside
