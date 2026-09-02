@@ -12,7 +12,7 @@ KEY_PATH = os.environ.get("ASC_KEY_PATH")
 APP_ID = os.environ.get("ASC_APP_ID", "6761607644")
 BUNDLE_ID = "com.ascend.growth"
 EXPECTED_VERSION = os.environ.get("ASC_EXPECTED_VERSION", "1.0.44")
-EXPECTED_BUILD = os.environ.get("ASC_EXPECTED_BUILD", "126")
+EXPECTED_BUILD = os.environ.get("ASC_EXPECTED_BUILD", "127")
 
 
 def make_token():
