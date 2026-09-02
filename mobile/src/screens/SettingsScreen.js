@@ -10,6 +10,10 @@ import {
   StatusBar,
   ActivityIndicator,
   Share,
+  Modal,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
@@ -129,71 +133,86 @@ export default function SettingsScreen({ navigation }) {
     );
   };
 
-  const handleRedeemCode = () => {
-    // Quick code-entry via native Alert prompt. Cross-platform: Alert.prompt
-    // is iOS-only; on Android we'd need a modal but this app is iOS-first.
-    Alert.prompt(
-      t('settings.redeemTitle', 'Davet Kodu'),
-      t(
-        'settings.redeemBody',
-        'Bir arkadaşının kodunu yaz — kabul edilirse ikinize de 10 streak donduru gelir.',
-      ),
-      async (rawCode) => {
-        if (!rawCode) return;
-        if (!user?.id) {
-          Alert.alert(
-            t('settings.redeemErrorTitle', 'Hata'),
-            t(
-              'settings.redeemAuthRequired',
-              'Davet kodu kullanmak için hesabın olmalı. Önce giriş yap.',
-            ),
-          );
-          return;
-        }
-        const result = await redeemReferralCode(rawCode, user.id);
-        if (result.ok) {
-          grantReferralReward();
-          Alert.alert(
-            t('settings.redeemSuccessTitle', 'Tebrikler! 🎉'),
-            t(
-              'settings.redeemSuccessBody',
-              '+10 streak donduru hesabına eklendi. Davet ettiğin kişiye de gönderildi.',
-            ),
-          );
-          return;
-        }
-        const reason = result.reason;
-        const messages = {
-          invalid: t('settings.redeemInvalid', 'Kod geçersiz. Tekrar dene.'),
-          own_code: t(
-            'settings.redeemOwnCode',
-            'Kendi kodunu kullanamazsın 🙂',
-          ),
-          already_redeemed: t(
-            'settings.redeemAlreadyRedeemed',
-            'Bu kod zaten başkası tarafından kullanılmış.',
-          ),
-          already_used_a_code: t(
-            'settings.redeemAlreadyUsed',
-            'Sen bir kod kullanmıştın zaten — sadece bir kez geçerli.',
-          ),
-          auth_required: t(
-            'settings.redeemAuthRequired',
-            'Önce giriş yap.',
-          ),
-          error: t(
-            'settings.redeemError',
-            'Bir hata oluştu. Tekrar dener misin?',
-          ),
-        };
+  const redeemCodeWithFeedback = async (rawCode) => {
+    const code = String(rawCode || '').trim();
+    if (!code) return;
+    setRedeeming(true);
+    try {
+      if (!user?.id) {
         Alert.alert(
           t('settings.redeemErrorTitle', 'Hata'),
-          messages[reason] || messages.error,
+          t(
+            'settings.redeemAuthRequired',
+            'Davet kodu kullanmak için hesabın olmalı. Önce giriş yap.',
+          ),
         );
-      },
-      'plain-text',
-      '',
-    );
+        return;
+      }
+      const result = await redeemReferralCode(code, user.id);
+      if (result.ok) {
+        grantReferralReward();
+        Alert.alert(
+          t('settings.redeemSuccessTitle', 'Tebrikler! 🎉'),
+          t(
+            'settings.redeemSuccessBody',
+            '+10 streak donduru hesabına eklendi. Davet ettiğin kişiye de gönderildi.',
+          ),
+        );
+        return;
+      }
+      const reason = result.reason;
+      const messages = {
+        invalid: t('settings.redeemInvalid', 'Kod geçersiz. Tekrar dene.'),
+        own_code: t(
+          'settings.redeemOwnCode',
+          'Kendi kodunu kullanamazsın 🙂',
+        ),
+        already_redeemed: t(
+          'settings.redeemAlreadyRedeemed',
+          'Bu kod zaten başkası tarafından kullanılmış.',
+        ),
+        already_used_a_code: t(
+          'settings.redeemAlreadyUsed',
+          'Sen bir kod kullanmıştın zaten — sadece bir kez geçerli.',
+        ),
+        auth_required: t(
+          'settings.redeemAuthRequired',
+          'Önce giriş yap.',
+        ),
+        error: t(
+          'settings.redeemError',
+          'Bir hata oluştu. Tekrar dener misin?',
+        ),
+      };
+      Alert.alert(
+        t('settings.redeemErrorTitle', 'Hata'),
+        messages[reason] || messages.error,
+      );
+    } finally {
+      setRedeeming(false);
+      setRedeemModalVisible(false);
+      setRedeemCodeInput('');
+    }
+  };
+
+  const handleRedeemCode = () => {
+    // Alert.prompt is iOS-only. Keep the native prompt there, but provide a
+    // real input flow on Android instead of calling an undefined API.
+    if (Platform.OS === 'ios' && typeof Alert.prompt === 'function') {
+      Alert.prompt(
+        t('settings.redeemTitle', 'Davet Kodu'),
+        t(
+          'settings.redeemBody',
+          'Bir arkadaşının kodunu yaz — kabul edilirse ikinize de 10 streak donduru gelir.',
+        ),
+        redeemCodeWithFeedback,
+        'plain-text',
+        '',
+      );
+      return;
+    }
+    setRedeemCodeInput('');
+    setRedeemModalVisible(true);
   };
 
   const handleToggleVacation = () => {
@@ -255,6 +274,9 @@ export default function SettingsScreen({ navigation }) {
   const [soundsEnabled, setSoundsEnabled] = useState(true);
   const [hapticsEnabled, setHapticsEnabledState] = useState(true);
   const [adDebugOpen, setAdDebugOpen] = useState(false);
+  const [redeemModalVisible, setRedeemModalVisible] = useState(false);
+  const [redeemCodeInput, setRedeemCodeInput] = useState('');
+  const [redeeming, setRedeeming] = useState(false);
 
   useEffect(() => {
     AsyncStorage.getItem(SOUNDS_MUTED_KEY).then((v) => {
@@ -939,6 +961,86 @@ export default function SettingsScreen({ navigation }) {
         </ScrollView>
       </View>
 
+      {/* Android has no Alert.prompt. Keep referral redemption usable on
+          every supported platform with a compact, keyboard-safe modal. */}
+      <Modal
+        visible={redeemModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={() => {
+          if (!redeeming) setRedeemModalVisible(false);
+        }}
+      >
+        <KeyboardAvoidingView
+          style={styles.redeemModalBackdrop}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+          <TouchableOpacity
+            accessible={false}
+            activeOpacity={1}
+            onPress={() => {
+              if (!redeeming) setRedeemModalVisible(false);
+            }}
+            style={StyleSheet.absoluteFillObject}
+          />
+          <View style={styles.redeemModalCard}>
+            <Text style={styles.redeemModalTitle}>
+              {t('settings.redeemTitle', 'Davet Kodu')}
+            </Text>
+            <Text style={styles.redeemModalBody}>
+              {t(
+                'settings.redeemBody',
+                'Bir arkadaşının kodunu yaz — kabul edilirse ikinize de 10 streak donduru gelir.',
+              )}
+            </Text>
+            <TextInput
+              value={redeemCodeInput}
+              onChangeText={setRedeemCodeInput}
+              autoCapitalize="characters"
+              autoCorrect={false}
+              autoFocus
+              maxLength={24}
+              placeholder="ASCEND-XXXX-YYYY"
+              placeholderTextColor={LT.outline}
+              returnKeyType="done"
+              onSubmitEditing={() => redeemCodeWithFeedback(redeemCodeInput)}
+              editable={!redeeming}
+              style={styles.redeemInput}
+              accessibilityLabel={t('settings.redeemTitle', 'Davet Kodu')}
+            />
+            <View style={styles.redeemModalActions}>
+              <TouchableOpacity
+                accessibilityLabel={t('common.cancel', 'İptal')}
+                onPress={() => setRedeemModalVisible(false)}
+                disabled={redeeming}
+                style={styles.redeemCancelButton}
+              >
+                <Text style={styles.redeemCancelText}>
+                  {t('common.cancel', 'İptal')}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                accessibilityLabel={t('settings.redeemInvite', 'Davet kodu gir')}
+                onPress={() => redeemCodeWithFeedback(redeemCodeInput)}
+                disabled={redeeming || !redeemCodeInput.trim()}
+                style={[
+                  styles.redeemSubmitButton,
+                  (redeeming || !redeemCodeInput.trim()) && styles.redeemSubmitDisabled,
+                ]}
+              >
+                {redeeming ? (
+                  <ActivityIndicator size="small" color={LT.onPrimary} />
+                ) : (
+                  <Text style={styles.redeemSubmitText}>
+                    {t('common.confirm', 'Onayla')}
+                  </Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+      </Modal>
+
       {/* Ad diagnostics — opened from the Debug section row above. */}
       <AdDebugModal
         visible={adDebugOpen}
@@ -1100,5 +1202,84 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 2,
+  },
+
+  redeemModalBackdrop: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.45)',
+  },
+  redeemModalCard: {
+    width: '100%',
+    maxWidth: 420,
+    borderRadius: LT_RADIUS.xl,
+    padding: 20,
+    backgroundColor: LT.surfaceContainerLowest,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+  },
+  redeemModalTitle: {
+    color: LT.onSurface,
+    fontSize: 20,
+    fontWeight: '900',
+    marginBottom: 8,
+  },
+  redeemModalBody: {
+    color: LT.onSurfaceVariant,
+    fontSize: 13,
+    lineHeight: 19,
+    marginBottom: 16,
+  },
+  redeemInput: {
+    minHeight: 48,
+    width: '100%',
+    paddingHorizontal: 14,
+    borderRadius: LT_RADIUS.md,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+    backgroundColor: LT.surfaceContainer,
+    color: LT.onSurface,
+    fontSize: 15,
+    fontWeight: '700',
+    letterSpacing: 0.5,
+  },
+  redeemModalActions: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    gap: 10,
+    marginTop: 16,
+  },
+  redeemCancelButton: {
+    minHeight: 44,
+    paddingHorizontal: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: LT_RADIUS.md,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
+  },
+  redeemCancelText: {
+    color: LT.onSurfaceVariant,
+    fontSize: 14,
+    fontWeight: '800',
+  },
+  redeemSubmitButton: {
+    minHeight: 44,
+    minWidth: 96,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: LT_RADIUS.md,
+    backgroundColor: LT.primary,
+  },
+  redeemSubmitDisabled: {
+    opacity: 0.45,
+  },
+  redeemSubmitText: {
+    color: LT.onPrimary,
+    fontSize: 14,
+    fontWeight: '900',
   },
 });

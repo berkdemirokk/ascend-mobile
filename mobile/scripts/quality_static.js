@@ -532,6 +532,7 @@ run('release toolchain', () => {
   assert(welcomeSource.includes("useState(Platform.OS === 'ios')"), 'Apple Sign-In must remain visible on iOS while availability is probed');
   assert(welcomeSource.includes('name="apple"'), 'Apple Sign-In fallback button must show the official Apple mark');
   assert(settingsSource.includes('accessibilityRole="radio"') && settingsSource.includes('checked: active'), 'settings language picker must expose its selected radio state');
+  assert(settingsSource.includes("Platform.OS === 'ios'") && settingsSource.includes('redeemModalVisible'), 'referral code entry must work without the iOS-only Alert.prompt');
   assert(heatmapSource.includes('heatmap.dayAccessibility'), 'streak heatmap days need a non-color accessibility label');
 });
 
