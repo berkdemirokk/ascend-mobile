@@ -159,7 +159,7 @@ export default function WelcomeScreen({ navigation }) {
                 <ActivityIndicator color="#FFFFFF" />
               ) : (
                 <>
-                  <Text style={styles.appleIcon}></Text>
+                  <MaterialIcons name="apple" size={20} color="#FFFFFF" />
                   <Text style={styles.appleText}>
                     {t('auth.signInWithApple', 'Apple ile devam et')}
                   </Text>
@@ -313,7 +313,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 8,
   },
-  appleIcon: { fontSize: 18, color: '#FFFFFF' },
   appleText: { color: '#FFFFFF', fontSize: 15, fontWeight: '700' },
   primaryBtnWrap: {
     borderRadius: 14,
