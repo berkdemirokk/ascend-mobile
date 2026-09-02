@@ -107,6 +107,9 @@ def main():
     if code == 200:
         attr = data["data"]["attributes"]
         print(f"  ✓ App: {attr.get('name')} | bundle: {attr.get('bundleId')} | sku: {attr.get('sku')}")
+        if attr.get("bundleId") != BUNDLE_ID or attr.get("name") != "Ascend: Daily Discipline":
+            print("  ✗ App identity does not match the canonical red-white release")
+            return
     else:
         print(f"  ✗ HTTP {code}: {data}")
         return
@@ -134,13 +137,31 @@ def main():
 
     # 3) Uploaded release build
     print("\n=== 3. Uploaded release build ===")
+    # Apple documents `version` as the marketing version filter, while the
+    # numeric upload/build number lives in the build resource's `version`
+    # attribute. Fetch recent builds and match both values locally so a
+    # misleading empty filtered response cannot hide a processed build.
     code, data = get(
-        f"/builds?filter[app]={APP_ID}&filter[version]={EXPECTED_BUILD}"
-        "&include=preReleaseVersion&limit=10",
+        f"/builds?filter[app]={APP_ID}&sort=-uploadedDate"
+        "&include=preReleaseVersion&limit=50",
         token,
     )
     if code == 200:
-        builds = data.get("data", [])
+        included = {
+            (item.get("type"), item.get("id")): item
+            for item in data.get("included", [])
+        }
+        builds = []
+        for candidate in data.get("data", []):
+            attrs = candidate.get("attributes", {})
+            rel = candidate.get("relationships", {}).get("preReleaseVersion", {})
+            rel_data = rel.get("data") or {}
+            pre = included.get((rel_data.get("type"), rel_data.get("id")), {})
+            pre_version = pre.get("attributes", {}).get("version")
+            if str(attrs.get("version")) == str(EXPECTED_BUILD) and (
+                pre_version is None or str(pre_version) == EXPECTED_VERSION
+            ):
+                builds.append(candidate)
         if builds:
             build = builds[0]
             ba = build["attributes"]
