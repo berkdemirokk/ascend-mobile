@@ -141,7 +141,10 @@ export default function PathMilestoneScene({ visible, pathId, stage, onClose }) 
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    backgroundColor: 'rgba(8, 8, 24, 0.94)',
+    // Keep the reviewed red-and-white visual language consistent with the
+    // rest of the app. The previous navy overlay made this milestone feel
+    // like a separate legacy product on otherwise light screens.
+    backgroundColor: 'rgba(26, 28, 28, 0.45)',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,

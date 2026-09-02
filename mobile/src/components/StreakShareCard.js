@@ -24,7 +24,7 @@ const StreakShareCard = React.forwardRef(function StreakShareCard(
   return (
     <View ref={ref} collapsable={false} style={styles.card}>
       <LinearGradient
-        colors={['#0F0F14', '#1A0F30', '#3B2A6B']}
+        colors={['#B70006', '#E31212', '#FF5A5F']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.bg}
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     width: 260,
     height: 260,
     borderRadius: 130,
-    backgroundColor: '#FF6B35',
+    backgroundColor: '#FFFFFF',
     opacity: 0.18,
   },
   topBlock: {
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   brandSub: {
-    color: '#A0A0C0',
+    color: '#FFF7F5',
     fontSize: 11,
     fontWeight: '700',
     letterSpacing: 2,
@@ -126,19 +126,19 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 0,
     lineHeight: 130,
-    textShadowColor: 'rgba(255, 107, 53, 0.5)',
+    textShadowColor: 'rgba(26, 28, 28, 0.25)',
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 24,
   },
   streakLabel: {
-    color: '#FFB088',
+    color: '#FFF7F5',
     fontSize: 18,
     fontWeight: '900',
     letterSpacing: 6,
     marginTop: -4,
   },
   subtitle: {
-    color: '#E0E0F0',
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
   },
   statLabel: {
-    color: '#9090B0',
+    color: '#FFF7F5',
     fontSize: 10,
     fontWeight: '800',
     letterSpacing: 1.5,
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerText: {
-    color: '#7070A0',
+    color: '#FFF7F5',
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 2,
