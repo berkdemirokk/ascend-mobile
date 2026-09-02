@@ -529,6 +529,8 @@ run('release toolchain', () => {
   const settingsSource = fs.readFileSync(path.join(SRC, 'screens', 'SettingsScreen.js'), 'utf8');
   const heatmapSource = fs.readFileSync(path.join(SRC, 'components', 'StreakHeatmap.js'), 'utf8');
   assert(welcomeSource.includes('accessibilityRole="radio"') && welcomeSource.includes('checked: active'), 'welcome language picker must expose its selected radio state');
+  assert(welcomeSource.includes("useState(Platform.OS === 'ios')"), 'Apple Sign-In must remain visible on iOS while availability is probed');
+  assert(welcomeSource.includes('></Text>'), 'Apple Sign-In fallback button must show the official Apple mark');
   assert(settingsSource.includes('accessibilityRole="radio"') && settingsSource.includes('checked: active'), 'settings language picker must expose its selected radio state');
   assert(heatmapSource.includes('heatmap.dayAccessibility'), 'streak heatmap days need a non-color accessibility label');
 });

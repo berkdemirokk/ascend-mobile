@@ -23,7 +23,12 @@ import { track } from '../../services/analytics';
 export default function WelcomeScreen({ navigation }) {
   const { t } = useTranslation();
   const { continueAsGuest, configured, signInWithApple } = useAuth();
-  const [appleAvailable, setAppleAvailable] = useState(false);
+  // Keep the Apple action visible on every iOS build. Availability probing
+  // can briefly fail while the native module is warming up; hiding the only
+  // Apple entry point in that case made the feature look removed. The auth
+  // provider still performs the authoritative availability check and returns
+  // a localized, actionable error on unsupported devices.
+  const [appleAvailable, setAppleAvailable] = useState(Platform.OS === 'ios');
   const [appleLoading, setAppleLoading] = useState(false);
   const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
 
@@ -37,9 +42,10 @@ export default function WelcomeScreen({ navigation }) {
       try {
         const mod = await import('expo-apple-authentication');
         const ok = await mod.isAvailableAsync();
-        setAppleAvailable(!!ok);
+        if (ok) setAppleAvailable(true);
       } catch {
-        setAppleAvailable(false);
+        // Leave the iOS button visible so a transient module probe failure
+        // cannot silently remove Apple Sign-In from the welcome screen.
       }
     })();
   }, []);
@@ -153,7 +159,7 @@ export default function WelcomeScreen({ navigation }) {
                 <ActivityIndicator color="#FFFFFF" />
               ) : (
                 <>
-                  <Text style={styles.appleIcon}></Text>
+                  <Text style={styles.appleIcon}></Text>
                   <Text style={styles.appleText}>
                     {t('auth.signInWithApple', 'Apple ile devam et')}
                   </Text>
