@@ -148,6 +148,21 @@ def main():
                 f"  ✓ Build {EXPECTED_BUILD}: processing={ba.get('processingState')} "
                 f"| expired={ba.get('expired')} | uploaded={ba.get('uploadedDate')}"
             )
+            code2, groups_data = get(
+                f"/builds/{build['id']}/betaGroups?limit=200", token
+            )
+            if code2 == 200:
+                groups = groups_data.get("data", [])
+                group_names = [
+                    item.get("attributes", {}).get("name", item.get("id", "unknown"))
+                    for item in groups
+                ]
+                if groups:
+                    print(f"    ✓ TestFlight groups: {', '.join(group_names)}")
+                else:
+                    print("    ⚠ Build is not assigned to any TestFlight group")
+            else:
+                print(f"    ⚠ TestFlight group lookup unavailable (HTTP {code2})")
         else:
             print(f"  ⚠ Build {EXPECTED_BUILD} is not visible yet")
     else:

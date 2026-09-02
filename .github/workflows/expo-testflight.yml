@@ -51,6 +51,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify canonical red-and-white app identity
+        run: npm run verify:identity
+
       - name: Run release quality checks
         run: npm run quality:ci
 

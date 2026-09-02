@@ -7,11 +7,12 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "doctor": "npx expo-doctor",
+    "verify:identity": "node scripts/verify_release_identity.js",
     "quality:static": "node scripts/quality_static.js",
     "quality:runtime": "node scripts/runtime_tests.js",
     "export:ios": "node scripts/export_ios.js",
     "audit:critical": "npm audit --omit=dev --audit-level=critical",
-    "quality:ci": "npm run quality:static && npm run quality:runtime && npm run doctor && npm run export:ios && npm run audit:critical",
+    "quality:ci": "npm run verify:identity && npm run quality:static && npm run quality:runtime && npm run doctor && npm run export:ios && npm run audit:critical",
     "build:ios": "eas build --platform ios",
     "build:ios:preview": "eas build --platform ios --profile preview",
     "submit:ios": "eas submit --platform ios"
