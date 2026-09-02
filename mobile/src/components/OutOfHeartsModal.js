@@ -83,9 +83,13 @@ export default function OutOfHeartsModal({
         const earned = await showRewarded();
         if (earned) {
           onRefill?.();
-          onClose?.();
-          // Return from the success path so the not-ready alert below
-          // does not fire after the user already earned the reward.
+          // The parent owns the post-refill transition. Home, Paths, and
+          // Search resume their pending lesson; Lesson stays on-screen so
+          // the newly earned heart can be used immediately. Calling the
+          // generic onClose here would make Lesson's close handler pop the
+          // user out of the lesson after a successful ad.
+          // Return from the success path so the not-ready alert below does
+          // not fire after the user already earned the reward.
           return;
         }
         // The ad showed but no reward was earned, usually because the
@@ -113,7 +117,6 @@ export default function OutOfHeartsModal({
           const earned = await showRewarded();
           if (earned) {
             onRefill?.();
-            onClose?.();
             return;
           }
           return;

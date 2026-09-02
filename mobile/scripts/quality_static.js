@@ -962,6 +962,7 @@ run('critical flow regression guards', () => {
   const signup = fs.readFileSync(path.join(SRC, 'screens/auth/SignupScreen.js'), 'utf8');
   const login = fs.readFileSync(path.join(SRC, 'screens/auth/LoginScreen.js'), 'utf8');
   const cloudSync = fs.readFileSync(path.join(SRC, 'services/cloudSync.js'), 'utf8');
+  const outOfHeartsModal = fs.readFileSync(path.join(SRC, 'components/OutOfHeartsModal.js'), 'utf8');
 
   assert(
     appContext.includes('resetPendingForUserRef.current === userId')
@@ -999,6 +1000,10 @@ run('critical flow regression guards', () => {
       && pathScreen.includes('const [pendingLesson, setPendingLesson]')
       && pathScreen.includes("navigation.navigate('Lesson', target)"),
     'Path out-of-hearts guard must allow completed lessons and resume pending lessons',
+  );
+  assert(
+    !/onRefill\?\.\(\);\s*onClose\?\.\(\);/.test(outOfHeartsModal),
+    'out-of-hearts refill must let each parent own its post-refill navigation',
   );
   assert(
     lesson.includes('const canonicalPathId = lesson?.pathId || pathId')
