@@ -504,7 +504,7 @@ run('release toolchain', () => {
   assert(lessonSource.includes('cancelRecording(voiceRecorder)'), 'lesson unmount must cancel an active voice recording');
   assert(packageJson.version === releaseVersion, `package/app version mismatch: ${packageJson.version} vs ${releaseVersion}`);
   assert(appJson.expo?.userInterfaceStyle === 'light', 'the reviewed red-white UI must stay light until a full dark theme ships');
-  assert(appJson.expo?.ios?.supportsTablet === false, 'the iPhone-only release must not advertise untested iPad support');
+  assert(appJson.expo?.ios?.supportsTablet === true, 'the release must preserve iPad support from the previous App Store version');
   assert(!packageJson.scripts?.web, 'native-only release must not expose an unconfigured web script');
   assert(isNewReleaseTrain, `release version must be newer than 1.0.41, found ${releaseVersion}`);
   assert(!Object.prototype.hasOwnProperty.call(appJson.expo?.ios || {}, 'buildNumber'), 'iOS buildNumber must be managed remotely by EAS');

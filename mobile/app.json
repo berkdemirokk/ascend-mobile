@@ -11,7 +11,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "com.ascend.growth",
       "usesAppleSignIn": true,
       "infoPlist": {
