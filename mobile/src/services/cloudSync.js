@@ -368,4 +368,68 @@ export function mergeStates(localState, cloudPayload) {
  * `mergeStates` and always dispatch the result. This shim still works because
  * the merged payload is, by design, a superset of either side.
  */
+
+/**
+ * Record a single lesson completion event in the normalized table.
+ * Fail-open; doesn\'t throw.
+ */
+export async function recordLessonCompletion(userId, {
+  pathId,
+  lessonId,
+  xpAwarded = 15,
+  critAwarded = false,
+  timeSpentSec = 0,
+}) {
+  if (!SUPABASE_CONFIGURED || !userId) return;
+  try {
+    await withCloudTimeout(
+      supabase.from('lesson_completions').insert({
+        user_id: userId,
+        path_id: pathId,
+        lesson_id: lessonId,
+        xp_awarded: xpAwarded,
+        crit_awarded: Boolean(critAwarded),
+        time_spent_sec: Math.max(0, parseInt(timeSpentSec, 10) || 0),
+        created_at: new Date().toISOString(),
+      }),
+      'record lesson completion',
+    );
+  } catch (e) {
+    console.warn('[cloudSync] recordLessonCompletion warning:', e?.message);
+  }
+}
+
+/**
+ * Record a user\'s reflection / commitment text or audio URI.
+ * Fail-open; doesn\'t throw.
+ */
+export async function recordReflection(userId, {
+  pathId,
+  lessonId,
+  prompt = '',
+  text = '',
+  audioUri = null,
+  actionCommitted = true,
+}) {
+  if (!SUPABASE_CONFIGURED || !userId) return;
+  if (!text && !audioUri) return;
+  try {
+    await withCloudTimeout(
+      supabase.from('reflections').insert({
+        user_id: userId,
+        path_id: pathId,
+        lesson_id: lessonId,
+        prompt: prompt || '',
+        text: text || '',
+        audio_uri: audioUri || null,
+        action_committed: Boolean(actionCommitted),
+        created_at: new Date().toISOString(),
+      }),
+      'record reflection',
+    );
+  } catch (e) {
+    console.warn('[cloudSync] recordReflection warning:', e?.message);
+  }
+}
+
 export const chooseWinner = mergeStates;

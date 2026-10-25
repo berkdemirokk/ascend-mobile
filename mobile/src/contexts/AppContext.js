@@ -14,6 +14,7 @@ import { useAuth } from './AuthContext';
 import { unlinkPurchaseUser } from '../services/purchases';
 import { supabase } from '../services/supabase';
 import { cancelAllNotifications } from '../services/notifications';
+import { recordLessonCompletion, recordReflection } from '../services/cloudSync';
 
 import {
   initialState,
@@ -282,8 +283,28 @@ export function AppProvider({ children }) {
           xp,
         },
       });
+
+      if (user?.id) {
+        recordLessonCompletion(user.id, {
+          pathId,
+          lessonId,
+          xpAwarded: xp,
+          critAwarded: false,
+        }).catch(() => {});
+
+        if (reflection || reflectionAudioUri) {
+          recordReflection(user.id, {
+            pathId,
+            lessonId,
+            prompt: '',
+            text: reflection || '',
+            audioUri: reflectionAudioUri || null,
+            actionCommitted: true,
+          }).catch(() => {});
+        }
+      }
     },
-    [],
+    [user?.id],
   );
 
   const loseHeart = useCallback(() => {
