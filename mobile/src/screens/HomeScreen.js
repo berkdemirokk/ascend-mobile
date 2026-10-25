@@ -32,6 +32,7 @@ import { StatCell } from '../components/home/StatCell';
 import { LinkRow } from '../components/home/LinkRow';
 import { HabitChain } from '../components/home/HabitChain';
 import { StreakHeroCard } from '../components/home/StreakHeroCard';
+import { DailyDeckCTA } from '../components/home/DailyDeckCTA';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 // DailyMysteryBox + DailyMoodCheckIn removed in the Home agresif
@@ -730,48 +731,10 @@ export default function HomeScreen({ navigation }) {
             the user never taps into a stale deck. Sits above the
             reassessment card because it's a daily ritual; reassess
             is monthly. */}
-        {!dailyDeckDone ? (
-          <TouchableOpacity
-            activeOpacity={0.85}
-            onPress={() => navigation.navigate('DailyDeck')}
-            style={styles.deckCard}
-          >
-            <View style={styles.deckIconBox}>
-              <MaterialIcons
-                name="auto-awesome"
-                size={20}
-                color={LT.primary}
-              />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.deckLabel}>
-                {t('home.deckLabel', 'BONUS RİTÜEL · ~3 DK')}
-              </Text>
-              <Text style={styles.deckTitle}>
-                {t(
-                  'home.deckTitle',
-                  'Bir fikir, dürüst bir soru, küçük bir hamle',
-                )}
-              </Text>
-            </View>
-            <MaterialIcons
-              name="arrow-forward"
-              size={18}
-              color={LT.primary}
-            />
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.deckDoneChip}>
-            <MaterialIcons
-              name="check-circle"
-              size={14}
-              color={LT.onSurfaceVariant}
-            />
-            <Text style={styles.deckDoneChipText}>
-              {t('home.deckDone', 'Bonus deste tamamlandı')}
-            </Text>
-          </View>
-        )}
+        <DailyDeckCTA
+          dailyDeckDone={dailyDeckDone}
+          onPress={() => navigation.navigate('DailyDeck')}
+        />
 
         {shouldOfferBaseline ? (
           <TouchableOpacity
@@ -1278,54 +1241,7 @@ const styles = StyleSheet.create({
   // Daily Deck entry — softer than the reassess CTA (which is once
   // a month and bold). Daily Deck is everyday so it's quieter, but
   // still warmer than the extras list.
-  deckCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: 16,
-    padding: 14,
-    marginTop: 12,
-    borderWidth: 1,
-    borderColor: 'rgba(220, 38, 38, 0.25)',
-  },
-  deckIconBox: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: 'rgba(220, 38, 38, 0.10)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  deckLabel: {
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.4,
-    color: LT.primary,
-    marginBottom: 2,
-  },
-  deckTitle: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: LT.onSurface,
-  },
   // Post-completion chip — small, just a "you did it" acknowledgement.
-  deckDoneChip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    gap: 4,
-    backgroundColor: LT.surfaceContainer,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 999,
-    marginTop: 12,
-  },
-  deckDoneChipText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: LT.onSurfaceVariant,
-  },
   // 30-day re-assessment CTA — full-width primary-colored card.
   // Bold by design: this is the highest-leverage retention moment
   // we have (the "look how far you've come" payoff), so it visually
