@@ -357,41 +357,134 @@
     "nextStage": "Next: {{stage}}",
     "daysAway": "{{days}} days away",
     "maxed": "You have reached the highest form.",
-    "beginner":   { "title": "Beginner",   "sub": "The journey just started. Every day you choose, you become." },
-    "apprentice": { "title": "Apprentice", "sub": "Three days in. The flame is no longer accident — it's choice." },
-    "warrior":    { "title": "Warrior",    "sub": "Two weeks. The hard part is past. Now you sharpen." },
-    "monk":       { "title": "Disciplined", "sub": "Thirty days. The old self is gone. The disciplined self walks." },
-    "sage":       { "title": "Sage",       "sub": "One hundred days. You no longer push the path. The path walks with you." },
-    "legend":     { "title": "Legend",     "sub": "One year. Few reach here. You did." }
+    "beginner": {
+      "title": "Beginner",
+      "sub": "The journey just started. Every day you choose, you become."
+    },
+    "apprentice": {
+      "title": "Apprentice",
+      "sub": "Three days in. The flame is no longer accident — it's choice."
+    },
+    "warrior": {
+      "title": "Warrior",
+      "sub": "Two weeks. The hard part is past. Now you sharpen."
+    },
+    "monk": {
+      "title": "Disciplined",
+      "sub": "Thirty days. The old self is gone. The disciplined self walks."
+    },
+    "sage": {
+      "title": "Sage",
+      "sub": "One hundred days. You no longer push the path. The path walks with you."
+    },
+    "legend": {
+      "title": "Legend",
+      "sub": "One year. Few reach here. You did."
+    }
   },
   "pathScene": {
     "chapter": "CHAPTER · LESSON {{stage}}/50",
     "continueCta": "Continue the journey →",
-    "dd10": { "title": "First Climb",        "body": "Ten days on. The phone is quieter. Your hands are starting to remember the feel of nothing." },
-    "dd20": { "title": "The Fog Lifts",      "body": "Twenty days. The cravings still come — but now you see them coming. That's everything." },
-    "dd30": { "title": "Forge the Mind",     "body": "Thirty days. The old loop has died. Something else lives in its place now. Don't look back." },
-    "dd40": { "title": "Roar",               "body": "Forty days. You used to flinch at silence. Now you find it." },
-    "dd50": { "title": "Master of the Hours","body": "Fifty days. The dopamine fast is no longer a fast. It's how you live. The path is yours." },
-    "sm10": { "title": "Dawn's First Edge",  "body": "Ten mornings won. The world is yours before anyone else wakes." },
-    "sm20": { "title": "The Sacred Hour",    "body": "Twenty days. Coffee no longer triggers urgency. Quiet does." },
-    "sm30": { "title": "Above the Clouds",   "body": "Thirty mornings. You see the day before it begins. Few do." },
-    "sm40": { "title": "Inner Fire",         "body": "Forty days. The morning isn't a discipline anymore — it's a need." },
-    "sm50": { "title": "Sunlight Master",    "body": "Fifty mornings. You no longer wait for light. You bring it." },
-    "md10": { "title": "Sharpening",         "body": "Ten days inside your own head and you didn't run. Most never make it." },
-    "md20": { "title": "Locked In",          "body": "Twenty days. The noise is still loud. But you found a quieter room." },
-    "md30": { "title": "Storm Eye",          "body": "Thirty days. Chaos around — order within. You learned the trick." },
-    "md40": { "title": "Blade Honed",        "body": "Forty days. Your attention now is a weapon. Use it on what matters." },
-    "md50": { "title": "Still Mind",         "body": "Fifty days. The mind that runs you is now the mind you run." },
-    "bd10": { "title": "First Mile",         "body": "Ten days. The body that was idle now moves. Small, but real." },
-    "bd20": { "title": "Built Foundation",   "body": "Twenty days. The mirror starts to lie to you in a better way." },
-    "bd30": { "title": "The Climb",          "body": "Thirty days. Sleep is heavier. Hunger is honest. Strength is here." },
-    "bd40": { "title": "Armor Forged",       "body": "Forty days. The body you walk in is not the one you started with." },
-    "bd50": { "title": "Sky Eyes",           "body": "Fifty days. You moved. The reward is who you are now." },
-    "mn10": { "title": "First Seed",         "body": "Ten days. You spent less than you earned ten times in a row. That's how forests start." },
-    "mn20": { "title": "Roots Down",         "body": "Twenty days. Money once ran through your fingers. Now it stays." },
-    "mn30": { "title": "Temple Built",       "body": "Thirty days. The discipline of saying no is the discipline of getting rich." },
-    "mn40": { "title": "Balance Held",       "body": "Forty days. You no longer fear the bill. The bill respects you." },
-    "mn50": { "title": "Wealth Mind",        "body": "Fifty days. You earn the same. You keep more. That difference is freedom." }
+    "dd10": {
+      "title": "First Climb",
+      "body": "Ten days on. The phone is quieter. Your hands are starting to remember the feel of nothing."
+    },
+    "dd20": {
+      "title": "The Fog Lifts",
+      "body": "Twenty days. The cravings still come — but now you see them coming. That's everything."
+    },
+    "dd30": {
+      "title": "Forge the Mind",
+      "body": "Thirty days. The old loop has died. Something else lives in its place now. Don't look back."
+    },
+    "dd40": {
+      "title": "Roar",
+      "body": "Forty days. You used to flinch at silence. Now you find it."
+    },
+    "dd50": {
+      "title": "Master of the Hours",
+      "body": "Fifty days. The dopamine fast is no longer a fast. It's how you live. The path is yours."
+    },
+    "sm10": {
+      "title": "Dawn's First Edge",
+      "body": "Ten mornings won. The world is yours before anyone else wakes."
+    },
+    "sm20": {
+      "title": "The Sacred Hour",
+      "body": "Twenty days. Coffee no longer triggers urgency. Quiet does."
+    },
+    "sm30": {
+      "title": "Above the Clouds",
+      "body": "Thirty mornings. You see the day before it begins. Few do."
+    },
+    "sm40": {
+      "title": "Inner Fire",
+      "body": "Forty days. The morning isn't a discipline anymore — it's a need."
+    },
+    "sm50": {
+      "title": "Sunlight Master",
+      "body": "Fifty mornings. You no longer wait for light. You bring it."
+    },
+    "md10": {
+      "title": "Sharpening",
+      "body": "Ten days inside your own head and you didn't run. Most never make it."
+    },
+    "md20": {
+      "title": "Locked In",
+      "body": "Twenty days. The noise is still loud. But you found a quieter room."
+    },
+    "md30": {
+      "title": "Storm Eye",
+      "body": "Thirty days. Chaos around — order within. You learned the trick."
+    },
+    "md40": {
+      "title": "Blade Honed",
+      "body": "Forty days. Your attention now is a weapon. Use it on what matters."
+    },
+    "md50": {
+      "title": "Still Mind",
+      "body": "Fifty days. The mind that runs you is now the mind you run."
+    },
+    "bd10": {
+      "title": "First Mile",
+      "body": "Ten days. The body that was idle now moves. Small, but real."
+    },
+    "bd20": {
+      "title": "Built Foundation",
+      "body": "Twenty days. The mirror starts to lie to you in a better way."
+    },
+    "bd30": {
+      "title": "The Climb",
+      "body": "Thirty days. Sleep is heavier. Hunger is honest. Strength is here."
+    },
+    "bd40": {
+      "title": "Armor Forged",
+      "body": "Forty days. The body you walk in is not the one you started with."
+    },
+    "bd50": {
+      "title": "Sky Eyes",
+      "body": "Fifty days. You moved. The reward is who you are now."
+    },
+    "mn10": {
+      "title": "First Seed",
+      "body": "Ten days. You spent less than you earned ten times in a row. That's how forests start."
+    },
+    "mn20": {
+      "title": "Roots Down",
+      "body": "Twenty days. Money once ran through your fingers. Now it stays."
+    },
+    "mn30": {
+      "title": "Temple Built",
+      "body": "Thirty days. The discipline of saying no is the discipline of getting rich."
+    },
+    "mn40": {
+      "title": "Balance Held",
+      "body": "Forty days. You no longer fear the bill. The bill respects you."
+    },
+    "mn50": {
+      "title": "Wealth Mind",
+      "body": "Fifty days. You earn the same. You keep more. That difference is freedom."
+    }
   },
   "profile": {
     "title": "You",
@@ -680,7 +773,6 @@
     "reminderBodyStart": "Take the first step. 5 minutes.",
     "reminderBodyDanger": "This much effort can't be wasted. Today's lesson awaits.",
     "reminderBodyProgress": "Complete today, keep the streak alive.",
-
     "dailyStart0Title": "🔥 Today is the day",
     "dailyStart0Body": "First lesson — 5 minutes. One step is all you need.",
     "dailyStart1Title": "Don't push it to tomorrow",
@@ -721,7 +813,6 @@
     "dailyStart18Body": "First step. Alone. 5 minutes. Let's go.",
     "dailyStart19Title": "Lesson 1 — begin",
     "dailyStart19Body": "No waiting. No plan. Just open and start.",
-
     "dailyProgress0Title": "🔥 Day {{streak}} — keep going",
     "dailyProgress0Body": "One lesson today. The flame is still yours.",
     "dailyProgress1Title": "{{streak}} days in",
@@ -762,12 +853,10 @@
     "dailyProgress18Body": "{{streak}} days you came. Not coming today is the exception — don't be the exception.",
     "dailyProgress19Title": "{{streak}} — you've stacked proof",
     "dailyProgress19Body": "Today the proof count goes +1. Open, start, finish.",
-
     "d1HookTitle": "A day passed — did this place slip your mind?",
     "d1HookBody": "Discipline starts with 5 minutes a day. Open the first lesson.",
     "d3HookTitle": "3 days in — I'm waiting at the start of the path",
     "d3HookBody": "Come back. One lesson, one step. Open the app now.",
-
     "weeklyRecapTitle": "How was your week? 📊",
     "weeklyRecapBody": "Check your 7-day recap on the Stats tab — a new week starts tomorrow.",
     "streakAtRiskTitle": "🔥 {{streak}} days at risk",
@@ -997,71 +1086,258 @@
     "7": "Legendary"
   },
   "milestone": {
-    "3":   { "title": "3 Days!",   "subtitle": "The flame is lit" },
-    "7":   { "title": "1 Week!",   "subtitle": "One week complete" },
-    "14":  { "title": "2 Weeks!",  "subtitle": "New baseline forming" },
-    "21":  { "title": "3 Weeks!",  "subtitle": "Discipline is becoming stable" },
-    "30":  { "title": "30 Days!",  "subtitle": "New routine, new direction" },
-    "60":  { "title": "60 Days!",  "subtitle": "Respect earned" },
-    "100": { "title": "100 Days!", "subtitle": "Mastery is visible" },
-    "365": { "title": "1 Year!",   "subtitle": "One year complete" }
+    "3": {
+      "title": "3 Days!",
+      "subtitle": "The flame is lit"
+    },
+    "7": {
+      "title": "1 Week!",
+      "subtitle": "One week complete"
+    },
+    "14": {
+      "title": "2 Weeks!",
+      "subtitle": "New baseline forming"
+    },
+    "21": {
+      "title": "3 Weeks!",
+      "subtitle": "Discipline is becoming stable"
+    },
+    "30": {
+      "title": "30 Days!",
+      "subtitle": "New routine, new direction"
+    },
+    "60": {
+      "title": "60 Days!",
+      "subtitle": "Respect earned"
+    },
+    "100": {
+      "title": "100 Days!",
+      "subtitle": "Mastery is visible"
+    },
+    "365": {
+      "title": "1 Year!",
+      "subtitle": "One year complete"
+    }
   },
   "dailyChallenges": {
-    "cold_water": { "title": "Cold Water Shock", "body": "Take a 30-second cold shower or splash cold water on your face today." },
-    "phone_free_hour": { "title": "Phone-Free Hour", "body": "Keep your phone in another room for one hour today." },
-    "walk_15": { "title": "Walk 15 Minutes", "body": "Walk outside for 15 minutes today, no phone." },
-    "pushup_20": { "title": "20 Push-Ups", "body": "Do 20 push-ups today (split into sets if needed)." },
-    "water_2l": { "title": "2 Liters of Water", "body": "Drink 2 liters of water today. Keep a visible bottle." },
-    "no_sugar": { "title": "Sugar-Free Day", "body": "No added sugar today — fruit excluded." },
-    "read_10": { "title": "10 Pages of a Book", "body": "Read 10 pages from any book today." },
-    "breath_478": { "title": "4-7-8 Breath", "body": "Inhale 4 sec, hold 7 sec, exhale 8 sec. 4 repetitions." },
-    "sun_5": { "title": "Morning Sunlight", "body": "Get 5 minutes of sunlight within an hour of waking up." },
-    "no_scroll": { "title": "Zero Scroll", "body": "No TikTok / Reels / Shorts today. Just one day." },
-    "tidy_5": { "title": "5-Minute Tidy", "body": "Tidy the messiest spot in your room in 5 minutes." },
-    "gratitude_3": { "title": "3 Gratitudes", "body": "Write down 3 things you're grateful for today." },
-    "plank_60": { "title": "60-Second Plank", "body": "Hold a plank for 60 seconds in one set." },
-    "no_complaint": { "title": "Complaint-Free Day", "body": "Don't complain about anyone or anything today." },
-    "compliment": { "title": "Real Compliment", "body": "Give a thoughtful, genuine compliment to someone you know." },
-    "no_caffeine_pm": { "title": "No Caffeine After Noon", "body": "No coffee / tea / cola after 14:00." },
-    "eye_contact": { "title": "Eye Contact", "body": "Hold eye contact one extra second with everyone you talk to today." },
-    "wallet_audit": { "title": "Wallet Audit", "body": "Review your last 7 days of spending. Find one unnecessary purchase." },
-    "silent_meal": { "title": "Silent Meal", "body": "Eat one meal without phone / TV / podcast." },
-    "unsub_1": { "title": "Unsubscribe from One", "body": "Unsubscribe from 1 spam email list in your inbox." },
-    "morning_quiet": { "title": "Quiet Morning", "body": "First 30 minutes of your morning: no phone, no music, just you." },
-    "pomodoro_2": { "title": "2 Pomodoros", "body": "Do 2 × 25 minutes of uninterrupted focused work today." },
-    "stretch_5": { "title": "5-Minute Stretch", "body": "Do 5 minutes of stretching today." },
-    "cold_call": { "title": "Make That Call", "body": "Make the phone call you've been postponing — now." },
-    "one_decision": { "title": "One Decision", "body": "Resolve one decision you've been postponing today." },
-    "zero_inbox": { "title": "Inbox Zero", "body": "Clear your email / message inbox today — reply, delete, or archive." },
-    "gym_show_up": { "title": "Just Show Up", "body": "Just go to the gym — what you do doesn't matter, showing up does." },
-    "sleep_early": { "title": "30 Minutes Earlier", "body": "Sleep 30 minutes earlier than usual tonight." },
-    "send_thank": { "title": "Thank-You Message", "body": "Write a 'thank you' to someone who helped you in the past year." },
-    "review_yesterday": { "title": "Review Yesterday", "body": "Spend 5 minutes writing about yesterday: what went well, what you missed." }
+    "cold_water": {
+      "title": "Cold Water Shock",
+      "body": "Take a 30-second cold shower or splash cold water on your face today."
+    },
+    "phone_free_hour": {
+      "title": "Phone-Free Hour",
+      "body": "Keep your phone in another room for one hour today."
+    },
+    "walk_15": {
+      "title": "Walk 15 Minutes",
+      "body": "Walk outside for 15 minutes today, no phone."
+    },
+    "pushup_20": {
+      "title": "20 Push-Ups",
+      "body": "Do 20 push-ups today (split into sets if needed)."
+    },
+    "water_2l": {
+      "title": "2 Liters of Water",
+      "body": "Drink 2 liters of water today. Keep a visible bottle."
+    },
+    "no_sugar": {
+      "title": "Sugar-Free Day",
+      "body": "No added sugar today — fruit excluded."
+    },
+    "read_10": {
+      "title": "10 Pages of a Book",
+      "body": "Read 10 pages from any book today."
+    },
+    "breath_478": {
+      "title": "4-7-8 Breath",
+      "body": "Inhale 4 sec, hold 7 sec, exhale 8 sec. 4 repetitions."
+    },
+    "sun_5": {
+      "title": "Morning Sunlight",
+      "body": "Get 5 minutes of sunlight within an hour of waking up."
+    },
+    "no_scroll": {
+      "title": "Zero Scroll",
+      "body": "No TikTok / Reels / Shorts today. Just one day."
+    },
+    "tidy_5": {
+      "title": "5-Minute Tidy",
+      "body": "Tidy the messiest spot in your room in 5 minutes."
+    },
+    "gratitude_3": {
+      "title": "3 Gratitudes",
+      "body": "Write down 3 things you're grateful for today."
+    },
+    "plank_60": {
+      "title": "60-Second Plank",
+      "body": "Hold a plank for 60 seconds in one set."
+    },
+    "no_complaint": {
+      "title": "Complaint-Free Day",
+      "body": "Don't complain about anyone or anything today."
+    },
+    "compliment": {
+      "title": "Real Compliment",
+      "body": "Give a thoughtful, genuine compliment to someone you know."
+    },
+    "no_caffeine_pm": {
+      "title": "No Caffeine After Noon",
+      "body": "No coffee / tea / cola after 14:00."
+    },
+    "eye_contact": {
+      "title": "Eye Contact",
+      "body": "Hold eye contact one extra second with everyone you talk to today."
+    },
+    "wallet_audit": {
+      "title": "Wallet Audit",
+      "body": "Review your last 7 days of spending. Find one unnecessary purchase."
+    },
+    "silent_meal": {
+      "title": "Silent Meal",
+      "body": "Eat one meal without phone / TV / podcast."
+    },
+    "unsub_1": {
+      "title": "Unsubscribe from One",
+      "body": "Unsubscribe from 1 spam email list in your inbox."
+    },
+    "morning_quiet": {
+      "title": "Quiet Morning",
+      "body": "First 30 minutes of your morning: no phone, no music, just you."
+    },
+    "pomodoro_2": {
+      "title": "2 Pomodoros",
+      "body": "Do 2 × 25 minutes of uninterrupted focused work today."
+    },
+    "stretch_5": {
+      "title": "5-Minute Stretch",
+      "body": "Do 5 minutes of stretching today."
+    },
+    "cold_call": {
+      "title": "Make That Call",
+      "body": "Make the phone call you've been postponing — now."
+    },
+    "one_decision": {
+      "title": "One Decision",
+      "body": "Resolve one decision you've been postponing today."
+    },
+    "zero_inbox": {
+      "title": "Inbox Zero",
+      "body": "Clear your email / message inbox today — reply, delete, or archive."
+    },
+    "gym_show_up": {
+      "title": "Just Show Up",
+      "body": "Just go to the gym — what you do doesn't matter, showing up does."
+    },
+    "sleep_early": {
+      "title": "30 Minutes Earlier",
+      "body": "Sleep 30 minutes earlier than usual tonight."
+    },
+    "send_thank": {
+      "title": "Thank-You Message",
+      "body": "Write a 'thank you' to someone who helped you in the past year."
+    },
+    "review_yesterday": {
+      "title": "Review Yesterday",
+      "body": "Spend 5 minutes writing about yesterday: what went well, what you missed."
+    }
   },
   "ranks": {
-    "novice": { "title": "Novice", "subtitle": "The journey begins" },
-    "disciple": { "title": "Disciple", "subtitle": "First path completed" },
-    "warrior": { "title": "Warrior", "subtitle": "Warrior mindset" },
-    "monk": { "title": "Disciplined", "subtitle": "Discipline at the peak" },
-    "master": { "title": "Master", "subtitle": "Master" },
-    "legend": { "title": "Legend", "subtitle": "Legend" }
+    "novice": {
+      "title": "Novice",
+      "subtitle": "The journey begins"
+    },
+    "disciple": {
+      "title": "Disciple",
+      "subtitle": "First path completed"
+    },
+    "warrior": {
+      "title": "Warrior",
+      "subtitle": "Warrior mindset"
+    },
+    "monk": {
+      "title": "Disciplined",
+      "subtitle": "Discipline at the peak"
+    },
+    "master": {
+      "title": "Master",
+      "subtitle": "Master"
+    },
+    "legend": {
+      "title": "Legend",
+      "subtitle": "Legend"
+    }
   },
   "ach": {
-    "first_flame": { "title": "First Flame", "description": "3-day streak" },
-    "hot_streak": { "title": "Hot Streak", "description": "7-day streak" },
-    "two_weeks": { "title": "Two-Week Warrior", "description": "14-day streak" },
-    "on_fire": { "title": "On Fire", "description": "30-day streak" },
-    "unstoppable": { "title": "Unstoppable", "description": "100-day streak" },
-    "legend": { "title": "Legend", "description": "365-day streak" },
-    "getting_started": { "title": "Getting Started", "description": "Complete 10 lessons" },
-    "committed": { "title": "Committed", "description": "Complete 30 lessons" },
-    "centurion": { "title": "Centurion", "description": "Complete 100 lessons" },
-    "marathoner": { "title": "Marathoner", "description": "Complete 250 lessons" },
-    "level_2": { "title": "Climbing", "description": "Reach level 2" },
-    "level_5": { "title": "Elite", "description": "Reach level 5" },
-    "level_8": { "title": "Master", "description": "Reach level 7" },
-    "night_owl": { "title": "Night Owl", "description": "Finish a lesson after 23:00" },
-    "early_bird": { "title": "Early Bird", "description": "Finish a lesson before 06:00" },
-    "weekend_warrior": { "title": "Weekend Warrior", "description": "Keep your streak through a weekend" }
+    "first_flame": {
+      "title": "First Flame",
+      "description": "3-day streak"
+    },
+    "hot_streak": {
+      "title": "Hot Streak",
+      "description": "7-day streak"
+    },
+    "two_weeks": {
+      "title": "Two-Week Warrior",
+      "description": "14-day streak"
+    },
+    "on_fire": {
+      "title": "On Fire",
+      "description": "30-day streak"
+    },
+    "unstoppable": {
+      "title": "Unstoppable",
+      "description": "100-day streak"
+    },
+    "legend": {
+      "title": "Legend",
+      "description": "365-day streak"
+    },
+    "getting_started": {
+      "title": "Getting Started",
+      "description": "Complete 10 lessons"
+    },
+    "committed": {
+      "title": "Committed",
+      "description": "Complete 30 lessons"
+    },
+    "centurion": {
+      "title": "Centurion",
+      "description": "Complete 100 lessons"
+    },
+    "marathoner": {
+      "title": "Marathoner",
+      "description": "Complete 250 lessons"
+    },
+    "level_2": {
+      "title": "Climbing",
+      "description": "Reach level 2"
+    },
+    "level_5": {
+      "title": "Elite",
+      "description": "Reach level 5"
+    },
+    "level_8": {
+      "title": "Master",
+      "description": "Reach level 7"
+    },
+    "night_owl": {
+      "title": "Night Owl",
+      "description": "Finish a lesson after 23:00"
+    },
+    "early_bird": {
+      "title": "Early Bird",
+      "description": "Finish a lesson before 06:00"
+    },
+    "weekend_warrior": {
+      "title": "Weekend Warrior",
+      "description": "Keep your streak through a weekend"
+    }
+  },
+  "leaderboard": {
+    "title": "LEADERBOARD",
+    "subtitle": "Your standing in the discipline community. Anonymous handles used.",
+    "weekly": "Weekly",
+    "allTime": "All-Time",
+    "streakDays": "{{count}} day streak"
   }
 }

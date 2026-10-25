@@ -25,6 +25,7 @@ import { MaterialIcons } from '@react-native-vector-icons/material-icons/static'
 import { useApp } from '../contexts/AppContext';
 import { PATHS } from '../data/paths';
 import LightTopAppBar from '../components/LightTopAppBar';
+import { LeaderboardCard } from '../components/LeaderboardCard';
 import StreakInfoModal from '../components/StreakInfoModal';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
@@ -133,6 +134,9 @@ export default function InsightsScreen({ navigation }) {
             )}
           </Text>
         </View>
+
+        {/* Community Leaderboard */}
+        <LeaderboardCard userXp={totalXP || 0} userStreak={currentStreak || 0} />
 
         {/* Weekly Recap — last 7 days */}
         <View style={styles.weekCard}>

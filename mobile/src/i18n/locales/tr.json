@@ -357,41 +357,134 @@
     "nextStage": "Sıradaki: {{stage}}",
     "daysAway": "{{days}} gün uzakta",
     "maxed": "En yüksek forma ulaştın.",
-    "beginner":   { "title": "Acemi",     "sub": "Yolculuk yeni başladı. Her gün seçtiğinde, oluyorsun." },
-    "apprentice": { "title": "Çırak",     "sub": "Üç gün geçti. Alev artık tesadüf değil — bir seçim." },
-    "warrior":    { "title": "Savaşçı",   "sub": "İki hafta. Zorlu kısım geride. Şimdi keskinleştir." },
-    "monk":       { "title": "Disiplinli", "sub": "Otuz gün. Eski sen gitti. Disiplinli sen yürüyor." },
-    "sage":       { "title": "Bilge",     "sub": "Yüz gün. Artık yolu sen itmiyorsun. Yol seninle yürüyor." },
-    "legend":     { "title": "Efsane",    "sub": "Bir yıl. Buraya az insan ulaşır. Sen ulaştın." }
+    "beginner": {
+      "title": "Acemi",
+      "sub": "Yolculuk yeni başladı. Her gün seçtiğinde, oluyorsun."
+    },
+    "apprentice": {
+      "title": "Çırak",
+      "sub": "Üç gün geçti. Alev artık tesadüf değil — bir seçim."
+    },
+    "warrior": {
+      "title": "Savaşçı",
+      "sub": "İki hafta. Zorlu kısım geride. Şimdi keskinleştir."
+    },
+    "monk": {
+      "title": "Disiplinli",
+      "sub": "Otuz gün. Eski sen gitti. Disiplinli sen yürüyor."
+    },
+    "sage": {
+      "title": "Bilge",
+      "sub": "Yüz gün. Artık yolu sen itmiyorsun. Yol seninle yürüyor."
+    },
+    "legend": {
+      "title": "Efsane",
+      "sub": "Bir yıl. Buraya az insan ulaşır. Sen ulaştın."
+    }
   },
   "pathScene": {
     "chapter": "BÖLÜM · DERS {{stage}}/50",
     "continueCta": "Yolculuğa devam →",
-    "dd10": { "title": "İlk Tırmanış",       "body": "On gün geçti. Telefon daha sessiz. Ellerin hiçbir şeyi tutmamayı hatırlamaya başladı." },
-    "dd20": { "title": "Sis Kalkıyor",       "body": "Yirmi gün. Dürtüler hâlâ geliyor — ama artık onları geldiğini görüyorsun. Her şey bu." },
-    "dd30": { "title": "Zihni Döv",          "body": "Otuz gün. Eski döngü öldü. Yerine başka bir şey yaşıyor şimdi. Geriye bakma." },
-    "dd40": { "title": "Kükre",              "body": "Kırk gün. Eskiden sessizlikten ürkerdin. Şimdi onu arıyorsun." },
-    "dd50": { "title": "Saatlerin Ustası",   "body": "Elli gün. Dopamine orucu artık oruç değil. Yaşam tarzın bu. Yol senin." },
-    "sm10": { "title": "Şafağın İlk Ucu",    "body": "On sabah kazandın. Dünya kimse uyanmadan senin." },
-    "sm20": { "title": "Kutsal Saat",        "body": "Yirmi gün. Kahve artık aciliyeti tetiklemiyor. Sessizlik tetikliyor." },
-    "sm30": { "title": "Bulutların Üstünde", "body": "Otuz sabah. Günü başlamadan görüyorsun. Az kişi görür." },
-    "sm40": { "title": "İç Ateş",            "body": "Kırk gün. Sabah artık bir disiplin değil — bir ihtiyaç." },
-    "sm50": { "title": "Güneş Ustası",       "body": "Elli sabah. Artık ışığı beklemiyorsun. Sen getiriyorsun." },
-    "md10": { "title": "Bilemek",            "body": "On gün kendi kafanın içinde kaldın ve kaçmadın. Çoğu kaçar." },
-    "md20": { "title": "Kilitlendi",         "body": "Yirmi gün. Gürültü hâlâ yüksek. Ama daha sessiz bir oda buldun." },
-    "md30": { "title": "Fırtınanın Gözü",    "body": "Otuz gün. Etrafta kaos — içeride düzen. Numarayı öğrendin." },
-    "md40": { "title": "Kılıç Bilendi",      "body": "Kırk gün. Dikkat artık bir silah. Önemli olana çevir." },
-    "md50": { "title": "Durgun Zihin",       "body": "Elli gün. Seni yöneten zihin, artık senin yönettiğin zihin." },
-    "bd10": { "title": "İlk Mil",            "body": "On gün. Hareketsiz olan beden artık hareket ediyor. Küçük, ama gerçek." },
-    "bd20": { "title": "Temel Atıldı",       "body": "Yirmi gün. Ayna sana daha iyi bir şekilde yalan söylemeye başlıyor." },
-    "bd30": { "title": "Tırmanış",           "body": "Otuz gün. Uyku daha ağır. Açlık daha dürüst. Güç burada." },
-    "bd40": { "title": "Zırh Dövüldü",       "body": "Kırk gün. İçinde yürüdüğün beden başladığın beden değil." },
-    "bd50": { "title": "Gökyüzü Gözü",       "body": "Elli gün. Hareket ettin. Ödül artık olduğun kişi." },
-    "mn10": { "title": "İlk Tohum",          "body": "On gün. On kere üst üste kazandığından az harcadın. Ormanlar böyle başlar." },
-    "mn20": { "title": "Kökler İnsin",       "body": "Yirmi gün. Para eskiden parmaklarından kayardı. Artık kalıyor." },
-    "mn30": { "title": "Mabet Kuruldu",      "body": "Otuz gün. Hayır demenin disiplini, zengin olmanın disiplinidir." },
-    "mn40": { "title": "Denge Tutuldu",      "body": "Kırk gün. Artık faturadan korkmuyorsun. Fatura sana saygı duyuyor." },
-    "mn50": { "title": "Servet Zihni",       "body": "Elli gün. Aynı kazanıyorsun. Daha fazla tutuyorsun. O fark özgürlüktür." }
+    "dd10": {
+      "title": "İlk Tırmanış",
+      "body": "On gün geçti. Telefon daha sessiz. Ellerin hiçbir şeyi tutmamayı hatırlamaya başladı."
+    },
+    "dd20": {
+      "title": "Sis Kalkıyor",
+      "body": "Yirmi gün. Dürtüler hâlâ geliyor — ama artık onları geldiğini görüyorsun. Her şey bu."
+    },
+    "dd30": {
+      "title": "Zihni Döv",
+      "body": "Otuz gün. Eski döngü öldü. Yerine başka bir şey yaşıyor şimdi. Geriye bakma."
+    },
+    "dd40": {
+      "title": "Kükre",
+      "body": "Kırk gün. Eskiden sessizlikten ürkerdin. Şimdi onu arıyorsun."
+    },
+    "dd50": {
+      "title": "Saatlerin Ustası",
+      "body": "Elli gün. Dopamine orucu artık oruç değil. Yaşam tarzın bu. Yol senin."
+    },
+    "sm10": {
+      "title": "Şafağın İlk Ucu",
+      "body": "On sabah kazandın. Dünya kimse uyanmadan senin."
+    },
+    "sm20": {
+      "title": "Kutsal Saat",
+      "body": "Yirmi gün. Kahve artık aciliyeti tetiklemiyor. Sessizlik tetikliyor."
+    },
+    "sm30": {
+      "title": "Bulutların Üstünde",
+      "body": "Otuz sabah. Günü başlamadan görüyorsun. Az kişi görür."
+    },
+    "sm40": {
+      "title": "İç Ateş",
+      "body": "Kırk gün. Sabah artık bir disiplin değil — bir ihtiyaç."
+    },
+    "sm50": {
+      "title": "Güneş Ustası",
+      "body": "Elli sabah. Artık ışığı beklemiyorsun. Sen getiriyorsun."
+    },
+    "md10": {
+      "title": "Bilemek",
+      "body": "On gün kendi kafanın içinde kaldın ve kaçmadın. Çoğu kaçar."
+    },
+    "md20": {
+      "title": "Kilitlendi",
+      "body": "Yirmi gün. Gürültü hâlâ yüksek. Ama daha sessiz bir oda buldun."
+    },
+    "md30": {
+      "title": "Fırtınanın Gözü",
+      "body": "Otuz gün. Etrafta kaos — içeride düzen. Numarayı öğrendin."
+    },
+    "md40": {
+      "title": "Kılıç Bilendi",
+      "body": "Kırk gün. Dikkat artık bir silah. Önemli olana çevir."
+    },
+    "md50": {
+      "title": "Durgun Zihin",
+      "body": "Elli gün. Seni yöneten zihin, artık senin yönettiğin zihin."
+    },
+    "bd10": {
+      "title": "İlk Mil",
+      "body": "On gün. Hareketsiz olan beden artık hareket ediyor. Küçük, ama gerçek."
+    },
+    "bd20": {
+      "title": "Temel Atıldı",
+      "body": "Yirmi gün. Ayna sana daha iyi bir şekilde yalan söylemeye başlıyor."
+    },
+    "bd30": {
+      "title": "Tırmanış",
+      "body": "Otuz gün. Uyku daha ağır. Açlık daha dürüst. Güç burada."
+    },
+    "bd40": {
+      "title": "Zırh Dövüldü",
+      "body": "Kırk gün. İçinde yürüdüğün beden başladığın beden değil."
+    },
+    "bd50": {
+      "title": "Gökyüzü Gözü",
+      "body": "Elli gün. Hareket ettin. Ödül artık olduğun kişi."
+    },
+    "mn10": {
+      "title": "İlk Tohum",
+      "body": "On gün. On kere üst üste kazandığından az harcadın. Ormanlar böyle başlar."
+    },
+    "mn20": {
+      "title": "Kökler İnsin",
+      "body": "Yirmi gün. Para eskiden parmaklarından kayardı. Artık kalıyor."
+    },
+    "mn30": {
+      "title": "Mabet Kuruldu",
+      "body": "Otuz gün. Hayır demenin disiplini, zengin olmanın disiplinidir."
+    },
+    "mn40": {
+      "title": "Denge Tutuldu",
+      "body": "Kırk gün. Artık faturadan korkmuyorsun. Fatura sana saygı duyuyor."
+    },
+    "mn50": {
+      "title": "Servet Zihni",
+      "body": "Elli gün. Aynı kazanıyorsun. Daha fazla tutuyorsun. O fark özgürlüktür."
+    }
   },
   "profile": {
     "title": "Sen",
@@ -680,7 +773,6 @@
     "reminderBodyStart": "İlk dersi tamamla. 5 dakika.",
     "reminderBodyDanger": "Bu kadar emek söndürülmez. Bugünkü ders seni bekliyor.",
     "reminderBodyProgress": "Bugünün görevini tamamla, seri sürsün.",
-
     "dailyStart0Title": "🔥 Bugün başlama günü",
     "dailyStart0Body": "İlk ders 5 dakika. Aklında sadece bir adım kalsın.",
     "dailyStart1Title": "Yarına bırakma",
@@ -721,7 +813,6 @@
     "dailyStart18Body": "İlk adım. Tek başına. 5 dakika. Hadi.",
     "dailyStart19Title": "Ders 1 — başla",
     "dailyStart19Body": "Bekleme yok. Plan yok. Sadece aç ve başla.",
-
     "dailyProgress0Title": "🔥 {{streak}}. gün — devam",
     "dailyProgress0Body": "Bugün tek bir ders. Alev hâlâ sende.",
     "dailyProgress1Title": "{{streak}} gün oldu",
@@ -762,12 +853,10 @@
     "dailyProgress18Body": "{{streak}} gün geldi. Bugün gelmemek istisna olur — istisna olma.",
     "dailyProgress19Title": "{{streak}} — kanıt biriktirdin",
     "dailyProgress19Body": "Bugün kanıt sayısı +1. Aç, başla, bitir.",
-
     "d1HookTitle": "Bir gün geçti — burası mı seni unutturdu?",
     "d1HookBody": "Disiplin günde 5 dakika ile başlar. İlk dersini aç, başla.",
     "d3HookTitle": "3 gün oldu — yolun başında bekliyorum",
     "d3HookBody": "Geri dön. Tek bir ders, tek bir adım. Şu an aç.",
-
     "weeklyRecapTitle": "Haftan nasıl geçti? 📊",
     "weeklyRecapBody": "Stats sekmesinden 7 günlük özetine bak — yeni hafta yarın başlıyor.",
     "streakAtRiskTitle": "🔥 {{streak}} gün tehlikede",
@@ -997,71 +1086,258 @@
     "7": "Efsane"
   },
   "milestone": {
-    "3":   { "title": "3 Gün!",    "subtitle": "Alev tutuştu" },
-    "7":   { "title": "1 Hafta!",  "subtitle": "Bir hafta tamamlandı" },
-    "14":  { "title": "2 Hafta!",  "subtitle": "Yeni ritim kuruluyor" },
-    "21":  { "title": "3 Hafta!",  "subtitle": "Disiplin kalıcı" },
-    "30":  { "title": "30 Gün!",   "subtitle": "Yeni rutin, yeni yön" },
-    "60":  { "title": "60 Gün!",   "subtitle": "Saygı emekle geldi" },
-    "100": { "title": "100 Gün!",  "subtitle": "Ustalık görünür oldu" },
-    "365": { "title": "1 Yıl!",    "subtitle": "Bir yıl tamamlandı" }
+    "3": {
+      "title": "3 Gün!",
+      "subtitle": "Alev tutuştu"
+    },
+    "7": {
+      "title": "1 Hafta!",
+      "subtitle": "Bir hafta tamamlandı"
+    },
+    "14": {
+      "title": "2 Hafta!",
+      "subtitle": "Yeni ritim kuruluyor"
+    },
+    "21": {
+      "title": "3 Hafta!",
+      "subtitle": "Disiplin kalıcı"
+    },
+    "30": {
+      "title": "30 Gün!",
+      "subtitle": "Yeni rutin, yeni yön"
+    },
+    "60": {
+      "title": "60 Gün!",
+      "subtitle": "Saygı emekle geldi"
+    },
+    "100": {
+      "title": "100 Gün!",
+      "subtitle": "Ustalık görünür oldu"
+    },
+    "365": {
+      "title": "1 Yıl!",
+      "subtitle": "Bir yıl tamamlandı"
+    }
   },
   "dailyChallenges": {
-    "cold_water": { "title": "Soğuk Su Şoku", "body": "Bugün 30 saniye soğuk duş veya yüzünü soğuk suyla yıka." },
-    "phone_free_hour": { "title": "Telefonsuz 1 Saat", "body": "Bugün 1 saat boyunca telefonun başka odada kalsın." },
-    "walk_15": { "title": "15 Dakika Yürü", "body": "Bugün 15 dakika dışarıda, telefonsuz yürü." },
-    "pushup_20": { "title": "20 Şınav", "body": "Bugün 20 şınav çek (3 sete bölebilirsin)." },
-    "water_2l": { "title": "2 Litre Su", "body": "Bugün 2 litre su iç. Görünür şişede tut." },
-    "no_sugar": { "title": "Şekersiz Gün", "body": "Bugün ek şeker yok — meyve hariç." },
-    "read_10": { "title": "10 Sayfa Kitap", "body": "Bugün herhangi bir kitaptan 10 sayfa oku." },
-    "breath_478": { "title": "4-7-8 Nefes", "body": "4 saniye al, 7 saniye tut, 8 saniye ver. 4 tekrar." },
-    "sun_5": { "title": "Sabah Güneşi", "body": "Sabah uyandıktan sonraki 1 saatte 5 dakika güneş ışığı al." },
-    "no_scroll": { "title": "Akışsız Gün", "body": "Bugün TikTok, Reels veya Shorts akışını açma." },
-    "tidy_5": { "title": "5 Dakika Toparla", "body": "Odanın en dağınık alanını 5 dakikada topla." },
-    "gratitude_3": { "title": "3 Şükran", "body": "Bugün şükran duyduğun 3 şeyi yaz." },
-    "plank_60": { "title": "60 Saniye Plank", "body": "Tek sette 60 saniye plank tut." },
-    "no_complaint": { "title": "Şikayetsiz Gün", "body": "Bugün hiç kimseden / hiçbir şeyden şikayet etme." },
-    "compliment": { "title": "Gerçek İltifat", "body": "Tanıdığın birine düşünülmüş, gerçek bir iltifat yap." },
-    "no_caffeine_pm": { "title": "Öğleden Sonra Kafeinsiz", "body": "14:00 sonrası kahve / çay / kola yok." },
-    "eye_contact": { "title": "Göz Teması", "body": "Bugün konuştuğun kişilere ekstra 1 saniye fazla göz temasında bulun." },
-    "wallet_audit": { "title": "Cüzdan Denetimi", "body": "Son 7 günün harcamalarına bak. Bir gereksiz alımı tespit et." },
-    "silent_meal": { "title": "Sessiz Yemek", "body": "Bir öğünü telefon / TV / podcast olmadan ye." },
-    "unsub_1": { "title": "Bir Abonelikten Çık", "body": "E-posta gelen kutundan 1 spam aboneliğinden çık." },
-    "morning_quiet": { "title": "Sessiz Sabah", "body": "Sabahın ilk 30 dakikası: telefon yok, müzik yok, sadece sen." },
-    "pomodoro_2": { "title": "2 Pomodoro", "body": "Bugün 2 × 25 dakika kesintisiz odaklanmış iş yap." },
-    "stretch_5": { "title": "5 Dakika Esneme", "body": "Bugün 5 dakika esneme egzersizi yap." },
-    "cold_call": { "title": "Bir Aramayı Yap", "body": "Erteliyor olduğun bir telefon görüşmesini şimdi yap." },
-    "one_decision": { "title": "Tek Karar", "body": "Bugün ertelediğin bir karara nokta koy." },
-    "zero_inbox": { "title": "Gelen Kutusunu Sıfırla", "body": "Bugün e-posta veya mesaj kutunu sıfırla: yanıtla, sil ya da arşivle." },
-    "gym_show_up": { "title": "Sadece Git", "body": "Spor salonuna sadece git — ne yaptığın önemli değil, gitmek önemli." },
-    "sleep_early": { "title": "30 Dakika Erken", "body": "Bu gece her zamankinden 30 dakika erken yat." },
-    "send_thank": { "title": "Teşekkür Mesajı", "body": "Sana son 1 yılda yardım etmiş birine 'teşekkür ederim' yaz." },
-    "review_yesterday": { "title": "Dünü Gözden Geçir", "body": "5 dakika dünkü gününü yaz: ne iyi gitti, ne kaçırdın?" }
+    "cold_water": {
+      "title": "Soğuk Su Şoku",
+      "body": "Bugün 30 saniye soğuk duş veya yüzünü soğuk suyla yıka."
+    },
+    "phone_free_hour": {
+      "title": "Telefonsuz 1 Saat",
+      "body": "Bugün 1 saat boyunca telefonun başka odada kalsın."
+    },
+    "walk_15": {
+      "title": "15 Dakika Yürü",
+      "body": "Bugün 15 dakika dışarıda, telefonsuz yürü."
+    },
+    "pushup_20": {
+      "title": "20 Şınav",
+      "body": "Bugün 20 şınav çek (3 sete bölebilirsin)."
+    },
+    "water_2l": {
+      "title": "2 Litre Su",
+      "body": "Bugün 2 litre su iç. Görünür şişede tut."
+    },
+    "no_sugar": {
+      "title": "Şekersiz Gün",
+      "body": "Bugün ek şeker yok — meyve hariç."
+    },
+    "read_10": {
+      "title": "10 Sayfa Kitap",
+      "body": "Bugün herhangi bir kitaptan 10 sayfa oku."
+    },
+    "breath_478": {
+      "title": "4-7-8 Nefes",
+      "body": "4 saniye al, 7 saniye tut, 8 saniye ver. 4 tekrar."
+    },
+    "sun_5": {
+      "title": "Sabah Güneşi",
+      "body": "Sabah uyandıktan sonraki 1 saatte 5 dakika güneş ışığı al."
+    },
+    "no_scroll": {
+      "title": "Akışsız Gün",
+      "body": "Bugün TikTok, Reels veya Shorts akışını açma."
+    },
+    "tidy_5": {
+      "title": "5 Dakika Toparla",
+      "body": "Odanın en dağınık alanını 5 dakikada topla."
+    },
+    "gratitude_3": {
+      "title": "3 Şükran",
+      "body": "Bugün şükran duyduğun 3 şeyi yaz."
+    },
+    "plank_60": {
+      "title": "60 Saniye Plank",
+      "body": "Tek sette 60 saniye plank tut."
+    },
+    "no_complaint": {
+      "title": "Şikayetsiz Gün",
+      "body": "Bugün hiç kimseden / hiçbir şeyden şikayet etme."
+    },
+    "compliment": {
+      "title": "Gerçek İltifat",
+      "body": "Tanıdığın birine düşünülmüş, gerçek bir iltifat yap."
+    },
+    "no_caffeine_pm": {
+      "title": "Öğleden Sonra Kafeinsiz",
+      "body": "14:00 sonrası kahve / çay / kola yok."
+    },
+    "eye_contact": {
+      "title": "Göz Teması",
+      "body": "Bugün konuştuğun kişilere ekstra 1 saniye fazla göz temasında bulun."
+    },
+    "wallet_audit": {
+      "title": "Cüzdan Denetimi",
+      "body": "Son 7 günün harcamalarına bak. Bir gereksiz alımı tespit et."
+    },
+    "silent_meal": {
+      "title": "Sessiz Yemek",
+      "body": "Bir öğünü telefon / TV / podcast olmadan ye."
+    },
+    "unsub_1": {
+      "title": "Bir Abonelikten Çık",
+      "body": "E-posta gelen kutundan 1 spam aboneliğinden çık."
+    },
+    "morning_quiet": {
+      "title": "Sessiz Sabah",
+      "body": "Sabahın ilk 30 dakikası: telefon yok, müzik yok, sadece sen."
+    },
+    "pomodoro_2": {
+      "title": "2 Pomodoro",
+      "body": "Bugün 2 × 25 dakika kesintisiz odaklanmış iş yap."
+    },
+    "stretch_5": {
+      "title": "5 Dakika Esneme",
+      "body": "Bugün 5 dakika esneme egzersizi yap."
+    },
+    "cold_call": {
+      "title": "Bir Aramayı Yap",
+      "body": "Erteliyor olduğun bir telefon görüşmesini şimdi yap."
+    },
+    "one_decision": {
+      "title": "Tek Karar",
+      "body": "Bugün ertelediğin bir karara nokta koy."
+    },
+    "zero_inbox": {
+      "title": "Gelen Kutusunu Sıfırla",
+      "body": "Bugün e-posta veya mesaj kutunu sıfırla: yanıtla, sil ya da arşivle."
+    },
+    "gym_show_up": {
+      "title": "Sadece Git",
+      "body": "Spor salonuna sadece git — ne yaptığın önemli değil, gitmek önemli."
+    },
+    "sleep_early": {
+      "title": "30 Dakika Erken",
+      "body": "Bu gece her zamankinden 30 dakika erken yat."
+    },
+    "send_thank": {
+      "title": "Teşekkür Mesajı",
+      "body": "Sana son 1 yılda yardım etmiş birine 'teşekkür ederim' yaz."
+    },
+    "review_yesterday": {
+      "title": "Dünü Gözden Geçir",
+      "body": "5 dakika dünkü gününü yaz: ne iyi gitti, ne kaçırdın?"
+    }
   },
   "ranks": {
-    "novice": { "title": "Acemi", "subtitle": "Yolculuk başlıyor" },
-    "disciple": { "title": "Çırak", "subtitle": "İlk yol tamamlandı" },
-    "warrior": { "title": "Savaşçı", "subtitle": "Savaşçı zihniyeti" },
-    "monk": { "title": "Disiplinli", "subtitle": "Disiplin zirvede" },
-    "master": { "title": "Üstad", "subtitle": "Usta" },
-    "legend": { "title": "Efsane", "subtitle": "Efsane" }
+    "novice": {
+      "title": "Acemi",
+      "subtitle": "Yolculuk başlıyor"
+    },
+    "disciple": {
+      "title": "Çırak",
+      "subtitle": "İlk yol tamamlandı"
+    },
+    "warrior": {
+      "title": "Savaşçı",
+      "subtitle": "Savaşçı zihniyeti"
+    },
+    "monk": {
+      "title": "Disiplinli",
+      "subtitle": "Disiplin zirvede"
+    },
+    "master": {
+      "title": "Üstad",
+      "subtitle": "Usta"
+    },
+    "legend": {
+      "title": "Efsane",
+      "subtitle": "Efsane"
+    }
   },
   "ach": {
-    "first_flame": { "title": "İlk Alev", "description": "3 günlük seri" },
-    "hot_streak": { "title": "Sıcak Seri", "description": "7 günlük seri" },
-    "two_weeks": { "title": "İki Hafta Savaşçısı", "description": "14 günlük seri" },
-    "on_fire": { "title": "Yanıyorsun", "description": "30 günlük seri" },
-    "unstoppable": { "title": "Durdurulamaz", "description": "100 günlük seri" },
-    "legend": { "title": "Efsane", "description": "365 günlük seri" },
-    "getting_started": { "title": "Başlangıç", "description": "10 ders tamamla" },
-    "committed": { "title": "Kararlı", "description": "30 ders tamamla" },
-    "centurion": { "title": "Yüzbaşı", "description": "100 ders tamamla" },
-    "marathoner": { "title": "Maratoncu", "description": "250 ders tamamla" },
-    "level_2": { "title": "Tırmanışta", "description": "Seviye 2" },
-    "level_5": { "title": "Elit", "description": "Seviye 5" },
-    "level_8": { "title": "Usta", "description": "Seviye 7" },
-    "night_owl": { "title": "Gece Kuşu", "description": "Gece 23:00 sonrası ders bitir" },
-    "early_bird": { "title": "Erken Kuş", "description": "Sabah 06:00 öncesi ders bitir" },
-    "weekend_warrior": { "title": "Hafta Sonu Savaşçısı", "description": "Hafta sonu boyunca seri tut" }
+    "first_flame": {
+      "title": "İlk Alev",
+      "description": "3 günlük seri"
+    },
+    "hot_streak": {
+      "title": "Sıcak Seri",
+      "description": "7 günlük seri"
+    },
+    "two_weeks": {
+      "title": "İki Hafta Savaşçısı",
+      "description": "14 günlük seri"
+    },
+    "on_fire": {
+      "title": "Yanıyorsun",
+      "description": "30 günlük seri"
+    },
+    "unstoppable": {
+      "title": "Durdurulamaz",
+      "description": "100 günlük seri"
+    },
+    "legend": {
+      "title": "Efsane",
+      "description": "365 günlük seri"
+    },
+    "getting_started": {
+      "title": "Başlangıç",
+      "description": "10 ders tamamla"
+    },
+    "committed": {
+      "title": "Kararlı",
+      "description": "30 ders tamamla"
+    },
+    "centurion": {
+      "title": "Yüzbaşı",
+      "description": "100 ders tamamla"
+    },
+    "marathoner": {
+      "title": "Maratoncu",
+      "description": "250 ders tamamla"
+    },
+    "level_2": {
+      "title": "Tırmanışta",
+      "description": "Seviye 2"
+    },
+    "level_5": {
+      "title": "Elit",
+      "description": "Seviye 5"
+    },
+    "level_8": {
+      "title": "Usta",
+      "description": "Seviye 7"
+    },
+    "night_owl": {
+      "title": "Gece Kuşu",
+      "description": "Gece 23:00 sonrası ders bitir"
+    },
+    "early_bird": {
+      "title": "Erken Kuş",
+      "description": "Sabah 06:00 öncesi ders bitir"
+    },
+    "weekend_warrior": {
+      "title": "Hafta Sonu Savaşçısı",
+      "description": "Hafta sonu boyunca seri tut"
+    }
+  },
+  "leaderboard": {
+    "title": "LİDERLİK TABLOSU",
+    "subtitle": "Disiplin topluluğundaki konumun. Anonim rumuzlar kullanılır.",
+    "weekly": "Haftalık",
+    "allTime": "Tüm Zamanlar",
+    "streakDays": "{{count}} gün seri"
   }
 }
