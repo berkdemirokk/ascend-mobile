@@ -617,7 +617,7 @@ run('purchase failure semantics', () => {
 });
 
 run('release blocker regression guards', () => {
-  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8');
+  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useCloudSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useHeartsSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'contexts', 'appStateConstants.js'), 'utf8');
   const lessonSource = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');
   const purchasesSource = fs.readFileSync(path.join(SRC, 'services', 'purchases.js'), 'utf8');
   const adsSource = fs.readFileSync(path.join(SRC, 'services', 'ads.js'), 'utf8');
@@ -660,7 +660,7 @@ run('release blocker regression guards', () => {
 });
 
 run('deterministic lesson rewards', () => {
-  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8');
+  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'contexts', 'appReducer.js'), 'utf8');
   const lessonSource = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');
   assert(!appContextSource.includes('Math.random()'), 'lesson completion reward must not use random multipliers');
   assert(!lessonSource.includes('Math.random()'), 'quiz answers must not grant random rewards');
@@ -954,7 +954,7 @@ run('public copy avoids unsupported motivation stats', () => {
 });
 
 run('critical flow regression guards', () => {
-  const appContext = fs.readFileSync(path.join(SRC, 'contexts/AppContext.js'), 'utf8');
+  const appContext = fs.readFileSync(path.join(SRC, 'contexts/AppContext.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useCloudSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'usePremiumSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useReferralSync.js'), 'utf8');
   const ads = fs.readFileSync(path.join(SRC, 'services/ads.js'), 'utf8');
   const home = fs.readFileSync(path.join(SRC, 'screens/HomeScreen.js'), 'utf8');
   const pathScreen = fs.readFileSync(path.join(SRC, 'screens/PathScreen.js'), 'utf8');
