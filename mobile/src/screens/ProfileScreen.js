@@ -1,12 +1,9 @@
 // ProfileScreen — "Sen" tab in the redesigned 4-tab nav.
 // Vivid Impact light theme. Avatar + level progress, rank badge,
 // stats grid, achievements horizontal scroll, streak heatmap, share + reflections.
-//
-// Backup: ProfileScreen.legacy.js
 
 import React, { useMemo, useRef, useState } from 'react';
-import {
-  useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import {
   View,
   Text,
@@ -21,7 +18,6 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
-import Svg, { Circle } from 'react-native-svg';
 
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
@@ -44,16 +40,19 @@ import { captureAndShare } from '../services/streakShare';
 import LightTopAppBar from '../components/LightTopAppBar';
 import { LT, LT_SPACING, LT_RADIUS } from '../config/lightTheme';
 
+// Extracted modular subcomponents
+import CircularProgress from '../components/profile/CircularProgress';
+import ProfileStatCard from '../components/profile/ProfileStatCard';
+import LevelProgressCard from '../components/profile/LevelProgressCard';
+import IdentityBadgesSection from '../components/profile/IdentityBadgesSection';
+import PathMasterySection from '../components/profile/PathMasterySection';
+import ProfileAchievementsSection from '../components/profile/ProfileAchievementsSection';
+
 export default function ProfileScreen({ navigation }) {
   const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const appState = useApp();
-  // ALL fields defaulted — without defaults, the very first render
-  // after sign-out (or any state-reset transition) can leave fields
-  // undefined, and `totalXP.toLocaleString()` later in the file throws
-  // "Cannot read property 'toLocaleString' of undefined". The
-  // ErrorBoundary then renders a dark fallback and the user perceives
-  // the Profile screen as "siyah / bozuldu" (the recent user report).
+
   const {
     totalXP = 0,
     level = 1,
@@ -72,9 +71,6 @@ export default function ProfileScreen({ navigation }) {
   const [reportVisible, setReportVisible] = useState(false);
   const shareCardRef = useRef(null);
 
-  // Compute transformation report on demand. reportEligible gates the
-  // entry-point card (≥10 lessons + ≥7 days since install); below that
-  // the data is too thin to be encouraging.
   const transformationReport = useMemo(
     () => (reportEligible(appState) ? buildTransformationReport(appState) : null),
     [appState],
@@ -218,14 +214,14 @@ export default function ProfileScreen({ navigation }) {
 
         {/* Stats grid 2x2 */}
         <View style={styles.statsGrid}>
-          <StatCard
+          <ProfileStatCard
             icon="bolt"
             label={t('profile.totalXp', 'TOPLAM XP')}
             value={(totalXP ?? 0).toLocaleString(
               i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR',
             )}
           />
-          <StatCard
+          <ProfileStatCard
             icon="local-fire-department"
             iconColor={LT.primaryContainer}
             label={t('profile.currentStreak', 'MEVCUT SERİ')}
@@ -233,13 +229,13 @@ export default function ProfileScreen({ navigation }) {
             unit={t('common.days', 'Gün')}
             accent
           />
-          <StatCard
+          <ProfileStatCard
             icon="menu-book"
             label={t('profile.lessonsDone', 'TAMAMLANAN')}
             value={`${completedLessonsTotal}`}
             unit={t('common.lessons', 'Ders')}
           />
-          <StatCard
+          <ProfileStatCard
             icon="military-tech"
             label={t('profile.longestStreak', 'EN UZUN')}
             value={`${longestStreak || 0}`}
@@ -248,92 +244,24 @@ export default function ProfileScreen({ navigation }) {
         </View>
 
         {/* Level progress */}
-        <View style={styles.levelCard}>
-          <View style={styles.levelHeader}>
-            <View>
-              <Text style={styles.levelLabel}>
-                {t('profile.level', 'SEVİYE')} {level}
-              </Text>
-              <Text style={styles.levelTitle}>
-                {t(
-                  `level.${level}`,
-                  LEVEL_THRESHOLDS.find((tier) => tier.level === level)
-                    ?.title || 'Beginner',
-                )}
-              </Text>
-            </View>
-            <Text style={styles.levelXP}>
-              <Text style={styles.levelXPNum}>{xpInLevel}</Text>
-              <Text style={styles.levelXPMax}> / {xpForNext} XP</Text>
-            </Text>
-          </View>
-          <View style={styles.progressTrack}>
-            <View
-              style={[styles.progressFill, { width: `${levelPercent}%` }]}
-            />
-          </View>
-          {nextRank ? (
-            <View style={styles.nextRankPill}>
-              <MaterialIcons
-                name="trending-up"
-                size={12}
-                color={LT.primaryContainer}
-              />
-              <Text style={styles.nextRankText}>
-                {t('profile.nextRank', 'SONRAKİ RÜTBE')}:{' '}
-                <Text style={styles.nextRankValue}>
-                  {t(`ranks.${nextRank.id}.title`, nextRank.title)}
-                </Text>
-              </Text>
-            </View>
-          ) : null}
-        </View>
+        <LevelProgressCard
+          level={level}
+          xpInLevel={xpInLevel}
+          xpForNext={xpForNext}
+          levelPercent={levelPercent}
+          nextRank={nextRank}
+        />
 
         {/* Identity badges — earned by hitting 80%+ on a path */}
-        {identityBadges.length > 0 ? (
-          <View style={styles.badgesSection}>
-            <View style={styles.badgesHeader}>
-              <Text style={styles.sectionTitle}>
-                {t('profile.identityTitle', 'KİMLİĞİN')}
-              </Text>
-              <TouchableOpacity
-                onPress={handleSharePublicProfile}
-                activeOpacity={0.7}
-                style={styles.publicShareBtn}
-              >
-                <MaterialIcons name="ios-share" size={14} color={LT.primary} />
-                <Text style={styles.publicShareText}>
-                  {t('profile.publicShareCta', 'PROFİLİ PAYLAŞ')}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <Text style={styles.badgesIntro}>
-              {t(
-                'profile.identitySub',
-                'Bitirdiğin yollar seni şekillendiriyor. Sen artık şusun:',
-              )}
-            </Text>
-            <View style={styles.badgesRow}>
-              {identityBadges.map((b) => (
-                <View key={b.id} style={styles.badgeChip}>
-                  <Text style={styles.badgeIcon}>{b.icon}</Text>
-                  <Text style={styles.badgeTitle}>{b.title}</Text>
-                </View>
-              ))}
-            </View>
-          </View>
-        ) : null}
+        <IdentityBadgesSection
+          identityBadges={identityBadges}
+          onSharePublicProfile={handleSharePublicProfile}
+        />
 
-        {/* Character Hero — large visual identity badge keyed off the
-            user's longest streak. This is the "look who I am now" piece
-            that turns the streak into a SELF, not just a number. Pinned
-            high in the profile so it's the first thing seen. */}
+        {/* Character Hero */}
         <CharacterHero longestStreak={longestStreak} />
 
-        {/* Transformation Report entry-point — only renders once user
-            has enough data (≥10 lessons + ≥7 days). The big "look
-            how far you've come" surface. Knockout retention feature
-            for v1.0.12. */}
+        {/* Transformation Report entry-point */}
         {transformationReport ? (
           <TouchableOpacity
             onPress={() => setReportVisible(true)}
@@ -355,82 +283,17 @@ export default function ProfileScreen({ navigation }) {
           </TouchableOpacity>
         ) : null}
 
-        {/* 30-Day Streak Heatmap — GitHub-style activity grid. Visual
-            proof of investment, drives sunk-cost retention. Reads
-            from lessonHistory which the reducer maintains on every
-            lesson completion. */}
+        {/* 30-Day Streak Heatmap */}
         <StreakHeatmap lessonHistory={lessonHistory} />
 
-        {/* Path Mastery — per-path progress percentage cards. Creates
-            sunk-cost feeling: "I've invested X% on this path, can't quit
-            now". Big retention lever for habit apps. */}
-        <View style={styles.pathMasterySection}>
-          <Text style={styles.sectionTitle}>
-            {t('profile.pathMasteryTitle', 'YOL USTALIĞI')}
-          </Text>
-          {PATHS.map((p) => {
-            const completed = pathProgress?.[p.id]?.completed?.length || 0;
-            const total = p.duration || 50;
-            const pct = Math.min(100, Math.round((completed / total) * 100));
-            return (
-              <View key={p.id} style={styles.masteryRow}>
-                <View style={styles.masteryHeader}>
-                  <MaterialIcons
-                    name={p.materialIcon}
-                    size={16}
-                    color={LT.onSurfaceVariant}
-                  />
-                  <Text style={styles.masteryName} numberOfLines={1}>
-                    {t(`paths.${p.id}.shortTitle`, p.title)}
-                  </Text>
-                  <Text style={styles.masteryPct}>{pct}%</Text>
-                </View>
-                <View style={styles.masteryTrack}>
-                  <View
-                    style={[
-                      styles.masteryFill,
-                      { width: `${pct}%` },
-                      pct >= 100 ? styles.masteryFillDone : null,
-                    ]}
-                  />
-                </View>
-              </View>
-            );
-          })}
-        </View>
+        {/* Path Mastery */}
+        <PathMasterySection pathProgress={pathProgress} />
 
         {/* Achievements */}
-        <View style={styles.achievementsSection}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>
-              {t('profile.achievements', 'BAŞARIMLAR')}
-            </Text>
-            <TouchableOpacity activeOpacity={0.7} style={styles.seeAll}>
-              <Text style={styles.seeAllText}>
-                {t('profile.seeAll', 'TÜMÜ')}
-              </Text>
-              <MaterialIcons
-                name="chevron-right"
-                size={16}
-                color={LT.primaryContainer}
-              />
-            </TouchableOpacity>
-          </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.achievementsRow}
-          >
-            {recentAchievements.map((a) => (
-              <AchievementCard
-                key={`${a.id}-${a.locked ? 'lock' : 'unlock'}`}
-                id={a.id}
-                locked={a.locked}
-                onPress={() => setSelectedAchievement(a)}
-              />
-            ))}
-          </ScrollView>
-        </View>
+        <ProfileAchievementsSection
+          recentAchievements={recentAchievements}
+          onSelectAchievement={setSelectedAchievement}
+        />
 
         {/* Streak Calendar */}
         <View style={styles.calendarWrap}>
@@ -481,10 +344,6 @@ export default function ProfileScreen({ navigation }) {
         onUpgrade={() => navigation.navigate('Paywall', { source: 'achievement_detail' })}
       />
 
-      {/* Transformation Report — full-screen modal with personal
-          insights from on-device data. Free users see 4 headline
-          stats + a premium teaser; premium users see full insights
-          and can share. */}
       <TransformationReportModal
         visible={reportVisible}
         report={transformationReport}
@@ -515,114 +374,6 @@ export default function ProfileScreen({ navigation }) {
   );
 }
 
-// ─── Subcomponents ────────────────────────────────────────────────────────────
-
-function CircularProgress({ size = 132, percent = 0 }) {
-  const stroke = 4;
-  const radius = (size - stroke) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (percent / 100) * circumference;
-  return (
-    <Svg
-      width={size}
-      height={size}
-      style={{ position: 'absolute', top: 0, left: 0 }}
-    >
-      <Circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        stroke={LT.outlineVariant}
-        strokeWidth={stroke}
-        fill="transparent"
-      />
-      <Circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        stroke={LT.primaryContainer}
-        strokeWidth={stroke}
-        fill="transparent"
-        strokeDasharray={`${circumference} ${circumference}`}
-        strokeDashoffset={offset}
-        strokeLinecap="round"
-        rotation="-90"
-        origin={`${size / 2}, ${size / 2}`}
-      />
-    </Svg>
-  );
-}
-
-function StatCard({ icon, iconColor, label, value, unit, accent }) {
-  return (
-    <View style={[styles.statCard, accent && styles.statCardAccent]}>
-      <View style={styles.statCardHeader}>
-        <MaterialIcons
-          name={icon}
-          size={16}
-          color={iconColor || LT.onSurfaceVariant}
-        />
-        <Text style={styles.statCardLabel}>{label}</Text>
-      </View>
-      <View style={styles.statCardBody}>
-        <Text style={[styles.statCardValue, accent && styles.statCardValueAccent]}>
-          {value}
-        </Text>
-        {unit ? <Text style={styles.statCardUnit}>{unit}</Text> : null}
-      </View>
-    </View>
-  );
-}
-
-const ACHIEVEMENT_ICONS = {
-  streak3: 'local-fire-department',
-  streak7: 'local-fire-department',
-  streak14: 'local-fire-department',
-  streak30: 'workspace-premium',
-  streak100: 'military-tech',
-  lessons10: 'menu-book',
-  lessons50: 'menu-book',
-  lessons100: 'star',
-  pathComplete: 'check-circle',
-  perfectQuiz: 'verified',
-};
-
-function AchievementCard({ id, locked, onPress }) {
-  const { t } = useTranslation();
-  const ach = ACHIEVEMENTS.find((a) => a.id === id);
-  if (!ach) return null;
-  const iconName = ACHIEVEMENT_ICONS[id] || 'emoji-events';
-  return (
-    <TouchableOpacity
-      activeOpacity={0.85}
-      onPress={onPress}
-      style={[styles.achCard, locked && styles.achCardLocked]}
-    >
-      <View
-        style={[
-          styles.achIconBox,
-          locked && styles.achIconBoxLocked,
-        ]}
-      >
-        <MaterialIcons
-          name={locked ? 'lock' : iconName}
-          size={28}
-          color={locked ? LT.outline : LT.primaryContainer}
-        />
-      </View>
-      <Text
-        style={[styles.achTitle, locked && styles.achTitleLocked]}
-        numberOfLines={2}
-      >
-        {t(`ach.${id}.title`, ach.title || id)}
-      </Text>
-    </TouchableOpacity>
-  );
-}
-
-// ─── Styles ───────────────────────────────────────────────────────────────────
-
-// Theme-aware stylesheet factory. See `src/config/theme.js`.
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
@@ -638,464 +389,146 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
+    backgroundColor: LT.surfaceContainer,
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
   },
 
-  // Off-screen share card
-  shareCardOffscreen: {
-    position: 'absolute',
-    top: 10000,
-    left: 0,
-  },
-
-  // Hero
   hero: {
     alignItems: 'center',
-    paddingVertical: 28,
-    paddingHorizontal: LT_SPACING.containerMargin,
+    paddingVertical: 24,
   },
   avatarOuter: {
     width: 132,
     height: 132,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 16,
+    marginBottom: 14,
   },
   avatarInner: {
-    width: 116,
-    height: 116,
-    borderRadius: 58,
-    backgroundColor: LT.surfaceContainerLow,
-    borderWidth: 2,
-    borderColor: LT.surfaceContainerLowest,
+    width: 112,
+    height: 112,
+    borderRadius: 56,
+    backgroundColor: LT.surfaceContainer,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: LT.outlineVariant,
   },
   rankBadge: {
-    backgroundColor: LT.primaryContainer,
-    paddingHorizontal: 14,
-    paddingVertical: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
     borderRadius: LT_RADIUS.pill,
-    marginBottom: 12,
-    shadowColor: LT.primaryContainer,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.25,
-    shadowRadius: 6,
-    elevation: 3,
+    backgroundColor: 'rgba(227, 18, 18, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(227, 18, 18, 0.25)',
+    marginBottom: 8,
   },
   rankBadgeText: {
-    color: LT.onPrimary,
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: '900',
     letterSpacing: 2,
+    color: LT.primaryContainer,
   },
   username: {
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: '900',
-    letterSpacing: 0,
+    letterSpacing: -0.5,
     color: LT.onSurface,
-    marginBottom: 4,
   },
   subtitle: {
-    fontSize: 11,
-    fontWeight: '900',
+    fontSize: 10,
+    fontWeight: '800',
     letterSpacing: 2,
-    color: LT.onSurfaceVariant,
+    color: LT.outline,
+    marginTop: 4,
   },
 
-  // Stats grid (2x2)
   statsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingHorizontal: LT_SPACING.containerMargin,
     gap: 10,
+    paddingHorizontal: LT_SPACING.containerMargin,
     marginBottom: 14,
   },
-  statCard: {
-    width: '48%',
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.lg,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    padding: 14,
-    minHeight: 104,
-  },
-  statCardAccent: {
-    borderColor: 'rgba(227, 18, 18, 0.4)',
-    backgroundColor: 'rgba(227, 18, 18, 0.04)',
-  },
-  statCardHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    marginBottom: 10,
-  },
-  statCardLabel: {
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.5,
-    color: LT.onSurfaceVariant,
-  },
-  statCardBody: {
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    gap: 4,
-  },
-  statCardValue: {
-    fontSize: 30,
-    fontWeight: '900',
-    letterSpacing: 0,
-    color: LT.onSurface,
-  },
-  statCardValueAccent: {
-    color: LT.primaryContainer,
-  },
-  statCardUnit: {
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 0.5,
-    color: LT.outline,
-    textTransform: 'uppercase',
-  },
 
-  // Level progress
-  levelCard: {
-    marginHorizontal: LT_SPACING.containerMargin,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.xl,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    padding: 18,
-    marginBottom: 14,
-  },
-  levelHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    marginBottom: 10,
-  },
-  levelLabel: {
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 2,
-    color: LT.onSurfaceVariant,
-  },
-  levelTitle: {
-    fontSize: 18,
-    fontWeight: '900',
-    letterSpacing: 0,
-    color: LT.onSurface,
-    marginTop: 2,
-  },
-  levelXP: {
-    textAlign: 'right',
-  },
-  levelXPNum: {
-    fontSize: 18,
-    fontWeight: '900',
-    color: LT.primaryContainer,
-    letterSpacing: 0,
-  },
-  levelXPMax: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: LT.outline,
-  },
-  progressTrack: {
-    width: '100%',
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: LT.surfaceContainer,
-    overflow: 'hidden',
-    marginTop: 6,
-  },
-  progressFill: {
-    height: '100%',
-    backgroundColor: LT.primaryContainer,
-    borderRadius: 4,
-  },
-  nextRankPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    alignSelf: 'flex-start',
-    marginTop: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: LT_RADIUS.pill,
-    backgroundColor: 'rgba(227, 18, 18, 0.07)',
-    borderWidth: 1,
-    borderColor: 'rgba(227, 18, 18, 0.2)',
-  },
-  nextRankText: {
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 1,
-    color: LT.onSurfaceVariant,
-  },
-  nextRankValue: {
-    color: LT.primaryContainer,
-    fontWeight: '900',
-  },
-
-  // Achievements
-  badgesSection: {
-    marginHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 16,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.xl,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    padding: 16,
-  },
-  badgesHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  publicShareBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-  },
-  publicShareText: {
-    color: LT.primary,
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.2,
-  },
-  badgesIntro: {
-    fontSize: 12,
-    color: LT.onSurfaceVariant,
-    fontWeight: '500',
-    marginBottom: 12,
-    marginTop: 4,
-    lineHeight: 17,
-  },
-  badgesRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-  },
-  badgeChip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    backgroundColor: LT.surfaceContainer,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: 'rgba(227, 18, 18, 0.22)',
-  },
-  badgeIcon: { fontSize: 16 },
-  badgeTitle: {
-    fontSize: 13,
-    fontWeight: '900',
-    color: LT.onSurface,
-    letterSpacing: 0,
-  },
-
-  // Transformation Report entry CTA — dark gradient card on Profile
-  // that opens the full TransformationReportModal. Only renders once
-  // the user has enough data (gated by reportEligible).
   transformCta: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
     marginHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 18,
+    marginBottom: 14,
     paddingVertical: 14,
     paddingHorizontal: 16,
-    borderRadius: 16,
-    backgroundColor: '#B70006',
+    borderRadius: LT_RADIUS.xl,
+    backgroundColor: '#0F172A',
     borderWidth: 1,
-    borderColor: '#FDE047',
+    borderColor: '#334155',
   },
   transformIcon: {
     width: 40,
     height: 40,
-    borderRadius: 12,
-    backgroundColor: 'rgba(253, 224, 71, 0.18)',
+    borderRadius: 20,
+    backgroundColor: 'rgba(253, 224, 71, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(253, 224, 71, 0.3)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   transformLabel: {
-    color: '#FDE047',
     fontSize: 10,
     fontWeight: '900',
-    letterSpacing: 1.2,
-    marginBottom: 2,
+    letterSpacing: 1.5,
+    color: '#FDE047',
   },
   transformTitle: {
-    color: '#FFFFFF',
-    fontSize: 15,
-    fontWeight: '900',
-    letterSpacing: 0,
-  },
-
-  // Path Mastery — per-path progress cards. The sunk-cost visualization
-  // ("I've completed 38% of Mind Discipline, I can't quit now") that
-  // makes habit-loop apps stick.
-  pathMasterySection: {
-    marginHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 18,
-    padding: 16,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-  },
-  masteryRow: {
-    marginTop: 12,
-  },
-  masteryHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 6,
-  },
-  masteryName: {
-    flex: 1,
-    color: LT.onSurface,
     fontSize: 13,
     fontWeight: '700',
-  },
-  masteryPct: {
-    color: LT.onSurfaceVariant,
-    fontSize: 12,
-    fontWeight: '800',
-    minWidth: 36,
-    textAlign: 'right',
-  },
-  masteryTrack: {
-    height: 6,
-    backgroundColor: LT.outlineVariant,
-    borderRadius: 3,
-    overflow: 'hidden',
-  },
-  masteryFill: {
-    height: '100%',
-    backgroundColor: LT.primary,
-    borderRadius: 3,
-  },
-  masteryFillDone: {
-    backgroundColor: LT.success || '#10B981',
-  },
-  achievementsSection: {
-    marginBottom: 14,
-  },
-  sectionHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 10,
-  },
-  sectionTitle: {
-    fontSize: 12,
-    fontWeight: '900',
-    letterSpacing: 2,
-    color: LT.onSurface,
-  },
-  seeAll: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 2,
-  },
-  seeAllText: {
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 1.5,
-    color: LT.primaryContainer,
-  },
-  achievementsRow: {
-    paddingHorizontal: LT_SPACING.containerMargin,
-    gap: 10,
-  },
-  achCard: {
-    width: 110,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.lg,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    padding: 12,
-    alignItems: 'center',
-    minHeight: 110,
-  },
-  achCardLocked: {
-    backgroundColor: LT.surfaceContainerLow,
-    opacity: 0.7,
-  },
-  achIconBox: {
-    width: 52,
-    height: 52,
-    borderRadius: 26,
-    backgroundColor: 'rgba(227, 18, 18, 0.08)',
-    borderWidth: 1,
-    borderColor: 'rgba(227, 18, 18, 0.18)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 8,
-  },
-  achIconBoxLocked: {
-    backgroundColor: LT.surfaceContainer,
-    borderColor: LT.outlineVariant,
-  },
-  achTitle: {
-    fontSize: 11,
-    fontWeight: '800',
-    color: LT.onSurface,
-    textAlign: 'center',
-    letterSpacing: 0,
-  },
-  achTitleLocked: {
-    color: LT.outline,
+    color: '#FFFFFF',
+    marginTop: 2,
   },
 
-  // Calendar
   calendarWrap: {
-    marginHorizontal: LT_SPACING.containerMargin,
     marginBottom: 14,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.xl,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    padding: 18,
   },
 
-  // Links
   linksWrap: {
     paddingHorizontal: LT_SPACING.containerMargin,
   },
   linkCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 14,
+    gap: 12,
+    padding: 14,
     backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.xl,
+    borderRadius: LT_RADIUS.lg,
     borderWidth: 1,
     borderColor: LT.outlineVariant,
-    padding: 16,
   },
   linkIconBox: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     backgroundColor: 'rgba(227, 18, 18, 0.08)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   linkTitle: {
+    color: LT.onSurface,
     fontSize: 14,
     fontWeight: '800',
-    color: LT.onSurface,
-    marginBottom: 2,
+    letterSpacing: -0.2,
   },
   linkSubtitle: {
+    color: LT.onSurfaceVariant,
     fontSize: 12,
     fontWeight: '500',
-    color: LT.onSurfaceVariant,
+    marginTop: 2,
+  },
+
+  shareCardOffscreen: {
+    position: 'absolute',
+    left: -9999,
+    top: -9999,
   },
 });
