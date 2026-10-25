@@ -2,12 +2,12 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import {
   View,
   Text,
-  ScrollView,
-  TextInput,
+  
+  
   StyleSheet,
   Animated,
   Easing,
-  Image,
+  
   StatusBar,
   Alert,
 } from 'react-native';
@@ -38,6 +38,7 @@ import SageMode from '../components/SageMode';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
 import { QuizPhase } from '../components/lesson/QuizPhase';
 import { TeachingPhase } from '../components/lesson/TeachingPhase';
+import { CommitPhase } from '../components/lesson/CommitPhase';
 import { playSound } from '../services/sounds';
 import { speak as ttsSpeak, stop as ttsStop } from '../services/tts';
 import {
@@ -808,124 +809,19 @@ export default function LessonScreen({ navigation, route }) {
   );
 
   const renderCommit = () => (
-    <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-      <View style={styles.stepChipTertiary}>
-        <Text style={styles.stepChipTertiaryText}>
-          🎯 {t('lesson.action', 'BUGÜN YAP')}
-        </Text>
-      </View>
-
-      <View style={styles.commitMascotWrap}>
-        <LinearGradient
-          colors={[LT.surfaceContainerLowest, LT.surfaceContainerLowest]}
-          style={styles.commitMascotCircle}
-        >
-          <Image
-            source={require('../../assets/icon.png')}
-            style={styles.commitMascotImg}
-            resizeMode="contain"
-          />
-        </LinearGradient>
-      </View>
-
-      <TouchableOpacity
-        style={[
-          styles.actionCard,
-          (actionDone || alreadyCompleted) && styles.actionCardActive,
-        ]}
-        onPress={() => !alreadyCompleted && setActionDone(!actionDone)}
-        activeOpacity={alreadyCompleted ? 1 : 0.8}
-      >
-        <View
-          style={[
-            styles.checkbox,
-            (actionDone || alreadyCompleted) && styles.checkboxActive,
-          ]}
-        >
-          {(actionDone || alreadyCompleted) && (
-            <MaterialIcons name="check" size={18} color={LT.onPrimary} />
-          )}
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.actionText}>{action}</Text>
-          {!alreadyCompleted && !actionDone && (
-            <Text style={styles.actionHint}>
-              {t('lesson.tapToCheck', 'YAPTIĞINDA İŞARETLE')}
-            </Text>
-          )}
-        </View>
-      </TouchableOpacity>
-
-      {reflectionPrompt ? (
-        <View style={styles.reflectionWrap}>
-          <Text style={styles.reflectionLabel}>{reflectionPrompt}</Text>
-          <View style={styles.reflectionBox}>
-            <TextInput
-              value={reflection}
-              onChangeText={(txt) => setReflection(txt.slice(0, REFLECTION_MAX))}
-              placeholder={t('lesson.reflectionPlaceholder', 'Düşüncelerini buraya yaz...')}
-              placeholderTextColor={LT.outline}
-              multiline
-              style={styles.reflectionInput}
-              editable={!alreadyCompleted}
-            />
-            <View style={styles.reflectionEditIcon} pointerEvents="none">
-              <MaterialIcons name="edit-note" size={20} color={LT.outline} />
-            </View>
-          </View>
-          <View style={styles.reflectionMeta}>
-            <Text style={styles.reflectionMetaText}>
-              {t('lesson.optional', 'OPSİYONEL')}
-            </Text>
-            <Text style={styles.reflectionMetaText}>
-              {reflection.length} / {REFLECTION_MAX}
-            </Text>
-          </View>
-
-          {/* Voice journal — record / play row. Stored locally. */}
-          <View style={styles.voiceRow}>
-            <TouchableOpacity
-              onPress={handleToggleRecord}
-              activeOpacity={0.85}
-              style={[styles.voiceBtn, recording && styles.voiceBtnRecording]}
-              disabled={alreadyCompleted}
-            >
-              <MaterialIcons
-                name={recording ? 'stop-circle' : 'mic'}
-                size={18}
-                color={recording ? LT.onPrimary : LT.primary}
-              />
-              <Text
-                style={[
-                  styles.voiceBtnText,
-                  recording && styles.voiceBtnTextRecording,
-                ]}
-              >
-                {recording
-                  ? t('lesson.voiceStop', 'KAYDI DURDUR')
-                  : recordingUri
-                  ? t('lesson.voiceReRecord', 'YENİDEN KAYDET')
-                  : t('lesson.voiceRecord', 'SESLİ KAYIT')}
-              </Text>
-            </TouchableOpacity>
-            {recordingUri && !recording ? (
-              <TouchableOpacity
-                onPress={handlePlayRecording}
-                activeOpacity={0.85}
-                style={styles.voicePlayBtn}
-              >
-                <MaterialIcons name="play-circle-fill" size={20} color={LT.primary} />
-                <Text style={styles.voicePlayText}>
-                  {t('lesson.voicePlay', 'DİNLE')}
-                </Text>
-              </TouchableOpacity>
-            ) : null}
-          </View>
-        </View>
-      ) : null}
-
-      <View style={{ height: 160 }} />
-    </ScrollView>
+    <CommitPhase
+      action={action}
+      actionDone={actionDone}
+      setActionDone={setActionDone}
+      alreadyCompleted={alreadyCompleted}
+      reflectionPrompt={reflectionPrompt}
+      reflection={reflection}
+      setReflection={setReflection}
+      handleToggleRecord={handleToggleRecord}
+      recording={recording}
+      recordingUri={recordingUri}
+      handlePlayRecording={handlePlayRecording}
+    />
   );
 
   const renderBottomCTA = () => {
@@ -1356,8 +1252,6 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: LT.outlineVariant, gap: 4,
   },
   heartsText: { color: LT.primaryContainer, fontSize: 13, fontWeight: '800' },
-
-  content: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 32 },
   // Multi-page teaching: header row with per-page label + counter.
   // Thin progress bar across the top of the card stack — keeps the
   // user oriented (they know how many pages remain).
@@ -1468,126 +1362,11 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     letterSpacing: 1.2,
   },
-  stepChipTertiary: {
-    alignSelf: 'flex-start',
-    backgroundColor: 'rgba(217, 119, 33, 0.1)',
-    paddingHorizontal: 12, paddingVertical: 6,
-    borderRadius: 999, marginBottom: 24,
-  },
-  stepChipTertiaryText: {
-    color: '#FFB783',
-    fontSize: 11, fontWeight: '900',
-    letterSpacing: 2, textTransform: 'uppercase',
-  },
   // Depth sections appended below the short `explain` after a quiz
   // answer. The HEADER row is a small label ("KONUYA BAĞLAM" /
   // "NASIL UYGULA"); BODY is the content snippet. Visually muted so
   // the primary `explain` remains the headline, but available for
   // users who want to go deeper.
-
-  commitMascotWrap: { alignItems: 'center', marginBottom: 24 },
-  commitMascotCircle: {
-    width: 192, height: 192, borderRadius: 96,
-    alignItems: 'center', justifyContent: 'center',
-    borderWidth: 1, borderColor: LT.outlineVariant,
-    overflow: 'hidden',
-  },
-  commitMascotImg: { width: 132, height: 132, opacity: 0.9 },
-
-  actionCard: {
-    backgroundColor: LT.surfaceContainerLowest,
-    borderWidth: 1, borderColor: 'rgba(227, 18, 18, 0.3)',
-    borderRadius: 18, padding: 16, marginBottom: 24,
-    flexDirection: 'row', gap: 14, alignItems: 'flex-start',
-  },
-  actionCardActive: {
-    borderColor: LT.primaryContainer,
-    backgroundColor: 'rgba(227, 18, 18, 0.06)',
-  },
-  checkbox: {
-    width: 28, height: 28, borderRadius: 8,
-    borderWidth: 2, borderColor: LT.outlineVariant,
-    backgroundColor: 'transparent',
-    alignItems: 'center', justifyContent: 'center',
-    marginTop: 2,
-  },
-  checkboxActive: {
-    backgroundColor: LT.primaryContainer, borderColor: LT.primaryContainer,
-  },
-  actionText: { color: LT.onSurface, fontSize: 15, fontWeight: '600', lineHeight: 22 },
-  actionHint: {
-    color: LT.outline,
-    fontSize: 11, fontWeight: '700',
-    letterSpacing: 1, textTransform: 'uppercase',
-    marginTop: 8,
-  },
-
-  reflectionWrap: { gap: 8 },
-  reflectionLabel: {
-    color: LT.primaryContainer,
-    fontSize: 13, fontWeight: '600',
-    fontStyle: 'italic', paddingHorizontal: 4,
-  },
-  reflectionBox: { position: 'relative' },
-  reflectionInput: {
-    backgroundColor: LT.surfaceContainerLowest,
-    borderWidth: 1, borderColor: LT.outlineVariant,
-    borderRadius: 12, padding: 14, paddingRight: 40,
-    color: LT.onSurface, fontSize: 14,
-    minHeight: 100, textAlignVertical: 'top',
-  },
-  reflectionEditIcon: { position: 'absolute', bottom: 10, right: 10 },
-  reflectionMeta: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 4,
-  },
-  reflectionMetaText: {
-    color: LT.outline, fontSize: 10, fontWeight: '700',
-    letterSpacing: 1, textTransform: 'uppercase',
-  },
-  voiceRow: {
-    flexDirection: 'row',
-    gap: 8,
-    marginTop: 8,
-  },
-  voiceBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    backgroundColor: LT.surfaceContainerLow,
-    borderWidth: 1,
-    borderColor: LT.primary,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    borderRadius: 999,
-  },
-  voiceBtnRecording: {
-    backgroundColor: LT.primary,
-    borderColor: LT.primary,
-  },
-  voiceBtnText: {
-    color: LT.primary,
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 1.2,
-  },
-  voiceBtnTextRecording: {
-    color: LT.onPrimary,
-  },
-  voicePlayBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-  },
-  voicePlayText: {
-    color: LT.primary,
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 1.2,
-  },
 
   bottomCTAWrap: {
     position: 'absolute', bottom: 0, left: 0, right: 0,
