@@ -36,6 +36,7 @@ import PathMilestoneScene, {
 } from '../components/PathMilestoneScene';
 import SageMode from '../components/SageMode';
 import OutOfHeartsModal from '../components/OutOfHeartsModal';
+import { QuizPhase } from '../components/lesson/QuizPhase';
 import { playSound } from '../services/sounds';
 import { speak as ttsSpeak, stop as ttsStop } from '../services/tts';
 import {
@@ -912,176 +913,20 @@ export default function LessonScreen({ navigation, route }) {
     );
   };
 
-  const renderQuiz = () => {
-    if (!currentQuestion) return null;
-    const letters = ['A', 'B', 'C', 'D'];
-    return (
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.stepChip}>
-          <Text style={styles.stepChipText}>
-            🧠 {t('lesson.quiz', 'QUIZ')} — {quizIndex + 1}/{quiz.length}
-          </Text>
-        </View>
-        <Text style={[styles.title, { marginTop: 16 }]}>{currentQuestion.q}</Text>
-        <Text style={styles.questionSubtitle}>
-          {t('lesson.quizHint', 'Doğru olduğunu düşündüğün cevabı seç.')}
-        </Text>
-
-        <View style={styles.optionsContainer}>
-          {currentQuestion.options.map((opt, idx) => {
-            const isSelected = selectedAnswer === idx;
-            const isCorrect = idx === currentQuestion.correct;
-            const showCorrect = revealed && isCorrect;
-            const showWrong = revealed && isSelected && !isCorrect;
-
-            const cardStyle = [styles.optionCard];
-            const letterBoxStyle = [styles.optionLetterBox];
-            let letterColor = LT.onSurfaceVariant;
-
-            if (showCorrect) {
-              cardStyle.push({
-                backgroundColor: 'rgba(16, 185, 129, 0.12)',
-                borderColor: '#10B981',
-              });
-              letterBoxStyle.push({ backgroundColor: '#10B981', borderColor: '#10B981' });
-              letterColor = '#FFFFFF';
-            } else if (showWrong) {
-              cardStyle.push({
-                backgroundColor: 'rgba(239, 68, 68, 0.12)',
-                borderColor: '#EF4444',
-              });
-              letterBoxStyle.push({ backgroundColor: '#EF4444', borderColor: '#EF4444' });
-              letterColor = '#FFFFFF';
-            } else if (isSelected) {
-              cardStyle.push({
-                backgroundColor: LT.surfaceContainerLowest,
-                borderColor: LT.primaryContainer,
-              });
-              letterBoxStyle.push({ backgroundColor: LT.primaryContainer, borderColor: LT.primaryContainer });
-              letterColor = LT.onPrimary;
-            }
-
-            return (
-              <TouchableOpacity
-                key={idx}
-                onPress={() => handleQuizAnswer(idx)}
-                disabled={revealed}
-                activeOpacity={0.85}
-                style={cardStyle}
-              >
-                <View style={letterBoxStyle}>
-                  <Text style={[styles.optionLetter, { color: letterColor }]}>
-                    {letters[idx]}
-                  </Text>
-                </View>
-                <Text style={styles.optionText}>{opt}</Text>
-                {showCorrect && (
-                  <MaterialIcons name="check-circle" size={22} color="#10B981" />
-                )}
-                {showWrong && (
-                  <MaterialIcons name="cancel" size={22} color="#EF4444" />
-                )}
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-
-        {/* Explain box — surfaced after the user picks an answer. Now
-            visually louder (was italic + small + low contrast, looked
-            like a footnote). User feedback: "they solve the test but
-            the point is unclear." If the lesson author wrote an
-            `explain`, we now SHOW it as a proper answer key, not as a
-            whisper. Label varies on correctness so the user can tell
-            "I got it right because X" vs. "Here's why the answer is Y." */}
-        {revealed && currentQuestion.explain && (
-          <View
-            style={[
-              styles.explainBox,
-              selectedAnswer === currentQuestion.correct
-                ? styles.explainBoxCorrect
-                : styles.explainBoxLearn,
-            ]}
-          >
-            <View style={styles.explainHeader}>
-              <MaterialIcons
-                name={
-                  selectedAnswer === currentQuestion.correct
-                    ? 'check-circle'
-                    : 'lightbulb'
-                }
-                size={18}
-                color={
-                  selectedAnswer === currentQuestion.correct
-                    ? '#10B981'
-                    : LT.primaryContainer
-                }
-              />
-              <Text
-                style={[
-                  styles.explainLabel,
-                  selectedAnswer === currentQuestion.correct
-                    ? styles.explainLabelCorrect
-                    : styles.explainLabelLearn,
-                ]}
-              >
-                {selectedAnswer === currentQuestion.correct
-                  ? t('lesson.explainCorrect', 'NEDEN DOĞRU')
-                  : t('lesson.explainWrong', 'AÇIKLAMA')}
-              </Text>
-            </View>
-            <Text style={styles.explainText}>{currentQuestion.explain}</Text>
-
-            {/* DEPTH PASS — the audit's "quiz asks but doesn't teach"
-                finding. After the short `explain` we add two
-                AUTOMATIC depth surfaces, derived from existing lesson
-                content (no new authoring required for the 250-lesson
-                library):
-
-                1. KONTEKST — first sentence of the Bilim paragraph
-                   (teachingPages[1]), which holds the research
-                   citation. Reminds the user WHY this answer matters
-                   beyond the local quiz, anchoring it to the lesson's
-                   evidence base.
-
-                2. NASIL UYGULA — proTip (existing field). The user
-                   already saw it on the last teaching page; surfacing
-                   it again right after they engaged with the quiz
-                   creates spaced repetition for free.
-
-                Both surfaces are conditional — empty content means
-                the section just doesn't render, no awkward labels. */}
-            {teachingPages[1] ? (
-              <View style={styles.quizDepthSection}>
-                <Text style={styles.quizDepthHeader}>
-                  📚 {t('lesson.depthContext', 'KONUYA BAĞLAM')}
-                </Text>
-                <Text style={styles.quizDepthBody}>
-                  {(() => {
-                    const sci = teachingPages[1] || '';
-                    const firstSentence = sci
-                      .split(/(?<=[.!?])\s+/)
-                      .filter((s) => s.length > 20)[0];
-                    return firstSentence || sci.slice(0, 200);
-                  })()}
-                </Text>
-              </View>
-            ) : null}
-
-            {proTip ? (
-              <View style={styles.quizDepthSection}>
-                <Text style={styles.quizDepthHeader}>
-                  💡 {t('lesson.depthApply', 'NASIL UYGULA')}
-                </Text>
-                <Text style={styles.quizDepthBody}>{proTip}</Text>
-              </View>
-            ) : null}
-          </View>
-        )}
-
-        <View style={{ height: 100 }} />
-      </ScrollView>
-    );
-  };
+  const renderQuiz = () => (
+    <QuizPhase
+      currentQuestion={currentQuestion}
+      quizIndex={quizIndex}
+      quizLength={quiz.length}
+      selectedAnswer={selectedAnswer}
+      revealed={revealed}
+      handleSelectAnswer={handleSelectAnswer}
+      isCorrectSelection={isCorrectSelection}
+      isInGracePeriod={isInGracePeriod}
+      teachingPages={teachingPages}
+      proTip={proTip}
+    />
+  );
 
   const renderCommit = () => (
     <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -1684,19 +1529,6 @@ const styles = StyleSheet.create({
     color: LT.onSurfaceVariant,
     textDecorationLine: 'underline',
   },
-  stepChip: {
-    alignSelf: 'flex-start',
-    backgroundColor: 'rgba(227, 18, 18, 0.08)',
-    borderColor: 'rgba(227, 18, 18, 0.25)',
-    borderWidth: 1,
-    paddingHorizontal: 12, paddingVertical: 6,
-    borderRadius: 8,
-  },
-  stepChipText: {
-    color: LT.primaryContainer,
-    fontSize: 11, fontWeight: '900',
-    letterSpacing: 2, textTransform: 'uppercase',
-  },
   // Cliffhanger — small teaser card on the celebration screen showing
   // tomorrow's lesson title. Drives curiosity-gap return: "what does
   // that mean?" → user opens the app tomorrow to find out.
@@ -1889,83 +1721,11 @@ const styles = StyleSheet.create({
     color: LT.onSurfaceVariant, fontSize: 13,
     lineHeight: 18, fontWeight: '500',
   },
-
-  questionSubtitle: {
-    color: LT.onSurfaceVariant, fontSize: 14,
-    marginTop: -16, marginBottom: 20,
-    fontWeight: '500', lineHeight: 20,
-  },
-  optionsContainer: { gap: 12 },
-  optionCard: {
-    flexDirection: 'row', alignItems: 'center',
-    backgroundColor: LT.surfaceContainerLowest,
-    borderWidth: 2, borderColor: LT.outlineVariant,
-    borderRadius: 18, padding: 14, gap: 14,
-  },
-  optionLetterBox: {
-    width: 40, height: 40, borderRadius: 12,
-    alignItems: 'center', justifyContent: 'center',
-    backgroundColor: LT.surfaceContainer,
-    borderWidth: 1, borderColor: LT.outlineVariant,
-  },
-  optionLetter: { fontSize: 16, fontWeight: '900' },
-  optionText: { flex: 1, color: LT.onSurface, fontSize: 15, fontWeight: '600' },
-
-  explainBox: {
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: 12, padding: 16, marginTop: 16,
-    borderWidth: 1, borderColor: LT.outlineVariant,
-    borderLeftWidth: 4,
-  },
-  explainBoxCorrect: {
-    borderLeftColor: '#10B981',
-    backgroundColor: 'rgba(16, 185, 129, 0.06)',
-  },
-  explainBoxLearn: {
-    borderLeftColor: LT.primaryContainer,
-    backgroundColor: 'rgba(227, 18, 18, 0.05)',
-  },
-  explainHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginBottom: 8,
-  },
-  explainLabel: {
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 1.6,
-  },
-  explainLabelCorrect: { color: '#10B981' },
-  explainLabelLearn: { color: LT.primaryContainer },
-  explainText: {
-    color: LT.onSurface,
-    fontSize: 15, lineHeight: 22, fontWeight: '500',
-  },
   // Depth sections appended below the short `explain` after a quiz
   // answer. The HEADER row is a small label ("KONUYA BAĞLAM" /
   // "NASIL UYGULA"); BODY is the content snippet. Visually muted so
   // the primary `explain` remains the headline, but available for
   // users who want to go deeper.
-  quizDepthSection: {
-    marginTop: 14,
-    paddingTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(0,0,0,0.06)',
-  },
-  quizDepthHeader: {
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 1.4,
-    color: LT.onSurfaceVariant,
-    marginBottom: 6,
-  },
-  quizDepthBody: {
-    fontSize: 13,
-    color: LT.onSurface,
-    lineHeight: 19,
-    fontWeight: '500',
-  },
 
   commitMascotWrap: { alignItems: 'center', marginBottom: 24 },
   commitMascotCircle: {
