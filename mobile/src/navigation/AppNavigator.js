@@ -240,10 +240,11 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Paywall"
           component={PaywallScreen}
-          options={{
+          options={({ route }) => ({
             presentation: 'modal',
             animation: 'slide_from_bottom',
-          }}
+            gestureEnabled: !route?.params?.afterClose?.name,
+          })}
         />
         <Stack.Screen
           name="Lesson"

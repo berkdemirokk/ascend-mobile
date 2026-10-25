@@ -12,9 +12,9 @@ TestFlight beta. App Store submission work is tracked in `SUBMIT_CHECKLIST.md`, 
 
 ## Tech Stack
 
-- **Expo 52** — managed workflow, OTA updates
-- **React Native** — cross-platform mobile UI
-- **React Navigation 6** — stack + bottom-tab navigation
+- **Expo 57** — managed workflow, OTA updates
+- **React Native 0.86** — cross-platform mobile UI
+- **React Navigation 7** — stack + bottom-tab navigation
 - **RevenueCat** — in-app subscriptions and purchase management
 - **Supabase** — auth, progress cloud sync, edge functions
 - **AdMob** — banner, interstitial, and rewarded ads for free users

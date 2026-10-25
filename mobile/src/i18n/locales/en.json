@@ -1061,8 +1061,8 @@
     "howWorks": "Complete one lesson daily to maintain your streak. Skip a day and it resets.",
     "freezeTitle": "Streak Freezes",
     "freezeAvailable": "{{count}} available. Auto-used when you skip a day.",
-    "freezeEmpty": "No freezes yet. Get 3 with Premium.",
-    "getFreezes": "GET 3 FREEZES WITH PREMIUM"
+    "freezeEmpty": "No freezes yet. Get 12 with Premium.",
+    "getFreezes": "GET 12 FREEZES WITH PREMIUM"
   },
   "calendar": {
     "title": "ACTIVITY MAP",

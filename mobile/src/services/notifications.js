@@ -25,6 +25,7 @@ const SchedulableTriggerInputTypes =
   Notifications.SchedulableTriggerInputTypes ?? {};
 
 const DAILY_REMINDER_ID = 'ascend-daily-reminder';
+export const DAILY_REMINDER_ENABLED_KEY = '@ascend/notifications_enabled_v1';
 const EVENING_REMINDER_ID = 'ascend-evening-reminder';
 const WEEKLY_RECAP_ID = 'ascend-weekly-recap';
 const STREAK_AT_RISK_ID = 'ascend-streak-at-risk';

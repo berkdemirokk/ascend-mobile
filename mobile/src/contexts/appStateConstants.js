@@ -71,6 +71,7 @@ export const initialState = {
   // Premium
   isPremium: false,
   streakFreezes: 0,
+  premiumFreezeGrantClaimed: false,
   referralOwnerRewardIds: [],
   referralRedeemerRewardIds: [],
 

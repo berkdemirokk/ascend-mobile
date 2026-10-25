@@ -54,6 +54,8 @@ export function CommitPhase({
         ]}
         onPress={() => !alreadyCompleted && setActionDone(!actionDone)}
         activeOpacity={alreadyCompleted ? 1 : 0.8}
+        accessibilityRole="checkbox"
+        accessibilityState={{ checked: actionDone || alreadyCompleted }}
       >
         <View
           style={[

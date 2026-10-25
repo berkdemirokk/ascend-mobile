@@ -55,7 +55,19 @@ for (const [name, prop] of [['PickPathStep', 'selectedPath'], ['ArchetypeStep', 
 }
 const screenSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'screens', 'OnboardingScreen.js'), 'utf8');
 const personalizeSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'components', 'onboarding', 'PersonalizeStep.js'), 'utf8');
+const quizSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'components', 'lesson', 'QuizPhase.js'), 'utf8');
+const commitSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'components', 'lesson', 'CommitPhase.js'), 'utf8');
+const paywallSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'screens', 'PaywallScreen.js'), 'utf8');
+const navigatorSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'navigation', 'AppNavigator.js'), 'utf8');
+const smartNotificationsSource = fs.readFileSync(path.join(__dirname, '..', 'src', 'hooks', 'useSmartNotifications.js'), 'utf8');
 assert(screenSource.includes('<KeyboardAvoidingView') && screenSource.includes('Keyboard.dismiss();'));
 assert(screenSource.includes('AccessibilityInfo.announceForAccessibility') && screenSource.includes('STEPS[stepIndex - 1]'));
 assert(personalizeSource.includes('style={styles.personalizeScroll}'));
-console.log('Onboarding accessibility tests passed: choices expose selection, progress is announced, back navigation works, and the keyboard-aware form scrolls. Native VoiceOver/layout verification remains required.');
+assert(quizSource.includes('accessibilityRole="radio"') && quizSource.includes('checked: isSelected'));
+assert(commitSource.includes('accessibilityRole="checkbox"') && commitSource.includes('checked: actionDone || alreadyCompleted'));
+assert(paywallSource.includes("BackHandler.addEventListener('hardwareBackPress'") && paywallSource.includes('navigation.replace(afterClose.name'));
+assert(navigatorSource.includes('gestureEnabled: !route?.params?.afterClose?.name'));
+assert(smartNotificationsSource.includes('DAILY_REMINDER_ENABLED_KEY')
+  && smartNotificationsSource.includes('scheduleDailyReminder({')
+  && smartNotificationsSource.includes('currentStreak: state.currentStreak'));
+console.log('First-session contracts passed: onboarding, quiz/commitment accessibility, paywall dismissal, and streak-aware reminders. Native VoiceOver/layout verification remains required.');

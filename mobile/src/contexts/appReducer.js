@@ -49,15 +49,19 @@ export function appReducer(state, action) {
     case ACTION_TYPES.SET_USER_PROFILE:
       return { ...state, userProfile: action.payload };
 
-    case ACTION_TYPES.SET_PREMIUM:
+    case ACTION_TYPES.SET_PREMIUM: {
+      const premiumFreezeGrantClaimed =
+        state.premiumFreezeGrantClaimed === true || !!action.payload;
       return {
         ...state,
         isPremium: !!action.payload,
         hearts: action.payload ? MAX_HEARTS : state.hearts,
-        streakFreezes: action.payload
+        premiumFreezeGrantClaimed,
+        streakFreezes: action.payload && !state.premiumFreezeGrantClaimed
           ? Math.max(state.streakFreezes || 0, 12)
           : state.streakFreezes,
       };
+    }
 
     case ACTION_TYPES.USE_STREAK_FREEZE:
       if (state.streakFreezes <= 0) return state;

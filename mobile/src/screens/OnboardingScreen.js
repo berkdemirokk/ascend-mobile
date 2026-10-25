@@ -14,11 +14,13 @@ import {
 } from '../components/AccessibleControls';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { useApp } from '../contexts/AppContext';
 import { LT } from '../config/lightTheme';
 import { DEFAULT_ARCHETYPE_ID, getArchetypeById } from '../data/archetypes';
 import {
+  DAILY_REMINDER_ENABLED_KEY,
   requestNotificationPermissions,
   scheduleDailyReminder,
   scheduleWeeklyRecap,
@@ -128,6 +130,7 @@ export default function OnboardingScreen({ navigation }) {
       try {
         const granted = await requestNotificationPermissions();
         if (granted) {
+          AsyncStorage.setItem(DAILY_REMINDER_ENABLED_KEY, 'true').catch(() => {});
           scheduleDailyReminder({
             currentStreak: 0,
             userName: answers.name || '',
@@ -224,6 +227,7 @@ export default function OnboardingScreen({ navigation }) {
       try {
         const granted = await requestNotificationPermissions();
         if (granted) {
+          AsyncStorage.setItem(DAILY_REMINDER_ENABLED_KEY, 'true').catch(() => {});
           scheduleDailyReminder({
             currentStreak: 0,
             userName: answers.name || '',

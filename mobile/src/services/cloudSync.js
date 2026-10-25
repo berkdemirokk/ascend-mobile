@@ -33,6 +33,7 @@ const SYNCED_KEYS = [
   'longestStreak',
   'lastCompletedDate',
   'streakFreezes',
+  'premiumFreezeGrantClaimed',
   'referralOwnerRewardIds',
   'referralRedeemerRewardIds',
   'unlockedAchievements',
@@ -266,6 +267,9 @@ export function mergeStates(localState, cloudPayload) {
       localState.streakFreezes || 0,
       cloudPayload.streakFreezes || 0,
     ),
+    premiumFreezeGrantClaimed: !!(
+      localState.premiumFreezeGrantClaimed || cloudPayload.premiumFreezeGrantClaimed
+    ),
     referralOwnerRewardIds: Array.from(new Set([
       ...(localState.referralOwnerRewardIds || []),
       ...(cloudPayload.referralOwnerRewardIds || []),
@@ -376,6 +380,16 @@ export function mergeStates(localState, cloudPayload) {
       return l <= c ? l : c;
     })(),
   };
+}
+
+// A guest snapshot has no account owner. When it meets an existing account's
+// cloud row, that row is authoritative; merging would mix two people's data on
+// a shared device. A new account has no cloud row, so its initial push can still
+// preserve the guest's progress.
+export function resolveAccountState(localState, cloudPayload) {
+  if (!cloudPayload) return localState;
+  if (!localState?.stateOwnerUserId) return sanitizePersistedState(cloudPayload);
+  return mergeStates(localState, cloudPayload);
 }
 
 /**

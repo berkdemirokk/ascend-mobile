@@ -294,6 +294,12 @@ const main = async () => {
   });
   assert(premium.isPremium && premium.hearts === 5, 'premium activation did not restore unlimited-heart state');
   assert(premium.streakFreezes === 12, 'premium activation did not grant the configured freezes');
+  const afterPremiumFreezeUse = appReducer(premium, { type: ACTION_TYPES.USE_STREAK_FREEZE });
+  const refreshedPremium = appReducer(afterPremiumFreezeUse, {
+    type: ACTION_TYPES.SET_PREMIUM,
+    payload: true,
+  });
+  assert(refreshedPremium.streakFreezes === 11, 'premium status refresh regranted already-used freezes');
 
   const recentInstall = { ...initialState, hearts: 3, installedAt: new Date().toISOString() };
   assert(
@@ -428,7 +434,7 @@ const main = async () => {
   };
   const cloudSyncModulePath = path.join(ROOT, 'src/services/cloudSync.js');
   moduleCache.delete(cloudSyncModulePath);
-  const { mergeStates, pickSyncableState } = loadModule(
+  const { mergeStates, resolveAccountState, pickSyncableState } = loadModule(
     cloudSyncModulePath,
   );
   const { pullState, recordLessonCompletion, recordReflection } = loadModule(
@@ -527,8 +533,30 @@ const main = async () => {
   assert(merged.referralRedeemerRewardIds.includes('redeemed-local')
     && merged.referralRedeemerRewardIds.includes('redeemed-cloud'),
   'redeemer receipts did not merge across devices');
-  const syncable = pickSyncableState({ ...merged, isPremium: true });
+  const existingAccountState = resolveAccountState({
+    stateOwnerUserId: null,
+    totalXP: 99,
+    pathProgress: { focus: { completed: ['guest-lesson'] } },
+  }, {
+    totalXP: 20,
+    pathProgress: { focus: { completed: ['account-lesson'] } },
+  });
+  assert(existingAccountState.totalXP === 20
+    && existingAccountState.pathProgress.focus.completed.join(',') === 'account-lesson',
+  'guest progress was merged into an existing account with cloud history');
+  const newAccountState = resolveAccountState({
+    stateOwnerUserId: null,
+    totalXP: 99,
+  }, null);
+  assert(newAccountState.totalXP === 99, 'guest progress was dropped before first account sync');
+  const grantMerged = mergeStates(
+    { premiumFreezeGrantClaimed: false },
+    { premiumFreezeGrantClaimed: true },
+  );
+  assert(grantMerged.premiumFreezeGrantClaimed, 'premium freeze grant claim was lost across devices');
+  const syncable = pickSyncableState({ ...merged, isPremium: true, premiumFreezeGrantClaimed: true });
   assert(!Object.prototype.hasOwnProperty.call(syncable, 'isPremium'), 'store-authoritative premium state was synced');
+  assert(syncable.premiumFreezeGrantClaimed, 'premium freeze grant claim was not persisted to cloud');
   assert(!Object.prototype.hasOwnProperty.call(syncable.pathProgress['dopamine-detox'], 'reflectionAudio'), 'local audio URI was synced');
 
   const { resolveAccessibilityProps } = loadModule(

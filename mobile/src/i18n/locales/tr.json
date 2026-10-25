@@ -672,7 +672,7 @@
     "saveAmount": "{{amount}} tasarruf",
     "ctaTrial": "Premium'u aç",
     "ctaContinue": "Şimdilik devam et",
-    "autoRenew": "Abonelik otomatik olarak yenilenir. İstediğin zaman ayarlardan veya App Store hesabından iptal edebilirsin.",
+    "autoRenew": "Abonelik otomatik olarak yenilenir. İstediğin zaman App Store hesap ayarlarından iptal edebilirsin.",
     "trialDisclosure": "İptal etmezsen abonelik {{price}} {{period}} olarak otomatik yenilenir. App Store hesabından istediğin zaman iptal edebilirsin.",
     "subscriptionDisclosure": "İptal etmezsen abonelik {{price}} {{period}} olarak otomatik yenilenir. App Store hesabından istediğin zaman iptal edebilirsin.",
     "periodYearly": "yıllık",
@@ -1061,8 +1061,8 @@
     "howWorks": "Her gün bir ders tamamlayarak serini koru. Bir gün atlarsan seri sıfırlanır.",
     "freezeTitle": "Seri Dondurucuları",
     "freezeAvailable": "{{count}} adet kullanılabilir. Bir gün atlarsan otomatik kullanılır.",
-    "freezeEmpty": "Henüz dondurucu yok. Premium ile 3 dondurucu kazan.",
-    "getFreezes": "PREMIUM İLE 3 DONDURUCU AL"
+    "freezeEmpty": "Henüz dondurucu yok. Premium ile 12 dondurucu kazan.",
+    "getFreezes": "PREMIUM İLE 12 DONDURUCU AL"
   },
   "calendar": {
     "title": "AKTİVİTE HARİTASI",

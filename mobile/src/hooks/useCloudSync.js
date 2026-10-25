@@ -1,5 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { pullState, pushState, mergeStates, pickSyncableState } from '../services/cloudSync';
+import {
+  pullState,
+  pushState,
+  resolveAccountState,
+  pickSyncableState,
+} from '../services/cloudSync';
 import { ACTION_TYPES } from '../contexts/appActionTypes';
 
 export function useCloudSync({
@@ -76,8 +81,8 @@ export function useCloudSync({
 
         const local = { ...latestStateRef.current };
         delete local._loaded;
-        const merged = mergeStates(local, remote);
-        dispatch({ type: ACTION_TYPES.LOAD_STATE, payload: { ...merged, stateOwnerUserId: userId } });
+        const resolved = resolveAccountState(local, remote);
+        dispatch({ type: ACTION_TYPES.LOAD_STATE, payload: { ...resolved, stateOwnerUserId: userId } });
         pullCompletedRef.current = true;
       } catch (e) {
         console.warn('[useCloudSync] Cloud pull failed:', e?.message);

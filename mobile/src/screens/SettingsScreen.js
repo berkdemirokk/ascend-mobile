@@ -23,6 +23,7 @@ import { LEGAL } from '../config/constants';
 import { LT, LT_RADIUS } from '../config/lightTheme';
 import { setLanguage, getCurrentLanguage } from '../i18n';
 import {
+  DAILY_REMINDER_ENABLED_KEY,
   requestNotificationPermissions,
   scheduleDailyReminder,
   cancelAllNotifications,
@@ -53,7 +54,6 @@ import LegalSection from '../components/settings/LegalSection';
 import RedeemCodeModal from '../components/settings/RedeemCodeModal';
 import SettingsSection from '../components/settings/SettingsSection';
 
-const NOTIF_KEY = '@ascend/notifications_enabled_v1';
 const SOUNDS_MUTED_KEY = '@ascend/sounds_muted_v1';
 
 export default function SettingsScreen({ navigation }) {
@@ -64,6 +64,8 @@ export default function SettingsScreen({ navigation }) {
     setPremium,
     resetProgress,
     streakFreezes,
+    currentStreak,
+    activePathId,
     vacationUntil,
     startVacation,
     endVacation,
@@ -130,7 +132,7 @@ export default function SettingsScreen({ navigation }) {
       setSoundsEnabled(v !== 'true');
     });
     initHaptics().then(() => setHapticsEnabledState(getHapticsEnabled()));
-    AsyncStorage.getItem(NOTIF_KEY).then((v) => {
+    AsyncStorage.getItem(DAILY_REMINDER_ENABLED_KEY).then((v) => {
       setNotificationsEnabled(v === 'true');
     });
   }, []);
@@ -383,20 +385,20 @@ export default function SettingsScreen({ navigation }) {
           ),
         );
         setNotificationsEnabled(false);
-        AsyncStorage.setItem(NOTIF_KEY, 'false').catch(() => {});
+        AsyncStorage.setItem(DAILY_REMINDER_ENABLED_KEY, 'false').catch(() => {});
         return;
       }
       try {
-        await scheduleDailyReminder({ currentStreak: 0 });
+        await scheduleDailyReminder({ currentStreak, activePathId });
         setNotificationsEnabled(true);
-        AsyncStorage.setItem(NOTIF_KEY, 'true').catch(() => {});
+        AsyncStorage.setItem(DAILY_REMINDER_ENABLED_KEY, 'true').catch(() => {});
       } catch {
         setNotificationsEnabled(false);
       }
     } else {
       await cancelAllNotifications();
       setNotificationsEnabled(false);
-      AsyncStorage.setItem(NOTIF_KEY, 'false').catch(() => {});
+      AsyncStorage.setItem(DAILY_REMINDER_ENABLED_KEY, 'false').catch(() => {});
     }
   };
 
