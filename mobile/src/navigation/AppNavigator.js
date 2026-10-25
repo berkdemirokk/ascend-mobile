@@ -60,11 +60,25 @@ import { LT } from '../config/lightTheme';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const INITIAL_URL_TIMEOUT_MS = 1500;
 
 const linking = {
   prefixes: ['ascend://'],
   async getInitialURL() {
-    const url = await Linking.getInitialURL();
+    let timeoutId;
+    let url = null;
+    try {
+      url = await Promise.race([
+        Linking.getInitialURL(),
+        new Promise((resolve) => {
+          timeoutId = setTimeout(() => resolve(null), INITIAL_URL_TIMEOUT_MS);
+        }),
+      ]);
+    } catch (e) {
+      console.warn('[navigation] getInitialURL failed:', e?.message);
+    } finally {
+      clearTimeout(timeoutId);
+    }
     setLastDeepLinkUrl(url);
     return url;
   },
@@ -188,7 +202,11 @@ export default function AppNavigator() {
   const needsAuth = !isAuthenticated && !guestMode;
 
   return (
-    <NavigationContainer ref={navigationRef} linking={linking}>
+    <NavigationContainer
+      ref={navigationRef}
+      linking={linking}
+      fallback={<AuthLoading />}
+    >
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
