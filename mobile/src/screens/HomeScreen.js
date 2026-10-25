@@ -28,6 +28,8 @@ import {
   getLessonAccessState,
 } from '../data/paths';
 import LightTopAppBar from '../components/LightTopAppBar';
+import { StatCell } from '../components/home/StatCell';
+import { LinkRow } from '../components/home/LinkRow';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 // DailyMysteryBox + DailyMoodCheckIn removed in the Home agresif
@@ -1235,40 +1237,6 @@ export default function HomeScreen({ navigation }) {
   );
 }
 
-// ─── Subcomponents ────────────────────────────────────────────────────────────
-
-function StatCell({ icon, label, value, sub }) {
-  return (
-    <View style={styles.statCell}>
-      <MaterialIcons name={icon} size={16} color={LT.onSurfaceVariant} />
-      <Text style={styles.statValue}>
-        {value}
-        {sub ? <Text style={styles.statValueSub}> {sub}</Text> : null}
-      </Text>
-      <Text style={styles.statLabel}>{label}</Text>
-    </View>
-  );
-}
-
-function LinkRow({ icon, label, sub, onPress }) {
-  return (
-    <TouchableOpacity
-      style={styles.linkRow}
-      onPress={onPress}
-      activeOpacity={0.85}
-    >
-      <View style={styles.linkIconWrap}>
-        <MaterialIcons name={icon} size={20} color={LT.primaryContainer} />
-      </View>
-      <View style={{ flex: 1 }}>
-        <Text style={styles.linkLabel}>{label}</Text>
-        <Text style={styles.linkSub}>{sub}</Text>
-      </View>
-      <MaterialIcons name="chevron-right" size={22} color={LT.outline} />
-    </TouchableOpacity>
-  );
-}
-
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function getGreeting(t) {
@@ -1922,34 +1890,10 @@ const styles = StyleSheet.create({
     borderColor: LT.outlineVariant,
     paddingVertical: 14,
   },
-  statCell: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 4,
-  },
   statDivider: {
     width: 1,
     backgroundColor: LT.outlineVariant,
     marginVertical: 8,
-  },
-  statValue: {
-    fontSize: 18,
-    fontWeight: '900',
-    color: LT.onSurface,
-    letterSpacing: 0,
-  },
-  statValueSub: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: LT.outline,
-    letterSpacing: 0,
-  },
-  statLabel: {
-    fontSize: 9,
-    fontWeight: '900',
-    letterSpacing: 1.5,
-    color: LT.onSurfaceVariant,
   },
 
   // Premium upsell card
@@ -2008,33 +1952,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: LT.outlineVariant,
     overflow: 'hidden',
-  },
-  linkRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 14,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    borderBottomWidth: 1,
-    borderBottomColor: LT.outlineVariant,
-  },
-  linkIconWrap: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(227, 18, 18, 0.08)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  linkLabel: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: LT.onSurface,
-    marginBottom: 2,
-  },
-  linkSub: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: LT.onSurfaceVariant,
   },
 });
