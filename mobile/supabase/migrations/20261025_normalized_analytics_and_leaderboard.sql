@@ -85,14 +85,29 @@ create policy "reflections: delete own"
 -- 3. Public Leaderboard View (safe projection from user_state JSONB)
 -- Only exposes anonymous handle, streak, total XP, and level. No PII or auth IDs.
 create or replace view public.public_leaderboard as
-select
-  coalesce(payload->>'anonUsername', 'ascender_anonymous') as handle,
-  coalesce((payload->>'totalXP')::integer, 0) as total_xp,
-  coalesce((payload->>'currentStreak')::integer, 0) as current_streak,
-  coalesce((payload->>'level')::integer, 1) as level,
-  updated_at
-from public.user_state
-where (payload->>'totalXP')::integer > 0
+select handle, total_xp, current_streak, level, updated_at
+from (
+  select
+    coalesce(payload->>'anonUsername', 'ascender_anonymous') as handle,
+    case
+      when jsonb_typeof(payload->'totalXP') = 'number'
+        then least(greatest((payload->>'totalXP')::numeric, 0), 2147483647)::integer
+      else 0
+    end as total_xp,
+    case
+      when jsonb_typeof(payload->'currentStreak') = 'number'
+        then least(greatest((payload->>'currentStreak')::numeric, 0), 2147483647)::integer
+      else 0
+    end as current_streak,
+    case
+      when jsonb_typeof(payload->'level') = 'number'
+        then least(greatest((payload->>'level')::numeric, 1), 2147483647)::integer
+      else 1
+    end as level,
+    updated_at
+  from public.user_state
+) leaderboard_rows
+where total_xp > 0
 order by total_xp desc
 limit 100;
 

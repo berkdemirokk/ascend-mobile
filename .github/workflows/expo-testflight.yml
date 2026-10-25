@@ -89,16 +89,21 @@ jobs:
       - name: Submit existing EAS build to TestFlight
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.eas_build_id != '' }}
         env:
+          EAS_BUILD_ID: ${{ inputs.eas_build_id }}
           EXPO_ASC_API_KEY_PATH: ${{ env.API_KEY_PATH }}
           EXPO_ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           EXPO_ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           EXPO_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           EXPO_APPLE_TEAM_TYPE: INDIVIDUAL
         run: |
+          if [[ ! "$EAS_BUILD_ID" =~ ^[A-Za-z0-9-]{1,128}$ ]]; then
+            echo "::error::eas_build_id must contain only letters, numbers, and hyphens."
+            exit 1
+          fi
           eas submit \
             --platform ios \
             --profile production \
-            --id "${{ inputs.eas_build_id }}" \
+            --id "$EAS_BUILD_ID" \
             --non-interactive \
             --verbose
 
