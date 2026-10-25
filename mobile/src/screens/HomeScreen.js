@@ -33,6 +33,7 @@ import { LinkRow } from '../components/home/LinkRow';
 import { HabitChain } from '../components/home/HabitChain';
 import { StreakHeroCard } from '../components/home/StreakHeroCard';
 import { DailyDeckCTA } from '../components/home/DailyDeckCTA';
+import { WeekendPremiumOffer } from '../components/home/WeekendPremiumOffer';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 // DailyMysteryBox + DailyMoodCheckIn removed in the Home agresif
@@ -1011,26 +1012,11 @@ export default function HomeScreen({ navigation }) {
         )}
 
         {/* Weekend Premium offer — only Sat/Sun, free users only. */}
-        {isWeekendOffer && !isPremium ? (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Paywall', { source: 'home_weekend_offer' })}
-            activeOpacity={0.85}
-            style={styles.weekendOffer}
-          >
-            <View style={styles.weekendOfferBadge}>
-              <Text style={styles.weekendOfferBadgeText}>
-                {t('home.weekendDeal', 'HAFTA SONU')}
-              </Text>
-            </View>
-            <Text style={styles.weekendOfferText}>
-              {t(
-                'home.weekendOfferBody',
-                'Premium ile seri dondurucuları, sınırsız kalp ve reklamsız deneyim.',
-              )}
-            </Text>
-            <MaterialIcons name="arrow-forward" size={18} color={LT.onPrimary} />
-          </TouchableOpacity>
-        ) : null}
+        <WeekendPremiumOffer
+          isWeekendOffer={isWeekendOffer}
+          isPremium={isPremium}
+          onPress={() => navigation.navigate('Paywall', { source: 'home_weekend_offer' })}
+        />
 
         {/* Quick Stats Strip */}
         <View style={styles.statsStrip}>
@@ -1399,41 +1385,6 @@ const styles = StyleSheet.create({
 
   // Today's CTA card
 
-  weekendOffer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    marginHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    backgroundColor: LT.primary,
-    borderRadius: LT_RADIUS.lg,
-    shadowColor: LT.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 12,
-    elevation: 4,
-  },
-  weekendOfferBadge: {
-    backgroundColor: 'rgba(255, 255, 255, 0.18)',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 999,
-  },
-  weekendOfferBadgeText: {
-    color: LT.onPrimary,
-    fontSize: 9,
-    fontWeight: '900',
-    letterSpacing: 1.4,
-  },
-  weekendOfferText: {
-    flex: 1,
-    color: LT.onPrimary,
-    fontSize: 12,
-    fontWeight: '700',
-    lineHeight: 16,
-  },
 
   challengeCard: {
     flexDirection: 'row',
