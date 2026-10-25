@@ -1,6 +1,6 @@
 import { Text, StyleSheet, View } from 'react-native';
 import { AccessibleTouchableOpacity as TouchableOpacity } from '../AccessibleControls';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { LT, LT_RADII, LT_SHADOW } from '../../config/lightTheme';
 
 export function LinkRow({ icon, label, sub, onPress }) {

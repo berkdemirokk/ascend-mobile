@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, TextInput, StyleSheet, Image } from 'react-native';
 import { AccessibleTouchableOpacity as TouchableOpacity } from '../AccessibleControls';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { LT, LT_RADII, LT_SHADOW, LT_SPACING } from '../../config/lightTheme';

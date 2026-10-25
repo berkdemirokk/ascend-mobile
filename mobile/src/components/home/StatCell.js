@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@react-native-vector-icons/material-icons/static';
 import { LT, LT_RADII, LT_SHADOW } from '../../config/lightTheme';
 
 export function StatCell({ icon, label, value, sub }) {
