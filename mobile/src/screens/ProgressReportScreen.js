@@ -16,6 +16,7 @@ import {
   StyleSheet,
   ScrollView,
   Share,
+  StatusBar,
 } from 'react-native';
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
@@ -144,6 +145,7 @@ export default function ProgressReportScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
       <ScrollView
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}

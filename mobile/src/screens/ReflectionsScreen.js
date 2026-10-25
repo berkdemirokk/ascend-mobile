@@ -8,6 +8,7 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
@@ -85,6 +86,7 @@ export default function ReflectionsScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
       <View style={styles.container}>
         {/* Top bar */}
         <View style={styles.topBar}>

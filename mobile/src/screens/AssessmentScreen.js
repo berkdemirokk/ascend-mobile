@@ -17,6 +17,7 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
@@ -79,6 +80,7 @@ export default function AssessmentScreen({ route, navigation }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
       <ScrollView
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}

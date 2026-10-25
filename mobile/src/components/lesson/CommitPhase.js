@@ -23,7 +23,11 @@ export function CommitPhase({
   const { t } = useTranslation();
 
   return (
-    <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
+    >
       <View style={styles.stepChipTertiary}>
         <Text style={styles.stepChipTertiaryText}>
           {t('lesson.action', 'BUGÜN YAP')}
