@@ -526,7 +526,11 @@ run('release toolchain', () => {
   assert(!jsFiles.some((file) => fs.readFileSync(file, 'utf8').includes("Dimensions.get('window')")), 'responsive UI must use useWindowDimensions instead of a static window snapshot');
 
   const welcomeSource = fs.readFileSync(path.join(SRC, 'screens', 'auth', 'WelcomeScreen.js'), 'utf8');
-  const settingsSource = fs.readFileSync(path.join(SRC, 'screens', 'SettingsScreen.js'), 'utf8');
+  const settingsDir = path.join(SRC, 'components', 'settings');
+  const settingsComponentsSource = fs.existsSync(settingsDir)
+    ? fs.readdirSync(settingsDir).filter((f) => f.endsWith('.js')).map((f) => fs.readFileSync(path.join(settingsDir, f), 'utf8')).join('\n')
+    : '';
+  const settingsSource = fs.readFileSync(path.join(SRC, 'screens', 'SettingsScreen.js'), 'utf8') + settingsComponentsSource;
   const heatmapSource = fs.readFileSync(path.join(SRC, 'components', 'StreakHeatmap.js'), 'utf8');
   assert(welcomeSource.includes('accessibilityRole="radio"') && welcomeSource.includes('checked: active'), 'welcome language picker must expose its selected radio state');
   assert(welcomeSource.includes("useState(Platform.OS === 'ios')"), 'Apple Sign-In must remain visible on iOS while availability is probed');

@@ -3,16 +3,10 @@ import {
   View,
   Text,
   ScrollView,
-  Switch,
   Alert,
   StyleSheet,
-  Linking,
   StatusBar,
-  ActivityIndicator,
   Share,
-  Modal,
-  TextInput,
-  KeyboardAvoidingView,
   Platform,
 } from 'react-native';
 import {
@@ -28,7 +22,7 @@ import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
 import { LEGAL } from '../config/constants';
 import { LT, LT_RADIUS } from '../config/lightTheme';
-import { setLanguage, getCurrentLanguage, SUPPORTED_LANGUAGES } from '../i18n';
+import { setLanguage, getCurrentLanguage } from '../i18n';
 import {
   requestNotificationPermissions,
   scheduleDailyReminder,
@@ -50,6 +44,15 @@ import {
 } from '../services/haptics';
 import AdDebugModal from '../components/AdDebugModal';
 
+// Modularized settings subcomponents
+import LanguageSection from '../components/settings/LanguageSection';
+import PreferencesSection from '../components/settings/PreferencesSection';
+import AccountSection from '../components/settings/AccountSection';
+import DangerZoneSection from '../components/settings/DangerZoneSection';
+import LegalSection from '../components/settings/LegalSection';
+import RedeemCodeModal from '../components/settings/RedeemCodeModal';
+import SettingsSection from '../components/settings/SettingsSection';
+
 const NOTIF_KEY = '@ascend/notifications_enabled_v1';
 const SOUNDS_MUTED_KEY = '@ascend/sounds_muted_v1';
 
@@ -65,10 +68,9 @@ export default function SettingsScreen({ navigation }) {
     startVacation,
     endVacation,
     anonUsername,
-    currentStreak,
-    userProfile,
-    activePathId,
+    grantReferralReward,
   } = useApp();
+  const { user, isAuthenticated, signOut } = useAuth();
 
   const vacationActive = (() => {
     if (!vacationUntil) return false;
@@ -77,26 +79,36 @@ export default function SettingsScreen({ navigation }) {
     return vacationUntil >= todayStr;
   })();
 
-  // Referral state — fetched lazily on Settings mount. We don't block
-  // the screen on this; the share button just works with the code we
-  // can derive locally from the user UID even before the server row is
-  // confirmed.
-  const { user } = useAuth();
-  const { grantReferralReward } = useApp();
   const [referralCount, setReferralCount] = useState(0);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
+  const [restoring, setRestoring] = useState(false);
+  const [soundsEnabled, setSoundsEnabled] = useState(true);
+  const [hapticsEnabled, setHapticsEnabledState] = useState(true);
+  const [adDebugOpen, setAdDebugOpen] = useState(false);
+  const [redeemModalVisible, setRedeemModalVisible] = useState(false);
+  const [redeemCodeInput, setRedeemCodeInput] = useState('');
+  const [redeeming, setRedeeming] = useState(false);
+
   useEffect(() => {
     if (!user?.id) return;
-    // Ensure the server-side row exists (idempotent) and fetch stats.
     ensureMyReferral(user.id).catch(() => {});
     getReferralStats(user.id)
       .then((s) => setReferralCount(s.redemptions || 0))
       .catch(() => {});
   }, [user?.id]);
 
+  useEffect(() => {
+    AsyncStorage.getItem(SOUNDS_MUTED_KEY).then((v) => {
+      setSoundsEnabled(v !== 'true');
+    });
+    initHaptics().then(() => setHapticsEnabledState(getHapticsEnabled()));
+    AsyncStorage.getItem(NOTIF_KEY).then((v) => {
+      setNotificationsEnabled(v === 'true');
+    });
+  }, []);
+
   const handleInvite = async () => {
-    // Prefer the deterministic referral code (ASCEND-XXXX-YYYY). Falls
-    // back to anonUsername for legacy users without a UID — they still
-    // get a share-able message, just without a redeemable code.
     const code = (user?.id && codeFromUserId(user.id)) || anonUsername || null;
     const link = code
       ? `${LEGAL.PUBLIC_APP_URL}?ref=${encodeURIComponent(code)}`
@@ -114,9 +126,7 @@ export default function SettingsScreen({ navigation }) {
         );
     try {
       await Share.share({ message });
-    } catch {
-      // user dismissed or no share UI available
-    }
+    } catch {}
   };
 
   const handlePremiumStatusPress = () => {
@@ -196,8 +206,6 @@ export default function SettingsScreen({ navigation }) {
   };
 
   const handleRedeemCode = () => {
-    // Alert.prompt is iOS-only. Keep the native prompt there, but provide a
-    // real input flow on Android instead of calling an undefined API.
     if (Platform.OS === 'ios' && typeof Alert.prompt === 'function') {
       Alert.prompt(
         t('settings.redeemTitle', 'Davet Kodu'),
@@ -266,39 +274,15 @@ export default function SettingsScreen({ navigation }) {
       ],
     );
   };
-  const { isAuthenticated, signOut } = useAuth();
-
-  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
-  const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
-  const [restoring, setRestoring] = useState(false);
-  const [soundsEnabled, setSoundsEnabled] = useState(true);
-  const [hapticsEnabled, setHapticsEnabledState] = useState(true);
-  const [adDebugOpen, setAdDebugOpen] = useState(false);
-  const [redeemModalVisible, setRedeemModalVisible] = useState(false);
-  const [redeemCodeInput, setRedeemCodeInput] = useState('');
-  const [redeeming, setRedeeming] = useState(false);
-
-  useEffect(() => {
-    AsyncStorage.getItem(SOUNDS_MUTED_KEY).then((v) => {
-      setSoundsEnabled(v !== 'true');
-    });
-    // Sync the haptics toggle with the persisted preference. The service
-    // already auto-loads on app boot (see App.js initHaptics), but we
-    // call it again here in case the user lands on Settings on first
-    // launch before that effect has resolved.
-    initHaptics().then(() => setHapticsEnabledState(getHapticsEnabled()));
-  }, []);
 
   const toggleSounds = (value) => {
     setSoundsEnabled(value);
-    setMuted(!value); // sounds.js auto-persists
+    setMuted(!value);
   };
 
   const toggleHaptics = (value) => {
     setHapticsEnabledState(value);
-    persistHapticsEnabled(value); // haptics.js auto-persists
-    // Fire a single light tap if turning ON so the user immediately
-    // feels the feedback they just enabled (instant confirmation).
+    persistHapticsEnabled(value);
     if (value) hapticImpactLight();
   };
 
@@ -335,15 +319,8 @@ export default function SettingsScreen({ navigation }) {
     }
   };
 
-  useEffect(() => {
-    AsyncStorage.getItem(NOTIF_KEY).then((v) => {
-      setNotificationsEnabled(v === 'true');
-    });
-  }, []);
-
   const toggleNotifications = async (value) => {
     if (value) {
-      // Request permission, then schedule
       const granted = await requestNotificationPermissions();
       if (!granted) {
         Alert.alert(
@@ -358,38 +335,14 @@ export default function SettingsScreen({ navigation }) {
         return;
       }
       try {
-        // Same archetype prefix rotation as the onboarding-time
-        // schedule call. Settings-toggle path was missing this, so
-        // users who turned notifications off + back on lost the
-        // archetype echo until next onboarding reschedule.
-        await scheduleDailyReminder({
-          currentStreak,
-          userName: userProfile?.name || '',
-          archetypeName: userProfile?.archetype
-            ? t(
-                `archetypes.${
-                  userProfile.archetype === 'zen-master'
-                    ? 'zenMaster'
-                    : userProfile.archetype === 'silent-warrior'
-                      ? 'silentWarrior'
-                      : 'ironDisciplined'
-                }.name`,
-                userProfile.archetype,
-              )
-            : '',
-          activePathId,
-        });
-      } catch (e) {
-        console.warn('schedule daily reminder failed:', e?.message);
+        await scheduleDailyReminder({ currentStreak: 0 });
+        setNotificationsEnabled(true);
+        AsyncStorage.setItem(NOTIF_KEY, 'true').catch(() => {});
+      } catch {
+        setNotificationsEnabled(false);
       }
-      setNotificationsEnabled(true);
-      AsyncStorage.setItem(NOTIF_KEY, 'true').catch(() => {});
     } else {
-      try {
-        await cancelAllNotifications();
-      } catch (e) {
-        console.warn('cancel notifications failed:', e?.message);
-      }
+      await cancelAllNotifications();
       setNotificationsEnabled(false);
       AsyncStorage.setItem(NOTIF_KEY, 'false').catch(() => {});
     }
@@ -480,8 +433,6 @@ export default function SettingsScreen({ navigation }) {
     );
   };
 
-  // EAS manages iOS build numbers remotely. Native values reflect the binary
-  // actually installed from TestFlight.
   const version =
     Constants?.nativeApplicationVersion ||
     Constants?.expoConfig?.version ||
@@ -497,7 +448,6 @@ export default function SettingsScreen({ navigation }) {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
-        {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity
             accessibilityRole="button"
@@ -525,382 +475,61 @@ export default function SettingsScreen({ navigation }) {
           contentContainerStyle={styles.scroll}
           showsVerticalScrollIndicator={false}
         >
-          {/* Language */}
-          <Section title={t('settings.language', 'DİL (LANGUAGE)')}>
-            {SUPPORTED_LANGUAGES.map((l, idx, arr) => {
-              const isLast = idx === arr.length - 1;
-              const active = currentLang === l.code;
-              return (
-                <TouchableOpacity
-                  key={l.code}
-                  onPress={() => handleChangeLanguage(l.code)}
-                  activeOpacity={0.7}
-                  style={[styles.row, !isLast && styles.rowBorder]}
-                  accessibilityRole="radio"
-                  accessibilityState={{ selected: active, checked: active }}
-                  accessibilityLabel={l.label}
-                >
-                  <View style={styles.rowLeft}>
-                    <Text style={styles.flag}>{l.flag}</Text>
-                    <Text style={styles.rowLabel}>{l.label}</Text>
-                  </View>
-                  <View
-                    style={[
-                      styles.radio,
-                      active && styles.radioActive,
-                    ]}
-                  >
-                    {active && <View style={styles.radioDot} />}
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
-          </Section>
+          <LanguageSection
+            currentLang={currentLang}
+            onChangeLanguage={handleChangeLanguage}
+          />
 
-          {/* Notifications */}
-          <Section title={t('settings.notifications', 'BİLDİRİMLER (NOTIFICATIONS)')}>
-            <View style={[styles.row, styles.rowBorder]}>
-              <View style={styles.rowLeft}>
-                <View>
-                  <Text style={styles.rowLabel}>
-                    {t('settings.dailyReminder', 'Günlük Hatırlatıcılar')}
-                  </Text>
-                  <Text style={styles.rowSub}>
-                    {t(
-                      'settings.dailyReminderSub',
-                      'Odaklanma vaktini unutma',
-                    )}
-                  </Text>
-                </View>
-              </View>
-              <Switch
-                value={notificationsEnabled}
-                onValueChange={toggleNotifications}
-                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
-                thumbColor={LT.surfaceContainerLowest}
-              />
-            </View>
+          <PreferencesSection
+            notificationsEnabled={notificationsEnabled}
+            toggleNotifications={toggleNotifications}
+            soundsEnabled={soundsEnabled}
+            toggleSounds={toggleSounds}
+            hapticsEnabled={hapticsEnabled}
+            toggleHaptics={toggleHaptics}
+          />
 
-            <View style={styles.row}>
-              <View style={styles.rowLeft}>
-                <View>
-                  <Text style={styles.rowLabel}>
-                    {t('settings.sounds')}
-                  </Text>
-                  <Text style={styles.rowSub}>
-                    {t('settings.soundsSub')}
-                  </Text>
-                </View>
-              </View>
-              <Switch
-                value={soundsEnabled}
-                onValueChange={toggleSounds}
-                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
-                thumbColor={LT.surfaceContainerLowest}
-              />
-            </View>
+          <AccountSection
+            user={user}
+            anonUsername={anonUsername}
+            referralCount={referralCount}
+            isPremium={isPremium}
+            streakFreezes={streakFreezes}
+            vacationActive={vacationActive}
+            vacationUntil={vacationUntil}
+            restoring={restoring}
+            isAuthenticated={isAuthenticated}
+            onInvite={handleInvite}
+            onRedeemCode={handleRedeemCode}
+            onPremiumStatusPress={handlePremiumStatusPress}
+            onToggleVacation={handleToggleVacation}
+            onRestore={handleRestore}
+            onSignOut={handleSignOut}
+          />
 
-            {/* Haptics toggle — service was created earlier but the
-                UI to toggle it was missing. Mirrors sounds toggle. */}
-            <View style={styles.row}>
-              <View style={styles.rowLeft}>
-                <View>
-                  <Text style={styles.rowLabel}>{t('settings.haptics')}</Text>
-                  <Text style={styles.rowSub}>
-                    {t('settings.hapticsSub')}
-                  </Text>
-                </View>
-              </View>
-              <Switch
-                value={hapticsEnabled}
-                onValueChange={toggleHaptics}
-                trackColor={{ false: LT.outlineVariant, true: LT.primaryContainer }}
-                thumbColor={LT.surfaceContainerLowest}
-              />
-            </View>
-          </Section>
+          <DangerZoneSection
+            onResetProgress={handleResetProgress}
+            onDeleteAccount={handleDeleteAccount}
+          />
 
-          {/* Account */}
-          <Section title={t('settings.account', 'HESAP (ACCOUNT)')}>
-            <TouchableOpacity
-              onPress={handleInvite}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder]}
-            >
-              <View style={styles.rowLeft}>
-                <MaterialIcons
-                  name="card-giftcard"
-                  size={22}
-                  color={LT.primary}
-                />
-                <View>
-                  <Text style={styles.rowLabel}>
-                    {t('settings.invite', 'Arkadaşını davet et')}
-                  </Text>
-                  <Text style={styles.rowSub} numberOfLines={1}>
-                    {(() => {
-                      const code =
-                        (user?.id && codeFromUserId(user.id)) ||
-                        anonUsername ||
-                        '—';
-                      return t(
-                        'settings.inviteSubV2',
-                        'Kodun: {{code}}{{tail}}',
-                        {
-                          code,
-                          tail:
-                            referralCount > 0
-                              ? ` · ${t('settings.inviteJoined', {
-                                  count: referralCount,
-                                })}`
-                              : ` · ${t('settings.inviteReward')}`,
-                        },
-                      );
-                    })()}
-                  </Text>
-                </View>
-              </View>
-              <MaterialIcons
-                name="chevron-right"
-                size={18}
-                color={LT.onSurfaceVariant}
-              />
-            </TouchableOpacity>
-
-            {/* Redeem invite code — counterpart to "Arkadaşını davet et"
-                above. A user who joined organically can still redeem a
-                code their friend sent later, picking up the same 10
-                streak-freezes reward. One redemption per account
-                (server-side unique constraint). */}
-            <TouchableOpacity
-              onPress={handleRedeemCode}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder]}
-            >
-              <View style={styles.rowLeft}>
-                <MaterialIcons
-                  name="redeem"
-                  size={22}
-                  color={LT.primary}
-                />
-                <View>
-                  <Text style={styles.rowLabel}>
-                    {t('settings.redeemInvite', 'Davet kodu gir')}
-                  </Text>
-                  <Text style={styles.rowSub}>
-                    {t(
-                      'settings.redeemInviteSub',
-                      'Bir arkadaşının kodu varsa, 10 streak donduru kazan',
-                    )}
-                  </Text>
-                </View>
-              </View>
-              <MaterialIcons
-                name="chevron-right"
-                size={18}
-                color={LT.onSurfaceVariant}
-              />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={handlePremiumStatusPress}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder]}
-            >
-              <View style={styles.rowLeft}>
-                <MaterialIcons
-                  name="workspace-premium"
-                  size={22}
-                  color={LT.primaryContainer}
-                />
-                <Text style={styles.rowLabel}>
-                  {t('settings.premiumStatus', 'Premium Durumu')}
-                </Text>
-              </View>
-              <View style={styles.rowRight}>
-                <Text
-                  style={[
-                    styles.rowValue,
-                    { color: isPremium ? LT.primaryContainer : LT.onSurfaceVariant },
-                  ]}
-                >
-                  {isPremium
-                    ? t('settings.active', 'Aktif')
-                    : t('settings.inactive', 'Pasif')}
-                </Text>
-                <MaterialIcons
-                  name="chevron-right"
-                  size={18}
-                  color={LT.onSurfaceVariant}
-                />
-              </View>
-            </TouchableOpacity>
-
-            <View style={[styles.row, styles.rowBorder]}>
-              <View style={styles.rowLeft}>
-                <MaterialIcons name="ac-unit" size={22} color={LT.primaryContainer} />
-                <View>
-                  <Text style={styles.rowLabel}>
-                    {t('settings.streakRepair', 'Streak Onarım Jetonu')}
-                  </Text>
-                  <Text style={styles.rowSub}>
-                    {t(
-                      'settings.streakRepairSub',
-                      'Bir gün kaçırırsan jeton seriyi otomatik korur',
-                    )}
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.rowRight}>
-                <Text style={[styles.rowValue, { color: LT.primaryContainer }]}>
-                  {streakFreezes ?? 0}
-                </Text>
-              </View>
-            </View>
-
-            <TouchableOpacity
-              onPress={handleToggleVacation}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder]}
-            >
-              <View style={styles.rowLeft}>
-                <MaterialIcons
-                  name={vacationActive ? 'beach-access' : 'flight-takeoff'}
-                  size={22}
-                  color={vacationActive ? LT.primary : LT.onSurfaceVariant}
-                />
-                <View>
-                  <Text style={styles.rowLabel}>
-                    {t('settings.vacation', 'Tatil Modu')}
-                  </Text>
-                  <Text style={styles.rowSub}>
-                    {vacationActive
-                      ? t('settings.vacationActiveSub', 'Aktif: {{date}}\'e kadar', {
-                          date: vacationUntil,
-                        })
-                      : t(
-                          'settings.vacationSub',
-                          '7 güne kadar streak\'ini koru (Premium)',
-                        )}
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.rowRight}>
-                <Text
-                  style={[
-                    styles.rowValue,
-                    { color: vacationActive ? LT.primary : LT.onSurfaceVariant },
-                  ]}
-                >
-                  {vacationActive
-                    ? t('settings.vacationOn', 'AÇIK')
-                    : t('settings.vacationOff', 'KAPALI')}
-                </Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={handleRestore}
-              disabled={restoring}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder]}
-            >
-              <View style={styles.rowLeft}>
-                {restoring ? (
-                  <ActivityIndicator size="small" color={LT.primaryContainer} />
-                ) : (
-                  <MaterialIcons
-                    name="restore"
-                    size={22}
-                    color={LT.onSurfaceVariant}
-                  />
-                )}
-                <Text style={styles.rowLabel}>
-                  {restoring
-                    ? t('settings.restoring', 'Geri yükleniyor...')
-                    : t('settings.restorePurchases', 'Satın Alımları Geri Yükle')}
-                </Text>
-              </View>
-            </TouchableOpacity>
-
-            {isAuthenticated && (
-              <TouchableOpacity
-                onPress={handleSignOut}
-                activeOpacity={0.7}
-                style={[styles.row, styles.rowBorder]}
-              >
-                <View style={styles.rowLeft}>
-                  <MaterialIcons name="logout" size={22} color={LT.onSurfaceVariant} />
-                  <Text style={styles.rowLabel}>
-                    {t('settings.logout', 'Çıkış Yap')}
-                  </Text>
-                </View>
-              </TouchableOpacity>
-            )}
-          </Section>
-
-          {/* Danger Zone */}
-          <Section title={t('settings.dangerZone', 'TEHLİKELİ BÖLGE (DANGER ZONE)')}>
-            <TouchableOpacity
-              onPress={handleResetProgress}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder, styles.dangerRow]}
-            >
-              <View style={styles.rowLeft}>
-                <MaterialIcons
-                  name="refresh"
-                  size={22}
-                  color={LT.onPrimary}
-                />
-                <Text style={[styles.rowLabel, styles.dangerLabel]}>
-                  {t('settings.resetProgress', 'İlerlemeyi Sıfırla')}
-                </Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={handleDeleteAccount}
-              activeOpacity={0.7}
-              style={styles.row}
-            >
-              <View style={styles.rowLeft}>
-                <MaterialIcons
-                  name="delete-forever"
-                  size={22}
-                  color={LT.error}
-                />
-                <Text style={[styles.rowLabel, { color: LT.error }]}>
-                  {t('settings.deleteAccount', 'Hesabı Sil')}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </Section>
-
-          {/* Debug / Diagnostics — DEV-ONLY. The previous build shipped
-              this row to production users, which surfaced internal
-              tooling and confused them ("Reklam Tanı niye burada?").
-              Gated on __DEV__ now so it only appears in development /
-              Expo Go builds, not TestFlight or App Store. The Modal
-              import + state stay so we can flip it back in a tester
-              build by changing this one gate. */}
           {__DEV__ ? (
-            <Section title={t('settings.debug', 'TEŞHİS (DEBUG)')}>
+            <SettingsSection title={t('settings.debug', 'TEŞHİS (DEBUG)')}>
               <TouchableOpacity
                 onPress={() => setAdDebugOpen(true)}
                 activeOpacity={0.7}
-                style={styles.row}
+                style={styles.devRow}
               >
-                <View style={styles.rowLeft}>
+                <View style={styles.devRowLeft}>
                   <MaterialIcons
                     name="bug-report"
                     size={22}
                     color={LT.onSurfaceVariant}
                   />
                   <View>
-                    <Text style={styles.rowLabel}>
+                    <Text style={styles.devRowLabel}>
                       {t('settings.adDebug', 'Reklam Tanı')}
                     </Text>
-                    <Text style={styles.rowSub}>
+                    <Text style={styles.devRowSub}>
                       {t(
                         'settings.adDebugSub',
                         'Reklam yüklenme durumu + son hatalar + ad unit ID\'leri',
@@ -914,42 +543,11 @@ export default function SettingsScreen({ navigation }) {
                   color={LT.onSurfaceVariant}
                 />
               </TouchableOpacity>
-            </Section>
+            </SettingsSection>
           ) : null}
 
-          {/* Legal */}
-          <Section title={t('settings.legal', 'YASAL (LEGAL)')}>
-            <TouchableOpacity
-              onPress={() => Linking.openURL(LEGAL.PRIVACY_URL)}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder]}
-            >
-              <Text style={styles.rowLabel}>
-                {t('settings.privacyPolicy', 'Gizlilik Politikası')}
-              </Text>
-              <MaterialIcons name="open-in-new" size={18} color={LT.onSurfaceVariant} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => Linking.openURL(LEGAL.TERMS_URL)}
-              activeOpacity={0.7}
-              style={[styles.row, styles.rowBorder]}
-            >
-              <Text style={styles.rowLabel}>
-                {t('settings.termsOfService', 'Kullanım Koşulları')}
-              </Text>
-              <MaterialIcons name="open-in-new" size={18} color={LT.onSurfaceVariant} />
-            </TouchableOpacity>
-            <View style={styles.row}>
-              <Text style={styles.rowLabel}>
-                {t('settings.version', 'Versiyon')}
-              </Text>
-              <Text style={[styles.rowValue, styles.versionText]}>
-                {version} ({t('settings.build', 'Derleme')} {buildNumber})
-              </Text>
-            </View>
-          </Section>
+          <LegalSection version={version} buildNumber={buildNumber} />
 
-          {/* Footer mascot */}
           <View style={styles.footer}>
             <MaterialIcons name="self-improvement" size={56} color={LT.primaryContainer} />
             <Text style={styles.footerText}>
@@ -961,87 +559,17 @@ export default function SettingsScreen({ navigation }) {
         </ScrollView>
       </View>
 
-      {/* Android has no Alert.prompt. Keep referral redemption usable on
-          every supported platform with a compact, keyboard-safe modal. */}
-      <Modal
+      <RedeemCodeModal
         visible={redeemModalVisible}
-        transparent
-        animationType="fade"
-        onRequestClose={() => {
+        onClose={() => {
           if (!redeeming) setRedeemModalVisible(false);
         }}
-      >
-        <KeyboardAvoidingView
-          style={styles.redeemModalBackdrop}
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        >
-          <TouchableOpacity
-            accessible={false}
-            activeOpacity={1}
-            onPress={() => {
-              if (!redeeming) setRedeemModalVisible(false);
-            }}
-            style={StyleSheet.absoluteFillObject}
-          />
-          <View style={styles.redeemModalCard}>
-            <Text style={styles.redeemModalTitle}>
-              {t('settings.redeemTitle', 'Davet Kodu')}
-            </Text>
-            <Text style={styles.redeemModalBody}>
-              {t(
-                'settings.redeemBody',
-                'Bir arkadaşının kodunu yaz — kabul edilirse ikinize de 10 streak donduru gelir.',
-              )}
-            </Text>
-            <TextInput
-              value={redeemCodeInput}
-              onChangeText={setRedeemCodeInput}
-              autoCapitalize="characters"
-              autoCorrect={false}
-              autoFocus
-              maxLength={24}
-              placeholder="ASCEND-XXXX-YYYY"
-              placeholderTextColor={LT.outline}
-              returnKeyType="done"
-              onSubmitEditing={() => redeemCodeWithFeedback(redeemCodeInput)}
-              editable={!redeeming}
-              style={styles.redeemInput}
-              accessibilityLabel={t('settings.redeemTitle', 'Davet Kodu')}
-            />
-            <View style={styles.redeemModalActions}>
-              <TouchableOpacity
-                accessibilityLabel={t('common.cancel', 'İptal')}
-                onPress={() => setRedeemModalVisible(false)}
-                disabled={redeeming}
-                style={styles.redeemCancelButton}
-              >
-                <Text style={styles.redeemCancelText}>
-                  {t('common.cancel', 'İptal')}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                accessibilityLabel={t('settings.redeemInvite', 'Davet kodu gir')}
-                onPress={() => redeemCodeWithFeedback(redeemCodeInput)}
-                disabled={redeeming || !redeemCodeInput.trim()}
-                style={[
-                  styles.redeemSubmitButton,
-                  (redeeming || !redeemCodeInput.trim()) && styles.redeemSubmitDisabled,
-                ]}
-              >
-                {redeeming ? (
-                  <ActivityIndicator size="small" color={LT.onPrimary} />
-                ) : (
-                  <Text style={styles.redeemSubmitText}>
-                    {t('common.confirm', 'Onayla')}
-                  </Text>
-                )}
-              </TouchableOpacity>
-            </View>
-          </View>
-        </KeyboardAvoidingView>
-      </Modal>
+        redeeming={redeeming}
+        redeemCodeInput={redeemCodeInput}
+        setRedeemCodeInput={setRedeemCodeInput}
+        onSubmit={redeemCodeWithFeedback}
+      />
 
-      {/* Ad diagnostics — opened from the Debug section row above. */}
       <AdDebugModal
         visible={adDebugOpen}
         onClose={() => setAdDebugOpen(false)}
@@ -1050,16 +578,6 @@ export default function SettingsScreen({ navigation }) {
   );
 }
 
-function Section({ title, children }) {
-  return (
-    <View style={styles.section}>
-      <Text style={styles.sectionTitle}>{title}</Text>
-      <View style={styles.sectionCard}>{children}</View>
-    </View>
-  );
-}
-
-// Theme-aware stylesheet factory. See `src/config/theme.js`.
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: LT.background },
   container: { flex: 1, backgroundColor: LT.background },
@@ -1102,95 +620,6 @@ const styles = StyleSheet.create({
 
   scroll: { paddingTop: 16, paddingBottom: 24 },
 
-  section: { marginTop: 16 },
-  sectionTitle: {
-    color: LT.onSurfaceVariant,
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 1.5,
-    paddingHorizontal: 24,
-    marginBottom: 8,
-    textTransform: 'uppercase',
-  },
-  sectionCard: {
-    backgroundColor: LT.surfaceContainerLowest,
-    marginHorizontal: 20,
-    borderRadius: LT_RADIUS.lg,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-  },
-
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-  },
-  rowBorder: {
-    borderBottomWidth: 1,
-    borderBottomColor: LT.outlineVariant,
-  },
-  rowLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    flex: 1,
-  },
-  rowRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  rowLabel: {
-    color: LT.onSurface,
-    fontSize: 15,
-    fontWeight: '600',
-  },
-  rowSub: {
-    color: LT.onSurfaceVariant,
-    fontSize: 12,
-    fontWeight: '500',
-    marginTop: 2,
-  },
-  rowValue: {
-    color: LT.onSurfaceVariant,
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  versionText: {
-    fontVariant: ['tabular-nums'],
-    fontSize: 12,
-  },
-
-  // Danger zone — destructive red background
-  dangerRow: {
-    backgroundColor: '#EF4444',
-  },
-  dangerLabel: {
-    color: LT.onPrimary,
-    fontWeight: '700',
-  },
-
-  flag: { fontSize: 22 },
-  radio: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    borderWidth: 2,
-    borderColor: LT.outline,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  radioActive: { borderColor: LT.primaryContainer },
-  radioDot: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: LT.primaryContainer,
-  },
-
   footer: {
     alignItems: 'center',
     marginTop: 32,
@@ -1204,82 +633,28 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
 
-  redeemModalBackdrop: {
-    flex: 1,
+  devRow: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.45)',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 14,
   },
-  redeemModalCard: {
-    width: '100%',
-    maxWidth: 420,
-    borderRadius: LT_RADIUS.xl,
-    padding: 20,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
+  devRowLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    flex: 1,
   },
-  redeemModalTitle: {
-    color: LT.onSurface,
-    fontSize: 20,
-    fontWeight: '900',
-    marginBottom: 8,
-  },
-  redeemModalBody: {
-    color: LT.onSurfaceVariant,
-    fontSize: 13,
-    lineHeight: 19,
-    marginBottom: 16,
-  },
-  redeemInput: {
-    minHeight: 48,
-    width: '100%',
-    paddingHorizontal: 14,
-    borderRadius: LT_RADIUS.md,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    backgroundColor: LT.surfaceContainer,
+  devRowLabel: {
     color: LT.onSurface,
     fontSize: 15,
-    fontWeight: '700',
-    letterSpacing: 0.5,
+    fontWeight: '600',
   },
-  redeemModalActions: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    gap: 10,
-    marginTop: 16,
-  },
-  redeemCancelButton: {
-    minHeight: 44,
-    paddingHorizontal: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: LT_RADIUS.md,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-  },
-  redeemCancelText: {
+  devRowSub: {
     color: LT.onSurfaceVariant,
-    fontSize: 14,
-    fontWeight: '800',
-  },
-  redeemSubmitButton: {
-    minHeight: 44,
-    minWidth: 96,
-    paddingHorizontal: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: LT_RADIUS.md,
-    backgroundColor: LT.primary,
-  },
-  redeemSubmitDisabled: {
-    opacity: 0.45,
-  },
-  redeemSubmitText: {
-    color: LT.onPrimary,
-    fontSize: 14,
-    fontWeight: '900',
+    fontSize: 12,
+    fontWeight: '500',
+    marginTop: 2,
   },
 });
