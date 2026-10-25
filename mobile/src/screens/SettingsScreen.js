@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,6 @@ import {
   StyleSheet,
   StatusBar,
   Share,
-  Platform,
 } from 'react-native';
 import {
   AccessibleTouchableOpacity as TouchableOpacity,
@@ -33,7 +32,8 @@ import {
   ensureMyReferral,
   redeemReferralCode,
   getReferralStats,
-  codeFromUserId,
+  PENDING_REFERRAL_CODE_KEY,
+  isReferralCodeFormatValid,
 } from '../services/referral';
 import { setMuted } from '../services/sounds';
 import {
@@ -67,10 +67,9 @@ export default function SettingsScreen({ navigation }) {
     vacationUntil,
     startVacation,
     endVacation,
-    anonUsername,
     grantReferralReward,
   } = useApp();
-  const { user, isAuthenticated, signOut } = useAuth();
+  const { user, isAuthenticated, signOut, leaveGuestMode } = useAuth();
 
   const vacationActive = (() => {
     if (!vacationUntil) return false;
@@ -80,6 +79,12 @@ export default function SettingsScreen({ navigation }) {
   })();
 
   const [referralCount, setReferralCount] = useState(0);
+  const [myReferralCode, setMyReferralCode] = useState(null);
+  const [referralCodeUserId, setReferralCodeUserId] = useState(null);
+  const [referralLoading, setReferralLoading] = useState(false);
+  const [referralLoadFailed, setReferralLoadFailed] = useState(false);
+  const activeReferralUserIdRef = useRef(null);
+  activeReferralUserIdRef.current = isAuthenticated ? user?.id || null : null;
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [currentLang, setCurrentLang] = useState(getCurrentLanguage());
   const [restoring, setRestoring] = useState(false);
@@ -91,12 +96,34 @@ export default function SettingsScreen({ navigation }) {
   const [redeeming, setRedeeming] = useState(false);
 
   useEffect(() => {
-    if (!user?.id) return;
-    ensureMyReferral(user.id).catch(() => {});
-    getReferralStats(user.id)
-      .then((s) => setReferralCount(s.redemptions || 0))
-      .catch(() => {});
-  }, [user?.id]);
+    const requestedUserId = isAuthenticated ? user?.id : null;
+    setReferralCount(0);
+    setMyReferralCode(null);
+    setReferralCodeUserId(null);
+    setReferralLoadFailed(false);
+    if (!requestedUserId) {
+      setReferralLoading(false);
+      return undefined;
+    }
+    let cancelled = false;
+    setReferralLoading(true);
+    Promise.all([ensureMyReferral(requestedUserId), getReferralStats(requestedUserId)])
+      .then(([code, stats]) => {
+        if (cancelled || activeReferralUserIdRef.current !== requestedUserId) return;
+        setMyReferralCode(code);
+        setReferralCodeUserId(code ? requestedUserId : null);
+        setReferralCount(stats?.redemptions || 0);
+        setReferralLoadFailed(!code);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setReferralLoadFailed(true);
+      })
+      .finally(() => {
+        if (!cancelled) setReferralLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, [user?.id, isAuthenticated]);
 
   useEffect(() => {
     AsyncStorage.getItem(SOUNDS_MUTED_KEY).then((v) => {
@@ -109,24 +136,43 @@ export default function SettingsScreen({ navigation }) {
   }, []);
 
   const handleInvite = async () => {
-    const code = (user?.id && codeFromUserId(user.id)) || anonUsername || null;
-    const link = code
-      ? `${LEGAL.PUBLIC_APP_URL}?ref=${encodeURIComponent(code)}`
-      : LEGAL.PUBLIC_APP_URL;
-    const message = code
-      ? t(
-          'settings.inviteShareWithCode',
-          'Ascend\'i indir, davet kodumu kullan ve 10 streak donduru kazan: {{code}}\n{{link}}',
-          { code, link },
-        )
-      : t(
-          'settings.inviteShare',
-          'Disiplin akademisini birlikte yapalım — Ascend\'i indir ve günlük disiplin yolunu başlat.\n{{link}}',
-          { link },
+    if (!isAuthenticated || !user?.id) return;
+    let code = referralCodeUserId === user.id ? myReferralCode : null;
+    if (!code) {
+      setReferralLoading(true);
+      setReferralLoadFailed(false);
+      try {
+        code = await ensureMyReferral(user.id);
+        if (activeReferralUserIdRef.current !== user.id) return;
+        if (!code) throw new Error('Referral code is unavailable');
+        setMyReferralCode(code);
+        setReferralCodeUserId(user.id);
+      } catch {
+        setReferralLoadFailed(true);
+        Alert.alert(
+          t('settings.redeemErrorTitle', 'Hata'),
+          t('settings.referralCodeUnavailable', 'Davet kodun alınamadı. İnternetini kontrol edip tekrar dene.'),
         );
+        return;
+      } finally {
+        if (activeReferralUserIdRef.current === user.id) setReferralLoading(false);
+      }
+    }
+    if (activeReferralUserIdRef.current !== user.id) return;
+    const link = `${LEGAL.PUBLIC_APP_URL}?ref=${encodeURIComponent(code)}`;
+    const message = t(
+      'settings.inviteShareWithCode',
+      'Ascend\'i indir, davet kodumu kullan ve 10 streak donduru kazan: {{code}}\n{{link}}',
+      { code, link },
+    );
     try {
       await Share.share({ message });
-    } catch {}
+    } catch {
+      Alert.alert(
+        t('settings.inviteShareErrorTitle', 'Paylaşım açılamadı'),
+        t('settings.inviteShareError', 'Davetini paylaşamadık. Biraz sonra tekrar dene.'),
+      );
+    }
   };
 
   const handlePremiumStatusPress = () => {
@@ -146,21 +192,33 @@ export default function SettingsScreen({ navigation }) {
   const redeemCodeWithFeedback = async (rawCode) => {
     const code = String(rawCode || '').trim();
     if (!code) return;
+    if (!isReferralCodeFormatValid(code)) {
+      Alert.alert(
+        t('settings.redeemErrorTitle', 'Hata'),
+        t('settings.redeemInvalid', 'Kod geçersiz. Tekrar dene.'),
+      );
+      return;
+    }
     setRedeeming(true);
     try {
       if (!user?.id) {
+        await AsyncStorage.setItem(PENDING_REFERRAL_CODE_KEY, code);
+        setRedeemModalVisible(false);
         Alert.alert(
-          t('settings.redeemErrorTitle', 'Hata'),
-          t(
-            'settings.redeemAuthRequired',
-            'Davet kodu kullanmak için hesabın olmalı. Önce giriş yap.',
-          ),
+          t('settings.redeemAuthRequiredTitle', 'Giriş yapman gerekiyor'),
+          t('settings.redeemGuestSaved', 'Kodun kaydedildi. Ödülü almak için hesabına giriş yap.'),
+          [
+            { text: t('common.cancel', 'Daha sonra'), style: 'cancel' },
+            { text: t('settings.signInForReferrals', 'Giriş yap'), onPress: leaveGuestMode },
+          ],
         );
         return;
       }
       const result = await redeemReferralCode(code, user.id);
       if (result.ok) {
-        grantReferralReward();
+        grantReferralReward(result.rewardId);
+        setRedeemModalVisible(false);
+        setRedeemCodeInput('');
         Alert.alert(
           t('settings.redeemSuccessTitle', 'Tebrikler! 🎉'),
           t(
@@ -185,6 +243,10 @@ export default function SettingsScreen({ navigation }) {
           'settings.redeemAlreadyUsed',
           'Sen bir kod kullanmıştın zaten — sadece bir kez geçerli.',
         ),
+        rate_limited: t(
+          'settings.redeemRateLimited',
+          'Çok fazla deneme yapıldı. Bir saat sonra tekrar dene.',
+        ),
         auth_required: t(
           'settings.redeemAuthRequired',
           'Önce giriş yap.',
@@ -198,28 +260,18 @@ export default function SettingsScreen({ navigation }) {
         t('settings.redeemErrorTitle', 'Hata'),
         messages[reason] || messages.error,
       );
+    } catch (error) {
+      console.warn('[SettingsScreen] referral redemption handoff failed:', error?.message);
+      Alert.alert(
+        t('settings.redeemErrorTitle', 'Hata'),
+        t('settings.redeemError', 'Bir hata oluştu. Tekrar dener misin?'),
+      );
     } finally {
       setRedeeming(false);
-      setRedeemModalVisible(false);
-      setRedeemCodeInput('');
     }
   };
 
   const handleRedeemCode = () => {
-    if (Platform.OS === 'ios' && typeof Alert.prompt === 'function') {
-      Alert.prompt(
-        t('settings.redeemTitle', 'Davet Kodu'),
-        t(
-          'settings.redeemBody',
-          'Bir arkadaşının kodunu yaz — kabul edilirse ikinize de 10 streak donduru gelir.',
-        ),
-        redeemCodeWithFeedback,
-        'plain-text',
-        '',
-      );
-      return;
-    }
-    setRedeemCodeInput('');
     setRedeemModalVisible(true);
   };
 
@@ -443,6 +495,18 @@ export default function SettingsScreen({ navigation }) {
     Constants?.manifest?.ios?.buildNumber ||
     Constants?.expoConfig?.ios?.buildNumber ||
     '112';
+  const referralCodeForCurrentUser = isAuthenticated && user?.id === referralCodeUserId
+    ? myReferralCode
+    : null;
+  const referralCountForCurrentUser = referralCodeForCurrentUser ? referralCount : 0;
+  const inviteStatus = !isAuthenticated
+    ? t('settings.referralSignInHint', 'Davet kodunu kullanmak için hesabına giriş yap.')
+    : referralLoading
+      ? t('settings.referralCodeLoading', 'Davet kodun yükleniyor…')
+      : referralLoadFailed
+        ? t('settings.referralCodeUnavailable', 'Davet kodun alınamadı. Yeniden denemek için dokun.')
+        : t('settings.referralCodeLoading', 'Davet kodun yükleniyor…');
+  const inviteDisabled = !isAuthenticated || referralLoading;
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -491,8 +555,10 @@ export default function SettingsScreen({ navigation }) {
 
           <AccountSection
             user={user}
-            anonUsername={anonUsername}
-            referralCount={referralCount}
+            referralCode={referralCodeForCurrentUser}
+            referralCount={referralCountForCurrentUser}
+            inviteStatus={inviteStatus}
+            inviteDisabled={inviteDisabled}
             isPremium={isPremium}
             streakFreezes={streakFreezes}
             vacationActive={vacationActive}
@@ -500,6 +566,7 @@ export default function SettingsScreen({ navigation }) {
             restoring={restoring}
             isAuthenticated={isAuthenticated}
             onInvite={handleInvite}
+            onSignIn={leaveGuestMode}
             onRedeemCode={handleRedeemCode}
             onPremiumStatusPress={handlePremiumStatusPress}
             onToggleVacation={handleToggleVacation}
@@ -562,7 +629,10 @@ export default function SettingsScreen({ navigation }) {
       <RedeemCodeModal
         visible={redeemModalVisible}
         onClose={() => {
-          if (!redeeming) setRedeemModalVisible(false);
+          if (!redeeming) {
+            setRedeemModalVisible(false);
+            setRedeemCodeInput('');
+          }
         }}
         redeeming={redeeming}
         redeemCodeInput={redeemCodeInput}

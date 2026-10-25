@@ -136,8 +136,11 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.RECORD_DAILY_DECK, payload });
   }, []);
 
-  const grantReferralReward = useCallback(() => {
-    dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+  const grantReferralReward = useCallback((id) => {
+    dispatch({
+      type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+      payload: id ? { id, beneficiary: 'redeemer' } : undefined,
+    });
   }, []);
 
   const startVacation = useCallback((days = 7) => {
@@ -248,6 +251,8 @@ export function AppProvider({ children }) {
           lessonId,
           xpAwarded: xp,
           critAwarded: false,
+          quizCorrect,
+          quizTotal,
         }).catch(() => {});
 
         if (reflection || reflectionAudioUri) {

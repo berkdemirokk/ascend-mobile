@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {
+  AccessibilityInfo,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
   View,
   Text,
   StyleSheet,
@@ -65,6 +69,7 @@ export default function OnboardingScreen({ navigation }) {
     time: null,
     mood: null,
   });
+  const stepIndex = Math.max(0, STEPS.indexOf(step));
 
   useEffect(() => {
     track({
@@ -76,6 +81,17 @@ export default function OnboardingScreen({ navigation }) {
       },
     });
   }, [step, user?.id]);
+
+  useEffect(() => {
+    const announcement = t('onboarding.stepProgress', {
+      current: stepIndex + 1,
+      total: STEPS.length,
+      defaultValue: `Step ${stepIndex + 1} of ${STEPS.length}`,
+    });
+    try {
+      AccessibilityInfo.announceForAccessibility?.(announcement);
+    } catch {}
+  }, [stepIndex, t]);
 
   const finishOnboarding = () => {
     setUserProfile({
@@ -148,6 +164,7 @@ export default function OnboardingScreen({ navigation }) {
   };
 
   const handleNext = () => {
+    Keyboard.dismiss();
     if (step === 'personalize') {
       setStep('pickPath');
     } else if (step === 'pickPath') {
@@ -161,6 +178,11 @@ export default function OnboardingScreen({ navigation }) {
     } else {
       finishOnboarding();
     }
+  };
+
+  const handleBack = () => {
+    Keyboard.dismiss();
+    if (stepIndex > 0) setStep(STEPS[stepIndex - 1]);
   };
 
   const handleUpsellSubscribe = () => {
@@ -229,10 +251,14 @@ export default function OnboardingScreen({ navigation }) {
   const canAdvance = true;
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
-      <View style={styles.container}>
-        <View style={styles.heroGlow} pointerEvents="none" />
+    <KeyboardAvoidingView
+      style={styles.keyboardAvoider}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle="dark-content" backgroundColor={LT.background} />
+        <View style={styles.container}>
+          <View style={styles.heroGlow} pointerEvents="none" />
 
         {step === 'personalize' ? (
           <PersonalizeStep t={t} answers={answers} onAnswer={handleAnswer} />
@@ -252,21 +278,44 @@ export default function OnboardingScreen({ navigation }) {
           <UpsellStep t={t} onSubscribe={handleUpsellSubscribe} />
         )}
 
-        <View style={styles.bottomArea}>
-          <View style={styles.dots}>
-            {STEPS.map((s) => {
-              const active = step === s;
-              return (
-                <View
-                  key={s}
-                  style={[
-                    styles.dot,
-                    active && styles.dotActive,
-                  ]}
-                />
-              );
-            })}
-          </View>
+          <View style={styles.bottomArea}>
+            <View style={styles.progressHeader}>
+              {stepIndex > 0 ? (
+                <TouchableOpacity
+                  accessibilityRole="button"
+                  accessibilityLabel={t('common.back', 'Geri')}
+                  onPress={handleBack}
+                  style={styles.backButton}
+                >
+                  <MaterialIcons name="arrow-back" size={18} color={LT.onSurface} />
+                  <Text style={styles.backText}>{t('common.back', 'Geri')}</Text>
+                </TouchableOpacity>
+              ) : <View style={styles.progressSpacer} />}
+              <View style={styles.dots} accessible={false}>
+                {STEPS.map((s) => {
+                  const active = step === s;
+                  return (
+                    <View
+                      key={s}
+                      style={[
+                        styles.dot,
+                        active && styles.dotActive,
+                      ]}
+                    />
+                  );
+                })}
+              </View>
+              <Text
+                accessibilityLabel={t('onboarding.stepProgress', {
+                  current: stepIndex + 1,
+                  total: STEPS.length,
+                  defaultValue: `Step ${stepIndex + 1} of ${STEPS.length}`,
+                })}
+                style={styles.stepCount}
+              >
+                {stepIndex + 1}/{STEPS.length}
+              </Text>
+            </View>
 
           <TouchableOpacity
             onPress={canAdvance ? handleNext : undefined}
@@ -296,13 +345,15 @@ export default function OnboardingScreen({ navigation }) {
                   ? t('onboarding.captionArchetype', '30 GÜNLÜK NİYETİNİ SEÇ')
                   : t('onboarding.captionUpsell', 'RİTMİ KESMEDEN DEVAM ET')}
           </Text>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  keyboardAvoider: { flex: 1 },
   safeArea: { flex: 1, backgroundColor: LT.background },
   container: { flex: 1, backgroundColor: LT.background },
 
@@ -326,11 +377,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 16,
   },
+  progressHeader: {
+    width: '100%',
+    minHeight: 48,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  backButton: {
+    minWidth: 48,
+    minHeight: 48,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  backText: {
+    color: LT.onSurface,
+    fontSize: 13,
+    fontWeight: '700',
+  },
+  progressSpacer: { width: 48 },
+  stepCount: {
+    minWidth: 48,
+    color: LT.onSurfaceVariant,
+    fontSize: 12,
+    fontWeight: '700',
+    textAlign: 'right',
+  },
   dots: {
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 8,
-    marginBottom: 4,
   },
   dot: {
     width: 6,

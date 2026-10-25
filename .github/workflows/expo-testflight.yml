@@ -100,6 +100,8 @@ jobs:
             echo "::error::eas_build_id must contain only letters, numbers, and hyphens."
             exit 1
           fi
+          eas build:view "$EAS_BUILD_ID" --json > "$RUNNER_TEMP/eas-submit-build.json"
+          node scripts/verify_eas_build.js "$RUNNER_TEMP/eas-submit-build.json"
           eas submit \
             --platform ios \
             --profile production \
@@ -139,6 +141,8 @@ jobs:
           EXPO_APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           EXPO_APPLE_TEAM_TYPE: INDIVIDUAL
         run: |
+          eas build:view "$EAS_BUILD_ID" --json > "$RUNNER_TEMP/eas-submit-build.json"
+          node scripts/verify_eas_build.js "$RUNNER_TEMP/eas-submit-build.json"
           eas submit \
             --platform ios \
             --profile production \

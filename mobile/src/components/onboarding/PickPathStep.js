@@ -23,6 +23,9 @@ export default function PickPathStep({ t, selectedPath, onSelect }) {
           return (
             <TouchableOpacity
               key={p.id}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: isSelected, selected: isSelected }}
+              accessibilityLabel={`${t(`paths.${p.id}.title`)}, ${t('path.lessonsCount', { count: p.duration })}`}
               onPress={() => onSelect(p.id)}
               activeOpacity={0.85}
               style={[
@@ -89,8 +92,9 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   pathGridCard: {
-    width: '48%',
-    aspectRatio: 1,
+    flexBasis: '47%',
+    flexGrow: 1,
+    minHeight: 160,
     borderRadius: 16,
     padding: 16,
     justifyContent: 'space-between',

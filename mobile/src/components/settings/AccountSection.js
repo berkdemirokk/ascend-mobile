@@ -5,12 +5,13 @@ import { MaterialIcons } from '@react-native-vector-icons/material-icons/static'
 import { AccessibleTouchableOpacity as TouchableOpacity } from '../AccessibleControls';
 import SettingsSection from './SettingsSection';
 import { LT } from '../../config/lightTheme';
-import { codeFromUserId } from '../../services/referral';
 
 export default function AccountSection({
   user,
-  anonUsername,
+  referralCode,
   referralCount,
+  inviteStatus,
+  inviteDisabled,
   isPremium,
   streakFreezes,
   vacationActive,
@@ -18,6 +19,7 @@ export default function AccountSection({
   restoring,
   isAuthenticated,
   onInvite,
+  onSignIn,
   onRedeemCode,
   onPremiumStatusPress,
   onToggleVacation,
@@ -31,7 +33,8 @@ export default function AccountSection({
       <TouchableOpacity
         onPress={onInvite}
         activeOpacity={0.7}
-        style={[styles.row, styles.rowBorder]}
+        disabled={inviteDisabled}
+        style={[styles.row, styles.rowBorder, inviteDisabled && styles.disabledRow]}
       >
         <View style={styles.rowLeft}>
           <MaterialIcons
@@ -39,30 +42,20 @@ export default function AccountSection({
             size={22}
             color={LT.primary}
           />
-          <View>
+          <View style={styles.rowText}>
             <Text style={styles.rowLabel}>
               {t('settings.invite', 'Arkadaşını davet et')}
             </Text>
-            <Text style={styles.rowSub} numberOfLines={1}>
-              {(() => {
-                const code =
-                  (user?.id && codeFromUserId(user.id)) ||
-                  anonUsername ||
-                  '—';
-                return t(
-                  'settings.inviteSubV2',
-                  'Kodun: {{code}}{{tail}}',
-                  {
-                    code,
+            <Text style={styles.rowSub} numberOfLines={2}>
+              {referralCode
+                ? t('settings.inviteSubV2', 'Kodun: {{code}}{{tail}}', {
+                    code: referralCode,
                     tail:
                       referralCount > 0
-                        ? ` · ${t('settings.inviteJoined', {
-                            count: referralCount,
-                          })}`
+                        ? ` · ${t('settings.inviteJoined', { count: referralCount })}`
                         : ` · ${t('settings.inviteReward')}`,
-                  },
-                );
-              })()}
+                  })
+                : inviteStatus}
             </Text>
           </View>
         </View>
@@ -72,6 +65,25 @@ export default function AccountSection({
           color={LT.onSurfaceVariant}
         />
       </TouchableOpacity>
+
+      {!isAuthenticated && onSignIn ? (
+        <TouchableOpacity
+          onPress={onSignIn}
+          activeOpacity={0.7}
+          style={[styles.row, styles.rowBorder]}
+        >
+          <View style={styles.rowLeft}>
+            <MaterialIcons name="login" size={22} color={LT.primary} />
+            <View style={styles.rowText}>
+              <Text style={styles.rowLabel}>{t('settings.signInForReferrals', 'Giriş yap')}</Text>
+              <Text style={styles.rowSub}>
+                {t('settings.referralSignInHint', 'Davet kodunu kullanmak için hesabına giriş yap.')}
+              </Text>
+            </View>
+          </View>
+          <MaterialIcons name="chevron-right" size={18} color={LT.onSurfaceVariant} />
+        </TouchableOpacity>
+      ) : null}
 
       <TouchableOpacity
         onPress={onRedeemCode}
@@ -280,5 +292,12 @@ const styles = StyleSheet.create({
     color: LT.onSurfaceVariant,
     fontSize: 13,
     fontWeight: '600',
+  },
+  rowText: {
+    flex: 1,
+    flexShrink: 1,
+  },
+  disabledRow: {
+    opacity: 0.6,
   },
 });

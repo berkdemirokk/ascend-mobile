@@ -5,6 +5,11 @@ permissions:
 
 on:
   workflow_dispatch:
+    inputs:
+      expected_build:
+        description: "Exact iOS build number to verify (from the EAS submission)"
+        required: true
+        type: string
 
 jobs:
   verify:
@@ -58,7 +63,7 @@ jobs:
           ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           ASC_KEY_PATH: ${{ env.ASC_KEY_PATH }}
-          ASC_EXPECTED_BUILD: "127"
+          ASC_EXPECTED_BUILD: ${{ inputs.expected_build }}
         run: python3 scripts/verify_asc.py
 
       - name: Remove App Store Connect API key
