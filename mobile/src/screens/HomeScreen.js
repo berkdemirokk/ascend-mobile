@@ -31,6 +31,7 @@ import LightTopAppBar from '../components/LightTopAppBar';
 import { StatCell } from '../components/home/StatCell';
 import { LinkRow } from '../components/home/LinkRow';
 import { HabitChain } from '../components/home/HabitChain';
+import { StreakHeroCard } from '../components/home/StreakHeroCard';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 // DailyMysteryBox + DailyMoodCheckIn removed in the Home agresif
@@ -506,37 +507,11 @@ export default function HomeScreen({ navigation }) {
         </View>
 
         {/* Streak Hero Card */}
-        <TouchableOpacity
-          style={styles.streakHero}
+        <StreakHeroCard
+          currentStreak={currentStreak}
+          longestStreak={longestStreak}
           onPress={() => setStreakInfoVisible(true)}
-          activeOpacity={0.9}
-        >
-          <View style={styles.streakHeroLeft}>
-            <Text style={styles.streakHeroLabel}>
-              {t('home.currentStreak', 'MEVCUT SERİ')}
-            </Text>
-            <View style={styles.streakHeroNumberRow}>
-              <Text style={styles.streakHeroNumber}>{currentStreak}</Text>
-              <MaterialIcons
-                name="local-fire-department"
-                size={42}
-                color={LT.primaryContainer}
-              />
-            </View>
-            <Text style={styles.streakHeroSub}>
-              {t('home.daysStrong', 'GÜN')}
-            </Text>
-          </View>
-          <View style={styles.streakHeroRight}>
-            <Text style={styles.streakBestLabel}>
-              {t('home.longestStreak', 'EN UZUN')}
-            </Text>
-            <Text style={styles.streakBest}>{longestStreak || 0}</Text>
-            <Text style={styles.streakBestSub}>
-              {t('home.daysStrong', 'GÜN')}
-            </Text>
-          </View>
-        </TouchableOpacity>
+        />
 
         {/* Empathy banner shown the first time the user opens Home
             after losing a real streak (>=3 days). Persists across app
@@ -1505,75 +1480,6 @@ const styles = StyleSheet.create({
   },
 
   // Streak Hero card
-  streakHero: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    marginHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 14,
-    backgroundColor: LT.surfaceContainerLowest,
-    borderRadius: LT_RADIUS.xl,
-    borderWidth: 1,
-    borderColor: LT.outlineVariant,
-    paddingVertical: 16,
-    paddingHorizontal: 18,
-    overflow: 'hidden',
-  },
-  streakHeroLeft: {
-    flex: 1.4,
-  },
-  streakHeroLabel: {
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 2,
-    color: LT.onSurfaceVariant,
-    marginBottom: 6,
-  },
-  streakHeroNumberRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    gap: 6,
-  },
-  streakHeroNumber: {
-    fontSize: 64,
-    fontWeight: '900',
-    letterSpacing: 0,
-    color: LT.primaryContainer,
-    lineHeight: 64,
-  },
-  streakHeroSub: {
-    fontSize: 11,
-    fontWeight: '900',
-    letterSpacing: 3,
-    color: LT.outline,
-    marginTop: 2,
-  },
-  streakHeroRight: {
-    flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    borderLeftWidth: 1,
-    borderLeftColor: LT.outlineVariant,
-    paddingLeft: 16,
-  },
-  streakBestLabel: {
-    fontSize: 10,
-    fontWeight: '800',
-    letterSpacing: 1.5,
-    color: LT.onSurfaceVariant,
-  },
-  streakBest: {
-    fontSize: 36,
-    fontWeight: '900',
-    letterSpacing: 0,
-    color: LT.onSurface,
-    marginTop: 2,
-  },
-  streakBestSub: {
-    fontSize: 10,
-    fontWeight: '900',
-    letterSpacing: 2,
-    color: LT.outline,
-  },
 
   // Today's CTA card
 
