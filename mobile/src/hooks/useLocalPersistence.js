@@ -2,10 +2,53 @@ import { useEffect, useRef, useCallback } from 'react';
 import { AppState } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../config/constants';
+import { ACTION_TYPES } from '../contexts/appActionTypes';
+import {
+  MAX_HEARTS,
+  LOCAL_STATE_LOAD_TIMEOUT_MS,
+  getTodayDateString,
+  withTimeout,
+} from '../contexts/appStateConstants';
 
-export function useLocalPersistence({ state }) {
+export function useLocalPersistence({ state, dispatch }) {
   const saveTimerRef = useRef(null);
   const latestStateRef = useRef(state);
+
+  // Bootstrap: hydrate from AsyncStorage on initial mount
+  useEffect(() => {
+    (async () => {
+      try {
+        const raw = await withTimeout(
+          AsyncStorage.getItem(STORAGE_KEYS.USER_STATE),
+          LOCAL_STATE_LOAD_TIMEOUT_MS,
+          'AsyncStorage USER_STATE load',
+        );
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          const today = getTodayDateString();
+          const todayCompleted = parsed.lastCompletedDate === today;
+
+          // Auto-refill hearts if past refillAt
+          let hearts = parsed.hearts ?? MAX_HEARTS;
+          let heartsRefillAt = parsed.heartsRefillAt;
+          if (heartsRefillAt && new Date(heartsRefillAt) < new Date()) {
+            hearts = MAX_HEARTS;
+            heartsRefillAt = null;
+          }
+
+          dispatch({
+            type: ACTION_TYPES.LOAD_STATE,
+            payload: { ...parsed, todayCompleted, hearts, heartsRefillAt },
+          });
+        } else {
+          dispatch({ type: ACTION_TYPES.LOAD_STATE, payload: {} });
+        }
+      } catch (e) {
+        console.warn('[useLocalPersistence] Failed to load local state:', e?.message);
+        dispatch({ type: ACTION_TYPES.LOAD_STATE, payload: {} });
+      }
+    })();
+  }, [dispatch]);
 
   useEffect(() => {
     latestStateRef.current = state;

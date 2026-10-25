@@ -3,7 +3,7 @@
     "name": "Ascend: Daily Discipline",
     "slug": "ascend-level-up",
     "scheme": "ascend",
-    "version": "1.0.45",
+    "version": "1.0.46",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

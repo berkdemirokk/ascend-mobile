@@ -621,7 +621,7 @@ run('purchase failure semantics', () => {
 });
 
 run('release blocker regression guards', () => {
-  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useCloudSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useHeartsSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'contexts', 'appStateConstants.js'), 'utf8');
+  const appContextSource = fs.readFileSync(path.join(SRC, 'contexts', 'AppContext.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useCloudSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useHeartsSync.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'hooks', 'useLocalPersistence.js'), 'utf8') + fs.readFileSync(path.join(SRC, 'contexts', 'appStateConstants.js'), 'utf8');
   const lessonSource = fs.readFileSync(path.join(SRC, 'screens', 'LessonScreen.js'), 'utf8');
   const purchasesSource = fs.readFileSync(path.join(SRC, 'services', 'purchases.js'), 'utf8');
   const adsSource = fs.readFileSync(path.join(SRC, 'services', 'ads.js'), 'utf8');

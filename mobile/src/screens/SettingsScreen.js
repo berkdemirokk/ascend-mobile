@@ -436,7 +436,7 @@ export default function SettingsScreen({ navigation }) {
   const version =
     Constants?.nativeApplicationVersion ||
     Constants?.expoConfig?.version ||
-    '1.0.45';
+    '1.0.46';
   const buildNumber =
     Constants?.nativeBuildVersion ||
     Constants?.platform?.ios?.buildNumber ||

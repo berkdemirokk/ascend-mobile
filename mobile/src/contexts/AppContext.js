@@ -102,7 +102,7 @@ export function AppProvider({ children }) {
 
   // Modularized Domain Hooks
   useHeartsSync({ state, dispatch });
-  useLocalPersistence({ state });
+  useLocalPersistence({ state, dispatch });
   useCloudSync({
     state,
     dispatch,
