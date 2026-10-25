@@ -30,6 +30,7 @@ import {
 import LightTopAppBar from '../components/LightTopAppBar';
 import { StatCell } from '../components/home/StatCell';
 import { LinkRow } from '../components/home/LinkRow';
+import { HabitChain } from '../components/home/HabitChain';
 import StreakInfoModal from '../components/StreakInfoModal';
 import BannerAdBox from '../components/BannerAdBox';
 // DailyMysteryBox + DailyMoodCheckIn removed in the Home agresif
@@ -607,19 +608,7 @@ export default function HomeScreen({ navigation }) {
         ) : null}
 
         {/* Habit chain — last 7 days */}
-        <View style={styles.chainRow}>
-          {chainDays.map((d) => (
-            <View
-              key={d.key}
-              style={[
-                styles.chainDot,
-                d.active && styles.chainDotActive,
-                d.isToday && styles.chainDotToday,
-                d.isToday && d.active && styles.chainDotTodayActive,
-              ]}
-            />
-          ))}
-        </View>
+        <HabitChain chainDays={chainDays} />
 
         <View style={[styles.ctaCard, todayCompleted && styles.ctaCardDone]}>
           <View style={styles.ctaCardHeader}>
@@ -1587,33 +1576,6 @@ const styles = StyleSheet.create({
   },
 
   // Today's CTA card
-  chainRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 8,
-    marginHorizontal: LT_SPACING.containerMargin,
-    marginBottom: 14,
-  },
-  chainDot: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-    backgroundColor: LT.outlineVariant,
-  },
-  chainDotActive: {
-    backgroundColor: LT.primary,
-  },
-  chainDotToday: {
-    width: 18,
-    height: 18,
-    borderRadius: 9,
-    borderWidth: 2,
-    borderColor: LT.primary,
-    backgroundColor: 'transparent',
-  },
-  chainDotTodayActive: {
-    backgroundColor: LT.primary,
-  },
 
   weekendOffer: {
     flexDirection: 'row',
