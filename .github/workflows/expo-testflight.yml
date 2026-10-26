@@ -94,7 +94,7 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.eas_build_id != '' }}
         env:
           EAS_BUILD_ID: ${{ inputs.eas_build_id }}
-          GITHUB_SHA: ${{ inputs.eas_build_commit || github.sha }}
+          EAS_BUILD_COMMIT: ${{ inputs.eas_build_commit || github.sha }}
           EXPO_ASC_API_KEY_PATH: ${{ env.API_KEY_PATH }}
           EXPO_ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           EXPO_ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
@@ -105,7 +105,7 @@ jobs:
             echo "::error::eas_build_id must contain only letters, numbers, and hyphens."
             exit 1
           fi
-          if [[ ! "$GITHUB_SHA" =~ ^[0-9a-fA-F]{40}$ ]]; then
+          if [[ ! "$EAS_BUILD_COMMIT" =~ ^[0-9a-fA-F]{40}$ ]]; then
             echo "::error::eas_build_commit must be a full 40-character commit SHA when submitting an existing build."
             exit 1
           fi

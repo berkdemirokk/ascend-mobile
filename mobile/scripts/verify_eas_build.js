@@ -34,7 +34,7 @@ if (require.main === module) {
   const app = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'app.json'), 'utf8')).expo;
   const build = verifyBuild(JSON.parse(fs.readFileSync(metadataPath, 'utf8')), {
     buildId: process.env.EAS_BUILD_ID,
-    commit: process.env.GITHUB_SHA,
+    commit: process.env.EAS_BUILD_COMMIT || process.env.GITHUB_SHA,
     app,
   });
   console.log(`Verified iOS ${build.appVersion} (${build.appBuildVersion}) from ${build.gitCommitHash}`);
