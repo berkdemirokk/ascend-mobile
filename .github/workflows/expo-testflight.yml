@@ -14,6 +14,10 @@ on:
         description: "Existing EAS iOS build ID to submit to TestFlight"
         required: false
         type: string
+      eas_build_commit:
+        description: "Verified source commit for an existing EAS build"
+        required: false
+        type: string
   push:
     tags:
       - "mobile-v*"
@@ -45,7 +49,7 @@ jobs:
       - name: Setup Expo / EAS CLI
         uses: expo/expo-github-action@eab7a230208c952974db8c3245cfd78402c7b385 # v9
         with:
-          eas-version: 22.2.0
+          eas-version: 25.3.0
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Install dependencies
@@ -90,6 +94,7 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.eas_build_id != '' }}
         env:
           EAS_BUILD_ID: ${{ inputs.eas_build_id }}
+          GITHUB_SHA: ${{ inputs.eas_build_commit || github.sha }}
           EXPO_ASC_API_KEY_PATH: ${{ env.API_KEY_PATH }}
           EXPO_ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           EXPO_ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
@@ -98,6 +103,10 @@ jobs:
         run: |
           if [[ ! "$EAS_BUILD_ID" =~ ^[A-Za-z0-9-]{1,128}$ ]]; then
             echo "::error::eas_build_id must contain only letters, numbers, and hyphens."
+            exit 1
+          fi
+          if [[ ! "$GITHUB_SHA" =~ ^[0-9a-fA-F]{40}$ ]]; then
+            echo "::error::eas_build_commit must be a full 40-character commit SHA when submitting an existing build."
             exit 1
           fi
           eas build:view "$EAS_BUILD_ID" --json > "$RUNNER_TEMP/eas-submit-build.json"
