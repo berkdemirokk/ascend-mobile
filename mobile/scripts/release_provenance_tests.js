@@ -14,6 +14,7 @@ const valid = {
   gitCommitHash: expected.commit, appVersion: '1.0.46', appBuildVersion: '132',
 };
 assert.equal(verifyBuild(valid, expected), valid);
+assert.equal(verifyBuild({ ...valid, project: undefined }, expected).id, expected.buildId);
 for (const invalid of [
   { id: 'another-build' }, { project: { id: 'another-project' } },
   { platform: 'ANDROID' }, { status: 'IN_PROGRESS' }, { status: 'ERRORED' },

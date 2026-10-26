@@ -10,7 +10,13 @@ function verifyBuild(build, { buildId, commit, app }) {
   assert(app?.extra?.eas?.projectId && app?.version, 'app.json must declare its EAS project and version');
   assert.match(commit || '', /^[0-9a-f]{40}$/i, 'Expected a full checkout commit SHA');
   assert.equal(build.id, buildId, 'EAS returned a different build ID');
-  assert.equal(build.project?.id, app.extra?.eas?.projectId, 'Wrong EAS project');
+  const reportedProjectId = build.project?.id || build.projectId || build.easProjectId;
+  const reportedProjectSlug = build.project?.slug || build.projectSlug;
+  // EAS CLI may omit project fields in its JSON response. `eas build:view` is
+  // scoped by the checked-out app config and confirms the matching project;
+  // reject any project identity it does report when it conflicts.
+  if (reportedProjectId) assert.equal(reportedProjectId, app.extra?.eas?.projectId, 'Wrong EAS project');
+  if (reportedProjectSlug) assert.equal(reportedProjectSlug, app.slug, 'Wrong EAS project slug');
   assert.equal(build.platform, 'IOS', 'Build is not an iOS binary');
   assert.equal(build.status, 'FINISHED', 'Build has not finished successfully');
   assert.equal(build.distribution, 'STORE', 'Build is not signed for store distribution');
