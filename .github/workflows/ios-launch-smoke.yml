@@ -1,0 +1,77 @@
+name: iOS simulator launch diagnostic
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  simulator-launch:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+      - name: Install dependencies and generate iOS project
+        run: |
+          npm ci
+          npx expo prebuild --platform ios --no-install --non-interactive
+          cd ios
+          pod install
+      - name: Build simulator release configuration
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/ios-diagnostic"
+          project=$(find ios -maxdepth 1 -name '*.xcodeproj' -print -quit)
+          workspace=$(find ios -maxdepth 1 -name '*.xcworkspace' -print -quit)
+          test -n "$project" && test -n "$workspace"
+          scheme=$(basename "$project" .xcodeproj)
+          xcodebuild -workspace "$workspace" -scheme "$scheme" -configuration Release \
+            -sdk iphonesimulator -derivedDataPath "$RUNNER_TEMP/ascend-derived" \
+            CODE_SIGNING_ALLOWED=NO build 2>&1 | tee "$RUNNER_TEMP/ios-diagnostic/build.log"
+      - name: Launch and observe
+        run: |
+          set -o pipefail
+          device=$(xcrun simctl list devices available -j | ruby -rjson -e 'j=JSON.parse(STDIN.read); d=j["devices"].values.flatten.find { |x| x["name"].start_with?("iPhone") && x["isAvailable"] }; abort "No available iPhone simulator" unless d; puts d["udid"]')
+          echo "$device" > "$RUNNER_TEMP/ios-diagnostic/device.txt"
+          xcrun simctl boot "$device"
+          xcrun simctl bootstatus "$device" -b
+          app=$(find "$RUNNER_TEMP/ascend-derived/Build/Products/Release-iphonesimulator" -maxdepth 1 -name '*.app' -print -quit)
+          test -n "$app"
+          executable=$(/usr/libexec/PlistBuddy -c 'Print CFBundleExecutable' "$app/Info.plist")
+          bundle=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$app/Info.plist")
+          echo "$executable" > "$RUNNER_TEMP/ios-diagnostic/executable.txt"
+          xcrun simctl install "$device" "$app"
+          xcrun simctl launch "$device" "$bundle" | tee "$RUNNER_TEMP/ios-diagnostic/launch.txt"
+          sleep 30
+          xcrun simctl spawn "$device" launchctl list > "$RUNNER_TEMP/ios-diagnostic/processes.txt"
+          xcrun simctl io "$device" screenshot "$RUNNER_TEMP/ios-diagnostic/screen.png" || true
+          if ! xcrun simctl spawn "$device" ps -A -o comm= | grep -F "/$executable"; then
+            echo '::error::The app process was not running 30 seconds after launch.'
+            exit 1
+          fi
+      - name: Collect simulator diagnostics
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/ios-diagnostic/crashes"
+          if [ -f "$RUNNER_TEMP/ios-diagnostic/device.txt" ] && [ -f "$RUNNER_TEMP/ios-diagnostic/executable.txt" ]; then
+            device=$(cat "$RUNNER_TEMP/ios-diagnostic/device.txt")
+            executable=$(cat "$RUNNER_TEMP/ios-diagnostic/executable.txt")
+            xcrun simctl spawn "$device" log show --last 10m --style compact --predicate "process == '$executable'" > "$RUNNER_TEMP/ios-diagnostic/simulator.log" 2>&1 || true
+            find "$HOME/Library/Logs/DiagnosticReports" -maxdepth 1 -type f -name "$executable*" -mmin -30 -exec cp {} "$RUNNER_TEMP/ios-diagnostic/crashes/" \; 2>/dev/null || true
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ios-simulator-launch-diagnostics
+          path: ${{ runner.temp }}/ios-diagnostic
+          if-no-files-found: warn
+          retention-days: 7
