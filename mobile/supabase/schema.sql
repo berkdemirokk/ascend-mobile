@@ -185,8 +185,8 @@ begin
 
   loop
     v_attempt := v_attempt + 1;
-    v_code := 'ASCEND-' || upper(substr(encode(gen_random_bytes(3), 'hex'), 1, 4))
-      || '-' || upper(substr(encode(gen_random_bytes(3), 'hex'), 1, 4));
+    v_code := 'ASCEND-' || upper(substr(encode(extensions.gen_random_bytes(3), 'hex'), 1, 4))
+      || '-' || upper(substr(encode(extensions.gen_random_bytes(3), 'hex'), 1, 4));
     begin
       insert into public.referrals (code, owner_user_id) values (v_code, v_user_id);
       return v_code;
@@ -414,7 +414,7 @@ begin
   if v_code is not null then return v_code; end if;
   loop
     v_attempt := v_attempt + 1;
-    v_token := upper(encode(gen_random_bytes(12), 'hex'));
+    v_token := upper(encode(extensions.gen_random_bytes(12), 'hex'));
     v_code := 'ASCEND-' || substr(v_token, 1, 8) || '-'
       || substr(v_token, 9, 8) || '-' || substr(v_token, 17, 8);
     begin

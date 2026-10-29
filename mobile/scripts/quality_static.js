@@ -43,6 +43,7 @@ const relative = (file) => path.relative(ROOT, file).replace(/\\/g, '/');
 const jsFiles = [
   ...walk(SRC, '.js'),
   path.join(ROOT, 'App.js'),
+  path.join(ROOT, 'index.js'),
 ].filter((file) => fs.existsSync(file)).sort();
 const astByFile = new Map();
 
@@ -124,6 +125,32 @@ run('JavaScript syntax', () => {
     }
   }
   assert(!invalid.length, invalid.slice(0, 10).join('; '));
+});
+
+run('JavaScript referenced identifiers', () => {
+  // Babel knows standard ECMAScript globals; these are the host globals used
+  // by React Native, Metro, and the web-compatible services in this project.
+  const hostGlobals = new Set([
+    '__DEV__', 'require', 'module', 'exports', 'process', 'global',
+    'console', 'setTimeout', 'clearTimeout', 'setInterval', 'clearInterval',
+    'setImmediate', 'clearImmediate', 'requestAnimationFrame', 'cancelAnimationFrame',
+    'fetch', 'AbortController', 'URL', 'URLSearchParams', 'FormData', 'Blob',
+    'Headers', 'Request', 'Response', 'WebSocket', 'TextEncoder', 'TextDecoder',
+    'Buffer', 'atob', 'btoa', 'performance', 'queueMicrotask',
+    'window', 'document', 'navigator', 'ErrorUtils',
+  ]);
+  const unresolved = [];
+  for (const file of jsFiles) {
+    traverse(getAst(file), {
+      ReferencedIdentifier(identifierPath) {
+        const { name, loc } = identifierPath.node;
+        if (!identifierPath.scope.hasBinding(name) && !hostGlobals.has(name)) {
+          unresolved.push(`${relative(file)}:${loc.start.line} ${name}`);
+        }
+      },
+    });
+  }
+  assert(!unresolved.length, unresolved.slice(0, 25).join('; '));
 });
 
 const resolveLocalImport = (fromFile, request) => {

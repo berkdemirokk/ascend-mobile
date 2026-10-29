@@ -236,7 +236,7 @@ export default function LessonScreen({ navigation, route }) {
     [lesson, pathProgress, isPremium],
   );
 
-  const completedLessonsCountForAds = () => {
+  const completedLessonsCountAfterCurrent = () => {
     const completedCount = Object.values(pathProgress || {}).reduce(
       (sum, p) => sum + (p?.completed?.length || 0),
       0,
@@ -610,10 +610,9 @@ export default function LessonScreen({ navigation, route }) {
   const runPostLessonFlow = async () => {
     if (postLessonFlowRanRef.current) return;
     postLessonFlowRanRef.current = true;
-    const totalCompleted = Object.values(pathProgress || {}).reduce(
-      (s, p) => s + (p?.completed?.length || 0),
-      0,
-    ) + 1; // +1 for the lesson just finished
+    // Completion has normally already reached context by celebration render.
+    // Count this lesson only when it is not yet present in progress.
+    const totalCompleted = completedLessonsCountAfterCurrent();
 
     // First-lesson side effects: activate the user (cancel "are you
     // coming back?" pushes scheduled at onboarding) but DO NOT prompt
@@ -719,7 +718,7 @@ export default function LessonScreen({ navigation, route }) {
 
     if (
       !isPremium
-      && completedLessonsCountForAds() > NO_AD_GRACE_LESSONS
+      && completedLessonsCountAfterCurrent() > NO_AD_GRACE_LESSONS
       && shouldShowAd(false)
     ) {
       try { await showInterstitial(); } catch {}
@@ -732,7 +731,7 @@ export default function LessonScreen({ navigation, route }) {
     setMilestoneVisible(false);
     if (
       !isPremium
-      && completedLessonsCountForAds() > NO_AD_GRACE_LESSONS
+      && completedLessonsCountAfterCurrent() > NO_AD_GRACE_LESSONS
       && shouldShowAd(false)
     ) {
       try { await showInterstitial(); } catch {}
@@ -800,8 +799,7 @@ export default function LessonScreen({ navigation, route }) {
       quizLength={quiz.length}
       selectedAnswer={selectedAnswer}
       revealed={revealed}
-      handleSelectAnswer={handleSelectAnswer}
-      isCorrectSelection={isCorrectSelection}
+      handleSelectAnswer={handleQuizAnswer}
       isInGracePeriod={isInGracePeriod}
       teachingPages={teachingPages}
       proTip={proTip}

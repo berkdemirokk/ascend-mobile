@@ -9,7 +9,7 @@
     "doctor": "npx expo-doctor",
     "verify:identity": "node scripts/verify_release_identity.js",
     "quality:static": "node scripts/quality_static.js",
-    "quality:runtime": "node scripts/runtime_tests.js && node scripts/startup_regression_tests.js && node scripts/onboarding_accessibility_tests.js && node scripts/release_provenance_tests.js",
+    "quality:runtime": "node scripts/runtime_tests.js && node scripts/startup_regression_tests.js && node scripts/onboarding_accessibility_tests.js && node scripts/release_provenance_tests.js && node scripts/lesson_regression_tests.js",
     "export:ios": "node scripts/export_ios.js",
     "postinstall": "node scripts/patch_security_dependencies.js",
     "audit:dependencies": "node scripts/audit_dependencies.js",
