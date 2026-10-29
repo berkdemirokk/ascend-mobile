@@ -10,6 +10,10 @@ on:
         description: "Exact iOS build number to verify (from the EAS submission)"
         required: true
         type: string
+      diagnose_crashes:
+        description: "Read sanitized TestFlight crash diagnostics for this build"
+        type: boolean
+        default: false
 
 jobs:
   verify:
@@ -64,7 +68,13 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           ASC_KEY_PATH: ${{ env.ASC_KEY_PATH }}
           ASC_EXPECTED_BUILD: ${{ inputs.expected_build }}
-        run: python3 scripts/verify_asc.py
+          DIAGNOSE_CRASHES: ${{ inputs.diagnose_crashes }}
+        run: |
+          if [ "$DIAGNOSE_CRASHES" = "true" ]; then
+            python3 scripts/diagnose_asc_crashes.py
+          else
+            python3 scripts/verify_asc.py
+          fi
 
       - name: Remove App Store Connect API key
         if: ${{ always() }}
