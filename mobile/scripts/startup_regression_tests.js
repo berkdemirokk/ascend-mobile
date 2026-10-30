@@ -12,6 +12,7 @@ let appLoadFails = true;
 function AppFixture() { return null; }
 const mocks = {
   react: React,
+  '@react-native-vector-icons/material-icons/static': { MaterialIcons: 'MaterialIcons' },
   'expo-constants': { expoConfig: { extra: {} } },
   'react-native': {
     View: 'View', Text: 'Text', Button: 'Button',
@@ -46,6 +47,35 @@ function load(relative) {
 }
 
 async function main() {
+  // Module-level styles must evaluate successfully before the startup boundary mounts.
+  const { LT_RADIUS, LT_RADII, LT_SHADOW } = load('src/config/lightTheme.js');
+  assert.equal(LT_RADII, LT_RADIUS);
+  assert.equal(LT_RADII.md, 8);
+  assert.equal(typeof LT_SHADOW.ambient, 'object');
+  assert.equal(typeof load('src/components/home/StatCell.js').StatCell, 'function');
+
+  // Metro permits missing named exports, so check all theme imports explicitly.
+  function checkThemeImports(directory) {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const filename = path.join(directory, entry.name);
+      if (entry.isDirectory()) { checkThemeImports(filename); continue; }
+      if (!entry.name.endsWith('.js')) continue;
+      const ast = babel.parseSync(fs.readFileSync(filename, 'utf8'), {
+        filename, babelrc: false, configFile: false,
+        parserOpts: { sourceType: 'module', plugins: ['jsx'] },
+      });
+      for (const node of ast.program.body) {
+        if (node.type !== 'ImportDeclaration' || !/\/config\/lightTheme$/.test(node.source.value)) continue;
+        for (const specifier of node.specifiers) {
+          if (specifier.type === 'ImportSpecifier') {
+            assert.ok(Object.hasOwn(load('src/config/lightTheme.js'), specifier.imported.name),
+              `${filename} imports missing lightTheme export ${specifier.imported.name}`);
+          }
+        }
+      }
+    }
+  }
+  checkThemeImports(path.join(root, 'src'));
   assert.equal(require(path.join(root, 'package.json')).main, 'index.js', 'package entry must use the guarded startup boundary');
   const { sanitizePersistedState } = load('src/contexts/stateHydration.js');
   const { initialState } = load('src/contexts/appStateConstants.js');

@@ -154,3 +154,16 @@ export const LT_RADIUS = {
   xl: 16,
   pill: 999,
 };
+
+// Some shared cards use the plural name; keep one source of radius values.
+export const LT_RADII = LT_RADIUS;
+
+export const LT_SHADOW = {
+  ambient: {
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+};
