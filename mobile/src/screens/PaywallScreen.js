@@ -5,6 +5,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  BackHandler,
   StatusBar,
   StyleSheet,
   Linking,
@@ -122,6 +123,15 @@ export default function PaywallScreen({ navigation, route }) {
     }
     navigation.goBack();
   };
+
+  useEffect(() => {
+    if (!afterClose?.name) return undefined;
+    const subscription = BackHandler.addEventListener('hardwareBackPress', () => {
+      navigation.replace(afterClose.name, afterClose.params || {});
+      return true;
+    });
+    return () => subscription.remove();
+  }, [afterClose, navigation]);
 
   // Apple guideline 3.1.2(a): the same paywall screen MUST disclose
   // the exact price, billing period, and auto-renewal terms before purchase.

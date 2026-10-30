@@ -1,208 +1,85 @@
-// Referral service — viral growth loop.
-//
-// Flow:
-//   1. Every signed-in user has a STABLE referral code derived from their
-//      auth UID. Stable = the same UID always produces the same code, so
-//      we never accidentally hand the user two different codes across
-//      sessions.
-//   2. First time the user opens the Invite screen, ensureMyReferral()
-//      inserts the (code, owner_user_id) row if it doesn't exist yet.
-//      Idempotent — safe to call on every open.
-//   3. User shares the code (Settings → Invite button → native share
-//      sheet with deep-link OR plain code).
-//   4. A new user enters the code during onboarding. redeemReferralCode
-//      validates the code, marks the row redeemed_by = self, and the
-//      caller dispatches the reward (10 streak freezes for both sides —
-//      the owner side reward is granted on the next app open via
-//      checkReferralRewards()).
-//
-// We do NOT use RevenueCat-side entitlement grants — that requires a
-// server endpoint and complicates the flow. Streak freezes are
-// client-state, dispatched via AppContext, which is enough for an MVP.
-
 import { supabase, SUPABASE_CONFIGURED } from './supabase';
 
-const TABLE = 'referrals';
-const REFERRAL_PREFIX = 'ASCEND';
-const LEGACY_REFERRAL_PREFIX = 'MONK';
+const REQUEST_TIMEOUT_MS = 10000;
+export const PENDING_REFERRAL_CODE_KEY = '@ascend/pending_referral_code';
+export const isReferralCodeFormatValid = (rawCode) => (
+  /^ASCEND-[A-F0-9]{8}-[A-F0-9]{8}-[A-F0-9]{8}$/.test(String(rawCode || '').trim().toUpperCase())
+);
 
-const suffixFromUserId = (userId) => {
-  if (!userId) return null;
-  const cleaned = String(userId).replace(/-/g, '').toUpperCase();
-  if (cleaned.length < 8) return null;
-  return `${cleaned.slice(0, 4)}-${cleaned.slice(-4)}`;
-};
+async function withReferralTimeout(request) {
+  let timer;
+  try {
+    return await Promise.race([
+      request,
+      new Promise((resolve) => {
+        timer = setTimeout(() => resolve({ error: new Error('Referral request timed out') }), REQUEST_TIMEOUT_MS);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
-/**
- * Deterministic code from a user UID. UUID first 4 chars + last 4 chars,
- * uppercase, hyphen-separated, prefixed "ASCEND-".
- * Example: "ASCEND-A1B2-9F8E" from UID "a1b2cd34-...-9f8e1234"
- *
- * Stable for the lifetime of the account. No randomness — same UID
- * always produces the same code, which matters if a user accidentally
- * opens Invite from two devices (both should see the same code).
- */
-export const codeFromUserId = (userId) => {
-  const suffix = suffixFromUserId(userId);
-  return suffix ? `${REFERRAL_PREFIX}-${suffix}` : null;
-};
-
-/**
- * Ensure the current user has a referral row. Idempotent — does nothing
- * if a row already exists for this user. Returns the user's code on
- * success, null on failure (Supabase down, no auth, etc.).
- */
 export const ensureMyReferral = async (userId) => {
   if (!SUPABASE_CONFIGURED || !userId) return null;
-  const code = codeFromUserId(userId);
-  if (!code) return null;
   try {
-    // Keep old MONK-* rows redeemable, but always ensure the current
-    // displayed code is ASCEND-* so new shares match the product brand.
-    const { data: existingCurrent } = await supabase
-      .from(TABLE)
-      .select('code')
-      .eq('code', code)
-      .maybeSingle();
-    if (existingCurrent?.code) return existingCurrent.code;
-
-    const { error } = await supabase.from(TABLE).insert({
-      code,
-      owner_user_id: userId,
-    });
-    if (error) {
-      // Most likely cause: code collision with another user (shouldn't
-      // happen — UID-derived — but if it does, log and bail without
-      // corrupting state).
-      console.warn('[referral] insert error:', error.message);
-      return null;
-    }
-    return code;
+    const { data, error } = await withReferralTimeout(supabase.rpc('ensure_my_referral', {
+      p_expected_user_id: userId,
+    }));
+    if (error) throw error;
+    return typeof data === 'string' ? data : null;
   } catch (e) {
-    console.warn('[referral] ensureMyReferral exception:', e?.message);
+    console.warn('[referral] ensureMyReferral failed:', e?.message);
     return null;
   }
 };
 
-/**
- * Redeem a code as the current user. Returns:
- *   { ok: true, ownerUserId, alreadyRedeemed: false }   on first success
- *   { ok: false, reason: 'invalid' | 'own_code' | 'already_redeemed' |
- *                        'already_used_a_code' | 'auth_required' | 'error' }
- *
- * Caller is responsible for dispatching reward on { ok: true }.
- */
+// Only the database may look up another user's code and transition redemption.
+// It locks the row, checks auth.uid(), and never exposes the referral graph.
 export const redeemReferralCode = async (rawCode, userId) => {
   if (!SUPABASE_CONFIGURED) return { ok: false, reason: 'error' };
   if (!userId) return { ok: false, reason: 'auth_required' };
   const code = String(rawCode || '').trim().toUpperCase();
-  if (!code || code.length < 8) return { ok: false, reason: 'invalid' };
-
+  if (!isReferralCodeFormatValid(code)) {
+    return { ok: false, reason: 'invalid' };
+  }
   try {
-    // Find the row. New ASCEND-* codes are preferred; legacy MONK-*
-    // fallback only runs if the new branded row does not exist yet.
-    let { data: row, error: findErr } = await supabase
-      .from(TABLE)
-      .select('id, owner_user_id, redeemed_by')
-      .eq('code', code)
-      .maybeSingle();
-    if (findErr) return { ok: false, reason: 'error' };
-    if (!row && code.startsWith(`${REFERRAL_PREFIX}-`)) {
-      const legacyCode = `${LEGACY_REFERRAL_PREFIX}-${code.slice(REFERRAL_PREFIX.length + 1)}`;
-      const legacyResult = await supabase
-        .from(TABLE)
-        .select('id, owner_user_id, redeemed_by')
-        .eq('code', legacyCode)
-        .maybeSingle();
-      if (legacyResult.error) return { ok: false, reason: 'error' };
-      row = legacyResult.data;
-    }
-    if (!row) return { ok: false, reason: 'invalid' };
-    if (row.owner_user_id === userId) return { ok: false, reason: 'own_code' };
-    if (row.redeemed_by) return { ok: false, reason: 'already_redeemed' };
-
-    // Mark redemption. The RLS policy enforces redeemed_by = self.
-    const { error: updateErr } = await supabase
-      .from(TABLE)
-      .update({
-        redeemed_by: userId,
-        redeemed_at: new Date().toISOString(),
-      })
-      .eq('id', row.id);
-    if (updateErr) {
-      // Most likely cause: user already redeemed a different code (one-
-      // per-user unique constraint).
-      if (
-        updateErr.code === '23505' ||
-        /unique/i.test(updateErr.message || '')
-      ) {
-        return { ok: false, reason: 'already_used_a_code' };
-      }
-      return { ok: false, reason: 'error' };
-    }
-    return { ok: true, ownerUserId: row.owner_user_id };
+    const { data, error } = await withReferralTimeout(supabase.rpc('redeem_referral_code', {
+      p_code: code,
+      p_expected_user_id: userId,
+    }));
+    if (error) throw error;
+    if (!data || typeof data.ok !== 'boolean') throw new Error('Invalid referral response');
+    return data;
   } catch (e) {
-    console.warn('[referral] redeem exception:', e?.message);
+    console.warn('[referral] redeem failed:', e?.message);
     return { ok: false, reason: 'error' };
   }
 };
 
-/**
- * Count how many people have redeemed this user's code. Powers the
- * "X arkadaşın katıldı" line in the Invite screen.
- */
 export const getReferralStats = async (userId) => {
   if (!SUPABASE_CONFIGURED || !userId) return { redemptions: 0 };
   try {
-    const { count } = await supabase
-      .from(TABLE)
-      .select('*', { count: 'exact', head: true })
-      .eq('owner_user_id', userId)
-      .not('redeemed_by', 'is', null);
+    const { data: count, error } = await withReferralTimeout(supabase.rpc('get_my_referral_redemption_count'));
+    if (error) throw error;
     return { redemptions: count || 0 };
-  } catch {
+  } catch (e) {
+    console.warn('[referral] stats failed:', e?.message);
     return { redemptions: 0 };
   }
 };
 
-/**
- * Check for unrewarded owner-side referral redemptions and return how
- * many should be granted right now. Called on app open from AppContext;
- * the caller dispatches GRANT_REFERRAL_REWARD once per unrewarded row.
- *
- * The viral loop's owner side was DOCUMENTED but never implemented —
- * inviters were silently shortchanged while redeemers got their +10
- * freezes. This function closes that gap.
- *
- * Returns { granted: number, ids: string[] }. The caller grants locally
- * first, then marks rows paid after local persistence has had a chance to
- * complete. On any error or no rows, returns an empty result.
- */
+// Reading rewards does not consume them. The hook grants with a stable row ID,
+// verifies that the local balance and receipt were persisted, then acknowledges.
 export const checkReferralRewards = async (userId) => {
   if (!SUPABASE_CONFIGURED || !userId) return { granted: 0, ids: [] };
   try {
-    // Pull all redeemed rows owned by this user where the owner reward
-    // hasn't been marked paid yet.
-    const { data: rows, error: fetchErr } = await supabase
-      .from(TABLE)
-      .select('id')
-      .eq('owner_user_id', userId)
-      .not('redeemed_by', 'is', null)
-      .is('owner_rewarded_at', null);
-    if (fetchErr) {
-      // Most likely: the owner_rewarded_at column doesn't exist yet on
-      // older schemas. Log and bail — don't crash the app.
-      console.warn('[referral] reward check fetch error:', fetchErr.message);
-      return { granted: 0, ids: [] };
-    }
-    if (!rows || rows.length === 0) return { granted: 0, ids: [] };
-
-    // Return row IDs without marking them yet. AppContext grants locally
-    // first, waits for the debounced save window, then marks them paid.
-    const ids = rows.map((r) => r.id).filter(Boolean);
-    return { granted: ids.length, ids };
+    const { data: ids, error } = await withReferralTimeout(supabase.rpc('get_referral_owner_reward_ids'));
+    if (error) throw error;
+    const cleanIds = (ids || []).filter(Boolean);
+    return { granted: cleanIds.length, ids: cleanIds };
   } catch (e) {
-    console.warn('[referral] checkReferralRewards exception:', e?.message);
+    console.warn('[referral] reward check failed:', e?.message);
     return { granted: 0, ids: [] };
   }
 };
@@ -211,17 +88,13 @@ export const markReferralRewardsPaid = async (ids = []) => {
   const cleanIds = Array.from(new Set(ids.filter(Boolean)));
   if (!SUPABASE_CONFIGURED || cleanIds.length === 0) return false;
   try {
-    const { error } = await supabase
-      .from(TABLE)
-      .update({ owner_rewarded_at: new Date().toISOString() })
-      .in('id', cleanIds);
-    if (error) {
-      console.warn('[referral] reward mark error:', error.message);
-      return false;
-    }
-    return true;
+    const { data, error } = await withReferralTimeout(supabase.rpc('mark_referral_rewards_paid', {
+      p_ids: cleanIds,
+    }));
+    if (error) throw error;
+    return Number.isInteger(data) && data >= 0;
   } catch (e) {
-    console.warn('[referral] markReferralRewardsPaid exception:', e?.message);
+    console.warn('[referral] reward acknowledgement failed:', e?.message);
     return false;
   }
 };

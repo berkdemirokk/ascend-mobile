@@ -9,23 +9,14 @@ import {
   PERFECT_LESSON_BONUS_XP,
   getTodayDateString,
   getYesterdayDateString,
-  normalizeAnonUsername,
 } from './appStateConstants';
 import { ACTION_TYPES } from './appActionTypes';
+import { sanitizePersistedState } from './stateHydration';
 
 export function appReducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.LOAD_STATE: {
-      const allowedKeys = Object.keys(initialState);
-      const sanitizedPayload = {};
-      for (const k of allowedKeys) {
-        if (action.payload && Object.prototype.hasOwnProperty.call(action.payload, k)) {
-          sanitizedPayload[k] = action.payload[k];
-        }
-      }
-      if (Object.prototype.hasOwnProperty.call(sanitizedPayload, 'anonUsername')) {
-        sanitizedPayload.anonUsername = normalizeAnonUsername(sanitizedPayload.anonUsername);
-      }
+      const sanitizedPayload = sanitizePersistedState(action.payload);
       const next = { ...state, ...sanitizedPayload, _loaded: true };
       const hasSubstantialProgress =
         (next.totalXP || 0) >= 50 ||
@@ -58,15 +49,19 @@ export function appReducer(state, action) {
     case ACTION_TYPES.SET_USER_PROFILE:
       return { ...state, userProfile: action.payload };
 
-    case ACTION_TYPES.SET_PREMIUM:
+    case ACTION_TYPES.SET_PREMIUM: {
+      const premiumFreezeGrantClaimed =
+        state.premiumFreezeGrantClaimed === true || !!action.payload;
       return {
         ...state,
         isPremium: !!action.payload,
         hearts: action.payload ? MAX_HEARTS : state.hearts,
-        streakFreezes: action.payload
+        premiumFreezeGrantClaimed,
+        streakFreezes: action.payload && !state.premiumFreezeGrantClaimed
           ? Math.max(state.streakFreezes || 0, 12)
           : state.streakFreezes,
       };
+    }
 
     case ACTION_TYPES.USE_STREAK_FREEZE:
       if (state.streakFreezes <= 0) return state;
@@ -230,21 +225,20 @@ export function appReducer(state, action) {
 
     case ACTION_TYPES.GRANT_REFERRAL_REWARD: {
       const rewardId = action.payload?.id;
-      if (
-        rewardId
-        && (state.referralOwnerRewardIds || []).includes(rewardId)
-      ) {
+      const ownerReward = action.payload?.beneficiary !== 'redeemer';
+      const idsKey = ownerReward ? 'referralOwnerRewardIds' : 'referralRedeemerRewardIds';
+      if (rewardId && (state[idsKey] || []).includes(rewardId)) {
         return state;
       }
       const current = state.streakFreezes || 0;
       const next = Math.min(50, current + 10);
-      const referralOwnerRewardIds = rewardId
+      const rewardIds = rewardId
         ? Array.from(new Set([
-            ...(state.referralOwnerRewardIds || []),
+            ...(state[idsKey] || []),
             rewardId,
           ])).slice(-200)
-        : state.referralOwnerRewardIds || [];
-      return { ...state, streakFreezes: next, referralOwnerRewardIds };
+        : state[idsKey] || [];
+      return { ...state, streakFreezes: next, [idsKey]: rewardIds };
     }
 
     case ACTION_TYPES.ENSURE_ANON_USERNAME: {
@@ -259,6 +253,9 @@ export function appReducer(state, action) {
       return {
         ...initialState,
         onboarded: state.onboarded,
+        stateOwnerUserId: typeof action.payload?.stateOwnerUserId === 'string'
+          ? action.payload.stateOwnerUserId
+          : null,
         _loaded: true,
       };
 

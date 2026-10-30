@@ -36,6 +36,7 @@ export const navigateFromAnywhere = (name, params) => {
 import { useApp } from '../contexts/AppContext';
 import { useAuth } from '../contexts/AuthContext';
 import { setLastDeepLinkUrl } from '../services/deepLinks';
+import { resolveInitialUrl } from './initialUrl';
 
 import OnboardingScreen from '../screens/OnboardingScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -64,7 +65,7 @@ const Tab = createBottomTabNavigator();
 const linking = {
   prefixes: ['ascend://'],
   async getInitialURL() {
-    const url = await Linking.getInitialURL();
+    const url = await resolveInitialUrl(() => Linking.getInitialURL());
     setLastDeepLinkUrl(url);
     return url;
   },
@@ -188,7 +189,11 @@ export default function AppNavigator() {
   const needsAuth = !isAuthenticated && !guestMode;
 
   return (
-    <NavigationContainer ref={navigationRef} linking={linking}>
+    <NavigationContainer
+      ref={navigationRef}
+      linking={linking}
+      fallback={<AuthLoading />}
+    >
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -235,10 +240,11 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Paywall"
           component={PaywallScreen}
-          options={{
+          options={({ route }) => ({
             presentation: 'modal',
             animation: 'slide_from_bottom',
-          }}
+            gestureEnabled: !route?.params?.afterClose?.name,
+          })}
         />
         <Stack.Screen
           name="Lesson"

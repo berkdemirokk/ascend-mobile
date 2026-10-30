@@ -294,6 +294,10 @@ export function AuthProvider({ children }) {
     setGuestMode(true);
   }, []);
 
+  const leaveGuestMode = useCallback(() => {
+    setGuestMode(false);
+  }, []);
+
   const signInWithApple = useCallback(async () => {
     if (!SUPABASE_CONFIGURED) {
       return {
@@ -379,6 +383,7 @@ export function AuthProvider({ children }) {
     resetPassword,
     resendConfirmation,
     continueAsGuest,
+    leaveGuestMode,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

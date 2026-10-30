@@ -140,30 +140,339 @@ create index if not exists idx_referrals_code on public.referrals(code);
 
 alter table public.referrals enable row level security;
 
--- Anyone can read by code (so non-authed onboarding can validate a code
--- before sign-in). Insert/update is auth-only and constrained to the
--- caller's own row.
+-- Referral data is private. All writes and lookups happen through checked RPCs.
 drop policy if exists "referrals: read all" on public.referrals;
-create policy "referrals: read all" on public.referrals
-  for select using (true);
+drop policy if exists "referrals: read own rows" on public.referrals;
 drop policy if exists "referrals: owner can insert" on public.referrals;
-create policy "referrals: owner can insert" on public.referrals
-  for insert with check ((select auth.uid()) = owner_user_id);
 drop policy if exists "referrals: redeemer can mark redemption" on public.referrals;
 drop policy if exists "referrals: owner can mark reward paid" on public.referrals;
 drop policy if exists "referrals: update own redemption state" on public.referrals;
-create policy "referrals: update own redemption state" on public.referrals
-  for update using (
-    -- Redeemers may claim an unredeemed code; owners may mark their own
-    -- reward as paid after a redemption exists. One policy avoids multiple
-    -- permissive UPDATE policies for the same role/action.
-    ((select auth.uid()) <> owner_user_id and redeemed_by is null)
-    or ((select auth.uid()) = owner_user_id and redeemed_by is not null)
-  ) with check (
-    ((select auth.uid()) = redeemed_by and redeemed_at is not null)
-    or ((select auth.uid()) = owner_user_id)
-  );
-
-grant select, insert, update on public.referrals to authenticated;
+revoke all on public.referrals from anon, authenticated;
 
 -- ──────────────────────────────────────────────────────────────────────────────
+
+-- Store ownership and referral transitions stay on the server. Client roles
+-- cannot enumerate or mutate referral rows directly.
+alter table public.referrals enable row level security;
+
+drop policy if exists "referrals: read all" on public.referrals;
+drop policy if exists "referrals: read own rows" on public.referrals;
+drop policy if exists "referrals: owner can insert" on public.referrals;
+drop policy if exists "referrals: redeemer can mark redemption" on public.referrals;
+drop policy if exists "referrals: owner can mark reward paid" on public.referrals;
+drop policy if exists "referrals: update own redemption state" on public.referrals;
+
+revoke all on public.referrals from anon, authenticated;
+
+create or replace function public.ensure_my_referral(p_expected_user_id uuid)
+returns text
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_user_id uuid := auth.uid();
+  v_code text;
+  v_attempt integer := 0;
+begin
+  if v_user_id is null or p_expected_user_id is distinct from v_user_id then
+    raise exception 'unauthorized';
+  end if;
+  perform pg_advisory_xact_lock(hashtext('referral-owner:' || v_user_id::text)::bigint);
+  select code into v_code from public.referrals
+    where owner_user_id = v_user_id order by created_at, id limit 1;
+  if v_code is not null then return v_code; end if;
+
+  loop
+    v_attempt := v_attempt + 1;
+    v_code := 'ASCEND-' || upper(substr(encode(extensions.gen_random_bytes(3), 'hex'), 1, 4))
+      || '-' || upper(substr(encode(extensions.gen_random_bytes(3), 'hex'), 1, 4));
+    begin
+      insert into public.referrals (code, owner_user_id) values (v_code, v_user_id);
+      return v_code;
+    exception when unique_violation then
+      if v_attempt >= 5 then raise; end if;
+    end;
+  end loop;
+end;
+$$;
+
+create or replace function public.redeem_referral_code(p_code text, p_expected_user_id uuid)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_user_id uuid := auth.uid();
+  v_referral public.referrals%rowtype;
+begin
+  if v_user_id is null or p_expected_user_id is distinct from v_user_id then
+    return jsonb_build_object('ok', false, 'reason', 'auth_required');
+  end if;
+  perform pg_advisory_xact_lock(hashtext('referral-redeemer:' || v_user_id::text)::bigint);
+
+  select * into v_referral from public.referrals
+    where code = upper(btrim(p_code)) for update;
+  if not found then return jsonb_build_object('ok', false, 'reason', 'invalid'); end if;
+  if v_referral.owner_user_id = v_user_id then
+    return jsonb_build_object('ok', false, 'reason', 'own_code');
+  end if;
+  if v_referral.redeemed_by = v_user_id then
+    return jsonb_build_object('ok', true, 'rewardId', v_referral.id, 'replayed', true);
+  end if;
+  if v_referral.redeemed_by is not null then
+    return jsonb_build_object('ok', false, 'reason', 'already_redeemed');
+  end if;
+  if exists (select 1 from public.referrals where redeemed_by = v_user_id) then
+    return jsonb_build_object('ok', false, 'reason', 'already_used_a_code');
+  end if;
+
+  update public.referrals set redeemed_by = v_user_id, redeemed_at = now()
+    where id = v_referral.id;
+  return jsonb_build_object('ok', true, 'rewardId', v_referral.id, 'replayed', false);
+end;
+$$;
+
+create or replace function public.get_referral_owner_reward_ids()
+returns setof uuid
+language sql
+stable
+security definer
+set search_path = public, pg_temp
+as $$
+  select id from public.referrals
+  where owner_user_id = auth.uid()
+    and redeemed_by is not null
+    and owner_rewarded_at is null
+  order by redeemed_at, id
+$$;
+
+create or replace function public.get_my_referral_redemption_count()
+returns integer
+language sql
+stable
+security definer
+set search_path = public, pg_temp
+as $$
+  select count(*)::integer from public.referrals
+  where owner_user_id = auth.uid() and redeemed_by is not null
+$$;
+
+create or replace function public.mark_referral_rewards_paid(p_ids uuid[])
+returns integer
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_count integer;
+begin
+  if auth.uid() is null then raise exception 'unauthorized'; end if;
+  update public.referrals set owner_rewarded_at = now()
+    where id = any(coalesce(p_ids, '{}'::uuid[]))
+      and owner_user_id = auth.uid()
+      and redeemed_by is not null
+      and owner_rewarded_at is null;
+  get diagnostics v_count = row_count;
+  return v_count;
+end;
+$$;
+
+revoke all on function public.ensure_my_referral(uuid) from public, anon;
+revoke all on function public.redeem_referral_code(text, uuid) from public, anon;
+revoke all on function public.get_referral_owner_reward_ids() from public, anon;
+revoke all on function public.get_my_referral_redemption_count() from public, anon;
+revoke all on function public.mark_referral_rewards_paid(uuid[]) from public, anon;
+grant execute on function public.ensure_my_referral(uuid) to authenticated;
+grant execute on function public.redeem_referral_code(text, uuid) to authenticated;
+grant execute on function public.get_referral_owner_reward_ids() to authenticated;
+grant execute on function public.get_my_referral_redemption_count() to authenticated;
+grant execute on function public.mark_referral_rewards_paid(uuid[]) to authenticated;
+
+
+-- Migration: 20261025_normalized_analytics_and_leaderboard.sql
+-- Description: Adds private normalized lesson and reflection history
+-- Idempotent: Can be run multiple times safely.
+
+-- 1. Lesson Completions (relational query & server-side analytics)
+create table if not exists public.lesson_completions (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  path_id text not null,
+  lesson_id text not null,
+  xp_earned integer not null default 15,
+  quiz_correct integer not null default 0,
+  quiz_total integer not null default 0,
+  completed_at timestamptz not null default now(),
+  constraint lesson_completions_valid_quiz_counts check (quiz_correct <= quiz_total),
+  constraint lesson_completions_user_lesson_unique unique (user_id, path_id, lesson_id)
+);
+
+create index if not exists idx_lesson_completions_user_path
+  on public.lesson_completions (user_id, path_id);
+create index if not exists idx_lesson_completions_date
+  on public.lesson_completions (completed_at desc);
+
+alter table public.lesson_completions enable row level security;
+grant select, insert, update, delete on public.lesson_completions to authenticated;
+
+drop policy if exists "lesson_completions: select own" on public.lesson_completions;
+create policy "lesson_completions: select own"
+  on public.lesson_completions for select
+  using ((select auth.uid()) = user_id);
+
+drop policy if exists "lesson_completions: insert own" on public.lesson_completions;
+create policy "lesson_completions: insert own"
+  on public.lesson_completions for insert
+  with check ((select auth.uid()) = user_id);
+
+drop policy if exists "lesson_completions: update own" on public.lesson_completions;
+create policy "lesson_completions: update own"
+  on public.lesson_completions for update
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
+drop policy if exists "lesson_completions: delete own" on public.lesson_completions;
+create policy "lesson_completions: delete own"
+  on public.lesson_completions for delete
+  using ((select auth.uid()) = user_id);
+
+-- 2. Lesson Reflections (for journaling archive & NLP insights)
+create table if not exists public.reflections (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  path_id text not null,
+  lesson_id text not null,
+  content text not null,
+  audio_uri text,
+  mood_signal text,
+  created_at timestamptz not null default now(),
+  constraint reflections_user_lesson_unique unique (user_id, path_id, lesson_id)
+);
+
+create index if not exists idx_reflections_user
+  on public.reflections (user_id, created_at desc);
+
+alter table public.reflections enable row level security;
+grant select, insert, update, delete on public.reflections to authenticated;
+
+drop policy if exists "reflections: select own" on public.reflections;
+create policy "reflections: select own"
+  on public.reflections for select
+  using ((select auth.uid()) = user_id);
+
+drop policy if exists "reflections: insert own" on public.reflections;
+create policy "reflections: insert own"
+  on public.reflections for insert
+  with check ((select auth.uid()) = user_id);
+
+drop policy if exists "reflections: update own" on public.reflections;
+create policy "reflections: update own"
+  on public.reflections for update
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
+drop policy if exists "reflections: delete own" on public.reflections;
+create policy "reflections: delete own"
+  on public.reflections for delete
+  using ((select auth.uid()) = user_id);
+
+-- No public leaderboard is exposed until users can opt in to profile visibility.
+drop view if exists public.public_leaderboard;
+
+-- Hardened 96-bit referral codes and per-user redemption throttling.
+-- Existing installs receive code rotation through the ordered migration;
+-- this snapshot does not rotate codes when it is rerun.
+create table if not exists public.referral_redemption_attempts (
+  user_id uuid not null references auth.users(id) on delete cascade,
+  attempted_at timestamptz not null default now()
+);
+alter table public.referral_redemption_attempts enable row level security;
+revoke all on public.referral_redemption_attempts from anon, authenticated;
+create index if not exists referral_redemption_attempts_user_time_idx
+  on public.referral_redemption_attempts (user_id, attempted_at desc);
+
+create or replace function public.ensure_my_referral(p_expected_user_id uuid)
+returns text
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_user_id uuid := auth.uid();
+  v_code text;
+  v_token text;
+  v_attempt integer := 0;
+begin
+  if v_user_id is null or p_expected_user_id is distinct from v_user_id then
+    raise exception 'unauthorized';
+  end if;
+  perform pg_advisory_xact_lock(hashtext('referral-owner:' || v_user_id::text)::bigint);
+  select code into v_code from public.referrals
+    where owner_user_id = v_user_id order by created_at, id limit 1;
+  if v_code is not null then return v_code; end if;
+  loop
+    v_attempt := v_attempt + 1;
+    v_token := upper(encode(extensions.gen_random_bytes(12), 'hex'));
+    v_code := 'ASCEND-' || substr(v_token, 1, 8) || '-'
+      || substr(v_token, 9, 8) || '-' || substr(v_token, 17, 8);
+    begin
+      insert into public.referrals (code, owner_user_id) values (v_code, v_user_id);
+      return v_code;
+    exception when unique_violation then
+      if v_attempt >= 5 then raise; end if;
+    end;
+  end loop;
+end;
+$$;
+
+create or replace function public.redeem_referral_code(p_code text, p_expected_user_id uuid)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_user_id uuid := auth.uid();
+  v_referral public.referrals%rowtype;
+  v_attempt_count integer;
+begin
+  if v_user_id is null or p_expected_user_id is distinct from v_user_id then
+    return jsonb_build_object('ok', false, 'reason', 'auth_required');
+  end if;
+  perform pg_advisory_xact_lock(hashtext('referral-redeemer:' || v_user_id::text)::bigint);
+  delete from public.referral_redemption_attempts
+    where user_id = v_user_id and attempted_at < now() - interval '24 hours';
+  select count(*) into v_attempt_count from public.referral_redemption_attempts
+    where user_id = v_user_id and attempted_at >= now() - interval '1 hour';
+  if v_attempt_count >= 10 then
+    return jsonb_build_object('ok', false, 'reason', 'rate_limited');
+  end if;
+  insert into public.referral_redemption_attempts (user_id) values (v_user_id);
+
+  select * into v_referral from public.referrals
+    where code = upper(btrim(p_code)) for update;
+  if not found then return jsonb_build_object('ok', false, 'reason', 'invalid'); end if;
+  if v_referral.owner_user_id = v_user_id then
+    return jsonb_build_object('ok', false, 'reason', 'own_code');
+  end if;
+  if v_referral.redeemed_by = v_user_id then
+    return jsonb_build_object('ok', true, 'rewardId', v_referral.id, 'replayed', true);
+  end if;
+  if v_referral.redeemed_by is not null then
+    return jsonb_build_object('ok', false, 'reason', 'already_redeemed');
+  end if;
+  if exists (select 1 from public.referrals where redeemed_by = v_user_id) then
+    return jsonb_build_object('ok', false, 'reason', 'already_used_a_code');
+  end if;
+  update public.referrals set redeemed_by = v_user_id, redeemed_at = now()
+    where id = v_referral.id;
+  return jsonb_build_object('ok', true, 'rewardId', v_referral.id, 'replayed', false);
+end;
+$$;
+
+revoke all on function public.ensure_my_referral(uuid) from public, anon;
+revoke all on function public.redeem_referral_code(text, uuid) from public, anon;
+grant execute on function public.ensure_my_referral(uuid) to authenticated;
+grant execute on function public.redeem_referral_code(text, uuid) to authenticated;

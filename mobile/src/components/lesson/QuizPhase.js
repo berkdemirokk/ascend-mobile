@@ -69,6 +69,8 @@ export function QuizPhase({
               onPress={() => handleSelectAnswer(idx)}
               activeOpacity={0.85}
               disabled={revealed}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: isSelected, selected: isSelected }}
             >
               <View style={letterBoxStyle}>
                 <Text style={[styles.optionLetter, { color: letterColor }]}>

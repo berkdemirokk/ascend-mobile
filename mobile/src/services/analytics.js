@@ -29,6 +29,7 @@ import { supabase, SUPABASE_CONFIGURED } from './supabase';
 const TABLE = 'analytics_events';
 const QUEUE_STORAGE_KEY = '@ascend/analytics_queue_v1';
 const MAX_QUEUE_SIZE = 100;
+const FLUSH_TIMEOUT_MS = 8000;
 
 let queue = [];
 let flushTimer = null;
@@ -72,21 +73,34 @@ export const flushAnalytics = async () => {
   await hydrateQueue();
   if (!SUPABASE_CONFIGURED || queue.length === 0) return false;
   if (flushPromise) return flushPromise;
-  const batch = queue.splice(0, queue.length);
-  persistQueue();
+  // Keep in-flight events durable: iOS can terminate the process at any time.
+  // Remove only the acknowledged batch, preserving events added during upload.
+  const batch = queue.slice();
   flushPromise = (async () => {
     let succeeded = false;
+    let timeoutId;
+    const controller = new AbortController();
     try {
-      const { error } = await supabase.from(TABLE).insert(batch);
+      const request = supabase.from(TABLE).insert(batch).abortSignal(controller.signal);
+      const { error } = await Promise.race([
+        request,
+        new Promise((_, reject) => {
+          timeoutId = setTimeout(() => {
+            controller.abort();
+            reject(new Error('Analytics upload timed out'));
+          }, FLUSH_TIMEOUT_MS);
+        }),
+      ]);
       if (error) throw error;
+      queue = queue.filter((event) => !batch.includes(event));
       succeeded = true;
       persistQueue();
       return true;
     } catch {
-      queue = [...batch, ...queue].slice(-MAX_QUEUE_SIZE);
       persistQueue();
       return false;
     } finally {
+      clearTimeout(timeoutId);
       flushPromise = null;
       if (succeeded && queue.length) flushSoon();
     }

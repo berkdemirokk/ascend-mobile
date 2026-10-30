@@ -2,6 +2,8 @@ import { toLocalDateString } from '../utils/dateOnly';
 
 export const initialState = {
   onboarded: false,
+  // Local snapshot owner. Never uploaded as part of another user's cloud state.
+  stateOwnerUserId: null,
 
   // When the user first opened the app. Used to compute the new-user
   // grace period for hearts (free users don't lose hearts in the first
@@ -69,7 +71,9 @@ export const initialState = {
   // Premium
   isPremium: false,
   streakFreezes: 0,
+  premiumFreezeGrantClaimed: false,
   referralOwnerRewardIds: [],
+  referralRedeemerRewardIds: [],
 
   // Achievements
   unlockedAchievements: [],

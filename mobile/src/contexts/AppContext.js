@@ -16,14 +16,7 @@ import { supabase } from '../services/supabase';
 import { cancelAllNotifications } from '../services/notifications';
 import { recordLessonCompletion, recordReflection } from '../services/cloudSync';
 
-import {
-  initialState,
-  MAX_HEARTS,
-  LOCAL_STATE_LOAD_TIMEOUT_MS,
-  NEW_USER_GRACE_HOURS,
-  getTodayDateString,
-  withTimeout,
-} from './appStateConstants';
+import { initialState, NEW_USER_GRACE_HOURS } from './appStateConstants';
 import { ACTION_TYPES } from './appActionTypes';
 import { appReducer } from './appReducer';
 
@@ -47,41 +40,6 @@ export function AppProvider({ children }) {
   );
   const { user, isAuthenticated } = useAuth();
   const userId = user?.id || null;
-
-  // Hydrate from AsyncStorage
-  useEffect(() => {
-    (async () => {
-      try {
-        const raw = await withTimeout(
-          AsyncStorage.getItem(STORAGE_KEYS.USER_STATE),
-          LOCAL_STATE_LOAD_TIMEOUT_MS,
-          'AsyncStorage USER_STATE load',
-        );
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          const today = getTodayDateString();
-          const todayCompleted = parsed.lastCompletedDate === today;
-
-          let hearts = parsed.hearts ?? MAX_HEARTS;
-          let heartsRefillAt = parsed.heartsRefillAt;
-          if (heartsRefillAt && new Date(heartsRefillAt) < new Date()) {
-            hearts = MAX_HEARTS;
-            heartsRefillAt = null;
-          }
-
-          dispatch({
-            type: ACTION_TYPES.LOAD_STATE,
-            payload: { ...parsed, todayCompleted, hearts, heartsRefillAt },
-          });
-        } else {
-          dispatch({ type: ACTION_TYPES.LOAD_STATE, payload: {} });
-        }
-      } catch (e) {
-        console.error('[AppContext] Failed to load state:', e);
-        dispatch({ type: ACTION_TYPES.LOAD_STATE, payload: {} });
-      }
-    })();
-  }, []);
 
   // On load streak protection & daily login bonus
   useEffect(() => {
@@ -178,8 +136,11 @@ export function AppProvider({ children }) {
     dispatch({ type: ACTION_TYPES.RECORD_DAILY_DECK, payload });
   }, []);
 
-  const grantReferralReward = useCallback(() => {
-    dispatch({ type: ACTION_TYPES.GRANT_REFERRAL_REWARD });
+  const grantReferralReward = useCallback((id) => {
+    dispatch({
+      type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+      payload: id ? { id, beneficiary: 'redeemer' } : undefined,
+    });
   }, []);
 
   const startVacation = useCallback((days = 7) => {
@@ -290,6 +251,8 @@ export function AppProvider({ children }) {
           lessonId,
           xpAwarded: xp,
           critAwarded: false,
+          quizCorrect,
+          quizTotal,
         }).catch(() => {});
 
         if (reflection || reflectionAudioUri) {

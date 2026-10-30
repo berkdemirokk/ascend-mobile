@@ -25,6 +25,7 @@ export default function PersonalizeStep({ t, answers, onAnswer }) {
 
   return (
     <ScrollView
+      style={styles.personalizeScroll}
       contentContainerStyle={styles.personalizeContent}
       showsVerticalScrollIndicator={false}
       keyboardShouldPersistTaps="handled"
@@ -38,6 +39,7 @@ export default function PersonalizeStep({ t, answers, onAnswer }) {
         {t('onboarding.qName', 'Sana nasıl seslenelim?')}
       </Text>
       <TextInput
+        accessibilityLabel={t('onboarding.qName', 'Sana nasıl seslenelim?')}
         value={answers.name || ''}
         onChangeText={(txt) => onAnswer('name', txt.slice(0, 24))}
         placeholder={t('onboarding.namePlaceholder', 'Adın (opsiyonel)')}
@@ -59,6 +61,9 @@ export default function PersonalizeStep({ t, answers, onAnswer }) {
           return (
             <TouchableOpacity
               key={opt.id}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: active, selected: active }}
+              accessibilityLabel={t(opt.labelKey, opt.fallback)}
               onPress={() => onAnswer('goal', opt.id)}
               activeOpacity={0.85}
               style={[styles.optionCard, active && styles.optionCardActive]}
@@ -91,6 +96,9 @@ export default function PersonalizeStep({ t, answers, onAnswer }) {
           return (
             <TouchableOpacity
               key={opt.id}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: active, selected: active }}
+              accessibilityLabel={t(opt.labelKey, opt.fallback)}
               onPress={() => onAnswer('time', opt.id)}
               activeOpacity={0.85}
               style={[styles.chip, active && styles.chipActive]}
@@ -113,6 +121,9 @@ export default function PersonalizeStep({ t, answers, onAnswer }) {
           return (
             <TouchableOpacity
               key={opt.id}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: active, selected: active }}
+              accessibilityLabel={t(opt.labelKey, opt.fallback)}
               onPress={() => onAnswer('mood', opt.id)}
               activeOpacity={0.85}
               style={[styles.optionCard, active && styles.optionCardActive]}
@@ -139,6 +150,7 @@ export default function PersonalizeStep({ t, answers, onAnswer }) {
 }
 
 const styles = StyleSheet.create({
+  personalizeScroll: { flex: 1 },
   personalizeContent: {
     paddingHorizontal: 24,
     paddingTop: 24,

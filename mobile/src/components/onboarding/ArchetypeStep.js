@@ -29,6 +29,9 @@ export default function ArchetypeStep({ t, selectedArchetype, onSelect }) {
           return (
             <TouchableOpacity
               key={a.id}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: isSelected, selected: isSelected }}
+              accessibilityLabel={`${t(a.nameKey, a.nameFallback)}, ${t(a.tagKey, a.tagFallback)}, ${t(a.descKey, a.descFallback)}`}
               onPress={() => onSelect(a.id)}
               activeOpacity={0.85}
               style={[

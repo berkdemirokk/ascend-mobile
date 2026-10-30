@@ -43,6 +43,7 @@ const relative = (file) => path.relative(ROOT, file).replace(/\\/g, '/');
 const jsFiles = [
   ...walk(SRC, '.js'),
   path.join(ROOT, 'App.js'),
+  path.join(ROOT, 'index.js'),
 ].filter((file) => fs.existsSync(file)).sort();
 const astByFile = new Map();
 
@@ -124,6 +125,32 @@ run('JavaScript syntax', () => {
     }
   }
   assert(!invalid.length, invalid.slice(0, 10).join('; '));
+});
+
+run('JavaScript referenced identifiers', () => {
+  // Babel knows standard ECMAScript globals; these are the host globals used
+  // by React Native, Metro, and the web-compatible services in this project.
+  const hostGlobals = new Set([
+    '__DEV__', 'require', 'module', 'exports', 'process', 'global',
+    'console', 'setTimeout', 'clearTimeout', 'setInterval', 'clearInterval',
+    'setImmediate', 'clearImmediate', 'requestAnimationFrame', 'cancelAnimationFrame',
+    'fetch', 'AbortController', 'URL', 'URLSearchParams', 'FormData', 'Blob',
+    'Headers', 'Request', 'Response', 'WebSocket', 'TextEncoder', 'TextDecoder',
+    'Buffer', 'atob', 'btoa', 'performance', 'queueMicrotask',
+    'window', 'document', 'navigator', 'ErrorUtils',
+  ]);
+  const unresolved = [];
+  for (const file of jsFiles) {
+    traverse(getAst(file), {
+      ReferencedIdentifier(identifierPath) {
+        const { name, loc } = identifierPath.node;
+        if (!identifierPath.scope.hasBinding(name) && !hostGlobals.has(name)) {
+          unresolved.push(`${relative(file)}:${loc.start.line} ${name}`);
+        }
+      },
+    });
+  }
+  assert(!unresolved.length, unresolved.slice(0, 25).join('; '));
 });
 
 const resolveLocalImport = (fromFile, request) => {
@@ -311,6 +338,28 @@ run('small-screen interactive widths', () => {
     });
   }
   assert(!issues.length, `fixed-width controls can overflow 320pt screens: ${issues.slice(0, 20).join('; ')}`);
+});
+
+run('referral code input contract', () => {
+  const modal = fs.readFileSync(path.join(SRC, 'components', 'settings', 'RedeemCodeModal.js'), 'utf8');
+  const service = fs.readFileSync(path.join(SRC, 'services', 'referral.js'), 'utf8');
+  const settings = fs.readFileSync(path.join(SRC, 'screens', 'SettingsScreen.js'), 'utf8');
+  const account = fs.readFileSync(path.join(SRC, 'components', 'settings', 'AccountSection.js'), 'utf8');
+  assert(modal.includes('maxLength={33}') && modal.includes('ASCEND-XXXXXXXX-XXXXXXXX-XXXXXXXX'), 'referral input must accept the complete 96-bit code');
+  assert(service.includes('ASCEND-[A-F0-9]{8}-[A-F0-9]{8}-[A-F0-9]{8}'), 'referral validation must match the server-issued format');
+  assert(settings.includes('referralCodeUserId === user.id') && settings.includes('activeReferralUserIdRef.current !== user.id'), 'referral code must be bound to the active account before display/share');
+  assert(settings.includes('PENDING_REFERRAL_CODE_KEY') && settings.includes('leaveGuestMode'), 'guest redemption must save its code and provide a sign-in path');
+  assert(account.includes('inviteDisabled') && account.includes('onSignIn'), 'referral actions must show loading/auth state');
+  assert(/redeemCancelButton:\s*\{[\s\S]*?minHeight:\s*48/.test(modal)
+    && /redeemSubmitButton:\s*\{[\s\S]*?minHeight:\s*48/.test(modal), 'referral modal buttons must meet iOS touch-target size');
+});
+
+run('onboarding keyboard and recovery controls', () => {
+  const screen = fs.readFileSync(path.join(SRC, 'screens', 'OnboardingScreen.js'), 'utf8');
+  const personalize = fs.readFileSync(path.join(SRC, 'components', 'onboarding', 'PersonalizeStep.js'), 'utf8');
+  assert(screen.includes('<KeyboardAvoidingView') && screen.includes("Platform.OS === 'ios' ? 'padding' : 'height'"), 'onboarding footer must stay reachable above the keyboard');
+  assert(screen.includes('AccessibilityInfo.announceForAccessibility') && screen.includes('STEPS[stepIndex - 1]'), 'onboarding progress must be announced and prior steps must be reachable');
+  assert(personalize.includes('style={styles.personalizeScroll}') && personalize.includes('personalizeScroll: { flex: 1 }'), 'personalization form must scroll while the keyboard is open');
 });
 
 run('navigation routes', () => {
@@ -536,7 +585,7 @@ run('release toolchain', () => {
   assert(welcomeSource.includes("useState(Platform.OS === 'ios')"), 'Apple Sign-In must remain visible on iOS while availability is probed');
   assert(welcomeSource.includes('name="apple"'), 'Apple Sign-In fallback button must show the official Apple mark');
   assert(settingsSource.includes('accessibilityRole="radio"') && settingsSource.includes('checked: active'), 'settings language picker must expose its selected radio state');
-  assert(settingsSource.includes("Platform.OS === 'ios'") && settingsSource.includes('redeemModalVisible'), 'referral code entry must work without the iOS-only Alert.prompt');
+  assert(settingsSource.includes('setRedeemModalVisible(true)') && !settingsSource.includes('Alert.prompt'), 'referral code entry must use the retryable modal on iOS');
   assert(heatmapSource.includes('heatmap.dayAccessibility'), 'streak heatmap days need a non-color accessibility label');
 });
 
@@ -602,7 +651,9 @@ run('release observability', () => {
   const appSource = fs.readFileSync(path.join(ROOT, 'App.js'), 'utf8');
   const onboardingSource = fs.readFileSync(path.join(SRC, 'screens', 'OnboardingScreen.js'), 'utf8');
   assert(analyticsSource.includes("QUEUE_STORAGE_KEY"), 'analytics queue must survive app termination');
-  assert(analyticsSource.includes('const { error } = await supabase.from(TABLE).insert(batch)'), 'analytics must inspect Supabase insert errors');
+  assert(analyticsSource.includes('const { error } = await Promise.race([')
+    && analyticsSource.includes('.abortSignal(controller.signal)')
+    && analyticsSource.includes('if (error) throw error;'), 'analytics must inspect Supabase insert errors and bound the request');
   assert(analyticsSource.includes('Constants.nativeBuildVersion'), 'analytics events must include native build version');
   assert(analyticsSource.includes('installGlobalErrorHandler'), 'global JS errors must be captured');
   assert(appSource.includes('installGlobalErrorHandler()'), 'App must install the global JS error handler');
@@ -928,9 +979,22 @@ run('Supabase policy idempotency', () => {
   assert(/squad_member_progress_user_idx[\s\S]*on\s+public\.squad_member_progress\s*\(user_id/i.test(sql), 'squad_member_progress.user_id foreign key needs a covering index');
   assert(!/create\s+policy\s+"referrals: redeemer can mark redemption"/i.test(sqlWithoutComments), 'referral UPDATE policies must be merged');
   assert(!/create\s+policy\s+"referrals: owner can mark reward paid"/i.test(sqlWithoutComments), 'referral UPDATE policies must be merged');
-  assert(/create\s+policy\s+"referrals: update own redemption state"/i.test(sqlWithoutComments), 'merged referral UPDATE policy missing');
-  const directAuthCalls = [...sqlWithoutComments.matchAll(/auth\.(uid|role)\(\)/g)]
-    .filter((match) => !sqlWithoutComments.slice(Math.max(0, match.index - 12), match.index).endsWith('(select '));
+  const secureReferralMigration = fs.readFileSync(path.join(supabaseRoot, 'migrations', '20261025204300_secure_referrals.sql'), 'utf8').replace(/--.*$/gm, '');
+  const hardenedReferralMigration = fs.readFileSync(path.join(supabaseRoot, 'migrations', '20261025204825_harden_referral_codes.sql'), 'utf8').replace(/--.*$/gm, '');
+  const formattedReferralMigration = fs.readFileSync(path.join(supabaseRoot, 'migrations', '20261025204953_format_referral_codes.sql'), 'utf8').replace(/--.*$/gm, '');
+  assert(!/create\s+policy\s+"referrals: (?:read all|update own redemption state)"/i.test(secureReferralMigration), 'referral rows must not be directly readable or mutable');
+  assert(/revoke\s+all\s+on\s+public\.referrals\s+from\s+anon,\s*authenticated/i.test(secureReferralMigration), 'direct referral table access must be revoked');
+  assert(/gen_random_bytes\(12\)/i.test(hardenedReferralMigration)
+    && /attempted_at\s*>=\s*now\(\)\s*-\s*interval\s+'1 hour'/i.test(hardenedReferralMigration)
+    && /v_attempt_count\s*>=\s*10/i.test(hardenedReferralMigration), 'referral tokens need 96-bit entropy and server-side rate limiting');
+  assert(/substr\(v_token,\s*1,\s*8\)[\s\S]*substr\(v_token,\s*9,\s*8\)[\s\S]*substr\(v_token,\s*17,\s*8\)/i.test(formattedReferralMigration), 'referral display format must match its entropy source');
+  for (const rpc of ['ensure_my_referral', 'redeem_referral_code', 'get_referral_owner_reward_ids', 'get_my_referral_redemption_count', 'mark_referral_rewards_paid']) {
+    assert(new RegExp(`revoke\\s+all\\s+on\\s+function\\s+public\\.${rpc}\\(`, 'i').test(secureReferralMigration), `public execution must be revoked for ${rpc}`);
+    assert(new RegExp(`grant\\s+execute\\s+on\\s+function\\s+public\\.${rpc}\\(`, 'i').test(secureReferralMigration), `authenticated RPC missing for ${rpc}`);
+  }
+  const policySql = [...sqlWithoutComments.matchAll(/create\s+policy\b[\s\S]*?;/gi)].map((match) => match[0]).join('\n');
+  const directAuthCalls = [...policySql.matchAll(/auth\.(uid|role)\(\)/g)]
+    .filter((match) => !policySql.slice(Math.max(0, match.index - 12), match.index).endsWith('(select '));
   assert(!directAuthCalls.length, `RLS auth calls must use (select auth.*()): ${directAuthCalls.map((match) => match[0]).join(', ')}`);
 });
 
@@ -967,6 +1031,7 @@ run('critical flow regression guards', () => {
   const signup = fs.readFileSync(path.join(SRC, 'screens/auth/SignupScreen.js'), 'utf8');
   const login = fs.readFileSync(path.join(SRC, 'screens/auth/LoginScreen.js'), 'utf8');
   const cloudSync = fs.readFileSync(path.join(SRC, 'services/cloudSync.js'), 'utf8');
+  const referralSync = fs.readFileSync(path.join(SRC, 'hooks/useReferralSync.js'), 'utf8');
   const outOfHeartsModal = fs.readFileSync(path.join(SRC, 'components/OutOfHeartsModal.js'), 'utf8');
 
   assert(
@@ -980,8 +1045,10 @@ run('critical flow regression guards', () => {
     'premium check must wait for RevenueCat user identity binding',
   );
   assert(
-    appContext.includes('markReferralRewardsPaid(unpaidIds)')
-      && appContext.includes("['invalid', 'own_code', 'already_redeemed', 'already_used_a_code']"),
+    referralSync.includes('markReferralRewardsPaid(persistedIds)')
+      && referralSync.includes('payload: { id: result.rewardId, beneficiary: \'redeemer\' }')
+      && referralSync.includes('const terminalReasons = [')
+      && referralSync.includes('setTimeout(retryPendingRedemption, retryDelay)'),
     'referral rewards must be crash-safe and pending codes must survive transient errors',
   );
   assert(

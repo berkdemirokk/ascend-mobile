@@ -5,14 +5,16 @@ import requests
 import json
 import sys
 import os
+from pathlib import Path
 
 KEY_ID = os.environ.get("ASC_KEY_ID")
 ISSUER_ID = os.environ.get("ASC_ISSUER_ID")
 KEY_PATH = os.environ.get("ASC_KEY_PATH")
 APP_ID = os.environ.get("ASC_APP_ID", "6761607644")
 BUNDLE_ID = "com.ascend.growth"
-EXPECTED_VERSION = os.environ.get("ASC_EXPECTED_VERSION", "1.0.44")
-EXPECTED_BUILD = os.environ.get("ASC_EXPECTED_BUILD", "127")
+APP_CONFIG = json.loads((Path(__file__).resolve().parent.parent / "app.json").read_text(encoding="utf-8"))["expo"]
+EXPECTED_VERSION = os.environ.get("ASC_EXPECTED_VERSION", APP_CONFIG["version"])
+EXPECTED_BUILD = os.environ.get("ASC_EXPECTED_BUILD")
 
 
 def make_token():
@@ -36,6 +38,7 @@ def get(path, token):
     r = requests.get(
         f"https://api.appstoreconnect.apple.com/v1{path}",
         headers={"Authorization": f"Bearer {token}"},
+        timeout=30,
     )
     return r.status_code, r.json() if r.text else {}
 
@@ -98,6 +101,8 @@ def print_subscription_details(subscription, token):
 
 
 def main():
+    if not EXPECTED_BUILD or not all(part.isdigit() for part in EXPECTED_BUILD.split(".")):
+        raise RuntimeError("Set ASC_EXPECTED_BUILD to the exact submitted iOS build number.")
     token = make_token()
     print(f"Token len: {len(token)}\n")
 
@@ -109,10 +114,10 @@ def main():
         print(f"  ✓ App: {attr.get('name')} | bundle: {attr.get('bundleId')} | sku: {attr.get('sku')}")
         if attr.get("bundleId") != BUNDLE_ID or attr.get("name") != "Ascend: Daily Discipline":
             print("  ✗ App identity does not match the canonical red-white release")
-            return
+            raise RuntimeError("App identity mismatch")
     else:
         print(f"  ✗ HTTP {code}: {data}")
-        return
+        raise RuntimeError("App lookup failed")
 
     # 2) Subscriptions
     print("\n=== 2. Subscription Groups ===")
@@ -159,12 +164,14 @@ def main():
             pre = included.get((rel_data.get("type"), rel_data.get("id")), {})
             pre_version = pre.get("attributes", {}).get("version")
             if str(attrs.get("version")) == str(EXPECTED_BUILD) and (
-                pre_version is None or str(pre_version) == EXPECTED_VERSION
+                str(pre_version) == EXPECTED_VERSION
             ):
                 builds.append(candidate)
         if builds:
             build = builds[0]
             ba = build["attributes"]
+            if ba.get("processingState") != "VALID" or ba.get("expired"):
+                raise RuntimeError(f"Build {EXPECTED_BUILD} is not a valid, unexpired TestFlight build: {ba.get('processingState')}")
             print(
                 f"  ✓ Build {EXPECTED_BUILD}: processing={ba.get('processingState')} "
                 f"| expired={ba.get('expired')} | uploaded={ba.get('uploadedDate')}"
@@ -185,9 +192,9 @@ def main():
             else:
                 print(f"    ⚠ TestFlight group lookup unavailable (HTTP {code2})")
         else:
-            print(f"  ⚠ Build {EXPECTED_BUILD} is not visible yet")
+            raise RuntimeError(f"Build {EXPECTED_VERSION} ({EXPECTED_BUILD}) is not visible yet")
     else:
-        print(f"  ⚠ Build lookup unavailable (HTTP {code})")
+        raise RuntimeError(f"Build lookup unavailable (HTTP {code})")
 
     # 4) Store version status
     print("\n=== 4. App Store version ===")

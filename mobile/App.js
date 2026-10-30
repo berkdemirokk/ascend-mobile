@@ -37,9 +37,9 @@ export default function App() {
 
   useEffect(() => {
     const removeErrorHandler = installGlobalErrorHandler();
-    // This is the earliest durable signal that React Native reached our JS
-    // entrypoint. If a TestFlight launch has no matching event, the failure is
-    // native/bootstrap rather than a React screen or backend request.
+    // This post-commit signal confirms App mounted. Absence is inconclusive:
+    // native crashes, early module errors, offline delivery or an unflushed
+    // analytics queue can all prevent it from reaching the backend.
     track({ event: 'app_js_started' });
     const appStateSubscription = AppState.addEventListener('change', (state) => {
       if (state !== 'active') flushAnalytics().catch(() => {});

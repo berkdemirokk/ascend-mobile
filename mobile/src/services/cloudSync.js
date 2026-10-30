@@ -1,26 +1,31 @@
 import { supabase, SUPABASE_CONFIGURED } from './supabase';
+import { sanitizePersistedState } from '../contexts/stateHydration';
 
 const TABLE = 'user_state';
 const CLOUD_REQUEST_TIMEOUT_MS = 12000;
 
-const withCloudTimeout = (promise, label) => (
-  Promise.race([
-    promise,
-    new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
+const withCloudTimeout = async (promise, label) => {
+  let timer;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise((resolve) => {
+        timer = setTimeout(() => resolve({
           data: null,
           error: new Error(`${label} timed out`),
           timedOut: true,
-        });
-      }, CLOUD_REQUEST_TIMEOUT_MS);
-    }),
-  ])
-);
+        }), CLOUD_REQUEST_TIMEOUT_MS);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+};
 
 // Fields persisted to cloud. Skip transient/UI/premium (premium = store-authoritative).
 const SYNCED_KEYS = [
   'onboarded',
+  'installedAt',
   'userProfile',
   'totalXP',
   'level',
@@ -28,7 +33,9 @@ const SYNCED_KEYS = [
   'longestStreak',
   'lastCompletedDate',
   'streakFreezes',
+  'premiumFreezeGrantClaimed',
   'referralOwnerRewardIds',
+  'referralRedeemerRewardIds',
   'unlockedAchievements',
   'hearts',
   'heartsRefillAt',
@@ -78,7 +85,8 @@ function stripLocalOnlyPathProgress(pathProgress = {}) {
 }
 
 /**
- * Pull the user's cloud state. Returns the payload object or null.
+ * Pull the user's cloud state. Null means a successful lookup found no row.
+ * Failures throw so a temporary outage cannot overwrite existing cloud data.
  */
 export async function pullState(userId) {
   if (!SUPABASE_CONFIGURED) return null;
@@ -93,17 +101,19 @@ export async function pullState(userId) {
       'cloud pull',
     );
     if (timedOut) {
-      console.warn('[cloudSync] pull timeout');
-      return null;
+      throw error;
     }
     if (error) {
-      console.warn('[cloudSync] pull error:', error.message);
-      return null;
+      throw error;
     }
-    return data?.payload || null;
+    if (!data) return null;
+    if (!data.payload || typeof data.payload !== 'object' || Array.isArray(data.payload)) {
+      throw new Error('Cloud state payload is invalid');
+    }
+    return data.payload;
   } catch (e) {
     console.warn('[cloudSync] pull exception:', e?.message);
-    return null;
+    throw e;
   }
 }
 
@@ -227,6 +237,8 @@ function pickNewer(localDate, cloudDate) {
  */
 export function mergeStates(localState, cloudPayload) {
   if (!cloudPayload) return localState;
+  localState = sanitizePersistedState(localState);
+  cloudPayload = sanitizePersistedState(cloudPayload);
 
   const newer = pickNewer(localState.lastCompletedDate, cloudPayload.lastCompletedDate);
   const newerSide = newer === 'cloud' ? cloudPayload : localState;
@@ -255,9 +267,16 @@ export function mergeStates(localState, cloudPayload) {
       localState.streakFreezes || 0,
       cloudPayload.streakFreezes || 0,
     ),
+    premiumFreezeGrantClaimed: !!(
+      localState.premiumFreezeGrantClaimed || cloudPayload.premiumFreezeGrantClaimed
+    ),
     referralOwnerRewardIds: Array.from(new Set([
       ...(localState.referralOwnerRewardIds || []),
       ...(cloudPayload.referralOwnerRewardIds || []),
+    ])).slice(-200),
+    referralRedeemerRewardIds: Array.from(new Set([
+      ...(localState.referralRedeemerRewardIds || []),
+      ...(cloudPayload.referralRedeemerRewardIds || []),
     ])).slice(-200),
     unlockedAchievements: Array.from(
       new Set([
@@ -363,6 +382,16 @@ export function mergeStates(localState, cloudPayload) {
   };
 }
 
+// A guest snapshot has no account owner. When it meets an existing account's
+// cloud row, that row is authoritative; merging would mix two people's data on
+// a shared device. A new account has no cloud row, so its initial push can still
+// preserve the guest's progress.
+export function resolveAccountState(localState, cloudPayload) {
+  if (!cloudPayload) return localState;
+  if (!localState?.stateOwnerUserId) return sanitizePersistedState(cloudPayload);
+  return mergeStates(localState, cloudPayload);
+}
+
 /**
  * @deprecated Kept for backwards compatibility — callers should switch to
  * `mergeStates` and always dispatch the result. This shim still works because
@@ -370,65 +399,69 @@ export function mergeStates(localState, cloudPayload) {
  */
 
 /**
- * Record a single lesson completion event in the normalized table.
- * Fail-open; doesn\'t throw.
+ * Record a client-reported lesson completion for the user's history/analytics.
+ * This row is not authoritative for rewards, entitlements, or access control.
+ * Retries preserve the first completion. Returns false and logs failed writes.
  */
 export async function recordLessonCompletion(userId, {
   pathId,
   lessonId,
   xpAwarded = 15,
-  critAwarded = false,
-  timeSpentSec = 0,
+  quizCorrect = 0,
+  quizTotal = 0,
 }) {
-  if (!SUPABASE_CONFIGURED || !userId) return;
+  if (!SUPABASE_CONFIGURED || !userId || !pathId || !lessonId) return false;
+  const nonnegativeInteger = (value) => Number.isFinite(Number(value))
+    ? Math.min(2147483647, Math.max(0, Math.trunc(Number(value)))) : 0;
+  const total = nonnegativeInteger(quizTotal);
   try {
-    await withCloudTimeout(
-      supabase.from('lesson_completions').insert({
+    const { error } = await withCloudTimeout(
+      supabase.from('lesson_completions').upsert({
         user_id: userId,
         path_id: pathId,
         lesson_id: lessonId,
-        xp_awarded: xpAwarded,
-        crit_awarded: Boolean(critAwarded),
-        time_spent_sec: Math.max(0, parseInt(timeSpentSec, 10) || 0),
-        created_at: new Date().toISOString(),
-      }),
+        xp_earned: nonnegativeInteger(xpAwarded),
+        quiz_correct: Math.min(total, nonnegativeInteger(quizCorrect)),
+        quiz_total: total,
+        completed_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,path_id,lesson_id', ignoreDuplicates: true }),
       'record lesson completion',
     );
+    if (error) throw error;
+    return true;
   } catch (e) {
     console.warn('[cloudSync] recordLessonCompletion warning:', e?.message);
+    return false;
   }
 }
 
 /**
- * Record a user\'s reflection / commitment text or audio URI.
- * Fail-open; doesn\'t throw.
+ * Save reflection text. Audio and its device-local URI remain on the device.
+ * Upsert allows edits to the same lesson without violating its unique key.
  */
 export async function recordReflection(userId, {
   pathId,
   lessonId,
-  prompt = '',
   text = '',
-  audioUri = null,
-  actionCommitted = true,
 }) {
-  if (!SUPABASE_CONFIGURED || !userId) return;
-  if (!text && !audioUri) return;
+  if (!SUPABASE_CONFIGURED || !userId || !pathId || !lessonId) return false;
+  if (typeof text !== 'string' || !text.trim()) return false;
   try {
-    await withCloudTimeout(
-      supabase.from('reflections').insert({
+    const { error } = await withCloudTimeout(
+      supabase.from('reflections').upsert({
         user_id: userId,
         path_id: pathId,
         lesson_id: lessonId,
-        prompt: prompt || '',
-        text: text || '',
-        audio_uri: audioUri || null,
-        action_committed: Boolean(actionCommitted),
-        created_at: new Date().toISOString(),
-      }),
+        content: text,
+        audio_uri: null,
+      }, { onConflict: 'user_id,path_id,lesson_id' }),
       'record reflection',
     );
+    if (error) throw error;
+    return true;
   } catch (e) {
     console.warn('[cloudSync] recordReflection warning:', e?.message);
+    return false;
   }
 }
 

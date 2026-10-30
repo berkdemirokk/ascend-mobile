@@ -34,6 +34,7 @@
     "profile": "Sen"
   },
   "onboarding": {
+    "stepProgress": "{{total}} adımın {{current}}. adımı",
     "title": "Ascend: Daily Discipline",
     "subtitle": "Her gün 5 dakika. Okumak değil, gerçekten uygulamak.",
     "bullet1": "Bir sorunu yakala",
@@ -578,8 +579,14 @@
     "inviteSubV2": "Kodun: {{code}}{{tail}}",
     "inviteJoined": "{{count}} arkadaşın katıldı",
     "inviteReward": "ikinize de 10 seri koruma jetonu",
+    "referralCodeLoading": "Davet kodun yükleniyor…",
+    "referralCodeUnavailable": "Davet kodun alınamadı. Yeniden denemek için dokun.",
+    "referralSignInHint": "Davet kodunu kullanmak için hesabına giriş yap.",
+    "signInForReferrals": "Giriş yap",
     "inviteShare": "Disiplin akademisini birlikte yapalım — Ascend'i indir ve ilk yolunu başlat.\n{{link}}",
     "inviteShareWithCode": "Ascend'i indir, davet kodumu kullan ve 10 seri koruma jetonu kazan: {{code}}\n{{link}}",
+    "inviteShareErrorTitle": "Paylaşım açılamadı",
+    "inviteShareError": "Davetini paylaşamadık. Biraz sonra tekrar dene.",
     "redeemInvite": "Davet kodu gir",
     "redeemInviteSub": "Bir arkadaşının kodu varsa 10 seri koruma jetonu kazan",
     "redeemTitle": "Davet Kodu",
@@ -591,7 +598,10 @@
     "redeemOwnCode": "Kendi kodunu kullanamazsın 🙂",
     "redeemAlreadyRedeemed": "Bu kod zaten başkası tarafından kullanılmış.",
     "redeemAlreadyUsed": "Sen bir kod kullanmıştın zaten — sadece bir kez geçerli.",
+    "redeemRateLimited": "Çok fazla deneme yapıldı. Bir saat sonra tekrar dene.",
     "redeemAuthRequired": "Davet kodu kullanmak için hesabın olmalı. Önce giriş yap.",
+    "redeemAuthRequiredTitle": "Giriş yapman gerekiyor",
+    "redeemGuestSaved": "Kodun kaydedildi. Ödülü almak için hesabına giriş yap.",
     "redeemError": "Bir hata oluştu. Tekrar dener misin?",
     "logout": "Çıkış Yap",
     "deleteAccount": "Hesabı Sil",
@@ -662,7 +672,7 @@
     "saveAmount": "{{amount}} tasarruf",
     "ctaTrial": "Premium'u aç",
     "ctaContinue": "Şimdilik devam et",
-    "autoRenew": "Abonelik otomatik olarak yenilenir. İstediğin zaman ayarlardan veya App Store hesabından iptal edebilirsin.",
+    "autoRenew": "Abonelik otomatik olarak yenilenir. İstediğin zaman App Store hesap ayarlarından iptal edebilirsin.",
     "trialDisclosure": "İptal etmezsen abonelik {{price}} {{period}} olarak otomatik yenilenir. App Store hesabından istediğin zaman iptal edebilirsin.",
     "subscriptionDisclosure": "İptal etmezsen abonelik {{price}} {{period}} olarak otomatik yenilenir. App Store hesabından istediğin zaman iptal edebilirsin.",
     "periodYearly": "yıllık",
@@ -1051,8 +1061,8 @@
     "howWorks": "Her gün bir ders tamamlayarak serini koru. Bir gün atlarsan seri sıfırlanır.",
     "freezeTitle": "Seri Dondurucuları",
     "freezeAvailable": "{{count}} adet kullanılabilir. Bir gün atlarsan otomatik kullanılır.",
-    "freezeEmpty": "Henüz dondurucu yok. Premium ile 3 dondurucu kazan.",
-    "getFreezes": "PREMIUM İLE 3 DONDURUCU AL"
+    "freezeEmpty": "Henüz dondurucu yok. Premium ile 12 dondurucu kazan.",
+    "getFreezes": "PREMIUM İLE 12 DONDURUCU AL"
   },
   "calendar": {
     "title": "AKTİVİTE HARİTASI",

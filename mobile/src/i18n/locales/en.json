@@ -34,6 +34,7 @@
     "profile": "You"
   },
   "onboarding": {
+    "stepProgress": "Step {{current}} of {{total}}",
     "title": "Ascend: Daily Discipline",
     "subtitle": "Five minutes a day. Less reading, more doing.",
     "bullet1": "Catch one problem",
@@ -557,7 +558,13 @@
     "inviteSubV2": "Code: {{code}}{{tail}}",
     "inviteJoined": "{{count}} friends joined",
     "inviteReward": "both get 10 streak freezes",
+    "referralCodeLoading": "Loading your invite code…",
+    "referralCodeUnavailable": "Couldn't load your invite code. Tap to try again.",
+    "referralSignInHint": "Sign in to get and redeem invite codes.",
+    "signInForReferrals": "Sign in",
     "inviteShareWithCode": "Get Ascend, use my invite code and earn 10 streak freezes: {{code}}\n{{link}}",
+    "inviteShareErrorTitle": "Couldn't open sharing",
+    "inviteShareError": "Your invite wasn't shared. Please try again in a moment.",
     "redeemInvite": "Enter invite code",
     "redeemInviteSub": "If a friend gave you a code, earn 10 streak freezes",
     "redeemTitle": "Invite Code",
@@ -569,7 +576,10 @@
     "redeemOwnCode": "You can't use your own code 🙂",
     "redeemAlreadyRedeemed": "This code has already been used.",
     "redeemAlreadyUsed": "You've already used a code — only one allowed.",
+    "redeemRateLimited": "Too many attempts. Try again in one hour.",
     "redeemAuthRequired": "You need an account to redeem a code. Sign in first.",
+    "redeemAuthRequiredTitle": "Sign in to continue",
+    "redeemGuestSaved": "Your code is saved. Sign in to claim the reward.",
     "redeemError": "Something went wrong. Try again?",
     "inviteShare": "Let's build daily discipline together — download Ascend and start your first path.\n{{link}}",
     "premiumStatus": "Premium Status",
@@ -1051,8 +1061,8 @@
     "howWorks": "Complete one lesson daily to maintain your streak. Skip a day and it resets.",
     "freezeTitle": "Streak Freezes",
     "freezeAvailable": "{{count}} available. Auto-used when you skip a day.",
-    "freezeEmpty": "No freezes yet. Get 3 with Premium.",
-    "getFreezes": "GET 3 FREEZES WITH PREMIUM"
+    "freezeEmpty": "No freezes yet. Get 12 with Premium.",
+    "getFreezes": "GET 12 FREEZES WITH PREMIUM"
   },
   "calendar": {
     "title": "ACTIVITY MAP",

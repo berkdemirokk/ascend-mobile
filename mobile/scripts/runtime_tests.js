@@ -294,6 +294,12 @@ const main = async () => {
   });
   assert(premium.isPremium && premium.hearts === 5, 'premium activation did not restore unlimited-heart state');
   assert(premium.streakFreezes === 12, 'premium activation did not grant the configured freezes');
+  const afterPremiumFreezeUse = appReducer(premium, { type: ACTION_TYPES.USE_STREAK_FREEZE });
+  const refreshedPremium = appReducer(afterPremiumFreezeUse, {
+    type: ACTION_TYPES.SET_PREMIUM,
+    payload: true,
+  });
+  assert(refreshedPremium.streakFreezes === 11, 'premium status refresh regranted already-used freezes');
 
   const recentInstall = { ...initialState, hearts: 3, installedAt: new Date().toISOString() };
   assert(
@@ -393,15 +399,104 @@ const main = async () => {
     'duplicate owner referral row granted reward twice',
   );
 
-  const { mergeStates, pickSyncableState } = loadModule(
-    path.join(ROOT, 'src/services/cloudSync.js'),
+  const redeemerReward = appReducer({ ...initialState, streakFreezes: 0 }, {
+    type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+    payload: { id: 'ref-row-1', beneficiary: 'redeemer' },
+  });
+  assert(redeemerReward.streakFreezes === 10, 'redeemer referral reward was not granted');
+  assert(!redeemerReward.referralOwnerRewardIds.includes('ref-row-1'), 'redeemer receipt polluted owner rewards');
+  assert(redeemerReward.referralRedeemerRewardIds.includes('ref-row-1'), 'redeemer receipt was not persisted separately');
+  assert(appReducer(redeemerReward, {
+    type: ACTION_TYPES.GRANT_REFERRAL_REWARD,
+    payload: { id: 'ref-row-1', beneficiary: 'redeemer' },
+  }) === redeemerReward, 'replayed redemption granted freezes twice');
+
+  let cloudResult = { data: null, error: null };
+  const cloudWrites = [];
+  const originalWarn = console.warn;
+  console.warn = () => {};
+  moduleMocks['./supabase'] = {
+    SUPABASE_CONFIGURED: true,
+    supabase: {
+      from: (table) => {
+        const query = {
+          select: () => query,
+          eq: () => query,
+          maybeSingle: async () => cloudResult,
+          upsert: async (payload, options) => {
+            cloudWrites.push({ table, payload, options });
+            return cloudResult;
+          },
+        };
+        return query;
+      },
+    },
+  };
+  const cloudSyncModulePath = path.join(ROOT, 'src/services/cloudSync.js');
+  moduleCache.delete(cloudSyncModulePath);
+  const { mergeStates, resolveAccountState, pickSyncableState } = loadModule(
+    cloudSyncModulePath,
   );
+  const { pullState, recordLessonCompletion, recordReflection } = loadModule(
+    cloudSyncModulePath,
+  );
+  assert(await pullState('user-1') === null, 'successful empty cloud read was not distinguished from an error');
+  cloudResult = { data: null, error: new Error('offline') };
+  await assertRejects(() => pullState('user-1'), /offline/, 'failed cloud read must reject before any overwrite');
+  cloudResult = { data: null, error: null };
+  assert(await recordLessonCompletion('user-1', {
+    pathId: 'path-1', lessonId: 'lesson-1', xpAwarded: 20, quizCorrect: 2, quizTotal: 3,
+  }), 'lesson completion write should succeed');
+  assert(cloudWrites[0].table === 'lesson_completions'
+    && cloudWrites[0].payload.xp_earned === 20
+    && cloudWrites[0].payload.quiz_correct === 2
+    && cloudWrites[0].payload.quiz_total === 3,
+  'lesson write columns must match the normalized migration');
+  assert(await recordReflection('user-1', {
+    pathId: 'path-1', lessonId: 'lesson-1', text: 'written reflection', audioUri: 'file://private.m4a',
+  }), 'reflection write should succeed');
+  assert(cloudWrites[1].table === 'reflections'
+    && cloudWrites[1].payload.content === 'written reflection'
+    && cloudWrites[1].payload.audio_uri === null,
+  'reflection must save editable text without uploading a local audio path');
+  cloudResult = { data: null, error: new Error('schema rejected') };
+  assert(await recordReflection('user-1', {
+    pathId: 'path-1', lessonId: 'lesson-1', text: 'retryable reflection',
+  }) === false, 'failed reflection write must be visible to the caller');
+
+  const rpcCalls = [];
+  const rpcResponses = {
+    ensure_my_referral: 'ASCEND-ABCDEF01-23456789-ABCDEF01',
+    redeem_referral_code: { ok: true, rewardId: 'ref-row-1' },
+    get_my_referral_redemption_count: 4,
+    get_referral_owner_reward_ids: ['ref-row-2'],
+    mark_referral_rewards_paid: 1,
+  };
+  moduleMocks['./supabase'].supabase.rpc = async (name, params) => {
+    rpcCalls.push({ name, params });
+    return { data: rpcResponses[name], error: null };
+  };
+  const referralService = loadModule(path.join(ROOT, 'src/services/referral.js'));
+  assert(referralService.isReferralCodeFormatValid('ascend-abcdef01-23456789-abcdef01'), 'valid case-insensitive 96-bit referral format was rejected');
+  assert(!referralService.isReferralCodeFormatValid('ASCEND-AB12-CD34'), 'short legacy referral format must be rejected');
+  assert(await referralService.ensureMyReferral('user-1') === 'ASCEND-ABCDEF01-23456789-ABCDEF01', 'server-issued referral code was not used');
+  assert((await referralService.redeemReferralCode(' ascend-abcdef01-23456789-abcdef01 ', 'user-2')).rewardId === 'ref-row-1', 'redemption did not preserve its idempotency receipt');
+  assert((await referralService.redeemReferralCode('ASCEND-AB12-CD34', 'user-2')).reason === 'invalid', 'weak legacy referral codes must be rejected locally');
+  assert((await referralService.getReferralStats('user-1')).redemptions === 4, 'referral count RPC was not read');
+  assert((await referralService.checkReferralRewards('user-1')).ids[0] === 'ref-row-2', 'owner reward IDs RPC was not read');
+  assert(await referralService.markReferralRewardsPaid(['ref-row-2']) === true, 'owner reward ack RPC failed');
+  assert(rpcCalls.map(({ name }) => name).join(',') === [
+    'ensure_my_referral', 'redeem_referral_code', 'get_my_referral_redemption_count',
+    'get_referral_owner_reward_ids', 'mark_referral_rewards_paid',
+  ].join(','), 'client referral RPC contract drifted from SQL functions');
+  console.warn = originalWarn;
   const merged = mergeStates({
     lastCompletedDate: '2026-06-20',
     currentStreak: 2,
     totalXP: 20,
     hearts: 3,
     referralOwnerRewardIds: ['ref-row-local'],
+    referralRedeemerRewardIds: ['redeemed-local'],
     pathProgress: {
       'dopamine-detox': {
         completed: ['dopamine-detox-1'],
@@ -416,6 +511,7 @@ const main = async () => {
     totalXP: 40,
     hearts: 4,
     referralOwnerRewardIds: ['ref-row-cloud', 'ref-row-local'],
+    referralRedeemerRewardIds: ['redeemed-cloud'],
     pathProgress: {
       'dopamine-detox': {
         completed: ['dopamine-detox-2'],
@@ -434,8 +530,33 @@ const main = async () => {
       && merged.referralOwnerRewardIds.includes('ref-row-cloud'),
     'referral owner reward ids were not merged across devices',
   );
-  const syncable = pickSyncableState({ ...merged, isPremium: true });
+  assert(merged.referralRedeemerRewardIds.includes('redeemed-local')
+    && merged.referralRedeemerRewardIds.includes('redeemed-cloud'),
+  'redeemer receipts did not merge across devices');
+  const existingAccountState = resolveAccountState({
+    stateOwnerUserId: null,
+    totalXP: 99,
+    pathProgress: { focus: { completed: ['guest-lesson'] } },
+  }, {
+    totalXP: 20,
+    pathProgress: { focus: { completed: ['account-lesson'] } },
+  });
+  assert(existingAccountState.totalXP === 20
+    && existingAccountState.pathProgress.focus.completed.join(',') === 'account-lesson',
+  'guest progress was merged into an existing account with cloud history');
+  const newAccountState = resolveAccountState({
+    stateOwnerUserId: null,
+    totalXP: 99,
+  }, null);
+  assert(newAccountState.totalXP === 99, 'guest progress was dropped before first account sync');
+  const grantMerged = mergeStates(
+    { premiumFreezeGrantClaimed: false },
+    { premiumFreezeGrantClaimed: true },
+  );
+  assert(grantMerged.premiumFreezeGrantClaimed, 'premium freeze grant claim was lost across devices');
+  const syncable = pickSyncableState({ ...merged, isPremium: true, premiumFreezeGrantClaimed: true });
   assert(!Object.prototype.hasOwnProperty.call(syncable, 'isPremium'), 'store-authoritative premium state was synced');
+  assert(syncable.premiumFreezeGrantClaimed, 'premium freeze grant claim was not persisted to cloud');
   assert(!Object.prototype.hasOwnProperty.call(syncable.pathProgress['dopamine-detox'], 'reflectionAudio'), 'local audio URI was synced');
 
   const { resolveAccessibilityProps } = loadModule(

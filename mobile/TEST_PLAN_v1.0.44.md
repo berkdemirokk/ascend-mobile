@@ -1,5 +1,7 @@
 # Test Plan - Ascend: Daily Discipline v1.0.44
 
+Historical plan for 1.0.44. Use [TEST_PLAN.md](TEST_PLAN.md) for current candidates and record the actual version/build under test.
+
 Walk through this on a real iPhone via TestFlight before submitting a new App Store build.
 
 Total time: about 25-35 minutes.

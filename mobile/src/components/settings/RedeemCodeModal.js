@@ -44,7 +44,7 @@ export default function RedeemCodeModal({
           }}
           style={StyleSheet.absoluteFillObject}
         />
-        <View style={styles.redeemModalCard}>
+        <View style={styles.redeemModalCard} accessibilityViewIsModal>
           <Text style={styles.redeemModalTitle}>
             {t('settings.redeemTitle', 'Davet Kodu')}
           </Text>
@@ -60,8 +60,8 @@ export default function RedeemCodeModal({
             autoCapitalize="characters"
             autoCorrect={false}
             autoFocus
-            maxLength={24}
-            placeholder="ASCEND-XXXX-YYYY"
+            maxLength={33}
+            placeholder="ASCEND-XXXXXXXX-XXXXXXXX-XXXXXXXX"
             placeholderTextColor={LT.outline}
             returnKeyType="done"
             onSubmitEditing={() => onSubmit(redeemCodeInput)}
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   redeemCancelButton: {
-    height: 40,
+    minHeight: 48,
     paddingHorizontal: 16,
     borderRadius: LT_RADIUS.md,
     alignItems: 'center',
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   redeemSubmitButton: {
-    height: 40,
+    minHeight: 48,
     paddingHorizontal: 20,
     borderRadius: LT_RADIUS.md,
     backgroundColor: LT.primaryContainer,
