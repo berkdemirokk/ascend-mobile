@@ -54,7 +54,8 @@ jobs:
           sleep 30
           xcrun simctl spawn "$device" launchctl list > "$RUNNER_TEMP/ios-diagnostic/processes.txt"
           xcrun simctl io "$device" screenshot "$RUNNER_TEMP/ios-diagnostic/screen.png" || true
-          if ! xcrun simctl spawn "$device" ps -A -o comm= | grep -F "/$executable"; then
+          pid=$(awk '{print $NF}' "$RUNNER_TEMP/ios-diagnostic/launch.txt")
+          if ! [[ "$pid" =~ ^[0-9]+$ ]] || ! kill -0 "$pid" 2>/dev/null; then
             echo '::error::The app process was not running 30 seconds after launch.'
             exit 1
           fi
